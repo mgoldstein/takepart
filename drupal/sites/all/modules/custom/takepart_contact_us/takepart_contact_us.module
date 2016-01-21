@@ -14,17 +14,36 @@ function takepart_contact_us_form_zendesk_forms_support_form_alter(&$form, &$for
         '#type' => 'textfield',
         '#title' => t('Name'),
         '#required' => TRUE,
+        '#weight' => -10
     );
     $form['requester'] = array(
         '#type' => 'textfield',
         '#title' => t('Email'),
         '#required' => TRUE,
+        '#weight' => -9
+    );
+    $form['zendesk_24199483'] = array(
+        '#type' => 'select',
+        '#title' => t('Topic'),
+        '#options' => array(
+          'Story question or comment' => 'Story question or comment',
+          'Email subscription' => 'Email subscription',
+          'Technical problem' => 'Technical problem',
+          'Films' => 'Films',
+          'Pivot' => 'Pivot',
+          'Privacy' => 'Privacy',
+          'Request to remove information for a user believed to be under 13' => 'Request to remove information for a user believed to be under 13',
+          'Other' => 'Other'
+        ),
+        '#required' => TRUE,
+        '#weight' => -8
     );
     $form['subject'] = array(
         '#type' => 'textfield',
         '#title' => t('Subject'),
         '#required' => TRUE,
         '#maxlength' => 150,
+        '#weight' => -7
     );
     $form['description'] = array(
         '#type' => 'textarea',
@@ -32,6 +51,7 @@ function takepart_contact_us_form_zendesk_forms_support_form_alter(&$form, &$for
         '#required' => TRUE,
         '#maxlength' => 1500,
         '#maxlength_js' => TRUE,
+        '#weight' => -6
     );
     $form['group_id'] = array(
         '#type' => 'hidden',
@@ -62,8 +82,8 @@ function takepart_contact_us_block_info_alter(&$blocks, $theme, $code_blocks) {
 }
 
 /*
- * Alter the block to add the javascript to capture the user's browser information 
- * and clear the subject field. 
+ * Alter the block to add the javascript to capture the user's browser information
+ * and clear the subject field.
  * zendesk_23560737 (browser)
  * zendesk_23560727 (referrer)
  */
