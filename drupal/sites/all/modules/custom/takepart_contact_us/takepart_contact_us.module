@@ -32,7 +32,7 @@ function takepart_contact_us_form_zendesk_forms_support_form_alter(&$form, &$for
           'Films' => 'Films',
           'Pivot' => 'Pivot',
           'Privacy' => 'Privacy',
-          'Request to remove information for a user believed to be under 13' => 'Request to remove information for a user believed to be under 13',
+          'Request to remove information for a user under 13' => 'Request to remove information for a user under 13',
           'Other' => 'Other'
         ),
         '#required' => TRUE,
