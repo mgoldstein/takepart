@@ -1018,7 +1018,7 @@ body {
  .tou-alert {
   padding: 38px 0 23px 0;
   position: relative;
-  z-index: 4;
+    z-index: 2;
   @include breakpoint($breakpoint-tablet) {
     padding: 23px 0;
     margin-bottom: 20px;
@@ -1052,4 +1052,7 @@ body {
     font-size: 19px;
   }
 }
+}
+.node-type-feature-article #page-wrapper .tou-alert {
+  margin-bottom: 0;
 }
