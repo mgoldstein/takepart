@@ -61,8 +61,15 @@
   }
 }
 
-.tp_ad_takeover #page-wrapper,
 #page-wrapper {
+  max-width: 100%;
+}
+
+.tp_ad_takeover #page-wrapper {
+  max-width: 1000px;
+}
+
+.tp_ad_takeover.feature-active #page-wrapper {
   max-width: 100%;
 }
 
