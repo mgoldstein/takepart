@@ -1,0 +1,5 @@
+name = TP Autocomplete Thumbnail
+description = TakePart Takes the main image and saves it as the thumbnail if it is blank.
+core = 7.x
+package = TakePart
+version = 7.x-1.0
