@@ -114,8 +114,27 @@
           delete(window.campaignTray);
         }
       });
+
+      //check if page has room to scroll
+      if ($("body").height() <= $(window).height()) {
+        window.campaignInterval = setInterval("campaignBodyCheck()",1000);
+      }
+
       delete(window.preloaded);
     }
-  }
+  };
 
 })(jQuery, Drupal, this, this.document);
+
+
+//Needs to be a separate function so the set interval can find it.
+function campaignBodyCheck() {
+  //Check if the body height is still not up to window height
+  //AND if there are no more trays to load
+  if ((jQuery("body").height() <= jQuery(window).height()) &&
+    (Drupal.settings.campaignItemCount > window.campaignTray)) {
+    Drupal.ajax['autocampaign_ajax'].autoCampaign();
+  } else {
+    clearInterval(window.campaignInterval);
+  }
+}
