@@ -397,14 +397,14 @@ function inline_content_replacement_types() {
   );
 
   $types['take_action_widget'] = array(
-    'label' => t('TAP Banner v1 - Donations and Influence'),
-    'description' => t('TAP Banner v1 - Donations and Influence'),
+    'label' => t('TAP Banner v1 - Donations, Stories, Awareness, and Influence'),
+    'description' => t('TAP Banner v1 - Donations, Stories, Awareness, and Influence'),
     'controller' => 'InlineContentTakeActionWidget',
   );
 
   $types['tap_embed'] = array(
-    'label' => t('Tap Banner v2 - All Actions but Donations and Influence'),
-    'description' => t('Tap Banner v2 - All Actions but Donations and Influence'),
+    'label' => t('TAP Banner v2 - Pledges, Petitions, MOS, and Letters'),
+    'description' => t('TAP Banner v2 - Pledges, Petitions, MOS, and Letters'),
     'controller' => 'InlineContentTapEmbed',
   );
 

@@ -175,6 +175,7 @@
                   TAP.Widget      && TAP.Widget.addWidgets();
                   window.newTapWidgets = false;
                 }
+<<<<<<< HEAD
 
                 //Check if Chartbeat is installed and run the auto update on it
                 if(Drupal.settings.hasOwnProperty('chartbeat')) {
@@ -183,6 +184,8 @@
                   _sf_async_config.authors=Drupal.settings.tpAutoScroll[0]['auto_updates'][tp_og_url].data.authors.join(",");;
                   pSUPERFLY.virtualPage(tp_og_url, tp_og_title);
                 }
+=======
+>>>>>>> develop
               }
 
             }else{
