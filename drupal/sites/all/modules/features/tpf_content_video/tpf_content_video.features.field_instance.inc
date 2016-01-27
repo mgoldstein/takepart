@@ -922,7 +922,7 @@ Change this only if you know what you are doing.',
     'bundle' => 'video',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1005,7 +1005,7 @@ Change this only if you know what you are doing.',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -3328,7 +3328,7 @@ Change this only if you know what you are doing.',
     'bundle' => 'video_playlist',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -3411,7 +3411,7 @@ Change this only if you know what you are doing.',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -5355,7 +5355,7 @@ Change this only if you know what you are doing.');
   t('Filter List');
   t('Free Tag');
   t('Inline Replacements');
-  t('Permanent Title');
+  t('Analytics Title');
   t('Playlist Filter Sorting');
   t('Playlist Items Count');
   t('Playlist View Mode');

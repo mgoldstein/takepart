@@ -1005,7 +1005,7 @@ Change this only if you know what you are doing.',
     'bundle' => 'feature_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'This title is used for analytic purposes. It will autopopulate itself once published.  Once set this field will be DISABLED and only admins will be able to change.',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1070,7 +1070,7 @@ Change this only if you know what you are doing.',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Analytics Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -2165,7 +2165,7 @@ Change this only if you know what you are doing.');
   t('Inline Replacements');
   t('Main Image');
   t('Newsletters');
-  t('Permanent Analytics Title');
+  t('Analytics Title');
   t('Promo Headline');
   t('Promo Short Headline');
   t('Promo Text');

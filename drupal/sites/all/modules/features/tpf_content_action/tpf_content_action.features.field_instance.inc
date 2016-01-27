@@ -614,7 +614,7 @@ function tpf_content_action_field_default_field_instances() {
     'bundle' => 'action',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -692,7 +692,7 @@ function tpf_content_action_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1069,7 +1069,7 @@ function tpf_content_action_field_default_field_instances() {
   t('Call to Action Promo');
   t('Free Tag');
   t('Main Image');
-  t('Permanent Title');
+  t('Analytics Title');
   t('Sponsored');
   t('The absolute URL of the action.');
   t('The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.');

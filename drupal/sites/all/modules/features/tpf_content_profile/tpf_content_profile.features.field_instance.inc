@@ -493,7 +493,7 @@ function tpf_content_profile_field_default_field_instances() {
     'bundle' => 'profile',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -552,7 +552,7 @@ function tpf_content_profile_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1437,7 +1437,7 @@ function tpf_content_profile_field_default_field_instances() {
   t('Job Title');
   t('Last Name');
   t('Organization');
-  t('Permanent Title');
+  t('Analytics Title');
   t('Phone Number');
   t('Photo');
   t('The user account that this profile is attached to.');

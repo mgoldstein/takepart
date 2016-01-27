@@ -64,13 +64,9 @@ function tp_digital_data_page_build(&$page) {
  */
 function tp_digital_data_form_alter(&$form, &$form_state, $form_id){
 	if(isset($form_state['build_info']['base_form_id']) && $form_state['build_info']['base_form_id'] == 'node_form'){
-		global $user;
-		$roles = $user->roles;
-		if(!in_array('administrator', $roles)){
-      //Disabling the perm title so it can not be changed
-      //This is just a frontend disable
-      $form['field_permanent_title'][$form['field_permanent_title']['#language']][0]['value']['#attributes']['disabled'] = TRUE;
-		}
+    //Disabling the perm title so it can not be changed
+    //This is just a frontend disable
+    $form['field_permanent_title'][$form['field_permanent_title']['#language']][0]['value']['#attributes']['disabled'] = TRUE;
 		array_unshift($form['#submit'], 'tp_digital_data_perm_headline');
 	}
 }
