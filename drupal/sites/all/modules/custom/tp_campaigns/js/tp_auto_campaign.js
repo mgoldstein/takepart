@@ -115,7 +115,14 @@
       });
 
       //check if page has room to scroll
-      if ($("body").height() <= $(window).height()) {
+      //Need to check for terms of use cookie
+      //If it is set it will show and hide causing the page to give a increased
+      //body height
+      var extraheight = 0;
+      if(document.cookie.search('tou') != -1){
+        extraheight = 85;
+      }
+      if (($("body").height() - extraheight) <= $(window).height()) {
         window.campaignInterval = setInterval("campaignBodyCheck()",1000);
       }
 
