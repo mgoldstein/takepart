@@ -29,7 +29,6 @@
 
           if (alreadyloading == false) {
             alreadyloading = true;
-
             /* Set the URL */
             var url = settings.articles[page + 1];
             $.get(url, function(data) {
@@ -45,7 +44,6 @@
 
               /* Return Article */
               $('#next-article').before(data.output);
-
               /* Append Ajax behaviors */
               if('function' === typeof Drupal.behaviors.AJAX.attach) {
                 Drupal.behaviors.AJAX.attach(document, Drupal.settings);
@@ -128,6 +126,18 @@
             if((viewport.top <= articleBottom - offset) && (viewport.top >= articleTop - offset)){
               $(this).addClass('active');
 
+              //Remove page-wrapper constraints if a feature article is close by
+              var f_article = $('.tp_ad_takeover article.node-feature-article');
+              if(f_article.length !=0 ) {
+                var f_article_diff = $('article.node-feature-article').offset().top - $(window).scrollTop();
+                if ((f_article_diff - $(window).innerHeight()) <= 450 ) {
+                  $('body').addClass('feature-active');
+                }
+                else if ($('article.node-feature-article.active').length == 0 && $('body').hasClass('feature-active')) {
+                  $('body').removeClass('feature-active');
+                }
+              }
+
               /** Update the URL **/
               /* if article is active and data-tp-url != url, update it */
               var tp_og_url = $(this).data('tp-og-url');
@@ -165,15 +175,14 @@
                   TAP.Widget      && TAP.Widget.addWidgets();
                   window.newTapWidgets = false;
                 }
+              }
 
-                //Check if Chartbeat is installed and run the auto update on it
-                if(Drupal.settings.hasOwnProperty('chartbeat')) {
-                  //Reusing sailthru tags and authors
-                  _sf_async_config.sections=Drupal.settings.tpAutoScroll[0]['auto_updates'][tp_og_url].data.channels.join(",");;
-                  _sf_async_config.authors=Drupal.settings.tpAutoScroll[0]['auto_updates'][tp_og_url].data.authors.join(",");;
-                  pSUPERFLY.virtualPage(tp_og_url, tp_og_title);
-                }
-
+              //Check if Chartbeat is installed and run the auto update on it
+              if(Drupal.settings.hasOwnProperty('chartbeat')) {
+                //Reusing sailthru tags and authors
+                _sf_async_config.sections=Drupal.settings.tpAutoScroll[0]['auto_updates'][tp_og_url].data.channels.join(",");;
+                _sf_async_config.authors=Drupal.settings.tpAutoScroll[0]['auto_updates'][tp_og_url].data.authors.join(",");;
+                pSUPERFLY.virtualPage(tp_og_url, tp_og_title);
               }
 
             }else{
