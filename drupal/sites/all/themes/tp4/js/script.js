@@ -642,7 +642,13 @@
         </div>';
         $('#page-wrap').prepend(markup);
         $('.tou-close').click(function() {
-          $('.tou-alert').slideUp('slow');
+          $('.tou-alert').slideUp('slow',function(){
+						//for campaign pages run the body check so it will not leave the user
+						//trapped with no scrollbar
+						if (typeof campaignBodyCheck === "function") {
+							campaignBodyCheck();
+						}
+          });
         });
       }
     }
