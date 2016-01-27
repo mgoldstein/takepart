@@ -47,7 +47,7 @@ function tp_digital_data_page_build(&$page) {
   $factory = tp_digital_data_strategy_factory();
 
   if ($strategy = $factory->createForPage($path, $page)) {
-		
+
     $data = $strategy->build($page);
     $json = json_encode($data);
     $json = str_replace('"%document.location.href"', 'document.location.href', $json);
@@ -67,8 +67,9 @@ function tp_digital_data_form_alter(&$form, &$form_state, $form_id){
 		global $user;
 		$roles = $user->roles;
 		if(!in_array('administrator', $roles)){
-			$form['field_permanent_title']['#disabled'] = true;
-//			$form['field_permanent_title']['#access'] = false;
+      //Disabling the perm title so it can not be changed
+      //This is just a frontend disable
+      $form['field_permanent_title'][$form['field_permanent_title']['#language']][0]['value']['#attributes']['disabled'] = TRUE;
 		}
 		array_unshift($form['#submit'], 'tp_digital_data_perm_headline');
 	}
