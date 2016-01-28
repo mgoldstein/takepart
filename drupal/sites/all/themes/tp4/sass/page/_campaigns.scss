@@ -194,7 +194,7 @@ body.campaign-display
             .instructional{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-bottom: 5px;
+                    padding-bottom: 0px;
                     padding-left: 10px;
                     padding-right: 10px;
                 }
@@ -259,8 +259,9 @@ body.node-type-campaign-card-news .card.campaign-1col{
                 }
             }
             @include breakpoint($breakpoint-tablet) {
-                @include zen-grid-item(6, 4);
+                @include zen-grid-item(8, 3);
             }
+            padding-top: 30px;
         }
     }
 }
@@ -289,7 +290,8 @@ body.campaign-display .card.node-campaign-card-media{
         }
     }
 }
-body.node-type-campaign-page .card.node-campaign-card-news.multi-news{
+body.node-type-campaign-page .card.node-campaign-card-news.multi-news,
+body.node-type-campaign-card-news .card.node-campaign-card-news.multi-news {
     .center-column{
         @include breakpoint($breakpoint-mobile) {
             @include zen-grid-item(12, 1);
@@ -298,7 +300,9 @@ body.node-type-campaign-page .card.node-campaign-card-news.multi-news{
             @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(10, 2);
+            @include zen-grid-item(12, 1);
+            padding-left: 0px;
+            padding-right: 0px;
         }
     }
 }
@@ -357,9 +361,9 @@ body.campaign-display{
      * Global Elements
      */
     h1 {
-        font: 100 36px/38px $secondary-sans-font;
+        font: 900 38px/44px $primary-sans-font;
         text-transform: uppercase;
-        color: #000;
+        color: #3a3a3a;
     }
 
     .campaign-sidebar-header {
@@ -373,7 +377,7 @@ body.campaign-display{
     .card {
         height: 100%;
         overflow: hidden;
-        padding-bottom: 60px;
+        padding-bottom: 50px;
         @import "../modules/wysiwyg";
     }
     a.card-anchor {
@@ -619,9 +623,9 @@ body.campaign-display{
     }
     h1.card-title{
         text-align: center;
-        margin-bottom: 26px;
+        margin-bottom: 40px;
         &.has-instructional{
-            margin-bottom: 6px;
+            margin-bottom: 40px;
         }
     }
     #main-wrap {
@@ -643,9 +647,9 @@ body.campaign-display{
     .tray-header{
         position: absolute;
         top: 0;
-        padding-top: 50px;
+        padding-top: 40px;
         width: 100%;
-        max-width: 1000px;
+        max-width: 970px;
         left: 0;
         right: 0;
         margin: 0 auto;
@@ -749,15 +753,15 @@ body.campaign-display{
             top: 200px;
             width: 100%;
             .slider-inner{
-                max-width: 1000px;
+                max-width: 970px;
                 margin: 0 auto;
-                position: relative;
+                // position: relative;
             }
 
         }
         .slider-pagination{
             text-align: center;
-            margin-bottom: 1em;
+            margin-bottom: 12px;
             position: relative;
 
             a {
@@ -1081,45 +1085,71 @@ body.campaign-display{
 
     //News
     .card.node-campaign-card-news{
+        background: #f4f2f2;
+
         .center-column{
             text-align: center;
             line-height: 12px;
             overflow: hidden;
+            padding-top: 30px;
             .news-column{
+                background: #fff;
+                margin-bottom: 40px;
                 @include breakpoint($breakpoint-mobile) {
                     width: 100%;
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    width: 18%;
+                    width: 22%;
                 }
                 display: inline-block;
                 vertical-align: top;
                 white-space: normal;
-                margin-right: 2%;
-                &:last-child, &:nth-child(5n) {
+                margin-right: 4%;
+                &:last-child, &:nth-child(4n) {
                     margin-right: 0;
                 }
                 img{
-                    padding-bottom: 5px;
+                    // padding-bottom: 5px;
                 }
                 h5{
                     text-align: left;
                     white-space: normal;
                 }
+                h4 {
+                    text-transform: none;
+                    text-align: left;
+                    padding: 18px 10px 10px 10px;
+                    margin-bottom: 0;
+                }
             }
-            h3.headline{
+            .single-news-wrapper {
+              background: #fff;
+              padding-bottom: 40px;
+              h3.headline{
                 padding-top: 13px;
                 margin: 0;
-            }
-            p.short-headline{
+              }
+              h4.headline {
+                line-height: 28px;
+                color: #3a3a3a;
+                margin-top: 20px;
+                margin-bottom: 10px;
+                a {
+                    color: #3a3a3a;
+                }
+              }
+              p.short-headline{
                 margin: 0;
-                padding-top: 0;
+                padding: 0 50px;
                 line-height: 24px;
-                padding-bottom:3px;
+                line-height: 34px;
+              }
             }
-            .more-link p{
-                padding-top: 20px;
+            .more-link {
+                padding-top: 40px;
+              p {
                 margin: 0;
+              }
             }
         }
         a.news-column{
@@ -1131,6 +1161,11 @@ body.campaign-display{
         .more-link{
             clear: both;
         }
+      &.multi-news {
+        .more-link {
+          padding-top: 15px;
+        }
+      }
     }
 
     //Empty
@@ -1482,9 +1517,11 @@ body.campaign-display{
     .card-inner{
         height: auto;
         overflow: hidden;
-        max-width: 1000px;
+        max-width: 940px;
         margin: 0 auto;
-        padding-top: 50px;
+        padding-top: 40px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
     .card-width-980{
         float: none;
@@ -1816,7 +1853,7 @@ body.campaign-display .card.content-full-width {
       padding-right: 0;
       width: 100%;
       .description{
-        max-width: 1000px;
+        max-width: 970px;
         float: none;
         margin-left: auto;
         margin-right: auto;
