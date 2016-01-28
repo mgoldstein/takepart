@@ -121,12 +121,13 @@
       //Need to check for terms of use cookie
       //If it is set it will show and hide causing the page to give a increased
       //body height
-      var extraheight = 0;
+      //770 is the height of featured campagign and footer
+      var extraheight = 770;
       if(document.cookie.search('tou') != -1){
-        extraheight = 85;
+        extraheight += 85;
       }
       if (($("body").height() - extraheight) <= $(window).height()) {
-        window.campaignInterval = setInterval("campaignBodyCheck()",1000);
+        window.campaignInterval = setInterval("campaignBodyCheck()",500);
       }
 
       delete(window.preloaded);
@@ -140,7 +141,7 @@
 function campaignBodyCheck() {
   //Check if the body height is still not up to window height
   //AND if there are no more trays to load
-  if ((jQuery("body").height() <= jQuery(window).height()) &&
+  if ((jQuery("body").height() - 770 <= jQuery(window).height()) &&
     (Drupal.settings.campaignItemCount > window.campaignTray)) {
     Drupal.ajax['autocampaign_ajax'].autoCampaign();
   } else {
