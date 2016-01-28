@@ -34,7 +34,7 @@ function tpf_content_campaigns_default_box() {
     'ga_ad_slot' => 'TP_Campaign_320x50_a',
     'ga_ad_gpt_id' => 'div-gpt-ad-1452124185125-0',
     'ga_ad_width' => '320',
-    'ga_ad_height' => '50',
+    'ga_ad_height' => '51',
   );
   $export['ga_campaign_header_mobile'] = $box;
 
