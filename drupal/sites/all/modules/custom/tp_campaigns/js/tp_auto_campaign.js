@@ -64,6 +64,9 @@
          }
          //INIT Facebook again
          window.fbAsyncInit();
+
+         //Trigger a resize for styling to take effect on media cards
+         $(window).trigger('resize');
        });
      }
    };
