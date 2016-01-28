@@ -43,3 +43,4 @@ $conf['search_api_solr_overrides'] = array(
     ),
   ),
 );
+// $conf['search_api_page_block_delta'] = 3;
