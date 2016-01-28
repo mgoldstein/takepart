@@ -846,7 +846,7 @@ Change this only if you know what you are doing.',
     ),
     'widget' => array(
       'active' => 1,
-      'module' => 'media',
+      'module' => 'media_2x_widget_plupload',
       'settings' => array(
         'allowed_schemes' => array(
           'jwplatform-channel' => 0,
@@ -871,7 +871,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'progress_indicator' => 'throbber',
       ),
-      'type' => 'media_generic',
+      'type' => 'media_2x_widget_plupload',
       'weight' => 42,
     ),
   );
