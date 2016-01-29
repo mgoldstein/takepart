@@ -986,7 +986,7 @@ Change this only if you know what you are doing.',
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1051,7 +1051,7 @@ Change this only if you know what you are doing.',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -2053,7 +2053,7 @@ Change this only if you know what you are doing.');
   t('Main Image');
   t('Main Image Format');
   t('Newsletters');
-  t('Permanent Title');
+  t('Analytics Title');
   t('Promo Headline');
   t('Promo Short Headline');
   t('Promo Text');
