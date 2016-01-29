@@ -13,18 +13,17 @@
     */
    Drupal.ajax.prototype.autoCampaign = function() {
      var ajax = this;
-     var traynumb = window.campaignTray + 2;
-     ajax.url = ajax.element_settings.url = ajax.options.url = '/autocampaign/'+Drupal.settings.autoloadCampaigns+'/'+traynumb;
 
      // Do not perform another ajax command if one is already in progress.
      if (ajax.ajaxing) {
        return false;
      }
-
+     var traynumb = window.campaignTray + 2;
+     ajax.url = ajax.element_settings.url = ajax.options.url = '/autocampaign/'+Drupal.settings.autoloadCampaigns+'/'+traynumb;
+     window.campaignTray++;
+     window.newTapWidgets = true;
      try {
-       window.newTapWidgets = true;
        $.ajax(ajax.options);
-       window.campaignTray++;
      }
      catch (err) {
        alert('An error occurred while attempting to process ' + ajax.options.url);
@@ -64,6 +63,9 @@
          }
          //INIT Facebook again
          window.fbAsyncInit();
+
+         //Trigger a resize for styling to take effect on media cards
+         $(window).trigger('resize');
        });
      }
    };
@@ -114,8 +116,35 @@
           delete(window.campaignTray);
         }
       });
+
+      //check if page has room to scroll
+      //Need to check for terms of use cookie
+      //If it is set it will show and hide causing the page to give a increased
+      //body height
+      //770 is the height of featured campagign and footer
+      var extraheight = 770;
+      if(document.cookie.search('tou') != -1){
+        extraheight += 85;
+      }
+      if (($("body").height() - extraheight) <= $(window).height()) {
+        window.campaignInterval = setInterval("campaignBodyCheck()",500);
+      }
+
       delete(window.preloaded);
     }
-  }
+  };
 
 })(jQuery, Drupal, this, this.document);
+
+
+//Needs to be a separate function so the set interval can find it.
+function campaignBodyCheck() {
+  //Check if the body height is still not up to window height
+  //AND if there are no more trays to load
+  if ((jQuery("body").height() - 770 <= jQuery(window).height()) &&
+    (Drupal.settings.campaignItemCount > window.campaignTray)) {
+    Drupal.ajax['autocampaign_ajax'].autoCampaign();
+  } else {
+    clearInterval(window.campaignInterval);
+  }
+}
