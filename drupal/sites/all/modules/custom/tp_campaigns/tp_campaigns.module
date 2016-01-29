@@ -526,7 +526,8 @@ function tp_autoload_campaign_handler($nid, $itemnumb) {
       $ret = array('#type' => 'ajax', '#commands' => $cmd);
       //Set the commands into cache
       if(!user_access('view the administration theme')) {
-        cache_set("tp_autoload_campaign_handler_data_".$nid."_".$itemnumb, $ret, 'cache',  REQUEST_TIME  + (3600 * 24));
+        $expire = variable_get('cache_lifetime', (60 * 15));
+        cache_set("tp_autoload_campaign_handler_data_".$nid."_".$itemnumb, $ret, 'cache',  REQUEST_TIME  + $expire);
       }
     }
   } else {

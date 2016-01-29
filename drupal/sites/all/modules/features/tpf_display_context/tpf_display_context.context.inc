@@ -889,6 +889,12 @@ function tpf_display_context_context_default_contexts() {
           'region' => 'header',
           'weight' => '-8',
         ),
+        'boxes-ga_campaign_header_mobile' => array(
+          'module' => 'boxes',
+          'delta' => 'ga_campaign_header_mobile',
+          'region' => 'header',
+          'weight' => '-7',
+        ),
         'system-main' => array(
           'module' => 'system',
           'delta' => 'main',

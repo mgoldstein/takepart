@@ -16,8 +16,10 @@ function tp4_support_graveyard() {
 
   $article_ids = array();
   $output = '';
+  $node_list = array();
   foreach ($topics['taxonomy_term'] as $topic) {
     $topic_id = $topic->tid;
+    $article_promo = FALSE;
     $topic = taxonomy_term_load($topic_id);
     $output .= '<div class="topic">';
     $output .= '<div class="topic-title">' . l($topic->name, 'taxonomy/term/' . $topic_id) . '</div>';
@@ -29,11 +31,22 @@ function tp4_support_graveyard() {
 	 ->propertyCondition('type', array('openpublish_article', 'feature_article'))
 	 ->propertyOrderBy('created', 'DESC')
 	 ->fieldCondition('field_topic', 'tid', $topic_id)
-	 ->range(0, 1);
-    $article = $articleQuery->execute();
-    $article_id = current($article['node'])->nid;
-    $article = node_load($article_id);
+	 ->range(0, 15);
 
+    $article = $articleQuery->execute();
+
+    //Check for duplicates
+    foreach ($article['node'] as $key => $value) {
+      $current_nid = $article['node'][$key]->nid;
+      if(!in_array($current_nid, $node_list)) {
+        array_push($node_list, $current_nid);
+        break;
+      }
+    }
+
+    $article_id = $current_nid;
+    $article = node_load($article_id);
+    $primary_topic = field_get_items('node', $article, 'field_topic');
     foreach (field_get_items('node', $article, 'field_promo_headline') as $item) {
 	 $article_promo = drupal_render(field_view_value('node', $article, 'field_promo_headline', $item));
     }

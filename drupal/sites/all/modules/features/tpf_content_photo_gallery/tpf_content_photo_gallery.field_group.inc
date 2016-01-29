@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function tpf_content_photo_gallery_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -35,7 +35,7 @@ function tpf_content_photo_gallery_field_group_info() {
       ),
     ),
   );
-  $export['group_deprecated|node|openpublish_photo_gallery|form'] = $field_group;
+  $field_groups['group_deprecated|node|openpublish_photo_gallery|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -70,7 +70,7 @@ function tpf_content_photo_gallery_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_photo_gallery_main|node|openpublish_photo_gallery|form'] = $field_group;
+  $field_groups['group_photo_gallery_main|node|openpublish_photo_gallery|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -98,7 +98,7 @@ function tpf_content_photo_gallery_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_photo_gallery_photos|node|openpublish_photo_gallery|form'] = $field_group;
+  $field_groups['group_photo_gallery_photos|node|openpublish_photo_gallery|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -129,7 +129,7 @@ function tpf_content_photo_gallery_field_group_info() {
       ),
     ),
   );
-  $export['group_photo_gallery_promo|node|openpublish_photo_gallery|form'] = $field_group;
+  $field_groups['group_photo_gallery_promo|node|openpublish_photo_gallery|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -155,7 +155,7 @@ function tpf_content_photo_gallery_field_group_info() {
       ),
     ),
   );
-  $export['group_photo_gallery_related|node|openpublish_photo_gallery|form'] = $field_group;
+  $field_groups['group_photo_gallery_related|node|openpublish_photo_gallery|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -188,7 +188,16 @@ function tpf_content_photo_gallery_field_group_info() {
       'formatter' => 'open',
     ),
   );
-  $export['group_photo_gallery_tagging|node|openpublish_photo_gallery|form'] = $field_group;
+  $field_groups['group_photo_gallery_tagging|node|openpublish_photo_gallery|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Deprecated');
+  t('Main');
+  t('Photos');
+  t('Promo');
+  t('Related');
+  t('Tagging');
+
+  return $field_groups;
 }
