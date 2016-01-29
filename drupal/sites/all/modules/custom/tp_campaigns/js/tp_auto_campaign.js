@@ -64,6 +64,15 @@
          //INIT Facebook again
          window.fbAsyncInit();
 
+         //Check for ads and try to display them
+         $('.node-campaign-page .block-boxes-ga_ad').each(function(){
+           //check if the ad has loaded
+           if( !$.trim( $(this).find('.boxes-box-content div').html() ).length ) {
+             //try to display it
+             googletag.display($(this).find('.boxes-box-content div').attr('id'));
+           }
+         });
+
          //Trigger a resize for styling to take effect on media cards
          $(window).trigger('resize');
        });

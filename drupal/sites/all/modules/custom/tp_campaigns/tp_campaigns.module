@@ -508,6 +508,12 @@ function tp_autoload_campaign_handler($nid, $itemnumb) {
               $cmd[] = ajax_command_settings($value, TRUE);
             }
           }
+          foreach($settings AS $key => $value) {
+            if($value['type'] == 'inline' && $value['scope'] == 'header') {
+              //Find inline scripts and append them so they will run once in the dom
+              $cmd[] = ajax_command_append('body', "<script>".$value['data']."</script>");
+            }
+          }
           //Set the append and invoke commands
           $cmd[] = ajax_command_append('article.node-campaign-page.view-mode-full', $output);
           $cmd[] = ajax_command_invoke('article.node-campaign-page.view-mode-full', 'trigger', array('InvokeOthers'));
