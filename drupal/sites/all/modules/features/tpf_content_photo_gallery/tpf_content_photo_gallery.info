@@ -1,7 +1,8 @@
 name = TakePart Content Photo Gallery
+description = Photo gallery configuration settings
 core = 7.x
 package = Content Types
-version = 7.x-1.1
+version = 7.x-1.2
 project = tpf_content_photo_gallery
 dependencies[] = context
 dependencies[] = context_field
