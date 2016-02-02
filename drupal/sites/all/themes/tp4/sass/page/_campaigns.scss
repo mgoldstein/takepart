@@ -310,13 +310,13 @@ body.campaign-display .card.node-campaign-card-tap-widget{
     .card-content{
         @include breakpoint($breakpoint-mobile) {
             @include zen-grid-item(12, 1);
-            padding-left: 10px;
-            padding-right: 10px;
+            padding: 0;
             @include zen-clear();
         }
-        @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(10, 2);
-        }
+        // @include breakpoint($breakpoint-tablet) {
+        //     @include zen-grid-item(10, 2);
+        //     padding: 0;
+        // }
     }
 }
 
@@ -992,12 +992,17 @@ body.campaign-display{
             @include zen-clear();
             padding-bottom: 20px;
         }
-        // .right {
-        //     margin-top:21px;
-        // }
-        .right > .field,
-        .left > .field {
-            margin-top:25px;
+        @include breakpoint($breakpoint-tablet) {
+            .right > .field,
+            .left > .field {
+                margin-top:25px;
+            }
+        }
+         @media (max-width: 767px) {
+            .tap-action-wrapper {
+                max-width: 100%;
+                margin: 0 auto;
+            }
         }
         //Temp fix for new widget not centering
         .left-full .tap-action-wrapper.align- {
@@ -1010,25 +1015,25 @@ body.campaign-display{
                 @include zen-grid-item(12, 1);
             }
             .left.column-even{
-                @include zen-grid-item(6, 1);
+                @include zen-grid-item(5, 2);
             }
             .left.column-wide{
-                @include zen-grid-item(7, 1);
+                @include zen-grid-item(6, 2);
             }
             .left.column-narrow{
-                @include zen-grid-item(5, 1);
+                @include zen-grid-item(4, 2);
             }
             .right{
                 clear: none;
             }
             .right.column-even{
-                @include zen-grid-item(6, 7);
+                @include zen-grid-item(5, 7);
             }
             .right.column-wide{
-                @include zen-grid-item(7, 6);
+                @include zen-grid-item(6, 6);
             }
             .right.column-narrow{
-                @include zen-grid-item(5, 8);
+                @include zen-grid-item(4, 8);
             }
         }
         img{
@@ -1036,9 +1041,11 @@ body.campaign-display{
             margin: 0 auto;
             padding-bottom: 10px;
         }
+        //To compensate for TAP's addtional margins
+        &.card.campaign-1col  .instructional {
+            padding-bottom: 20px;
+        }
     }
-
-
 
     //Branding
     .card.node-campaign-card-branding {
