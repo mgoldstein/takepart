@@ -933,9 +933,6 @@ body.campaign-display{
             padding: 0;
         }
     }
-    // .campaign-2col.node-campaign-card-media .description{
-    //     margin-top: -7px;
-    // }
     .campaign-1col.node-campaign-card-media .center-column .caption{
         text-align: left;
     }
@@ -1019,6 +1016,9 @@ body.campaign-display{
             }
             .left.column-wide{
                 @include zen-grid-item(6, 2);
+                .tap-action-wrapper.align-left {
+                    max-width: 100%;
+                }
             }
             .left.column-narrow{
                 @include zen-grid-item(4, 2);
@@ -1031,6 +1031,13 @@ body.campaign-display{
             }
             .right.column-wide{
                 @include zen-grid-item(6, 6);
+                padding-left: 55px;
+                @media (min-width: 901px) {
+                    padding-left: 10px;
+                }
+                .tap-action-wrapper.align-right {
+                    max-width: 100%;
+                }
             }
             .right.column-narrow{
                 @include zen-grid-item(4, 8);
