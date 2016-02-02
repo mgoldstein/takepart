@@ -66,7 +66,10 @@ body.campaign-display
                 margin-top: 0px;
             }
         }
-
+        .instructional p {
+            font-size: 22px;
+            line-height: 34px;
+        }
         // .title-wrapper + {
         //     .left-column, .left-column + .right-column, .right-column, .center-column {
         //         margin-top: 5px;
@@ -107,13 +110,12 @@ body.campaign-display
             .right-column{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-right: 0px;
-                    padding-top: 20px;
+                    padding: 20px 0 0 0;
                     @include zen-clear();
                 }
                 @include breakpoint($breakpoint-tablet) {
                     @include zen-grid-item(6, 7);
-                    padding-top: 0;
+                    padding: 0 0 0 10px;
                     @include zen-clear(none);
                 }
             }
@@ -196,6 +198,7 @@ body.campaign-display
                     @include zen-grid-item(12, 1);
                     @include zen-clear();
                     height: 100%;
+                    padding: 0;
                     img{
                         margin: 0 auto;
                     }
@@ -286,7 +289,8 @@ body.campaign-display .card.node-campaign-card-media {
     }
 }
 body.node-type-campaign-page .card.node-campaign-card-news.multi-news,
-body.node-type-campaign-card-news .card.node-campaign-card-news.multi-news {
+body.node-type-campaign-card-news .card.node-campaign-card-news.multi-news,
+body.campaign-display .card.node-campaign-card-multi-column {
     .center-column{
         @include breakpoint($breakpoint-mobile) {
             @include zen-grid-item(12, 1);
@@ -301,20 +305,7 @@ body.node-type-campaign-card-news .card.node-campaign-card-news.multi-news {
         }
     }
 }
-body.campaign-display .card.node-campaign-card-multi-column{
-    padding-bottom: 20px;
-    .center-column{
-        @include breakpoint($breakpoint-mobile) {
-            @include zen-grid-item(12, 1);
-            padding-left: 10px;
-            padding-right: 10px;
-            @include zen-clear();
-        }
-        @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(10, 2);
-        }
-    }
-}
+
 body.campaign-display .card.node-campaign-card-tap-widget{
     .card-content{
         @include breakpoint($breakpoint-mobile) {
@@ -380,9 +371,6 @@ body.campaign-display{
         position: absolute;
         top: 0px;
         visibility: hidden;
-    }
-    .card-inner a{
-        color: $mint;
     }
     .takepart-take-action-widget{
         margin: 0 auto;
@@ -1383,7 +1371,6 @@ body.campaign-display{
             width: 100%;
             text-align: center;
             overflow: hidden;
-            padding-left: 10px;
             > div{
                 display: inline-block;
                 vertical-align: top;
@@ -1401,6 +1388,15 @@ body.campaign-display{
         p{
             margin-bottom: -5px;
             line-height: normal;
+        }
+        .item p {
+          font-family: $primary-sans-font;
+          font-weight: bold;
+          font-size: 18px;
+          line-height: 28px;
+        }
+        .instructional p {
+            text-align: center;
         }
         *{
 	        text-align: left;

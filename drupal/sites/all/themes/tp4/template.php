@@ -1433,7 +1433,7 @@ function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
   $multi_grid = field_get_items('node', $variables['node'], 'field_campaign_multigrid_item');
   $item_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_multi_item_width');
   if(empty($item_width)){
-      $item_width = 180;
+      $item_width = 200;
   }
 
   $items = array();
