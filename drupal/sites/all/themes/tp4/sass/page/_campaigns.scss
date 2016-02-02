@@ -67,11 +67,11 @@ body.campaign-display
             }
         }
 
-        .title-wrapper + {
-            .left-column, .left-column + .right-column, .right-column, .center-column {
-                margin-top: 5px;
-            }
-        }
+        // .title-wrapper + {
+        //     .left-column, .left-column + .right-column, .right-column, .center-column {
+        //         margin-top: 5px;
+        //     }
+        // }
         &:not(.has-instructional.has-title){
             .left-column, .right-column, .center-column {
                 margin-top: 25px;
@@ -82,124 +82,113 @@ body.campaign-display
             .instructional{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-bottom: 15px;
+                    padding-bottom: 20px;
                     padding-left: 10px;
                     padding-right: 10px;
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(8, 3);
+                    padding-bottom: 30px;
+                    @include zen-grid-item(10, 2);
                 }
+                text-align: center;
             }
             .left-column{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-left: 10px;
                     @include zen-clear();
+                    padding-left: 0px;
+                    padding-right: 0;
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(5, 2);
+                    @include zen-grid-item(6, 1);
+                    padding-left: 0px;
                 }
             }
             .right-column{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-right: 10px;
+                    padding-right: 0px;
                     padding-top: 20px;
-                    padding-left: 10px;
                     @include zen-clear();
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(5, 7);
+                    @include zen-grid-item(6, 7);
                     padding-top: 0;
                     @include zen-clear(none);
                 }
             }
         }
         &.campaign-2col.left-large{
-            .instructional{
-                @include breakpoint($breakpoint-mobile) {
-                    @include zen-grid-item(12, 1);
-                    padding-bottom: 15px;
-                    padding-left: 10px;
-                    padding-right: 10px;
-                }
-                @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(8, 3);
-                }
-            }
             .left-column{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-left: 10px;
+                    padding-right: 0px;
+                    padding-left: 0px;
                     @include zen-clear();
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(6, 2);
+                    @include zen-grid-item(8, 1);
+                    padding-left: 0px;
                 }
             }
             .right-column{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
                     padding-top: 20px;
-                    padding-left: 10px;
-                    padding-right: 10px;
+                    padding-right: 0px;
+                    padding-left:0;
                     @include zen-clear();
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(4, 8);
+                    @include zen-grid-item(4, 9);
                     padding-top: 0;
+                    padding-right: 0px;
                     @include zen-clear(none);
                 }
             }
         }
         &.campaign-2col.right-large{
-            .instructional{
-                @include breakpoint($breakpoint-mobile) {
-                    @include zen-grid-item(12, 1);
-                    padding-bottom: 15px;
-                    padding-left: 10px;
-                    padding-right: 10px;
-                    text-align: center;
-                }
-                @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(8, 3);
-                }
-            }
             .left-column{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-left: 10px;
+                    padding-left: 0px;
+                    padding-right: 0;
                     @include zen-clear();
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(4, 2);
+                    @include zen-grid-item(4, 1);
+                    padding-left: 0px;
                 }
             }
             .right-column{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-right: 10px;
-                    padding-left: 10px;
+                    padding-left: 0px;
                     padding-top: 20px;
                     @include zen-clear();
+                    padding-right: 0px;
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(6, 6);
+                    @include zen-grid-item(8, 5);
                     padding-top: 0;
+                    padding-left: 10px;
+                    padding-right: 0px;
                     @include zen-clear(none);
                 }
             }
         }
         &.campaign-1col{
             .instructional{
+                text-align: center;
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-bottom: 0px;
+                    padding-bottom: 20px;
                     padding-left: 10px;
                     padding-right: 10px;
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(8, 3);
+                    @include zen-grid-item(10, 2);
+                    padding-bottom: 30px;
                 }
             }
             .center-column {
@@ -216,9 +205,6 @@ body.campaign-display
                     .caption{
                         text-align: center;
                     }
-                }
-                @include breakpoint($breakpoint-mobile) {
-                    @include zen-grid-item(10, 2);
                 }
             }
         }
@@ -265,19 +251,28 @@ body.node-type-campaign-card-news .card.campaign-1col{
         }
     }
 }
-body.campaign-display .card.node-campaign-card-media{
+body.campaign-display .card.node-campaign-card-media {
     .center-column .description{
         @include breakpoint($breakpoint-mobile) {
             @include zen-grid-item(12, 1);
             padding-left: 10px;
             padding-right: 10px;
+            padding-top: 30px;
             @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
             @include zen-grid-item(10, 2);
+            padding-top: 40px;
+        }
+        p {
+            font-size: 20px;
+            line-height: 27px;
         }
     }
-
+    .description p {
+            font-size: 20px;
+            line-height: 27px;
+     }
     .playlist-wrapper-wrapper {
         margin-bottom: 0;
         .bx-wrapper {
@@ -927,12 +922,17 @@ body.campaign-display{
             margin: 0 auto;
         }
         h4.media-title{
-            padding-bottom: 12px;
+            padding-bottom: 15px;
             margin-bottom: 0;
         }
         .caption{
             padding-top: 5px;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
+            p {
+              margin-bottom: 0;
+              font: 100 16px/24px $Ashbury;
+              font-style: italic;
+            }
         }
         .node-video{
             h2.node-title{
@@ -945,10 +945,10 @@ body.campaign-display{
             padding: 0;
         }
     }
-    .campaign-2col.node-campaign-card-media .description{
-        margin-top: -7px;
-    }
-    .campaign-1col.node-campaign-card-media .caption{
+    // .campaign-2col.node-campaign-card-media .description{
+    //     margin-top: -7px;
+    // }
+    .campaign-1col.node-campaign-card-media .center-column .caption{
         text-align: left;
     }
 
@@ -1091,7 +1091,7 @@ body.campaign-display{
             text-align: center;
             line-height: 12px;
             overflow: hidden;
-            padding-top: 30px;
+            // padding-top: 30px;
             .news-column{
                 background: #fff;
                 margin-bottom: 40px;
