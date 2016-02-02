@@ -971,6 +971,7 @@ body.campaign-display{
             @include breakpoint($breakpoint-mobile) {
                 @include zen-grid-item(12, 1);
                 @include zen-clear();
+                padding: 0;
                 height: 100%;
                 img{
                     margin: 0 auto;
@@ -981,9 +982,6 @@ body.campaign-display{
                 .caption{
                     text-align: center;
                 }
-            }
-            @include breakpoint($breakpoint-tablet) {
-                @include zen-grid-item(10, 2);
             }
         }
     }
