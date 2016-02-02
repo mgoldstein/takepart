@@ -1229,11 +1229,12 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $image = '<img src="'. $image. '" alt="'.$alt.'">';  //image
       $center = '';  // single news reference will use one column now
       $path = drupal_get_path_alias('node/'. $node->nid);
-
+      $center .='<div class ="single-news-wrapper">';
       $center .= l($image, $path, array('html' => true));
-      $center .= '<h3 class="headline">'. l($headline, $path, array('html' => true)). '</h3>';  //headline
+      $center .= '<h4 class="headline">'. l($headline, $path, array('html' => true)). '</h3>';  //headline
       $center .= '<p class="short-headline">'. $short_headline. '</p>';  //short headline
       $center .= _tp4_support_sponsor_flag($node);
+      $center .= '</div>';  //single-news-wrapper
 
     }
     else{ //multivalue
@@ -1295,7 +1296,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         $image = image_style_url('campaign_news_3x2', $file->uri);
         $media = '<img src="'. $image. '" alt="'.$alt.'">';
         $news_column = $media;
-        $news_column .= '<h5>'. $headline. '</h5>';
+        $news_column .= '<h4>'. $headline. '</h4>';
 
         $uri = entity_uri('node', $node);
         $uri['options'] += array(

@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function tpf_content_campaigns_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -38,7 +38,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_image|node|campaign_card_ad|form'] = $field_group;
+  $field_groups['group_background_image|node|campaign_card_ad|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -68,7 +68,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_image|node|campaign_card_branding|form'] = $field_group;
+  $field_groups['group_background_image|node|campaign_card_branding|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -98,7 +98,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_image|node|campaign_card_empty|form'] = $field_group;
+  $field_groups['group_background_image|node|campaign_card_empty|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -128,7 +128,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_image|node|campaign_card_iframe|form'] = $field_group;
+  $field_groups['group_background_image|node|campaign_card_iframe|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -157,7 +157,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_image|node|campaign_card_media|form'] = $field_group;
+  $field_groups['group_background_image|node|campaign_card_media|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -187,7 +187,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_image|node|campaign_card_multi_column|form'] = $field_group;
+  $field_groups['group_background_image|node|campaign_card_multi_column|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -217,7 +217,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_image|node|campaign_card_news|form'] = $field_group;
+  $field_groups['group_background_image|node|campaign_card_news|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -247,7 +247,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_image|node|campaign_card_social|form'] = $field_group;
+  $field_groups['group_background_image|node|campaign_card_social|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -277,7 +277,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_image|node|campaign_card_tap_widget|form'] = $field_group;
+  $field_groups['group_background_image|node|campaign_card_tap_widget|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -308,7 +308,7 @@ function tpf_content_campaigns_field_group_info() {
       'formatter' => 'collapsible',
     ),
   );
-  $export['group_background_image|node|campaign_card_text|form'] = $field_group;
+  $field_groups['group_background_image|node|campaign_card_text|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -339,7 +339,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_image|node|campaign_card_twitter|form'] = $field_group;
+  $field_groups['group_background_image|node|campaign_card_twitter|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -369,7 +369,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_image|node|campaign_tray|form'] = $field_group;
+  $field_groups['group_background_image|node|campaign_tray|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -397,7 +397,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_image|node|campaign|form'] = $field_group;
+  $field_groups['group_background_image|node|campaign|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -425,7 +425,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_video|node|campaign_card_ad|form'] = $field_group;
+  $field_groups['group_background_video|node|campaign_card_ad|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -453,7 +453,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_video|node|campaign_card_branding|form'] = $field_group;
+  $field_groups['group_background_video|node|campaign_card_branding|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -481,7 +481,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_video|node|campaign_card_empty|form'] = $field_group;
+  $field_groups['group_background_video|node|campaign_card_empty|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -509,7 +509,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_video|node|campaign_card_iframe|form'] = $field_group;
+  $field_groups['group_background_video|node|campaign_card_iframe|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -537,7 +537,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_video|node|campaign_card_media|form'] = $field_group;
+  $field_groups['group_background_video|node|campaign_card_media|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -565,7 +565,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_video|node|campaign_card_multi_column|form'] = $field_group;
+  $field_groups['group_background_video|node|campaign_card_multi_column|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -593,7 +593,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_video|node|campaign_card_news|form'] = $field_group;
+  $field_groups['group_background_video|node|campaign_card_news|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -621,7 +621,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_video|node|campaign_card_social|form'] = $field_group;
+  $field_groups['group_background_video|node|campaign_card_social|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -649,7 +649,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_video|node|campaign_card_tap_widget|form'] = $field_group;
+  $field_groups['group_background_video|node|campaign_card_tap_widget|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -677,7 +677,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_video|node|campaign_card_text|form'] = $field_group;
+  $field_groups['group_background_video|node|campaign_card_text|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -705,7 +705,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background_video|node|campaign_card_twitter|form'] = $field_group;
+  $field_groups['group_background_video|node|campaign_card_twitter|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -735,7 +735,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background|node|campaign_card_ad|form'] = $field_group;
+  $field_groups['group_background|node|campaign_card_ad|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -765,7 +765,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background|node|campaign_card_branding|form'] = $field_group;
+  $field_groups['group_background|node|campaign_card_branding|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -795,7 +795,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background|node|campaign_card_empty|form'] = $field_group;
+  $field_groups['group_background|node|campaign_card_empty|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -825,7 +825,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background|node|campaign_card_iframe|form'] = $field_group;
+  $field_groups['group_background|node|campaign_card_iframe|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -856,7 +856,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background|node|campaign_card_media|form'] = $field_group;
+  $field_groups['group_background|node|campaign_card_media|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -886,7 +886,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background|node|campaign_card_multi_column|form'] = $field_group;
+  $field_groups['group_background|node|campaign_card_multi_column|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -916,7 +916,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background|node|campaign_card_news|form'] = $field_group;
+  $field_groups['group_background|node|campaign_card_news|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -946,7 +946,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background|node|campaign_card_social|form'] = $field_group;
+  $field_groups['group_background|node|campaign_card_social|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -976,7 +976,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background|node|campaign_card_tap_widget|form'] = $field_group;
+  $field_groups['group_background|node|campaign_card_tap_widget|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1006,7 +1006,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background|node|campaign_card_text|form'] = $field_group;
+  $field_groups['group_background|node|campaign_card_text|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1035,7 +1035,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background|node|campaign_card_twitter|form'] = $field_group;
+  $field_groups['group_background|node|campaign_card_twitter|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1064,7 +1064,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_background|node|campaign_tray|form'] = $field_group;
+  $field_groups['group_background|node|campaign_tray|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1095,7 +1095,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_custom_styling|node|campaign|form'] = $field_group;
+  $field_groups['group_custom_styling|node|campaign|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1129,7 +1129,7 @@ function tpf_content_campaigns_field_group_info() {
       'formatter' => 'collapsed',
     ),
   );
-  $export['group_header_branding|node|campaign|form'] = $field_group;
+  $field_groups['group_header_branding|node|campaign|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1160,7 +1160,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_iframe|node|campaign_card_iframe|form'] = $field_group;
+  $field_groups['group_iframe|node|campaign_card_iframe|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1188,7 +1188,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_logo|node|campaign|form'] = $field_group;
+  $field_groups['group_logo|node|campaign|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1222,7 +1222,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_media|node|campaign_card_media|form'] = $field_group;
+  $field_groups['group_media|node|campaign_card_media|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1250,7 +1250,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_menu_background_image|node|campaign|form'] = $field_group;
+  $field_groups['group_menu_background_image|node|campaign|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1282,7 +1282,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_menu|node|campaign|form'] = $field_group;
+  $field_groups['group_menu|node|campaign|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1314,7 +1314,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_promo|node|campaign_page|form'] = $field_group;
+  $field_groups['group_promo|node|campaign_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1346,7 +1346,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_promo|node|campaign|form'] = $field_group;
+  $field_groups['group_promo|node|campaign|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1374,7 +1374,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_seo|node|campaign_page|form'] = $field_group;
+  $field_groups['group_seo|node|campaign_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1404,7 +1404,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_tagging|node|campaign_page|form'] = $field_group;
+  $field_groups['group_tagging|node|campaign_page|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1434,7 +1434,7 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_tagging|node|campaign|form'] = $field_group;
+  $field_groups['group_tagging|node|campaign|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -1468,7 +1468,24 @@ function tpf_content_campaigns_field_group_info() {
       ),
     ),
   );
-  $export['group_twitter_feed|node|campaign_card_twitter|form'] = $field_group;
+  $field_groups['group_twitter_feed|node|campaign_card_twitter|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Background');
+  t('Background Image');
+  t('Background Video');
+  t('Custom Styling');
+  t('Header/Branding');
+  t('Logo');
+  t('Media');
+  t('Menu');
+  t('Menu Background Image');
+  t('Promo');
+  t('SEO');
+  t('Tagging');
+  t('Twitter Feed');
+  t('iFrame');
+
+  return $field_groups;
 }
