@@ -1231,7 +1231,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $path = drupal_get_path_alias('node/'. $node->nid);
       $center .='<div class ="single-news-wrapper">';
       $center .= l($image, $path, array('html' => true));
-      $center .= '<h4 class="headline">'. l($headline, $path, array('html' => true)). '</h3>';  //headline
+      $center .= '<h1 class="headline">'. l($headline, $path, array('html' => true)). '</h3>';  //headline
       $center .= '<p class="short-headline">'. $short_headline. '</p>';  //short headline
       $center .= _tp4_support_sponsor_flag($node);
       $center .= '</div>';  //single-news-wrapper

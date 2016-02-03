@@ -14,37 +14,38 @@
     <?php if(isset($node->field_campaign_card_title['und'][0]['value']) == true): ?>
       <div class="title-wrapper"><h1 class="card-title"><?php print $node->field_campaign_card_title['und'][0]['value']; ?></h1></div>
     <?php endif; ?>
-    
-    
+
+
 	<div class="tweet-card">
-	<?php 
-			
+		<div class="tweet-card-inner">
+	<?php
+
 	$tweet_count = count($variables['tweet']);
-	
+
 	for($x=0; $x < $tweet_count; $x++){
-		
-		   	
+
+
 	?>
 	<div class="tweet">
 		<div class="tweet-left">
 			<img src="<?php print $variables['profile_pic'][$x]; ?>" class="profile-pic"></img>
 		</div>
-		
+
 		<div class="tweet-right">
 			<h3 class="tweet-username">@<?php print $variables['username'][$x]; ?></h3>
 			<h6><?php print $variables['created_at'][$x]; ?></h6>
-			<h5><?php print $variables['tweet'][$x]; ?></h5>
-		</div>	
-	</div>	
-		
-	<?php	
-	}	
+			<p><?php print $variables['tweet'][$x]; ?></p>
+		</div>
+	</div>
+
+	<?php
+	}
 	?>
-	
-		<div class="twitter-descriptive-text"><?php print $descriptive_text; ?></div>
 
 	</div>
-	
+	<div class="twitter-descriptive-text"><?php print $descriptive_text; ?></div>
+</div>
+
 
 </article>
 
