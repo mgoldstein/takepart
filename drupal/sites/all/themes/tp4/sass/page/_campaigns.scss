@@ -312,10 +312,6 @@ body.campaign-display .card.node-campaign-card-tap-widget{
             padding: 0;
             @include zen-clear();
         }
-        // @include breakpoint($breakpoint-tablet) {
-        //     @include zen-grid-item(10, 2);
-        //     padding: 0;
-        // }
     }
 }
 
@@ -859,10 +855,6 @@ body.campaign-display{
     }
     .card.has-videoBG {
       position: relative;
-      // min-height: 600px;
-      // @include breakpoint($breakpoint-desktop) {
-      //   min-height: 720px;
-      // }
         min-height: inherit;
         @media only screen and (max-width: 980px) {
             min-height: inherit !important;
@@ -1638,10 +1630,6 @@ body.node-type-campaign-card-twitter{
             text-align: center;
         }
     }
-    // @include breakpoint($breakpoint-tablet) {
-    //     @include zen-grid-item(10, 2);
-    // }
-
 }
 
 .tweet{
