@@ -1,9 +1,6 @@
 h1{
-  font-family: $secondary-sans-font;
-  font-weight: 100;
-  text-transform: uppercase;
-  font-size: 36px;
-  line-height: 38px;
+  font: 900 38px/44px $primary-sans-font;
+  color: #3a3a3a;
 }
 h2{
   font-family: $main-brand-font;

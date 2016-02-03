@@ -250,7 +250,6 @@ body.node-type-campaign-card-news .card.campaign-1col{
             @include breakpoint($breakpoint-tablet) {
                 @include zen-grid-item(8, 3);
             }
-            padding-top: 30px;
         }
     }
 }
@@ -346,12 +345,6 @@ body.campaign-display{
     /*
      * Global Elements
      */
-    h1 {
-        font: 900 38px/44px $primary-sans-font;
-        text-transform: uppercase;
-        color: #3a3a3a;
-    }
-
     .campaign-sidebar-header {
         font: 100 24px/150% $secondary-sans-font;
         text-transform: uppercase;
@@ -1117,8 +1110,7 @@ body.campaign-display{
                 }
                 h4 {
                     text-transform: none;
-                    text-align: left;
-                    padding: 18px 10px 10px 10px;
+                    padding: 18px 10px 20px 10px;
                     margin-bottom: 0;
                 }
             }
@@ -1137,6 +1129,11 @@ body.campaign-display{
                 a {
                     color: #3a3a3a;
                 }
+              }
+              h1.headline {
+                padding-top: 20px;
+                padding: 20px 50px 10px 50px;
+                margin-bottom: 0;
               }
               p.short-headline{
                 margin: 0;
@@ -1168,6 +1165,12 @@ body.campaign-display{
       }
     }
 
+    .card.node-campaign-card-text .center-column{
+        @include breakpoint($breakpoint-tablet) {
+            @include zen-grid-item(8, 3);
+            text-align: center;
+        }
+    }
     //Empty
     .card.node-campaign-card-empty{
         padding: 0;
