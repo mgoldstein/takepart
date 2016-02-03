@@ -1134,6 +1134,9 @@ body.campaign-display{
                 padding-top: 20px;
                 padding: 20px 50px 10px 50px;
                 margin-bottom: 0;
+                a {
+                    color: #3a3a3a;
+                }
               }
               p.short-headline{
                 margin: 0;
@@ -1607,7 +1610,9 @@ body.node-type-campaign-card-twitter{
     }
 }
 .tweet-card{
-
+    .tweet-card-inner {
+        display: inline-block;
+    }
     @include breakpoint($breakpoint-mobile) {
         float: left;
         width: 100%;
@@ -1620,6 +1625,7 @@ body.node-type-campaign-card-twitter{
     @include breakpoint($breakpoint-tablet) {
         @include zen-grid-item(12, 1);
         @include zen-clear();
+        padding: 0;
         height: 100%;
         img{
             margin: 0 auto;
@@ -1631,9 +1637,9 @@ body.node-type-campaign-card-twitter{
             text-align: center;
         }
     }
-    @include breakpoint($breakpoint-tablet) {
-        @include zen-grid-item(10, 2);
-    }
+    // @include breakpoint($breakpoint-tablet) {
+    //     @include zen-grid-item(10, 2);
+    // }
 
 }
 
@@ -1684,8 +1690,8 @@ body.node-type-campaign-card-twitter{
                 -moz-border-radius: 90px;
             }
             @include breakpoint($breakpoint-desktop){
-                width: 100px;
-                height: 100px;
+                width: 130px;
+                height: 130px;
                 border-radius: 100px;
                 -webkit-border-radius: 100px;
                 -moz-border-radius: 100px;
@@ -1730,6 +1736,7 @@ body.node-type-campaign-card-twitter{
 }
 
 .twitter-descriptive-text{
+    padding-top: 20px;
     @media all and (max-width: 767px){
         width: 83.33333%;
         margin-left: 5%;
@@ -1747,6 +1754,12 @@ body.node-type-campaign-card-twitter{
         margin-right: 10%;
         margin-left: 10%;
     }
+}
+
+body.campaign-display .card .tweet .tweet-right p {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 5px;
 }
 
 @media only screen and (max-width: 700px)
