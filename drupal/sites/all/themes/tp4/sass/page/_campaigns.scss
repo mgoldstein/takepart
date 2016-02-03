@@ -1252,6 +1252,10 @@ body.campaign-display{
 
     //Social
     .node-campaign-card-social {
+        &.card.campaign-1col
+        .center-column  .block-newsletter-campaign {
+            margin-top: 40px;
+        }
         .social-follow{
             margin-left: -5px;
             a.social-icon {
