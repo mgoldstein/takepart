@@ -65,6 +65,11 @@ function tp4_preprocess_html(&$variables, $hook) {
     $card_types = unserialize(CARDTYPES);
     if(in_array($node->type, $card_types) == true || $node->type == 'campaign_page'){
       $variables['classes_array'][] = drupal_html_class('campaign-display');
+      //Transparent nav body class
+      $transnav = field_get_items('node', $node, 'field_transparent_nav');
+      if($transnav) {
+        $variables['classes_array'][] = drupal_html_class('campaign-transparent-nav');
+      }
     }
   }
 
@@ -235,33 +240,6 @@ function tp4_preprocess_page(&$variables) {
     if($s = field_get_items('node', $variables['node'], 'field_sponsored')) {
       drupal_add_css('.promoted.sponsor-'.$s[0]['tid'].' {display: none;}', array('type' => 'inline'));
     }
-
-    /* Check to see if Campaign Menu is toggled off */
-    $disable = field_get_items('node', $campaign_ref, 'field_campaign_disable_menu');
-    if(empty($disable) || $disable[0]['value'] != 1){
-
-      // Add StickUp.js for the fixed header
-      // TODO: stickup isn't necessary
-      drupal_add_js(array('tp_campaigns' => array(
-        'stickupParts' => (object) $variables['anchor_tags'],
-      )), 'setting');
-      drupal_add_js(drupal_get_path('theme', 'tp4'). '/js/vendor/stickUp/stickUp.js');
-
-
-
-      $header = module_invoke('tp_campaigns', 'block_view', 'tp_campaigns_hero');
-      $campaign_menu = theme('html_tag', array(
-        'element' => array(
-          '#tag' => 'div',
-          '#value' => $header['content'],
-          '#attributes' => array(
-            'class' => 'block',
-            'id' => 'block-tp-campaigns-tp-campaigns-hero'
-          )
-        )
-      ));
-      $variables['page']['header']['campaign_header']['#markup'] = $campaign_menu;
-    }
   }
 
 
@@ -347,6 +325,65 @@ function tp4_preprocess_page(&$variables) {
       $variables['promo_title'] = '';
     }
     $variables['anchor_tags'] = $anchor_tags;
+
+    //Transparent nav adding essentials
+    $transnav = field_get_items('node', $variables['node'], 'field_transparent_nav');
+    $variables['transnav'] = '';
+    $variables['drawers'] = '';
+    if($transnav) {
+      //Class so we know it is transparent
+      $variables['transnav'] = 'transparent';
+      //Logo
+      $variables['page']['trans_left_drawer']['top-section']['#markup'] = '<div class = "left-drawer-control"><span class="icon i-close-x"></span><a href="/" class="logo-feature"></a></div>';
+
+      //Social Icons for mobile
+      $mobile_menu = theme('base_social_follow');
+      $variables['page']['trans_left_drawer']['social']['#markup'] = '<div class="mobile-menu-header">'. $mobile_menu. '</div>';
+      $menu = drupal_render(menu_tree_output(menu_tree_all_data('menu-megamenu')));
+      $variables['page']['trans_left_drawer']['menu']['#markup'] = '<div class="mobile-menu">'. $menu. '</div>';
+
+      //Descriptive Text
+      $variables['page']['trans_left_drawer']['text']['#markup'] = '<span class = "about">TakePart -- a digital news & lifestyle magazine and social action platform -- is a division of Participant Media, the company behind Pivot Television Network and important films such as An Inconvenient Truth, Waiting for Superman, Food, Inc., and many others.</span>';
+
+      //Social Icons for Destkop - feature article
+      $mobile_menu = theme('base_social_follow');
+      $variables['page']['trans_left_drawer']['social-desktop']['#markup'] = '<div class="mobile-menu-header feature-destkop"><p class = "follow">FOLLOW US</p>'. $mobile_menu. '</div>';
+      //Bringing in navfat for mobile
+      $header = theme('base_mobile_header');
+      $variables['page']['header']['mobile_menu']['#markup'] = $header;
+      //Adding the mobile draw for transparent nav
+      $variables['page']['trans_left_drawer']['tp4_support_tp4_mobile_menu_header'];
+      $variables['drawers'] = theme('tp4_support_transparent_nav_drawer', array('vars' => $variables));
+    } else {
+      //Add the left draw for slim nav
+      $variables['drawers'] = theme('tp4_support_slim_nav_drawer', array('vars' => $variables));
+    }
+    /* Check to see if Campaign Menu is toggled off */
+    $disable = field_get_items('node', $campaign_ref, 'field_campaign_disable_menu');
+    if(empty($disable) || $disable[0]['value'] != 1){
+
+      // Add StickUp.js for the fixed header
+      // TODO: stickup isn't necessary
+      drupal_add_js(array('tp_campaigns' => array(
+        'stickupParts' => (object) $variables['anchor_tags'],
+      )), 'setting');
+      drupal_add_js(drupal_get_path('theme', 'tp4'). '/js/vendor/stickUp/stickUp.js');
+
+
+
+      $header = module_invoke('tp_campaigns', 'block_view', 'tp_campaigns_hero');
+      $campaign_menu = theme('html_tag', array(
+        'element' => array(
+          '#tag' => 'div',
+          '#value' => $header['content'],
+          '#attributes' => array(
+            'class' => 'block',
+            'id' => 'block-tp-campaigns-tp-campaigns-hero'
+          )
+        )
+      ));
+      $variables['page']['header']['campaign_header']['#markup'] = $campaign_menu;
+    }
   }
 }
 

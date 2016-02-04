@@ -68,6 +68,9 @@ function tp4_support_block_info(){
   $blocks['tp4_mobile_menu_header'] = array(
     'info' => t('Mobile Menu Header')
   );
+  $blocks['tp4_header_transparent'] = array(
+    'info' => t('Header Transparent')
+  );
   return $blocks;
 }
 
@@ -88,7 +91,40 @@ function tp4_support_block_view($delta = ''){
       $block['content'] = tp4_support_graveyard();
     break;
     case 'tp4_slim_nav':
-      $block['content'] = theme('tp4_support_slim_nav');
+      //Here we will deside to do slim nav or transparent nav
+      //Here to prevent rendering of both navs
+      //This should always be true cause of contexts
+      if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $node = menu_get_object();
+        $transnav = field_get_items('node', $node, 'field_transparent_nav');
+        $block['content'] = '';
+        //check campaign_page to determine which nav should be shown
+        if (!$transnav) {
+          $block['content'] = theme('tp4_support_slim_nav');
+        }
+      }
+    break;
+    case 'tp4_header_transparent':
+      //Here we will deside to do slim nav or transparent nav
+      //Here to prevent rendering of both navs
+      //This should always be true cause of contexts
+      if (arg(0) == 'node' && is_numeric(arg(1))) {
+        $node = menu_get_object();
+        $transnav = field_get_items('node', $node, 'field_transparent_nav');
+        $block['content'] = '';
+        //check campaign_page to determine which nav should be shown
+        if ($transnav) {
+          //Get the campaign menu background color if there is one
+          $campaign_ref = $node->field_campaign_reference['und'][0]['target_id'];
+          $campaign_ref = node_load($campaign_ref);
+          $rgb = field_get_items('node', $campaign_ref,'field_campaign_bg_color');
+          $bg_color = 'transparent';
+          if($rgb) {
+            $bg_color = $rgb[0]['rgb'];
+          }
+          $block['content'] = theme('base_header_transparent', array('bg_color' => $bg_color));
+        }
+      }
     break;
     case 'tp4_mobile_menu_header':
       $block['content'] = theme('tp4_support_mobile_menu_header');
@@ -242,6 +278,18 @@ function tp4_support_theme() {
       'variables' => array(
         'items' => array(),
         'entity' => '',
+      ),
+    ),
+    'tp4_support_transparent_nav_drawer' => array(
+      'template' => 'tp4_support_transparent_nav_drawer',
+      'variables' => array(
+        'vars' => array()
+      ),
+    ),
+    'tp4_support_slim_nav_drawer' => array(
+      'template' => 'tp4_support_slim_nav_drawer',
+      'variables' => array(
+        'vars' => array()
       ),
     ),
   );
