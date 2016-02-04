@@ -20490,9 +20490,9 @@ Note: If you manually reference more items than selected here, the number refere
           'campaign_full_html' => 'campaign_full_html',
           'full_html' => 0,
           'limited_html' => 0,
-          'no_wysiwg_full_html' => 0,
+          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
           'php_code' => 0,
-          'plain_text' => 0,
+          'plain_text' => 'plain_text',
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -24022,7 +24022,7 @@ Note: If you manually reference more items than selected here, the number refere
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -24139,7 +24139,7 @@ Note: If you manually reference more items than selected here, the number refere
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -25091,6 +25091,90 @@ Note: If you manually reference more items than selected here, the number refere
       ),
       'type' => 'taxonomy_term_reference_sortable_widget',
       'weight' => 20,
+    ),
+  );
+
+  // Exported field_instance: 'node-campaign_page-field_transparent_nav'
+  $field_instances['node-campaign_page-field_transparent_nav'] = array(
+    'bundle' => 'campaign_page',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 17,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_transparent_nav',
+    'label' => 'Transparent Nav',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 6,
     ),
   );
 
@@ -26265,6 +26349,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('This is automatically generated.');
   t('Thumbnail Image');
   t('Topic');
+  t('Transparent Nav');
   t('Tray');
   t('Twitter List Name');
   t('Twitter Pin');

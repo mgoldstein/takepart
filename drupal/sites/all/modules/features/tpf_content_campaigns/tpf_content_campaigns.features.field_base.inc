@@ -882,6 +882,31 @@ function tpf_content_campaigns_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_transparent_nav'
+  $field_bases['field_transparent_nav'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_transparent_nav',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_twitter_list_slug'
   $field_bases['field_twitter_list_slug'] = array(
     'active' => 1,

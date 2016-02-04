@@ -5,7 +5,7 @@
  */
 function base_preprocess_base_header_transparent(&$variables) {
   //Set logo
-  $logo = l('', '<front>', array('attributes' => array('class' => array('logo-transparent'))));
+  $logo = l('<img src="/sites/all/themes/base/images/navbar-transparent-logo.svg" ALT="Takepart" TITLE="Takepart" />', '<front>', array('html' => TRUE, 'attributes' => array('class' => array('logo-transparent'))));
   $variables['logo'] = $logo;
   $block_delta = variable_get('search_api_page_block_delta',2);
   //Set Search

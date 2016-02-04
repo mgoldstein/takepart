@@ -1,6 +1,7 @@
 /* These styles are applied to the main menu on faeture article ONLY */
 
-.node-type-feature-article {
+.node-type-feature-article,
+body.campaign-transparent-nav {
   .mobile-menu-header.feature-destkop,
   .left-drawer-control  {
     display: none;
@@ -112,7 +113,8 @@
         position: static;
         overflow-y: hidden;
       }
-      #page-wrapper {
+      #page-wrapper,
+      #page-wrap {
         left: 0;
       }
       .feature-modal {

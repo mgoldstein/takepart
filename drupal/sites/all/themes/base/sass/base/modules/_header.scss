@@ -425,7 +425,9 @@ body.mobile-search-show #header form .form-submit {
           }
         }
       }
-      .form-item-keys-2 {
+      .form-item-keys-2,
+      .form-item-keys-3,
+      .form-type-textfield {
         display: none;
         position: absolute;
         top: 38px;
@@ -480,7 +482,9 @@ body.mobile-search-show #header form .form-submit {
         form {
           display: block;
         }
-        .form-item-keys-2 {
+        .form-item-keys-2,
+        .form-item-keys-3,
+        .form-type-textfield {
           display: block;
           margin: 0px;
           &:before {
@@ -495,8 +499,16 @@ body.mobile-search-show #header form .form-submit {
           display: none;
         }
         .form-submit {
-          background: image-url('mobile-search-hover.jpg') no-repeat center center;
-          background-color: #000;
+          display: inline-block;
+          height: 25px;
+          color: #777;
+          font-size: 16px;
+          line-height: 21px;
+          vertical-align: middle;
+          margin-left: -5px;
+          background: #000 image-url('mobile-search-hover.jpg') no-repeat center center;
+          width: 33px;
+          cursor: pointer;
         }
       }
     }
