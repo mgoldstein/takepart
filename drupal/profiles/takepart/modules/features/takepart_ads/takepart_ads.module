@@ -264,6 +264,11 @@ function takepart_ads_preprocess_page(&$vars) {
         $gpt_pageTitle = 'googletag.pubads().setTargeting("PageTitle", "homepage");' . "\n";
 
     }
+    
+    if (ENVIRONMENT != '') {
+        $environ = 'GA_googleAddAttr("Environment", "' . ENVIRONMENT .'");' . "\n";
+        $gpt_environ = 'googletag.pubads().setTargeting("Environment", "' . ENVIRONMENT .'");' . "\n";
+    }
 
     $targeting = "";
     $gpt_targeting = "";
@@ -286,6 +291,10 @@ function takepart_ads_preprocess_page(&$vars) {
     if ($pageTitle != "" || $gpt_pageTitle != "") {
         $targeting .= $pageTitle;
         $gpt_targeting .= $gpt_pageTitle;
+    }
+    if ($environ != '' || $gpt_environ != '') {
+	   $targeting .= $environ;
+        $gpt_targeting .= $gpt_environ;
     }
 
     //GAM:
@@ -318,7 +327,6 @@ function takepart_ads_preprocess_page(&$vars) {
                   })(); \n // -->", array('type' => 'inline', 'scope' => 'header'));
         drupal_add_js("<!-- \n" . 'googletag.cmd.push(function() {' . "\n" .
                 $gptad_html . "\n" .
-
                 'googletag.pubads().enableSingleRequest();' . "\n" .
                 $gpt_targeting . // custom targeting
                 'googletag.pubads().enableSingleRequest(); googletag.enableServices();' . "\n" . '});' . "\n" .
