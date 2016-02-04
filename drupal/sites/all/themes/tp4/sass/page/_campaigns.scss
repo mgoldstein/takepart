@@ -66,12 +66,15 @@ body.campaign-display
                 margin-top: 0px;
             }
         }
-
-        .title-wrapper + {
-            .left-column, .left-column + .right-column, .right-column, .center-column {
-                margin-top: 5px;
-            }
+        .instructional p {
+            font-size: 22px;
+            line-height: 34px;
         }
+        // .title-wrapper + {
+        //     .left-column, .left-column + .right-column, .right-column, .center-column {
+        //         margin-top: 5px;
+        //     }
+        // }
         &:not(.has-instructional.has-title){
             .left-column, .right-column, .center-column {
                 margin-top: 25px;
@@ -82,124 +85,112 @@ body.campaign-display
             .instructional{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-bottom: 15px;
+                    padding-bottom: 20px;
                     padding-left: 10px;
                     padding-right: 10px;
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(8, 3);
+                    padding-bottom: 30px;
+                    @include zen-grid-item(10, 2);
                 }
+                text-align: center;
             }
             .left-column{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-left: 10px;
                     @include zen-clear();
+                    padding-left: 0px;
+                    padding-right: 0;
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(5, 2);
+                    @include zen-grid-item(6, 1);
+                    padding-left: 0px;
                 }
             }
             .right-column{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-right: 10px;
-                    padding-top: 20px;
-                    padding-left: 10px;
+                    padding: 20px 0 0 0;
                     @include zen-clear();
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(5, 7);
-                    padding-top: 0;
+                    @include zen-grid-item(6, 7);
+                    padding: 0 0 0 10px;
                     @include zen-clear(none);
                 }
             }
         }
         &.campaign-2col.left-large{
-            .instructional{
-                @include breakpoint($breakpoint-mobile) {
-                    @include zen-grid-item(12, 1);
-                    padding-bottom: 15px;
-                    padding-left: 10px;
-                    padding-right: 10px;
-                }
-                @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(8, 3);
-                }
-            }
             .left-column{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-left: 10px;
+                    padding-right: 0px;
+                    padding-left: 0px;
                     @include zen-clear();
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(6, 2);
+                    @include zen-grid-item(8, 1);
+                    padding-left: 0px;
                 }
             }
             .right-column{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
                     padding-top: 20px;
-                    padding-left: 10px;
-                    padding-right: 10px;
+                    padding-right: 0px;
+                    padding-left:0;
                     @include zen-clear();
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(4, 8);
+                    @include zen-grid-item(4, 9);
                     padding-top: 0;
+                    padding-right: 0px;
                     @include zen-clear(none);
                 }
             }
         }
         &.campaign-2col.right-large{
-            .instructional{
-                @include breakpoint($breakpoint-mobile) {
-                    @include zen-grid-item(12, 1);
-                    padding-bottom: 15px;
-                    padding-left: 10px;
-                    padding-right: 10px;
-                    text-align: center;
-                }
-                @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(8, 3);
-                }
-            }
             .left-column{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-left: 10px;
+                    padding-left: 0px;
+                    padding-right: 0;
                     @include zen-clear();
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(4, 2);
+                    @include zen-grid-item(4, 1);
+                    padding-left: 0px;
                 }
             }
             .right-column{
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-right: 10px;
-                    padding-left: 10px;
+                    padding-left: 0px;
                     padding-top: 20px;
                     @include zen-clear();
+                    padding-right: 0px;
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(6, 6);
+                    @include zen-grid-item(8, 5);
                     padding-top: 0;
+                    padding-left: 10px;
+                    padding-right: 0px;
                     @include zen-clear(none);
                 }
             }
         }
         &.campaign-1col{
             .instructional{
+                text-align: center;
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
-                    padding-bottom: 5px;
+                    padding-bottom: 20px;
                     padding-left: 10px;
                     padding-right: 10px;
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    @include zen-grid-item(8, 3);
+                    @include zen-grid-item(10, 2);
+                    padding-bottom: 30px;
                 }
             }
             .center-column {
@@ -207,6 +198,7 @@ body.campaign-display
                     @include zen-grid-item(12, 1);
                     @include zen-clear();
                     height: 100%;
+                    padding: 0;
                     img{
                         margin: 0 auto;
                     }
@@ -216,9 +208,6 @@ body.campaign-display
                     .caption{
                         text-align: center;
                     }
-                }
-                @include breakpoint($breakpoint-mobile) {
-                    @include zen-grid-item(10, 2);
                 }
             }
         }
@@ -259,24 +248,33 @@ body.node-type-campaign-card-news .card.campaign-1col{
                 }
             }
             @include breakpoint($breakpoint-tablet) {
-                @include zen-grid-item(6, 4);
+                @include zen-grid-item(8, 3);
             }
         }
     }
 }
-body.campaign-display .card.node-campaign-card-media{
+body.campaign-display .card.node-campaign-card-media {
     .center-column .description{
         @include breakpoint($breakpoint-mobile) {
             @include zen-grid-item(12, 1);
             padding-left: 10px;
             padding-right: 10px;
+            padding-top: 30px;
             @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
             @include zen-grid-item(10, 2);
+            padding-top: 40px;
+        }
+        p {
+            font-size: 20px;
+            line-height: 27px;
         }
     }
-
+    .description p {
+            font-size: 20px;
+            line-height: 27px;
+     }
     .playlist-wrapper-wrapper {
         margin-bottom: 0;
         .bx-wrapper {
@@ -289,7 +287,9 @@ body.campaign-display .card.node-campaign-card-media{
         }
     }
 }
-body.node-type-campaign-page .card.node-campaign-card-news.multi-news{
+body.node-type-campaign-page .card.node-campaign-card-news.multi-news,
+body.node-type-campaign-card-news .card.node-campaign-card-news.multi-news,
+body.campaign-display .card.node-campaign-card-multi-column {
     .center-column{
         @include breakpoint($breakpoint-mobile) {
             @include zen-grid-item(12, 1);
@@ -298,34 +298,19 @@ body.node-type-campaign-page .card.node-campaign-card-news.multi-news{
             @include zen-clear();
         }
         @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(10, 2);
-        }
-    }
-}
-body.campaign-display .card.node-campaign-card-multi-column{
-    padding-bottom: 20px;
-    .center-column{
-        @include breakpoint($breakpoint-mobile) {
             @include zen-grid-item(12, 1);
-            padding-left: 10px;
-            padding-right: 10px;
-            @include zen-clear();
-        }
-        @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(10, 2);
+            padding-left: 0px;
+            padding-right: 0px;
         }
     }
 }
+
 body.campaign-display .card.node-campaign-card-tap-widget{
     .card-content{
         @include breakpoint($breakpoint-mobile) {
             @include zen-grid-item(12, 1);
-            padding-left: 10px;
-            padding-right: 10px;
+            padding: 0;
             @include zen-clear();
-        }
-        @include breakpoint($breakpoint-tablet) {
-            @include zen-grid-item(10, 2);
         }
     }
 }
@@ -356,12 +341,6 @@ body.campaign-display{
     /*
      * Global Elements
      */
-    h1 {
-        font: 100 36px/38px $secondary-sans-font;
-        text-transform: uppercase;
-        color: #000;
-    }
-
     .campaign-sidebar-header {
         font: 100 24px/150% $secondary-sans-font;
         text-transform: uppercase;
@@ -373,7 +352,7 @@ body.campaign-display{
     .card {
         height: 100%;
         overflow: hidden;
-        padding-bottom: 60px;
+        padding-bottom: 50px;
         @import "../modules/wysiwyg";
     }
     a.card-anchor {
@@ -381,9 +360,6 @@ body.campaign-display{
         position: absolute;
         top: 0px;
         visibility: hidden;
-    }
-    .card-inner a{
-        color: $mint;
     }
     .takepart-take-action-widget{
         margin: 0 auto;
@@ -619,9 +595,9 @@ body.campaign-display{
     }
     h1.card-title{
         text-align: center;
-        margin-bottom: 26px;
+        margin-bottom: 40px;
         &.has-instructional{
-            margin-bottom: 6px;
+            margin-bottom: 40px;
         }
     }
     #main-wrap {
@@ -643,9 +619,9 @@ body.campaign-display{
     .tray-header{
         position: absolute;
         top: 0;
-        padding-top: 50px;
+        padding-top: 40px;
         width: 100%;
-        max-width: 1000px;
+        max-width: 970px;
         left: 0;
         right: 0;
         margin: 0 auto;
@@ -749,15 +725,15 @@ body.campaign-display{
             top: 200px;
             width: 100%;
             .slider-inner{
-                max-width: 1000px;
+                max-width: 970px;
                 margin: 0 auto;
-                position: relative;
+                // position: relative;
             }
 
         }
         .slider-pagination{
             text-align: center;
-            margin-bottom: 1em;
+            margin-bottom: 12px;
             position: relative;
 
             a {
@@ -879,10 +855,6 @@ body.campaign-display{
     }
     .card.has-videoBG {
       position: relative;
-      // min-height: 600px;
-      // @include breakpoint($breakpoint-desktop) {
-      //   min-height: 720px;
-      // }
         min-height: inherit;
         @media only screen and (max-width: 980px) {
             min-height: inherit !important;
@@ -923,12 +895,17 @@ body.campaign-display{
             margin: 0 auto;
         }
         h4.media-title{
-            padding-bottom: 12px;
+            padding-bottom: 15px;
             margin-bottom: 0;
         }
         .caption{
             padding-top: 5px;
-            margin-bottom: 8px;
+            margin-bottom: 0px;
+            p {
+              margin-bottom: 0;
+              font: 100 16px/24px $Ashbury;
+              font-style: italic;
+            }
         }
         .node-video{
             h2.node-title{
@@ -941,10 +918,7 @@ body.campaign-display{
             padding: 0;
         }
     }
-    .campaign-2col.node-campaign-card-media .description{
-        margin-top: -7px;
-    }
-    .campaign-1col.node-campaign-card-media .caption{
+    .campaign-1col.node-campaign-card-media .center-column .caption{
         text-align: left;
     }
 
@@ -979,6 +953,7 @@ body.campaign-display{
             @include breakpoint($breakpoint-mobile) {
                 @include zen-grid-item(12, 1);
                 @include zen-clear();
+                padding: 0;
                 height: 100%;
                 img{
                     margin: 0 auto;
@@ -990,9 +965,6 @@ body.campaign-display{
                     text-align: center;
                 }
             }
-            @include breakpoint($breakpoint-tablet) {
-                @include zen-grid-item(10, 2);
-            }
         }
     }
     /* TAP Widget */
@@ -1002,12 +974,17 @@ body.campaign-display{
             @include zen-clear();
             padding-bottom: 20px;
         }
-        // .right {
-        //     margin-top:21px;
-        // }
-        .right > .field,
-        .left > .field {
-            margin-top:25px;
+        @include breakpoint($breakpoint-tablet) {
+            .right > .field,
+            .left > .field {
+                margin-top:25px;
+            }
+        }
+         @media (max-width: 767px) {
+            .tap-action-wrapper {
+                max-width: 100%;
+                margin: 0 auto;
+            }
         }
         //Temp fix for new widget not centering
         .left-full .tap-action-wrapper.align- {
@@ -1020,25 +997,35 @@ body.campaign-display{
                 @include zen-grid-item(12, 1);
             }
             .left.column-even{
-                @include zen-grid-item(6, 1);
+                @include zen-grid-item(5, 2);
             }
             .left.column-wide{
-                @include zen-grid-item(7, 1);
+                @include zen-grid-item(6, 2);
+                .tap-action-wrapper.align-left {
+                    max-width: 100%;
+                }
             }
             .left.column-narrow{
-                @include zen-grid-item(5, 1);
+                @include zen-grid-item(4, 2);
             }
             .right{
                 clear: none;
             }
             .right.column-even{
-                @include zen-grid-item(6, 7);
+                @include zen-grid-item(5, 7);
             }
             .right.column-wide{
-                @include zen-grid-item(7, 6);
+                @include zen-grid-item(6, 6);
+                padding-left: 55px;
+                @media (min-width: 901px) {
+                    padding-left: 10px;
+                }
+                .tap-action-wrapper.align-right {
+                    max-width: 100%;
+                }
             }
             .right.column-narrow{
-                @include zen-grid-item(5, 8);
+                @include zen-grid-item(4, 8);
             }
         }
         img{
@@ -1046,15 +1033,17 @@ body.campaign-display{
             margin: 0 auto;
             padding-bottom: 10px;
         }
+        //To compensate for TAP's addtional margins
+        &.card.campaign-1col  .instructional {
+            padding-bottom: 20px;
+        }
     }
-
-
 
     //Branding
     .card.node-campaign-card-branding {
         padding: 0;
         .card-inner{
-            padding: 10px 0;
+            padding: 15px 0;
         }
         .center-column{
             margin-top: 0px;
@@ -1081,45 +1070,78 @@ body.campaign-display{
 
     //News
     .card.node-campaign-card-news{
+        background: #f4f2f2;
+
         .center-column{
             text-align: center;
             line-height: 12px;
             overflow: hidden;
+            // padding-top: 30px;
             .news-column{
+                background: #fff;
+                margin-bottom: 40px;
                 @include breakpoint($breakpoint-mobile) {
                     width: 100%;
                 }
                 @include breakpoint($breakpoint-tablet) {
-                    width: 18%;
+                    width: 22%;
                 }
                 display: inline-block;
                 vertical-align: top;
                 white-space: normal;
-                margin-right: 2%;
-                &:last-child, &:nth-child(5n) {
+                margin-right: 4%;
+                &:last-child, &:nth-child(4n) {
                     margin-right: 0;
                 }
                 img{
-                    padding-bottom: 5px;
+                    // padding-bottom: 5px;
                 }
                 h5{
                     text-align: left;
                     white-space: normal;
                 }
+                h4 {
+                    text-transform: none;
+                    padding: 18px 10px 20px 10px;
+                    margin-bottom: 0;
+                }
             }
-            h3.headline{
+            .single-news-wrapper {
+              background: #fff;
+              padding-bottom: 40px;
+              h3.headline{
                 padding-top: 13px;
                 margin: 0;
-            }
-            p.short-headline{
-                margin: 0;
-                padding-top: 0;
-                line-height: 24px;
-                padding-bottom:3px;
-            }
-            .more-link p{
+              }
+              h4.headline {
+                line-height: 28px;
+                color: #3a3a3a;
+                margin-top: 20px;
+                margin-bottom: 10px;
+                a {
+                    color: #3a3a3a;
+                }
+              }
+              h1.headline {
                 padding-top: 20px;
+                padding: 20px 50px 10px 50px;
+                margin-bottom: 0;
+                a {
+                    color: #3a3a3a;
+                }
+              }
+              p.short-headline{
                 margin: 0;
+                padding: 0 50px;
+                line-height: 24px;
+                line-height: 34px;
+              }
+            }
+            .more-link {
+                padding-top: 40px;
+              p {
+                margin: 0;
+              }
             }
         }
         a.news-column{
@@ -1131,8 +1153,19 @@ body.campaign-display{
         .more-link{
             clear: both;
         }
+      &.multi-news {
+        .more-link {
+          padding-top: 15px;
+        }
+      }
     }
 
+    .card.node-campaign-card-text .center-column{
+        @include breakpoint($breakpoint-tablet) {
+            @include zen-grid-item(8, 3);
+            text-align: center;
+        }
+    }
     //Empty
     .card.node-campaign-card-empty{
         padding: 0;
@@ -1214,6 +1247,10 @@ body.campaign-display{
 
     //Social
     .node-campaign-card-social {
+        &.card.campaign-1col
+        .center-column  .block-newsletter-campaign {
+            margin-top: 40px;
+        }
         .social-follow{
             margin-left: -5px;
             a.social-icon {
@@ -1348,7 +1385,6 @@ body.campaign-display{
             width: 100%;
             text-align: center;
             overflow: hidden;
-            padding-left: 10px;
             > div{
                 display: inline-block;
                 vertical-align: top;
@@ -1356,7 +1392,7 @@ body.campaign-display{
                 margin-right: 20px;
                 margin-bottom: 40px;
                 img{
-                    margin-bottom: 10px !important;
+                    margin-bottom: 5px !important;
                 }
                 .field-name-field-promo-text{
                     text-align: left;
@@ -1366,6 +1402,15 @@ body.campaign-display{
         p{
             margin-bottom: -5px;
             line-height: normal;
+        }
+        .item p {
+          font-family: $primary-sans-font;
+          font-weight: bold;
+          font-size: 18px;
+          line-height: 28px;
+        }
+        .instructional p {
+            text-align: center;
         }
         *{
 	        text-align: left;
@@ -1393,6 +1438,7 @@ body.campaign-display{
                 width: 100%;
                 text-align: center;
                 display: block;
+                padding-bottom: 10px;
             }
         }
         div[id*='div-gpt-ad']{
@@ -1482,9 +1528,11 @@ body.campaign-display{
     .card-inner{
         height: auto;
         overflow: hidden;
-        max-width: 1000px;
+        max-width: 940px;
         margin: 0 auto;
-        padding-top: 50px;
+        padding-top: 40px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
     .card-width-980{
         float: none;
@@ -1555,7 +1603,9 @@ body.node-type-campaign-card-twitter{
     }
 }
 .tweet-card{
-
+    .tweet-card-inner {
+        display: inline-block;
+    }
     @include breakpoint($breakpoint-mobile) {
         float: left;
         width: 100%;
@@ -1568,6 +1618,7 @@ body.node-type-campaign-card-twitter{
     @include breakpoint($breakpoint-tablet) {
         @include zen-grid-item(12, 1);
         @include zen-clear();
+        padding: 0;
         height: 100%;
         img{
             margin: 0 auto;
@@ -1579,10 +1630,6 @@ body.node-type-campaign-card-twitter{
             text-align: center;
         }
     }
-    @include breakpoint($breakpoint-tablet) {
-        @include zen-grid-item(10, 2);
-    }
-
 }
 
 .tweet{
@@ -1632,8 +1679,8 @@ body.node-type-campaign-card-twitter{
                 -moz-border-radius: 90px;
             }
             @include breakpoint($breakpoint-desktop){
-                width: 100px;
-                height: 100px;
+                width: 130px;
+                height: 130px;
                 border-radius: 100px;
                 -webkit-border-radius: 100px;
                 -moz-border-radius: 100px;
@@ -1678,6 +1725,7 @@ body.node-type-campaign-card-twitter{
 }
 
 .twitter-descriptive-text{
+    padding-top: 20px;
     @media all and (max-width: 767px){
         width: 83.33333%;
         margin-left: 5%;
@@ -1695,6 +1743,12 @@ body.node-type-campaign-card-twitter{
         margin-right: 10%;
         margin-left: 10%;
     }
+}
+
+body.campaign-display .card .tweet .tweet-right p {
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 5px;
 }
 
 @media only screen and (max-width: 700px)
@@ -1816,7 +1870,7 @@ body.campaign-display .card.content-full-width {
       padding-right: 0;
       width: 100%;
       .description{
-        max-width: 1000px;
+        max-width: 970px;
         float: none;
         margin-left: auto;
         margin-right: auto;

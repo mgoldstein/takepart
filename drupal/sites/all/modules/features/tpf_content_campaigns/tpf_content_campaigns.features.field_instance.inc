@@ -2940,7 +2940,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -3006,7 +3006,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -5327,7 +5327,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_ad',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -5393,7 +5393,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -6628,7 +6628,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_branding',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -6694,7 +6694,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -7841,7 +7841,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_empty',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -7906,7 +7906,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -9637,7 +9637,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_iframe',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -9702,7 +9702,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -12143,7 +12143,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_media',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -12209,7 +12209,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -13689,7 +13689,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'bundle' => 'campaign_card_multi_column',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -13754,7 +13754,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -13991,16 +13991,14 @@ function tpf_content_campaigns_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_campaign_bg_color',
     'label' => 'Background color',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
     'widget' => array(
       'active' => 0,
       'module' => 'color_field',
-      'settings' => array(
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-      ),
+      'settings' => array(),
       'type' => 'color_field_spectrum_widget',
       'weight' => 8,
     ),
@@ -15580,7 +15578,7 @@ Note: If you manually reference more items than selected here, the number refere
     'bundle' => 'campaign_card_news',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -15645,7 +15643,7 @@ Note: If you manually reference more items than selected here, the number refere
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -17266,7 +17264,7 @@ Note: If you manually reference more items than selected here, the number refere
     'bundle' => 'campaign_card_social',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -17331,7 +17329,7 @@ Note: If you manually reference more items than selected here, the number refere
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -19426,7 +19424,7 @@ Note: If you manually reference more items than selected here, the number refere
     'bundle' => 'campaign_card_tap_widget',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -19491,7 +19489,7 @@ Note: If you manually reference more items than selected here, the number refere
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -21064,7 +21062,7 @@ Note: If you manually reference more items than selected here, the number refere
     'bundle' => 'campaign_card_text',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -21129,7 +21127,7 @@ Note: If you manually reference more items than selected here, the number refere
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -22851,7 +22849,7 @@ Note: If you manually reference more items than selected here, the number refere
     'bundle' => 'campaign_card_twitter',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -22917,7 +22915,7 @@ Note: If you manually reference more items than selected here, the number refere
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -24230,7 +24228,7 @@ Note: If you manually reference more items than selected here, the number refere
     'bundle' => 'campaign_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -24295,7 +24293,7 @@ Note: If you manually reference more items than selected here, the number refere
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -26105,7 +26103,7 @@ Note: If you manually reference more items than selected here, the number refere
     'bundle' => 'campaign_tray',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -26170,7 +26168,7 @@ Note: If you manually reference more items than selected here, the number refere
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -26315,7 +26313,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('OAuth Token Secret');
   t('Only needed if you choose List in #3 (Type). To get the list name, go to your list and it should be the name after /lists/ in the URL. The list name in this URL  https://twitter.com/takepart/lists/mylistname is mylistname');
   t('Page Title for SEO.');
-  t('Permanent Title');
+  t('Analytics Title');
   t('Place embed code here if a URL for an iframe does not exist.  This field will not display if iframe exists.');
   t('Please go to authentication link to get the Twitter Pin');
   t('Promo Headline');

@@ -1266,11 +1266,12 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $image = '<img src="'. $image. '" alt="'.$alt.'">';  //image
       $center = '';  // single news reference will use one column now
       $path = drupal_get_path_alias('node/'. $node->nid);
-
+      $center .='<div class ="single-news-wrapper">';
       $center .= l($image, $path, array('html' => true));
-      $center .= '<h3 class="headline">'. l($headline, $path, array('html' => true)). '</h3>';  //headline
+      $center .= '<h1 class="headline">'. l($headline, $path, array('html' => true)). '</h3>';  //headline
       $center .= '<p class="short-headline">'. $short_headline. '</p>';  //short headline
       $center .= _tp4_support_sponsor_flag($node);
+      $center .= '</div>';  //single-news-wrapper
 
     }
     else{ //multivalue
@@ -1332,7 +1333,7 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         $image = image_style_url('campaign_news_3x2', $file->uri);
         $media = '<img src="'. $image. '" alt="'.$alt.'">';
         $news_column = $media;
-        $news_column .= '<h5>'. $headline. '</h5>';
+        $news_column .= '<h4>'. $headline. '</h4>';
 
         $uri = entity_uri('node', $node);
         $uri['options'] += array(
@@ -1469,7 +1470,7 @@ function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
   $multi_grid = field_get_items('node', $variables['node'], 'field_campaign_multigrid_item');
   $item_width = tp4_render_field_value('node', $variables['node'], 'field_campaign_multi_item_width');
   if(empty($item_width)){
-      $item_width = 180;
+      $item_width = 200;
   }
 
   $items = array();
