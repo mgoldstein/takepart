@@ -197,27 +197,24 @@
               var poster =  $prop[0];
 
               if(!Environment.isMobile()){
-
-                var videoWrapper = document.createElement("div");
-                var video = document.createElement("video");
-                var videoSource = document.createElement("source");
-                videoWrapper.className = 'videoBG_wrapper';
-                videoSource.type = "video/mp4";
-                videoSource.src = src;
-                videoSource.poster = poster;
-                video.className = 'background-video';
-                video.setAttribute('autoplay', '');
-                video.setAttribute('loop', '');
-                video.setAttribute('muted', '');
-                video.setAttribute('poster', poster);
-                video.appendChild(videoSource);
-                videoWrapper.appendChild(video);
-
                 //Only add it to the markup if there is no video
                 if ($(this).find('video').length == 0) {
+                  var videoWrapper = document.createElement("div");
+                  var video = document.createElement("video");
+                  var videoSource = document.createElement("source");
+                  videoWrapper.className = 'videoBG_wrapper';
+                  videoSource.type = "video/mp4";
+                  videoSource.src = src;
+                  videoSource.poster = poster;
+                  video.className = 'background-video';
+                  video.setAttribute('autoplay', '');
+                  video.setAttribute('loop', '');
+                  video.setAttribute('muted', '');
+                  video.setAttribute('poster', poster);
+                  video.appendChild(videoSource);
+                  videoWrapper.appendChild(video);
                   $(this).prepend(videoWrapper);
                 }
-
               }else{
                  //If a mobile device is detected AND the card has a video background then use the poster image as bg
                 $(this).css('background-image', 'url(' + poster + ')');

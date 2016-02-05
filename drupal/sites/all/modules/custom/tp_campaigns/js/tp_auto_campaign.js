@@ -50,6 +50,26 @@
     */
    $(document).ready(function() {
      campaignPreload();
+     //pause the video when less than 70% is in viewport
+     $(window).bind('scroll', function() {
+      jQuery('.videoBG_wrapper video').each(function(index){
+        //Get the card height since the video itself could be a different height
+        var vid = jQuery(this).get(index);
+        var vid_parent = jQuery(this).parent().parent();
+        var is_paused = vid.paused;
+        if (vid_parent.isInViewport(null,0.7)) {
+          if (is_paused) {
+            vid.play();
+          }
+        }
+        else {
+          if (!is_paused) {
+            vid.pause();
+          }
+        }
+      });
+    });
+
    });
 
    //This is called through the ajax commands sent from the server.
@@ -98,23 +118,6 @@
       Drupal.settings.campaignItemCount > 0) {
       window.campaignTray = 0;
       $(window).bind('scroll.campaignScroll', function(e) {
-        //pause the video when less than 70% is in viewport
-        jQuery('.videoBG_wrapper video').each(function(index){
-          //Get the card height since the video itself could be a different height
-          var vid = jQuery(this).get(index);
-          var vid_parent = jQuery(this).parent().parent();
-          var is_paused = vid.paused;
-          if (vid_parent.isInViewport(null,0.7)) {
-            if (is_paused) {
-              vid.play();
-            }
-          }
-          else {
-           if (!is_paused) {
-              vid.pause();
-           }
-          }
-        });
 
         var wrap = $('article.node-campaign-page.view-mode-full'),
           $win = $(window);
