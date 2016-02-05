@@ -863,7 +863,6 @@ body.campaign-display{
     }
     .card video.background-video{
       width: 100%;
-      min-width: 1067px;
       position: absolute;
       left: 50%;
       -webkit-transform:translateX(-50%);
@@ -871,9 +870,7 @@ body.campaign-display{
       -ms-transform:translateX(-50%);
       -o-transform:translateX(-50%);
       transform:translateX(-50%);
-      @include breakpoint($breakpoint-desktop) {
-        min-width: 1280px;
-      }
+      height: auto;
     }
     .card-inner{
       position: relative;
