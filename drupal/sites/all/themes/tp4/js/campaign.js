@@ -77,12 +77,40 @@
         });
       };
 
+      //Full Screen Ambient Video
+      //Assuming there is only a top video
+      var adjustCardBackgroundVideo = function() {
+        //find/set video ratio
+        if(window.videoRatio !== 'undefined') {
+          window.videoRatio = $('.has-videoBG video').width()/$('.has-videoBG video').height();
+        }
+        var winh = window.innerHeight;
+        var winw = window.innerWidth;
+        //Set the parent divs to set heights
+        $('.has-videoBG').parent('.card-wrapper').height('100%');
+        $('.has-videoBG').parents('.swipe-wrap').height('100%');
+        $('.has-videoBG').parents('.tray-img-width-full').height(winh);
+        //check to see if the screen ratio needs us to
+        //Change if we are using the height or width as our set variable
+        if((winw/winh) >= window.videoRatio) {console.log('width');
+          $('.has-videoBG video').height(winw/window.videoRatio);
+          $('.has-videoBG video').width(winw);
+        } else {
+          console.log('height');
+          $('.has-videoBG video').height(winh);
+          $('.has-videoBG video').width(winh*window.videoRatio);
+        }
+      };
+
       // bind the previous function to window load and resize
       // debouncing for 300ms
       var resizeTimeout = null;
+      var resizeVideo = null;
       $(window).on('load resize', function() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout($.proxy(adjustCardHeightsAndPadding, this), 250);
+        clearTimeout(resizeVideo);
+        resizeVideo = setTimeout($.proxy(adjustCardBackgroundVideo, this), 150);
       });
 
       //addresses issue with hover state - removed touchstart
