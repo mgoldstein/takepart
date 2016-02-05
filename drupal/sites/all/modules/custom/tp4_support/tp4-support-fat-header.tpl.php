@@ -14,8 +14,13 @@
 <div class="search">
   <div class="search-toggle"></div>
   <?php
-    $block_delta = variable_get('search_api_page_block_delta',2);
-    print drupal_render(module_invoke('search_api_page', 'block_view', $block_delta));
+    $block_delta = search_api_page_load_multiple();
+    if(isset($block_delta['site_search']->id) && is_numeric($block_delta['site_search']->id)) {
+      $b_d = $block_delta['site_search']->id;
+    } else {
+      $b_d = variable_get('search_api_page_block_delta', 3);
+    }
+    print drupal_render(module_invoke('search_api_page', 'block_view', $b_d));
   ?>
 </div>
 <nav id="megamenu">
