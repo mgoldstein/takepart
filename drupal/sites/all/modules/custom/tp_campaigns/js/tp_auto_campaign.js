@@ -50,6 +50,26 @@
     */
    $(document).ready(function() {
      campaignPreload();
+     //pause the video when less than 70% is in viewport
+     $(window).bind('scroll', function() {
+      jQuery('.videoBG_wrapper video').each(function(index){
+        //Get the card height since the video itself could be a different height
+        var vid = jQuery(this).get(index);
+        var vid_parent = jQuery(this).parent().parent();
+        var is_paused = vid.paused;
+        if (vid_parent.isInViewport(null,0.7)) {
+          if (is_paused) {
+            vid.play();
+          }
+        }
+        else {
+          if (!is_paused) {
+            vid.pause();
+          }
+        }
+      });
+    });
+
    });
 
    //This is called through the ajax commands sent from the server.
@@ -107,6 +127,7 @@
       Drupal.settings.campaignItemCount > 0) {
       window.campaignTray = 0;
       $(window).bind('scroll.campaignScroll', function(e) {
+
         var wrap = $('article.node-campaign-page.view-mode-full'),
           $win = $(window);
         var wrapBot = wrap.offset().top + wrap.height();
@@ -140,6 +161,7 @@
       }
 
       delete(window.preloaded);
+
     }
   };
 
@@ -156,4 +178,46 @@ function campaignBodyCheck() {
   } else {
     clearInterval(window.campaignInterval);
   }
+}
+
+//Checks to see whether a certain portion of the element is in viewport
+//x -> width, y -> height, 0.5 -> 50% of the height or width is visible
+jQuery.fn.isInViewport = function(x, y) {
+  if(x == null || typeof x == 'undefined') x = 1;
+    if(y == null || typeof y == 'undefined') y = 1;
+
+    var win = jQuery(window);
+
+    var viewport = {
+        top : win.scrollTop(),
+        left : win.scrollLeft()
+    };
+    viewport.right = viewport.left + win.width();
+    viewport.bottom = viewport.top + win.height();
+
+    var height = this.outerHeight();
+    var width = this.outerWidth();
+
+    if(!width || !height){
+        return false;
+    }
+
+    var bounds = this.offset();
+    bounds.right = bounds.left + width;
+    bounds.bottom = bounds.top + height;
+
+    var visible = (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+
+    if(!visible){
+        return false;
+    }
+
+    var deltas = {
+        top : Math.min( 1, ( bounds.bottom - viewport.top ) / height),
+        bottom : Math.min(1, ( viewport.bottom - bounds.top ) / height),
+        left : Math.min(1, ( bounds.right - viewport.left ) / width),
+        right : Math.min(1, ( viewport.right - bounds.left ) / width)
+    };
+
+    return (deltas.left * deltas.right) >= x && (deltas.top * deltas.bottom) >= y;
 }
