@@ -1647,6 +1647,8 @@ body.node-type-campaign-card-twitter{
 
 .tweet{
 
+    float: left;
+    margin-bottom: 20px;
     @include breakpoint($breakpoint-mobile){
         width: 97%;
     }
@@ -1654,6 +1656,7 @@ body.node-type-campaign-card-twitter{
         width: 48%;
         margin-right: 2%;
         min-height: 210px;
+        margin-bottom: 40px;
     }
     @include breakpoint($breakpoint-desktop){
         width: 47%;
@@ -1661,8 +1664,7 @@ body.node-type-campaign-card-twitter{
         min-height: 150px;
         margin-right: 3%;
     }
-    float: left;
-    margin-bottom: 20px;
+
 
     .tweet-left{
         @include breakpoint($breakpoint-mobile){
