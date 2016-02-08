@@ -20,4 +20,10 @@ body.campaign-transparent-nav {
     padding-left: 15px;
     padding-right: 15px;
   }
+  #main-wrap {
+    .preface {
+      z-index: 100;
+      position: relative;
+    }
+  }
 }
