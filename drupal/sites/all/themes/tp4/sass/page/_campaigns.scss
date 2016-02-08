@@ -594,6 +594,8 @@ body.campaign-display{
 
     }
     h1.card-title{
+        font: 900 38px/44px $primary-sans-font;
+        color: #3a3a3a;
         text-align: center;
         margin-bottom: 40px;
         &.has-instructional{
@@ -625,6 +627,12 @@ body.campaign-display{
         left: 0;
         right: 0;
         margin: 0 auto;
+        h1 {
+            margin-bottom: 20px;
+            &.has-instructional {
+                margin-bottom: 20px;
+            }
+        }
     }
     .swipe-wrap.has-tray-title{
         .card .title-wrapper{
