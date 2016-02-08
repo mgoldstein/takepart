@@ -225,7 +225,7 @@
           var arttop = $(this).offset().top;
           var artbot = arttop + $(this).height();
           //Showing after it passes the first section
-          var artbegin = $(this).find('.section').offset().top + $(this).find('.section').height();
+          var artbegin = $(this).find('.section').offset().top;
           //Checking the bottom of the sticky share first and then the top of the
           //Sticky share
           if(
