@@ -92,11 +92,10 @@
         $('.has-videoBG').parents('.tray-img-width-full').height(winh);
         //check to see if the screen ratio needs us to
         //Change if we are using the height or width as our set variable
-        if((winw/winh) >= window.videoRatio) {console.log('width');
+        if((winw/winh) >= window.videoRatio) {
           $('.has-videoBG video').height(winw/window.videoRatio);
           $('.has-videoBG video').width(winw);
         } else {
-          console.log('height');
           $('.has-videoBG video').height(winh);
           $('.has-videoBG video').width(winh*window.videoRatio);
         }
