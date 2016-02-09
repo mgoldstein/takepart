@@ -78,29 +78,32 @@
    //This is called through the ajax commands sent from the server.
    Drupal.behaviors.tp_auto_changer = {
      attach: function (context, settings) {
-       $(document).delegate('article.node-campaign-page.view-mode-full', 'InvokeOthers', function(ev, data) {
-         if ( window.newTapWidgets == true ) {
-           TP.Bootstrapper && new TP.Bootstrapper().start();
-           TAP.Widget      && TAP.Widget.addWidgets();
-           window.newTapWidgets = false;
-         }
-         //INIT Facebook again
-         window.fbAsyncInit();
-
-         //Check for ads and try to display them
-         $('.node-campaign-page .block-boxes-ga_ad').each(function(){
-           //check if the ad has loaded
-           if( !$.trim( $(this).find('.boxes-box-content div').html() ).length ) {
-             //try to display it
-             googletag.display($(this).find('.boxes-box-content div').attr('id'));
+       $('body').once('InvokeOthersCampaign', function(){
+         $(document).delegate('article.node-campaign-page.view-mode-full', 'InvokeOthers', function(ev, data) {
+           if ( window.newTapWidgets == true ) {
+             TP.Bootstrapper && new TP.Bootstrapper().start();
+             TAP.Widget      && TAP.Widget.addWidgets();
+             window.newTapWidgets = false;
            }
+           //INIT Facebook again
+           //Targeting the slide that was just loaded
+           FB.XFBML.parse(document.getElementById('slider_'+(window.campaignTray+1)));
+
+           //Check for ads and try to display them
+           $('.node-campaign-page .block-boxes-ga_ad').each(function(){
+             //check if the ad has loaded
+             if( !$.trim( $(this).find('.boxes-box-content div').html() ).length ) {
+               //try to display it
+               googletag.display($(this).find('.boxes-box-content div').attr('id'));
+             }
+           });
+
+           //Trigger a resize for styling to take effect on media cards
+           $(window).trigger('resize');
+
+           //Check if the card that was just loaded has jumpto links
+           jumptocheck(window.campaignTray + 1);
          });
-
-         //Trigger a resize for styling to take effect on media cards
-         $(window).trigger('resize');
-
-         //Check if the card that was just loaded has jumpto links
-         jumptocheck(window.campaignTray + 1);
        });
      }
    };
