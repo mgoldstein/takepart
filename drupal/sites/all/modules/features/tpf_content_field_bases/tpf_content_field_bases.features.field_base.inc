@@ -1636,6 +1636,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_campaign_video_modal'
+  $field_bases['field_campaign_video_modal'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_campaign_video_modal',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'tp_media_modal',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'tp_media_modal',
+  );
+
   // Exported field_base: 'field_caption'
   $field_bases['field_caption'] = array(
     'active' => 1,

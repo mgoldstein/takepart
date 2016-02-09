@@ -1211,6 +1211,7 @@ function tpf_content_campaigns_field_group_info() {
       5 => 'field_campaign_media_video',
       6 => 'field_media_video_playlist',
       7 => 'field_campaign_full_width',
+      8 => 'field_campaign_video_modal',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
