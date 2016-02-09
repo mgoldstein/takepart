@@ -50,6 +50,10 @@
     */
    $(document).ready(function() {
      campaignPreload();
+
+     jumptocheck(0);
+     jumptocheck(1);
+
      //pause the video when less than 70% is in viewport
      $(window).bind('scroll', function() {
       jQuery('.videoBG_wrapper video').each(function(index){
@@ -69,7 +73,6 @@
         }
       });
     });
-
    });
 
    //This is called through the ajax commands sent from the server.
@@ -95,6 +98,9 @@
 
          //Trigger a resize for styling to take effect on media cards
          $(window).trigger('resize');
+
+         //Check if the card that was just loaded has jumpto links
+         jumptocheck(window.campaignTray + 1);
        });
      }
    };
@@ -165,10 +171,49 @@
     }
   };
 
+  //if a slide has internal links load all the slides so that they
+  //can link to the correct card
+  var jumptocheck = function(number) {
+    $('#slider_'+number).find('a').each(function(){
+      var tmphref = $(this).attr('href');
+      var tmpjump = tmphref.indexOf("#");
+      if(tmpjump != -1 && tmpjump != tmphref.length && typeof window.jumptoIntervalid == "undefined") {
+        //Kill the scroll
+        $(window).unbind('scroll.campaignScroll');
+        //Start an interval
+        window.jumptoIntervalid = setInterval("jumptoInterval()",250);
+      }
+    });
+  };
+
+  /**
+   * Override the ajax error message on campaign pages to console log.
+   */
+  Drupal.ajax.prototype.error = function (xmlhttprequest, uri, customMessage) {
+    console.log(Drupal.ajaxError(xmlhttprequest, uri, customMessage));
+    // Remove the progress element.
+    if (this.progress.element) {
+      $(this.progress.element).remove();
+    }
+    if (this.progress.object) {
+      this.progress.object.stopMonitoring();
+    }
+    // Undo hide.
+    $(this.wrapper).show();
+    // Re-enable the element.
+    $(this.element).removeClass('progress-disabled').removeAttr('disabled');
+    // Reattach behaviors, if they were detached in beforeSerialize().
+    if (this.form) {
+      var settings = this.settings || Drupal.settings;
+      Drupal.attachBehaviors(this.form, settings);
+    }
+  };
 })(jQuery, Drupal, this, this.document);
 
 
-//Needs to be a separate function so the set interval can find it.
+/**
+ * Needs to be a separate function so the set interval can find it.
+ */
 function campaignBodyCheck() {
   //Check if the body height is still not up to window height
   //AND if there are no more trays to load
@@ -177,6 +222,18 @@ function campaignBodyCheck() {
     Drupal.ajax['autocampaign_ajax'].autoCampaign();
   } else {
     clearInterval(window.campaignInterval);
+  }
+}
+
+/**
+ * Start loading the campaigns until there are no more.
+ * Happening when a jumpto link is loaded.
+ */
+function jumptoInterval() {
+  Drupal.ajax['autocampaign_ajax'].autoCampaign();
+  if(Drupal.settings.campaignItemCount <= window.campaignTray) {
+    delete(window.campaignTray);
+    clearInterval(window.jumptoIntervalid);
   }
 }
 
