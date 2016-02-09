@@ -7,7 +7,8 @@ body {
 body.mobile-menu-show{
   position: fixed;
 }
-#page-wrapper {
+#page-wrapper,
+body.campaign-transparent-nav #page-wrap {
   position: relative;
   z-index: 10;
   top: 0;
@@ -58,7 +59,8 @@ nav#mobile-menu{
 body.mobile-menu-show nav#mobile-menu {
   left: 0
 }
-body.mobile-menu-show #page-wrapper {
+body.mobile-menu-show #page-wrapper,
+body.campaign-transparent-nav.mobile-menu-show #page-wrap {
   left: 280px
 }
 
@@ -150,7 +152,7 @@ nav#mobile-menu{
     font-size: 15px;
 	line-height: 27px;
 		margin-left: 4px;
-		
+
 		&:hover {
 			text-decoration: none;
 		}

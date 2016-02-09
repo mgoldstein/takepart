@@ -52,9 +52,6 @@ function tpf_content_campaigns_wysiwyg_default_profiles() {
           'Link' => 1,
         ),
         'drupal' => array(
-          'embed' => 1,
-          'entity' => 1,
-          'node' => 1,
           'media' => 1,
           'break' => 1,
         ),
@@ -82,7 +79,8 @@ p=p
 primary headline=span.primary-headline
 primary button=span.primary-button
 secondary button=span.secondary-button
-media caption=span.media-caption',
+media caption=span.media-caption
+link 1=span.link-1',
     ),
   );
 

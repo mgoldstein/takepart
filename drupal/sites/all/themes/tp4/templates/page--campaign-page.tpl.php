@@ -8,11 +8,8 @@
  */
 
 ?>
-<div id="tp-drawers" class="snap-drawers scrollable">
-    <div class="snap-drawer snap-drawer-left">  
-    <?php print render($page['left_drawer']); ?>
-  </div>
-</div>
+
+<?php print $variables['drawers']; ?>
 
 <div id="campaign-drawers" class="snap-drawers scrollable">
   <div class="snap-drawer snap-drawer-right">
@@ -27,7 +24,7 @@
 
 <div id="page-wrap">
   <div class="header-wrapper">
-    <header id="header">
+    <header id="header" class="<?php print $variables['transnav']; ?>">
       <?php print render($page['header']); ?>
     </header>
   </div>

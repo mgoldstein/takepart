@@ -72,10 +72,13 @@
   .logo-transparent {
     display: inline-block;
     vertical-align: bottom;
-    background: url(/sites/all/themes/base/images/navbar-transparent-logo.png) no-repeat center;
     width: 100px;
     height: 42px;
     margin-top: -5px;
+    img {
+      width: 100px;
+      height: 42px;
+    }
   }
 
   /****** User Login **********/
@@ -130,6 +133,7 @@
   }
 
   /****** SEARCH FORM *********/
+  #search-api-page-search-form-site-search,
   #search-api-page-search-form-site-search--2 {
     display: none; // .navbar-transparent.visible changes this to display: block;
     min-width: 240px;

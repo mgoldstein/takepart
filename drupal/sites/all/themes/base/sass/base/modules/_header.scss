@@ -425,14 +425,16 @@ body.mobile-search-show #header form .form-submit {
           }
         }
       }
-      .form-item-keys-2 {
+      .form-item-keys-2,
+      .form-item-keys-3,
+      .form-type-textfield {
         display: none;
         position: absolute;
         top: 38px;
         right: 0;
         z-index: 9;
         width: 300px;
-        background-color: #000;
+        background-color: #FFF;
         padding: 10px;
         margin: 0;
         @include box-shadow(0px 0px 5px 1px black);
@@ -440,6 +442,7 @@ body.mobile-search-show #header form .form-submit {
         [type=text] {
           padding-top: .25em;
           border-right: 1px solid #ccc;
+          width: 100%;
           &::-webkit-input-placeholder {
             opacity: 1;
           }
@@ -480,7 +483,9 @@ body.mobile-search-show #header form .form-submit {
         form {
           display: block;
         }
-        .form-item-keys-2 {
+        .form-item-keys-2,
+        .form-item-keys-3,
+        .form-type-textfield {
           display: block;
           margin: 0px;
           &:before {
@@ -495,8 +500,16 @@ body.mobile-search-show #header form .form-submit {
           display: none;
         }
         .form-submit {
-          background: image-url('mobile-search-hover.jpg') no-repeat center center;
-          background-color: #000;
+          display: inline-block;
+          height: 25px;
+          color: #777;
+          font-size: 16px;
+          line-height: 21px;
+          vertical-align: middle;
+          margin-left: -5px;
+          background: #000 image-url('mobile-search-hover.jpg') no-repeat center center;
+          width: 33px;
+          cursor: pointer;
         }
       }
     }

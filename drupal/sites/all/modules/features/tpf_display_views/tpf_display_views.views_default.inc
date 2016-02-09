@@ -72,7 +72,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['field_html_title']['table'] = 'field_data_field_html_title';
   $handler->display->display_options['fields']['field_html_title']['field'] = 'field_html_title';
   $handler->display->display_options['fields']['field_html_title']['element_label_colon'] = FALSE;
-  /* Field: Content: Permanent Title */
+  /* Field: Content: Analytics Title */
   $handler->display->display_options['fields']['field_permanent_title']['id'] = 'field_permanent_title';
   $handler->display->display_options['fields']['field_permanent_title']['table'] = 'field_data_field_permanent_title';
   $handler->display->display_options['fields']['field_permanent_title']['field'] = 'field_permanent_title';
@@ -260,7 +260,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['field_html_title']['table'] = 'field_data_field_html_title';
   $handler->display->display_options['fields']['field_html_title']['field'] = 'field_html_title';
   $handler->display->display_options['fields']['field_html_title']['element_label_colon'] = FALSE;
-  /* Field: Content: Permanent Title */
+  /* Field: Content: Analytics Title */
   $handler->display->display_options['fields']['field_permanent_title']['id'] = 'field_permanent_title';
   $handler->display->display_options['fields']['field_permanent_title']['table'] = 'field_data_field_permanent_title';
   $handler->display->display_options['fields']['field_permanent_title']['field'] = 'field_permanent_title';
@@ -663,7 +663,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
-  /* Field: Content: Permanent Title */
+  /* Field: Content: Analytics Title */
   $handler->display->display_options['fields']['field_permanent_title']['id'] = 'field_permanent_title';
   $handler->display->display_options['fields']['field_permanent_title']['table'] = 'field_data_field_permanent_title';
   $handler->display->display_options['fields']['field_permanent_title']['field'] = 'field_permanent_title';

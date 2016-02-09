@@ -196,37 +196,59 @@
    * Sticky Share hide if in presence of feature main image
    */
   window.tp_shareFeatureHide = function(){
-    //Only do this on Desktop so we check for mobile
-    if(window.innerWidth >= 768) {
-      var elem = $('.fresh-content-wrapper').nextAll(), count = elem.length, showSticky = true;
-      //First check for the main media image being collided with.
-      $('article.node').each(function(index){
-        if($(this).parent().hasClass('feature_article-wrapper')) {
-          $(this).find('.full-width').each(function(){
-            var mITop = $(this).offset().top;
-            var mIBot = $(this).height() + mITop;
-            window.stickTop = $('.sticky-wrapper .social').offset().top;
+    if($('.fresh-content-wrapper').length && $('.sticky-wrapper .social').length) {
+      //Only do this on Desktop so we check for mobile
+      if(window.innerWidth >= 768) {
+        var elem = $('.fresh-content-wrapper').nextAll(), count = elem.length, showSticky = true;
+        //Get the sticky measurements
+        window.stickHeight = $('.sticky-wrapper .social').height();
+        window.stickTop = $('.sticky-wrapper .social').offset().top;
+        window.stickBot = stickTop + stickHeight;
 
-            //Setting static height because a hidden items height is negative
-            window.stickBot = stickTop + 483;
-            //Test if the share bar is colliding with feature main image
-            //Using Visibility because .show()/.hide() causes a blinky
-            //share for 7 pixels when collision is detected
-            if(stickBot > mITop-25 && stickTop < mIBot+25) {
-              $('.sticky-wrapper').css('visibility', 'hidden');
-              showSticky = false;
-            }
-          });
-        }
-        if(!--count) {
-          if(showSticky == true) {
-            $('.sticky-wrapper').css('visibility', 'visible');
+        //First check for the main media image being collided with.
+        $('article.node').each(function(index){
+          if($(this).parent().hasClass('feature_article-wrapper')) {
+            $(this).find('.full-width').each(function(){
+              var mITop = $(this).offset().top;
+              var mIBot = $(this).height() + mITop;
+              //Test if the share bar is colliding with feature main image
+              //Using Visibility because .show()/.hide() causes a blinky
+              //share for 7 pixels when collision is detected
+              if(stickBot > mITop-25 && stickTop < mIBot+25) {
+                $('.sticky-wrapper').css('visibility', 'hidden');
+                showSticky = false;
+              }
+            });
           }
+          //Hide the share between moreon section and the top of the next article
+          var moreontop = $(this).find('.tp-more-on-takepart').offset().top;
+          var arttop = $(this).offset().top;
+          var artbot = arttop + $(this).height();
+          //Showing after it passes the first section
+          var artbegin = $(this).find('.section').offset().top;
+          //Checking the bottom of the sticky share first and then the top of the
+          //Sticky share
+          if(
+            ( (stickBot > moreontop && stickBot < artbot)
+              || (stickBot > arttop && stickBot < artbegin)
+            ) || (
+              (stickTop > moreontop && stickTop < artbot)
+                || (stickTop > arttop && stickTop < artbegin)
+            )
+          ) {
+            $('.sticky-wrapper').css('visibility', 'hidden');
+            showSticky = false;
+          }
+          if(!--count) {
+            if(showSticky == true) {
+              $('.sticky-wrapper').css('visibility', 'visible');
+            }
+          }
+        });
+      } else {
+        if($('.sticky-wrapper').css('visibility') != 'visible') {
+          $('.sticky-wrapper').css('visibility', 'visible');
         }
-      });
-    } else {
-      if($('.sticky-wrapper').css('visibility') != 'visible') {
-        $('.sticky-wrapper').css('visibility', 'visible');
       }
     }
   };

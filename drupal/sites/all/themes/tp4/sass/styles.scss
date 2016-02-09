@@ -48,7 +48,10 @@
 @import "base/modules/mobile-menu";
 @import "base/modules/header";
 //@import "modules/header"; TODO: fix the scss that is breaking the display of slim and non-slim headers
+@import "base/modules/header_transparent";
+@import "base/modules/feature_menu";
 @import "modules/slimnav";
+@import "modules/transparent_nav";
 @import "modules/sidebar";
 @import "modules/topic_features";
 @import "modules/left_drawer";

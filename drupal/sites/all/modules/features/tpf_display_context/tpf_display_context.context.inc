@@ -887,6 +887,12 @@ function tpf_display_context_context_default_contexts() {
           'module' => 'tp4_support',
           'delta' => 'tp4_slim_nav',
           'region' => 'header',
+          'weight' => '-9',
+        ),
+        'tp4_support-tp4_header_transparent' => array(
+          'module' => 'tp4_support',
+          'delta' => 'tp4_header_transparent',
+          'region' => 'header',
           'weight' => '-8',
         ),
         'boxes-ga_campaign_header_mobile' => array(

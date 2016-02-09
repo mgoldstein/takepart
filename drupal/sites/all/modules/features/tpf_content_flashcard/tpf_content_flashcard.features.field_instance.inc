@@ -1791,7 +1791,7 @@ function tpf_content_flashcard_field_default_field_instances() {
     'bundle' => 'flashcard',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1856,7 +1856,7 @@ function tpf_content_flashcard_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -2486,7 +2486,7 @@ function tpf_content_flashcard_field_default_field_instances() {
   t('Name');
   t('Organizations and Experts');
   t('Page Headline');
-  t('Permanent Title');
+  t('Analytics Title');
   t('Phonetic pronunciation for the term definition.');
   t('Primary Related Content');
   t('Promo Headline');

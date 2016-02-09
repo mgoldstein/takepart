@@ -1,47 +1,41 @@
 h1{
-  font-family: $secondary-sans-font;
-  font-weight: 100;
-  text-transform: uppercase;
-  font-size: 36px;
-  line-height: 38px;
+  font: 900 38px/44px $primary-sans-font;
+  color: #3a3a3a;
 }
 h2{
-  font-family: $main-brand-font;
-  font-size: 20px;
-  line-height: 24px;
-  text-transform: lowercase;
+  font-family: $AdelleSans;
+  font-size: 32px;
+  line-height: 38px;
 }
 h3{
-  font-family: $primary-serif-font;
-  font-style: italic;
-  font-size: 24px;
+  font-family: $AdelleSans;
+  font-size: 20px;
   line-height: 30px;
-  font-weight: normal;
+  font-weight: bold;
   margin-bottom: 5px;
+  color: #3a3a3a;
 }
 h4{
   font-family: $primary-sans-font;
   font-weight: bold;
-  text-transform: uppercase;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 28px;
 }
 h5{
-  font-family: $primary-sans-font;
+  font-family: $AdelleSans;
   font-weight: 100;
-  font-stretch: italic;
   font-size: 14px;
-  line-height: 18px;
+  line-height: 20px;
 }
 h6{
-  font-family: $primary-sans-font;
+  font-family: $AdelleSans;
+  color: #3a3a3a;
   font-weight: 100;
-  font-style: italic;
   font-size: 12px;
   line-height: 14px;
 }
 a{
-  color: #000;
+  color: #01C09E;
 }
 
 a:hover {
@@ -66,11 +60,24 @@ a:hover {
     }
   }
 }
+.link-1 {
+  a {
+    font-family: $AdelleSans;
+    font-size: 16px;
+    line-height: 24px;
+    color: #01C09E;
+    font-weight: 600;
+  }
+  a:after{
+    content: '\2192';
+    padding-left: 3px;
+  }
+}
 p {
-  font-family: $primary-sans-font;
+  font-family: $primary-serif-font;
   font-weight: 100;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 20px;
+  line-height: 27px;
   margin: 0 0 1.5em 0;
   &:first-child{
     margin: 0 0 10px 0;
@@ -102,7 +109,7 @@ ul:not(.tabs):not(.video-item){
 }
 ol{
   counter-reset:li;
-  margin-left:0; 
+  margin-left:0;
   padding-left:0;
   > li{
     position:relative;

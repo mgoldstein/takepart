@@ -1,0 +1,44 @@
+<?php
+
+function tp_auto_thumbnail_node_presave($node) {
+  //Article
+  if($node->type == 'openpublish_article' || $node->type == 'feature_article') {
+    //check if main image exists
+    if(isset($node->field_article_main_image[LANGUAGE_NONE]) && !empty($node->field_article_main_image[LANGUAGE_NONE])) {
+      //check if thumb exists
+      if(isset($node->field_thumbnail[LANGUAGE_NONE]) && empty($node->field_thumbnail[LANGUAGE_NONE])) {
+        $node->field_thumbnail = $node->field_article_main_image;
+      }
+    }
+  }
+  //Photo gallery
+  if($node->type == 'openpublish_photo_gallery') {
+    //check if main image exists
+    if(isset($node->field_gallery_main_image[LANGUAGE_NONE]) && !empty($node->field_gallery_main_image[LANGUAGE_NONE])) {
+      //check if thumb exists
+      if(isset($node->field_thumbnail[LANGUAGE_NONE]) && empty($node->field_thumbnail[LANGUAGE_NONE])) {
+        $node->field_thumbnail = $node->field_gallery_main_image;
+      }
+    }
+  }
+  //Page
+  if($node->type == 'takepart_page') {
+    //check if main image exists
+    if(isset($node->field_page_main_image[LANGUAGE_NONE]) && !empty($node->field_page_main_image[LANGUAGE_NONE])) {
+      //check if thumb exists
+      if(isset($node->field_thumbnail[LANGUAGE_NONE]) && empty($node->field_thumbnail[LANGUAGE_NONE])) {
+        $node->field_thumbnail = $node->field_page_main_image;
+      }
+    }
+  }
+  //Flashcard
+  if($node->type == 'flashcard') {
+    //check if main image exists
+    if(isset($node->field_flashcard_main_image[LANGUAGE_NONE]) && !empty($node->field_flashcard_main_image[LANGUAGE_NONE])) {
+      //check if thumb exists
+      if(isset($node->field_thumbnail[LANGUAGE_NONE]) && empty($node->field_thumbnail[LANGUAGE_NONE])) {
+        $node->field_thumbnail = $node->field_flashcard_main_image;
+      }
+    }
+  }
+}
