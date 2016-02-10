@@ -1,0 +1,232 @@
+<?php
+
+/**
+ * Implements hook_field_info
+ */
+function tp_media_modal_field_info() {
+  $fields = array();
+
+  $fields['tp_media_modal'] = array(
+    'label' => t('Media Modal'),
+    'description' => t('Modal display for media elements'),
+    'settings' => array(),
+    'instance_settings' => array(),
+    'default_widget' => 'tp_media_modal_video',
+    'default_formatter' => 'tp_media_modal_video',
+  );
+
+  return $fields;
+}
+
+
+/**
+ * Implements hook_field_validate
+ */
+function tp_media_modal_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
+  foreach ($items as $delta => $item) {
+    if (!empty($item['video'])) {
+
+      if(empty($item['button_type'])) {
+        $errors[$field['field_name']][$langcode][$delta][] = array(
+          'error' => 'tp_media_modal_invalid',
+          'message' => t('A button type must be selected.'),
+        );
+      }
+      if($item['button_type'] == 'custom text' && empty($item['button_text'])) {
+        $errors[$field['field_name']][$langcode][$delta][] = array(
+          'error' => 'tp_media_modal_invalid',
+          'message' => t('Missing button text.'),
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_is_empty
+ */
+function tp_media_modal_field_is_empty($item, $field) {
+  return empty($item['video']);
+}
+
+
+/**
+ * Implements hook_field_formatter_info
+ */
+function tp_media_modal_field_formatter_info() {
+  return array(
+    'tp_media_modal_video' => array(
+      'label' => t('Video modal display'),
+      'field types' => array('tp_media_modal'),
+    ),
+
+    // TODO: add formatter for image and other media displays
+
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function tp_media_modal_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+
+  //Video
+  if($video_node = field_get_items($entity_type, $entity, 'field_campaign_video_modal')) {
+    $video_node = node_load($video_node[0]['video']);
+    $video = field_view_field($entity_type, $video_node, 'field_video', 'playlist_full_page');
+  }
+
+  //Button Text
+  if($button_text = field_get_items($entity_type, $entity, 'field_campaign_video_modal')) {
+    $button_text = $button_text[0]['button_text'];
+  }else {
+    $button_default = t('Watch Now');
+  }
+
+  $elements = array();
+  foreach ($items as $delta => $item) {
+    $element = array('element' => $item, 'field' => $instance, 'display' => $display);
+    $elements[$delta] = array(
+      '#markup' => theme('tp_media_modal_video', array(
+        'video' => isset($video) ? $video : '',
+        'button_content'=> isset($button_text) ? $button_text : $button_default
+      )),
+    );
+  }
+  return $elements;
+
+}
+
+/**
+ * Implements hook_field_widget_info().
+ */
+function tp_media_modal_field_widget_info() {
+  return array(
+    'tp_media_modal_video' => array(
+      'label' => t('Video modal'),
+      'field types' => array('tp_media_modal_video', 'array()'),
+    ),
+  );
+}
+
+
+/**
+ * Implements hook_field_widget_form
+ */
+function tp_media_modal_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+
+  $element['#delta'] = $delta;
+
+  switch ($instance['widget']['type']) {
+
+    case 'tp_media_modal_video':
+
+      $element += array(
+        '#type' => 'fieldset',
+      );
+
+      $element['video'] = array(
+        '#type' => 'entityreference',  //uses entityreference_autocomplete module
+        '#title' => 'Video',
+        '#era_entity_type' => 'node',
+        '#era_bundles' => array('video'),
+        '#era_query_settings' => array(
+          'limit' => 20,
+          'property_conditions' => array(
+            array('status', 1, '='),
+          ),
+        ),
+        '#default_value' => isset($items[$delta]['video']) ? $items[$delta]['video'] : '',
+        '#description' => 'Reference to a video node.',
+      );
+
+      $element['button_type'] = array(
+        '#type' => 'radios',
+        '#title' => 'Button Type',
+        '#options' => array('default' => 'Default', 'custom_text' => 'Custom Text'),
+        '#multiple' => FALSE,
+        '#default_value' => isset($items[$delta]['button_type']) ? $items[$delta]['button_type'] : 'default',
+        '#description' => 'Default- standard image, Custom text- allows you to enter text for the button.',
+        '#states' => array(
+          'visible' => array(
+            ':input[name="field_campaign_video_modal[und][0][video]"]' => array ('filled' => TRUE),
+          ),
+        ),
+      );
+
+      $element['button_text'] = array(
+        '#type' => 'textfield',
+        '#title' => 'Button Text',
+        '#size' => 20,
+        '#default_value' => isset($items[$delta]['button_text']) ? $items[$delta]['button_text'] : 'Play!',
+        '#description' => 'The custom text for the button.',
+        '#states' => array(
+          'invisible' => array(
+           ':input[name="field_campaign_video_modal[und][0][button_type]"]' => array('value' => 'default'),
+          ),
+        ),
+      );
+
+    break;
+
+  }
+
+  return $element;
+
+}
+
+/**
+ * Implements hook_field_presave
+ */
+function tp_media_modal_field_presave($entity_type, $entity, $field, $instance, $langcode, &$items) {
+
+  //entityreference field returns an array.  we need just the nid
+  foreach($items as $key => $item) {
+    $items[$key]['video'] = $item['video']['entity_id'];
+  }
+
+}
+
+/**
+ * Implements hook_field_widget_error().
+ */
+function tp_media_modal_field_widget_error($element, $error, $form, &$form_state) {
+  switch ($error['error']) {
+    case 'tp_media_modal_invalid':
+      form_error($element, $error['message']);
+      break;
+  }
+}
+
+
+/**
+ * Implements hook_form_FORM-ID_alter
+ */
+function tp_media_modal_form_campaign_card_media_node_form_alter(&$form, &$form_state) {
+
+  //On campaign media cards only show this field if the correct media type is selected
+  $form['field_campaign_video_modal']['#states'] = array(
+    'visible' => array( // action to take.
+      ':input[name="field_campaign_media_type[und]"]' => array ('value' => 3),
+    ),
+  );
+
+}
+
+/**
+ * Implements hook_theme
+ */
+function tp_media_modal_theme() {
+  return array(
+
+    'tp_media_modal_video' => array(
+      'template' => 'templates/tp-media-modal-video',
+      'variables' => array (
+        'button_content' => '',
+        'video' => ''
+      )
+    ),
+
+  );
+
+}

@@ -1,0 +1,6 @@
+name = TakePart Media Modal
+description = Handles media modals in Campaigns and other content
+core = 7.x
+package = TakePart
+
+dependencies[] = entityreference_autocomplete

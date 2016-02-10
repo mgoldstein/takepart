@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * Implements hook_field_schema().
+ */
+function tp_media_modal_field_schema($field) {
+  switch($field['type']) {
+    case 'tp_media_modal':
+      $columns = array(
+        'video' => array(
+          'type' => 'varchar',
+          'length' => 255,
+        ),
+        'button_type' => array(
+          'type' => 'varchar',
+          'length' => 255,
+        ),
+        'button_text' => array(
+          'type' => 'varchar',
+          'length' => 255,
+        ),
+      );
+    break;
+  }
+  return array(
+    'columns' => $columns,
+  );
+}
+
+
+//TODO add database updates here for deployment

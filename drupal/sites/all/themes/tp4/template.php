@@ -571,6 +571,9 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
  */
 function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
+  // dpm($variables, 'variables');
+  // dpm($variables['node'], 'variables node');
+
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
   if(!empty($instructional)){
@@ -603,7 +606,15 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 			//this function lives in tp_video_player.module.
 			$media = drupal_render(tp_video_player_list_from_nid($video_playlist[0]['target_id']));
 		}
+	}elseif ($media_type == 'Video Modal') {
+
+    //Get Modal
+    if($media_modal = field_get_items('node', $variables['node'], 'field_campaign_video_modal')) {
+      $media_modal = field_view_value('node', $variables['node'], 'field_campaign_video_modal', $media_modal);
+      $media = drupal_render($media_modal);
+    }
 	}
+
   else{ //Media is a photo
 
     $image = field_get_items('node', $variables['node'], 'field_campaign_media_photo');
@@ -631,6 +642,7 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
   );
   $description = field_view_field('node', $variables['node'], 'body', $description_display);
   $description = drupal_render($description);
+
 
   if (!empty($description)) {
     $description = '<div class="description">'. $description. '</div>';
