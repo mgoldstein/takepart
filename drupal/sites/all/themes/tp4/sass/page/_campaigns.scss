@@ -977,6 +977,8 @@ body.campaign-display{
         .left, .right{
             @include zen-grid-item(12, 1);
             @include zen-clear();
+        }
+        .left {
             padding-bottom: 20px;
         }
         @include breakpoint($breakpoint-tablet) {
@@ -985,8 +987,9 @@ body.campaign-display{
                 margin-top:25px;
             }
         }
-         @media (max-width: 767px) {
-            .tap-action-wrapper {
+        .tap-action-wrapper {
+            margin-bottom: 0;
+            @media (max-width: 767px) {
                 max-width: 100%;
                 margin: 0 auto;
             }
@@ -1000,6 +1003,7 @@ body.campaign-display{
         @include breakpoint($breakpoint-tablet) {
             .left{
                 @include zen-grid-item(12, 1);
+                padding-bottom: 0;
             }
             .left.column-even{
                 @include zen-grid-item(5, 2);
