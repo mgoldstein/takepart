@@ -130,7 +130,7 @@
       Drupal.settings.campaignItemCount > 0) {
       window.campaignTray = 0;
       $(window).bind('scroll.campaignScroll', function(e) {
-console.log('campaign scroll');
+
         var wrap = $('article.node-campaign-page.view-mode-full'),
           $win = $(window);
         var wrapBot = wrap.offset().top + wrap.height();
