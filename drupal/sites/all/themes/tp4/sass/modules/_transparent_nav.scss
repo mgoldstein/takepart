@@ -26,4 +26,10 @@ body.campaign-transparent-nav {
       position: relative;
     }
   }
+  &.logged-in.toolbar,
+  &.logged-in.admin-menu {
+    #header {
+      position: relative;
+    }
+  }
 }
