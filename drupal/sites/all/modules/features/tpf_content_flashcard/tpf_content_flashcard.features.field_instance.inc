@@ -556,7 +556,7 @@ function tpf_content_flashcard_field_default_field_instances() {
   $field_instances['node-flashcard-field_flashcard_main_image'] = array(
     'bundle' => 'flashcard',
     'deleted' => 0,
-    'description' => 'Unless overridden, the Main Image will auto-populate the Thumbnail Image at save.',
+    'description' => 'Unless overridden, the Thumbnail Image will display the Main Image.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
