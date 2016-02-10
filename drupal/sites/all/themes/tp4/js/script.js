@@ -656,35 +656,36 @@
 
 	Drupal.behaviors.mobileMenuToggle = {
     attach: function(context, settings) {
-
-      var $body = $('body');
-      $('.toggle-menu.toggle-left, .left-drawer-control .i-close-x').click(function(){
-        if ($body.hasClass('mobile-menu-show')) {
-          $body.removeClass("mobile-menu-show" );
-          //enable scroll on tablet
-          document.ontouchmove = function(e){ return true; }
-        } else {
-          $body.addClass("mobile-menu-show" );
-          //disable scroll on tablet
-          //document.ontouchmove = function(e){ e.preventDefault(); }
-          $(document).on('touchstart touchmove', function(e) {
-            if (!$(e.target).parents('nav#mobile-menu')) {
-              e.preventDefault();
-            }
-          });
-          //append a modal on feature articles
-          if ($('body.campaign-transparent-nav').length != 0) {
-            if ($('.feature-modal').length == 0) {
-              $('body').append('<div class = "feature-modal"></div>');
-            }
-            $('.feature-modal').click(function() {
-              if ($body.hasClass('mobile-menu-show')) {
-                $body.removeClass("mobile-menu-show" );
-              }
-            });
-          }
-        }
-      });
+			$('body').once('mobileMenuToggle', function(){
+	      var $body = $('body');
+	      $('.toggle-menu.toggle-left, .left-drawer-control .i-close-x').click(function(){
+	        if ($body.hasClass('mobile-menu-show')) {
+	          $body.removeClass("mobile-menu-show" );
+	          //enable scroll on tablet
+	          document.ontouchmove = function(e){ return true; }
+	        } else {
+	          $body.addClass("mobile-menu-show" );
+	          //disable scroll on tablet
+	          //document.ontouchmove = function(e){ e.preventDefault(); }
+	          $(document).on('touchstart touchmove', function(e) {
+	            if (!$(e.target).parents('nav#mobile-menu')) {
+	              e.preventDefault();
+	            }
+	          });
+	          //append a modal on feature articles
+	          if ($('body.campaign-transparent-nav').length != 0) {
+	            if ($('.feature-modal').length == 0) {
+	              $('body').append('<div class = "feature-modal"></div>');
+	            }
+	            $('.feature-modal').click(function() {
+	              if ($body.hasClass('mobile-menu-show')) {
+	                $body.removeClass("mobile-menu-show" );
+	              }
+	            });
+	          }
+	        }
+	      });
+			});
     }
   };
 
