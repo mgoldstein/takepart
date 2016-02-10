@@ -10,7 +10,7 @@
 .tp_ad_takeover {
     .header-wrapper {
         background-color: #FFF;
-        
+
         @include breakpoint($breakpoint-desktop) {
             padding-top: 0;
             max-width: 980px;
@@ -34,10 +34,10 @@ header {
         &.ad-large-center {
             margin-right: 0;
             width: 100%;
-            
+
             .leaderboard-ad {
                 width: 100% !important;
-                
+
                 iframe {
                     margin: 0 auto;
                 }
@@ -213,8 +213,8 @@ header {
                     opacity: 0;
                 }
 
-                :-ms-input-placeholder {  
-                    color: red;  
+                :-ms-input-placeholder {
+                    color: red;
                 }
             }
             .form-submit{
@@ -364,7 +364,7 @@ header {
                 width: 34px;
                 height: 38px;
                 position: absolute;
-                top: 0;
+                top: -3px;
                 right: 0;
                 color: $mint;
                 font-size: 16px;
@@ -378,9 +378,9 @@ header {
                 -ms-filter: "FlipH";
             }
             @include breakpoint($breakpoint-tablet) {
-                height: 30px;
+                height: 33px;
                 &:before {
-                    height: 30px;
+                    height: 33px;
                 }
             }
         }
@@ -601,7 +601,7 @@ header {
                 padding-right: 0;
                 &:after {
                     display: none;
-                }	
+                }
             }
             a {
                 position: relative;
@@ -673,7 +673,7 @@ header {
                 .title {
                     margin-top: -4px;
                 }
-            }	
+            }
         }
     }
 
@@ -801,7 +801,7 @@ header {
         text-decoration: none;
     }
 
-    @include breakpoint($breakpoint-tablet) {	
+    @include breakpoint($breakpoint-tablet) {
         &:before {
             content: '|';
             padding-right: 10px;
@@ -866,7 +866,7 @@ header {
                     text-decoration: none;
                     color: #000;
                     background-color: #FFF;
-                }				
+                }
             }
         }
     }

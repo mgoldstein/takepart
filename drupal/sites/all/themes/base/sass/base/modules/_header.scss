@@ -405,7 +405,7 @@ body.mobile-search-show #header form .form-submit {
           width: 34px;
           height: 38px;
           position: absolute;
-          top: 0px;
+          top: -3px;
           right: 10px;
           color: $mint;
           font-size: 16px;
@@ -419,9 +419,9 @@ body.mobile-search-show #header form .form-submit {
           -ms-filter: "FlipH";
         }
         @include breakpoint($breakpoint-tablet) {
-          height: 30px;
+          height: 33px;
           &:before {
-            height: 30px;
+            height: 33px;
           }
         }
       }
@@ -467,16 +467,17 @@ body.mobile-search-show #header form .form-submit {
       .form-submit {
         top: 0;
         bottom: auto;
-        padding: 19px 17px;
+        padding: 22px 15px;
         text-indent: 100px;
         border: 0;
         background: transparent none;
         @include breakpoint($breakpoint-tablet) {
-          padding: 19px 15px;
+          padding: 22px 15px;
         }
       }
       form {
         display: none;
+        margin-top: -10px;
       }
 
       &.active {
@@ -488,6 +489,7 @@ body.mobile-search-show #header form .form-submit {
         .form-type-textfield {
           display: block;
           margin: 0px;
+          margin-top: -5px;
           &:before {
             display: none;
           }
