@@ -40,6 +40,7 @@ features[field_instance][] = node-openpublish_article-field_dfp_creative_id
 features[field_instance][] = node-openpublish_article-field_free_tag
 features[field_instance][] = node-openpublish_article-field_inline_replacements
 features[field_instance][] = node-openpublish_article-field_main_image_format
+features[field_instance][] = node-openpublish_article-field_main_img_to_thumb
 features[field_instance][] = node-openpublish_article-field_newsletter_feed_exclude
 features[field_instance][] = node-openpublish_article-field_permanent_title
 features[field_instance][] = node-openpublish_article-field_promo_headline

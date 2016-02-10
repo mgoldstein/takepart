@@ -146,6 +146,7 @@ features[field_base][] = field_inline_replacements
 features[field_base][] = field_listing_collection
 features[field_base][] = field_main_image
 features[field_base][] = field_main_image_format
+features[field_base][] = field_main_img_to_thumb
 features[field_base][] = field_media_alt
 features[field_base][] = field_media_caption
 features[field_base][] = field_media_title

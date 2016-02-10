@@ -58,6 +58,7 @@ function tpf_content_photo_gallery_field_group_info() {
       5 => 'field_display_cover',
       6 => 'field_inline_replacements',
       7 => 'field_display_tab_banner',
+      8 => 'field_main_img_to_thumb',
     ),
     'format_type' => 'tab',
     'format_settings' => array(

@@ -112,7 +112,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 6,
+      'weight' => 7,
     ),
     'widget_type' => 'text_textarea_with_summary',
   );
@@ -1083,7 +1083,104 @@ Change this only if you know what you are doing.',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 7,
+      'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-openpublish_photo_gallery-field_main_img_to_thumb'
+  $field_instances['node-openpublish_photo_gallery-field_main_img_to_thumb'] = array(
+    'bundle' => 'openpublish_photo_gallery',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 33,
+      ),
+      'embed' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_main_img_to_thumb',
+    'label' => 'Make this my thumbnail image.',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 6,
     ),
   );
 
@@ -2039,7 +2136,7 @@ Change this only if you know what you are doing.',
   $field_instances['node-openpublish_photo_gallery-field_thumbnail'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Unless overridden, the Thumbnail Image will display the Main Image.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2471,6 +2568,7 @@ Change this only if you know what you are doing.',
   // Translatables
   // Included for use with string extractors like potx.
   t('Admin Tag');
+  t('Analytics Title');
   t('Author(s)');
   t('Body');
   t('DFP Creative ID');
@@ -2482,7 +2580,7 @@ Change this only if you know what you are doing.');
   t('Gallery Images');
   t('Inline Replacements');
   t('Main Image');
-  t('Analytics Title');
+  t('Make this my thumbnail image.');
   t('Promo Headline');
   t('Promo Short Headline');
   t('Promo Text');
@@ -2494,9 +2592,11 @@ Change this only if you know what you are doing.');
   t('Sub Head');
   t('TAB Action Overrides');
   t('The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.');
+  t('This title is used for analytic purposes It will auto-populate after publish.');
   t('Thumbnail');
   t('Topic');
   t('Topic Box');
+  t('Unless overridden, the Thumbnail Image will display the Main Image.');
 
   return $field_instances;
 }

@@ -44,6 +44,7 @@ features[field_instance][] = node-openpublish_photo_gallery-field_free_tag
 features[field_instance][] = node-openpublish_photo_gallery-field_gallery_images
 features[field_instance][] = node-openpublish_photo_gallery-field_gallery_main_image
 features[field_instance][] = node-openpublish_photo_gallery-field_inline_replacements
+features[field_instance][] = node-openpublish_photo_gallery-field_main_img_to_thumb
 features[field_instance][] = node-openpublish_photo_gallery-field_permanent_title
 features[field_instance][] = node-openpublish_photo_gallery-field_photo_gallery_slideshow
 features[field_instance][] = node-openpublish_photo_gallery-field_promo_headline

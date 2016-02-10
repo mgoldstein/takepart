@@ -92,7 +92,7 @@ function tpf_content_page_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 6,
+      'weight' => 7,
     ),
     'widget_type' => 'text_textarea_with_summary',
   );
@@ -255,7 +255,7 @@ function tpf_content_page_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -422,6 +422,85 @@ function tpf_content_page_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-takepart_page-field_main_img_to_thumb'
+  $field_instances['node-takepart_page-field_main_img_to_thumb'] = array(
+    'bundle' => 'takepart_page',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 21,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_main_img_to_thumb',
+    'label' => 'Make this my thumbnail image.',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 4,
+    ),
+  );
+
   // Exported field_instance: 'node-takepart_page-field_page_context'
   $field_instances['node-takepart_page-field_page_context'] = array(
     'bundle' => 'takepart_page',
@@ -546,7 +625,7 @@ function tpf_content_page_field_default_field_instances() {
         ),
       ),
       'type' => 'context_field_autocomplete',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -723,7 +802,7 @@ function tpf_content_page_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -976,7 +1055,7 @@ function tpf_content_page_field_default_field_instances() {
     'bundle' => 'takepart_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Unless overridden, the Thumbnail Image will display the Main Image.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1238,6 +1317,7 @@ function tpf_content_page_field_default_field_instances() {
   t('Free Tag');
   t('HTML title tag');
   t('Main Image');
+  t('Make this my thumbnail image.');
   t('Page Context');
   t('Promo Headline');
   t('Promo Text');
@@ -1248,6 +1328,7 @@ function tpf_content_page_field_default_field_instances() {
   t('This is displayed beneath the Article\'s title on the node page');
   t('Thumbnail Image');
   t('Topic');
+  t('Unless overridden, the Thumbnail Image will display the Main Image.');
 
   return $field_instances;
 }

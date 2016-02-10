@@ -8,7 +8,7 @@
  * Implements hook_field_group_info().
  */
 function tpf_content_flashcard_field_group_info() {
-  $export = array();
+  $field_groups = array();
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -37,7 +37,7 @@ function tpf_content_flashcard_field_group_info() {
       ),
     ),
   );
-  $export['group_definition|node|flashcard|default'] = $field_group;
+  $field_groups['group_definition|node|flashcard|default'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -50,7 +50,7 @@ function tpf_content_flashcard_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Flashcard Page',
-    'weight' => '8',
+    'weight' => '11',
     'children' => array(
       0 => 'body',
       1 => 'field_article_subhead',
@@ -67,7 +67,7 @@ function tpf_content_flashcard_field_group_info() {
       ),
     ),
   );
-  $export['group_flashcard_page|node|flashcard|form'] = $field_group;
+  $field_groups['group_flashcard_page|node|flashcard|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -80,7 +80,7 @@ function tpf_content_flashcard_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Flashcard Popup',
-    'weight' => '7',
+    'weight' => '10',
     'children' => array(),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -92,7 +92,7 @@ function tpf_content_flashcard_field_group_info() {
       ),
     ),
   );
-  $export['group_flashcard_popup|node|flashcard|form'] = $field_group;
+  $field_groups['group_flashcard_popup|node|flashcard|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -120,7 +120,7 @@ function tpf_content_flashcard_field_group_info() {
       'formatter' => 'collapsible',
     ),
   );
-  $export['group_inline_replacements|node|flashcard|form'] = $field_group;
+  $field_groups['group_inline_replacements|node|flashcard|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -133,7 +133,7 @@ function tpf_content_flashcard_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '13',
+    'weight' => '16',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
@@ -150,7 +150,7 @@ function tpf_content_flashcard_field_group_info() {
       ),
     ),
   );
-  $export['group_promo|node|flashcard|form'] = $field_group;
+  $field_groups['group_promo|node|flashcard|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -175,7 +175,7 @@ function tpf_content_flashcard_field_group_info() {
       ),
     ),
   );
-  $export['group_related|node|flashcard|form'] = $field_group;
+  $field_groups['group_related|node|flashcard|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -188,14 +188,13 @@ function tpf_content_flashcard_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '14',
+    'weight' => '17',
     'children' => array(
       0 => 'field_admin_tag',
       1 => 'field_free_tag',
-      2 => 'field_significance',
-      3 => 'field_topic',
-      4 => 'field_series',
-      5 => 'field_sponsored',
+      2 => 'field_topic',
+      3 => 'field_series',
+      4 => 'field_sponsored',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -207,7 +206,17 @@ function tpf_content_flashcard_field_group_info() {
       ),
     ),
   );
-  $export['group_tagging|node|flashcard|form'] = $field_group;
+  $field_groups['group_tagging|node|flashcard|form'] = $field_group;
 
-  return $export;
+  // Translatables
+  // Included for use with string extractors like potx.
+  t('Definition');
+  t('Flashcard Page');
+  t('Flashcard Popup');
+  t('Inline Replacements');
+  t('Promo');
+  t('Related Content');
+  t('Tagging');
+
+  return $field_groups;
 }
