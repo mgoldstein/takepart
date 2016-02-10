@@ -610,7 +610,7 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
     //Get Modal
     if($media_modal = field_get_items('node', $variables['node'], 'field_campaign_video_modal')) {
-      $media_modal = field_view_value('node', $variables['node'], 'field_campaign_video_modal', $media_modal);
+      $media_modal = field_view_value('node', $variables['node'], 'field_campaign_video_modal', $media_modal[0]);
       $media = drupal_render($media_modal);
     }
 	}
