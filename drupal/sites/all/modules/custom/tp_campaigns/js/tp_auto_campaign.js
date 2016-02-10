@@ -51,9 +51,6 @@
    $(document).ready(function() {
      campaignPreload();
 
-     jumptocheck(0);
-     jumptocheck(1);
-
      //pause the video when less than 70% is in viewport
      $(window).bind('scroll', function() {
       jQuery('.videoBG_wrapper video').each(function(index){
@@ -146,16 +143,20 @@
           bottom : $win.scrollTop() + $win.height()
         };
 
-        if(viewport.bottom + 1000 >= wrapBot){
-          Drupal.ajax['autocampaign_ajax'].autoCampaign();
-        }
         //garbage collection
-        if(Drupal.settings.campaignItemCount <= window.campaignTray) {
+        if(Drupal.settings.campaignItemCount <= window.campaignTray || isNaN(window.campaignTray) ) {
           $(window).unbind('scroll.campaignScroll');
           delete(window.campaignTray);
+        } else {
+          if(viewport.bottom + 1000 >= wrapBot){
+            Drupal.ajax['autocampaign_ajax'].autoCampaign();
+          }
         }
+
       });
 
+      jumptocheck(0);
+      jumptocheck(1);
       //check if page has room to scroll
       //Need to check for terms of use cookie
       //If it is set it will show and hide causing the page to give a increased
