@@ -70,29 +70,34 @@ function tp_media_modal_field_formatter_info() {
  */
 function tp_media_modal_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
 
-  //Video
-  if($video_node = field_get_items($entity_type, $entity, 'field_campaign_video_modal')) {
-    $video_node = node_load($video_node[0]['video']);
-    $video = field_view_field($entity_type, $video_node, 'field_video', 'playlist_full_page');
+  switch ($display['type']) {
+
+    case 'tp_media_modal_video':
+
+      $elements = array();
+
+      foreach ($items as $delta => $item) {
+
+        //Video
+        if(!empty($item['video'])) {
+          $video = node_load($item['video']);
+          $video = drupal_render(field_view_field('node', $video, 'field_video', 'playlist_full_page'));
+        }
+
+        //Button Text
+        $button_text = !empty($item['button_text']) ? $item['button_text'] : t('Watch Now');
+
+        $element = array('element' => $item, 'field' => $instance, 'display' => $display);
+        $elements[$delta] = array(
+          '#markup' => theme('tp_media_modal_video', array(
+            'video' => isset($video) ? $video : '',
+            'button_content'=> $button_text
+          )),
+        );
+      }
+    break;
   }
 
-  //Button Text
-  if($button_text = field_get_items($entity_type, $entity, 'field_campaign_video_modal')) {
-    $button_text = $button_text[0]['button_text'];
-  }else {
-    $button_default = t('Watch Now');
-  }
-
-  $elements = array();
-  foreach ($items as $delta => $item) {
-    $element = array('element' => $item, 'field' => $instance, 'display' => $display);
-    $elements[$delta] = array(
-      '#markup' => theme('tp_media_modal_video', array(
-        'video' => isset($video) ? $video : '',
-        'button_content'=> isset($button_text) ? $button_text : $button_default
-      )),
-    );
-  }
   return $elements;
 
 }
