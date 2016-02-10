@@ -126,22 +126,22 @@ function tpf_content_flashcard_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '19',
+          'weight' => '22',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '16',
+          'weight' => '19',
         ),
         'redirect' => array(
-          'weight' => '17',
+          'weight' => '20',
         ),
         'xmlsitemap' => array(
-          'weight' => '18',
+          'weight' => '21',
         ),
         'locations' => array(
-          'weight' => '20',
+          'weight' => '23',
         ),
       ),
       'display' => array(),

@@ -129,16 +129,16 @@ function tp_feature_feature_article_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '14',
-        ),
-        'redirect' => array(
           'weight' => '15',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '16',
         ),
-        'metatags' => array(
+        'xmlsitemap' => array(
           'weight' => '17',
+        ),
+        'metatags' => array(
+          'weight' => '18',
         ),
         'locations' => array(
           'weight' => '20',
