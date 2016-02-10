@@ -880,7 +880,7 @@ Change this only if you know what you are doing.',
   $field_instances['node-openpublish_photo_gallery-field_gallery_main_image'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'deleted' => 0,
-    'description' => 'Unless overridden, the Main Image will auto-populate the Thumbnail Image at save.',
+    'description' => 'Unless overridden, the Thumbnail Image will display the Main Image.',
     'display' => array(
       'default' => array(
         'label' => 'above',

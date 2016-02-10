@@ -307,7 +307,7 @@ function tp_feature_feature_article_field_default_field_instances() {
   $field_instances['node-feature_article-field_article_main_image'] = array(
     'bundle' => 'feature_article',
     'deleted' => 0,
-    'description' => 'Unless overridden, the Main Image will auto-populate the Thumbnail Image at save.',
+    'description' => 'Unless overridden, the Thumbnail Image will display the Main Image.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
