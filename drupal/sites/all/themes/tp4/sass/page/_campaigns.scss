@@ -1917,8 +1917,9 @@ body.campaign-display:not(.node-type-campaign-page) header#header{
   margin: 0 auto;
 }
 
-
-
+.node-type-campaign-page .node-campaign-card-multi-column .item {
+    opacity: 0;
+}
 
 /* Zen Grids kill FF */
 #header:before, #header:after,

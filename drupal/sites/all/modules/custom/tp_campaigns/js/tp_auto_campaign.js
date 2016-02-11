@@ -69,6 +69,10 @@
           }
         }
       });
+    $('.node-campaign-card-multi-column').not('.animated').each(function() {
+      multiColumnAnimation($(this));
+    });
+
     });
    });
 
@@ -85,8 +89,8 @@
            //INIT Facebook again
            //Targeting the slide that was just loaded
            FB.XFBML.parse(document.getElementById('slider_'+(window.campaignTray+1)));
-
-           //Check for ads and try to display them
+           //$('.node-campaign-card-multi-column').not('animated').find('.item').css('opacity' , 0);
+           //Check for ads and try to display the
            $('.node-campaign-page .block-boxes-ga_ad').each(function(){
              //check if the ad has loaded
              if( !$.trim( $(this).find('.boxes-box-content div').html() ).length ) {
@@ -94,7 +98,6 @@
                googletag.display($(this).find('.boxes-box-content div').attr('id'));
              }
            });
-
            //Trigger a resize for styling to take effect on media cards
            $(window).trigger('resize');
 
@@ -123,6 +126,8 @@
         window['campaignImage'+i].onload = campaignOnload;
       }
     }
+    $('.node-campaign-card-multi-column').not('animated').find('.item').css('opacity' , 1);
+
   };
 
   var campaignOnload = function() {
@@ -241,8 +246,11 @@ function jumptoInterval() {
   }
 }
 
-//Checks to see whether a certain portion of the element is in viewport
-//x -> width, y -> height, 0.5 -> 50% of the height or width is visible
+/**
+ * Checks to see whether a certain portion of the element is in viewport
+ * x-> width, y-> height, 0.5 -> 50% of the height or width is visible
+ */
+
 jQuery.fn.isInViewport = function(x, y) {
   if(x == null || typeof x == 'undefined') x = 1;
     if(y == null || typeof y == 'undefined') y = 1;
@@ -281,4 +289,24 @@ jQuery.fn.isInViewport = function(x, y) {
     };
 
     return (deltas.left * deltas.right) >= x && (deltas.top * deltas.bottom) >= y;
+}
+
+/*
+ * Fade in the multicolumn cards once in viewport
+ */
+
+function multiColumnAnimation($container) {
+    var i = 0;
+    var item_number = $container.find('.item').length;
+    $container.find('.item').each(function(index){
+        if ($(this).isInViewport(null,0.9)) {
+          $(this).animate({opacity: 1},500, function() {
+           if (++i == item_number) {
+            $container.addClass('animated');
+          }
+        });
+        }
+      });
+   // }
+  // });
 }
