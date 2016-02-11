@@ -300,8 +300,8 @@ function multiColumnAnimation($container) {
   var i = 0;
   var item_number = $container.find('.item').length;
   $container.find('.item').each(function(index) {
-    if ($(this).isInViewport(null,0.9)) {
-      $(this).animate({opacity: 1},500, function() {
+    if (jQuery(this).isInViewport(null,0.9)) {
+      jQuery(this).animate({opacity: 1},500, function() {
         if (++i == item_number) {
           $container.addClass('animated');
         }
