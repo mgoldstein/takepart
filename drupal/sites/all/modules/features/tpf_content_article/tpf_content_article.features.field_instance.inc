@@ -202,7 +202,7 @@ function tpf_content_article_field_default_field_instances() {
   $field_instances['node-openpublish_article-field_article_main_image'] = array(
     'bundle' => 'openpublish_article',
     'deleted' => 0,
-    'description' => 'Unless overridden, the Thumbnail Image will display the Main Image.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'hidden',

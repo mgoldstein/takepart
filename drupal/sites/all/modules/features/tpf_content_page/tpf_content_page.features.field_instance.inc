@@ -555,7 +555,7 @@ function tpf_content_page_field_default_field_instances() {
     'bundle' => 'takepart_page',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Unless overridden, the Thumbnail Image will display the Main Image.',
+    'description' => '',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
