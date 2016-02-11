@@ -68,10 +68,11 @@
             vid.pause();
           }
         }
-      });
-    $('.node-campaign-card-multi-column').not('.animated').each(function() {
-      multiColumnAnimation($(this));
-    });
+     });
+     //Fade in the multi-col cards
+     $('.node-campaign-card-multi-column').not('.animated').each(function() {
+       multiColumnAnimation($(this));
+     });
 
     });
    });
@@ -89,7 +90,6 @@
            //INIT Facebook again
            //Targeting the slide that was just loaded
            FB.XFBML.parse(document.getElementById('slider_'+(window.campaignTray+1)));
-           //$('.node-campaign-card-multi-column').not('animated').find('.item').css('opacity' , 0);
            //Check for ads and try to display the
            $('.node-campaign-page .block-boxes-ga_ad').each(function(){
              //check if the ad has loaded
@@ -126,6 +126,7 @@
         window['campaignImage'+i].onload = campaignOnload;
       }
     }
+    //Show the multi-col card if its part of the initial load
     $('.node-campaign-card-multi-column').not('animated').find('.item').css('opacity' , 1);
 
   };
@@ -296,17 +297,15 @@ jQuery.fn.isInViewport = function(x, y) {
  */
 
 function multiColumnAnimation($container) {
-    var i = 0;
-    var item_number = $container.find('.item').length;
-    $container.find('.item').each(function(index){
-        if ($(this).isInViewport(null,0.9)) {
-          $(this).animate({opacity: 1},500, function() {
-           if (++i == item_number) {
-            $container.addClass('animated');
-          }
-        });
+  var i = 0;
+  var item_number = $container.find('.item').length;
+  $container.find('.item').each(function(index) {
+    if ($(this).isInViewport(null,0.9)) {
+      $(this).animate({opacity: 1},500, function() {
+        if (++i == item_number) {
+          $container.addClass('animated');
         }
       });
-   // }
-  // });
+    }
+  });
 }
