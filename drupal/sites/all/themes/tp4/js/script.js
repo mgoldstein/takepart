@@ -141,7 +141,7 @@
         minDragDistance: 5
       });
 
-      $('.slim-nav .menu-toggle').on('click', function(e){
+      $('body:not(.campaign-transparent-nav) .menu-toggle').on('click', function(e){
         e.preventDefault();
         if ( snapper.state().state == "closed" ) {
           $('#campaign-drawers').hide();
@@ -658,7 +658,7 @@
     attach: function(context, settings) {
 			$('body').once('mobileMenuToggle', function(){
 	      var $body = $('body');
-	      $('.toggle-menu.toggle-left, .left-drawer-control .i-close-x').click(function(){
+	      $('body.campaign-transparent-nav .toggle-menu.toggle-left, .left-drawer-control .i-close-x').click(function(){
 	        if ($body.hasClass('mobile-menu-show')) {
 	          $body.removeClass("mobile-menu-show" );
 	          //enable scroll on tablet
