@@ -107,7 +107,7 @@ function tpf_content_article_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 6,
+      'weight' => 7,
     ),
     'widget_type' => 'text_textarea_with_summary',
   );
@@ -618,7 +618,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -801,7 +801,7 @@ Change this only if you know what you are doing.',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -891,6 +891,91 @@ Change this only if you know what you are doing.',
       'module' => 'formatter_field',
       'settings' => array(),
       'type' => 'formatter_select',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-openpublish_article-field_main_img_to_thumb'
+  $field_instances['node-openpublish_article-field_main_img_to_thumb'] = array(
+    'bundle' => 'openpublish_article',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 29,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_main_img_to_thumb',
+    'label' => 'Make this my thumbnail image.',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
       'weight' => 5,
     ),
   );
@@ -977,7 +1062,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -986,7 +1071,7 @@ Change this only if you know what you are doing.',
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1051,7 +1136,7 @@ Change this only if you know what you are doing.',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1465,7 +1550,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -1643,7 +1728,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -1738,7 +1823,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -1746,7 +1831,7 @@ Change this only if you know what you are doing.',
   $field_instances['node-openpublish_article-field_thumbnail'] = array(
     'bundle' => 'openpublish_article',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Unless overridden, the Thumbnail Image will display the Main Image.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -2043,6 +2128,7 @@ Change this only if you know what you are doing.',
   // Translatables
   // Included for use with string extractors like potx.
   t('Admin Tag');
+  t('Analytics Title');
   t('Author(s)');
   t('Body');
   t('DFP Creative ID');
@@ -2052,8 +2138,8 @@ Change this only if you know what you are doing.');
   t('Inline Replacements');
   t('Main Image');
   t('Main Image Format');
+  t('Make this my thumbnail image.');
   t('Newsletters');
-  t('Permanent Title');
   t('Promo Headline');
   t('Promo Short Headline');
   t('Promo Text');
@@ -2065,9 +2151,11 @@ Change this only if you know what you are doing.');
   t('The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.');
   t('These tags are intended for internal use to organize content for distribution to RSS feeds and the like; they are not visible to external users.');
   t('This is displayed beneath the Article\'s title on the node page');
+  t('This title is used for analytic purposes It will auto-populate after publish.');
   t('Thumbnail Image');
   t('Topic');
   t('Topic Box');
+  t('Unless overridden, the Thumbnail Image will display the Main Image.');
 
   return $field_instances;
 }

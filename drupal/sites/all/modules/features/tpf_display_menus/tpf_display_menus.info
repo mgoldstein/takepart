@@ -2,7 +2,7 @@ name = TakePart Display Menus
 description = Settings for TakePart Menus
 core = 7.x
 package = Content Display
-version = 7.x-1.7
+version = 7.x-1.8
 project = tpf_display_menus
 dependencies[] = context
 dependencies[] = ctools
@@ -31,13 +31,11 @@ features[menu_links][] = menu-megamenu_education:taxonomy/term/7
 features[menu_links][] = menu-megamenu_entertainment:taxonomy/term/5838
 features[menu_links][] = menu-megamenu_environment:taxonomy/term/8
 features[menu_links][] = menu-megamenu_farming:taxonomy/term/386
-features[menu_links][] = menu-megamenu_fashion:taxonomy/term/9
 features[menu_links][] = menu-megamenu_featured-actions:http://takeaction.takepart.com/?browse=featured&filtered=true&sort=recent
 features[menu_links][] = menu-megamenu_film--tv-actions:http://takeaction.takepart.com/?browse=pivot&filtered=true&tags=&sort=recent
 features[menu_links][] = menu-megamenu_food-policy:taxonomy/term/32711
 features[menu_links][] = menu-megamenu_food:taxonomy/term/11
 features[menu_links][] = menu-megamenu_green:taxonomy/term/14
-features[menu_links][] = menu-megamenu_home:taxonomy/term/114840
 features[menu_links][] = menu-megamenu_human-rights:taxonomy/term/16
 features[menu_links][] = menu-megamenu_innovation--tech:taxonomy/term/6
 features[menu_links][] = menu-megamenu_innovation:taxonomy/term/115730
@@ -50,7 +48,6 @@ features[menu_links][] = menu-megamenu_oceans:taxonomy/term/312
 features[menu_links][] = menu-megamenu_petitions:http://takeaction.takepart.com/?filtered=true&sort=recent&types=Petition
 features[menu_links][] = menu-megamenu_pledges:http://takeaction.takepart.com/?types=Pledge&filtered=true&sort=recent
 features[menu_links][] = menu-megamenu_poaching:taxonomy/term/31331
-features[menu_links][] = menu-megamenu_politics:taxonomy/term/20
 features[menu_links][] = menu-megamenu_restaurants:taxonomy/term/43
 features[menu_links][] = menu-megamenu_social-justice:taxonomy/term/99103
 features[menu_links][] = menu-megamenu_strange-behaviors:http://www.takepart.com/series/strange-behaviors
@@ -76,5 +73,4 @@ features[menu_links][] = menu-takepart-links_interest-based-ads:node/36861
 features[menu_links][] = menu-takepart-links_privacy-policy:node/36861
 features[menu_links][] = menu-takepart-links_rss:node/19814
 features[menu_links][] = menu-takepart-links_social-action-network:node/45749
-features[menu_links][] = menu-takepart-links_staff--contributors:node/20589
 features[menu_links][] = menu-takepart-links_terms-of-service:node/36965

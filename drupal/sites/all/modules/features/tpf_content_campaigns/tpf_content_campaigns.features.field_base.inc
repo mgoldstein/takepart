@@ -312,6 +312,7 @@ function tpf_content_campaigns_field_default_field_bases() {
         0 => 'Photo',
         1 => 'Video',
         2 => 'Video Playlist',
+        3 => 'Video Modal',
       ),
       'allowed_values_function' => '',
     ),
@@ -880,6 +881,31 @@ function tpf_content_campaigns_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_transparent_nav'
+  $field_bases['field_transparent_nav'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_transparent_nav',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
   );
 
   // Exported field_base: 'field_twitter_list_slug'

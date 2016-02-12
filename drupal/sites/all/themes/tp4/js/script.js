@@ -141,7 +141,7 @@
         minDragDistance: 5
       });
 
-      $('.menu-toggle').on('click', function(e){
+      $('.slim-nav .menu-toggle').on('click', function(e){
         e.preventDefault();
         if ( snapper.state().state == "closed" ) {
           $('#campaign-drawers').hide();
@@ -651,6 +651,103 @@
           });
         });
       }
+    }
+  };
+
+	Drupal.behaviors.mobileMenuToggle = {
+    attach: function(context, settings) {
+			$('body').once('mobileMenuToggle', function(){
+	      var $body = $('body');
+	      $('.toggle-menu.toggle-left, .left-drawer-control .i-close-x').click(function(){
+	        if ($body.hasClass('mobile-menu-show')) {
+	          $body.removeClass("mobile-menu-show" );
+	          //enable scroll on tablet
+	          document.ontouchmove = function(e){ return true; }
+	        } else {
+	          $body.addClass("mobile-menu-show" );
+	          //disable scroll on tablet
+	          //document.ontouchmove = function(e){ e.preventDefault(); }
+	          $(document).on('touchstart touchmove', function(e) {
+	            if (!$(e.target).parents('nav#mobile-menu')) {
+	              e.preventDefault();
+	            }
+	          });
+	          //append a modal on feature articles
+	          if ($('body.campaign-transparent-nav').length != 0) {
+	            if ($('.feature-modal').length == 0) {
+	              $('body').append('<div class = "feature-modal"></div>');
+	            }
+	            $('.feature-modal').click(function() {
+	              if ($body.hasClass('mobile-menu-show')) {
+	                $body.removeClass("mobile-menu-show" );
+	              }
+	            });
+	          }
+	        }
+	      });
+			});
+    }
+  };
+
+  Drupal.behaviors.mobileSearchToggleStyleTwo = {
+    attach: function(context, settings) {
+
+
+      /* Show search field */
+      var $body = $('body');
+      $('.navbar-transparent .toggle-search').click(function(){
+        $(this).parents('.navbar-transparent').addClass('search-open');
+      });
+
+      /* Hide search if clicked away from */
+      $(document).on('click', function(event) {
+        if (!$(event.target).closest('.navbar-transparent').length) {
+          $('.navbar-transparent').removeClass("search-open");
+        }
+      });
+
+      // Close search
+      /*$('#search-api-page-search-form-site-search--2 input#edit-keys-2--2').click(function(e){
+        var offset = $(this).offset();
+        var width = $(this).outerWidth();
+        var pos_x = e.pageX - offset.left;
+
+        if(width - pos_x < 15) {
+          $('.navbar-transparent').removeClass("search-open");
+        }
+      });*/
+      //Close search
+      $('.navbar-transparent .search-close').click(function(){
+        if ($('.navbar-transparent').hasClass('search-open')) {
+          $('.navbar-transparent').removeClass("search-open");
+        }
+      });
+
+    }
+  };
+
+	Drupal.behaviors.mobileMenuBehaviors = {
+    attach: function(context, settings) {
+      /* TODO: TP4 is unexpectedly dependent on the menu being 'exposed'.  Remove this dependency and use classes
+      that come with Drupal */
+			$('#mobile-menu.menu').once('mobile-menu-drop-downs', function(){
+	      /* Prevent parent item from clicking through on initial click */
+	      var curItem = false;
+	      $('.mobile-menu > ul > li > a').on( 'click', function( e ) {
+	        var item = $( this );
+	        if( item[ 0 ] != curItem[ 0 ] ) {
+	          e.preventDefault();
+	          curItem = item;
+	        }
+	      });
+
+	      /* Show child menu. See _mobile-menu.scss */
+	      $('.mobile-menu > ul > li').click(function(){
+	        if (!$(this).hasClass('show')) {
+	          $(this).addClass("show" );
+	        }
+	      });
+			});
     }
   };
 

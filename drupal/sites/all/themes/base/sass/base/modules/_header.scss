@@ -405,7 +405,7 @@ body.mobile-search-show #header form .form-submit {
           width: 34px;
           height: 38px;
           position: absolute;
-          top: 0px;
+          top: -3px;
           right: 10px;
           color: $mint;
           font-size: 16px;
@@ -419,20 +419,22 @@ body.mobile-search-show #header form .form-submit {
           -ms-filter: "FlipH";
         }
         @include breakpoint($breakpoint-tablet) {
-          height: 30px;
+          height: 33px;
           &:before {
-            height: 30px;
+            height: 33px;
           }
         }
       }
-      .form-item-keys-2 {
+      .form-item-keys-2,
+      .form-item-keys-3,
+      .form-type-textfield {
         display: none;
         position: absolute;
         top: 38px;
         right: 0;
         z-index: 9;
         width: 300px;
-        background-color: #000;
+        background-color: #FFF;
         padding: 10px;
         margin: 0;
         @include box-shadow(0px 0px 5px 1px black);
@@ -440,6 +442,7 @@ body.mobile-search-show #header form .form-submit {
         [type=text] {
           padding-top: .25em;
           border-right: 1px solid #ccc;
+          width: 100%;
           &::-webkit-input-placeholder {
             opacity: 1;
           }
@@ -464,25 +467,29 @@ body.mobile-search-show #header form .form-submit {
       .form-submit {
         top: 0;
         bottom: auto;
-        padding: 19px 17px;
+        padding: 22px 15px;
         text-indent: 100px;
         border: 0;
         background: transparent none;
         @include breakpoint($breakpoint-tablet) {
-          padding: 19px 15px;
+          padding: 22px 15px;
         }
       }
       form {
         display: none;
+        margin-top: -10px;
       }
 
       &.active {
         form {
           display: block;
         }
-        .form-item-keys-2 {
+        .form-item-keys-2,
+        .form-item-keys-3,
+        .form-type-textfield {
           display: block;
           margin: 0px;
+          margin-top: -5px;
           &:before {
             display: none;
           }
@@ -495,8 +502,16 @@ body.mobile-search-show #header form .form-submit {
           display: none;
         }
         .form-submit {
-          background: image-url('mobile-search-hover.jpg') no-repeat center center;
-          background-color: #000;
+          display: inline-block;
+          height: 25px;
+          color: #777;
+          font-size: 16px;
+          line-height: 21px;
+          vertical-align: middle;
+          margin-left: -5px;
+          background: #000 image-url('mobile-search-hover.jpg') no-repeat center center;
+          width: 33px;
+          cursor: pointer;
         }
       }
     }

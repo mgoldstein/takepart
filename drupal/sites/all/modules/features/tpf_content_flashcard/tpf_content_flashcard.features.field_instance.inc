@@ -745,7 +745,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'field_collection_embed',
-      'weight' => 15,
+      'weight' => 18,
     ),
   );
 
@@ -835,7 +835,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 4,
+      'weight' => 7,
     ),
   );
 
@@ -925,7 +925,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 5,
+      'weight' => 8,
     ),
   );
 
@@ -1014,7 +1014,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 11,
+      'weight' => 14,
     ),
   );
 
@@ -1108,7 +1108,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete_tags',
-      'weight' => 10,
+      'weight' => 13,
     ),
   );
 
@@ -1235,7 +1235,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 12,
+      'weight' => 15,
     ),
   );
 
@@ -1328,7 +1328,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'entityreference_autocomplete',
-      'weight' => 9,
+      'weight' => 12,
     ),
   );
 
@@ -1420,7 +1420,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 6,
+      'weight' => 9,
     ),
   );
 
@@ -1509,7 +1509,7 @@ function tpf_content_flashcard_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 5,
     ),
   );
 
@@ -1782,6 +1782,91 @@ function tpf_content_flashcard_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'formatter_select',
+      'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-flashcard-field_main_img_to_thumb'
+  $field_instances['node-flashcard-field_main_img_to_thumb'] = array(
+    'bundle' => 'flashcard',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 24,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_main_img_to_thumb',
+    'label' => 'Make this my thumbnail image.',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
       'weight' => 4,
     ),
   );
@@ -1791,7 +1876,7 @@ function tpf_content_flashcard_field_default_field_instances() {
     'bundle' => 'flashcard',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1856,7 +1941,7 @@ function tpf_content_flashcard_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -2269,7 +2354,7 @@ function tpf_content_flashcard_field_default_field_instances() {
   $field_instances['node-flashcard-field_thumbnail'] = array(
     'bundle' => 'flashcard',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Unless overridden, the Thumbnail Image will display the Main Image.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2473,6 +2558,7 @@ function tpf_content_flashcard_field_default_field_instances() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Admin Tag');
+  t('Analytics Title');
   t('Body');
   t('Call To Action Text');
   t('Enter each text string that should link to this flashcard. Enter different spellings or punctuations separately: e.g., "GMOs", "G.M.O.s" and "gmos."');
@@ -2483,10 +2569,10 @@ function tpf_content_flashcard_field_default_field_instances() {
   t('Link');
   t('Main Image');
   t('Main Image Format');
+  t('Make this my thumbnail image.');
   t('Name');
   t('Organizations and Experts');
   t('Page Headline');
-  t('Permanent Title');
   t('Phonetic pronunciation for the term definition.');
   t('Primary Related Content');
   t('Promo Headline');
@@ -2503,9 +2589,11 @@ function tpf_content_flashcard_field_default_field_instances() {
   t('The call to action following related content will link to the first of these categories. And if you don\'t specify related content, the flashcard page will fill up the related content module with the most recent stories from any of these topics or free tags.');
   t('The display name appears at the head of the flashcard popup in articles and at the head of the definition box on flashcard pages.');
   t('This is the abbreviated definition that appears on flashcard popups and in the definition box.');
+  t('This title is used for analytic purposes It will auto-populate after publish.');
   t('This will appear at the top of a flashcard page as the headline.');
   t('Thumbnail Image');
   t('Topic');
+  t('Unless overridden, the Thumbnail Image will display the Main Image.');
 
   return $field_instances;
 }

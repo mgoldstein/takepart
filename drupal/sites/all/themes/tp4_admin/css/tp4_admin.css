@@ -25,3 +25,7 @@ body.page-block-featured-campaigns-module .field-widget-field-collection-fieldse
 select.form-select {
 	height: auto;
 }
+
+input[type="text"]:disabled {
+    background: #dddddd;
+}

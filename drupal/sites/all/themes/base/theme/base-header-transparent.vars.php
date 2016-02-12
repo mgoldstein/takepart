@@ -5,10 +5,15 @@
  */
 function base_preprocess_base_header_transparent(&$variables) {
   //Set logo
-  $logo = l('', '<front>', array('attributes' => array('class' => array('logo-transparent'))));
+  $logo = l('<img src="/sites/all/themes/base/images/navbar-transparent-logo.svg" ALT="Takepart" TITLE="Takepart" />', '<front>', array('html' => TRUE, 'attributes' => array('class' => array('logo-transparent'))));
   $variables['logo'] = $logo;
-  $block_delta = variable_get('search_api_page_block_delta',2);
+  $block_delta = search_api_page_load_multiple();
+  if(isset($block_delta['site_search']->id) && is_numeric($block_delta['site_search']->id)) {
+    $b_d = $block_delta['site_search']->id;
+  } else {
+    $b_d = variable_get('search_api_page_block_delta', 3);
+  }
   //Set Search
-  $search = module_invoke('search_api_page', 'block_view', $block_delta);
+  $search = module_invoke('search_api_page', 'block_view', $b_d);
   $variables['search'] = drupal_render($search['content']);
 }

@@ -47,7 +47,8 @@ function _base_theme(&$existing, $type, $theme, $path) {
     'base_header_transparent' => array(
       'variables' => array(
         'logo' => '',
-        'search' => ''
+        'search' => '',
+        'bg_color' => 'transparent'
       )
     ),
   );

@@ -11,7 +11,7 @@ function tp4_support_graveyard() {
   $taxonomyQuery->entityCondition('entity_type', 'taxonomy_term')
     ->propertyCondition('vid', '5')
     ->propertyOrderBy('weight')
-    ->range(0, 12);
+    ->range(0, 8);
   $topics = $taxonomyQuery->execute();
 
   $article_ids = array();
@@ -31,7 +31,7 @@ function tp4_support_graveyard() {
 	 ->propertyCondition('type', array('openpublish_article', 'feature_article'))
 	 ->propertyOrderBy('created', 'DESC')
 	 ->fieldCondition('field_topic', 'tid', $topic_id)
-	 ->range(0, 15);
+	 ->range(0, 10);
 
     $article = $articleQuery->execute();
 

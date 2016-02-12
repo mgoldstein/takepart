@@ -1636,6 +1636,21 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_campaign_video_modal'
+  $field_bases['field_campaign_video_modal'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_campaign_video_modal',
+    'indexes' => array(),
+    'locked' => 0,
+    'module' => 'tp_media_modal',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'tp_media_modal',
+  );
+
   // Exported field_base: 'field_caption'
   $field_bases['field_caption'] = array(
     'active' => 1,
@@ -2867,6 +2882,31 @@ function tpf_content_field_bases_field_default_field_bases() {
     'settings' => array(),
     'translatable' => 0,
     'type' => 'formatter',
+  );
+
+  // Exported field_base: 'field_main_img_to_thumb'
+  $field_bases['field_main_img_to_thumb'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_main_img_to_thumb',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
   );
 
   // Exported field_base: 'field_media_alt'

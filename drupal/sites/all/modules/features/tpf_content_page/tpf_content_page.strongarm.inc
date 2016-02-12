@@ -96,19 +96,19 @@ function tpf_content_page_strongarm() {
           'weight' => '0',
         ),
         'xmlsitemap' => array(
-          'weight' => '9',
-        ),
-        'path' => array(
           'weight' => '10',
         ),
-        'redirect' => array(
+        'path' => array(
           'weight' => '11',
         ),
+        'redirect' => array(
+          'weight' => '12',
+        ),
         'metatags' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
         'locations' => array(
-          'weight' => '12',
+          'weight' => '13',
         ),
       ),
       'display' => array(),

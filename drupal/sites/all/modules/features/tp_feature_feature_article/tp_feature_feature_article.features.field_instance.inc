@@ -107,7 +107,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 7,
+      'weight' => 8,
     ),
     'widget_type' => 'text_textarea_with_summary',
   );
@@ -729,7 +729,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -916,6 +916,91 @@ Change this only if you know what you are doing.',
     ),
   );
 
+  // Exported field_instance: 'node-feature_article-field_main_img_to_thumb'
+  $field_instances['node-feature_article-field_main_img_to_thumb'] = array(
+    'bundle' => 'feature_article',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 26,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_main_img_to_thumb',
+    'label' => 'Make this my thumbnail image.',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'node-feature_article-field_newsletter_feed_exclude'
   $field_instances['node-feature_article-field_newsletter_feed_exclude'] = array(
     'bundle' => 'feature_article',
@@ -1005,7 +1090,7 @@ Change this only if you know what you are doing.',
     'bundle' => 'feature_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This title is used for analytic purposes It will auto-populate after publish.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1070,7 +1155,7 @@ Change this only if you know what you are doing.',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_permanent_title',
-    'label' => 'Permanent Title',
+    'label' => 'Analytics Title',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1483,7 +1568,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -1756,7 +1841,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -1764,7 +1849,7 @@ Change this only if you know what you are doing.',
   $field_instances['node-feature_article-field_thumbnail'] = array(
     'bundle' => 'feature_article',
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Unless overridden, the Thumbnail Image will display the Main Image.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1965,7 +2050,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -2155,6 +2240,7 @@ Change this only if you know what you are doing.',
   // Translatables
   // Included for use with string extractors like potx.
   t('Admin Tag');
+  t('Analytics Title');
   t('Author(s)');
   t('Body');
   t('DFP Creative ID');
@@ -2164,8 +2250,8 @@ Change this only if you know what you are doing.');
   t('Free Tag');
   t('Inline Replacements');
   t('Main Image');
+  t('Make this my thumbnail image.');
   t('Newsletters');
-  t('Permanent Title');
   t('Promo Headline');
   t('Promo Short Headline');
   t('Promo Text');
@@ -2177,10 +2263,12 @@ Change this only if you know what you are doing.');
   t('The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.');
   t('These tags are intended for internal use to organize content for distribution to RSS feeds and the like; they are not visible to external users.');
   t('This is displayed beneath the Article\'s title on the node page');
+  t('This title is used for analytic purposes It will auto-populate after publish.');
   t('Thumbnail Image');
   t('Title Color');
   t('Topic');
   t('Topic Box');
+  t('Unless overridden, the Thumbnail Image will display the Main Image.');
   t('You can change the title color to black for better contrast against the hero image.');
 
   return $field_instances;

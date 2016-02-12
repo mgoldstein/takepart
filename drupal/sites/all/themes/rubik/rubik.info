@@ -18,7 +18,7 @@ stylesheets[print][] = print.css
 
 ; Support shortcut module links
 settings[shortcut_module_link] = 1
-settings[rubik_inline_field_descriptions] = 0
+settings[rubik_inline_field_descriptions] = 1
 
 ; By default sidebar in forms is enabled
 settings[rubik_disable_sidebar_in_form] = 0
@@ -38,4 +38,3 @@ version = "7.x-4.2"
 core = "7.x"
 project = "rubik"
 datestamp = "1421901484"
-

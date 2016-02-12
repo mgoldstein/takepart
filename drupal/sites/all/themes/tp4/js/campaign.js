@@ -77,19 +77,46 @@
         });
       };
 
+      //Full Screen Ambient Video
+      //Assuming there is only a top video
+      var adjustCardBackgroundVideo = function() {
+        //find/set video ratio
+        if(window.videoRatio !== 'undefined') {
+          window.videoRatio = $('.has-videoBG video').width()/$('.has-videoBG video').height();
+        }
+        var winh = window.innerHeight;
+        var winw = window.innerWidth;
+        //Set the parent divs to set heights
+        $('.has-videoBG').parent('.card-wrapper').height('100%');
+        $('.has-videoBG').parents('.swipe-wrap').height('100%');
+        $('.has-videoBG').parents('.tray-img-width-full').height(winh);
+        //check to see if the screen ratio needs us to
+        //Change if we are using the height or width as our set variable
+        if((winw/winh) >= window.videoRatio) {
+          $('.has-videoBG video').height(winw/window.videoRatio);
+          $('.has-videoBG video').width(winw);
+        } else {
+          $('.has-videoBG video').height(winh);
+          $('.has-videoBG video').width(winh*window.videoRatio);
+        }
+      };
+
       // bind the previous function to window load and resize
       // debouncing for 300ms
       var resizeTimeout = null;
+      var resizeVideo = null;
       $(window).on('load resize', function() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout($.proxy(adjustCardHeightsAndPadding, this), 250);
+        clearTimeout(resizeVideo);
+        resizeVideo = setTimeout($.proxy(adjustCardBackgroundVideo, this), 150);
       });
-      
+
       //addresses issue with hover state - removed touchstart
       $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('mouseover', function() {
-        $(this).addClass('hover-class'); 
+        $(this).addClass('hover-class');
       });
-      
+
       //addresses issue with hover state remove touchend
       $('.mobile-arrow.right-arrow, .mobile-arrow.left-arrow').bind('mouseout touchend', function() {
         $(this).removeClass('hover-class');
@@ -119,7 +146,7 @@
   Drupal.behaviors.campaignResponsiveMenu = {
     attach: function() {
       function bindStickupToMenus() {
-        //initiating jQuery  
+        //initiating jQuery
         //enabling stickUp on the '.navbar-wrapper' class
         var desktopWidth = ( $(window).width() > 768),
             campaignHasNoMenus = $('#campaign-drawers li').length == 0,
@@ -127,7 +154,7 @@
               parts:     Drupal.settings.tp_campaigns.stickupParts,
               itemClass: 'anchored',
               itemHover: 'active'
-            }; 
+            };
 
         if ( desktopWidth ) {
           $('#block-tp-campaigns-tp-campaigns-hero').stickUp( stickUpSettings );
@@ -136,13 +163,13 @@
           $('.campaign-menu-toggle').hide();
         }
       }
-      
+
       //only bind when document is ready to bind
       $(document).ready(function() {
         //addresses issue with race condition
         if ( Drupal.settings.tp_campaigns )
           setTimeout( bindStickupToMenus, 2000 );
-          
+
         //ensures that this only runs on campaign displays
         if ($('body').hasClass('campaign-display')) {
           $(window).scroll(function() {
@@ -197,23 +224,24 @@
               var poster =  $prop[0];
 
               if(!Environment.isMobile()){
-
-                var videoWrapper = document.createElement("div");
-                var video = document.createElement("video");
-                var videoSource = document.createElement("source");
-                videoWrapper.className = 'videoBG_wrapper';
-                videoSource.type = "video/mp4";
-                videoSource.src = src;
-                videoSource.poster = poster;
-                video.className = 'background-video';
-                video.setAttribute('autoplay', '');
-                video.setAttribute('loop', '');
-                video.setAttribute('muted', '');
-                video.setAttribute('poster', poster);
-                video.appendChild(videoSource);
-                videoWrapper.appendChild(video);
-                $(this).prepend(videoWrapper);
-
+                //Only add it to the markup if there is no video
+                if ($(this).find('video').length == 0) {
+                  var videoWrapper = document.createElement("div");
+                  var video = document.createElement("video");
+                  var videoSource = document.createElement("source");
+                  videoWrapper.className = 'videoBG_wrapper';
+                  videoSource.type = "video/mp4";
+                  videoSource.src = src;
+                  videoSource.poster = poster;
+                  video.className = 'background-video';
+                  video.setAttribute('autoplay', '');
+                  video.setAttribute('loop', '');
+                  video.setAttribute('muted', '');
+                  video.setAttribute('poster', poster);
+                  video.appendChild(videoSource);
+                  videoWrapper.appendChild(video);
+                  $(this).prepend(videoWrapper);
+                }
               }else{
                  //If a mobile device is detected AND the card has a video background then use the poster image as bg
                 $(this).css('background-image', 'url(' + poster + ')');
