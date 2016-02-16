@@ -728,8 +728,7 @@
 
 	Drupal.behaviors.mobileMenuBehaviors = {
     attach: function(context, settings) {
-      /* TODO: TP4 is unexpectedly dependent on the menu being 'exposed'.  Remove this dependency and use classes
-      that come with Drupal */
+			//For campaign transparent nav
 			$('body.campaign-transparent-nav #mobile-menu.menu').once('mobile-menu-drop-downs', function(){
 	      /* Prevent parent item from clicking through on initial click */
 	      var curItem = false;
@@ -745,6 +744,25 @@
 	      $('.mobile-menu > ul > li').click(function(){
 	        if (!$(this).hasClass('show')) {
 	          $(this).addClass("show" );
+	        }
+	      });
+			});
+			//for all instances of fat nav on tp4
+			$('body:not(.campaign-transparent-nav) #tp-drawers').once('mobile-menu-drop-downs', function(){
+	      /* Prevent parent item from clicking through on initial click */
+	      var curItem = false;
+	      $('#tp-drawers .menu > li > a').on( 'click', function( e ) {
+	        var item = $( this );
+	        if( item[ 0 ] != curItem[ 0 ] ) {
+	          e.preventDefault();
+	          curItem = item;
+	        }
+	      });
+
+	      /* Show child menu. See _mobile-menu.scss */
+	      $('#tp-drawers .menu > li').click(function(){
+	        if (!$(this).find('ul').is(":visible")) {
+	          $(this).find('ul').show();
 	        }
 	      });
 			});
