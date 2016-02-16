@@ -99,7 +99,7 @@ function tp4_support_block_view($delta = ''){
         $transnav = field_get_items('node', $node, 'field_transparent_nav');
         $block['content'] = '';
         //check campaign_page to determine which nav should be shown
-        if (!$transnav) {
+        if (!isset($transnav) && $transnav[0]['value'] == 0) {
           $block['content'] = theme('tp4_support_slim_nav');
         }
       }
@@ -113,7 +113,7 @@ function tp4_support_block_view($delta = ''){
         $transnav = field_get_items('node', $node, 'field_transparent_nav');
         $block['content'] = '';
         //check campaign_page to determine which nav should be shown
-        if ($transnav) {
+        if (isset($transnav) && $transnav[0]['value'] == 1) {
           //Get the campaign menu background color if there is one
           $campaign_ref = $node->field_campaign_reference['und'][0]['target_id'];
           $campaign_ref = node_load($campaign_ref);

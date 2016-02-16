@@ -730,7 +730,7 @@
     attach: function(context, settings) {
       /* TODO: TP4 is unexpectedly dependent on the menu being 'exposed'.  Remove this dependency and use classes
       that come with Drupal */
-			$('#mobile-menu.menu').once('mobile-menu-drop-downs', function(){
+			$('body.campaign-transparent-nav #mobile-menu.menu').once('mobile-menu-drop-downs', function(){
 	      /* Prevent parent item from clicking through on initial click */
 	      var curItem = false;
 	      $('.mobile-menu > ul > li > a').on( 'click', function( e ) {
