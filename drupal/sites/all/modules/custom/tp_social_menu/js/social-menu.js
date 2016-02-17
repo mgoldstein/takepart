@@ -222,8 +222,8 @@
           }
           //Hide the share between moreon section and the top of the next article
           var moreontop = $(this).find('.tp-more-on-takepart').offset().top;
-          var arttop = $(this).offset().top;
-          var artbot = arttop + $(this).height();
+          var arttop = $(this).parent().offset().top;
+          var artbot = arttop + $(this).parent().height();
           //Showing after it passes the first section
           var artbegin = $(this).find('.section').offset().top;
           //Checking the bottom of the sticky share first and then the top of the

@@ -8,7 +8,6 @@
  */
 ?>
 
-<!-- <div class="fresh-content-wrapper"> -->
   <?php
     $node_type = $variables['type'];
     $node_type = ($node_type == 'openpublish_article') ? 'article' : $node_type; ?>
@@ -18,13 +17,13 @@
    <?php print $variables['social']; ?>
     </aside>
   <?php endif; ?>
+  <?php if (!empty($variables['advertisement'])): ?>
+    <div class="advertisement">
+      <?php print $variables['advertisement']; ?>
+    </div>
+  <?php endif; ?>
   <article class="col-xs-10 col-xs-offset-1 clearfix <?php print $classes; ?>"<?php print $attributes; ?>>
 
-    <?php if (!empty($variables['advertisement'])): ?>
-      <div class="advertisement">
-     <?php print $variables['advertisement']; ?>
-      </div>
-    <?php endif; ?>
     <div class="section">
    <?php if (!empty($variables['topic_box'])): ?>
      <?php print $variables['topic_box']; ?>
@@ -81,7 +80,7 @@
    <?php print $variables['more_on_takepart']; ?>
     <?php endif; ?>
   </article>
-</div><!-- </div> -->
+</div>
 
 <?php if (!empty($variables['auto-scroll'])): ?>
   <?php print $variables['auto-scroll']; ?>
