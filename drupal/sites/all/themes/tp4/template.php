@@ -67,7 +67,7 @@ function tp4_preprocess_html(&$variables, $hook) {
       $variables['classes_array'][] = drupal_html_class('campaign-display');
       //Transparent nav body class
       $transnav = field_get_items('node', $node, 'field_transparent_nav');
-      if($transnav) {
+      if(isset($transnav) && $transnav[0]['value'] == 1) {
         $variables['classes_array'][] = drupal_html_class('campaign-transparent-nav');
       }
     }
