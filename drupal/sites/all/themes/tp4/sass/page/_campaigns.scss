@@ -70,11 +70,6 @@ body.campaign-display
             font-size: 22px;
             line-height: 34px;
         }
-        // .title-wrapper + {
-        //     .left-column, .left-column + .right-column, .right-column, .center-column {
-        //         margin-top: 5px;
-        //     }
-        // }
         &:not(.has-instructional.has-title){
             .left-column, .right-column, .center-column {
                 margin-top: 25px;
@@ -93,7 +88,6 @@ body.campaign-display
                     padding-bottom: 30px;
                     @include zen-grid-item(10, 2);
                 }
-                text-align: center;
             }
             .left-column{
                 @include breakpoint($breakpoint-mobile) {
@@ -181,7 +175,6 @@ body.campaign-display
         }
         &.campaign-1col{
             .instructional{
-                text-align: center;
                 @include breakpoint($breakpoint-mobile) {
                     @include zen-grid-item(12, 1);
                     padding-bottom: 20px;
@@ -201,9 +194,6 @@ body.campaign-display
                     padding: 0;
                     img{
                         margin: 0 auto;
-                    }
-                    .description{
-                        //            text-align: center;
                     }
                     .caption{
                         text-align: center;
@@ -1172,7 +1162,6 @@ body.campaign-display{
     .card.node-campaign-card-text .center-column{
         @include breakpoint($breakpoint-tablet) {
             @include zen-grid-item(8, 3);
-            text-align: center;
         }
     }
     //Empty
@@ -1774,7 +1763,6 @@ body.campaign-display .card .tweet .tweet-right p {
 
         header#header{
             .campaign-menu-toggle {
-                display: block;
                 position: absolute;
                 left: 78%;
                 top: 50px;
@@ -1784,8 +1772,10 @@ body.campaign-display .card .tweet .tweet-right p {
                     text-decoration: none;
                 }
             }
+            .branding-header.has-menu .campaign-menu-toggle {
+                display: block;
+            }
         }
-
         #block-tp-campaigns-tp-campaigns-hero{
             //margin-top: 35px;
             .menu-wrapper{
