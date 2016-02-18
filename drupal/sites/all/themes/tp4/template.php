@@ -330,7 +330,7 @@ function tp4_preprocess_page(&$variables) {
     $transnav = field_get_items('node', $variables['node'], 'field_transparent_nav');
     $variables['transnav'] = '';
     $variables['drawers'] = '';
-    if($transnav) {
+    if(isset($transnav) && $transnav[0]['value'] == 1) {
       //Class so we know it is transparent
       $variables['transnav'] = 'transparent';
       //Logo
