@@ -99,7 +99,7 @@ function tp4_support_block_view($delta = ''){
         $transnav = field_get_items('node', $node, 'field_transparent_nav');
         $block['content'] = '';
         //check campaign_page to determine which nav should be shown
-        if (!isset($transnav) && $transnav[0]['value'] == 0) {
+        if (!isset($transnav) || $transnav[0]['value'] == 0) {
           $block['content'] = theme('tp4_support_slim_nav');
         }
       }
