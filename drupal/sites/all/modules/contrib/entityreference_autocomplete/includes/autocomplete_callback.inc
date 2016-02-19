@@ -66,6 +66,12 @@ function entityreference_autocomplete_autocomplete_callback($entity_type, $bundl
       $query->range(0, $query_settings['limit']);
     }
 
+    // Sort the results
+    if (!empty($query_settings['property_orderby'])) {
+      $property_orderby = $query_settings['property_orderby'];
+      $query->propertyOrderBy($property_orderby[0], $property_orderby[1]);
+    }
+
     // Execute query and log any unexpected errors.
     try {
       $result = $query->execute();
