@@ -155,7 +155,7 @@ function tpf_display_menus_menu_default_menu_links() {
     'hidden' => 0,
     'external' => 0,
     'has_children' => 1,
-    'expanded' => 0,
+    'expanded' => 1,
     'weight' => -45,
     'customized' => 1,
   );

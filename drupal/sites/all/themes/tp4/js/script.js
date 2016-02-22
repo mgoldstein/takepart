@@ -146,12 +146,17 @@
         if ( snapper.state().state == "closed" ) {
           $('#campaign-drawers').hide();
           $('#tp-drawers').show();
-					$('#block-menu-menu-megamenu ul li ul').hide();
           snapper.open('left');
+					$(document).on('touchstart touchmove', function(e) {
+            if (!$(e.target).parents('#tp-drawers').length) {
+              e.preventDefault();
+            }
+          });
         }
         else {
           snapper.close();
           $('.snap-drawers').hide();
+					$(document).off('touchstart touchmove');
         }
       });
 
@@ -159,6 +164,7 @@
         if (snapper.state().state == "closed") {
           snapper.close();
           $('.snap-drawers').hide();
+					$(document).off('touchstart touchmove');
         }
       });
     }
