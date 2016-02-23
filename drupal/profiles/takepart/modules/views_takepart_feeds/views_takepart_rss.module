@@ -291,13 +291,91 @@ function _build_list_for_yahoo_rss_feed($content) {
   foreach ($parts as $part) {
     $part = trim($part);
     if ($part) {
-	 $ret .= '<p><strong>&bull; ' . $part . '</strong></p>';
+      if(!is_numeric($part)) {
+        $ret .= '<p><strong>&bull; ' . $part . '</strong></p>';
+      } else {
+        //This is a node id; need to load
+        $node = node_load($part);
+        $ret .= '<p><strong>&bull; ' . l($node->title, 'node/'.$node->nid, array('query' => array('cmpid' => 'tp-rss'))) . '</strong></p>';
+      }
     }
   }
   if ($ret) {
     return $ret;
   }
   return '';
+}
+
+/**
+ * for actions this function will style the links to be appended to the body.
+ */
+function _build_actions_for_yahoo_rss_feed($content, $from = '') {
+  $ret = '';
+  $url = '';
+  if(!empty($content)) {
+    $parts = explode(',', $content);
+    foreach ($parts as $part) {
+      $part = trim($part);
+      $tmpnode = node_load($part);
+      if(is_object($tmpnode)) {
+        $actype = field_get_items('node',$tmpnode,'field_action_type');
+        if(isset($actype) && is_numeric($actype[0]['tid'])) {
+          $term = taxonomy_term_load($actype[0]['tid']);
+          $acturl = field_get_items('node',$tmpnode,'field_action_url');
+          if(isset($acturl) && $acturl[0]['url']) {
+            $url = $acturl[0]['url'];
+          }
+          $ret .= _action_url_builder($url, $term->name, $tmpnode->title);
+        }
+      }
+    }
+  } else {
+    $api = "http://takeaction.takepart.com";
+    //Need to make api call for action
+    $action_res = drupal_http_request($api."/api/v2/actions/recommended?url=".str_replace('takepart.local','takepart.com',$from));
+    if(isset($action_res)) {
+      $act = json_decode($action_res->data);
+      $act = $act->actions[0];
+      $ret .= _action_url_builder($api.$act->url, $act->type, $act->title);
+    }
+  }
+  if ($ret) {
+    return $ret;
+  }
+  return '';
+}
+
+/**
+ * function to build the return for actions
+ */
+function _action_url_builder($url, $type, $title) {
+  switch($type) {
+    case 'Awareness':
+      $ret = "<p><strong>".t("Get Informed").": &nbsp;".l($title, $url, array('query' => array('cmpid' => 'tp-rss')))."</strong></p>";
+    break;
+    case 'Donation':
+      $ret = "<p><strong>".t("Donate").": &nbsp;".l($title, $url, array('query' => array('cmpid' => 'tp-rss')))."</strong></p>";
+    break;
+    case 'Letter':
+      $ret = "<p><strong>".t("Send a Letter").": &nbsp;".l($title, $url, array('query' => array('cmpid' => 'tp-rss')))."</strong></p>";
+    break;
+    case 'Message':
+      $ret = "<p><strong>".t("Send your Support").": &nbsp;".l($title, $url, array('query' => array('cmpid' => 'tp-rss')))."</strong></p>";
+    break;
+    case 'Petition':
+      $ret = "<p><strong>".t("Sign the Petition").": &nbsp;".l($title, $url, array('query' => array('cmpid' => 'tp-rss')))."</strong></p>";
+    break;
+    case 'Pledge':
+      $ret = "<p><strong>".t("Take the Pledge").": &nbsp;".l($title, $url, array('query' => array('cmpid' => 'tp-rss')))."</strong></p>";
+    break;
+    case 'Story':
+      $ret = "<p><strong>".t("Tell us your Story").": &nbsp;".l($title, $url, array('query' => array('cmpid' => 'tp-rss')))."</strong></p>";
+    break;
+    default:
+      $ret = "<p><strong>".t("Sign the Petition").": &nbsp;".l($title, $url, array('query' => array('cmpid' => 'tp-rss')))."</strong></p>";
+    break;
+  }
+  return $ret;
 }
 
 /*
@@ -313,23 +391,23 @@ function repl_only_ent($str) {
   $ent);
 }
 
-function CleanupSmartQuotes($text) { 
-  $badwordchars=array( 
-                            chr(145), 
-                            chr(146), 
-                            chr(147), 
-                            chr(148), 
+function CleanupSmartQuotes($text) {
+  $badwordchars=array(
+                            chr(145),
+                            chr(146),
+                            chr(147),
+                            chr(148),
                             chr(151),
 					   chr(226)
-  ); 
+  );
 
-  $fixedwordchars=array( 
-                            "'", 
-                            "'", 
-                            '&#0x22;', 
-                            '&#0x22;', 
+  $fixedwordchars=array(
+                            "'",
+                            "'",
+                            '&#0x22;',
+                            '&#0x22;',
                             '&#0x2014;',
 					   '&#0x2014;'
-  ); 
-        return str_replace($badwordchars,$fixedwordchars,$text); 
-} 
+  );
+        return str_replace($badwordchars,$fixedwordchars,$text);
+}
