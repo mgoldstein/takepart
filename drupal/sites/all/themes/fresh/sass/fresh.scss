@@ -182,6 +182,12 @@ body {
 }
 .fresh-content-wrapper {
   position: relative;
+  .advertisement {
+    padding: 0 15px;
+    @include breakpoint($breakpoint-phablet){
+      padding: 0;
+    }
+  }
 }
 
 .sticky-wrapper {
