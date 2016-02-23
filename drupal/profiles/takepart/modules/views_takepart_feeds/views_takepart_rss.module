@@ -332,7 +332,7 @@ function _build_actions_for_yahoo_rss_feed($content, $from = '') {
   } else {
     $api = "http://takeaction.takepart.com";
     //Need to make api call for action
-    $action_res = drupal_http_request($api."/api/v2/actions/recommended?url=".str_replace('takepart.local','takepart.com',$from));
+    $action_res = drupal_http_request($api."/api/v2/actions/recommended?url=".$from);
     if(isset($action_res)) {
       $act = json_decode($action_res->data);
       $act = $act->actions[0];
