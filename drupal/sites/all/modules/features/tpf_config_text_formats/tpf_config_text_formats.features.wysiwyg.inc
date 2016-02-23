@@ -1,18 +1,18 @@
 <?php
 /**
  * @file
- * tpf_content_campaigns.features.wysiwyg.inc
+ * tpf_config_text_formats.features.wysiwyg.inc
  */
 
 /**
  * Implements hook_wysiwyg_default_profiles().
  */
-function tpf_content_campaigns_wysiwyg_default_profiles() {
+function tpf_config_text_formats_wysiwyg_default_profiles() {
   $profiles = array();
 
-  // Exported profile: campaign_full_html
-  $profiles['campaign_full_html'] = array(
-    'format' => 'campaign_full_html',
+  // Exported profile: full_html
+  $profiles['full_html'] = array(
+    'format' => 'full_html',
     'editor' => 'ckeditor',
     'settings' => array(
       'default' => 1,
@@ -27,7 +27,6 @@ function tpf_content_campaigns_wysiwyg_default_profiles() {
           'Underline' => 1,
           'JustifyLeft' => 1,
           'JustifyCenter' => 1,
-          'JustifyRight' => 1,
           'BulletedList' => 1,
           'NumberedList' => 1,
           'Undo' => 1,
@@ -44,6 +43,7 @@ function tpf_content_campaigns_wysiwyg_default_profiles() {
           'PasteText' => 1,
           'PasteFromWord' => 1,
           'RemoveFormat' => 1,
+          'Format' => 1,
           'Styles' => 1,
           'Table' => 1,
           'Scayt' => 1,
@@ -65,21 +65,14 @@ function tpf_content_campaigns_wysiwyg_default_profiles() {
       'remove_linebreaks' => 1,
       'apply_source_formatting' => 1,
       'paste_auto_cleanup_on_paste' => 1,
-      'block_formats' => 'p,h2,h3,h4,h5,h6,div.primary',
+      'block_formats' => 'p,address,pre,h2,h3,h4,h5,h6,div,blockquote',
       'css_setting' => 'self',
-      'css_path' => '/sites/all/themes/tp4/css/wysiwyg.css?v=2',
-      'css_classes' => 'h1=h1
-h2=h2
-h3=h3
-h4=h4
-h5=h5
-h6=h6
-p=p
-primary headline=span.primary-headline
-primary button=span.primary-button
-secondary button=span.secondary-button
-media caption=span.media-caption
-link 1=span.link-1',
+      'css_path' => '/profiles/takepart/themes/takepart3/css/wysiwyg.css',
+      'css_classes' => 'Align Image Left=img.align-left
+Align Image Right=img.align-right
+legacy caption=div.caption
+pull quote=q.pull-quote
+photo wrapper=div.photo-wrapper',
     ),
   );
 

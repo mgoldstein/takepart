@@ -26306,6 +26306,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Ad Side');
   t('Ad Type');
   t('Admin Title');
+  t('Analytics Title');
   t('Anchor Tag');
   t('Authentication Link');
   t('Author(s)');
@@ -26393,7 +26394,6 @@ Note: If you manually reference more items than selected here, the number refere
   t('OAuth Token Secret');
   t('Only needed if you choose List in #3 (Type). To get the list name, go to your list and it should be the name after /lists/ in the URL. The list name in this URL  https://twitter.com/takepart/lists/mylistname is mylistname');
   t('Page Title for SEO.');
-  t('Analytics Title');
   t('Place embed code here if a URL for an iframe does not exist.  This field will not display if iframe exists.');
   t('Please go to authentication link to get the Twitter Pin');
   t('Promo Headline');
@@ -26425,6 +26425,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('This field will be used for creating the url for Campaign Pages that reference this Campaign.  DO NOT include backslashes.  (example: takepart-live)');
   t('This is also used to populate social share copy.');
   t('This is automatically generated.');
+  t('This title is used for analytic purposes It will auto-populate after publish.');
   t('Thumbnail Image');
   t('Topic');
   t('Transparent Nav');
