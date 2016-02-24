@@ -19621,6 +19621,91 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
+  // Exported field_instance: 'node-campaign_card_text-field_ambient_video'
+  $field_instances['node-campaign_card_text-field_ambient_video'] = array(
+    'bundle' => 'campaign_card_text',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'If Checked, the minimum card height will be overridden on the campaign page.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 18,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ambient_video',
+    'label' => 'Ambient Video',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 23,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign_card_text-field_campaign_background'
   $field_instances['node-campaign_card_text-field_campaign_background'] = array(
     'bundle' => 'campaign_card_text',
@@ -26306,6 +26391,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Ad Side');
   t('Ad Type');
   t('Admin Title');
+  t('Ambient Video');
   t('Analytics Title');
   t('Anchor Tag');
   t('Authentication Link');
@@ -26350,6 +26436,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Height in pixels.  Do not include \'px\'');
   t('How many news articles do you want to display?
 Note: If you manually reference more items than selected here, the number referenced will override your selection here.');
+  t('If Checked, the minimum card height will be overridden on the campaign page.');
   t('If you want the background to be fixed.  A use case would be if you want backgrounds to seemingly expand across two trays/cards.');
   t('Iframe');
   t('Image Link');

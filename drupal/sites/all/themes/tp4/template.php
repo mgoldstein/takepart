@@ -571,9 +571,6 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
  */
 function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
-  // dpm($variables, 'variables');
-  // dpm($variables['node'], 'variables node');
-
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
   if(!empty($instructional)){
@@ -1597,6 +1594,12 @@ function tp4_campaign_background_rules(&$variables){
 
     if($video_poster = field_get_items('node', $variables['node'], 'field_campaign_bg_video_poster')){
       $background = file_create_url($video_poster[0]['uri']);
+    }
+    //Ambient Video Check
+    if($is_ambient = field_get_items('node' , $variables['node'] , 'field_ambient_video')) {
+      if ($is_ambient[0]['value'] == 1) {
+        $variables['classes_array'][] = 'is-ambient';
+      }
     }
 
     $variables['attributes_array']['data-video-bg'] = "[\"$background\", \"$video\"]";

@@ -108,8 +108,12 @@
       $(window).on('load resize', function() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout($.proxy(adjustCardHeightsAndPadding, this), 250);
-        clearTimeout(resizeVideo);
-        resizeVideo = setTimeout($.proxy(adjustCardBackgroundVideo, this), 150);
+        //Activate ambient video
+        if ($('.is-ambient').length != 0) {
+          clearTimeout(resizeVideo);
+          resizeVideo = setTimeout($.proxy(adjustCardBackgroundVideo, this), 150);
+        }
+
       });
 
       //addresses issue with hover state - removed touchstart
