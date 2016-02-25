@@ -19404,7 +19404,6 @@ Note: If you manually reference more items than selected here, the number refere
       'module' => 'entityreference',
       'settings' => array(
         'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
