@@ -564,6 +564,20 @@
                         $(this).appendTo('body');
                     });
 
+                    /* Initialize player ahead of time */
+                    $('.modal-content.jwp').each(function(){
+                      var playerId = $(this).data('jwp-id');
+
+                      var file = $(this).data('jwp-file');
+                      window.playerInstance = [];
+                      playerInstance[playerId] = jwplayer('jwp-' + playerId).setup({
+                          file: file,
+                          width: '100%',
+                          aspectratio: '16:9',
+                          primary: 'html5'
+                        });
+                    });
+
                     $('.show-modal').click(function(event){
                         event.preventDefault();
                         var selectedModal = $(this).data('show-modal');
@@ -590,22 +604,17 @@
                         $('#'+whichmodal+ ' video')[0].play();
                     }
 
+
                     // if a jwplayer placeholder exists, play it
-                    if($('#'+whichmodal+ ' .jwp').length){
+                    if($('#'+whichmodal+ '.jwp').length){
 
-                        /* Append Modal Background to Page */
-                        var playerElement = document.createElement('div');
-                        playerElement.setAttribute("id", whichmodal+"-inner");
-                        $('#'+whichmodal+ ' .jwp').append(playerElement);
+                      /* Append Modal Background to Page */
+                      var playerElement = document.createElement('div');
+                      playerElement.setAttribute("id", whichmodal+"-inner");
+                      $('#'+whichmodal+ '.jwp').append(playerElement);
 
-                        var file = $('#'+whichmodal+ ' .jwp').data('jwp-file');
-                        var playerInstance = jwplayer(whichmodal+"-inner").setup({
-                            file: file,
-                            width: '100%',
-                            aspectratio: '16:9',
-                            primary: 'html5'
-                        });
-                        playerInstance.play();
+                      var playerId = $('#'+whichmodal+ '.jwp').data('jwp-id');
+                      window.playerInstance[playerId].play();
                     }
                 }
 
