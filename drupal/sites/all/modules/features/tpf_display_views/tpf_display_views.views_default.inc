@@ -2735,6 +2735,55 @@ print $value;
   $handler->display->display_options['filters']['type']['value'] = array(
     'action' => 'action',
   );
+
+  /* Display: Entity Reference */
+  $handler = $view->new_display('entityreference', 'Entity Reference', 'entityreference_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'entityreference_style';
+  $handler->display->display_options['style_options']['search_fields'] = array(
+    'title' => 'title',
+    'field_action_type' => 0,
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'entityreference_fields';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Action Type */
+  $handler->display->display_options['fields']['field_action_type']['id'] = 'field_action_type';
+  $handler->display->display_options['fields']['field_action_type']['table'] = 'field_data_field_action_type';
+  $handler->display->display_options['fields']['field_action_type']['field'] = 'field_action_type';
+  $handler->display->display_options['fields']['field_action_type']['label'] = '';
+  $handler->display->display_options['fields']['field_action_type']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_action_type']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['link_to_node'] = FALSE;
+  /* Field: Content: Published */
+  $handler->display->display_options['fields']['status']['id'] = 'status';
+  $handler->display->display_options['fields']['status']['table'] = 'node';
+  $handler->display->display_options['fields']['status']['field'] = 'status';
+  $handler->display->display_options['fields']['status']['label'] = '';
+  $handler->display->display_options['fields']['status']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['status']['alter']['text'] = '&#91;[status]&#93;';
+  $handler->display->display_options['fields']['status']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['status']['type'] = 'published-notpublished';
+  $handler->display->display_options['fields']['status']['not'] = 0;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
   $export['published_actions'] = $view;
 
   $view = new view();
