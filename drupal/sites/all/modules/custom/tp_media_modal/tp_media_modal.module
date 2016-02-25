@@ -88,7 +88,15 @@ function tp_media_modal_field_formatter_view($entity_type, $entity, $field, $ins
         }
 
         //Button Text
-        $button_text = !empty($item['button_text']) ? $item['button_text'] : t('Watch Now');
+        if($item['button_type'] == 'default') {
+          $button_text = '<div class="icon i-triangle-right"></div>';
+        }else {
+          $button_text = !empty($item['button_text']) ? $item['button_text'] : t('Watch Now');
+        }
+
+        //If default is selected, use default image
+        //else use text, w/ fallback
+
 
         $element = array('element' => $item, 'field' => $instance, 'display' => $display);
         $elements[$delta] = array(
