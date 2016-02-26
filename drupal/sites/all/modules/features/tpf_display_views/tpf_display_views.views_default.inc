@@ -1218,14 +1218,17 @@ print $file;
   $handler->display->display_options['fields']['field_topic']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_topic']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_topic']['delta_offset'] = '0';
-  /* Field: Content: TAB Action Overrides */
-  $handler->display->display_options['fields']['field_tab_action_override']['id'] = 'field_tab_action_override';
-  $handler->display->display_options['fields']['field_tab_action_override']['table'] = 'field_data_field_tab_action_override';
-  $handler->display->display_options['fields']['field_tab_action_override']['field'] = 'field_tab_action_override';
-  $handler->display->display_options['fields']['field_tab_action_override']['label'] = '';
-  $handler->display->display_options['fields']['field_tab_action_override']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_tab_action_override']['type'] = 'node_reference_nid';
-  $handler->display->display_options['fields']['field_tab_action_override']['delta_offset'] = '0';
+  /* Field: Content: Inline Replacements */
+  $handler->display->display_options['fields']['field_inline_replacements']['id'] = 'field_inline_replacements';
+  $handler->display->display_options['fields']['field_inline_replacements']['table'] = 'field_data_field_inline_replacements';
+  $handler->display->display_options['fields']['field_inline_replacements']['field'] = 'field_inline_replacements';
+  $handler->display->display_options['fields']['field_inline_replacements']['label'] = '';
+  $handler->display->display_options['fields']['field_inline_replacements']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_inline_replacements']['type'] = 'entityreference_entity_id';
+  $handler->display->display_options['fields']['field_inline_replacements']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_inline_replacements']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Node: Published at */
   $handler->display->display_options['sorts']['published_at']['id'] = 'published_at';
@@ -1319,14 +1322,6 @@ print $file;
   $handler->display->display_options['fields']['field_related_stories']['type'] = 'node_reference_nid';
   $handler->display->display_options['fields']['field_related_stories']['delta_offset'] = '0';
   $handler->display->display_options['fields']['field_related_stories']['separator'] = ',,,';
-  /* Field: Content: TAB Action Overrides */
-  $handler->display->display_options['fields']['field_tab_action_override']['id'] = 'field_tab_action_override';
-  $handler->display->display_options['fields']['field_tab_action_override']['table'] = 'field_data_field_tab_action_override';
-  $handler->display->display_options['fields']['field_tab_action_override']['field'] = 'field_tab_action_override';
-  $handler->display->display_options['fields']['field_tab_action_override']['label'] = '';
-  $handler->display->display_options['fields']['field_tab_action_override']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_tab_action_override']['type'] = 'node_reference_nid';
-  $handler->display->display_options['fields']['field_tab_action_override']['delta_offset'] = '0';
   /* Field: Content: Main Image */
   $handler->display->display_options['fields']['field_article_main_image']['id'] = 'field_article_main_image';
   $handler->display->display_options['fields']['field_article_main_image']['table'] = 'field_data_field_article_main_image';
@@ -1347,6 +1342,17 @@ print $file;
   $handler->display->display_options['fields']['nid']['label'] = '';
   $handler->display->display_options['fields']['nid']['exclude'] = TRUE;
   $handler->display->display_options['fields']['nid']['element_label_colon'] = FALSE;
+  /* Field: Content: Inline Replacements */
+  $handler->display->display_options['fields']['field_inline_replacements']['id'] = 'field_inline_replacements';
+  $handler->display->display_options['fields']['field_inline_replacements']['table'] = 'field_data_field_inline_replacements';
+  $handler->display->display_options['fields']['field_inline_replacements']['field'] = 'field_inline_replacements';
+  $handler->display->display_options['fields']['field_inline_replacements']['label'] = '';
+  $handler->display->display_options['fields']['field_inline_replacements']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_inline_replacements']['type'] = 'entityreference_entity_id';
+  $handler->display->display_options['fields']['field_inline_replacements']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_inline_replacements']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['sorts'] = FALSE;
   /* Sort criterion: Node: Published at */
   $handler->display->display_options['sorts']['published_at']['id'] = 'published_at';
@@ -1576,14 +1582,16 @@ print $file;
   $handler->display->display_options['fields']['field_topic']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_topic']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_topic']['delta_offset'] = '0';
-  /* Field: Content: TAB Action Overrides */
-  $handler->display->display_options['fields']['field_tab_action_override']['id'] = 'field_tab_action_override';
-  $handler->display->display_options['fields']['field_tab_action_override']['table'] = 'field_data_field_tab_action_override';
-  $handler->display->display_options['fields']['field_tab_action_override']['field'] = 'field_tab_action_override';
-  $handler->display->display_options['fields']['field_tab_action_override']['label'] = '';
-  $handler->display->display_options['fields']['field_tab_action_override']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_tab_action_override']['type'] = 'node_reference_nid';
-  $handler->display->display_options['fields']['field_tab_action_override']['delta_offset'] = '0';
+  /* Field: Content: Inline Replacements */
+  $handler->display->display_options['fields']['field_inline_replacements']['id'] = 'field_inline_replacements';
+  $handler->display->display_options['fields']['field_inline_replacements']['table'] = 'field_data_field_inline_replacements';
+  $handler->display->display_options['fields']['field_inline_replacements']['field'] = 'field_inline_replacements';
+  $handler->display->display_options['fields']['field_inline_replacements']['label'] = '';
+  $handler->display->display_options['fields']['field_inline_replacements']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_inline_replacements']['settings'] = array(
+    'link' => 0,
+  );
+  $handler->display->display_options['fields']['field_inline_replacements']['delta_offset'] = '0';
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */

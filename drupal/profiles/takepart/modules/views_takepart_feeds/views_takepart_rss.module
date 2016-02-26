@@ -316,16 +316,22 @@ function _build_actions_for_yahoo_rss_feed($content, $from = '') {
     $parts = explode(',', $content);
     foreach ($parts as $part) {
       $part = trim($part);
-      $tmpnode = node_load($part);
-      if(is_object($tmpnode)) {
-        $actype = field_get_items('node',$tmpnode,'field_action_type');
-        if(isset($actype) && is_numeric($actype[0]['tid'])) {
-          $term = taxonomy_term_load($actype[0]['tid']);
-          $acturl = field_get_items('node',$tmpnode,'field_action_url');
-          if(isset($acturl) && $acturl[0]['url']) {
-            $url = $acturl[0]['url'];
+      $tmpic = entity_load('inline_content', array($part));
+      if(isset($tmpic) && !empty($tmpic)) {
+        if($tmpic[$part]->type == 'tap_embed') {
+          $actionid = field_get_items('inline_content',$tmpic[$part],'field_ic_action');
+          if(isset($actionid) && !empty($actionid)) {
+            $action_node = node_load($actionid[0]['nid']);
+            $actype = field_get_items('node',$action_node,'field_action_type');
+            if(isset($actype) && is_numeric($actype[0]['tid'])) {
+              $term = taxonomy_term_load($actype[0]['tid']);
+              $acturl = field_get_items('node',$action_node,'field_action_url');
+              if(isset($acturl) && $acturl[0]['url']) {
+                $url = $acturl[0]['url'];
+              }
+              $ret .= _action_url_builder($url, $term->name, $action_node->title);
+            }
           }
-          $ret .= _action_url_builder($url, $term->name, $tmpnode->title);
         }
       }
     }
