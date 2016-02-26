@@ -767,13 +767,17 @@
 	          e.preventDefault();
 	          curItem = item;
 	        }
-	      });
-
-	      /* Show child menu. See _mobile-menu.scss */
-	      $('#tp-drawers #block-menu-menu-megamenu > ul.menu  > li').click(function(e){
-	        if (!$(this).find('ul').is(":visible")) {
-	          $(this).find('ul').show();
-	        }
+					if (!$(this).siblings('ul').is(":visible")) {
+						$(this).siblings('ul').show();
+						//Hack for ios scroll not working it needs a kick start.
+						//There is an issue where you have to expand 2 menus for the scroll
+						//to work.
+						if($('#tp-drawers .snap-drawer').scrollTop() <= 1) {
+							//Should be fast enough not to notice
+							$('#tp-drawers .snap-drawer').scrollTop(1);
+							$('#tp-drawers .snap-drawer').scrollTop(0);
+						}
+					}
 	      });
 			});
     }
