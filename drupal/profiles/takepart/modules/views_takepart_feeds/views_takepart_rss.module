@@ -322,6 +322,12 @@ function _build_actions_for_yahoo_rss_feed($content, $from = '') {
           $actionid = field_get_items('inline_content',$tmpic[$part],'field_ic_action');
           if(isset($actionid) && !empty($actionid)) {
             $action_node = node_load($actionid[0]['nid']);
+            //ic label override
+            $label = field_get_items('inline_content',$tmpic[$part],'field_ic_label');
+            $title = $action_node->title;
+            if(isset($label) && !empty($label)) {
+              $title = $label[0]['value'];
+            }
             $actype = field_get_items('node',$action_node,'field_action_type');
             if(isset($actype) && is_numeric($actype[0]['tid'])) {
               $term = taxonomy_term_load($actype[0]['tid']);
@@ -329,7 +335,7 @@ function _build_actions_for_yahoo_rss_feed($content, $from = '') {
               if(isset($acturl) && $acturl[0]['url']) {
                 $url = $acturl[0]['url'];
               }
-              $ret .= _action_url_builder($url, $term->name, $action_node->title);
+              $ret .= _action_url_builder($url, $term->name, $title);
             }
           }
         }

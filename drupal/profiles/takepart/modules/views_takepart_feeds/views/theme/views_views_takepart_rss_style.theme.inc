@@ -103,6 +103,8 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
      if($actions) {
        $actions .= "\n\n";
      }
+   } elseif ($id == 'view_node') {
+     $view = "<p>".$object->content."</p>";
    } elseif ($id == 'body' && $object->content != '') {
 	   $content = $object->content;
 	 }
@@ -113,9 +115,13 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
       //Load from api call
       $content .= _build_actions_for_yahoo_rss_feed('', $poslink) . "\n\n";
     }
+    if($view) {
+      $content .= $view;
+    }
     if ($related_content) {
       $content .= "\n\n<nav><h2><strong>Related stories on TakePart:</strong></h2><br/>\n\n" . $related_content . '</nav>';
     }
+
     $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/") . $s;
     $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":" . $_SERVER["SERVER_PORT"]);
     $urlprefix = $protocol . "://" . $_SERVER['SERVER_NAME'] . $port;
