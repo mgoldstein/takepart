@@ -1194,7 +1194,6 @@ print $file;
   $handler->display->display_options['fields']['view_node']['table'] = 'views_entity_node';
   $handler->display->display_options['fields']['view_node']['field'] = 'view_node';
   $handler->display->display_options['fields']['view_node']['label'] = '';
-  $handler->display->display_options['fields']['view_node']['exclude'] = TRUE;
   $handler->display->display_options['fields']['view_node']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['view_node']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['view_node']['text'] = 'Read More on TAKEPART';
@@ -1203,8 +1202,6 @@ print $file;
   $handler->display->display_options['fields']['body']['table'] = 'field_data_body';
   $handler->display->display_options['fields']['body']['field'] = 'body';
   $handler->display->display_options['fields']['body']['label'] = '';
-  $handler->display->display_options['fields']['body']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['body']['alter']['text'] = '[body] <p>[view_node]</p>';
   $handler->display->display_options['fields']['body']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['body']['hide_alter_empty'] = FALSE;
   $handler->display->display_options['fields']['body']['settings'] = array(
