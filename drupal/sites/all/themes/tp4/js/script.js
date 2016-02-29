@@ -569,12 +569,14 @@
                       var playerId = $(this).data('jwp-id');
 
                       var file = $(this).data('jwp-file');
+                      var title = $(this).data('jwp-title');
                       window.playerInstance = [];
                       playerInstance[playerId] = jwplayer('jwp-' + playerId).setup({
                           file: file,
                           width: '100%',
                           aspectratio: '16:9',
-                          primary: 'html5'
+                          primary: 'html5',
+                          title: title
                         });
                     });
 

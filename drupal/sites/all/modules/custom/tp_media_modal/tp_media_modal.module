@@ -94,14 +94,11 @@ function tp_media_modal_field_formatter_view($entity_type, $entity, $field, $ins
           $button_text = !empty($item['button_text']) ? $item['button_text'] : t('Watch Now');
         }
 
-        //If default is selected, use default image
-        //else use text, w/ fallback
-
-
         $element = array('element' => $item, 'field' => $instance, 'display' => $display);
         $elements[$delta] = array(
           '#markup' => theme('tp_media_modal_video', array(
             'video_file' => isset($video_file) ? $video_file : '',
+            'video_title' => $video_node->title,
             'button_content'=> $button_text,
             'id' => isset($entity->nid) ? $entity->nid : ''
           )),
@@ -240,6 +237,7 @@ function tp_media_modal_theme() {
       'template' => 'templates/tp-media-modal-video',
       'variables' => array (
         'button_content' => '',
+        'video_title' => '',
         'video_file' => '',
         'id' => ''
       )
