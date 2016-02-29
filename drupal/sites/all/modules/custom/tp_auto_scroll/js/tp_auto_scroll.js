@@ -36,6 +36,9 @@
               /* Not returning a json object (Drupal is slow at that) so let's convert it here */
               data = jQuery.parseJSON(data);
 
+              //Set the article autoload page number
+              data.ddl.eventInfo['autoloadCount'] = 'page '+ page + 3;
+
               /* Append ajax settings */
               jQuery.extend(Drupal.settings, data.settings);
 
