@@ -312,6 +312,7 @@ function _build_list_for_yahoo_rss_feed($content) {
 function _build_actions_for_yahoo_rss_feed($content, $from = '') {
   $ret = '';
   $url = '';
+  $inf = false;
   if(!empty($content)) {
     $parts = explode(',', $content);
     foreach ($parts as $part) {
@@ -323,6 +324,7 @@ function _build_actions_for_yahoo_rss_feed($content, $from = '') {
           if(isset($action_type) && !empty($action_type) && $action_type[0]['value'] == 'influence_widget') {
             //if the action type is influence we do not want it to show up in
             //the feed. so we just move along
+            $inf = true;
             continue;
           }
           $actionid = field_get_items('inline_content',$tmpic[$part],'field_ic_action');
@@ -359,6 +361,8 @@ function _build_actions_for_yahoo_rss_feed($content, $from = '') {
   }
   if ($ret) {
     return $ret;
+  } elseif ($inf) {
+    return 'none';
   }
   return '';
 }
