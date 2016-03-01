@@ -171,7 +171,9 @@
           setTimeout( bindStickupToMenus, 2000 );
 
         //ensures that this only runs on campaign displays
-        if ($('body').hasClass('campaign-display')) {
+        //if there is a transparent nav then the page slides under the header
+        //to the top of the page
+        if ($('body').hasClass('campaign-display') && !$('body').hasClass('campaign-transparent-nav')) {
           $(window).scroll(function() {
             if ($('#block-tp-campaigns-tp-campaigns-hero').hasClass('isStuck')) {
               $('#main-wrap').css('margin-top', parseInt($('#block-tp-campaigns-tp-campaigns-hero').height()) + 'px');
