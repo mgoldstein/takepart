@@ -10,4 +10,6 @@ function tp_content_services_install() {
     ->fields(array('weight' => 100))
     ->condition('name', 'tp_content_services')
     ->execute();
+  variable_set('content_services_endpoint','/api/v3/content_publish');
+  variable_set('content_services_access_token','84628ca2-ca9e-11e3-9e4c-3374aaf7d853');
 }

@@ -81,8 +81,10 @@ function tp_content_services_notify_service($node, $insup = '') {
      "access_token": "'.variable_get('content_services_access_token','').'"
   }';
 
+  $endpoint = variable_get('takepart_api_domain', '').variable_get('content_services_endpoint','');
+
   //Make call to endpoint
-  $ret = drupal_http_request(variable_get('content_services_endpoint',''),
+  $ret = drupal_http_request($endpoint,
     array(
       'headers' => array('Content-Type' => 'application/json', 'Accept' => 'application/json'),
       'method' => 'POST',
