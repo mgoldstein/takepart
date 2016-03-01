@@ -318,7 +318,13 @@ function _build_actions_for_yahoo_rss_feed($content, $from = '') {
       $part = trim($part);
       $tmpic = entity_load('inline_content', array($part));
       if(isset($tmpic) && !empty($tmpic)) {
-        if($tmpic[$part]->type == 'tap_embed') {
+        if($tmpic[$part]->type == 'tap_embed' || $tmpic[$part]->type == 'take_action_widget') {
+          $action_type = field_get_items('inline_content',$tmpic[$part],'field_ic_tap_widget_type');
+          if(isset($action_type) && !empty($action_type) && $action_type[0]['value'] == 'influence_widget') {
+            //if the action type is influence we do not want it to show up in
+            //the feed. so we just move along
+            continue;
+          }
           $actionid = field_get_items('inline_content',$tmpic[$part],'field_ic_action');
           if(isset($actionid) && !empty($actionid)) {
             $action_node = node_load($actionid[0]['nid']);
