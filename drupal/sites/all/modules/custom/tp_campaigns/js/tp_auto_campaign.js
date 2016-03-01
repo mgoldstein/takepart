@@ -186,6 +186,9 @@
   var jumptocheck = function(number) {
     $('#slider_'+number).find('a').each(function(){
       var tmphref = $(this).attr('href');
+      if (typeof tmphref == 'undefined') {
+        return false;
+      }
       var tmpjump = tmphref.indexOf("#");
       if(tmpjump != -1 && tmpjump != tmphref.length && typeof window.jumptoIntervalid == "undefined") {
         //Kill the scroll
