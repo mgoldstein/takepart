@@ -59,7 +59,6 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
     $xml .= "\t\t<item>\n";
     $content = '';
     $related_content = '';
-    $actions = '';
 
     foreach ($row as $id => $object) {
 	 if ($id === 'created' || $id === 'published_at') {
@@ -99,8 +98,8 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
 	 } elseif ($id == 'inline_content_embedded' && $object->content != '') {
 	   $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
 	 } elseif ($id == 'field_inline_replacements') {
-     $actions .= _build_actions_for_yahoo_rss_feed($object->content, $poslink);
-     if($actions) {
+     $actions = _build_actions_for_yahoo_rss_feed($object->content, $poslink);
+     if($actions && $actions != 'none') {
        $actions .= "\n\n";
      }
    } elseif ($id == 'view_node') {
@@ -109,11 +108,14 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
 	   $content = $object->content;
 	 }
     }
-    if ($actions) {
+
+    if ($actions && $actions != 'none') {
       $content .= $actions;
     } else {
-      //Load from api call
-      $content .= _build_actions_for_yahoo_rss_feed('', $poslink) . "\n\n";
+      if($actions != 'none') {
+        //Load from api call
+        $content .= _build_actions_for_yahoo_rss_feed('', $poslink) . "\n\n";
+      }
     }
     if($view) {
       $content .= $view;
