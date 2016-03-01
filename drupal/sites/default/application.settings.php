@@ -111,16 +111,20 @@ if (!array_key_exists('participant_api_accounts', $conf)) {
 switch(ENVIRONMENT) {
   case 'development';
     $domain = 'dev-api.participant.com';
+    $conf['takepart_api_domain'] = "http://dev-api.takepart.com";
   break;
   case 'qa':
     $domain = 'qa-api.participant.com';
+    $conf['takepart_api_domain'] = "http://qa-api.takepart.com";
   break;
   case 'staging':
     $domain = 'stage-api.participant.com';
+    $conf['takepart_api_domain'] = "http://stage-api.takepart.com";
   break;
   case 'production':
   default:
     $domain = 'api.participant.com';
+    $conf['takepart_api_domain'] = "http://api.takepart.com";
   break;
 }
 $conf['participant_api_accounts'] += array(
