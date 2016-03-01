@@ -37,7 +37,8 @@
               data = jQuery.parseJSON(data);
 
               //Set the article autoload page number
-              data.ddl.eventInfo['autoloadCount'] = 'page '+ page + 3;
+              var pageNumber = page + 3;
+              data.ddl.eventInfo['autoloadCount'] = 'Page ' + pageNumber;
 
               /* Append ajax settings */
               jQuery.extend(Drupal.settings, data.settings);
