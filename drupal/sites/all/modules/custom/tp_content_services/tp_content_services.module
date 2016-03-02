@@ -93,7 +93,7 @@ function tp_content_services_notify_service($node, $insup = '') {
      "author":"'.$author.'",
      "access_token": "'.variable_get('content_services_access_token','').'"
   }';
-error_log($json);
+
   $endpoint = variable_get('takepart_api_domain', '').variable_get('content_services_endpoint','');
 
   //Make call to endpoint
