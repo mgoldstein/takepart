@@ -61,10 +61,20 @@ function tp_content_services_notify_service($node, $insup = '') {
   }
   //image - full path to content image
   $image = '';
-  if($field_main_image = field_get_items('node', $node, 'field_page_main_image')){
+  if($field_main_image = field_get_items('node', $node, 'field_article_main_image')){
+    $field_main_image = file_load($field_main_image[0]['fid']);
+    $image = file_create_url($field_main_image->uri);
+  } elseif ($field_main_image = field_get_items('node', $node, 'field_gallery_main_image')) {
     $field_main_image = file_load($field_main_image[0]['fid']);
     $image = file_create_url($field_main_image->uri);
   }
+  //thumbnail - path to image style
+  $thumb = $image;
+  if($field_thumb_image = field_get_items('node', $node, 'field_thumbnail')) {
+    $field_thumb_image = file_load($field_thumb_image[0]['fid']);
+    $thumb = image_style_url('media_thumbnail', $field_thumb_image->uri);
+  }
+
   $json = '{
      "url":"'.url('node/'.$node->nid, array('absolute' => TRUE)).'",
      "title":"'.$node->title.'",
@@ -75,12 +85,15 @@ function tp_content_services_notify_service($node, $insup = '') {
      "image_url":{
         "full":{
            "url":"'.$image.'"
+        },
+        "thumb":{
+           "url":"'.$thumb.'"
         }
      },
      "author":"'.$author.'",
      "access_token": "'.variable_get('content_services_access_token','').'"
   }';
-
+error_log($json);
   $endpoint = variable_get('takepart_api_domain', '').variable_get('content_services_endpoint','');
 
   //Make call to endpoint
