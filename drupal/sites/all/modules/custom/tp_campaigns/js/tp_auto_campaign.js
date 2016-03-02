@@ -89,7 +89,9 @@
            }
            //INIT Facebook again
            //Targeting the slide that was just loaded
-           FB.XFBML.parse(document.getElementById('slider_'+(window.campaignTray+1)));
+           if(typeof FB != 'undefined') {
+             FB.XFBML.parse(document.getElementById('slider_'+(window.campaignTray+1)));
+           }
            //Check for ads and try to display the
            $('.node-campaign-page .block-boxes-ga_ad').each(function(){
              //check if the ad has loaded
