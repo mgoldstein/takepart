@@ -251,7 +251,7 @@ function tp_video_player_field_formatter_view($entity_type, $entity, $field,
   if ($settings['global_default'] == 'video_iframe') {
     $settings['global_default'] = 'video_full_page';
   }
-  
+
   if ($display['type'] === 'tp_video_player' && count($items) > 0) {
     // Load any available node specific configuration.
     $configuration = tp_video_player_load_entity_configuration($entity_type,
@@ -327,8 +327,8 @@ function tp_video_player_video_allowed_regions($entity_type, $entity) {
  * Build a render array for a video player.
  */
 function tp_video_player_player_view($configuration, $files, $display = NULL) {
-
-  $id = drupal_html_id('tp_video_player-' . time());
+  //Making this very unique
+  $id = drupal_html_id(uniqid('tp-video-player-').'-'.mt_rand());
   $settings = tp_video_player_build_settings($configuration, $files, $display);
 
   //ensure that config is set and then chromeless is true
@@ -344,7 +344,7 @@ function tp_video_player_player_view($configuration, $files, $display = NULL) {
     $chromeless = FALSE;
     $settings['chromeless'] = FALSE;
   }
-  
+
   $video = array(
     '#theme' => 'tp_video_player',
     '#settings' => $settings,
@@ -380,7 +380,7 @@ function theme_tp_video_player($variables) {
   else {
     $chromeless = FALSE;
   }
-  
+
   $id = $variables['id'];
   $attributes = array(
     'id' => $id,
@@ -397,7 +397,7 @@ function theme_tp_video_player($variables) {
       )
     )
   );
-  
+
   $turn_off = l('stop auto-play', '#',
     array(
       'external' => TRUE,
@@ -406,7 +406,7 @@ function theme_tp_video_player($variables) {
       )
     )
   );
-  
+
   //chromeless player
   $controls = theme('html_tag', array(
     'element' => array(
@@ -416,13 +416,13 @@ function theme_tp_video_player($variables) {
         'class' => array('chromeless-controls')
       )
   )));
-  
+
   $script = '<div' . drupal_attributes($attributes) . '>' .
     '<script type="text/json">' .
     json_encode($variables['settings']) .
     '</script>' .
     '</div>';
-    
+
   $output = array(
     '#theme' => 'html_tag',
     '#tag' => 'div',
@@ -432,7 +432,7 @@ function theme_tp_video_player($variables) {
       'data-video-control-id' => $id
     )
   );
-  
+
   return drupal_render($output);
 }
 
