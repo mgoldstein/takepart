@@ -56,16 +56,18 @@
       jQuery('.videoBG_wrapper video').each(function(index){
         //Get the card height since the video itself could be a different height
         var vid = jQuery(this).get(index);
-        var vid_parent = jQuery(this).parent().parent();
-        var is_paused = vid.paused;
-        if (vid_parent.isInViewport(null,0.7)) {
-          if (is_paused) {
-            vid.play();
+        if(typeof vid !== 'undefined') {
+          var vid_parent = jQuery(this).parent().parent();
+          var is_paused = vid.paused;
+          if (vid_parent.isInViewport(null,0.7)) {
+            if (is_paused) {
+              vid.play();
+            }
           }
-        }
-        else {
-          if (!is_paused) {
-            vid.pause();
+          else {
+            if (!is_paused) {
+              vid.pause();
+            }
           }
         }
      });
