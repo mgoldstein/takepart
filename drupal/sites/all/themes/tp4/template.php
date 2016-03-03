@@ -67,7 +67,7 @@ function tp4_preprocess_html(&$variables, $hook) {
       $variables['classes_array'][] = drupal_html_class('campaign-display');
       //Transparent nav body class
       $transnav = field_get_items('node', $node, 'field_transparent_nav');
-      if($transnav) {
+      if(isset($transnav) && $transnav[0]['value'] == 1) {
         $variables['classes_array'][] = drupal_html_class('campaign-transparent-nav');
       }
     }
@@ -330,7 +330,7 @@ function tp4_preprocess_page(&$variables) {
     $transnav = field_get_items('node', $variables['node'], 'field_transparent_nav');
     $variables['transnav'] = '';
     $variables['drawers'] = '';
-    if($transnav) {
+    if(isset($transnav) && $transnav[0]['value'] == 1) {
       //Class so we know it is transparent
       $variables['transnav'] = 'transparent';
       //Logo
@@ -570,9 +570,6 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
  * Override or insert variables into the campaign card media template
  */
 function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
-
-  // dpm($variables, 'variables');
-  // dpm($variables['node'], 'variables node');
 
   //content
   $instructional = tp4_render_field_value('node', $variables['node'], 'field_campaign_instructional');
@@ -1597,6 +1594,12 @@ function tp4_campaign_background_rules(&$variables){
 
     if($video_poster = field_get_items('node', $variables['node'], 'field_campaign_bg_video_poster')){
       $background = file_create_url($video_poster[0]['uri']);
+    }
+    //Ambient Video Check
+    if($is_ambient = field_get_items('node' , $variables['node'] , 'field_ambient_video')) {
+      if ($is_ambient[0]['value'] == 1) {
+        $variables['classes_array'][] = 'is-ambient';
+      }
     }
 
     $variables['attributes_array']['data-video-bg'] = "[\"$background\", \"$video\"]";

@@ -52,7 +52,6 @@ function tpf_content_campaigns_wysiwyg_default_profiles() {
           'Link' => 1,
         ),
         'drupal' => array(
-          'media' => 1,
           'break' => 1,
         ),
       ),

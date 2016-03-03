@@ -141,17 +141,22 @@
         minDragDistance: 5
       });
 
-      $('.slim-nav .menu-toggle').on('click', function(e){
+      $('body:not(.campaign-transparent-nav) .menu-toggle').on('click', function(e){
         e.preventDefault();
         if ( snapper.state().state == "closed" ) {
           $('#campaign-drawers').hide();
           $('#tp-drawers').show();
-      $('#block-menu-menu-megamenu ul li ul').hide();
           snapper.open('left');
+					$(document).on('touchstart touchmove', function(e) {
+            if (!$(e.target).parents('#tp-drawers').length) {
+              e.preventDefault();
+            }
+          });
         }
         else {
           snapper.close();
           $('.snap-drawers').hide();
+					$(document).off('touchstart touchmove');
         }
       });
 
@@ -159,6 +164,7 @@
         if (snapper.state().state == "closed") {
           snapper.close();
           $('.snap-drawers').hide();
+					$(document).off('touchstart touchmove');
         }
       });
     }
@@ -186,11 +192,6 @@
         clickToDrag: false,
         slideIntent: 40,
         minDragDistance: 5
-      });
-
-      $('#block-menu-menu-megamenu ul li ul li a').on('click', function() {
-        snapper.close();
-        $('.snap-drawers').hide();
       });
 
       $('.campaign-menu-toggle').on('click', function(e) {
@@ -563,6 +564,22 @@
                         $(this).appendTo('body');
                     });
 
+                    /* Initialize player ahead of time */
+                    $('.modal-content.jwp').each(function(){
+                      var playerId = $(this).data('jwp-id');
+
+                      var file = $(this).data('jwp-file');
+                      var title = $(this).data('jwp-title');
+                      window.playerInstance = [];
+                      playerInstance[playerId] = jwplayer('jwp-' + playerId).setup({
+                          file: file,
+                          width: '100%',
+                          aspectratio: '16:9',
+                          primary: 'html5',
+                          title: title
+                        });
+                    });
+
                     $('.show-modal').click(function(event){
                         event.preventDefault();
                         var selectedModal = $(this).data('show-modal');
@@ -589,22 +606,17 @@
                         $('#'+whichmodal+ ' video')[0].play();
                     }
 
+
                     // if a jwplayer placeholder exists, play it
-                    if($('#'+whichmodal+ ' .jwp').length){
+                    if($('#'+whichmodal+ '.jwp').length){
 
-                        /* Append Modal Background to Page */
-                        var playerElement = document.createElement('div');
-                        playerElement.setAttribute("id", whichmodal+"-inner");
-                        $('#'+whichmodal+ ' .jwp').append(playerElement);
+                      /* Append Modal Background to Page */
+                      var playerElement = document.createElement('div');
+                      playerElement.setAttribute("id", whichmodal+"-inner");
+                      $('#'+whichmodal+ '.jwp').append(playerElement);
 
-                        var file = $('#'+whichmodal+ ' .jwp').data('jwp-file');
-                        var playerInstance = jwplayer(whichmodal+"-inner").setup({
-                            file: file,
-                            width: '100%',
-                            aspectratio: '16:9',
-                            primary: 'html5'
-                        });
-                        playerInstance.play();
+                      var playerId = $('#'+whichmodal+ '.jwp').data('jwp-id');
+                      window.playerInstance[playerId].play();
                     }
                 }
 
@@ -658,7 +670,7 @@
     attach: function(context, settings) {
 			$('body').once('mobileMenuToggle', function(){
 	      var $body = $('body');
-	      $('.toggle-menu.toggle-left, .left-drawer-control .i-close-x').click(function(){
+	      $('body.campaign-transparent-nav .toggle-menu.toggle-left, .left-drawer-control .i-close-x').click(function(){
 	        if ($body.hasClass('mobile-menu-show')) {
 	          $body.removeClass("mobile-menu-show" );
 	          //enable scroll on tablet
@@ -728,9 +740,8 @@
 
 	Drupal.behaviors.mobileMenuBehaviors = {
     attach: function(context, settings) {
-      /* TODO: TP4 is unexpectedly dependent on the menu being 'exposed'.  Remove this dependency and use classes
-      that come with Drupal */
-			$('#mobile-menu.menu').once('mobile-menu-drop-downs', function(){
+			//For campaign transparent nav
+			$('body.campaign-transparent-nav #mobile-menu.menu').once('mobile-menu-drop-downs', function(){
 	      /* Prevent parent item from clicking through on initial click */
 	      var curItem = false;
 	      $('.mobile-menu > ul > li > a').on( 'click', function( e ) {
@@ -746,6 +757,29 @@
 	        if (!$(this).hasClass('show')) {
 	          $(this).addClass("show" );
 	        }
+	      });
+			});
+			//for all instances of fat nav on tp4
+			$('body:not(.campaign-transparent-nav) #tp-drawers').once('mobile-menu-drop-downs', function(){
+	      /* Prevent parent item from clicking through on initial click */
+	      var curItem = false;
+	      $('#tp-drawers #block-menu-menu-megamenu > ul.menu > li > a').on( 'click', function( e ) {
+	        var item = $( this );
+	        if( item[ 0 ] != curItem[ 0 ] ) {
+	          e.preventDefault();
+	          curItem = item;
+	        }
+					if (!$(this).siblings('ul').is(":visible")) {
+						$(this).siblings('ul').show();
+						//Hack for ios scroll not working it needs a kick start.
+						//There is an issue where you have to expand 2 menus for the scroll
+						//to work.
+						if($('#tp-drawers .snap-drawer').scrollTop() <= 1) {
+							//Should be fast enough not to notice
+							$('#tp-drawers .snap-drawer').scrollTop(1);
+							$('#tp-drawers .snap-drawer').scrollTop(0);
+						}
+					}
 	      });
 			});
     }

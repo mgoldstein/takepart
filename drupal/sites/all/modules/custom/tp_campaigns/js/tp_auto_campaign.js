@@ -56,16 +56,18 @@
       jQuery('.videoBG_wrapper video').each(function(index){
         //Get the card height since the video itself could be a different height
         var vid = jQuery(this).get(index);
-        var vid_parent = jQuery(this).parent().parent();
-        var is_paused = vid.paused;
-        if (vid_parent.isInViewport(null,0.7)) {
-          if (is_paused) {
-            vid.play();
+        if(typeof vid !== 'undefined') {
+          var vid_parent = jQuery(this).parent().parent();
+          var is_paused = vid.paused;
+          if (vid_parent.isInViewport(null,0.7)) {
+            if (is_paused) {
+              vid.play();
+            }
           }
-        }
-        else {
-          if (!is_paused) {
-            vid.pause();
+          else {
+            if (!is_paused) {
+              vid.pause();
+            }
           }
         }
      });
@@ -89,7 +91,9 @@
            }
            //INIT Facebook again
            //Targeting the slide that was just loaded
-           FB.XFBML.parse(document.getElementById('slider_'+(window.campaignTray+1)));
+           if(typeof FB != 'undefined') {
+             FB.XFBML.parse(document.getElementById('slider_'+(window.campaignTray+1)));
+           }
            //Check for ads and try to display the
            $('.node-campaign-page .block-boxes-ga_ad').each(function(){
              //check if the ad has loaded
@@ -186,6 +190,9 @@
   var jumptocheck = function(number) {
     $('#slider_'+number).find('a').each(function(){
       var tmphref = $(this).attr('href');
+      if (typeof tmphref == 'undefined') {
+        return false;
+      }
       var tmpjump = tmphref.indexOf("#");
       if(tmpjump != -1 && tmpjump != tmphref.length && typeof window.jumptoIntervalid == "undefined") {
         //Kill the scroll

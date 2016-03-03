@@ -54,6 +54,9 @@ function tp_more_on_takepart_settings_form($form, &$form_state){
 		'#type' => 'entityreference',
 		'#era_entity_type' => 'node',
 		'#era_bundles' => $content_types,
+    '#era_query_settings' => array(
+      'property_orderby' => array('created', 'DESC'),
+    ),
 		'#title' => t('Site-wide featured content #1'),
     '#required' => true,
     '#default_value' => variable_get('more_on_takepart_global1', ''),
@@ -62,6 +65,9 @@ function tp_more_on_takepart_settings_form($form, &$form_state){
     '#type' => 'entityreference',
 		'#era_entity_type' => 'node',
     '#era_bundles' => $content_types,
+    '#era_query_settings' => array(
+      'property_orderby' => array('created', 'DESC'),
+    ),
     '#title' => t('Site-wide featured content #2'),
     '#required' => true,
 		'#default_value' => variable_get('more_on_takepart_global2', ''),

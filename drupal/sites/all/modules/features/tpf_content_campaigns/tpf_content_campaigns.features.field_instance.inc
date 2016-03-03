@@ -14070,7 +14070,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_campaign_bg_color',
     'label' => 'Background color',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -19404,7 +19404,6 @@ Note: If you manually reference more items than selected here, the number refere
       'module' => 'entityreference',
       'settings' => array(
         'match_operator' => 'CONTAINS',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'path' => '',
         'size' => 60,
       ),
@@ -19618,6 +19617,91 @@ Note: If you manually reference more items than selected here, the number refere
       ),
       'type' => 'text_textfield',
       'weight' => 2,
+    ),
+  );
+
+  // Exported field_instance: 'node-campaign_card_text-field_ambient_video'
+  $field_instances['node-campaign_card_text-field_ambient_video'] = array(
+    'bundle' => 'campaign_card_text',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'If Checked, the minimum card height will be overridden on the campaign page.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 18,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_ambient_video',
+    'label' => 'Ambient Video',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 23,
     ),
   );
 
@@ -26306,6 +26390,8 @@ Note: If you manually reference more items than selected here, the number refere
   t('Ad Side');
   t('Ad Type');
   t('Admin Title');
+  t('Ambient Video');
+  t('Analytics Title');
   t('Anchor Tag');
   t('Authentication Link');
   t('Author(s)');
@@ -26349,6 +26435,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Height in pixels.  Do not include \'px\'');
   t('How many news articles do you want to display?
 Note: If you manually reference more items than selected here, the number referenced will override your selection here.');
+  t('If Checked, the minimum card height will be overridden on the campaign page.');
   t('If you want the background to be fixed.  A use case would be if you want backgrounds to seemingly expand across two trays/cards.');
   t('Iframe');
   t('Image Link');
@@ -26393,7 +26480,6 @@ Note: If you manually reference more items than selected here, the number refere
   t('OAuth Token Secret');
   t('Only needed if you choose List in #3 (Type). To get the list name, go to your list and it should be the name after /lists/ in the URL. The list name in this URL  https://twitter.com/takepart/lists/mylistname is mylistname');
   t('Page Title for SEO.');
-  t('Analytics Title');
   t('Place embed code here if a URL for an iframe does not exist.  This field will not display if iframe exists.');
   t('Please go to authentication link to get the Twitter Pin');
   t('Promo Headline');
@@ -26425,6 +26511,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('This field will be used for creating the url for Campaign Pages that reference this Campaign.  DO NOT include backslashes.  (example: takepart-live)');
   t('This is also used to populate social share copy.');
   t('This is automatically generated.');
+  t('This title is used for analytic purposes It will auto-populate after publish.');
   t('Thumbnail Image');
   t('Topic');
   t('Transparent Nav');

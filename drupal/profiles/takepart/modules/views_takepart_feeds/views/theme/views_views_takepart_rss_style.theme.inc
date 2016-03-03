@@ -97,19 +97,39 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
 	   $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
 	 } elseif ($id == 'inline_content_embedded' && $object->content != '') {
 	   $related_content .= _build_list_for_yahoo_rss_feed($object->content) . "\n\n";
-	 } elseif ($id = 'body' && $object->content != '') {
+	 } elseif ($id == 'field_inline_replacements') {
+     $actions = _build_actions_for_yahoo_rss_feed($object->content, $poslink);
+     if($actions && $actions != 'none') {
+       $actions .= "\n\n";
+     }
+   } elseif ($id == 'view_node') {
+     $view = "<p>".$object->content."</p>";
+   } elseif ($id == 'body' && $object->content != '') {
 	   $content = $object->content;
 	 }
     }
-    if ($related_content) {
-	 $content .= "\n\n<nav><h2><strong>Related stories on TakePart:</strong></h2><br/>\n\n" . $related_content . '</nav>';
+
+    if ($actions && $actions != 'none') {
+      $content .= $actions;
+    } else {
+      if($actions != 'none') {
+        //Load from api call
+        $content .= _build_actions_for_yahoo_rss_feed('', $poslink) . "\n\n";
+      }
     }
+    if($view) {
+      $content .= $view;
+    }
+    if ($related_content) {
+      $content .= "\n\n<nav><h2><strong>Related stories on TakePart:</strong></h2><br/>\n\n" . $related_content . '</nav>';
+    }
+
     $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/") . $s;
     $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":" . $_SERVER["SERVER_PORT"]);
     $urlprefix = $protocol . "://" . $_SERVER['SERVER_NAME'] . $port;
     $content = preg_replace('#(href|src)="([^:"]*)(?:")#', '$1="' . $urlprefix . '$2"', $content);
     if ($content != '') {
-	 $xml .= "\t\t\t<content:encoded><![CDATA[" . str_replace('<hr>', '', $content) . "]]></content:encoded>\n";
+      $xml .= "\t\t\t<content:encoded><![CDATA[" . str_replace('<hr>', '', $content) . "]]></content:encoded>\n";
     }
     $xml .= "\t\t</item>\n";
   }

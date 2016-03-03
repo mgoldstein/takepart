@@ -108,8 +108,12 @@
       $(window).on('load resize', function() {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout($.proxy(adjustCardHeightsAndPadding, this), 250);
-        clearTimeout(resizeVideo);
-        resizeVideo = setTimeout($.proxy(adjustCardBackgroundVideo, this), 150);
+        //Activate ambient video
+        if ($('.is-ambient').length != 0) {
+          clearTimeout(resizeVideo);
+          resizeVideo = setTimeout($.proxy(adjustCardBackgroundVideo, this), 150);
+        }
+
       });
 
       //addresses issue with hover state - removed touchstart
@@ -171,7 +175,9 @@
           setTimeout( bindStickupToMenus, 2000 );
 
         //ensures that this only runs on campaign displays
-        if ($('body').hasClass('campaign-display')) {
+        //if there is a transparent nav then the page slides under the header
+        //to the top of the page
+        if ($('body').hasClass('campaign-display') && !$('body').hasClass('campaign-transparent-nav')) {
           $(window).scroll(function() {
             if ($('#block-tp-campaigns-tp-campaigns-hero').hasClass('isStuck')) {
               $('#main-wrap').css('margin-top', parseInt($('#block-tp-campaigns-tp-campaigns-hero').height()) + 'px');

@@ -161,7 +161,7 @@
 
             .slide-caption-headline {
                 font: bold 1.5em/1.142857143 $primary-serif-font;
-                margin-bottom: .476190476em; // 10px / 21px 
+                margin-bottom: .476190476em; // 10px / 21px
             }
 
             .slide-caption-content {
@@ -206,7 +206,7 @@
         @media (min-width: 1000px) {
             .slide-caption {
                 width: 360px;
-            }      
+            }
         }
     }
     .gallery-slide-next-gallery {
@@ -254,14 +254,15 @@
                                                float: none;
                 }
             }
-
-            &.hover,
-            &:hover {
-                color: $light-mint;
-                text-decoration: none;
-            }
-            &:after {
-                display: inline;
+            @include breakpoint($breakpoint-desktop) {
+                &.hover,
+                &:hover {
+                    color: $light-mint;
+                    text-decoration: none;
+                }
+                &:after {
+                    display: inline;
+                }
             }
         }
     }

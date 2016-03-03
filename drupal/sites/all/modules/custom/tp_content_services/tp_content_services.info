@@ -1,0 +1,6 @@
+name = TakePart - Content Notify Services
+description = The Content Handler service was created to ensure that content is kept in sync between Drupal or TAP CMSs and 3rd party platforms such as SailThru, which also keeps a catalog of TakePart content.
+core = 7.x
+package = TP4
+version = 7.x-1.0
+dependencies[] = publication_date

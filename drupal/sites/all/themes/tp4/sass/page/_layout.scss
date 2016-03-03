@@ -28,9 +28,9 @@ body {
   &.snapjs-left{
     overflow: hidden;
     border-bottom: none;
-    position: static;
+    position: fixed;
     #page-wrap{
-      position: absolute;
+      position: relative;
       overflow: auto;
       top:0;
       left:0;

@@ -141,10 +141,9 @@ function takepart_ads_preprocess_page(&$vars) {
 			   . '/' . $ad . "', '" . $gptad . "').addService(googletag.pubads());\n";
             }
             else if ($ad === "TP_Mobile_320x50") {
-              /*
               $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') . '/' . $ad . "', [[300, 50], [320, 50]], '" . $gptad . "').addService(googletag.pubads());\n";
-              */
-            } else {
+            } 
+		  else {
 	            $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') . '/' . $ad . "', [" . $lr[0] . ', ' . $lr[1] . "], '" . $gptad . "').addService(googletag.pubads());\n";
             }
             $gptad_html .= "}\n";

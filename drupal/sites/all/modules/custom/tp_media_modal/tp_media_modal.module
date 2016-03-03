@@ -80,18 +80,27 @@ function tp_media_modal_field_formatter_view($entity_type, $entity, $field, $ins
 
         //Video
         if(!empty($item['video'])) {
-          $video = node_load($item['video']);
-          $video = drupal_render(field_view_field('node', $video, 'field_video', 'playlist_full_page'));
+          $video_node = node_load($item['video']);
+          if($video_file = field_get_items('node', $video_node, 'field_video')) {
+            $video_file = file_create_url($video_file[0]['uri']);
+          }
+
         }
 
         //Button Text
-        $button_text = !empty($item['button_text']) ? $item['button_text'] : t('Watch Now');
+        if($item['button_type'] == 'default') {
+          $button_text = '<div class="icon i-triangle-right"></div>';
+        }else {
+          $button_text = !empty($item['button_text']) ? $item['button_text'] : t('Watch Now');
+        }
 
         $element = array('element' => $item, 'field' => $instance, 'display' => $display);
         $elements[$delta] = array(
           '#markup' => theme('tp_media_modal_video', array(
-            'video' => isset($video) ? $video : '',
-            'button_content'=> $button_text
+            'video_file' => isset($video_file) ? $video_file : '',
+            'video_title' => $video_node->title,
+            'button_content'=> $button_text,
+            'id' => isset($entity->nid) ? $entity->nid : ''
           )),
         );
       }
@@ -228,7 +237,9 @@ function tp_media_modal_theme() {
       'template' => 'templates/tp-media-modal-video',
       'variables' => array (
         'button_content' => '',
-        'video' => ''
+        'video_title' => '',
+        'video_file' => '',
+        'id' => ''
       )
     ),
 

@@ -45,20 +45,20 @@ a:hover {
   }
 }
 .primary-button{
+  color: #fff;
   border: none;
   padding: 8px;
   display: inline-block;
   font-family: $primary-sans-font;
   font-size: 18px;
   background-color: $light-mint;
-  a{
-    color: #fff;
-  }
+  padding: 10px 26px;
   &:hover{
     background-color: #000;
-    a{
-      text-decoration: none;
-    }
+    text-decoration: none;
+  }
+  a {
+    color: #fff;
   }
 }
 .link-1 {

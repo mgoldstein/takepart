@@ -1,0 +1,175 @@
+<?php
+
+/**
+ *  Implements hook_menu
+ */
+function tp_content_services_menu() {
+  $items = array();
+
+  //main group menu
+  $items['admin/config/takepart/content_services'] = array(
+    'title' => t('TakePart - Content Notify Services'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tp_content_services_admin_form'),
+    'file' => 'tp_content_services.admin.inc',
+    'file path' => drupal_get_path('module', 'tp_content_services') . '/forms',
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * hook_node_insert
+ */
+function tp_content_services_node_insert($node) {
+  //Handle initial insert of node here so published_at has time to set.
+  if($node->status == 1 && in_array($node->type, array('openpublish_article','feature_article','openpublish_photo_gallery','video'))) {
+    tp_content_services_notify_service($node, 'insert');
+  }
+}
+
+/**
+ * hook_node_update
+ */
+function tp_content_services_node_update($node) {
+  if(in_array($node->type, array('openpublish_article','feature_article','openpublish_photo_gallery','video'))) {
+    //Load the current nodes values
+    $cur_node = node_load($node->nid);
+    //If the nodes status changed values then tell service
+    if($cur_node->status != $node->status) {
+      tp_content_services_notify_service($node, 'update');
+    }
+  }
+}
+
+/**
+ * API call to service
+ */
+function tp_content_services_notify_service($node, $insup = '') {
+  //tags
+  $tags = _tp_content_services_get_tags($node);
+
+  //author
+  $author = _tp_content_services_get_authors($node);
+
+  //description - content subhead
+  $description = '';
+  if($sub_head = field_get_items('node', $node, 'field_page_subhead')) {
+    $description = $sub_head[0]['value'];
+  }
+  //image - full path to content image
+  $image = '';
+  if($field_main_image = field_get_items('node', $node, 'field_article_main_image')){
+    $field_main_image = file_load($field_main_image[0]['fid']);
+    $image = file_create_url($field_main_image->uri);
+  } elseif ($field_main_image = field_get_items('node', $node, 'field_gallery_main_image')) {
+    $field_main_image = file_load($field_main_image[0]['fid']);
+    $image = file_create_url($field_main_image->uri);
+  }
+  //thumbnail - path to image style
+  $thumb = $image;
+  if($field_thumb_image = field_get_items('node', $node, 'field_thumbnail')) {
+    $field_thumb_image = file_load($field_thumb_image[0]['fid']);
+    $thumb = image_style_url('media_thumbnail', $field_thumb_image->uri);
+  }
+
+  $json = '{
+     "url":"'.url('node/'.$node->nid, array('absolute' => TRUE)).'",
+     "title":"'.$node->title.'",
+     "description":"'.$description.'",
+     "publish_date":"'.date('Y-m-d H:i:s',_publication_date_get_date($node->nid)).'",
+     "published":"'.$node->status.'",
+     "tags":"'.$tags.'",
+     "image_url":{
+        "full":{
+           "url":"'.$image.'"
+        },
+        "thumb":{
+           "url":"'.$thumb.'"
+        }
+     },
+     "author":"'.$author.'",
+     "access_token": "'.variable_get('content_services_access_token','').'"
+  }';
+
+  $endpoint = variable_get('takepart_api_domain', '').variable_get('content_services_endpoint','');
+
+  //Make call to endpoint
+  $ret = drupal_http_request($endpoint,
+    array(
+      'headers' => array('Content-Type' => 'application/json', 'Accept' => 'application/json'),
+      'method' => 'POST',
+      'data' => $json,
+    )
+  );
+
+  //Check if return is valid log message
+  $data = json_decode($ret->data);
+  if($ret->code == 202 && isset($data->enqueued) && $data->enqueued) {
+    watchdog('Content Notify Service',
+      '%insup Node%nid %title of %type. Content Service was notified correctly.',
+      array(
+        '%insup' => $insup,
+        '%nid' => $node->nid,
+        '%title' => $node->title,
+        '%type' => $node->type,
+      ));
+  } else {
+    watchdog('Content Notify Service', '%insup Node%nid %title of %type. Content Service Failed to notify correctly. %data',
+      array(
+        '%insup' => $insup,
+        '%nid' => $node->nid,
+        '%title' => $node->title,
+        '%type' => $node->type,
+        '%data' => $ret->data
+      ),
+      WATCHDOG_ERROR);
+  }
+}
+
+/**
+ * Content services get tags
+ */
+function _tp_content_services_get_tags($node) {
+  $tags = '';
+  if($free_tags = field_get_items('node', $node, 'field_free_tag')) {
+    $tag_array = array();
+    foreach ($free_tags as $free_tag) {
+      if (isset($free_tag['tid']) && is_numeric($free_tag['tid'])) {
+        $tax_obj = taxonomy_term_load($free_tag['tid']);
+        $free_tag = $tax = $tax_obj->name;
+      }
+      else {
+        $free_tag = $free_tag['taxonomy_term']->name;
+      }
+      $free_tag = str_replace(" & ", " ", $free_tag);
+      $free_tag = str_replace(" ", "-", $free_tag);
+      $tag_array[] = strtolower($free_tag);
+    }
+
+    $tags = implode(",", $tag_array);
+  }
+  return $tags;
+}
+
+/**
+ * Content services get authors
+ */
+function _tp_content_services_get_authors($node) {
+  $author = '';
+  if($field_authors = field_get_items('node', $node, 'field_author')){
+    $author_ids = array();
+    foreach ($field_authors as $field_author) {
+      $author_ids[] = $field_author['nid'];
+    }
+    $author_nodes = entity_load('node', $author_ids);
+    $authors = array();
+    foreach($author_nodes as $author_node){
+      $authors[] = $author_node->title;
+    }
+    $author = implode(",", $authors);
+  }
+  return $author;
+}

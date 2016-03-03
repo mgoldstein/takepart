@@ -666,6 +666,7 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_video',
       1 => 'field_campaign_bg_video_poster',
+      2 => 'field_ambient_video',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
