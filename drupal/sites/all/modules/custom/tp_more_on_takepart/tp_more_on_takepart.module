@@ -318,10 +318,14 @@ function tp_more_on_takepart_block_view($delta = '') {
 					$thumb = theme('image_style', $img_vars);
 				}
 
+        //shoreten promo title and add ellipses
+        $field_promo_headline = !empty($field_promo_headline) ? $field_promo_headline : $result->title;
+        $adjusted_field_promo_headline = strlen($field_promo_headline) > 70 ? substr($field_promo_headline, 0,67)."..." : $field_promo_headline;
+
 				// Add to the array names after this type
 				${$item['type']}[] = theme('tp_more_on_takepart_article', array(
 					'result' => array(
-						'title' => (!empty($field_promo_headline)) ? $field_promo_headline : $result->title,
+						'title' => $adjusted_field_promo_headline,
 						'url' => entity_uri('node', $result),
 						'type' => $type,
 						'promo_type' => 'more_on_takepart_'.$item['type'],
