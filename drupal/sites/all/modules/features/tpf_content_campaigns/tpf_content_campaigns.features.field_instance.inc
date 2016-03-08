@@ -24183,7 +24183,7 @@ Note: If you manually reference more items than selected here, the number refere
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 7,
+      'weight' => 9,
     ),
   );
 
@@ -24300,7 +24300,7 @@ Note: If you manually reference more items than selected here, the number refere
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -25336,6 +25336,90 @@ Note: If you manually reference more items than selected here, the number refere
       ),
       'type' => 'options_onoff',
       'weight' => 6,
+    ),
+  );
+
+  // Exported field_instance: 'node-campaign_page-field_trays_initially_load'
+  $field_instances['node-campaign_page-field_trays_initially_load'] = array(
+    'bundle' => 'campaign_page',
+    'default_value' => array(
+      0 => array(
+        'value' => 2,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'How many trays do you want to load? All the rest of the trays will load after the initial load to the page. This is done to get content to the user faster. The higher this number the slower the initial load of the page will be.  If you are using links to content on the page make sure that the tray with that content is loaded initially.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_trays_initially_load',
+    'label' => 'Trays to initially load',
+    'required' => 1,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
+      ),
+      'type' => 'options_select',
+      'weight' => 8,
     ),
   );
 
@@ -26435,6 +26519,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Height in pixels.  Do not include \'px\'');
   t('How many news articles do you want to display?
 Note: If you manually reference more items than selected here, the number referenced will override your selection here.');
+  t('How many trays do you want to load? All the rest of the trays will load after the initial load to the page. This is done to get content to the user faster. The higher this number the slower the initial load of the page will be.  If you are using links to content on the page make sure that the tray with that content is loaded initially.');
   t('If Checked, the minimum card height will be overridden on the campaign page.');
   t('If you want the background to be fixed.  A use case would be if you want backgrounds to seemingly expand across two trays/cards.');
   t('Iframe');
@@ -26516,6 +26601,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Topic');
   t('Transparent Nav');
   t('Tray');
+  t('Trays to initially load');
   t('Twitter List Name');
   t('Twitter Pin');
   t('Type');

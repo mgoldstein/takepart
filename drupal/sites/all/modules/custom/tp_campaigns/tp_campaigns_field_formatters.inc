@@ -28,13 +28,18 @@ function tp_campaigns_field_formatter_view($entity_type, $entity, $field, $insta
   $settings = $display['settings'];
   switch($display['type']){
     case 'tp_card_tray':
-			//Turn off autoload on 2 or less cards.
-			if(count($items) > 2) {
+			//getting how many trays we want to load
+			$ctil = field_get_items('node', $entity, 'field_trays_initially_load');
+			$to_load = 2;
+			if(isset($ctil) && !empty($ctil)) {
+				$to_load = $ctil[0]['value'];
+			}
+			//Turn off autoload if the to_load number is to high.
+			if(count($items) > $to_load) {
 				//Get background images to preload
-				$bgimgs = tp_campaigns_preload_images(array_slice($items, 2));
-				//Only load items 1 and 2
-				$itemstmp = array_slice($items, 0, 2);
-				$itemcnt = count(array_slice($items, 2));
+				$bgimgs = tp_campaigns_preload_images(array_slice($items, $to_load));
+				$itemstmp = array_slice($items, 0, $to_load);
+				$itemcnt = count(array_slice($items, $to_load));
 			} else {
 				$bgimgs = array();
 				$itemstmp = $items;
@@ -44,7 +49,8 @@ function tp_campaigns_field_formatter_view($entity_type, $entity, $field, $insta
 			//Add additional JS to the page
 			drupal_add_js(array('autoloadCampaigns' => $entity->nid,
 				'campaignPreload' => $bgimgs,
-				'campaignItemCount' => $itemcnt), 'setting');
+				'campaignItemCount' => $itemcnt,
+				'traysLoaded' => $to_load), 'setting');
 			drupal_add_js(drupal_get_path('module', 'tp_campaigns').'/js/tp_auto_campaign.js', array('type' => 'file', 'scope' => 'footer'));
 			drupal_add_library('system', 'drupal.ajax');
 			drupal_add_library('system', 'drupal.form');

@@ -489,9 +489,8 @@ function tp_autoload_campaign_handler($nid, $itemnumb) {
       $ret = $cache->data;
     } else {
       $entity = entity_load('node', array($nid));
-      //Check to make sure itemnumb is not 0 and that the next item exists
-      if($itemnumb > 0 &&
-        isset($entity[$nid]->field_campaign_tray[LANGUAGE_NONE][$itemnumb]) &&
+      //Check to make sure itemnumb that the next item exists
+      if(isset($entity[$nid]->field_campaign_tray[LANGUAGE_NONE][$itemnumb]) &&
         !empty($entity[$nid]->field_campaign_tray[LANGUAGE_NONE][$itemnumb])) {
         $items[0] = $entity[$nid]->field_campaign_tray[LANGUAGE_NONE][$itemnumb];
 
