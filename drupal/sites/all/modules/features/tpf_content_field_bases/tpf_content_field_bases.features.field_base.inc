@@ -40,6 +40,9 @@ function tpf_content_field_bases_field_default_field_bases() {
       0 => 'comment',
     ),
     'field_name' => 'comment_body',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -219,6 +222,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_admin_tag',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -2893,6 +2899,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_main_image_format',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
     'indexes' => array(),
     'locked' => 0,
     'module' => 'formatter_field',
@@ -3629,6 +3638,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_promo_short_headline',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -3650,6 +3662,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_promo_text',
+    'field_permissions' => array(
+      'type' => 2,
+    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',

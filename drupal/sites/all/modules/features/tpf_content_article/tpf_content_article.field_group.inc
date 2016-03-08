@@ -89,12 +89,11 @@ function tpf_content_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '11',
+    'weight' => '0',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_text',
-      2 => 'field_thumbnail',
-      3 => 'field_promo_short_headline',
+      2 => 'field_promo_short_headline',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -119,7 +118,7 @@ function tpf_content_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '12',
+    'weight' => '13',
     'children' => array(
       0 => 'field_free_tag',
       1 => 'field_series',

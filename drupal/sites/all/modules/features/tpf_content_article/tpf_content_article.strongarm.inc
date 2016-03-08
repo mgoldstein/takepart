@@ -135,22 +135,22 @@ function tpf_content_article_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'path' => array(
-          'weight' => '16',
-        ),
-        'xmlsitemap' => array(
-          'weight' => '18',
-        ),
-        'metatags' => array(
-          'weight' => '20',
-        ),
-        'redirect' => array(
           'weight' => '17',
         ),
-        'locations' => array(
+        'xmlsitemap' => array(
           'weight' => '19',
+        ),
+        'metatags' => array(
+          'weight' => '21',
+        ),
+        'redirect' => array(
+          'weight' => '18',
+        ),
+        'locations' => array(
+          'weight' => '20',
         ),
       ),
       'display' => array(),
