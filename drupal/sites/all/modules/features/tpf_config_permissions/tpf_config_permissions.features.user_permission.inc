@@ -137,6 +137,43 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'search_api',
   );
 
+  // Exported permission: 'create field_admin_tag'.
+  $permissions['create field_admin_tag'] = array(
+    'name' => 'create field_admin_tag',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'create field_main_image_format'.
+  $permissions['create field_main_image_format'] = array(
+    'name' => 'create field_main_image_format',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'create field_promo_short_headline'.
+  $permissions['create field_promo_short_headline'] = array(
+    'name' => 'create field_promo_short_headline',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'create field_promo_text'.
+  $permissions['create field_promo_text'] = array(
+    'name' => 'create field_promo_text',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'create files'.
   $permissions['create files'] = array(
     'name' => 'create files',
@@ -156,6 +193,43 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'panels_mini',
   );
 
+  // Exported permission: 'edit field_admin_tag'.
+  $permissions['edit field_admin_tag'] = array(
+    'name' => 'edit field_admin_tag',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit field_main_image_format'.
+  $permissions['edit field_main_image_format'] = array(
+    'name' => 'edit field_main_image_format',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit field_promo_short_headline'.
+  $permissions['edit field_promo_short_headline'] = array(
+    'name' => 'edit field_promo_short_headline',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit field_promo_text'.
+  $permissions['edit field_promo_text'] = array(
+    'name' => 'edit field_promo_text',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'edit own comments'.
   $permissions['edit own comments'] = array(
     'name' => 'edit own comments',
@@ -165,6 +239,43 @@ function tpf_config_permissions_user_default_permissions() {
       'editor' => 'editor',
     ),
     'module' => 'comment',
+  );
+
+  // Exported permission: 'edit own field_admin_tag'.
+  $permissions['edit own field_admin_tag'] = array(
+    'name' => 'edit own field_admin_tag',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_main_image_format'.
+  $permissions['edit own field_main_image_format'] = array(
+    'name' => 'edit own field_main_image_format',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_promo_short_headline'.
+  $permissions['edit own field_promo_short_headline'] = array(
+    'name' => 'edit own field_promo_short_headline',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_promo_text'.
+  $permissions['edit own field_promo_text'] = array(
+    'name' => 'edit own field_promo_text',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
   );
 
   // Exported permission: 'import media'.
@@ -296,6 +407,80 @@ function tpf_config_permissions_user_default_permissions() {
       'preview' => 'preview',
     ),
     'module' => 'view_unpublished',
+  );
+
+  // Exported permission: 'view field_admin_tag'.
+  $permissions['view field_admin_tag'] = array(
+    'name' => 'view field_admin_tag',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view field_main_image_format'.
+  $permissions['view field_main_image_format'] = array(
+    'name' => 'view field_main_image_format',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view field_promo_short_headline'.
+  $permissions['view field_promo_short_headline'] = array(
+    'name' => 'view field_promo_short_headline',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view field_promo_text'.
+  $permissions['view field_promo_text'] = array(
+    'name' => 'view field_promo_text',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_admin_tag'.
+  $permissions['view own field_admin_tag'] = array(
+    'name' => 'view own field_admin_tag',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_main_image_format'.
+  $permissions['view own field_main_image_format'] = array(
+    'name' => 'view own field_main_image_format',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_promo_short_headline'.
+  $permissions['view own field_promo_short_headline'] = array(
+    'name' => 'view own field_promo_short_headline',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_promo_text'.
+  $permissions['view own field_promo_text'] = array(
+    'name' => 'view own field_promo_text',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
   );
 
   return $permissions;
