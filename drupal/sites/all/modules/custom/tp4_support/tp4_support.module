@@ -28,7 +28,7 @@ function tp4_support_help($path, $arg) {
 function tp4_support_entity_info_alter(&$entity_info) {
   $entity_info['node']['view modes']['feature_main'] = array(
     'label' => t('Main Feature'),
-    'custom settings' => TRUE,
+    'for settings' => TRUE,
   );
   $entity_info['node']['view modes']['feature_main_tpl'] = array(
     'label' => t('Main TPL Feature'),
@@ -732,6 +732,13 @@ function tp4_support_form_alter(&$form, &$form_state, $form_id){
     );
     $form['#submit'][] = 'tp4_support_panel_main_feature';
   }
+}
+
+function tp4_support_form_node_form_alter(&$form, &$form_state, $form_id) {
+    //decrease the max-lenght for promo headline. This is still 255 in DB
+    if (isset($form['field_promo_headline']['und'][0]['value']['#maxlength'])) {
+      $form['field_promo_headline']['und'][0]['value']['#maxlength'] = 70;
+    }
 }
 
 /**
