@@ -1,13 +1,14 @@
 name = TakePart Content Article
 core = 7.x
 package = Content Types
-version = 7.x-1.1
+version = 7.x-1.2
 project = tpf_content_article
 dependencies[] = context
 dependencies[] = context_field
 dependencies[] = ctools
 dependencies[] = features
 dependencies[] = field_group
+dependencies[] = field_redirection
 dependencies[] = formatter_field
 dependencies[] = inline_content
 dependencies[] = inline_entity_form
