@@ -137,6 +137,15 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'search_api',
   );
 
+  // Exported permission: 'administer simplify'.
+  $permissions['administer simplify'] = array(
+    'name' => 'administer simplify',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'simplify',
+  );
+
   // Exported permission: 'create field_admin_tag'.
   $permissions['create field_admin_tag'] = array(
     'name' => 'create field_admin_tag',
@@ -444,6 +453,15 @@ function tpf_config_permissions_user_default_permissions() {
       'administrator' => 'administrator',
     ),
     'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view hidden fields'.
+  $permissions['view hidden fields'] = array(
+    'name' => 'view hidden fields',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'simplify',
   );
 
   // Exported permission: 'view own field_admin_tag'.
