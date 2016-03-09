@@ -185,7 +185,7 @@
           var stickyOffset = $(this).find('.author-teaser').offset().top + 10 - $(".main-content").offset().top;
         } else {
           window.featureFirst = false;
-          var stickyOffset = $(".main-media").offset().top - $(".main-content").offset().top;
+          var stickyOffset = $(".align-sticky").offset().top - $(".main-content").offset().top;
         }
         $('.sticky-wrapper').css('margin-top', stickyOffset - 7);
       }
