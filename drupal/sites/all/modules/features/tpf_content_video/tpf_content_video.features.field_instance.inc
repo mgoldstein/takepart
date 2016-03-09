@@ -1063,7 +1063,7 @@ Change this only if you know what you are doing.',
     'bundle' => 'video',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Limited at 70 characters',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -3907,7 +3907,7 @@ Change this only if you know what you are doing.',
     'bundle' => 'video_playlist',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Limited at 70 characters',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
