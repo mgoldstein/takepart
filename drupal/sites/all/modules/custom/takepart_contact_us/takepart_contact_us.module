@@ -106,7 +106,7 @@ function takepart_contact_us_block_view_zendesk_forms_zendesk_support_form_alter
             contactFileShow(jQuery(this).val());
           });
           jQuery("#edit-file--2").on("change", function (e) {
-            var files = e.currentTarget.files;console.log(files);
+            var files = e.currentTarget.files;
             // call them as such files[0].size will get you the file size of the 0th file
             for (var x in files) {
               var filesize = ((files[x].size/1024)/1024).toFixed(4); // MB
@@ -213,7 +213,7 @@ function takepart_contact_us_form_submit($form, &$form_state) {
             $i++;
         }
     }
-die(print_r($ticket));
+
     // Wrap the ticket array in yet another array and call the API.
     $response = zendesk_forms_api_call(array('ticket' => $ticket), 'tickets.json');
     if (!isset($response->error)) {
