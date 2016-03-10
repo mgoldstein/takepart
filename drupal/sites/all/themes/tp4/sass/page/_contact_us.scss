@@ -8,4 +8,18 @@
   .form-submit {
     width: auto;
   }
+  .form-item-files-file {
+    max-width: 488px;
+    display: none;
+    .contact-screenshot-desc {
+      margin-top: 5px;
+      a {
+        text-decoration: underline;
+      }
+    }
+    .filesizewarn {
+      display: none;
+      margin-top: 5px;
+    }
+  }
 }
