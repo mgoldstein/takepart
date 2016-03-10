@@ -265,13 +265,12 @@ function tpf_feature_homepage_views_default_views() {
     'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Promo Short Headline (field_promo_short_headline) */
-  $handler->display->display_options['filters']['field_promo_short_headline_value']['id'] = 'field_promo_short_headline_value';
-  $handler->display->display_options['filters']['field_promo_short_headline_value']['table'] = 'field_data_field_promo_short_headline';
-  $handler->display->display_options['filters']['field_promo_short_headline_value']['field'] = 'field_promo_short_headline_value';
-  $handler->display->display_options['filters']['field_promo_short_headline_value']['operator'] = '!=';
-  $handler->display->display_options['filters']['field_promo_short_headline_value']['value'] = 'NULL';
-  $handler->display->display_options['filters']['field_promo_short_headline_value']['group'] = 1;
+  /* Filter criterion: Field: Promo Headline (field_promo_headline) */
+  $handler->display->display_options['filters']['field_promo_headline_value']['id'] = 'field_promo_headline_value';
+  $handler->display->display_options['filters']['field_promo_headline_value']['table'] = 'field_data_field_promo_headline';
+  $handler->display->display_options['filters']['field_promo_headline_value']['field'] = 'field_promo_headline_value';
+  $handler->display->display_options['filters']['field_promo_headline_value']['operator'] = '!=';
+  $handler->display->display_options['filters']['field_promo_headline_value']['value'] = 'NULL';
 
   /* Display: Homepage Block */
   $handler = $view->new_display('block', 'Homepage Block', 'block');
