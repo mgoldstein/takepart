@@ -38,7 +38,7 @@
 
               //Set the article autoload page number
               var pageNumber = page + 3;
-              data.ddl.eventInfo['autoloadCount'] = 'Page ' + pageNumber;
+              data.ddl.eventInfo['autoloadCount'] = 'page ' + pageNumber;
 
               /* Append ajax settings */
               jQuery.extend(Drupal.settings, data.settings);
@@ -291,7 +291,7 @@
     /* If no event exists then it is the initial page load */
     if ( digitalData.pageInitial )
       digitalData.page.pageInfo = digitalData.pageInitial.pageInfo;
-    digitalData.page.pageNumber = 1;
+    digitalData.page.pageNumber = 'page 1';
     _satellite.track('clear_vars');
    setTimeout(function(){ _satellite.track('autoload'); }, 1000);
 
