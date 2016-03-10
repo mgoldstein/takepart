@@ -1585,6 +1585,7 @@ print $file;
   $handler->display->display_options['fields']['field_inline_replacements']['field'] = 'field_inline_replacements';
   $handler->display->display_options['fields']['field_inline_replacements']['label'] = '';
   $handler->display->display_options['fields']['field_inline_replacements']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_inline_replacements']['type'] = 'entityreference_entity_id';
   $handler->display->display_options['fields']['field_inline_replacements']['settings'] = array(
     'link' => 0,
   );
