@@ -27,7 +27,7 @@ function takepart_contact_us_form_zendesk_forms_support_form_alter(&$form, &$for
       '#title' => t('Please Attach Your Screenshot'),
       '#description' => t('Allowed extensions: jpg, jpeg, png. Max Size: 2MB
         <div class="contact-screenshot-desc">Please help us troubleshoot the issue by including a URL of the page in your message. Here\'s how to <a href="http://www.take-a-screenshot.org" target="_blank">take a screenshot</a>.</div>
-        <div class="filesizewarn form-required">Warning your file is to big.</div>'),
+        <div class="filesizewarn form-required">Warning your file is too big.</div>'),
       '#weight' => -8,
     );
     $form['zendesk_24199483'] = array(
