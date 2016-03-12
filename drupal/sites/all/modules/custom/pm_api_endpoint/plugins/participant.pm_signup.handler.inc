@@ -35,7 +35,15 @@ class ParticipantSignupHandler {
 
 	 $account = isset($this->configuration['account']) ? $this->configuration['account'] : NULL;
 
-	 $response = ParticipantAPIWrapper::Api($account)->addUpdateSubscriber($data, $this->configuration['lists'], $this->configuration['source'], $this->configuration['user_vars']);
+   //loop through the configuration setting all the variables to send on through
+   foreach($this->configuration AS $k => $conf) {
+     //account does not need to be sent
+     if($k != 'account') {
+       $data[$k] = $conf;
+     }
+   }
+
+	 $response = ParticipantAPIWrapper::Api($account)->addUpdateSubscriber($data);
 
 	 //Need to check for a type of response
 	 if (!is_array($response)) {
