@@ -24,11 +24,12 @@ function takepart_contact_us_form_zendesk_forms_support_form_alter(&$form, &$for
     );
     $form['file'] = array(
       '#type' => 'file',
-      '#title' => t('Please Attach Your Screenshot'),
-      '#description' => t('Allowed extensions: jpg, jpeg, png. Max Size: 2MB
-        <div class="contact-screenshot-desc">Please help us troubleshoot the issue by including a URL of the page in your message. Here\'s how to <a href="http://www.take-a-screenshot.org" target="_blank">take a screenshot</a>.</div>
+      '#title' => '<div class="contact-file-label">'.
+        t('Please Attach a Screenshot (optional)').'</div>'.
+        '<div class="contact-screenshot-desc">A picture is worth a thousand words! Please help us troubleshoot the issue by attaching a screenshot. <a href="http://www.take-a-screenshot.org" target="_blank">How to take a screenshot</a>. If possible, please also include the URL of the page in the message field above.</div>',
+      '#description' => t('Allowed extensions: jpg, jpeg, png. Max size: 2MB
         <div class="filesizewarn form-required">Warning your file is too big.</div>'),
-      '#weight' => -8,
+      '#weight' => -5,
     );
     $form['zendesk_24199483'] = array(
         '#type' => 'select',
