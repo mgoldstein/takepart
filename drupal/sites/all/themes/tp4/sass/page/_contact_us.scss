@@ -9,10 +9,13 @@
     width: auto;
   }
   .form-item-files-file {
-    max-width: 488px;
     display: none;
+    margin-bottom: 25px;
     .contact-screenshot-desc {
-      margin-top: 5px;
+      font-size: 0.85em;
+      font-weight: normal;
+      margin-top: 15px;
+      margin-bottom: 10px;
       a {
         text-decoration: underline;
       }
@@ -20,6 +23,9 @@
     .filesizewarn {
       display: none;
       margin-top: 5px;
+    }
+    .description {
+      margin-top: 10px;
     }
   }
 }
