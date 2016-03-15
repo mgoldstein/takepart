@@ -102,8 +102,6 @@
                     {mode: 'thumbnails-a', container: 'taboola-below-article-thumbnails-2nd', placement: 'Below Article Thumbnails 2nd', target_type: 'mix'}
             );
         </script>
-
-        <?php print render($on_our_radar); ?>
     </footer>
 
     <?php if ($show_fb_comments): ?>
