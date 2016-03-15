@@ -79,14 +79,16 @@
     min-height: 80px;
 
     // position thumbnails and items
-    .views-field-field-thumbnail {
+    .views-field-field-thumbnail,
+    .views-field-field-action-main-image {
       float: left;
     }
     .views-field-type,
     .views-field-title,
     .views-field-url,
     .views-field-field-flashcard-page-headline,
-    .views-field-field-promo-headline {
+    .views-field-field-promo-headline,
+    .views-field-field-tab-call-to-action {
       margin-left: 117px;
     }
 
@@ -162,3 +164,14 @@
     }
   }
 } // .view-topic-listing
+
+//action showing in search
+.view-topic-listing {
+  .node-type-Action {
+    display: none;
+  }
+  .views-field-field-tab-call-to-action {
+    font-size: 1.142857143em;
+    line-height: 1.25;
+  }
+}
