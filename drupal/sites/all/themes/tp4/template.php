@@ -2496,8 +2496,15 @@ function tp4_search_api_page_results(array &$variables) {
              $field_promo_title = $result->title;
           }
 
-		      $field_thumbnail = field_get_items('node',$result,'field_thumbnail');
-		      $field_thumbnail = file_load($field_thumbnail[0]['fid']);
+          //Use Actions main image for the thumbnail
+          if ($result ->type == 'action') {
+            $field_thumbnail  = field_get_items('node',$result,'field_action_main_image');
+            $field_thumbnail = file_load($field_thumbnail[0]['fid']);
+          }
+          else {
+            $field_thumbnail = field_get_items('node',$result,'field_thumbnail');
+            $field_thumbnail = file_load($field_thumbnail[0]['fid']);
+          }
 
 		      $field_promo_text = field_get_items('node',$result,'field_promo_text');
 		      $text = $result->excerpt ? $result->excerpt : $field_promo_text[0]['value'];
