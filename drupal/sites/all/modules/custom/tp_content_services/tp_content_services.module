@@ -136,23 +136,39 @@ function tp_content_services_notify_service($node, $insup = '') {
  */
 function _tp_content_services_get_tags($node) {
   $tags = '';
+  $tag_array = array();
+
+  //Do topic tags
+  if($topic_tags = field_get_items('node', $node, 'field_topic')) {
+    foreach ($topic_tags as $topic_tag) {
+      if (isset($topic_tag['tid']) && is_numeric($topic_tag['tid'])) {
+        $tax_obj = taxonomy_term_load($topic_tag['tid']);
+        $topic_tag = $tax = $tax_obj->name;
+        $topic_tag = str_replace(" & ", " ", $topic_tag);
+        $topic_tag = str_replace(" ", "-", $topic_tag);
+        $tag_array[] = strtolower($topic_tag);
+      }
+    }
+  }
+
+  //Do free tags
   if($free_tags = field_get_items('node', $node, 'field_free_tag')) {
-    $tag_array = array();
+
     foreach ($free_tags as $free_tag) {
       if (isset($free_tag['tid']) && is_numeric($free_tag['tid'])) {
         $tax_obj = taxonomy_term_load($free_tag['tid']);
         $free_tag = $tax = $tax_obj->name;
+
+        $free_tag = str_replace(" & ", " ", $free_tag);
+        $free_tag = str_replace(" ", "-", $free_tag);
+        $tag_array[] = strtolower($free_tag);
       }
-      else {
-        $free_tag = $free_tag['taxonomy_term']->name;
-      }
-      $free_tag = str_replace(" & ", " ", $free_tag);
-      $free_tag = str_replace(" ", "-", $free_tag);
-      $tag_array[] = strtolower($free_tag);
     }
 
-    $tags = implode(",", $tag_array);
+
   }
+  $tags = implode(",", $tag_array);
+  
   return $tags;
 }
 
