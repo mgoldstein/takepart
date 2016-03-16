@@ -3008,6 +3008,18 @@ print $value;
     'image_style' => 'thumbnail',
     'image_link' => 'content',
   );
+  /* Field: Indexed Content: Main Image */
+  $handler->display->display_options['fields']['field_action_main_image']['id'] = 'field_action_main_image';
+  $handler->display->display_options['fields']['field_action_main_image']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['fields']['field_action_main_image']['field'] = 'field_action_main_image';
+  $handler->display->display_options['fields']['field_action_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_action_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_action_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_action_main_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_action_main_image']['settings'] = array(
+    'image_style' => 'topic_thumbnail',
+    'image_link' => 'content',
+  );
   /* Field: Indexed Content: Promo Headline */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'search_api_index_site_node_index';
@@ -3835,6 +3847,15 @@ print $value;
   $handler->display->display_options['pager']['options']['tags']['last'] = 'Last';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
+  /* Field: Content: Action URL */
+  $handler->display->display_options['fields']['field_action_url']['id'] = 'field_action_url';
+  $handler->display->display_options['fields']['field_action_url']['table'] = 'field_data_field_action_url';
+  $handler->display->display_options['fields']['field_action_url']['field'] = 'field_action_url';
+  $handler->display->display_options['fields']['field_action_url']['label'] = '';
+  $handler->display->display_options['fields']['field_action_url']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['field_action_url']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_action_url']['click_sort_column'] = 'url';
+  $handler->display->display_options['fields']['field_action_url']['type'] = 'link_absolute';
   /* Field: Field: Thumbnail Image */
   $handler->display->display_options['fields']['field_thumbnail']['id'] = 'field_thumbnail';
   $handler->display->display_options['fields']['field_thumbnail']['table'] = 'field_data_field_thumbnail';
@@ -3851,19 +3872,41 @@ print $value;
   $handler->display->display_options['fields']['field_thumbnail']['group_columns'] = array(
     'title' => 'title',
   );
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_action_main_image']['id'] = 'field_action_main_image';
+  $handler->display->display_options['fields']['field_action_main_image']['table'] = 'field_data_field_action_main_image';
+  $handler->display->display_options['fields']['field_action_main_image']['field'] = 'field_action_main_image';
+  $handler->display->display_options['fields']['field_action_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_action_main_image']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_action_main_image']['alter']['path'] = '[field_action_url]';
+  $handler->display->display_options['fields']['field_action_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_action_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_action_main_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_action_main_image']['settings'] = array(
+    'image_style' => 'topic_thumbnail',
+    'image_link' => '',
+  );
   /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
   $handler->display->display_options['fields']['type']['label'] = '';
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  /* Field: Content: Call to Action Promo */
+  $handler->display->display_options['fields']['field_tab_call_to_action']['id'] = 'field_tab_call_to_action';
+  $handler->display->display_options['fields']['field_tab_call_to_action']['table'] = 'field_data_field_tab_call_to_action';
+  $handler->display->display_options['fields']['field_tab_call_to_action']['field'] = 'field_tab_call_to_action';
+  $handler->display->display_options['fields']['field_tab_call_to_action']['label'] = '';
+  $handler->display->display_options['fields']['field_tab_call_to_action']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_tab_call_to_action']['alter']['path'] = '[field_action_url]';
+  $handler->display->display_options['fields']['field_tab_call_to_action']['element_label_colon'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['link_class'] = 'node-type-[type_1]';
+  $handler->display->display_options['fields']['title']['alter']['link_class'] = 'node-type-[type]';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
@@ -3914,6 +3957,29 @@ print $value;
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'action' => 'action',
+    'openpublish_article' => 'openpublish_article',
+    'campaign' => 'campaign',
+    'feature_article' => 'feature_article',
+    'flashcard' => 'flashcard',
+    'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+    'video' => 'video',
+    'video_playlist' => 'video_playlist',
+  );
   $export['topic_listing'] = $view;
 
   $view = new view();
