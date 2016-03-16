@@ -3008,6 +3008,18 @@ print $value;
     'image_style' => 'thumbnail',
     'image_link' => 'content',
   );
+  /* Field: Indexed Content: Main Image */
+  $handler->display->display_options['fields']['field_action_main_image']['id'] = 'field_action_main_image';
+  $handler->display->display_options['fields']['field_action_main_image']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['fields']['field_action_main_image']['field'] = 'field_action_main_image';
+  $handler->display->display_options['fields']['field_action_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_action_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_action_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_action_main_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_action_main_image']['settings'] = array(
+    'image_style' => 'topic_thumbnail',
+    'image_link' => 'content',
+  );
   /* Field: Indexed Content: Promo Headline */
   $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
   $handler->display->display_options['fields']['field_promo_headline']['table'] = 'search_api_index_site_node_index';
