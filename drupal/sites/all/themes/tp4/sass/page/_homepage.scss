@@ -85,7 +85,7 @@ body.front{
             font-size: .7em;
         }
     }
-    
+
     .byline {
       margin: 0 2em 1em;
     }
@@ -598,23 +598,6 @@ a.column-header:hover{
       }
     }
  }
-/*
- *Graveyard
- */
-.graveyard {
-  padding-top: 25px;
-  border-top: 1px solid $gray-line;
-  @include breakpoint-grid-breakdown(1 4, $breakpoint-mobile $breakpoint-tablet, '.topic');
-  .topic{
-    margin-bottom: 25px;
-    .topic-title{
-      font: bold 12px $primary-sans-font;
-      margin-bottom: 5px;
-      text-transform: uppercase;
-    }
-  }
-}
-
     .megaphone{
       display: block;
       margin: 0 auto;
