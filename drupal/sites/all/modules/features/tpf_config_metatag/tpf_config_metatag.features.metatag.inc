@@ -673,6 +673,12 @@ function tpf_config_metatag_metatag_export_default() {
       'og:description' => array(
         'value' => '[node:field_article_subhead]',
       ),
+      'og:image:width' => array(
+        'value' => '[tp_og_image:thumbnail_width:{node:nid}]',
+      ),
+      'og:image:height' => array(
+        'value' => '[tp_og_image:thumbnail_height:{node:nid}]',
+      ),
       'og:video' => array(
         'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-url}:]',
       ),
@@ -717,9 +723,6 @@ function tpf_config_metatag_metatag_export_default() {
       ),
       'twitter:player:stream:content_type' => array(
         'value' => 'video/mp4',
-      ),
-      'sailthru.author' => array(
-        'value' => '[sailthru_metatags:author]',
       ),
     ),
   );
