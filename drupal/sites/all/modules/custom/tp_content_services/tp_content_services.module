@@ -164,11 +164,10 @@ function _tp_content_services_get_tags($node) {
         $tag_array[] = strtolower($free_tag);
       }
     }
-
-
   }
+  $tag_array[] = $node->type;
   $tags = implode(",", $tag_array);
-  
+
   return $tags;
 }
 
