@@ -20,6 +20,9 @@ function tpf_content_campaigns_metatag_export_default() {
       'description' => array(
         'value' => '[tp4_support_tokens:campaign:field_article_subhead]',
       ),
+      'fb:admins' => array(
+        'value' => 1327833247,
+      ),
       'og:title' => array(
         'value' => '[tp4_support_tokens:campaign:field_promo_headline][f:bool:{node:field_sponsored}: (Promoted):] ',
       ),
@@ -28,6 +31,12 @@ function tpf_content_campaigns_metatag_export_default() {
       ),
       'og:image' => array(
         'value' => '[tp_og_image:thumbnail:{tp4_support_tokens:campaign_thumbnail}]',
+      ),
+      'og:image:width' => array(
+        'value' => '[tp_og_image:thumbnail_width:{tp4_support_tokens:campaign_thumbnail}]',
+      ),
+      'og:image:height' => array(
+        'value' => '[tp_og_image:thumbnail_height:{tp4_support_tokens:campaign_thumbnail}]',
       ),
       'twitter:title' => array(
         'value' => '[tp4_support_tokens:campaign:field_promo_headline][f:bool:{node:field_sponsored}: (Promoted):] ',
