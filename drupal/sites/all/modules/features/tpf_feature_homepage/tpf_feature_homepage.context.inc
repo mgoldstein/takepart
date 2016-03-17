@@ -98,12 +98,6 @@ function tpf_feature_homepage_context_default_contexts() {
           'region' => 'sidebar',
           'weight' => '-6',
         ),
-        'tp4_support-tp4_graveyard' => array(
-          'module' => 'tp4_support',
-          'delta' => 'tp4_graveyard',
-          'region' => 'suffix',
-          'weight' => '-10',
-        ),
         'boxes-ga_hp_1x1_background' => array(
           'module' => 'boxes',
           'delta' => 'ga_hp_1x1_background',

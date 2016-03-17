@@ -531,7 +531,6 @@
     'Home - lead story action' : 'body.page-tp4-homepage .field-name-field-tab-action-override',
     'Home - lead story' : 'body.page-tp4-homepage .panel-main-featured',
     'Home - right rail galleries' : 'body.page-tp4-homepage #block-views-photo-galleries-promo-block',
-    'Home - graveyard' : '#block-tp4-support-tp4-graveyard',
     'Home - stories under lead' : 'body.page-tp4-homepage .panel-secondary-featured',
     'Home - top horizontal promo' : '#block-tp4-support-tp4-dont-miss'
 
