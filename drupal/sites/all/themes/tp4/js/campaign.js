@@ -37,6 +37,12 @@
               $this.removeClass('on-last-slide');
               $this.removeClass('on-first-slide');
             }
+
+            //Height of the slideshow should match the height of the active slide
+            var wrapper = $this.find('.swipe-wrap');
+            var current_height = wrapper.find('.card-wrapper[data-index="'+ index +'"]').height();
+            wrapper.height(current_height);
+
           }
         });
         var slider = $this.data('Swipe');

@@ -68,7 +68,10 @@
     <?php if (!empty($result['url']['options']['entity']->field_thumbnail)): ?>
       <span class="field-content"><?php print l($result['thumbnail'], $result['url']['path'], array('html' => true)); ?></span>
     <?php endif; ?>
-  </div>
+    <?php if (!empty($result['url']['options']['entity']->field_action_main_image)): ?>
+      <span class="field-content"><?php print l($result['thumbnail'], $result['url']['path'], array('html' => true)); ?></span>
+    <?php endif; ?>
+ </div>
 
   <div class="views-field views-field-type">
     <span class="field-content"><?php print $result['type']; ?></span>

@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * hook_update_N
+ * Update the autopopulate field for all nodes that get auto scroll treatment
+ */
+function tp_auto_scroll_update_7000() {
+  // Get all nodes of 'page' type, populate the field with a value of '1'.
+  $pages = db_query("SELECT nid, vid, type FROM {node} WHERE type IN ('openpublish_article' , 'video' , 'video_playlist' , 'feature_article')")->fetchAllAssoc('nid');
+  foreach ($pages as $nid => $values) {
+    $fields = array(
+      'entity_type' => 'node',
+      'bundle' => $values->type,
+      'deleted' => 0,
+      'entity_id' => $values->nid,
+      'revision_id' => $values->vid,
+      'language' => LANGUAGE_NONE,
+      'delta' => 0,
+      'field_autoload_value' => 1,
+    );
+    db_insert('field_data_field_autoload')
+      ->fields($fields)
+      ->execute();
+    db_insert('field_revision_field_autoload')
+      ->fields($fields)
+      ->execute();
+  }
+}

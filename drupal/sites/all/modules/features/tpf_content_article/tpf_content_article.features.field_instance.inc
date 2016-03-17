@@ -107,7 +107,7 @@ function tpf_content_article_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 7,
+      'weight' => 9,
     ),
     'widget_type' => 'text_textarea_with_summary',
   );
@@ -306,7 +306,7 @@ function tpf_content_article_field_default_field_instances() {
         'view' => 'media_views_widget_default--default',
       ),
       'type' => 'media_generic',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -402,7 +402,7 @@ function tpf_content_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -499,7 +499,91 @@ function tpf_content_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 3,
+      'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-openpublish_article-field_autoload'
+  $field_instances['node-openpublish_article-field_autoload'] = array(
+    'bundle' => 'openpublish_article',
+    'default_value' => array(
+      0 => array(
+        'value' => 1,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Should this node be loaded in the infinite load of content?',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 30,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_autoload',
+    'label' => 'Autoload Content',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 22,
     ),
   );
 
@@ -618,7 +702,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -801,7 +885,7 @@ Change this only if you know what you are doing.',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 
@@ -891,7 +975,7 @@ Change this only if you know what you are doing.',
       'module' => 'formatter_field',
       'settings' => array(),
       'type' => 'formatter_select',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -976,7 +1060,7 @@ Change this only if you know what you are doing.',
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -1062,7 +1146,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -1185,7 +1269,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -1194,7 +1278,7 @@ Change this only if you know what you are doing.',
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'Limited at 70 characters',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -1550,7 +1634,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
@@ -1728,7 +1812,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -1823,7 +1907,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 10,
+      'weight' => 12,
     ),
   );
 
@@ -1914,7 +1998,7 @@ Change this only if you know what you are doing.',
     ),
     'entity_type' => 'node',
     'field_name' => 'field_thumbnail',
-    'label' => 'Thumbnail Image',
+    'label' => 'Promo Thumbnail Image',
     'required' => 0,
     'settings' => array(
       'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
@@ -1925,20 +2009,28 @@ Change this only if you know what you are doing.',
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
+          'jwplatform-channel' => 0,
+          'jwplatform-video' => 0,
+          'private' => 0,
           'public' => 'public',
+          'youtube' => 0,
         ),
         'allowed_types' => array(
           'audio' => 0,
-          'default' => 0,
+          'document' => 0,
           'image' => 'image',
           'video' => 0,
         ),
-        'browser_plugins' => array(),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 0,
+        ),
         'progress_indicator' => 'throbber',
-        'view' => 'media_views_widget_default--default',
       ),
       'type' => 'media_generic',
-      'weight' => 18,
+      'weight' => 8,
     ),
   );
 
@@ -2130,6 +2222,7 @@ Change this only if you know what you are doing.',
   t('Admin Tag');
   t('Analytics Title');
   t('Author(s)');
+  t('Autoload Content');
   t('Body');
   t('DFP Creative ID');
   t('DFP Creative ID will automatically generate if this node references a Sponsored term with a DFP ID.
@@ -2143,8 +2236,10 @@ Change this only if you know what you are doing.');
   t('Promo Headline');
   t('Promo Short Headline');
   t('Promo Text');
+  t('Promo Thumbnail Image');
   t('Related Stories');
   t('Series');
+  t('Should this node be loaded in the infinite load of content?');
   t('Subhead');
   t('Syndication');
   t('TAB Action Overrides');
@@ -2152,7 +2247,6 @@ Change this only if you know what you are doing.');
   t('These tags are intended for internal use to organize content for distribution to RSS feeds and the like; they are not visible to external users.');
   t('This is displayed beneath the Article\'s title on the node page');
   t('This title is used for analytic purposes It will auto-populate after publish.');
-  t('Thumbnail Image');
   t('Topic');
   t('Topic Box');
   t('Unless overridden, the Thumbnail Image will display the Main Image.');

@@ -59,8 +59,6 @@
             );
         </script>
 
-    <?php print render($on_our_radar); ?>
-
     <?php if ($show_fb_comments): ?>
       <div id="gallery-comments">
         <h3 class="top-border"><?php print t('Comments'); ?> <span>(<fb:comments-count href="<?php print $url_production; ?>"></fb:comments-count>)</span></h3>

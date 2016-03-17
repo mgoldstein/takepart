@@ -36,6 +36,7 @@
    <?php endif; ?>
     </div>
     <div class="section">
+      <div class = "align-sticky"></div>
    <?php if (!empty($variables['media'])): ?>
      <div class="row row-remove-xs">
     <?php print $variables['media']; ?>

@@ -8,4 +8,24 @@
   .form-submit {
     width: auto;
   }
+  .form-item-files-file {
+    display: none;
+    margin-bottom: 25px;
+    .contact-screenshot-desc {
+      font-size: 0.85em;
+      font-weight: normal;
+      margin-top: 15px;
+      margin-bottom: 10px;
+      a {
+        text-decoration: underline;
+      }
+    }
+    .filesizewarn {
+      display: none;
+      margin-top: 5px;
+    }
+    .description {
+      margin-top: 10px;
+    }
+  }
 }

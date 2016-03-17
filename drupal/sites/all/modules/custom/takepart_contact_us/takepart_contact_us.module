@@ -22,6 +22,15 @@ function takepart_contact_us_form_zendesk_forms_support_form_alter(&$form, &$for
         '#required' => TRUE,
         '#weight' => -9
     );
+    $form['file'] = array(
+      '#type' => 'file',
+      '#title' => '<div class="contact-file-label">'.
+        t('Please Attach a Screenshot (optional)').'</div>'.
+        '<div class="contact-screenshot-desc">A picture is worth a thousand words! Please help us troubleshoot the issue by attaching a screenshot. <a href="http://www.take-a-screenshot.org" target="_blank">How to take a screenshot</a>. If possible, please also include the URL of the page in the message field above.</div>',
+      '#description' => t('Allowed extensions: jpg, jpeg, png. Max size: 2MB
+        <div class="filesizewarn form-required">Warning your file is too big.</div>'),
+      '#weight' => -5,
+    );
     $form['zendesk_24199483'] = array(
         '#type' => 'select',
         '#title' => t('Topic'),
@@ -68,6 +77,7 @@ function takepart_contact_us_form_zendesk_forms_support_form_alter(&$form, &$for
         '#type' => 'hidden',
         '#value' => variable_get('site_name', ''),
     );
+    $form['#validate'][0] = 'takepart_contact_us_form_validate';
     $form['#submit'][0] = 'takepart_contact_us_form_submit';
     return $form;
 }
@@ -93,10 +103,71 @@ function takepart_contact_us_block_view_zendesk_forms_zendesk_support_form_alter
         jQuery(document).ready(function() {
           jQuery("input[name=zendesk_23560727]").val(document.referrer);
           jQuery("input[name=zendesk_23560737]").val(navigator.userAgent);
+          jQuery(\'#edit-zendesk-24199483--2\').on(\'change\', function() {
+            contactFileShow(jQuery(this).val());
+          });
+          jQuery("#edit-file--2").on("change", function (e) {
+            var files = e.currentTarget.files;
+            // call them as such files[0].size will get you the file size of the 0th file
+            for (var x in files) {
+              var filesize = ((files[x].size/1024)/1024).toFixed(4); // MB
+              if (files[x].name != "item" && typeof files[x].name != "undefined" && filesize <= 2) {
+                jQuery(".filesizewarn").hide();
+              } else {
+                if(filesize > 2) jQuery(".filesizewarn").show();
+              }
+            }
+          });
+          contactFileShow(jQuery(\'#edit-zendesk-24199483--2\').val());
         });
+        function contactFileShow(val){
+          if(val == \'Technical problem\') {
+            jQuery(\'.form-item-files-file\').show();
+          } else {
+            jQuery(\'.form-item-files-file\').hide();
+          }
+        }
         </script>';
     $data['subject'] = t('');
     $data['content'] = drupal_render($form_body) . "\n" . $js;
+}
+
+/**
+ * hook_form_validate
+ * Check if the file is the correct format
+ */
+function takepart_contact_us_form_validate($form, &$form_state) {
+  if($form_state['values']['zendesk_24199483'] == 'Technical problem') {
+
+    $file = file_save_upload('file', array(
+      // Validates file is really an image.
+      'file_validate_is_image' => array(),
+      // Validate extensions.
+      'file_validate_extensions' => array('png jpg jpeg'),
+      // Validate Size
+      'file_validate_size' => array('2097152'),
+    ));
+    // If the file passed validation:
+    if ($file) {
+      $ext = pathinfo($file->origname, PATHINFO_EXTENSION);
+      // Move the file into the Drupal file system.
+      if ($file = file_move($file, 'public://'.uniqid(time()).'.'.$ext)) {
+        // Save the file for use in the submit handler.
+        $form_state['storage']['file'] = $file;
+      }
+      else {
+        form_set_error('file', t("Failed to write the uploaded file to the site's file folder."));
+      }
+    } else {
+      //Need to check if a file was actually attempted and fail validate if it was.
+      if(isset($_FILES['files']['name']['file']) && !empty($_FILES['files']['name']['file'])) {
+        form_set_error('file', '');
+      }
+    }
+  }
+  if(!valid_email_address($form_state['values']['requester'])){
+    form_set_error('requester', t("Please enter a valid email address."));
+  }
 }
 
 /*
@@ -104,27 +175,45 @@ function takepart_contact_us_block_view_zendesk_forms_zendesk_support_form_alter
  */
 
 function takepart_contact_us_form_submit($form, &$form_state) {
+    $values = $form_state['values'];
     $ticket = array(
-        'description' => $form_state['values']['description'],
-        'requester' => array(
-            'name' => $form_state['values']['name'],
-            'email' => $form_state['values']['requester'],
-        ),
-        'group_id' => $form_state['values']['group_id'],
+      'description' => $values['description'],
+      'requester' => array(
+        'name' => $values['name'],
+        'email' => $values['requester'],
+      ),
+      'group_id' => $values['group_id'],
     );
-    if (!empty($form_state['values']['subject'])) {
-        $ticket['subject'] = $form_state['values']['subject'];
+    if (!empty($values['subject'])) {
+      $ticket['subject'] = $values['subject'];
+    }
+
+    //Handle the file screenshot
+    if($values['zendesk_24199483'] == 'Technical problem') {
+      if(isset($form_state['storage']['file']) && !empty($form_state['storage']['file'])) {
+        $file = $form_state['storage']['file'];
+        // We are done with the file, remove it from storage.
+        unset($form_state['storage']['file']);
+        // Make the storage of the file permanent.
+        $file->status = FILE_STATUS_PERMANENT;
+        // Save file status.
+        file_save($file);
+
+        $ticket['description'] = $ticket['description']."
+
+        SCREENSHOT FROM USER: ".file_create_url($file->uri);
+      }
     }
 
     // Get extra fields that are prefixed with zendesk_. Right now the only way
     // to add extra fields is by using form alter though.
-    $extra_fields = array_filter(array_keys($form_state['values']), create_function('$item', 'return strpos($item, "zendesk_") === 0;'));
+    $extra_fields = array_filter(array_keys($values), create_function('$item', 'return strpos($item, "zendesk_") === 0;'));
     if (!empty($extra_fields)) {
         $ticket['custom_fields'] = array();
         $i = 0;
         foreach ($extra_fields as $field_name) {
             $ticket['custom_fields'][$i]['id'] = intval(substr($field_name, 8));
-            $ticket['custom_fields'][$i]['value'] = $form_state['values'][$field_name];
+            $ticket['custom_fields'][$i]['value'] = $values[$field_name];
             $i++;
         }
     }

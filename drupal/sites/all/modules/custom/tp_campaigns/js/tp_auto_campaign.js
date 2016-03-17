@@ -18,7 +18,7 @@
      if (ajax.ajaxing) {
        return false;
      }
-     var traynumb = window.campaignTray + 2;
+     var traynumb = window.campaignTray + Number(Drupal.settings.traysLoaded);
      ajax.url = ajax.element_settings.url = ajax.options.url = '/autocampaign/'+Drupal.settings.autoloadCampaigns+'/'+traynumb;
      window.campaignTray++;
      window.newTapWidgets = true;

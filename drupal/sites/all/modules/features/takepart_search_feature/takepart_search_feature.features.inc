@@ -36,6 +36,9 @@ function takepart_search_feature_default_search_api_index() {
       "fields" : {
         "body:value" : { "type" : "text" },
         "created" : { "type" : "date" },
+        "field_action_type" : { "type" : "integer", "entity_type" : "taxonomy_term" },
+        "field_action_url:title" : { "type" : "text" },
+        "field_action_url:url" : { "type" : "uri" },
         "field_admin_tag" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_author" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "node" },
         "field_author:title" : { "type" : "list\\u003Cstring\\u003E" },
@@ -75,13 +78,14 @@ function takepart_search_feature_default_search_api_index() {
                 "type" : "fulltext",
                 "fields" : [
                   "field_free_tag",
-                  "field_topic",
                   "field_series",
+                  "field_topic",
+                  "field_action_type",
                   "field_free_tag:name",
-                  "field_topic:name",
-                  "field_series:name"
+                  "field_series:name",
+                  "field_topic:name"
                 ],
-                "description" : "A Fulltext aggregation of the following fields: Free Tag, Topic, Series, Video Series, Free Tag \\u00bb Name, Topic \\u00bb Name, Series \\u00bb Name, Video Series \\u00bb Name."
+                "description" : "A Fulltext aggregation of the following fields: Free Tag, Series, Topic, Action Type, Free Tag \\u00bb Name, Series \\u00bb Name, Topic \\u00bb Name."
               }
             }
           }
@@ -92,13 +96,15 @@ function takepart_search_feature_default_search_api_index() {
           "settings" : {
             "default" : "0",
             "bundles" : {
+              "action" : "action",
               "openpublish_article" : "openpublish_article",
               "campaign" : "campaign",
               "feature_article" : "feature_article",
               "flashcard" : "flashcard",
               "takepart_page" : "takepart_page",
               "openpublish_photo_gallery" : "openpublish_photo_gallery",
-              "video" : "video"
+              "video" : "video",
+              "video_playlist" : "video_playlist"
             }
           }
         }
@@ -119,8 +125,8 @@ function takepart_search_feature_default_search_api_index() {
           "weight" : "0",
           "settings" : { "fields" : {
               "field_free_tag:name" : true,
-              "field_topic:name" : true,
-              "field_series:name" : true
+              "field_series:name" : true,
+              "field_topic:name" : true
             }
           }
         },
@@ -163,8 +169,8 @@ function takepart_search_feature_default_search_api_index() {
               "search_api_aggregation_1" : true,
               "body:value" : true,
               "field_free_tag:name" : true,
-              "field_topic:name" : true,
               "field_series:name" : true,
+              "field_topic:name" : true,
               "field_profile_photo:alt" : true
             },
             "file" : "",
@@ -228,7 +234,7 @@ function takepart_search_feature_default_search_api_page() {
 function takepart_search_feature_default_search_api_server() {
   $items = array();
   $items['takepart_solr_production'] = entity_import('search_api_server', '{
-    "name" : "TakePart SOLR Local",
+    "name" : "TakePart SOLR Production (QA settings)",
     "machine_name" : "takepart_solr_production",
     "description" : "Used for SOLR on TakePart.com",
     "class" : "search_api_solr_service",
@@ -238,7 +244,7 @@ function takepart_search_feature_default_search_api_server() {
       "site_hash_form" : [],
       "site_hash" : false,
       "scheme" : "http",
-      "host" : "10.1.5.30",
+      "host" : "10.1.10.30",
       "port" : 8080,
       "path" : "\\/solr\\/takepart_core",
       "http_user" : "",

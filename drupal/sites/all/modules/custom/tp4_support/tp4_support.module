@@ -734,6 +734,13 @@ function tp4_support_form_alter(&$form, &$form_state, $form_id){
   }
 }
 
+function tp4_support_form_node_form_alter(&$form, &$form_state, $form_id) {
+    //decrease the max-lenght for promo headline. This is still 255 in DB
+    if (isset($form['field_promo_headline']['und'][0]['value']['#maxlength'])) {
+      $form['field_promo_headline']['und'][0]['value']['#maxlength'] = 70;
+    }
+}
+
 /**
  *  @function:
  *    Function is used to convert rgb to hex

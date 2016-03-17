@@ -24,8 +24,7 @@ function tp_content_services_menu() {
  * hook_node_insert
  */
 function tp_content_services_node_insert($node) {
-  //Handle initial insert of node here so published_at has time to set.
-  if($node->status == 1 && in_array($node->type, array('openpublish_article','feature_article','openpublish_photo_gallery','video'))) {
+  if(in_array($node->type, array('openpublish_article','feature_article','openpublish_photo_gallery','video'))) {
     tp_content_services_notify_service($node, 'insert');
   }
 }
@@ -35,12 +34,7 @@ function tp_content_services_node_insert($node) {
  */
 function tp_content_services_node_update($node) {
   if(in_array($node->type, array('openpublish_article','feature_article','openpublish_photo_gallery','video'))) {
-    //Load the current nodes values
-    $cur_node = node_load($node->nid);
-    //If the nodes status changed values then tell service
-    if($cur_node->status != $node->status) {
-      tp_content_services_notify_service($node, 'update');
-    }
+    tp_content_services_notify_service($node, 'update');
   }
 }
 
@@ -75,11 +69,19 @@ function tp_content_services_notify_service($node, $insup = '') {
     $thumb = image_style_url('media_thumbnail', $field_thumb_image->uri);
   }
 
+  //set published date if there is one
+
+  if($pub_date = _publication_date_get_date($node->nid)) {
+    $pub_date = date('Y-m-d H:i:s',$pub_date);
+  } else {
+    $pub_date = '';
+  }
+
   $json = '{
      "url":"'.url('node/'.$node->nid, array('absolute' => TRUE)).'",
      "title":"'.$node->title.'",
      "description":"'.$description.'",
-     "publish_date":"'.date('Y-m-d H:i:s',_publication_date_get_date($node->nid)).'",
+     "publish_date":"'.$pub_date.'",
      "published":"'.$node->status.'",
      "tags":"'.$tags.'",
      "image_url":{
@@ -134,23 +136,39 @@ function tp_content_services_notify_service($node, $insup = '') {
  */
 function _tp_content_services_get_tags($node) {
   $tags = '';
+  $tag_array = array();
+
+  //Do topic tags
+  if($topic_tags = field_get_items('node', $node, 'field_topic')) {
+    foreach ($topic_tags as $topic_tag) {
+      if (isset($topic_tag['tid']) && is_numeric($topic_tag['tid'])) {
+        $tax_obj = taxonomy_term_load($topic_tag['tid']);
+        $topic_tag = $tax = $tax_obj->name;
+        $topic_tag = str_replace(" & ", " ", $topic_tag);
+        $topic_tag = str_replace(" ", "-", $topic_tag);
+        $tag_array[] = strtolower($topic_tag);
+      }
+    }
+  }
+
+  //Do free tags
   if($free_tags = field_get_items('node', $node, 'field_free_tag')) {
-    $tag_array = array();
+
     foreach ($free_tags as $free_tag) {
       if (isset($free_tag['tid']) && is_numeric($free_tag['tid'])) {
         $tax_obj = taxonomy_term_load($free_tag['tid']);
         $free_tag = $tax = $tax_obj->name;
-      }
-      else {
-        $free_tag = $free_tag['taxonomy_term']->name;
-      }
-      $free_tag = str_replace(" & ", " ", $free_tag);
-      $free_tag = str_replace(" ", "-", $free_tag);
-      $tag_array[] = strtolower($free_tag);
-    }
 
-    $tags = implode(",", $tag_array);
+        $free_tag = str_replace(" & ", " ", $free_tag);
+        $free_tag = str_replace(" ", "-", $free_tag);
+        $tag_array[] = strtolower($free_tag);
+      }
+    }
   }
+  
+  $tag_array[] = $node->type;
+  $tags = implode(",", $tag_array);
+
   return $tags;
 }
 

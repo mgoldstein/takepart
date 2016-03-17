@@ -1621,9 +1621,6 @@ function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
 
     // we're going to do some things only on the full view of an article
     if ($variables['view_mode'] == 'full') {
-        // provide "on our radar" block
-        _tp4_on_our_radar_block($variables);
-
         // provide topic box
         if($topic = field_get_items('node', $variables['node'], 'field_topic_box')){
           $variables['topic_box_top'] = theme('base_topic_box', array('tid' => $topic[0]['tid']));
@@ -1734,19 +1731,13 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
 						$lang = $node_clone->language;
 						$node_clone->body[$lang][0]['value'] = '';
 						$node_clone->body[$lang][0]['safe_value'] = '';
-
 						$variables['gallery_tap_banner'] = field_view_field('node', $node_clone, 'body', $description_display);
         }
-
-        // provide "on our radar" block
-        _tp4_on_our_radar_block($variables);
-
         // provide topic box
         if($topic = field_get_items('node', $variables['node'], 'field_topic_box')){
           $variables['topic_box_top'] = theme('base_topic_box', array('tid' => $topic[0]['tid']));
         }
-
-		_tp4_sponsor($variables);
+      _tp4_sponsor($variables);
     }
 }
 
@@ -1771,30 +1762,6 @@ function tp4_preprocess_node__flashcard(&$variables) {
     }
 
     _tp4_sponsor($variables);
-}
-
-/**
- * Utility function to provide "On Our Radar" block to node templates
- */
-function _tp4_on_our_radar_block(&$variables) {
-
-    $variables['on_our_radar'] = theme('html_tag', array(
-      'element' => array(
-        '#tag' => 'div',
-        '#value' => '',
-        '#attributes' => array(
-          'id' => 'pubexchange_related_links',
-    ))));
-
-  drupal_add_js('(function(d, s, id)
-                { var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.async = true; js.src = "http://cdn.pubexchange.com/modules/partner/take_part"; pjs.parentNode.insertBefore(js, pjs); }
-                (document, "script", "pubexchange-jssdk"));',
-    array(
-      'type' => 'inline',
-      'scope' => 'footer',
-      'weight' => 10
-    )
-  );
 }
 
 /**
@@ -2496,8 +2463,15 @@ function tp4_search_api_page_results(array &$variables) {
              $field_promo_title = $result->title;
           }
 
-		      $field_thumbnail = field_get_items('node',$result,'field_thumbnail');
-		      $field_thumbnail = file_load($field_thumbnail[0]['fid']);
+          //Use Actions main image for the thumbnail
+          if ($result ->type == 'action') {
+            $field_thumbnail  = field_get_items('node',$result,'field_action_main_image');
+            $field_thumbnail = file_load($field_thumbnail[0]['fid']);
+          }
+          else {
+            $field_thumbnail = field_get_items('node',$result,'field_thumbnail');
+            $field_thumbnail = file_load($field_thumbnail[0]['fid']);
+          }
 
 		      $field_promo_text = field_get_items('node',$result,'field_promo_text');
 		      $text = $result->excerpt ? $result->excerpt : $field_promo_text[0]['value'];

@@ -63,7 +63,6 @@ class ddContent extends ddDefaultPage {
 
     $data = array();
     $node = $this->getNodefromPath();
-
     $pageID = $node->nid;
 
 
@@ -179,6 +178,11 @@ class ddContent extends ddDefaultPage {
 	   $data['page']['pageInfo']['sponsor'] = $sponsor_term->name;
 	 }
 	 $data['page']['pageInfo']['sponsored'] = ($sponsor_term->tid ? "" : "Not ") . "Sponsored";
+    }
+
+    //Field pageNumber for autoloaded content only
+    if (node_type_get_name($node) == 'openpublish_article' || 'video' || 'video_playlist' || 'feature_article') {
+        $data['page']['pageNumber'] = "page 1";
     }
 
     $data['page']['pageInfo']['pageId'] = $pageID;

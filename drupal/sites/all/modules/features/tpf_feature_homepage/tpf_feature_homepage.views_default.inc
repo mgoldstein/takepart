@@ -265,13 +265,12 @@ function tpf_feature_homepage_views_default_views() {
     'video_playlist' => 'video_playlist',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Promo Short Headline (field_promo_short_headline) */
-  $handler->display->display_options['filters']['field_promo_short_headline_value']['id'] = 'field_promo_short_headline_value';
-  $handler->display->display_options['filters']['field_promo_short_headline_value']['table'] = 'field_data_field_promo_short_headline';
-  $handler->display->display_options['filters']['field_promo_short_headline_value']['field'] = 'field_promo_short_headline_value';
-  $handler->display->display_options['filters']['field_promo_short_headline_value']['operator'] = '!=';
-  $handler->display->display_options['filters']['field_promo_short_headline_value']['value'] = 'NULL';
-  $handler->display->display_options['filters']['field_promo_short_headline_value']['group'] = 1;
+  /* Filter criterion: Field: Promo Headline (field_promo_headline) */
+  $handler->display->display_options['filters']['field_promo_headline_value']['id'] = 'field_promo_headline_value';
+  $handler->display->display_options['filters']['field_promo_headline_value']['table'] = 'field_data_field_promo_headline';
+  $handler->display->display_options['filters']['field_promo_headline_value']['field'] = 'field_promo_headline_value';
+  $handler->display->display_options['filters']['field_promo_headline_value']['operator'] = '!=';
+  $handler->display->display_options['filters']['field_promo_headline_value']['value'] = 'NULL';
 
   /* Display: Homepage Block */
   $handler = $view->new_display('block', 'Homepage Block', 'block');
@@ -295,14 +294,6 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['fields']['type']['exclude'] = TRUE;
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['type']['machine_name'] = TRUE;
-  /* Field: Content: Promo Short Headline */
-  $handler->display->display_options['fields']['field_promo_short_headline']['id'] = 'field_promo_short_headline';
-  $handler->display->display_options['fields']['field_promo_short_headline']['table'] = 'field_data_field_promo_short_headline';
-  $handler->display->display_options['fields']['field_promo_short_headline']['field'] = 'field_promo_short_headline';
-  $handler->display->display_options['fields']['field_promo_short_headline']['label'] = '';
-  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['field_promo_short_headline']['alter']['text'] = '<span class="[type]"><a href="[path]">[field_promo_short_headline]</a></span>';
-  $handler->display->display_options['fields']['field_promo_short_headline']['element_label_colon'] = FALSE;
   /* Field: Content: Sponsored */
   $handler->display->display_options['fields']['field_sponsored']['id'] = 'field_sponsored';
   $handler->display->display_options['fields']['field_sponsored']['table'] = 'field_data_field_sponsored';
@@ -310,6 +301,14 @@ function tpf_feature_homepage_views_default_views() {
   $handler->display->display_options['fields']['field_sponsored']['label'] = '';
   $handler->display->display_options['fields']['field_sponsored']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sponsored']['type'] = 'taxonomy_term_reference_plain';
+  /* Field: Field: Promo Headline */
+  $handler->display->display_options['fields']['field_promo_headline']['id'] = 'field_promo_headline';
+  $handler->display->display_options['fields']['field_promo_headline']['table'] = 'field_data_field_promo_headline';
+  $handler->display->display_options['fields']['field_promo_headline']['field'] = 'field_promo_headline';
+  $handler->display->display_options['fields']['field_promo_headline']['label'] = '';
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_promo_headline']['alter']['text'] = '<span class="[type]"><a href="[path]">[field_promo_headline]</a></span>';
+  $handler->display->display_options['fields']['field_promo_headline']['element_label_colon'] = FALSE;
 
   /* Display: 404 page block */
   $handler = $view->new_display('block', '404 page block', 'block_1');

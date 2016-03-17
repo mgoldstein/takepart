@@ -38,7 +38,7 @@
 
               //Set the article autoload page number
               var pageNumber = page + 3;
-              data.ddl.eventInfo['autoloadCount'] = 'Page ' + pageNumber;
+              data.ddl.eventInfo['autoloadCount'] = 'page ' + pageNumber;
 
               /* Append ajax settings */
               jQuery.extend(Drupal.settings, data.settings);
@@ -179,14 +179,6 @@
                   TAP.Widget      && TAP.Widget.addWidgets();
                   window.newTapWidgets = false;
                 }
-
-                //Check if Chartbeat is installed and run the auto update on it
-                if(Drupal.settings.hasOwnProperty('chartbeat')) {
-                  //Reusing sailthru tags and authors
-                  _sf_async_config.sections=Drupal.settings.tpAutoScroll[0]['auto_updates'][tp_og_url].data.channels.join(",");;
-                  _sf_async_config.authors=Drupal.settings.tpAutoScroll[0]['auto_updates'][tp_og_url].data.authors.join(",");;
-                  pSUPERFLY.virtualPage(tp_og_url, tp_og_title);
-                }
               }
 
             }else{
@@ -299,7 +291,7 @@
     /* If no event exists then it is the initial page load */
     if ( digitalData.pageInitial )
       digitalData.page.pageInfo = digitalData.pageInitial.pageInfo;
-    digitalData.page.pageNumber = 1;
+    digitalData.page.pageNumber = 'page 1';
     _satellite.track('clear_vars');
    setTimeout(function(){ _satellite.track('autoload'); }, 1000);
 
