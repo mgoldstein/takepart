@@ -263,6 +263,53 @@
           targets += 'googletag.pubads().refresh([' +  adSlot.replace('-', '-') + ']);'
           javascript = javascript.replace('[targets]', targets);
 
+          if (id != 'article_leader_ads') {
+            //Get the height of the last p
+            var lastp = $(article).find(selector).last().height() + $(article).find(selector).last().offset().top;
+            var start = $(article).find(selector).eq(parseInt(ad_placement));
+            if(start.length) {
+              start = start.offset().top;
+            } else {
+              //this is to ensure I fail
+              start = lastp;
+            }
+            //Get the adsizes
+            //ads have different variable names for height and width
+            if(typeof(ad_value.ad_width) !== 'undefined' && typeof(ad_value.ad_height) !== 'undefined') {
+              var adwidth = ad_value.ad_width.split(',');
+              var adheight = ad_value.ad_height.split(',');
+            }
+            if(typeof(ad_value.width) !== 'undefined' && typeof(ad_value.height) !== 'undefined') {
+              var adwidth = ad_value.width.split(',');
+              var adheight = ad_value.height.split(',');
+            }
+
+            var i = 0;
+            var adsizes = "[";
+            //Run through all the different ad sizes
+            while( i < adwidth.length && i < adheight.length ) {
+              //check if the height is within the last selector.
+              //just let more on go ahead, they are using the same template but
+              //will not care about limits
+
+              if( lastp < (parseInt(adheight[i])+start) && id != 'more_on_takepart') {
+                i++;
+                continue;
+              }
+              //if the ad size clears the check
+              adsizes += (i == 0?'':',');
+              adsizes += "["+(typeof(adwidth[i]) !== 'undefined'?adwidth[i]:0)+","+(typeof(adheight[i]) !== 'undefined'?adheight[i]:0)+"]";
+              i++;
+            }
+            adsizes += "]";
+            //If by some chance we get this far and the ad does not have any acceptable
+            //adsizes then we are not going to show this ad
+            if(adsizes == "[]") {
+              return;
+            }
+            javascript = javascript.replace('[adsizes]', adsizes);
+          }
+
           //ensures we only process the selector once
           $(selector_item).once('tp-ad', function() {
             var $this = this;

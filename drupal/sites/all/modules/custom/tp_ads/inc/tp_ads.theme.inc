@@ -25,7 +25,7 @@ function theme_tp_ads_script($variables) {
     'element' => array(
       '#tag' => 'script',
       '#value' => "googletag.cmd.push(function() { [targets]
-      window." . str_replace('-', '_', $variables['ad_slot']) . " = googletag.defineSlot('/4355895/" . $variables['ad_slot'] . "', ".$adsizes.", '" . $variables['ad_gpd_id'] . "').addService(googletag.pubads());
+      window." . str_replace('-', '_', $variables['ad_slot']) . " = googletag.defineSlot('/4355895/" . $variables['ad_slot'] . "', [adsizes], '" . $variables['ad_gpd_id'] . "').addService(googletag.pubads());
         googletag.enableServices();
         googletag.display('" . $variables['ad_gpd_id'] . "');
         });"
