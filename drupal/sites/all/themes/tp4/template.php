@@ -554,6 +554,11 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 
   }
 
+  //Check if there should be a mute button
+  if ($variables['field_mute'][0]['value'] == 1) {
+    $variables['classes_array'][] = 'has-mute-button';
+  }
+
   // Check whether facebook comments should be enabled
   foreach (field_get_items('node', $variables['node'], 'field_campaign_facebook_comments') as $item) {
     $variables['show_facebook_comments'] = $item['value'];

@@ -1297,7 +1297,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '10',
+    'weight' => '11',
     'children' => array(
       0 => 'field_article_subhead',
       1 => 'field_promo_headline',
@@ -1389,7 +1389,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '16',
+    'weight' => '17',
     'children' => array(
       0 => 'field_author',
       1 => 'field_free_tag',

@@ -1557,6 +1557,21 @@ body.campaign-display{
         margin-top: 20px;
         float: none;
 	}
+    //mute button
+    @include breakpoint($breakpoint-desktop){
+        .has-mute-button {
+            .field-name-field-mute {
+                width: 50px;
+                height: 50px;
+                background: yellow;
+                position: fixed;
+                bottom: 10px;
+                right: 10px;
+                z-index: 2;
+                cursor: pointer;
+            }
+        }
+    }
 }
 
 .campaign-page-comments {

@@ -248,7 +248,7 @@
                   video.className = 'background-video';
                   video.setAttribute('autoplay', '');
                   video.setAttribute('loop', '');
-                  video.setAttribute('muted', '');
+                  //video.setAttribute('muted', '');
                   video.setAttribute('poster', poster);
                   video.appendChild(videoSource);
                   videoWrapper.appendChild(video);

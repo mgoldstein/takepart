@@ -50,7 +50,7 @@
     */
    $(document).ready(function() {
      campaignPreload();
-
+     window.muted = false;
      //pause the video when less than 70% is in viewport
      $(window).bind('scroll', function() {
       jQuery('.videoBG_wrapper video').each(function(index){
@@ -77,6 +77,12 @@
      });
 
     });
+    if ($('.has-mute-button').length != 0) {
+      $('.field-name-field-mute').click(function(){
+        muteAmbientVideo();
+      });
+     }
+
    });
 
    //This is called through the ajax commands sent from the server.
@@ -313,6 +319,25 @@ function multiColumnAnimation($container) {
           $container.addClass('animated');
         }
       });
+    }
+  });
+}
+
+/*
+ * Mute/Unmute all ambient videos on the page
+ */
+
+function muteAmbientVideo() {
+  jQuery('.videoBG_wrapper video').each(function() {
+    if (!window.muted) {
+      //Mute
+      jQuery(this).prop('muted', true);
+      window.muted = true;
+    }
+    else {
+      //Unmute
+      jQuery(this).prop('muted', false);
+      window.muted = false;
     }
   });
 }
