@@ -218,15 +218,6 @@
               return;
             }
 
-            javascript = current_ad.javascript_desktop;
-
-            if(typeof current_ad.desktop != "undefined") {
-
-              if(current_ad.desktop.ad_slot != "") {
-                adSlot = current_ad.desktop.ad_slot;
-              }
-            }
-
             //override for non-leaderboard
             if (id != 'article_leader_ads') {
               ad_class = ' ad-right';
@@ -235,7 +226,7 @@
             else {
               //only override the first of it's type so that we can update it's selector
               if ($(article).is(':first-of-type')) {
-                selector_item = $(current_ad.desktop.selector);
+                selector_item = '.fresh-first-ad';
               }
             }
           }
