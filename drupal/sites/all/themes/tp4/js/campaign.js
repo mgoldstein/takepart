@@ -246,7 +246,10 @@
                   videoSource.src = src;
                   videoSource.poster = poster;
                   video.className = 'background-video';
-                  video.setAttribute('autoplay', '');
+                  //autoplay the video at card level
+                  if ($('.node-campaign-page').length == 0) {
+                    video.setAttribute('autoplay', '');
+                  }
                   video.setAttribute('loop', '');
                   //video.setAttribute('muted', '');
                   video.setAttribute('poster', poster);

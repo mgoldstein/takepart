@@ -55,7 +55,7 @@
      $(window).bind('scroll', function() {
       jQuery('.videoBG_wrapper video').each(function(index){
         //Get the card height since the video itself could be a different height
-        var vid = jQuery(this).get(index);
+        var vid = jQuery('.videoBG_wrapper video').get(index);
         if(typeof vid !== 'undefined') {
           var vid_parent = jQuery(this).parent().parent();
           var is_paused = vid.paused;
@@ -138,6 +138,12 @@
     }
     //Show the multi-col card if its part of the initial load
     $('.node-campaign-card-multi-column').not('animated').find('.item').css('opacity' , 1);
+
+    //Play the video if its part of initial load and in viewport
+    if (jQuery('.videoBG_wrapper video').length != 0) {
+        jQuery('.videoBG_wrapper video')[0].play();
+    }
+
 
   };
 
@@ -329,15 +335,14 @@ function multiColumnAnimation($container) {
 
 function muteAmbientVideo() {
   jQuery('.videoBG_wrapper video').each(function() {
-    if (!window.muted) {
+    if(!jQuery(this).hasClass('muted')) {
       //Mute
-      jQuery(this).prop('muted', true);
+      jQuery(this).prop('muted', true).addClass('muted');
       window.muted = true;
     }
-    else {
+    else if(window.muted) {
       //Unmute
-      jQuery(this).prop('muted', false);
-      window.muted = false;
+      jQuery(this).prop('muted', false).removeClass('muted');
     }
   });
 }
