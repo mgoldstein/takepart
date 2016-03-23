@@ -117,6 +117,33 @@ class boxes_ga_ad extends boxes_box {
             </script>
             </div>
 HTM;
+	   } else if (strpos($slot, 'Responsive') !== FALSE) {
+		$content = <<<HTM
+            <!-- $slot -->
+            <div id='$gptid[$slot]' class="leaderboard-ad">
+            <script type='text/javascript'>
+            function $gptfunction() {
+              if (typeof(googletag) !== 'undefined') {
+                if (ad_call_check($lr[0])) {
+                  googletag.cmd.push(function() {
+                    var mapping = googletag.sizeMapping().addSize([980, 768], [970,250]).addSize([768, 690], [728,90]).addSize([0, 0], [320,50]).build();
+                    var slot1 = googletag.defineSlot('/4355895/$slot', [320, 50], '$gptid[$slot]').defineSizeMapping(mapping).addService(googletag.pubads());
+                    googletag.pubads().enableSingleRequest();
+                    googletag.enableServices();
+                    googletag.display('$gptid[$slot]');
+                  });
+                } else {
+                  jQuery('#$gptid[$slot]').css({'width': '0', height: '0'});
+                }
+              }
+              setInterval(function(){
+                googletag.pubads().refresh();
+              }, $refresh);
+            }
+            $gptfunction();
+            </script>
+            </div>
+HTM;
 	   } else if ($slot === 'VideoOverlay_HP') {
 		$content = <<<HTM
             <!-- $slot -->
