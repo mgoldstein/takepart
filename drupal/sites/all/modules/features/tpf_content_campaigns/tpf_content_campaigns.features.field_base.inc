@@ -35,6 +35,43 @@ function tpf_content_campaigns_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
+  // Exported field_base: 'field_audio_volume'
+  $field_bases['field_audio_volume'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_audio_volume',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        '0.0' => '0.0',
+        '0.1' => 0.1,
+        '0.2' => 0.2,
+        '0.3' => 0.3,
+        '0.4' => 0.4,
+        '0.5' => 0.5,
+        '0.6' => 0.6,
+        '0.7' => 0.7,
+        '0.8' => 0.8,
+        '0.9' => 0.9,
+        '1.0' => '1.0',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_float',
+  );
+
   // Exported field_base: 'field_authentication_link'
   $field_bases['field_authentication_link'] = array(
     'active' => 1,

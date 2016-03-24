@@ -1607,6 +1607,12 @@ function tp4_campaign_background_rules(&$variables){
       }
     }
 
+    //Audio volume Check
+    if ($volume = field_get_items('node' , $variables['node'] , 'field_audio_volume')) {
+      $volume = $volume[0]['value'];
+      $variables['attributes_array']['data-video-volume'] = $volume;
+    }
+
     $variables['attributes_array']['data-video-bg'] = "[\"$background\", \"$video\"]";
     $variables['classes_array'][] = "has-videoBG";
   }
