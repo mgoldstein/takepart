@@ -554,6 +554,11 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 
   }
 
+  //Check if there should be a mute button
+  if ($variables['field_mute'][0]['value'] == 1) {
+    $variables['classes_array'][] = 'has-mute-button';
+  }
+
   // Check whether facebook comments should be enabled
   foreach (field_get_items('node', $variables['node'], 'field_campaign_facebook_comments') as $item) {
     $variables['show_facebook_comments'] = $item['value'];
@@ -1600,6 +1605,12 @@ function tp4_campaign_background_rules(&$variables){
       if ($is_ambient[0]['value'] == 1) {
         $variables['classes_array'][] = 'is-ambient';
       }
+    }
+
+    //Audio volume Check
+    if ($volume = field_get_items('node' , $variables['node'] , 'field_audio_volume')) {
+      $volume = $volume[0]['value'];
+      $variables['attributes_array']['data-video-volume'] = $volume;
     }
 
     $variables['attributes_array']['data-video-bg'] = "[\"$background\", \"$video\"]";

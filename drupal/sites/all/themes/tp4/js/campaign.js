@@ -234,7 +234,7 @@
               $prop = $(this).data('video-bg');
               var src = $prop[1];
               var poster =  $prop[0];
-
+              var volume = $(this).data('video-volume');
               if(!Environment.isMobile()){
                 //Only add it to the markup if there is no video
                 if ($(this).find('video').length == 0) {
@@ -246,9 +246,18 @@
                   videoSource.src = src;
                   videoSource.poster = poster;
                   video.className = 'background-video';
-                  video.setAttribute('autoplay', '');
+                  //autoplay the video at card level
+                  if ($('.node-campaign-page').length == 0) {
+                    video.setAttribute('autoplay', '');
+                  }
+                  //Set the volume if set via CMS
                   video.setAttribute('loop', '');
-                  video.setAttribute('muted', '');
+                  if (volume) {
+                    video.volume = volume;
+                  }
+                  else {
+                    video.setAttribute('muted', '');
+                  }
                   video.setAttribute('poster', poster);
                   video.appendChild(videoSource);
                   videoWrapper.appendChild(video);
