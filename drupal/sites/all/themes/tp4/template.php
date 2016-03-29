@@ -1648,6 +1648,8 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
 						$node_clone->body[$lang][0]['safe_value'] = '';
 						$variables['gallery_tap_banner'] = field_view_field('node', $node_clone, 'body', $description_display);
         }
+	   // provide "on our radar" block
+          _tp4_on_our_radar_block($variables);
         // provide topic box
         if($topic = field_get_items('node', $variables['node'], 'field_topic_box')){
           $variables['topic_box_top'] = theme('base_topic_box', array('tid' => $topic[0]['tid']));
@@ -1679,6 +1681,28 @@ function tp4_preprocess_node__flashcard(&$variables) {
     _tp4_sponsor($variables);
 }
 
+/**
+ * Utility function to provide "On Our Radar" block to node templates
+ */
+function _tp4_on_our_radar_block(&$variables) {
+  $variables['on_our_radar'] = theme('html_tag', array(
+         'element' => array(
+         '#tag' => 'div',
+         '#value' => '',
+         '#attributes' => array(
+           'id' => 'pubexchange_related_links',
+     ))));
+  drupal_add_js('(function(d, s, id)
+    { var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.async = true; js.src = "http://cdn.pubexchange.com/modules/partner/take_part"; pjs.parentNode.insertBefore(js, pjs); }
+    (document, "script", "pubexchange-jssdk"));',
+    array(
+      'type' => 'inline',
+      'scope' => 'footer',
+      'weight' => 10
+    )
+  );
+}
+ 
 /**
  * Utility function to provide series nav to node templates
  */
