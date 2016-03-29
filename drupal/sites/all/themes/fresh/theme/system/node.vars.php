@@ -123,6 +123,17 @@ function fresh_preprocess_node__autoload(&$variables) {
           $file->attributes = array('class' => 'main-image');
           $file->alt = '';
           $variables['media'] .= theme('picture', (array) $file);
+        } else {
+          if($node_type == 'feature_article') {
+            $image_url = file_create_url($file->uri);
+          }else {
+            $image_url = image_style_url('large', $file->uri);
+          }
+          $variables['media'] .= theme('image', array(
+            'path' => $image_url, 'attributes' => array(
+              'class' => 'main-image'
+            )
+          ));
         }
 
         if($node_type == 'feature_article') {
