@@ -201,7 +201,18 @@ function tp_campaigns_get_preload_url($cards) {
 			$output = field_get_items('node', $bgimg, 'field_campaign_background');
 			if(isset($output[0]['uri']) && !empty($output[0]['uri'])) {
 				$background_image = $output[0]['uri'];
-				$ret[] = file_create_url($background_image);
+				$bgdesktop = file_create_url($background_image);
+				$ret['desktop'][] = $bgdesktop;
+		    if($bgtablet = image_style_path('large_responsive_tablet', $background_image)) {
+		      $ret['tablet'][] = file_create_url($bgtablet);
+		    } else {
+		      $ret['tablet'][] = $bgdesktop;
+		    }
+		    if($bgmobile = image_style_path('large_responsive_mobile', $background_image)) {
+		      $ret['mobile'][] = file_create_url($bgmobile);
+		    } else {
+		      $ret['tablet'][] = $bgdesktop;
+		    }
 			}
 		}
 	}

@@ -116,8 +116,15 @@
   * Preloading the background images
   */
   var campaignPreload = function() {
-    var imgs = Drupal.settings.campaignPreload;
     window.preloaded = 0;
+    var winsize = 'tablet';
+    if(window.innerWidth > 980) {
+      winsize = 'desktop';
+    } else if(window.innerWidth < 768) {
+      winsize = 'mobile';
+    }
+    Drupal.settings.campaignPreload = Drupal.settings.campaignPreload[winsize];
+    var imgs = Drupal.settings.campaignPreload;
 
     //If there are no images to preload just load campaignOnload
     if(window.preloaded >= Drupal.settings.campaignPreload.length) {
