@@ -118,22 +118,25 @@ class boxes_ga_ad extends boxes_box {
             </div>
 HTM;
 	   } else if (strpos($slot, 'Responsive') !== FALSE) {
+       //The same ad leaderboard tag is put on the page to display the
+       //ad in the correct spot. This id helps pick the correct slot.
+       $resp_size_id = $gptid[$slot].'_'.$lr[0];
 		$content = <<<HTM
             <!-- $slot -->
-            <div id='$gptid[$slot]' class="leaderboard-ad">
+            <div id='$resp_size_id' class="leaderboard-ad">
             <script type='text/javascript'>
             function $gptfunction() {
               if (typeof(googletag) !== 'undefined') {
                 if (ad_call_check($lr[0])) {
                   googletag.cmd.push(function() {
                     var mapping = googletag.sizeMapping().addSize([980, 768], [970,250]).addSize([768, 690], [728,90]).addSize([0, 0], [320,50]).build();
-                    var slot1 = googletag.defineSlot('/4355895/$slot', [320, 50], '$gptid[$slot]').defineSizeMapping(mapping).addService(googletag.pubads());
+                    var slot1 = googletag.defineSlot('/4355895/$slot', [320, 50], '$resp_size_id').defineSizeMapping(mapping).addService(googletag.pubads());
                     googletag.pubads().enableSingleRequest();
                     googletag.enableServices();
-                    googletag.display('$gptid[$slot]');
+                    googletag.display('$resp_size_id');
                   });
                 } else {
-                  jQuery('#$gptid[$slot]').css({'width': '0', height: '0'});
+                  jQuery('$resp_size_id').css({'width': '0', height: '0'});
                 }
               }
               setInterval(function(){
