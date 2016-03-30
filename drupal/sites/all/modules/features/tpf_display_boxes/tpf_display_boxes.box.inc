@@ -515,8 +515,10 @@ GA_googleFillSlot("TP3_Home_RR_ATF_300x250");
   $box->title = '';
   $box->description = 'GA: ROS Leaderboard';
   $box->options = array(
-    'ga_ad_slot' => 'TP3_ROS_Leaderboard_728x90',
-    'ga_ad_gpt_id' => 'div-gpt-ad-1391020952974-1',
+    'ga_ad_slot' => 'TP_ROS_728x90_Responsive',
+    'ga_ad_gpt_id' => 'div-gpt-ad-1456430307288-0',
+    'ga_ad_width' => '728',
+    'ga_ad_height' => '90',
     'additional_classes' => 'leaderboard ad-large-center',
   );
   $export['takepart'] = $box;
