@@ -107,23 +107,34 @@ function fresh_preprocess_node__autoload(&$variables) {
       if ($media = field_get_items('node', $variables['node'], 'field_article_main_image')) {
         $file = $media[0]['file'];
 
-        //Featured articles require original file path
-        if($node_type == 'feature_article') {
-          $image_url = file_create_url($file->uri);
-        }else {
-          $image_url = image_style_url('large', $file->uri);
-        }
-
         $variables['media'] = '<div class="main-media">';
         if($node_type == 'feature_article') {
           $variables['media'] .= '<div class = "feature-image">';
         }
 
-        $variables['media'] .= theme('image', array(
-          'path' => $image_url, 'attributes' => array(
-            'class' => 'main-image'
-          )
-        ));
+        if(module_exists('picture')) {
+          //Featured articles require original file path
+          if($node_type == 'feature_article') {
+            $mapping = picture_mapping_load('feature_main_image');
+          }else {
+            $mapping = picture_mapping_load('large');
+          }
+          $file->breakpoints = picture_get_mapping_breakpoints($mapping);
+          $file->attributes = array('class' => 'main-image');
+          $file->alt = '';
+          $variables['media'] .= theme('picture', (array) $file);
+        } else {
+          if($node_type == 'feature_article') {
+            $image_url = file_create_url($file->uri);
+          }else {
+            $image_url = image_style_url('large', $file->uri);
+          }
+          $variables['media'] .= theme('image', array(
+            'path' => $image_url, 'attributes' => array(
+              'class' => 'main-image'
+            )
+          ));
+        }
 
         if($node_type == 'feature_article') {
           $variables['media'] .= '</div>';
