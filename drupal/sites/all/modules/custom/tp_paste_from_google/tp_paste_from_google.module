@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * @file
+ *
+ * Module adds a Wywisyg API plugin that converts p and br tags to linebreaks,
+ * and vice-versa.
+ */
+
+/**
+ * Implements hook_wysiwyg_include_directory().
+ */
+function tp_paste_from_google_wysiwyg_include_directory($type) {
+  switch ($type) {
+    case 'plugins':
+      return $type;
+  }
+}
+
+/**
+ * Implementation of hook_wysiwyg_plugin().
+ */
+function tp_paste_from_google_wysiwyg_plugin($editor, $version) {
+  if ($editor == 'ckeditor') {
+    return array('pastefromgoogle' => array(
+      'path' => drupal_get_path('module', 'tp_paste_from_google') .'/plugins/',
+      'load' => TRUE,
+      'extensions' => array('pastefromgoogle' => t('Paste from Google')),
+      'buttons' => array(
+        'pastefromgoogle_button' => t('Paste From Google')
+      ),
+    ));
+  }
+
+  return $plugins;
+}
+
+/**
+ * Implements hook_ckeditor_plugin()
+ */
+function tp_paste_from_google_ckeditor_plugin() {
+  return array(
+    'pastefromgoogle' => array(
+      // Name of the plugin used to write it.
+      'name' => 'pastefromgoogle',
+      // Description of the plugin - it would be displayed in the plugins management section of profile settings.
+      'desc' => t('Strip tags from google docs when pasted.'),
+      // The full path to the CKEditor plugins directory, with the trailing slash.
+      'buttons' => array(
+          'pastefromgoogle_button' => array(
+              'label' => 'Paste From Google',
+              'icon'  => drupal_get_path('module', 'tp_paste_from_google') . '/plugins/icons/pastefromgoogle.png',
+          ),
+        ),
+      'path' => drupal_get_path('module', 'tp_paste_from_google') . '/plugins/',
+      'default' => 't',
+    )
+  );
+}
