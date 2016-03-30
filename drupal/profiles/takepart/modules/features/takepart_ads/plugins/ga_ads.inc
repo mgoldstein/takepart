@@ -136,7 +136,7 @@ HTM;
                     googletag.display('$resp_size_id');
                   });
                 } else {
-                  jQuery('$resp_size_id').css({'width': '0', height: '0'});
+                  jQuery('#$resp_size_id').css({'width': '0', height: '0'});
                 }
               }
               setInterval(function(){
