@@ -3,8 +3,7 @@
 /**
  * @file
  *
- * Module adds a Wywisyg API plugin that converts p and br tags to linebreaks,
- * and vice-versa.
+ * Module adds a Wywisyg API plugin for pasting from google,
  */
 
 /**
