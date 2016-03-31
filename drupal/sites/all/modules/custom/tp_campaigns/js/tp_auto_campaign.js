@@ -331,11 +331,13 @@ function muteAmbientVideo() {
     if(!jQuery(this).hasClass('muted')) {
       //Mute
       jQuery(this).prop('muted', true).addClass('muted');
+      jQuery('.field-name-field-mute .field-items').addClass('enabled');
       window.muted = true;
     }
     else if(window.muted) {
       //Unmute
       jQuery(this).prop('muted', false).removeClass('muted');
+      jQuery('.field-name-field-mute .field-items').removeClass('enabled');
     }
   });
 }
