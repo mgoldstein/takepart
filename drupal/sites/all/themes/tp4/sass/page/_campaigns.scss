@@ -1561,14 +1561,28 @@ body.campaign-display{
     @include breakpoint($breakpoint-desktop){
         .has-mute-button {
             .field-name-field-mute {
-                width: 50px;
-                height: 50px;
-                background: yellow;
                 position: fixed;
-                bottom: 10px;
-                right: 10px;
+                bottom: 25px;
+                right: 25px;
                 z-index: 3;
-                cursor: pointer;
+                padding: 10px;
+                background: rgba(255,255,255,0.5);
+                border-radius: 2px;
+                .field-items{
+                    width: 27px;
+                    height: 30px;
+                    background: url(/sites/all/themes/base/images/campaign_icon_sprite.png) 145px 0;
+                    cursor: pointer;
+                    &:hover {
+                        background: url(/sites/all/themes/base/images/campaign_icon_sprite.png) 121px 0;
+                    }
+                    &.enabled {
+                        background: url(/sites/all/themes/base/images/campaign_icon_sprite.png) 174px 0;
+                    }
+                    &.enabled:hover {
+                        background: url(/sites/all/themes/base/images/campaign_icon_sprite.png) 94px 0;
+                    }
+                }
             }
         }
     }
