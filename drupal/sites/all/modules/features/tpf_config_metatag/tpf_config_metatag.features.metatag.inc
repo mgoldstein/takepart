@@ -128,19 +128,10 @@ function tpf_config_metatag_metatag_export_default() {
       'og:longitude' => array(
         'value' => '',
       ),
-      'og:street-address' => array(
-        'value' => '',
-      ),
       'og:locality' => array(
         'value' => '',
       ),
       'og:region' => array(
-        'value' => '',
-      ),
-      'og:postal-code' => array(
-        'value' => '',
-      ),
-      'og:country-name' => array(
         'value' => '',
       ),
       'og:email' => array(
@@ -212,9 +203,6 @@ function tpf_config_metatag_metatag_export_default() {
       'book:tag' => array(
         'value' => '',
       ),
-      'og:video' => array(
-        'value' => '',
-      ),
       'og:video:secure_url' => array(
         'value' => '',
       ),
@@ -273,9 +261,6 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '[current-page:title]',
       ),
       'twitter:description' => array(
-        'value' => '',
-      ),
-      'twitter:image:src' => array(
         'value' => '',
       ),
       'twitter:image:width' => array(
@@ -378,6 +363,21 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '',
       ),
       'tp:topic' => array(
+        'value' => '',
+      ),
+      'og:street_address' => array(
+        'value' => '',
+      ),
+      'og:postal_code' => array(
+        'value' => '',
+      ),
+      'og:country_name' => array(
+        'value' => '',
+      ),
+      'og:video:url' => array(
+        'value' => '',
+      ),
+      'twitter:image' => array(
         'value' => '',
       ),
     ),
@@ -571,11 +571,11 @@ function tpf_config_metatag_metatag_export_default() {
       'twitter:description' => array(
         'value' => '[node:field_article_subhead]',
       ),
-      'twitter:image:src' => array(
-        'value' => '[tp_og_image:thumbnail:{node:nid}]',
-      ),
       'sailthru.author' => array(
         'value' => '[sailthru_metatags:author]',
+      ),
+      'twitter:image' => array(
+        'value' => '[tp_og_image:thumbnail:{node:nid}]',
       ),
     ),
   );
@@ -617,11 +617,11 @@ function tpf_config_metatag_metatag_export_default() {
       'twitter:description' => array(
         'value' => '[node:field_article_subhead]',
       ),
-      'twitter:image:src' => array(
-        'value' => '[tp_og_image:thumbnail:{node:nid}]',
-      ),
       'sailthru.author' => array(
         'value' => '[sailthru_metatags:author]',
+      ),
+      'twitter:image' => array(
+        'value' => '[tp_og_image:thumbnail:{node:nid}]',
       ),
     ),
   );
@@ -706,9 +706,6 @@ function tpf_config_metatag_metatag_export_default() {
       'twitter:description' => array(
         'value' => '[node:field_article_subhead]',
       ),
-      'twitter:image:src' => array(
-        'value' => '[tp_og_image:thumbnail:{node:nid}]',
-      ),
       'twitter:player' => array(
         'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-src}:]',
       ),
@@ -723,6 +720,12 @@ function tpf_config_metatag_metatag_export_default() {
       ),
       'twitter:player:stream:content_type' => array(
         'value' => 'video/mp4',
+      ),
+      'og:video:url' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-url}:]',
+      ),
+      'twitter:image' => array(
+        'value' => '[tp_og_image:thumbnail:{node:nid}]',
       ),
     ),
   );
@@ -749,9 +752,6 @@ function tpf_config_metatag_metatag_export_default() {
       'twitter:description' => array(
         'value' => '[node:field_article_subhead]',
       ),
-      'twitter:image:src' => array(
-        'value' => '[tp_og_image:thumbnail:{node:nid}]',
-      ),
       'twitter:player' => array(
         'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-src}:]',
       ),
@@ -769,6 +769,9 @@ function tpf_config_metatag_metatag_export_default() {
       ),
       'sailthru.author' => array(
         'value' => '[sailthru_metatags:author]',
+      ),
+      'twitter:image' => array(
+        'value' => '[tp_og_image:thumbnail:{node:nid}]',
       ),
     ),
   );
@@ -833,10 +836,10 @@ function tpf_config_metatag_metatag_export_default() {
       'twitter:title' => array(
         'value' => '[user:name]',
       ),
-      'twitter:image:src' => array(
+      'tab-keywords' => array(),
+      'twitter:image' => array(
         'value' => '[user:picture:url]',
       ),
-      'tab-keywords' => array(),
     ),
   );
 
