@@ -89,7 +89,7 @@ function theme_tp_ads_responsive_script($variables) {
     $adsizes[$size] .= "]";
   }
 
-  $mapping = "var mapping = googletag.sizeMapping().addSize([980, 768], ".$adsizes['desktop'].").addSize([768, 690], ".$adsizes['tablet'].").addSize([0, 0], ".$adsizes['mobile'].").build();";
+  $mapping = "var mapping = googletag.sizeMapping().addSize([980, 0], ".$adsizes['desktop'].").addSize([768, 0], ".$adsizes['tablet'].").addSize([0, 0], ".$adsizes['mobile'].").build();";
   //script generate
   $script = theme('html_tag', array(
     'element' => array(

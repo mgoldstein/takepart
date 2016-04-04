@@ -70,11 +70,11 @@ class boxes_ga_ad extends boxes_box {
     }
 
     if (($slot = $this->options['ga_ad_slot']) && ($dpf = variable_get('takepart_ads_dfp_property_code', ''))) {
-	 $gptid = false;
-	 if ($this->options['ga_ad_gpt_id']) {
-	   $gptid = array($slot => $this->options['ga_ad_gpt_id']);
-	   takepart_gpt_ads($gptid);
-	 }
+      $gptid = false;
+      if ($this->options['ga_ad_gpt_id']) {
+       $gptid = array($slot => $this->options['ga_ad_gpt_id']);
+       takepart_gpt_ads($gptid);
+      }
 
 	 //register the slot
 	 takepart_ads($slot);
@@ -83,6 +83,9 @@ class boxes_ga_ad extends boxes_box {
      //Adding ad size to form. Keeping reg ex split for legacy
      if($this->options['ga_ad_width'] && $this->options['ga_ad_height']) {
        $lr = array($this->options['ga_ad_width'], $this->options['ga_ad_height']);
+       //Registering the height and width of the ads if they exist
+       $gpthw[$slot] = $lr;
+       takepart_hw_ads($gpthw);
      } else {
        $adsize = '';
        preg_match('/[0-9]+x[0-9]+/', $slot, $adsize);
@@ -123,20 +126,16 @@ HTM;
        $resp_size_id = $gptid[$slot].'-'.$lr[0];
 		$content = <<<HTM
             <!-- $slot -->
-            <div id='$gptid[$slot]' class="$resp_size_id leaderboard-ad">
+            <div id="$resp_size_id" class="leaderboard-ad">
             <script type='text/javascript'>
             function $gptfunction() {
               if (typeof(googletag) !== 'undefined') {
                 if (ad_call_check($lr[0])) {
                   googletag.cmd.push(function() {
-                    var mapping = googletag.sizeMapping().addSize([980, 768], [970,250]).addSize([768, 690], [728,90]).addSize([0, 0], [320,50]).build();
-                    var slot1 = googletag.defineSlot('/4355895/$slot', [320, 50], '$gptid[$slot]').defineSizeMapping(mapping).addService(googletag.pubads());
-                    googletag.pubads().enableSingleRequest();
-                    googletag.enableServices();
-                    googletag.display('$gptid[$slot]');
+                    googletag.display('$resp_size_id');
                   });
                 } else {
-                  jQuery('#$gptid[$slot].$resp_size_id').remove();
+                  jQuery('#$resp_size_id').css({'width': '0', height: '0'});
                 }
               }
               setInterval(function(){
@@ -194,6 +193,8 @@ HTM;
 	   'title' => $this->title,
 	   'subject' => $this->title,
 	   'content' => $content,
+     'height' => $this->options['ga_ad_height'],
+     'width' => $this->options['ga_ad_width']
 	 );
     }
   }
