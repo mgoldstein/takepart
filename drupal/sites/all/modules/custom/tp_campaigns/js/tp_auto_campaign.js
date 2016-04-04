@@ -123,7 +123,10 @@
     } else if(window.innerWidth < 768) {
       winsize = 'mobile';
     }
-    Drupal.settings.campaignPreload = Drupal.settings.campaignPreload[winsize];
+    //Check if there are no bg images to load
+    if(Drupal.settings.campaignPreload.length != 0) {
+      Drupal.settings.campaignPreload = Drupal.settings.campaignPreload[winsize];
+    }
     var imgs = Drupal.settings.campaignPreload;
 
     //If there are no images to preload just load campaignOnload
