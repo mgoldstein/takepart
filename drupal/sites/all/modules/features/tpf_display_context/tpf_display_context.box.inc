@@ -34,8 +34,8 @@ function tpf_display_context_default_box() {
   $box->title = '';
   $box->description = 'GA: Mobile 320x50 Top Relative';
   $box->options = array(
-    'ga_ad_slot' => 'TP_ROS_728x90_Responsive',
-    'ga_ad_gpt_id' => 'div-gpt-ad-1456430307288-0',
+    'ga_ad_slot' => 'TP4_ROS_728x90_Responsive',
+    'ga_ad_gpt_id' => 'div-gpt-ad-1459481133437-0',
     'ga_ad_width' => '320',
     'ga_ad_height' => '50',
     'additional_classes' => '',
