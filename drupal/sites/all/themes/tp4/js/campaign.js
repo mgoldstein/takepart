@@ -81,6 +81,17 @@
             ;
           }
         });
+
+        //Adjust the height of the first card on the sliders
+        //This snippet is also inlcluded on the slide change callback
+        $sliders.each(function() {
+          if ($(this).find('.card-wrapper').length > 1) {
+            var wrapper = $(this).find('.swipe-wrap');
+            var current_height = wrapper.find('.card-wrapper[data-index="0"]').height();
+            wrapper.height(current_height);
+          }
+        });
+
       };
 
       //Full Screen Ambient Video
