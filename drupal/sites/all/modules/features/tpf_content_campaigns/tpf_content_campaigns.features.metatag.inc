@@ -44,9 +44,6 @@ function tpf_content_campaigns_metatag_export_default() {
       'twitter:description' => array(
         'value' => '[tp4_support_tokens:campaign:field_article_subhead]',
       ),
-      'twitter:image:src' => array(
-        'value' => '[tp_og_image:thumbnail:{tp4_support_tokens:campaign_thumbnail}]',
-      ),
       'tp:node_id' => array(
         'value' => '[node:nid]',
       ),
@@ -67,6 +64,9 @@ function tpf_content_campaigns_metatag_export_default() {
       ),
       'tp:topic' => array(
         'value' => '[node:campaign-topic]',
+      ),
+      'twitter:image' => array(
+        'value' => '[tp_og_image:thumbnail:{tp4_support_tokens:campaign_thumbnail}]',
       ),
     ),
   );
