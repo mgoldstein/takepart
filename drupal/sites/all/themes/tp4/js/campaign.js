@@ -276,7 +276,10 @@
                 }
               }else{
                  //If a mobile device is detected AND the card has a video background then use the poster image as bg
-                $(this).css('background-image', 'url(' + poster + ')');
+                 //Only if no background image already exists for the card
+                if ($(this).css('background-image') == 'none') {
+                  $(this).css('background-image', 'url(' + poster + ')');
+                }
               }
             });
         }

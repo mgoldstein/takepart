@@ -1590,6 +1590,7 @@ function tp4_campaign_background_rules(&$variables){
   }
 
   $background = '';
+  $bg = '';
   if($background = field_get_items('node', $variables['node'], 'field_campaign_background')){
     $bg = file_create_url($background[0]['uri']);
     //image style for tablet and mobile
@@ -1616,7 +1617,23 @@ function tp4_campaign_background_rules(&$variables){
     $video = file_create_url($video);
 
     if($video_poster = field_get_items('node', $variables['node'], 'field_campaign_bg_video_poster')){
-      $background = file_create_url($video_poster[0]['uri']);
+      $bg = file_create_url($video_poster[0]['uri']);
+      //image style for tablet and mobile
+      $variables['background_image_desktop'][] = "background-image: url('$bg');";
+      if($bgtablet = image_style_path('large_responsive_tablet', $background[0]['uri'])) {
+        $bgtablet = file_create_url($bgtablet);
+        $variables['background_image_tablet'][] = "background-image: url('$bgtablet');";
+      } else {
+        $variables['background_image_tablet'][] = "background-image: url('$bg');";
+      }
+      if($bgmobile = image_style_path('large_responsive_mobile', $background[0]['uri'])) {
+        $bgmobile = file_create_url($bgmobile);
+        $variables['background_image_mobile'][] = "background-image: url('$bgmobile');";
+      } else {
+        $variables['background_image_mobile'][] = "background-image: url('$bg');";
+      }
+      $variables['background_class'] = $variables['type'].$variables['nid'];
+      $variables['classes_array'][] = $variables['type'].$variables['nid'];
     }
     //Ambient Video Check
     if($is_ambient = field_get_items('node' , $variables['node'] , 'field_ambient_video')) {
@@ -1631,7 +1648,7 @@ function tp4_campaign_background_rules(&$variables){
       $variables['attributes_array']['data-video-volume'] = $volume;
     }
 
-    $variables['attributes_array']['data-video-bg'] = "[\"$background\", \"$video\"]";
+    $variables['attributes_array']['data-video-bg'] = "[\"$bg\", \"$video\"]";
     $variables['classes_array'][] = "has-videoBG";
   }
 }
@@ -1720,7 +1737,7 @@ function _tp4_on_our_radar_block(&$variables) {
     )
   );
 }
- 
+
 /**
  * Utility function to provide series nav to node templates
  */
