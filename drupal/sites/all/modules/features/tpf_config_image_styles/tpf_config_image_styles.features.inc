@@ -235,7 +235,7 @@ function tpf_config_image_styles_image_default_styles() {
       64 => array(
         'name' => 'image_scale',
         'data' => array(
-          'width' => 728,
+          'width' => 768,
           'height' => '',
           'upscale' => 0,
         ),

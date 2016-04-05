@@ -1461,8 +1461,11 @@ function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
 
 }
 function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
-  $image = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
-  $center = '<img src="'. $image. '">';
+  $file = $variables['field_campaign_background'][LANGUAGE_NONE][0];
+  $mapping = picture_mapping_load('feature_main_image');
+  $file['breakpoints'] = picture_get_mapping_breakpoints($mapping);
+  $file['attributes'] = array();
+  $center = theme('picture', $file);
 
   //background properties
   tp4_campaign_background_rules($variables);
