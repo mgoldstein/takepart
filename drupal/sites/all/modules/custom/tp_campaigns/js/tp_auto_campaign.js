@@ -50,33 +50,25 @@
     */
    $(document).ready(function() {
      campaignPreload();
-
+     window.muted = false;
      //pause the video when less than 70% is in viewport
      $(window).bind('scroll', function() {
-      jQuery('.videoBG_wrapper video').each(function(index){
-        //Get the card height since the video itself could be a different height
-        var vid = jQuery(this).get(index);
-        if(typeof vid !== 'undefined') {
-          var vid_parent = jQuery(this).parent().parent();
-          var is_paused = vid.paused;
-          if (vid_parent.isInViewport(null,0.7)) {
-            if (is_paused) {
-              vid.play();
-            }
-          }
-          else {
-            if (!is_paused) {
-              vid.pause();
-            }
-          }
-        }
-     });
+      //Play video when in viewport
+      pauseVideo();
      //Fade in the multi-col cards
      $('.node-campaign-card-multi-column').not('.animated').each(function() {
        multiColumnAnimation($(this));
      });
 
     });
+
+    //Mute button
+    if ($('.has-mute-button').length != 0) {
+      $('.field-name-field-mute').click(function(){
+        muteAmbientVideo();
+      });
+     }
+
    });
 
    //This is called through the ajax commands sent from the server.
@@ -116,8 +108,18 @@
   * Preloading the background images
   */
   var campaignPreload = function() {
-    var imgs = Drupal.settings.campaignPreload;
     window.preloaded = 0;
+    var winsize = 'tablet';
+    if(window.innerWidth > 980) {
+      winsize = 'desktop';
+    } else if(window.innerWidth < 768) {
+      winsize = 'mobile';
+    }
+    //Check if there are no bg images to load
+    if(Drupal.settings.campaignPreload.length != 0) {
+      Drupal.settings.campaignPreload = Drupal.settings.campaignPreload[winsize];
+    }
+    var imgs = Drupal.settings.campaignPreload;
 
     //If there are no images to preload just load campaignOnload
     if(window.preloaded >= Drupal.settings.campaignPreload.length) {
@@ -132,6 +134,12 @@
     }
     //Show the multi-col card if its part of the initial load
     $('.node-campaign-card-multi-column').not('animated').find('.item').css('opacity' , 1);
+
+    //Play the video if its part of initial load and in viewport
+    if (jQuery('.videoBG_wrapper video').length != 0) {
+        jQuery('.videoBG_wrapper video')[0].play();
+    }
+
 
   };
 
@@ -313,6 +321,64 @@ function multiColumnAnimation($container) {
           $container.addClass('animated');
         }
       });
+    }
+  });
+}
+
+/*
+ * Mute/Unmute all ambient videos on the page
+ */
+
+function muteAmbientVideo() {
+  jQuery('.videoBG_wrapper video').each(function() {
+    if(!jQuery(this).hasClass('muted')) {
+      //Mute
+      jQuery(this).prop('muted', true).addClass('muted');
+      jQuery('.field-name-field-mute .field-items').addClass('enabled');
+      window.muted = true;
+    }
+    else if(window.muted) {
+      //Unmute
+      jQuery(this).prop('muted', false).removeClass('muted');
+      jQuery('.field-name-field-mute .field-items').removeClass('enabled');
+    }
+  });
+}
+
+function pauseVideo() {
+  jQuery('.videoBG_wrapper video').each(function(index){
+    //Get the card height since the video itself could be a different height
+    var vid = jQuery('.videoBG_wrapper video').get(index);
+    if(typeof vid !== 'undefined') {
+      var vid_parent = jQuery(this).parent().parent();
+      var is_paused = vid.paused;
+      if (vid_parent.isInViewport(null,0.7)) {
+        if (is_paused || jQuery(this).hasClass('paused')) {
+          //Fade in audio if there is a volume set
+          if (vid_volume = vid_parent.data('video-volume')) {
+            vid.play();
+            jQuery(this).animate({volume: vid_volume}, 1000);
+          }
+          else {
+            vid.play();
+          }
+          jQuery(this).removeClass('paused');
+        }
+      }
+      else {
+        if (!is_paused && !jQuery(this).hasClass('paused')) {
+          //Fade out the audio
+          if (vid_parent.data('video-volume')) {
+            jQuery(this).animate({volume: 0}, 1000, function(){
+              vid.pause();
+            });
+          }
+          else {
+            vid.pause();
+          }
+          jQuery(this).addClass('paused');
+        }
+      }
     }
   });
 }

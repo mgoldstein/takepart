@@ -26,7 +26,7 @@ function takepart_contact_us_form_zendesk_forms_support_form_alter(&$form, &$for
       '#type' => 'file',
       '#title' => '<div class="contact-file-label">'.
         t('Please Attach a Screenshot (optional)').'</div>'.
-        '<div class="contact-screenshot-desc">A picture is worth a thousand words! Please help us troubleshoot the issue by attaching a screenshot. <a href="http://www.take-a-screenshot.org" target="_blank">How to take a screenshot</a>. If possible, please also include the URL of the page in the message field above.</div>',
+        '<div class="contact-screenshot-desc">Please help us troubleshoot the issue by attaching a screenshot. <a href="http://www.take-a-screenshot.org" target="_blank">How to take a screenshot</a>. If possible, please also include the URL of the page in the message field above.</div>',
       '#description' => t('Allowed extensions: jpg, jpeg, png. Max size: 2MB
         <div class="filesizewarn form-required">Warning your file is too big.</div>'),
       '#weight' => -5,

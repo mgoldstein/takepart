@@ -47,9 +47,9 @@
           float: left;
         }
         @include breakpoint($breakpoint-desktop) {
-          width: 329px;
+          width: 309px;
           @-moz-document url-prefix() {
-            width: 325px;
+            width: 305px;
             }
         }
         border-radius: 2px;

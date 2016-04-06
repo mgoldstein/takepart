@@ -39,6 +39,6 @@ settings[base_wireframes]           = 0
 ; For Picture 2.x
 ; While this theme is disabled, the below breakpoints essentially dont do anything
 ; However, they are used with tp_theme_support update scripts to make use of
-breakpoints[base_large_desktop] = (min-width: 980px)
-breakpoints[base_large_tablet] = (min-width: 768px)
-breakpoints[base_large_mobile] = (min-width: 0px)
+breakpoints[base_desktop] = (min-width: 980px)
+breakpoints[base_tablet] = (min-width: 768px)
+breakpoints[base_mobile] = (min-width: 0px)

@@ -1,0 +1,8 @@
+name = Paste From Google
+description = Strips Google bolding when pasting.
+package = User interface
+core = 7.x
+
+dependencies[] = wysiwyg
+
+files[] = tp_paste_from_google.module

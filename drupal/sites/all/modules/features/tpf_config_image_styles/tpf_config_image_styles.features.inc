@@ -212,6 +212,54 @@ function tpf_config_image_styles_image_default_styles() {
     ),
   );
 
+  // Exported image style: large_responsive_desktop.
+  $styles['large_responsive_desktop'] = array(
+    'label' => 'large_responsive_desktop',
+    'effects' => array(
+      62 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 777,
+          'height' => 518,
+          'upscale' => FALSE,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  // Exported image style: large_responsive_mobile.
+  $styles['large_responsive_mobile'] = array(
+    'label' => 'large_responsive_mobile',
+    'effects' => array(
+      64 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 768,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  // Exported image style: large_responsive_tablet.
+  $styles['large_responsive_tablet'] = array(
+    'label' => 'large_responsive_tablet',
+    'effects' => array(
+      63 => array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 980,
+          'height' => '',
+          'upscale' => 0,
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
   // Exported image style: more_on_takepart_native_ad.
   $styles['more_on_takepart_native_ad'] = array(
     'label' => 'More on TakePart Native Ad',

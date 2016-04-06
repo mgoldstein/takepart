@@ -7,7 +7,24 @@
  * @see https://drupal.org/node/1728164
  */
 ?>
-<div class="card <?php print implode(' ', $variables['classes_array']); ?>" style="background-image: url('<?php print $variables['card_background']; ?>'); <?php print implode(' ', $variables['styles']); ?>">
+<?php if($variables['background_class']) { ?>
+<style>
+.<?php print $variables['background_class']; ?> {
+  <?php print $variables['background_image_mobile'][0]; ?>
+}
+@media only screen and (min-width: 728px) {
+  .<?php print $variables['background_class']; ?> {
+    <?php print $variables['background_image_tablet'][0]; ?>
+  }
+}
+@media only screen and (min-width: 980px) {
+  .<?php print $variables['background_class']; ?> {
+    <?php print $variables['background_image_desktop'][0]; ?>
+  }
+}
+</style>
+<?php } ?>
+<div class="card <?php print implode(' ', $variables['classes_array']); ?>" style="<?php print implode(' ', $variables['styles']); ?>">
 
   <article class="card-inner">
   <?php print render($title_suffix);  // contextual links ?>

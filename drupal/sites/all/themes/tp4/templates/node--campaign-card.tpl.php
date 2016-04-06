@@ -6,6 +6,23 @@
  * Variables created in template.php: $card_title, $variables['classes_array'], $instructional, $card_inner['classes_array'], $card_content
  */
 ?>
+<?php if($variables['background_class']) { ?>
+<style>
+.<?php print $variables['background_class']; ?> {
+  <?php print $variables['background_image_mobile'][0]; ?>
+}
+@media only screen and (min-width: 728px) {
+  .<?php print $variables['background_class']; ?> {
+    <?php print $variables['background_image_tablet'][0]; ?>
+  }
+}
+@media only screen and (min-width: 980px) {
+  .<?php print $variables['background_class']; ?> {
+    <?php print $variables['background_image_desktop'][0]; ?>
+  }
+}
+</style>
+<?php } ?>
 <div class="card campaign-1col <?php print implode(' ', $variables['classes_array']); ?>" style="<?php print implode(' ', $variables['styles']); ?>">
   <?php print render($title_prefix); ?>
   <article class="card-inner<?php if(isset($variables['slim_text'])){ print " ".$variables['slim_text']; }?>">

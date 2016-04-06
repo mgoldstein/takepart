@@ -54,6 +54,21 @@ function tp_ads_theme($existing, $type, $theme, $path) {
       ),
       'file' => TP_ADS_THEME_FILE,
     ),
+    'tp_ads_responsive_script' => array(
+      'variables' => array(
+        'ad_slot' => NULL,
+        'ad_gpd_id' => NULL,
+        'width_mobile' => NULL,
+        'height_mobile' => NULL,
+        'width_tablet' => NULL,
+        'height_tablet' => NULL,
+        'width_desktop' => NULL,
+        'height_desktop' => NULL,
+        'class' => NULL,
+        'disable_label' => NULL
+      ),
+      'file' => TP_ADS_THEME_FILE,
+    ),
     'tp_ads_header' => array(
       'variables' => array(
         'dpf_code' => NULL,
@@ -261,33 +276,21 @@ function _tp_ads_insert_leader_ad(&$vars) {
     //adds the logic for targetting leader ad
     if (!empty($leader_settings['selector'])) {
       //calls theme to create markup
-      $script = theme('tp_ads_script', array(
+      $script = theme('tp_ads_responsive_script', array(
           'ad_slot' => $leader_settings['ad_slot'],
           'ad_gpd_id' => $leader_settings['ad_gpd_id'],
-          'width' => $leader_settings['ad_width'],
-          'height' => $leader_settings['ad_height'],
+          'width_mobile' => $leader_settings['mobile']['ad_width'],
+          'height_mobile' => $leader_settings['mobile']['ad_height'],
+          'width_tablet' => $leader_settings['tablet']['ad_width'],
+          'height_tablet' => $leader_settings['tablet']['ad_height'],
+          'width_desktop' => $leader_settings['desktop']['ad_width'],
+          'height_desktop' => $leader_settings['desktop']['ad_height'],
           'class' => 'leaderboard mobile'
         )
       );
 
       //ensures that it removes any EOL
       $leader_settings['javascript'] = str_replace(PHP_EOL, '', $script);
-
-      $desktop_ad_slot = (!empty($leader_settings['desktop']['ad_slot'])) ? $leader_settings['desktop']['ad_slot'] : $leader_settings['ad_slot'];
-      $desktop_ad_gpd_id = (!empty($leader_settings['desktop']['ad_gpd_id'])) ? $leader_settings['desktop']['ad_gpd_id'] : $leader_settings['ad_gpd_id'];
-      $desktop_ad_width = (!empty($leader_settings['desktop']['ad_width'])) ? $leader_settings['desktop']['ad_width'] : $leader_settings['ad_width'];
-      $desktop_ad_height = (!empty($leader_settings['desktop']['ad_height'])) ? $leader_settings['desktop']['ad_height'] : $leader_settings['ad_height'];
-
-      $desktop_script = theme('tp_ads_script', array(
-          'ad_slot' => $desktop_ad_slot,
-          'ad_gpd_id' => $desktop_ad_gpd_id,
-          'width' => $desktop_ad_width,
-          'height' => $desktop_ad_height,
-          'class' => 'leaderboard desktop'
-        )
-      );
-
-      $leader_settings['javascript_desktop'] = str_replace(PHP_EOL, '', $desktop_script);
 
       //always have placement 1
       $leader_settings['placement'] = 1;
@@ -297,8 +300,8 @@ function _tp_ads_insert_leader_ad(&$vars) {
         'dpf_code' => $dpf_code,
         'ad_slot' => $leader_settings['ad_slot'],
         'ad_gpd_id' => $leader_settings['ad_gpd_id'],
-        'width' => $leader_settings['ad_width'],
-        'height' => $leader_settings['ad_height'],
+        'width' => 1,
+        'height' => 1,
         )
       );
 

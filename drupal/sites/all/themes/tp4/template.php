@@ -554,6 +554,11 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 
   }
 
+  //Check if there should be a mute button
+  if ($variables['field_mute'][0]['value'] == 1) {
+    $variables['classes_array'][] = 'has-mute-button';
+  }
+
   // Check whether facebook comments should be enabled
   foreach (field_get_items('node', $variables['node'], 'field_campaign_facebook_comments') as $item) {
     $variables['show_facebook_comments'] = $item['value'];
@@ -1456,8 +1461,11 @@ function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
 
 }
 function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
-  $image = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
-  $center = '<img src="'. $image. '">';
+  $file = $variables['field_campaign_background'][LANGUAGE_NONE][0];
+  $mapping = picture_mapping_load('feature_main_image');
+  $file['breakpoints'] = picture_get_mapping_breakpoints($mapping);
+  $file['attributes'] = array();
+  $center = theme('picture', $file);
 
   //background properties
   tp4_campaign_background_rules($variables);
@@ -1582,9 +1590,25 @@ function tp4_campaign_background_rules(&$variables){
   }
 
   $background = '';
+  $bg = '';
   if($background = field_get_items('node', $variables['node'], 'field_campaign_background')){
-    $background = file_create_url($background[0]['uri']);
-    $variables['styles'][] = "background-image: url('$background');";
+    $bg = file_create_url($background[0]['uri']);
+    //image style for tablet and mobile
+    $variables['background_image_desktop'][] = "background-image: url('$bg');";
+    if($bgtablet = image_style_path('large_responsive_tablet', $background[0]['uri'])) {
+      $bgtablet = file_create_url($bgtablet);
+      $variables['background_image_tablet'][] = "background-image: url('$bgtablet');";
+    } else {
+      $variables['background_image_tablet'][] = "background-image: url('$bg');";
+    }
+    if($bgmobile = image_style_path('large_responsive_mobile', $background[0]['uri'])) {
+      $bgmobile = file_create_url($bgmobile);
+      $variables['background_image_mobile'][] = "background-image: url('$bgmobile');";
+    } else {
+      $variables['background_image_mobile'][] = "background-image: url('$bg');";
+    }
+    $variables['background_class'] = $variables['type'].$variables['nid'];
+    $variables['classes_array'][] = $variables['type'].$variables['nid'];
   }
 
   /* Background Video */
@@ -1593,7 +1617,23 @@ function tp4_campaign_background_rules(&$variables){
     $video = file_create_url($video);
 
     if($video_poster = field_get_items('node', $variables['node'], 'field_campaign_bg_video_poster')){
-      $background = file_create_url($video_poster[0]['uri']);
+      $bg = file_create_url($video_poster[0]['uri']);
+      //image style for tablet and mobile
+      $variables['background_image_desktop'][] = "background-image: url('$bg');";
+      if($bgtablet = image_style_path('large_responsive_tablet', $background[0]['uri'])) {
+        $bgtablet = file_create_url($bgtablet);
+        $variables['background_image_tablet'][] = "background-image: url('$bgtablet');";
+      } else {
+        $variables['background_image_tablet'][] = "background-image: url('$bg');";
+      }
+      if($bgmobile = image_style_path('large_responsive_mobile', $background[0]['uri'])) {
+        $bgmobile = file_create_url($bgmobile);
+        $variables['background_image_mobile'][] = "background-image: url('$bgmobile');";
+      } else {
+        $variables['background_image_mobile'][] = "background-image: url('$bg');";
+      }
+      $variables['background_class'] = $variables['type'].$variables['nid'];
+      $variables['classes_array'][] = $variables['type'].$variables['nid'];
     }
     //Ambient Video Check
     if($is_ambient = field_get_items('node' , $variables['node'] , 'field_ambient_video')) {
@@ -1602,105 +1642,15 @@ function tp4_campaign_background_rules(&$variables){
       }
     }
 
-    $variables['attributes_array']['data-video-bg'] = "[\"$background\", \"$video\"]";
+    //Audio volume Check
+    if ($volume = field_get_items('node' , $variables['node'] , 'field_audio_volume')) {
+      $volume = $volume[0]['value'];
+      $variables['attributes_array']['data-video-volume'] = $volume;
+    }
+
+    $variables['attributes_array']['data-video-bg'] = "[\"$bg\", \"$video\"]";
     $variables['classes_array'][] = "has-videoBG";
   }
-}
-
-
-/**
- * Override or insert variables into the openpublish_article template.
- */
-function tp4_preprocess_node__openpublish_article(&$variables, $hook) {
-
-    // expose series tid in a data attribute
-    $series = taxonomy_term_load($variables['field_series'][LANGUAGE_NONE][0]['tid']);
-    if ($series) {
-        $variables['attributes_array']['data-series'] = $series->name;
-    }
-
-    // we're going to do some things only on the full view of an article
-    if ($variables['view_mode'] == 'full') {
-        // provide topic box
-        if($topic = field_get_items('node', $variables['node'], 'field_topic_box')){
-          $variables['topic_box_top'] = theme('base_topic_box', array('tid' => $topic[0]['tid']));
-        }
-
-        // provide a series prev/next nav if a series exists
-        _tp4_series_nav($variables);
-
-        // Add schema.org Article microdata
-        $variables['attributes_array']['itemscope'] = 'itemscope';
-        $variables['attributes_array']['itemtype'] = 'http://schema.org/Article';
-        $variables['title_attributes_array']['itemprop'] = 'headline';
-        // these work because of some magic in hook_preprocess_field
-        $variables['content']['field_article_subhead']['#attributes_array']['itemprop'] = "description";
-        $variables['content']['body']['#attributes_array']['itemprop'] = 'articleBody';
-        // for more microdata:
-        // @see tp4_field__field_article_main_image__feature_article()
-        // @see tp4_field__field_article_main_image__openpublish_article()
-        // @see field-formatter--author-full.tpl.php
-        _tp4_sponsor($variables);
-    } // if ($variables['view_mode'] == 'full')
-}
-
-/**
- * Override or insert variables into the feature_article template.
- *
- * Largely this reproduces the author, series, and topic markup
- * from the openpublish_article template.
- */
-function tp4_preprocess_node__feature_article(&$variables, $hook) {
-    tp4_preprocess_node__openpublish_article($variables, $hook);
-
-    if ($variables['view_mode'] == 'full') {
-        // put the title color as a class on the title.
-        $variables['title_attributes_array']['class'][] = $variables['field_title_color'][LANGUAGE_NONE][0]['value'];
-
-        //grabs featured link from node
-        $featured_link = field_get_items('node', $variables['node'], 'field_article_featured_link');
-        $featured_link_array = field_view_value('node', $variables['node'], 'field_article_featured_link', $featured_link[0]);
-
-        //ensures that the title is set
-        if (isset($featured_link_array['#element']['url'])) {
-          //variables for featured link
-          $feature_title = $featured_link_array['#element']['title'];
-          $feature_link = $featured_link_array['#element']['url'];
-
-          //ensures that the link is not empty
-          if (!empty($feature_link)) {
-            // ad "TakePart Features" branding
-            $variables['title_prefix'][] = array(
-                '#theme' => 'link',
-                '#text' => $feature_title,
-                '#path' => $feature_link,
-                '#options' => array(
-                    'attributes' => array('class' => array('takepart-features-branding', $variables['field_title_color'][LANGUAGE_NONE][0]['value'])),
-                    'html' => FALSE,
-                ),
-            );
-          }
-        }
-
-        // orphan protection for headlines
-        $title = trim($variables['title']);
-        $last_space = strrpos($title, ' ');
-        $variables['title'] = substr($title, 0, $last_space) . '&nbsp;' . substr(strrchr($title, ' '), 1);
-    }
-}
-
-function tp4_preprocess_node__video(&$variables, $hook) {
-    tp4_preprocess_node__openpublish_article($variables, $hook);
-    if ($variables['view_mode'] == 'embed') {
-        $variables['title'] = '';
-    }
-}
-
-function tp4_preprocess_node__video_playlist(&$variables, $hook) {
-    tp4_preprocess_node__openpublish_article($variables, $hook);
-    if ($variables['view_mode'] == 'embed') {
-        $variables['title'] = '';
-    }
 }
 
 /**
@@ -1733,6 +1683,8 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
 						$node_clone->body[$lang][0]['safe_value'] = '';
 						$variables['gallery_tap_banner'] = field_view_field('node', $node_clone, 'body', $description_display);
         }
+	   // provide "on our radar" block
+          _tp4_on_our_radar_block($variables);
         // provide topic box
         if($topic = field_get_items('node', $variables['node'], 'field_topic_box')){
           $variables['topic_box_top'] = theme('base_topic_box', array('tid' => $topic[0]['tid']));
@@ -1762,6 +1714,28 @@ function tp4_preprocess_node__flashcard(&$variables) {
     }
 
     _tp4_sponsor($variables);
+}
+
+/**
+ * Utility function to provide "On Our Radar" block to node templates
+ */
+function _tp4_on_our_radar_block(&$variables) {
+  $variables['on_our_radar'] = theme('html_tag', array(
+         'element' => array(
+         '#tag' => 'div',
+         '#value' => '',
+         '#attributes' => array(
+           'id' => 'pubexchange_related_links',
+     ))));
+  drupal_add_js('(function(d, s, id)
+    { var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.async = true; js.src = "http://cdn.pubexchange.com/modules/partner/take_part"; pjs.parentNode.insertBefore(js, pjs); }
+    (document, "script", "pubexchange-jssdk"));',
+    array(
+      'type' => 'inline',
+      'scope' => 'footer',
+      'weight' => 10
+    )
+  );
 }
 
 /**
@@ -1965,27 +1939,6 @@ function tp4_field__field_topic__openpublish_article($variables) {
  */
 
 /**
- * Outputs Free Tag taxonomy links for article nodes.
- */
-function tp4_field__field_free_tag__openpublish_article($variables) {
-    return tp4_field__field_topic__openpublish_article($variables);
-}
-
-/**
- * Outputs Topic Taxonomy links for featre article nodes.
- */
-function tp4_field__field_topic__feature_article($variables) {
-    return tp4_field__field_topic__openpublish_article($variables);
-}
-
-/**
- * Outputs free tag taxonomy links for feature article nodes.
- */
-function tp4_field__field_free_tag__feature_article($variables) {
-    return tp4_field__field_topic__openpublish_article($variables);
-}
-
-/**
  * Outputs Topic Taxonomy links for gallery nodes.
  */
 function tp4_field__field_topic__openpublish_photo_gallery($variables) {
@@ -1996,34 +1949,6 @@ function tp4_field__field_topic__openpublish_photo_gallery($variables) {
  * Outputs free tag taxonomy links for gallery nodes.
  */
 function tp4_field__field_free_tag__openpublish_photo_gallery($variables) {
-    return tp4_field__field_topic__openpublish_article($variables);
-}
-
-/**
- * Outputs Topic Taxonomy links for gallery nodes.
- */
-function tp4_field__field_topic__video($variables) {
-    return tp4_field__field_topic__openpublish_article($variables);
-}
-
-/**
- * Outputs free tag taxonomy links for gallery nodes.
- */
-function tp4_field__field_free_tag__video($variables) {
-    return tp4_field__field_topic__openpublish_article($variables);
-}
-
-/**
- * Outputs Topic Taxonomy links for gallery nodes.
- */
-function tp4_field__field_topic__video_playlist($variables) {
-    return tp4_field__field_topic__openpublish_article($variables);
-}
-
-/**
- * Outputs free tag taxonomy links for gallery nodes.
- */
-function tp4_field__field_free_tag__video_playlist($variables) {
     return tp4_field__field_topic__openpublish_article($variables);
 }
 
@@ -2062,19 +1987,7 @@ function tp4_field__field_author__openpublish_article($variables) {
     return $output;
 }
 
-function tp4_field__field_author__feature_article($variables) {
-    return tp4_field__field_author__openpublish_article($variables);
-}
-
 function tp4_field__field_author__openpublish_photo_gallery($variables) {
-    return tp4_field__field_author__openpublish_article($variables);
-}
-
-function tp4_field__field_author__video($variables) {
-    return tp4_field__field_author__openpublish_article($variables);
-}
-
-function tp4_field__field_author__video_playlist($variables) {
     return tp4_field__field_author__openpublish_article($variables);
 }
 
@@ -2114,18 +2027,6 @@ function tp4_field__field_article_subhead__openpublish_article($variables) {
     }
 
     return $output;
-}
-
-function tp4_field__field_article_subhead__feature_article($variables) {
-    return tp4_field__field_article_subhead__openpublish_article($variables);
-}
-
-function tp4_field__field_article_subhead__video($variables) {
-    return tp4_field__field_article_subhead__openpublish_article($variables);
-}
-
-function tp4_field__field_article_subhead__video_playlist($variables) {
-    return tp4_field__field_article_subhead__openpublish_article($variables);
 }
 
 function tp4_field__field_article_subhead__flashcard($variables) {
@@ -2194,55 +2095,6 @@ function tp4_field__field_flashcard_main_image__flashcard($variables) {
         $output .= (isset($item['#item']['field_media_caption']['und'])) ? $item['#item']['field_media_caption']['und'][0]['safe_value'] : '';
         $output .= '</figcaption></figure>';
     }
-    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
-    return $output;
-}
-
-function tp4_field__field_article_main_image__feature_article($variables) {
-    $output = '';
-
-    foreach ($variables['items'] as $delta => $item) {
-
-        // set up some variables we're going to need.
-        $image = array();
-        $image['path'] = $item['#file']->uri;
-        $image['width'] = '980';
-        $image['style_name'] = 'feature_article_hero';
-        $image['attributes'] = array();
-        $image['attributes']['itemprop'] = 'image';
-
-        // TODO: do this through drupal APIs
-        $image['alt'] = $item['#file']->field_media_alt['und'][0]['safe_value'];
-
-        // The caption field is not shown on the default file display mode.
-        // TODO: Make it available on a display mode.
-        $caption_items = field_get_items('file', $item['#file'], 'field_media_caption');
-        $item['field_media_caption'] = field_view_value('file', $item['#file'], 'field_media_caption', $caption_items[0]);
-        $item['field_media_caption']['#label_display'] = 'hidden';
-
-        $output .= '<figure ' . $variables['item_attributes'][$delta] . '>';
-        $output .= theme('image_style', $image);
-        $output .= '<figcaption>';
-        $output .= drupal_render($item['field_media_caption']);
-        $output .= '</figcaption></figure>';
-    }
-    $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
-    return $output;
-}
-
-function tp4_field__field_video__video($variables) {
-    $output = '';
-
-    foreach ($variables['items'] as $delta => $item) {
-        $output .= '<figure ' . $variables['item_attributes'][$delta] . '>';
-        $output .= render($item);
-        //$caption = $item['#item']['field_media_caption']['und'][0]['value'];
-        if (!empty($caption)) {
-            $output .= '<figcaption>' . $caption . '</figcaption>';
-        }
-        $output .= '</figure>';
-    }
-
     $output = '<div class="' . $variables['classes'] . '"' . $variables['attributes'] . '>' . $output . '</div>';
     return $output;
 }

@@ -81,6 +81,17 @@
             ;
           }
         });
+
+        //Adjust the height of the first card on the sliders
+        //This snippet is also inlcluded on the slide change callback
+        $sliders.each(function() {
+          if ($(this).find('.card-wrapper').length > 1) {
+            var wrapper = $(this).find('.swipe-wrap');
+            var current_height = wrapper.find('.card-wrapper[data-index="0"]').height();
+            wrapper.height(current_height);
+          }
+        });
+
       };
 
       //Full Screen Ambient Video
@@ -234,7 +245,7 @@
               $prop = $(this).data('video-bg');
               var src = $prop[1];
               var poster =  $prop[0];
-
+              var volume = $(this).data('video-volume');
               if(!Environment.isMobile()){
                 //Only add it to the markup if there is no video
                 if ($(this).find('video').length == 0) {
@@ -246,9 +257,18 @@
                   videoSource.src = src;
                   videoSource.poster = poster;
                   video.className = 'background-video';
-                  video.setAttribute('autoplay', '');
+                  //autoplay the video at card level
+                  if ($('.node-campaign-page').length == 0) {
+                    video.setAttribute('autoplay', '');
+                  }
+                  //Set the volume if set via CMS
                   video.setAttribute('loop', '');
-                  video.setAttribute('muted', '');
+                  if (volume) {
+                    video.volume = volume;
+                  }
+                  else {
+                    video.setAttribute('muted', '');
+                  }
                   video.setAttribute('poster', poster);
                   video.appendChild(videoSource);
                   videoWrapper.appendChild(video);
@@ -256,7 +276,10 @@
                 }
               }else{
                  //If a mobile device is detected AND the card has a video background then use the poster image as bg
-                $(this).css('background-image', 'url(' + poster + ')');
+                 //Only if no background image already exists for the card
+                if ($(this).css('background-image') == 'none') {
+                  $(this).css('background-image', 'url(' + poster + ')');
+                }
               }
             });
         }

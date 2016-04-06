@@ -17,6 +17,9 @@ function tpf_content_campaigns_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ambient_video',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -33,6 +36,43 @@ function tpf_content_campaigns_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_audio_volume'
+  $field_bases['field_audio_volume'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_audio_volume',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        '0.0' => '0.0',
+        '0.1' => 0.1,
+        '0.2' => 0.2,
+        '0.3' => 0.3,
+        '0.4' => 0.4,
+        '0.5' => 0.5,
+        '0.6' => 0.6,
+        '0.7' => 0.7,
+        '0.8' => 0.8,
+        '0.9' => 0.9,
+        '1.0' => '1.0',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_float',
   );
 
   // Exported field_base: 'field_authentication_link'
@@ -782,6 +822,34 @@ function tpf_content_campaigns_field_default_field_bases() {
     'type' => 'image',
   );
 
+  // Exported field_base: 'field_mute'
+  $field_bases['field_mute'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_mute',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_number_of_tweets'
   $field_bases['field_number_of_tweets'] = array(
     'active' => 1,
@@ -904,6 +972,28 @@ function tpf_content_campaigns_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'text',
+  );
+
+  // Exported field_base: 'field_tracking_pixels'
+  $field_bases['field_tracking_pixels'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_tracking_pixels',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
   );
 
   // Exported field_base: 'field_transparent_nav'
