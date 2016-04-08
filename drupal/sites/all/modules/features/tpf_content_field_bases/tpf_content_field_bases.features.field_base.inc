@@ -2444,6 +2444,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ic_citation',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -4029,10 +4032,13 @@ function tpf_content_field_bases_field_default_field_bases() {
   // Exported field_base: 'field_tab_action_override'
   $field_bases['field_tab_action_override'] = array(
     'active' => 1,
-    'cardinality' => 3,
+    'cardinality' => -1,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_tab_action_override',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
