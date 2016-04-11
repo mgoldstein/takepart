@@ -1557,6 +1557,34 @@ body.campaign-display{
         margin-top: 20px;
         float: none;
 	}
+    //Back-to-top Button
+    @include breakpoint($breakpoint-desktop){
+    .has-back-to-top {
+        .field-name-field-campaign-back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 3;
+            padding: 10px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 2px;
+            .field-items a {
+                width: 27px;
+                height: 30px;
+                background: url(/sites/all/themes/base/images/campaign_icon_sprite.png) 235px 0;
+                display: inline-block;
+                &:hover {
+                    background: url(/sites/all/themes/base/images/campaign_icon_sprite.png) 201px 0;
+                }
+            }
+        }
+        &.has-mute-button {
+            .field-name-field-campaign-back-to-top {
+                border-radius: 0 2px 2px 0px;
+            }
+        }
+    }
+    }
     //mute button
     @include breakpoint($breakpoint-desktop){
         .has-mute-button {
@@ -1571,6 +1599,7 @@ body.campaign-display{
                 .field-items{
                     width: 27px;
                     height: 30px;
+                    display: inline-block;
                     background: url(/sites/all/themes/base/images/campaign_icon_sprite.png) 145px 0;
                     cursor: pointer;
                     &:hover {
@@ -1584,8 +1613,16 @@ body.campaign-display{
                     }
                 }
             }
+            &.has-back-to-top {
+                .field-name-field-mute {
+                    right: 72px;
+                    padding: 10px 0px 10px 10px;
+                    border-radius: 2px 0 0 2px;
+                }
+            }
         }
     }
+
 }
 
 .campaign-page-comments {
