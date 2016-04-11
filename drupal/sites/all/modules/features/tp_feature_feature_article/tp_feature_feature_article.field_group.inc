@@ -21,7 +21,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Autoload Settings',
-    'weight' => '26',
+    'weight' => '22',
     'children' => array(
       0 => 'field_autoload',
     ),
@@ -36,6 +36,35 @@ function tp_feature_feature_article_field_group_info() {
     ),
   );
   $field_groups['group_autoload_settings|node|feature_article|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
+  $field_group->identifier = 'group_editorial_dates|node|feature_article|form';
+  $field_group->group_name = 'group_editorial_dates';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'feature_article';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Editorial Dates',
+    'weight' => '23',
+    'children' => array(
+      0 => 'field_due_date',
+      1 => 'field_run_date',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-editorial-dates field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_editorial_dates|node|feature_article|form'] = $field_group;
 
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
@@ -129,6 +158,7 @@ function tp_feature_feature_article_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Autoload Settings');
+  t('Editorial Dates');
   t('Inline Replacements');
   t('Promo');
   t('Tagging');

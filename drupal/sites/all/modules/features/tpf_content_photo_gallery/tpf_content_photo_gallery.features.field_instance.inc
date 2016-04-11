@@ -655,6 +655,114 @@ Change this only if you know what you are doing.',
     ),
   );
 
+  // Exported field_instance: 'node-openpublish_photo_gallery-field_due_date'
+  $field_instances['node-openpublish_photo_gallery-field_due_date'] = array(
+    'bundle' => 'openpublish_photo_gallery',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 34,
+      ),
+      'embed' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_due_date',
+    'label' => 'Due Date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'blank',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'display_all_day' => 0,
+        'increment' => 15,
+        'input_format' => 'M j Y - g:i:sa',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-0:+1',
+      ),
+      'type' => 'date_select',
+      'weight' => 16,
+    ),
+  );
+
   // Exported field_instance: 'node-openpublish_photo_gallery-field_free_tag'
   $field_instances['node-openpublish_photo_gallery-field_free_tag'] = array(
     'bundle' => 'openpublish_photo_gallery',
@@ -1420,7 +1528,7 @@ Change this only if you know what you are doing.',
         'widget_setting' => 'bob',
       ),
       'type' => 'views_field',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -1827,6 +1935,114 @@ Change this only if you know what you are doing.',
       ),
       'type' => 'node_reference_autocomplete',
       'weight' => 8,
+    ),
+  );
+
+  // Exported field_instance: 'node-openpublish_photo_gallery-field_run_date'
+  $field_instances['node-openpublish_photo_gallery-field_run_date'] = array(
+    'bundle' => 'openpublish_photo_gallery',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 35,
+      ),
+      'embed' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'full' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_run_date',
+    'label' => 'Run Date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'blank',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'display_all_day' => 0,
+        'increment' => 15,
+        'input_format' => 'M j Y - g:i:sa',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-0:+1',
+      ),
+      'type' => 'date_select',
+      'weight' => 17,
     ),
   );
 
@@ -2576,6 +2792,7 @@ Change this only if you know what you are doing.',
 Change this only if you know what you are doing.');
   t('Display Cover');
   t('Display TAB Banner');
+  t('Due Date');
   t('Free Tags');
   t('Gallery Images');
   t('Inline Replacements');
@@ -2587,6 +2804,7 @@ Change this only if you know what you are doing.');
   t('Recommend size is 620x467');
   t('Related Stories');
   t('Remove Headline from Display');
+  t('Run Date');
   t('Series');
   t('Slideshow');
   t('Sub Head');

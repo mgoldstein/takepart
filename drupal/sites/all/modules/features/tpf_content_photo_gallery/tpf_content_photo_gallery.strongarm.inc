@@ -135,19 +135,19 @@ function tpf_content_photo_gallery_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'xmlsitemap' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'metatags' => array(
           'weight' => '13',
         ),
         'redirect' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'locations' => array(
-          'weight' => '16',
+          'weight' => '14',
         ),
       ),
       'display' => array(),
@@ -175,7 +175,10 @@ function tpf_content_photo_gallery_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_openpublish_photo_gallery';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'moderation',
+    1 => 'revision',
+  );
   $export['node_options_openpublish_photo_gallery'] = $strongarm;
 
   $strongarm = new stdClass();

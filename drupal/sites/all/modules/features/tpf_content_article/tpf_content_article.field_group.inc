@@ -108,6 +108,36 @@ function tpf_content_article_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_editorial_dates|node|openpublish_article|form';
+  $field_group->group_name = 'group_editorial_dates';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'openpublish_article';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Editorial Dates',
+    'weight' => '27',
+    'children' => array(
+      0 => 'field_due_date',
+      1 => 'field_run_date',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Editorial Dates',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'id' => '',
+        'classes' => 'group-editorial-dates field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'collapsible',
+    ),
+  );
+  $field_groups['group_editorial_dates|node|openpublish_article|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_promo|node|openpublish_article|form';
   $field_group->group_name = 'group_promo';
   $field_group->entity_type = 'node';
@@ -171,6 +201,7 @@ function tpf_content_article_field_group_info() {
   t('Autoload Settings');
   t('Deprecated');
   t('Deprectated');
+  t('Editorial Dates');
   t('Promo');
   t('Tagging');
 

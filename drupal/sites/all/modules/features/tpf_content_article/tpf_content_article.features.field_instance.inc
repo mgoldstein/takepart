@@ -706,6 +706,103 @@ Change this only if you know what you are doing.',
     ),
   );
 
+  // Exported field_instance: 'node-openpublish_article-field_due_date'
+  $field_instances['node-openpublish_article-field_due_date'] = array(
+    'bundle' => 'openpublish_article',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 31,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_due_date',
+    'label' => 'Due Date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'blank',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'display_all_day' => 0,
+        'increment' => 30,
+        'input_format' => 'M j Y - g:i:sa',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-0:+1',
+      ),
+      'type' => 'date_select',
+      'weight' => 23,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'node-openpublish_article-field_free_tag'
   $field_instances['node-openpublish_article-field_free_tag'] = array(
     'bundle' => 'openpublish_article',
@@ -1638,6 +1735,103 @@ Change this only if you know what you are doing.',
     ),
   );
 
+  // Exported field_instance: 'node-openpublish_article-field_run_date'
+  $field_instances['node-openpublish_article-field_run_date'] = array(
+    'bundle' => 'openpublish_article',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'date',
+        'settings' => array(
+          'format_type' => 'long',
+          'fromto' => 'both',
+          'multiple_from' => '',
+          'multiple_number' => '',
+          'multiple_to' => '',
+        ),
+        'type' => 'date_default',
+        'weight' => 32,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_run_date',
+    'label' => 'Run Date',
+    'required' => 0,
+    'settings' => array(
+      'default_value' => 'blank',
+      'default_value2' => 'same',
+      'default_value_code' => '',
+      'default_value_code2' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'date',
+      'settings' => array(
+        'display_all_day' => 0,
+        'increment' => 15,
+        'input_format' => 'M j Y - g:i:sa',
+        'input_format_custom' => '',
+        'label_position' => 'above',
+        'text_parts' => array(),
+        'year_range' => '-0:+1',
+      ),
+      'type' => 'date_select',
+      'weight' => 24,
+    ),
+    'workbench_access_field' => 0,
+  );
+
   // Exported field_instance: 'node-openpublish_article-field_series'
   $field_instances['node-openpublish_article-field_series'] = array(
     'bundle' => 'openpublish_article',
@@ -2227,8 +2421,10 @@ Change this only if you know what you are doing.',
   t('DFP Creative ID');
   t('DFP Creative ID will automatically generate if this node references a Sponsored term with a DFP ID.
 Change this only if you know what you are doing.');
+  t('Due Date');
   t('Free Tag');
   t('Inline Replacements');
+  t('Limited at 70 characters');
   t('Main Image');
   t('Main Image Format');
   t('Make this my thumbnail image.');
@@ -2238,6 +2434,7 @@ Change this only if you know what you are doing.');
   t('Promo Text');
   t('Promo Thumbnail Image');
   t('Related Stories');
+  t('Run Date');
   t('Series');
   t('Should this node be loaded in the infinite load of content?');
   t('Subhead');
