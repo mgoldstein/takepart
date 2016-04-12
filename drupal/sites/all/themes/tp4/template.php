@@ -559,6 +559,11 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
     $variables['classes_array'][] = 'has-mute-button';
   }
 
+  //Check if there is a back-to-top link
+  if ($variables['field_campaign_back_to_top'][0]['value'] == 1) {
+    $variables['classes_array'][] = 'has-back-to-top';
+  }
+
   // Check whether facebook comments should be enabled
   foreach (field_get_items('node', $variables['node'], 'field_campaign_facebook_comments') as $item) {
     $variables['show_facebook_comments'] = $item['value'];
