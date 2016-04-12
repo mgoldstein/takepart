@@ -69,12 +69,9 @@ class InlineContentSocialEmbed extends InlineContentReplacementController {
     else if (strpos($embed_code , 'vine') !== FALSE) {
       $validated = TRUE;
     }
-    else if (strpos($embed_code , 'facebook') !== FALSE) {
-      $validated = TRUE;
-    }
 
     if (!$validated) {
-       form_error($form['field_ic_fia_embed'] ,t('Only embeds from Twitter, Vine, Facebook, and Instagram are supported at this time.'));
+       form_error($form['field_ic_fia_embed'] ,t('Only embeds from Twitter, Vine and Instagram are supported at this time.'));
     }
 
   }
