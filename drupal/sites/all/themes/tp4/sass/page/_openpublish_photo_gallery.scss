@@ -356,3 +356,10 @@
         margin-top: -57px;
     }
 }
+
+//Desktop Ad max height
+.node-type-openpublish-photo-gallery #block-boxes-takepart {
+  @include breakpoint($breakpoint-desktop) {
+    height: 250px;
+  }
+}
