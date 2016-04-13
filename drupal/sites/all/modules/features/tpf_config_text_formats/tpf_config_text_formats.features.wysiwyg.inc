@@ -48,6 +48,9 @@ function tpf_config_text_formats_wysiwyg_default_profiles() {
           'Table' => 1,
           'Scayt' => 1,
         ),
+        'pastefromgoogle' => array(
+          'pastefromgoogle_button' => 1,
+        ),
         'drupal_path' => array(
           'Link' => 1,
         ),
