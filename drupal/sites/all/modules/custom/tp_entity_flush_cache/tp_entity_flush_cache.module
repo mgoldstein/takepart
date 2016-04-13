@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * hook_node_validate
+ */
+function tp_entity_flush_cache_node_validate($node, $form, &$form_state) {
+  //This is a headache issue that is done in the core node module
+  //Our server cache is holding onto the entity cache for the node
+  //If this issue happens we will clear the entity cache forcing a fresh
+  //Node_load.  We are unsure what is preventing the cache from clearing naturally
+  if (isset($node->nid) && (node_last_changed($node->nid) > $node->changed)) {
+    //This is a simple core cache clear that will target only this node
+    //This is so we do not destory all the cache to fix the issue
+    //The table should exist, but better safe than sorry
+    if(db_table_exists('cache_entity_node')) {
+      cache_clear_all($node->nid, 'cache_entity_node');
+      if(_tp_entity_flush_cache_double_check($node)) {
+        form_set_error('changed1', t('There has been an attempt to fix the issue with the "modified content". Unfortunately, you will need to start over by clicking the \'Edit\' button. Copy any content you would like to save. If the error persists please contact the site admin.'));
+      }
+    }
+  }
+}
+
+/**
+ * Before we keep telling the user to save over and over again.
+ * Lets double check to see if we resolved the issue
+ */
+function _tp_entity_flush_cache_double_check($node) {
+  $node = node_load($node->nid,NULL,TRUE);
+  if (isset($node->nid) && (node_last_changed($node->nid) > $node->changed)) {
+    return FALSE;
+  } else {
+    return TRUE;
+  }
+}
