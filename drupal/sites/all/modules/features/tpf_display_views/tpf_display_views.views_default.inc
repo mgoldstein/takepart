@@ -3144,11 +3144,11 @@ print $value;
   $handler->display->display_options['fields']['field_promo_text']['field'] = 'field_promo_text';
   $handler->display->display_options['fields']['field_promo_text']['label'] = '';
   $handler->display->display_options['fields']['field_promo_text']['element_label_colon'] = FALSE;
-  /* Sort criterion: Indexed Content: Date created */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'search_api_index_site_node_index';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Indexed Content: Published at */
+  $handler->display->display_options['sorts']['published_at_1']['id'] = 'published_at_1';
+  $handler->display->display_options['sorts']['published_at_1']['table'] = 'search_api_index_site_node_index';
+  $handler->display->display_options['sorts']['published_at_1']['field'] = 'published_at';
+  $handler->display->display_options['sorts']['published_at_1']['order'] = 'DESC';
   /* Contextual filter: Topics [taxonomy_term] */
   $handler->display->display_options['arguments']['field_topic_1']['id'] = 'field_topic_1';
   $handler->display->display_options['arguments']['field_topic_1']['table'] = 'search_api_index_site_node_index';
@@ -4191,11 +4191,12 @@ print $value;
   $handler->display->display_options['fields']['field_sponsored']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_sponsored']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_sponsored']['group_column'] = 'entity_id';
-  /* Sort criterion: Content: Post date */
-  $handler->display->display_options['sorts']['created']['id'] = 'created';
-  $handler->display->display_options['sorts']['created']['table'] = 'node';
-  $handler->display->display_options['sorts']['created']['field'] = 'created';
-  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Sort criterion: Node: Published at */
+  $handler->display->display_options['sorts']['published_at']['id'] = 'published_at';
+  $handler->display->display_options['sorts']['published_at']['table'] = 'publication_date';
+  $handler->display->display_options['sorts']['published_at']['field'] = 'published_at';
+  $handler->display->display_options['sorts']['published_at']['order'] = 'DESC';
+  $handler->display->display_options['sorts']['published_at']['granularity'] = 'minute';
   /* Contextual filter: Content: Has taxonomy term ID */
   $handler->display->display_options['arguments']['tid']['id'] = 'tid';
   $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';

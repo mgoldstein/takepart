@@ -1,0 +1,6 @@
+name = TakePart Flush entity cache
+description = This is a module to help flush the entity caches.  The issue this is to mainly fix is the "Content Modified" node issue.  drupal/modules/node/node.module Line 1013 This is a problem with caching in live.
+core = 7.x
+
+dependencies[] = entity
+dependencies[] = entitycache

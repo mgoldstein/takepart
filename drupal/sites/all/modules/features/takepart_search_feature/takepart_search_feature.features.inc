@@ -57,6 +57,7 @@ function takepart_search_feature_default_search_api_index() {
         "field_topic:url" : { "type" : "list\\u003Curi\\u003E" },
         "is_new" : { "type" : "boolean" },
         "nid" : { "type" : "integer" },
+        "published_at" : { "type" : "date" },
         "search_api_aggregation_1" : { "type" : "text" },
         "search_api_language" : { "type" : "string" },
         "status" : { "type" : "boolean" },
@@ -234,7 +235,7 @@ function takepart_search_feature_default_search_api_page() {
 function takepart_search_feature_default_search_api_server() {
   $items = array();
   $items['takepart_solr_production'] = entity_import('search_api_server', '{
-    "name" : "TakePart SOLR Production (QA settings)",
+    "name" : "TakePart SOLR (Production settings)",
     "machine_name" : "takepart_solr_production",
     "description" : "Used for SOLR on TakePart.com",
     "class" : "search_api_solr_service",
@@ -244,7 +245,7 @@ function takepart_search_feature_default_search_api_server() {
       "site_hash_form" : [],
       "site_hash" : false,
       "scheme" : "http",
-      "host" : "10.1.10.30",
+      "host" : "10.2.5.50",
       "port" : 8080,
       "path" : "\\/solr\\/takepart_core",
       "http_user" : "",

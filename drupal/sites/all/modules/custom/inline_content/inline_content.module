@@ -415,7 +415,7 @@ function inline_content_replacement_types() {
   );
 
   $types['social_embed'] = array(
-    'label' => t('Social Embed (Twitter, Vine, Facebook, Instagram)'),
+    'label' => t('Social Embed (Twitter, Vine, Instagram)'),
     'description' => t('Paste embed code from Facebook, Twitter, Vine, or Instagram in the Embed field.'),
     'controller' => 'InlineContentSocialEmbed',
   );
