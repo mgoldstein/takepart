@@ -776,6 +776,12 @@ function tpf_config_metatag_metatag_export_default() {
       'twitter:player:stream:content_type' => array(
         'value' => 'video/mp4',
       ),
+      'sailthru.author' => array(
+        'value' => '[sailthru_metatags:author]',
+      ),
+      'twitter:image' => array(
+        'value' => '[tp_og_image:thumbnail:{node:nid}]',
+      ),
     ),
   );
 

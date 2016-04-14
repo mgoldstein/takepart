@@ -143,6 +143,9 @@ function tp_feature_feature_article_strongarm() {
         'locations' => array(
           'weight' => '20',
         ),
+        'workbench_access' => array(
+          'weight' => '0',
+        ),
       ),
       'display' => array(),
     ),
@@ -169,7 +172,10 @@ function tp_feature_feature_article_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_feature_article';
-  $strongarm->value = array();
+  $strongarm->value = array(
+    0 => 'moderation',
+    1 => 'revision',
+  );
   $export['node_options_feature_article'] = $strongarm;
 
   $strongarm = new stdClass();
