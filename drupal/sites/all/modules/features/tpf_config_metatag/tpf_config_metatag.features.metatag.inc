@@ -642,8 +642,11 @@ function tpf_config_metatag_metatag_export_default() {
       'og:description' => array(
         'value' => '[node:field_subhead]',
       ),
-      'sailthru.author' => array(
-        'value' => '[sailthru_metatags:author]',
+      'og:image:width' => array(
+        'value' => '[tp_og_image:thumbnail_width:{node:nid}]',
+      ),
+      'og:image:height' => array(
+        'value' => '[tp_og_image:thumbnail_height:{node:nid}]',
       ),
     ),
   );
@@ -740,6 +743,12 @@ function tpf_config_metatag_metatag_export_default() {
       'og:url' => array(
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
       ),
+      'og:image:width' => array(
+        'value' => '[tp_og_image:thumbnail_width:{node:nid}]',
+      ),
+      'og:image:height' => array(
+        'value' => '[tp_og_image:thumbnail_height:{node:nid}]',
+      ),
       'twitter:card' => array(
         'value' => 'player',
       ),
@@ -748,6 +757,9 @@ function tpf_config_metatag_metatag_export_default() {
       ),
       'twitter:description' => array(
         'value' => '[node:field_article_subhead]',
+      ),
+      'twitter:image' => array(
+        'value' => '[tp_og_image:thumbnail:{node:nid}]',
       ),
       'twitter:player' => array(
         'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-src}:]',

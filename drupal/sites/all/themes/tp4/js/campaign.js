@@ -81,29 +81,44 @@
             ;
           }
         });
+
+        //Adjust the height of the first card on the sliders
+        //This snippet is also inlcluded on the slide change callback
+        $sliders.each(function() {
+          if ($(this).find('.card-wrapper').length > 1) {
+            var wrapper = $(this).find('.swipe-wrap');
+            var current_height = wrapper.find('.card-wrapper[data-index="0"]').height();
+            wrapper.height(current_height);
+          }
+        });
+
       };
 
       //Full Screen Ambient Video
       //Assuming there is only a top video
       var adjustCardBackgroundVideo = function() {
+
+        $ambient_card = $('.is-ambient.has-videoBG');
+        $ambient_video = $('.is-ambient.has-videoBG video');
+
         //find/set video ratio
         if(window.videoRatio !== 'undefined') {
-          window.videoRatio = $('.has-videoBG video').width()/$('.has-videoBG video').height();
+          window.videoRatio = $ambient_video.width()/$ambient_video.height();
         }
         var winh = window.innerHeight;
         var winw = window.innerWidth;
         //Set the parent divs to set heights
-        $('.has-videoBG').parent('.card-wrapper').height('100%');
-        $('.has-videoBG').parents('.swipe-wrap').height('100%');
-        $('.has-videoBG').parents('.tray-img-width-full').height(winh);
+        $ambient_card.parent('.card-wrapper').height('100%');
+        $ambient_card.parents('.swipe-wrap').height('100%');
+        $ambient_card.parents('.tray-img-width-full').height(winh);
         //check to see if the screen ratio needs us to
         //Change if we are using the height or width as our set variable
         if((winw/winh) >= window.videoRatio) {
-          $('.has-videoBG video').height(winw/window.videoRatio);
-          $('.has-videoBG video').width(winw);
+          $ambient_video.height(winw/window.videoRatio);
+          $ambient_video.width(winw);
         } else {
-          $('.has-videoBG video').height(winh);
-          $('.has-videoBG video').width(winh*window.videoRatio);
+          $ambient_video.height(winh);
+          $ambient_video.width(winh*window.videoRatio);
         }
       };
 
@@ -265,7 +280,10 @@
                 }
               }else{
                  //If a mobile device is detected AND the card has a video background then use the poster image as bg
-                $(this).css('background-image', 'url(' + poster + ')');
+                 //Only if no background image already exists for the card
+                if ($(this).css('background-image') == 'none') {
+                  $(this).css('background-image', 'url(' + poster + ')');
+                }
               }
             });
         }

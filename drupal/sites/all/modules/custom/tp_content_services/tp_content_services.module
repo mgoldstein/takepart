@@ -50,7 +50,9 @@ function tp_content_services_notify_service($node, $insup = '') {
 
   //description - content subhead
   $description = '';
-  if($sub_head = field_get_items('node', $node, 'field_page_subhead')) {
+  if($sub_head = field_get_items('node', $node, 'field_article_subhead')) {
+    $description = $sub_head[0]['value'];
+  } else if($sub_head = field_get_items('node', $node, 'field_subhead')){
     $description = $sub_head[0]['value'];
   }
   //image - full path to content image
@@ -165,7 +167,7 @@ function _tp_content_services_get_tags($node) {
       }
     }
   }
-  
+
   $tag_array[] = $node->type;
   $tags = implode(",", $tag_array);
 

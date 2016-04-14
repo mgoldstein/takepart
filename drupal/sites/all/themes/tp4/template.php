@@ -559,6 +559,11 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
     $variables['classes_array'][] = 'has-mute-button';
   }
 
+  //Check if there is a back-to-top link
+  if ($variables['field_campaign_back_to_top'][0]['value'] == 1) {
+    $variables['classes_array'][] = 'has-back-to-top';
+  }
+
   // Check whether facebook comments should be enabled
   foreach (field_get_items('node', $variables['node'], 'field_campaign_facebook_comments') as $item) {
     $variables['show_facebook_comments'] = $item['value'];
@@ -1461,8 +1466,11 @@ function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
 
 }
 function tp4_preprocess_node__campaign_card_empty(&$variables, $hook) {
-  $image = file_create_url($variables['field_campaign_background']['und'][0]['uri']);
-  $center = '<img src="'. $image. '">';
+  $file = $variables['field_campaign_background'][LANGUAGE_NONE][0];
+  $mapping = picture_mapping_load('feature_main_image');
+  $file['breakpoints'] = picture_get_mapping_breakpoints($mapping);
+  $file['attributes'] = array();
+  $center = theme('picture', $file);
 
   //background properties
   tp4_campaign_background_rules($variables);
@@ -1587,9 +1595,25 @@ function tp4_campaign_background_rules(&$variables){
   }
 
   $background = '';
+  $bg = '';
   if($background = field_get_items('node', $variables['node'], 'field_campaign_background')){
-    $background = file_create_url($background[0]['uri']);
-    $variables['styles'][] = "background-image: url('$background');";
+    $bg = file_create_url($background[0]['uri']);
+    //image style for tablet and mobile
+    $variables['background_image_desktop'][] = "background-image: url('$bg');";
+    if($bgtablet = image_style_path('large_responsive_tablet', $background[0]['uri'])) {
+      $bgtablet = file_create_url($bgtablet);
+      $variables['background_image_tablet'][] = "background-image: url('$bgtablet');";
+    } else {
+      $variables['background_image_tablet'][] = "background-image: url('$bg');";
+    }
+    if($bgmobile = image_style_path('large_responsive_mobile', $background[0]['uri'])) {
+      $bgmobile = file_create_url($bgmobile);
+      $variables['background_image_mobile'][] = "background-image: url('$bgmobile');";
+    } else {
+      $variables['background_image_mobile'][] = "background-image: url('$bg');";
+    }
+    $variables['background_class'] = $variables['type'].$variables['nid'];
+    $variables['classes_array'][] = $variables['type'].$variables['nid'];
   }
 
   /* Background Video */
@@ -1598,7 +1622,23 @@ function tp4_campaign_background_rules(&$variables){
     $video = file_create_url($video);
 
     if($video_poster = field_get_items('node', $variables['node'], 'field_campaign_bg_video_poster')){
-      $background = file_create_url($video_poster[0]['uri']);
+      $bg = file_create_url($video_poster[0]['uri']);
+      //image style for tablet and mobile
+      $variables['background_image_desktop'][] = "background-image: url('$bg');";
+      if($bgtablet = image_style_path('large_responsive_tablet', $background[0]['uri'])) {
+        $bgtablet = file_create_url($bgtablet);
+        $variables['background_image_tablet'][] = "background-image: url('$bgtablet');";
+      } else {
+        $variables['background_image_tablet'][] = "background-image: url('$bg');";
+      }
+      if($bgmobile = image_style_path('large_responsive_mobile', $background[0]['uri'])) {
+        $bgmobile = file_create_url($bgmobile);
+        $variables['background_image_mobile'][] = "background-image: url('$bgmobile');";
+      } else {
+        $variables['background_image_mobile'][] = "background-image: url('$bg');";
+      }
+      $variables['background_class'] = $variables['type'].$variables['nid'];
+      $variables['classes_array'][] = $variables['type'].$variables['nid'];
     }
     //Ambient Video Check
     if($is_ambient = field_get_items('node' , $variables['node'] , 'field_ambient_video')) {
@@ -1613,7 +1653,7 @@ function tp4_campaign_background_rules(&$variables){
       $variables['attributes_array']['data-video-volume'] = $volume;
     }
 
-    $variables['attributes_array']['data-video-bg'] = "[\"$background\", \"$video\"]";
+    $variables['attributes_array']['data-video-bg'] = "[\"$bg\", \"$video\"]";
     $variables['classes_array'][] = "has-videoBG";
   }
 }
@@ -1648,6 +1688,8 @@ function tp4_preprocess_node__openpublish_photo_gallery(&$variables) {
 						$node_clone->body[$lang][0]['safe_value'] = '';
 						$variables['gallery_tap_banner'] = field_view_field('node', $node_clone, 'body', $description_display);
         }
+	   // provide "on our radar" block
+          _tp4_on_our_radar_block($variables);
         // provide topic box
         if($topic = field_get_items('node', $variables['node'], 'field_topic_box')){
           $variables['topic_box_top'] = theme('base_topic_box', array('tid' => $topic[0]['tid']));
@@ -1677,6 +1719,28 @@ function tp4_preprocess_node__flashcard(&$variables) {
     }
 
     _tp4_sponsor($variables);
+}
+
+/**
+ * Utility function to provide "On Our Radar" block to node templates
+ */
+function _tp4_on_our_radar_block(&$variables) {
+  $variables['on_our_radar'] = theme('html_tag', array(
+         'element' => array(
+         '#tag' => 'div',
+         '#value' => '',
+         '#attributes' => array(
+           'id' => 'pubexchange_related_links',
+     ))));
+  drupal_add_js('(function(d, s, id)
+    { var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.async = true; js.src = "http://cdn.pubexchange.com/modules/partner/take_part"; pjs.parentNode.insertBefore(js, pjs); }
+    (document, "script", "pubexchange-jssdk"));',
+    array(
+      'type' => 'inline',
+      'scope' => 'footer',
+      'weight' => 10
+    )
+  );
 }
 
 /**

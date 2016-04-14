@@ -372,16 +372,28 @@ function inline_content_replacement_types() {
     'controller' => 'InlineContentNodes',
   );
 
-  $types['horizontal_rule'] = array(
-    'label' => t('Horizontal Rule'),
-    'description' => t('A simple horizontal rule.'),
-    'controller' => 'InlineContentHorizontalRule',
+  $types['image'] = array(
+    'label' => t('Feature Image'),
+    'description' => t('Image with caption and display options.'),
+    'controller' => 'InlineContentImage',
   );
 
   $types['markup'] = array(
     'label' => t('HTML Block'),
     'description' => t('A free form HTML block to be use ONLY when all else fails.'),
     'controller' => 'InlineContentMarkup',
+  );
+
+  $types['horizontal_rule'] = array(
+    'label' => t('Horizontal Rule'),
+    'description' => t('A simple horizontal rule.'),
+    'controller' => 'InlineContentHorizontalRule',
+  );
+
+  $types['interactive_iframe'] = array(
+    'label' => t('Interactive Iframe'),
+    'description' => t('Paste Iframe embed code in the Embed field.'),
+    'controller' => 'InlineContentIframeEmbed',
   );
 
   $types['media'] = array(
@@ -396,6 +408,18 @@ function inline_content_replacement_types() {
     'controller' => 'InlineContentNewsletter',
   );
 
+  $types['pull_quote'] = array(
+    'label' => t('Pull Quote'),
+    'description' => t('Pull Quote With Optional Citation'),
+    'controller' => 'InlineContentPullQuote',
+  );
+
+  $types['social_embed'] = array(
+    'label' => t('Social Embed (Twitter, Vine, Facebook, Instagram)'),
+    'description' => t('Paste embed code from Facebook, Twitter, Vine, or Instagram in the Embed field.'),
+    'controller' => 'InlineContentSocialEmbed',
+  );
+
   $types['take_action_widget'] = array(
     'label' => t('TAP Banner v1 - Donations, Stories, Awareness, and Influence'),
     'description' => t('TAP Banner v1 - Donations, Stories, Awareness, and Influence'),
@@ -408,34 +432,28 @@ function inline_content_replacement_types() {
     'controller' => 'InlineContentTapEmbed',
   );
 
-  $types['image'] = array(
-    'label' => t('Feature Image'),
-    'description' => t('Image with caption and display options.'),
-    'controller' => 'InlineContentImage',
-  );
-
-  $types['ad_block'] = array(
+/*  $types['ad_block'] = array(
     'label' => t('Ad Block - DO NOT USE NO LONGER WORKS'),
     'description' => t('300x250 advertisment floated right.'),
     'controller' => 'InlineContentAdBlock',
-  );
+  );*/
 
-  $types['pull_quote'] = array(
-    'label' => t('Pull Quote'),
-    'description' => t('Pull Quote With Optional Citation'),
-    'controller' => 'InlineContentPullQuote',
+  $types['video_playlist'] = array(
+    'label' => t('Video: JW Player Playlist'),
+    'description' => t('Video Playlist with player and display options'),
+    'controller' => 'InlineContentVideoPlaylist',
   );
 
   $types['video'] = array(
-    'label' => t('Video'),
+    'label' => t('Video: JW Player Single Video'),
     'description' => t('Video with player and display options'),
     'controller' => 'InlineContentVideo',
   );
 
-  $types['video_playlist'] = array(
-    'label' => t('Video Playlist'),
-    'description' => t('Video Playlist with player and display options'),
-    'controller' => 'InlineContentVideoPlaylist',
+  $types['youtube_embed'] = array(
+    'label' => t('Video: YouTube Player'),
+    'description' => t('Paste embed code from YouTube in the Embed field.'),
+    'controller' => 'InlineContentYoutubeEmbed',
   );
 
   return $types;
@@ -693,6 +711,13 @@ function inline_content_theme() {
         'img' => '',
         'caption' => '',
         'alignment' => ''
+      )
+    ),
+    'inline_content_iframe' => array(
+      'template' => 'inline-content-iframe',
+      'variables' => array(
+        'iframe' => '',
+        'caption' => ''
       )
     )
   );

@@ -196,8 +196,24 @@ function tp_campaigns_card_background(&$variables){
 
   $background = '';
   if($background = field_get_items('node', $variables['node'], 'field_campaign_background')) {
-    $background = file_create_url($background[0]['uri']);
-    $variables['styles'][] = "background-image: url('$background');";
+    $bg = file_create_url($background[0]['uri']);
+		//image style for tablet and mobile
+		$variables['background_image_desktop'][] = "background-image: url('$bg');";
+		if($bgtablet = image_style_path('large_responsive_tablet', $background[0]['uri'])) {
+			$bgtablet = file_create_url($bgtablet);
+			$variables['background_image_tablet'][] = "background-image: url('$bgtablet');";
+		} else {
+			$variables['background_image_tablet'][] = "background-image: url('$bg');";
+		}
+		if($bgmobile = image_style_path('large_responsive_mobile', $background[0]['uri'])) {
+			$bgmobile = file_create_url($bgmobile);
+			$variables['background_image_mobile'][] = "background-image: url('$bgmobile');";
+		} else {
+			$variables['background_image_mobile'][] = "background-image: url('$bg');";
+		}
+		$variables['background_class'] = $variables['type'].$variables['nid'];
+		$variables['classes_array'][] = $variables['type'].$variables['nid'];
+
   }
 
 	//Set the size of the background image

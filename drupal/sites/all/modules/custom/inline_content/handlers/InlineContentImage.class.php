@@ -42,38 +42,28 @@ class InlineContentImage extends InlineContentReplacementController {
         /* Have to do it this way based on the way this was originally setup */
         $format = $format[0]['value'];
         if($format != 'none'){
-          $image_url = image_style_url('feature_article_' . $format, $file->uri);
+          $mapping = picture_mapping_load('feature_article_' . $format);
         }else {
           //Don't use large image style on full width images on feature article
           if ($replacement->field_ic_alignment['und'][0]['value'] == 'full_width') {
             if (isset($node_type) && $node_type == 'feature_article') {
-              $image_url = file_create_url($file->uri);
+              $mapping = picture_mapping_load('feature_main_image');
             }
           }
           else {
-            $image_url = image_style_url('large', $file->uri);
+            $mapping = picture_mapping_load('large');
           }
         }
       }else{
         /* If no format exists, use the default 'large' image style */
-        $image_url = image_style_url('large', $file->uri);
+        $mapping = picture_mapping_load('large');
       }
 
-      /* Setup the image */
-      $img_vars = array(
-        'path' => $image_url,
-        'attributes' => array(
-          'class' => array('inline-image')
-        ),
-        'title' => $file->title,
-        'alt' => $file->alt
+      $file->breakpoints = picture_get_mapping_breakpoints($mapping);
+      $file->attributes = array(
+        'class' => array('inline-image')
       );
-
-      if(module_exists('lazyloader')) {
-        $image =  theme('lazyloader_image', $img_vars);
-      } else {
-        $image =  theme('image', $img_vars);
-      }
+      $image= theme('picture', (array) $file);
 
       /* Render caption if it exists */
       if($caption = field_get_items('file', $file, 'field_media_caption')){

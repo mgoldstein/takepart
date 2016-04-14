@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Takepart Responsive Images feature.
+ */
+
+include_once 'tpf_responsive_images.features.inc';

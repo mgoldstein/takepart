@@ -869,7 +869,7 @@ Change this only if you know what you are doing.',
   $field_instances['node-openpublish_photo_gallery-field_gallery_images'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'deleted' => 0,
-    'description' => 'Recommend size is 620x467',
+    'description' => 'Recommend size is 620x413',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -2801,7 +2801,7 @@ Change this only if you know what you are doing.');
   t('Promo Headline');
   t('Promo Short Headline');
   t('Promo Text');
-  t('Recommend size is 620x467');
+  t('Recommend size is 620x413');
   t('Related Stories');
   t('Remove Headline from Display');
   t('Run Date');

@@ -108,8 +108,18 @@
   * Preloading the background images
   */
   var campaignPreload = function() {
-    var imgs = Drupal.settings.campaignPreload;
     window.preloaded = 0;
+    var winsize = 'tablet';
+    if(window.innerWidth > 980) {
+      winsize = 'desktop';
+    } else if(window.innerWidth < 768) {
+      winsize = 'mobile';
+    }
+    //Check if there are no bg images to load
+    if(Drupal.settings.campaignPreload.length != 0) {
+      Drupal.settings.campaignPreload = Drupal.settings.campaignPreload[winsize];
+    }
+    var imgs = Drupal.settings.campaignPreload;
 
     //If there are no images to preload just load campaignOnload
     if(window.preloaded >= Drupal.settings.campaignPreload.length) {
@@ -324,11 +334,13 @@ function muteAmbientVideo() {
     if(!jQuery(this).hasClass('muted')) {
       //Mute
       jQuery(this).prop('muted', true).addClass('muted');
+      jQuery('.field-name-field-mute .field-items').addClass('enabled');
       window.muted = true;
     }
     else if(window.muted) {
       //Unmute
       jQuery(this).prop('muted', false).removeClass('muted');
+      jQuery('.field-name-field-mute .field-items').removeClass('enabled');
     }
   });
 }

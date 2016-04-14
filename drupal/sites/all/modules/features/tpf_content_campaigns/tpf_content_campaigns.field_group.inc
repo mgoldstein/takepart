@@ -145,7 +145,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_background',
       1 => 'field_campaign_bgw_image',
-      2 => 'field_campaign_bg_image_position',
+      2 => 'field_campaign_bg_crop',
+      3 => 'field_campaign_bg_image_position',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -528,6 +529,7 @@ function tpf_content_campaigns_field_group_info() {
       0 => 'field_campaign_bg_video',
       1 => 'field_campaign_bg_video_poster',
       2 => 'field_audio_volume',
+      3 => 'field_ambient_video',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -846,9 +848,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'field_campaign_bg_crop',
-      3 => 'group_background_image',
-      4 => 'group_background_video',
+      2 => 'group_background_image',
+      3 => 'group_background_video',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1300,7 +1301,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '11',
+    'weight' => '12',
     'children' => array(
       0 => 'field_article_subhead',
       1 => 'field_promo_headline',
@@ -1392,7 +1393,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '17',
+    'weight' => '18',
     'children' => array(
       0 => 'field_author',
       1 => 'field_free_tag',

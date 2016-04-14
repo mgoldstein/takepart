@@ -1,0 +1,135 @@
+<?php
+
+/**
+ * Implements hook_init()
+ */
+function tp_fbia_init() {
+
+  //Claim URL
+  //https://developers.facebook.com/docs/instant-articles/claim-url
+  $data = array(
+    '#tag' => 'meta',
+    '#attributes' => array(
+       'property' => 'fb:pages',
+       'content' => variable_get('tp_fbia_page_id', ''),
+    ),
+  );
+  drupal_add_html_head($data, 'tp_fbia_pages');
+
+}
+
+/**
+ * Implements hook_menu
+ */
+function tp_fbia_menu() {
+
+  $items = array();
+
+  //The RSS feed to publish to FBIA
+  $items['fbia.rss'] = array (
+    'page callback' => 'tp_fbia_page_feed',
+    'delivery callback' => 'tp_fbia_html_feed',
+    'type' => MENU_CALLBACK,
+    'file' => 'includes/feed.inc',
+    'access arguments' => array('access content')
+  );
+
+  //Settings page for feed
+  $items['admin/config/takepart/fbia'] = array(
+    'title' => 'Facebook Instant Articles',
+    'description' => 'Settings for Facebook Instant Articles',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('tp_fbia_admin_settings_form'),
+    'access arguments' => array('administer tp_fbia'),
+    'file' => 'includes/admin.inc',
+  );
+
+  //Each article needs it's own analytics page to get iframed in
+  $items['fbia/node/%node/analytics'] = array (
+    'page callback' => 'tp_fbia_page_analytics',
+    'delivery callback' => 'tp_fbia_html_analytics',
+    'page arguments' => array(2),
+    'type' => MENU_CALLBACK,
+    'file' => 'includes/analytics.inc',
+  );
+
+  return $items;
+
+}
+
+/**
+ * Implements hook_permission().
+ */
+function tp_fbia_permission() {
+  $permissions = array();
+
+  $permissions['administer tp_fbia'] = array(
+    'title' => t('Administer Facebook Instant Articles'),
+  );
+  return $permissions;
+}
+
+/**
+ * Implements hook_theme
+ */
+function tp_fbia_theme() {
+  return array(
+
+    'tp_fbia_page_analytics' => array(
+      'template' => 'view/tp-fbia-page-analytics',
+      'variables' => array(
+        'ddl'      => ''
+      ),
+    ),
+
+    'tp_fbia_html_analytics' => array(
+      'template' => 'view/tp-fbia-html-analytics',
+      'variables' => array(
+        'dtm'       => '',
+        'content'   => ''
+      ),
+    ),
+
+    'tp_fbia_feed_page' => array(
+      'template' => 'view/tp-fbia-feed-page',
+      'variables' => array(
+        'title'       => '',
+        'description' => '',
+        'link'        => '',
+        'buildDate'   => '',
+        'items'       => array()
+      ),
+    ),
+
+    'tp_fbia_feed_item' => array(
+      'template' => 'view/tp-fbia-feed-item',
+      'variables' => array(
+        'title'       => '',
+        'link'        => '',
+        'guid'        => '',
+        'pubDate'     => '',
+        'author'      => '',
+        'description' => '',
+        'content'     => ''
+      )
+    ),
+
+    'tp_fbia_feed_item_content' => array(
+      'template' => 'view/tp-fbia-feed-item-content',
+      'variables' => array(
+        'url'           => '',
+        'type'          => '',
+        'title'         => '',
+        'subhead'       => '',
+        'updatedDate'   => '',
+        'pubDate'       => '',
+        'image_url'     => '',
+        'image_caption' => '',
+        'authors'       => '',
+        'related_title' => '',
+        'related_url'   => ''
+      )
+    )
+
+  );
+}

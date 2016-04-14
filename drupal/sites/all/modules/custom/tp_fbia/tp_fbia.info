@@ -1,0 +1,4 @@
+name = TakePart Facebook Instant Articles
+description = Feed, Ads and Analytics for Facebook's Instant Articles
+core = 7.x
+package = TakePart
