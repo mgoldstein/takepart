@@ -334,6 +334,46 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_assigned_editor'
+  $field_bases['field_assigned_editor'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_assigned_editor',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'uid' => array(
+        0 => 'uid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'user_reference',
+    'settings' => array(
+      'referenceable_roles' => array(
+        2 => 0,
+        3 => 0,
+        5 => 5,
+        6 => 6,
+        7 => 7,
+        8 => 0,
+      ),
+      'referenceable_status' => array(
+        0 => 0,
+        1 => 1,
+      ),
+      'view' => array(
+        'args' => array(),
+        'display_name' => '',
+        'view_name' => '',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'user_reference',
+  );
+
   // Exported field_base: 'field_associated_content'
   $field_bases['field_associated_content'] = array(
     'active' => 1,
@@ -1838,15 +1878,15 @@ function tpf_content_field_bases_field_default_field_bases() {
       'cache_enabled' => 0,
       'granularity' => array(
         'day' => 'day',
-        'hour' => 0,
-        'minute' => 0,
+        'hour' => 'hour',
+        'minute' => 'minute',
         'month' => 'month',
         'second' => 0,
         'year' => 'year',
       ),
-      'timezone_db' => '',
+      'timezone_db' => 'UTC',
       'todate' => '',
-      'tz_handling' => 'none',
+      'tz_handling' => 'site',
     ),
     'translatable' => 0,
     'type' => 'datetime',
@@ -2476,9 +2516,6 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ic_citation',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -2568,28 +2605,6 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_ic_fia_embed'
-  $field_bases['field_ic_fia_embed'] = array(
-    'active' => 1,
-    'cardinality' => 1,
-    'deleted' => 0,
-    'entity_types' => array(),
-    'field_name' => 'field_ic_fia_embed',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
-    'indexes' => array(
-      'format' => array(
-        0 => 'format',
-      ),
-    ),
-    'locked' => 0,
-    'module' => 'text',
-    'settings' => array(),
-    'translatable' => 0,
-    'type' => 'text_long',
-  );
-
   // Exported field_base: 'field_ic_image'
   $field_bases['field_ic_image'] = array(
     'active' => 1,
@@ -2664,9 +2679,6 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ic_label',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -4096,13 +4108,10 @@ function tpf_content_field_bases_field_default_field_bases() {
   // Exported field_base: 'field_tab_action_override'
   $field_bases['field_tab_action_override'] = array(
     'active' => 1,
-    'cardinality' => -1,
+    'cardinality' => 3,
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_tab_action_override',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',

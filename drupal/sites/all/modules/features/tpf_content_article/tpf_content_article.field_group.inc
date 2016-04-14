@@ -115,22 +115,22 @@ function tpf_content_article_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Editorial Dates',
+    'label' => 'Editorial Info',
     'weight' => '27',
     'children' => array(
       0 => 'field_due_date',
       1 => 'field_run_date',
+      2 => 'field_assigned_editor',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'label' => 'Editorial Dates',
+      'label' => 'Editorial Info',
       'instance_settings' => array(
         'required_fields' => 0,
-        'id' => '',
-        'classes' => 'group-editorial-dates field-group-fieldset',
+        'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
     ),
   );
   $field_groups['group_editorial_dates|node|openpublish_article|form'] = $field_group;
@@ -201,7 +201,7 @@ function tpf_content_article_field_group_info() {
   t('Autoload Settings');
   t('Deprecated');
   t('Deprectated');
-  t('Editorial Dates');
+  t('Editorial Info');
   t('Promo');
   t('Tagging');
 

@@ -406,6 +406,89 @@ function tpf_content_article_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-openpublish_article-field_assigned_editor'
+  $field_instances['node-openpublish_article-field_assigned_editor'] = array(
+    'bundle' => 'openpublish_article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'user_reference',
+        'settings' => array(),
+        'type' => 'user_reference_default',
+        'weight' => 33,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_assigned_editor',
+    'label' => 'Assigned Editor',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'user_reference',
+      'settings' => array(
+        'autocomplete_match' => 'contains',
+        'autocomplete_path' => 'user_reference/autocomplete',
+        'size' => 60,
+      ),
+      'type' => 'user_reference_autocomplete',
+      'weight' => 28,
+    ),
+  );
+
   // Exported field_instance: 'node-openpublish_article-field_author'
   $field_instances['node-openpublish_article-field_author'] = array(
     'bundle' => 'openpublish_article',
@@ -798,7 +881,7 @@ Change this only if you know what you are doing.',
         'year_range' => '-0:+1',
       ),
       'type' => 'date_select',
-      'weight' => 23,
+      'weight' => 26,
     ),
     'workbench_access_field' => 0,
   );
@@ -1827,7 +1910,7 @@ Change this only if you know what you are doing.',
         'year_range' => '-0:+1',
       ),
       'type' => 'date_select',
-      'weight' => 24,
+      'weight' => 27,
     ),
     'workbench_access_field' => 0,
   );
@@ -2415,6 +2498,7 @@ Change this only if you know what you are doing.',
   // Included for use with string extractors like potx.
   t('Admin Tag');
   t('Analytics Title');
+  t('Assigned Editor');
   t('Author(s)');
   t('Autoload Content');
   t('Body');

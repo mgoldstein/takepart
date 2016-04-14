@@ -47,21 +47,22 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Editorial Dates',
+    'label' => 'Editorial Info',
     'weight' => '23',
     'children' => array(
       0 => 'field_due_date',
       1 => 'field_run_date',
+      2 => 'field_assigned_editor',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'formatter' => 'collapsible',
+      'label' => 'Editorial Info',
       'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
         'description' => '',
-        'classes' => 'group-editorial-dates field-group-fieldset',
-        'required_fields' => 1,
-        'id' => '',
       ),
+      'formatter' => 'closed',
     ),
   );
   $field_groups['group_editorial_dates|node|feature_article|form'] = $field_group;
@@ -158,7 +159,7 @@ function tp_feature_feature_article_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Autoload Settings');
-  t('Editorial Dates');
+  t('Editorial Info');
   t('Inline Replacements');
   t('Promo');
   t('Tagging');

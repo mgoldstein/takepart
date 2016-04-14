@@ -74,22 +74,22 @@ function tpf_content_video_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Editorial Dates',
+    'label' => 'Editorial Info',
     'weight' => '39',
     'children' => array(
       0 => 'field_due_date',
       1 => 'field_run_date',
+      2 => 'field_assigned_editor',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'label' => 'Editorial Dates',
+      'label' => 'Editorial Info',
       'instance_settings' => array(
         'required_fields' => 0,
-        'id' => '',
-        'classes' => 'group-editorial-dates field-group-fieldset',
+        'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
     ),
   );
   $field_groups['group_editorial_dates|node|video_playlist|form'] = $field_group;
@@ -104,22 +104,22 @@ function tpf_content_video_field_group_info() {
   $field_group->mode = 'form';
   $field_group->parent_name = '';
   $field_group->data = array(
-    'label' => 'Editorial Dates',
+    'label' => 'Editorial Info',
     'weight' => '59',
     'children' => array(
       0 => 'field_due_date',
       1 => 'field_run_date',
+      2 => 'field_assigned_editor',
     ),
-    'format_type' => 'fieldset',
+    'format_type' => 'tab',
     'format_settings' => array(
-      'label' => 'Editorial Dates',
+      'label' => 'Editorial Info',
       'instance_settings' => array(
         'required_fields' => 0,
-        'id' => '',
-        'classes' => 'group-editorial-dates field-group-fieldset',
+        'classes' => '',
         'description' => '',
       ),
-      'formatter' => 'collapsible',
+      'formatter' => 'closed',
     ),
   );
   $field_groups['group_editorial_dates|node|video|form'] = $field_group;
@@ -311,7 +311,7 @@ function tpf_content_video_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Autoload Settings');
-  t('Editorial Dates');
+  t('Editorial Info');
   t('Player Configuration');
   t('Playlist Settings');
   t('Promo');

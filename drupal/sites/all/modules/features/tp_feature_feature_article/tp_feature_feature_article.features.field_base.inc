@@ -39,5 +39,45 @@ function tp_feature_feature_article_field_default_field_bases() {
     'type' => 'link_field',
   );
 
+  // Exported field_base: 'field_assigned_editor'
+  $field_bases['field_assigned_editor'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_assigned_editor',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'uid' => array(
+        0 => 'uid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'user_reference',
+    'settings' => array(
+      'referenceable_roles' => array(
+        2 => 0,
+        3 => 0,
+        5 => 5,
+        6 => 6,
+        7 => 7,
+        8 => 0,
+      ),
+      'referenceable_status' => array(
+        0 => 0,
+        1 => 1,
+      ),
+      'view' => array(
+        'args' => array(),
+        'display_name' => '',
+        'view_name' => '',
+      ),
+    ),
+    'translatable' => 0,
+    'type' => 'user_reference',
+  );
+
   return $field_bases;
 }
