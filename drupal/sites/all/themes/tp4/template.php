@@ -1625,13 +1625,13 @@ function tp4_campaign_background_rules(&$variables){
       $bg = file_create_url($video_poster[0]['uri']);
       //image style for tablet and mobile
       $variables['background_image_desktop'][] = "background-image: url('$bg');";
-      if($bgtablet = image_style_path('large_responsive_tablet', $background[0]['uri'])) {
+      if($bgtablet = image_style_path('large_responsive_tablet', $video_poster[0]['uri'])) {
         $bgtablet = file_create_url($bgtablet);
         $variables['background_image_tablet'][] = "background-image: url('$bgtablet');";
       } else {
         $variables['background_image_tablet'][] = "background-image: url('$bg');";
       }
-      if($bgmobile = image_style_path('large_responsive_mobile', $background[0]['uri'])) {
+      if($bgmobile = image_style_path('large_responsive_mobile', $video_poster[0]['uri'])) {
         $bgmobile = file_create_url($bgmobile);
         $variables['background_image_mobile'][] = "background-image: url('$bgmobile');";
       } else {
