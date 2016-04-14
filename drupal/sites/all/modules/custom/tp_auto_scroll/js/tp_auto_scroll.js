@@ -180,12 +180,10 @@
                   window.newTapWidgets = false;
                 }
 
-                /** Sailthru Horizon Setup **/
-                if(typeof Sailthru !== 'undefined' && typeof Sailthru.setup !== 'undefined') {
-                  //Clear out the old instance
-                  Sailthru.__instance = {};
-                  //Re setup sailthru horizon as if the page was just loaded
-                  Sailthru.setup({domain:'horizon.takepart.com'});
+                /** Sailthru Horizon Track **/
+                if(typeof Sailthru !== 'undefined' && typeof Sailthru.track !== 'undefined') {
+                  //Track sailthru horizon as if the page was just loaded
+                  Sailthru.track({domain:'horizon.takepart.com'});
                 }
               }
 
