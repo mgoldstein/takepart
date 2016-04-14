@@ -179,6 +179,14 @@
                   TAP.Widget      && TAP.Widget.addWidgets();
                   window.newTapWidgets = false;
                 }
+
+                /** Sailthru Horizon Setup **/
+                if(typeof Sailthru !== 'undefined' && typeof Sailthru.setup !== 'undefined') {
+                  //Clear out the old instance
+                  Sailthru.__instance = {};
+                  //Re setup sailthru horizon as if the page was just loaded
+                  Sailthru.setup({domain:'horizon.takepart.com'});
+                }
               }
 
             }else{
