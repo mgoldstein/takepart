@@ -188,6 +188,25 @@ class ddContent extends ddDefaultPage {
         $data['page']['pageNumber'] = "page 1";
     }
 
+    //Is there an influence Banner
+    $show_influence = false;
+    if($inline = field_get_items('node', $node, 'field_inline_replacements')) {
+      foreach($inline as $i) {
+        $load = entity_load('inline_content', array($i['target_id']));
+        if($tap_widget = field_get_items('inline_content', $load[$i['target_id']], 'field_ic_tap_widget_type')) {
+          if($tap_widget[0]['value'] == 'influence_widget') {
+            $show_influence = true;
+          }
+        }
+      }
+    }
+
+    if($show_influence) {
+      $data['page']['pageInfo']['influenceBanner'] =  "Influence Banner";
+    } else {
+      $data['page']['pageInfo']['influenceBanner'] =  "No Influence Banner";
+    }
+
     $data['page']['pageInfo']['pageId'] = $pageID;
     $data['page']['pageInfo']['pageTitle'] = $node->title;
     $data['page']['pageInfo']['pageUrl'] = $url;
