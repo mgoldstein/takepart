@@ -156,6 +156,16 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'create field_due_date'.
+  $permissions['create field_due_date'] = array(
+    'name' => 'create field_due_date',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'create field_main_image_format'.
   $permissions['create field_main_image_format'] = array(
     'name' => 'create field_main_image_format',
@@ -183,6 +193,16 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'create field_run_date'.
+  $permissions['create field_run_date'] = array(
+    'name' => 'create field_run_date',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'create files'.
   $permissions['create files'] = array(
     'name' => 'create files',
@@ -205,6 +225,16 @@ function tpf_config_permissions_user_default_permissions() {
   // Exported permission: 'edit field_admin_tag'.
   $permissions['edit field_admin_tag'] = array(
     'name' => 'edit field_admin_tag',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit field_due_date'.
+  $permissions['edit field_due_date'] = array(
+    'name' => 'edit field_due_date',
     'roles' => array(
       'administrator' => 'administrator',
       'layout editor' => 'layout editor',
@@ -239,6 +269,16 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'edit field_run_date'.
+  $permissions['edit field_run_date'] = array(
+    'name' => 'edit field_run_date',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'edit own comments'.
   $permissions['edit own comments'] = array(
     'name' => 'edit own comments',
@@ -253,6 +293,16 @@ function tpf_config_permissions_user_default_permissions() {
   // Exported permission: 'edit own field_admin_tag'.
   $permissions['edit own field_admin_tag'] = array(
     'name' => 'edit own field_admin_tag',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_due_date'.
+  $permissions['edit own field_due_date'] = array(
+    'name' => 'edit own field_due_date',
     'roles' => array(
       'administrator' => 'administrator',
       'layout editor' => 'layout editor',
@@ -281,6 +331,15 @@ function tpf_config_permissions_user_default_permissions() {
   // Exported permission: 'edit own field_promo_text'.
   $permissions['edit own field_promo_text'] = array(
     'name' => 'edit own field_promo_text',
+    'roles' => array(
+      'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'edit own field_run_date'.
+  $permissions['edit own field_run_date'] = array(
+    'name' => 'edit own field_run_date',
     'roles' => array(
       'administrator' => 'administrator',
     ),
@@ -428,6 +487,18 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'view field_due_date'.
+  $permissions['view field_due_date'] = array(
+    'name' => 'view field_due_date',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'view field_main_image_format'.
   $permissions['view field_main_image_format'] = array(
     'name' => 'view field_main_image_format',
@@ -455,6 +526,18 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
+  // Exported permission: 'view field_run_date'.
+  $permissions['view field_run_date'] = array(
+    'name' => 'view field_run_date',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'contributor' => 'contributor',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
   // Exported permission: 'view hidden fields'.
   $permissions['view hidden fields'] = array(
     'name' => 'view hidden fields',
@@ -467,6 +550,16 @@ function tpf_config_permissions_user_default_permissions() {
   // Exported permission: 'view own field_admin_tag'.
   $permissions['view own field_admin_tag'] = array(
     'name' => 'view own field_admin_tag',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_due_date'.
+  $permissions['view own field_due_date'] = array(
+    'name' => 'view own field_due_date',
     'roles' => array(
       'administrator' => 'administrator',
       'layout editor' => 'layout editor',
@@ -497,6 +590,16 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'view own field_promo_text',
     'roles' => array(
       'administrator' => 'administrator',
+    ),
+    'module' => 'field_permissions',
+  );
+
+  // Exported permission: 'view own field_run_date'.
+  $permissions['view own field_run_date'] = array(
+    'name' => 'view own field_run_date',
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
   );
