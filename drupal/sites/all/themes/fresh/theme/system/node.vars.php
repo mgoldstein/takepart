@@ -109,9 +109,17 @@ function fresh_preprocess_node__autoload(&$variables) {
 
         $variables['media'] = '<div class="main-media">';
         if($node_type == 'feature_article') {
-          $variables['media'] .= '<div class = "feature-image">';
+          //ambient video background for feature article
+          if ($vid_bg = $variables['field_article_background_video']) {
+            $vid_bg_src = $vid_bg[0]['uri'];
+            $vid_bg_src = file_create_url($vid_bg_src);
+            $variables['classes_array'][] = "has-videoBG";
+            $variables['media'] .= '<div class = "feature-image has-videoBG" data-video-bg="' . $vid_bg_src . '">';
+          }
+          else {
+            $variables['media'] .= '<div class = "feature-image">';
+          }
         }
-
         if(module_exists('picture')) {
           //Featured articles require original file path
           if($node_type == 'feature_article') {

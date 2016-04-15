@@ -24,7 +24,7 @@ function tp_feature_feature_article_field_default_field_instances() {
           'source' => 'field_inline_replacements',
         ),
         'type' => 'text_with_inline_content',
-        'weight' => 3,
+        'weight' => 4,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -107,7 +107,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 8,
+      'weight' => 10,
     ),
     'widget_type' => 'text_textarea_with_summary',
   );
@@ -123,7 +123,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 20,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -198,6 +198,109 @@ function tp_feature_feature_article_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-feature_article-field_article_background_video'
+  $field_instances['node-feature_article-field_article_background_video'] = array(
+    'bundle' => 'feature_article',
+    'deleted' => 0,
+    'description' => 'If an ambient video is uploaded, an image with the same aspect ratios should be uploaded using the Main Image field.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'file',
+        'settings' => array(),
+        'type' => 'file_default',
+        'weight' => 2,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_article_background_video',
+    'label' => 'Background Video',
+    'required' => 0,
+    'settings' => array(
+      'description_field' => 0,
+      'file_directory' => 'background-video',
+      'file_extensions' => 'mp4',
+      'filefield_paths' => array(
+        'active_updating' => 0,
+        'file_name' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+        ),
+        'file_path' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '',
+        ),
+        'retroactive_update' => 0,
+      ),
+      'filefield_paths_enabled' => 1,
+      'max_filesize' => '',
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'file',
+      'settings' => array(
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'file_generic',
+      'weight' => 6,
+    ),
+  );
+
   // Exported field_instance: 'node-feature_article-field_article_featured_link'
   $field_instances['node-feature_article-field_article_featured_link'] = array(
     'bundle' => 'feature_article',
@@ -209,7 +312,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -417,7 +520,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 5,
+      'weight' => 7,
     ),
   );
 
@@ -612,7 +715,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'module' => 'tp4_support',
         'settings' => array(),
         'type' => 'tp4_author_full',
-        'weight' => 2,
+        'weight' => 3,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -712,7 +815,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 27,
+        'weight' => 25,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -794,7 +897,7 @@ Change this only if you know what you are doing.',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 24,
+        'weight' => 8,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -896,7 +999,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 16,
     ),
   );
 
@@ -1009,7 +1112,7 @@ Change this only if you know what you are doing.',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 5,
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1102,7 +1205,7 @@ Change this only if you know what you are doing.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 19,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1196,7 +1299,7 @@ Change this only if you know what you are doing.',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 26,
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1261,7 +1364,7 @@ Change this only if you know what you are doing.',
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 6,
+      'weight' => 8,
     ),
   );
 
@@ -1276,7 +1379,7 @@ Change this only if you know what you are doing.',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1345,7 +1448,7 @@ Change this only if you know what you are doing.',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 21,
+      'weight' => 23,
     ),
   );
 
@@ -1360,7 +1463,7 @@ Change this only if you know what you are doing.',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 13,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1483,7 +1586,7 @@ Change this only if you know what you are doing.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1576,7 +1679,7 @@ Change this only if you know what you are doing.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 21,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1663,7 +1766,7 @@ Change this only if you know what you are doing.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 15,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1759,7 +1862,7 @@ Change this only if you know what you are doing.',
           'node_reference_view_mode' => 'inline_content',
         ),
         'type' => 'node_reference_node',
-        'weight' => 4,
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1832,7 +1935,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 10,
+      'weight' => 12,
     ),
   );
 
@@ -1944,7 +2047,7 @@ Change this only if you know what you are doing.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 16,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2036,7 +2139,7 @@ Change this only if you know what you are doing.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 23,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2107,7 +2210,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 19,
+      'weight' => 21,
     ),
   );
 
@@ -2122,7 +2225,7 @@ Change this only if you know what you are doing.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 18,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -2202,7 +2305,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 11,
+      'weight' => 13,
     ),
   );
 
@@ -2216,7 +2319,7 @@ Change this only if you know what you are doing.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 17,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -2321,7 +2424,7 @@ Change this only if you know what you are doing.',
         'view' => 'media_views_widget_default--default',
       ),
       'type' => 'media_generic',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -2340,7 +2443,7 @@ Change this only if you know what you are doing.',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 22,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2411,7 +2514,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 7,
+      'weight' => 9,
     ),
   );
 
@@ -2427,7 +2530,7 @@ Change this only if you know what you are doing.',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 6,
+        'weight' => 7,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2521,7 +2624,7 @@ Change this only if you know what you are doing.',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 25,
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2605,6 +2708,7 @@ Change this only if you know what you are doing.',
   t('Assigned Editor');
   t('Author(s)');
   t('Autoload Content');
+  t('Background Video');
   t('Body');
   t('DFP Creative ID');
   t('DFP Creative ID will automatically generate if this node references a Sponsored term with a DFP ID.
@@ -2612,6 +2716,7 @@ Change this only if you know what you are doing.');
   t('Due Date');
   t('Featured Link');
   t('Free Tag');
+  t('If an ambient video is uploaded, an image with the same aspect ratios should be uploaded using the Main Image field.');
   t('Inline Replacements');
   t('Limited at 70 characters');
   t('Main Image');

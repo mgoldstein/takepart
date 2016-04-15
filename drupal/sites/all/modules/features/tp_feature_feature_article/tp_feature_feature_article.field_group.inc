@@ -13,6 +13,37 @@ function tp_feature_feature_article_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_article_hero|node|feature_article|form';
+  $field_group->group_name = 'group_article_hero';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'feature_article';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Background',
+    'weight' => '5',
+    'children' => array(
+      0 => 'field_article_main_image',
+      1 => 'field_main_img_to_thumb',
+      2 => 'field_article_background_video',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'label' => 'Background',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'id' => '',
+        'classes' => 'group-article-hero field-group-fieldset',
+        'description' => '',
+      ),
+      'formatter' => 'collapsible',
+    ),
+  );
+  $field_groups['group_article_hero|node|feature_article|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_autoload_settings|node|feature_article|form';
   $field_group->group_name = 'group_autoload_settings';
   $field_group->entity_type = 'node';
@@ -21,7 +52,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Autoload Settings',
-    'weight' => '22',
+    'weight' => '24',
     'children' => array(
       0 => 'field_autoload',
     ),
@@ -78,7 +109,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline Replacements',
-    'weight' => '9',
+    'weight' => '11',
     'children' => array(
       0 => 'field_inline_replacements',
     ),
@@ -105,7 +136,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '12',
+    'weight' => '14',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
@@ -135,7 +166,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '13',
+    'weight' => '15',
     'children' => array(
       0 => 'field_admin_tag',
       1 => 'field_free_tag',
@@ -159,6 +190,7 @@ function tp_feature_feature_article_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Autoload Settings');
+  t('Background');
   t('Editorial Info');
   t('Inline Replacements');
   t('Promo');

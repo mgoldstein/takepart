@@ -265,8 +265,8 @@
                   if ($('.node-campaign-page').length == 0) {
                     video.setAttribute('autoplay', '');
                   }
-                  //Set the volume if set via CMS
                   video.setAttribute('loop', '');
+                  //Set the volume if set via CMS
                   if (volume) {
                     video.volume = volume;
                   }
