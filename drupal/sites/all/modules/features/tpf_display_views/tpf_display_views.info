@@ -59,6 +59,7 @@ features[views_view][] = author_content
 features[views_view][] = author_contributions
 features[views_view][] = clone_of_author_profiles_feed
 features[views_view][] = content_types_posts_feed
+features[views_view][] = editorial_pipeline
 features[views_view][] = featured_items
 features[views_view][] = photo_galleries
 features[views_view][] = photo_galleries_promo
