@@ -11,13 +11,18 @@ function tp_fbia_page_analytics($node) {
 
   if(!empty($node)) {
 
-    //TODO: Get DDL
-    $ddl = '';
+    //TODO: this is terrible.
+    module_load_include('inc', 'tp_auto_scroll', 'inc/tp_auto_scroll_ddl');
+    $ddl = tp_auto_scroll_build_ddl_content($node);
+    $ddl = drupal_json_encode($ddl);
+
+    $dtm_js = variable_get('dtm_script_src', '');
 
     return theme('tp_fbia_page_analytics', array(
       'ddl' => $ddl,
-
+      'dtm_js' => $dtm_js
     ));
+
   }
   else {
     drupal_not_found();
@@ -32,15 +37,54 @@ function tp_fbia_page_analytics($node) {
  */
 function tp_fbia_html_analytics($page_callback_result) {
 
-  //TODO: Get DTM path
-  $dtm = '';
-
   // Pass variables to the template.
   $variables = array(
-    'dtm'         => $dtm,
+    'head_title'  => drupal_set_title('Analytics'),
     'content'     => $page_callback_result,
   );
 
   print theme('tp_fbia_html_analytics', $variables);
+
+}
+
+/**
+ * Implements theme_HOOK
+ */
+function theme_tp_fbia_page_analytics(&$variables) {
+
+  $markup = theme('html_tag', array(
+    'element' => array(
+      '#tag' => 'script',
+      '#attributes' => array(
+        'type' => 'text/javascript',
+        'src' => $variables['dtm_js']
+      ),
+      '#value' => ''
+    )
+  ));
+
+  //DDl
+  $markup .= theme('html_tag', array(
+    'element' => array(
+      '#tag' => 'script',
+      '#attributes' => array(
+        'type' => 'text/javascript'
+      ),
+      '#value' => $variables['ddl']
+    )
+  ));
+
+  //DTM Bottom
+  $markup .= theme('html_tag', array(
+    'element' => array(
+      '#tag' => 'script',
+      '#attributes' => array(
+        'type' => 'text/javascript'
+      ),
+      '#value' => '_satellite.pageBottom();'
+    )
+  ));
+
+  return $markup;
 
 }
