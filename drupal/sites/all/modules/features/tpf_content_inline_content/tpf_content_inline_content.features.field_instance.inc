@@ -673,7 +673,7 @@ function tpf_content_inline_content_field_default_field_instances() {
     'bundle' => 'social_embed',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Paste embed code from Twitter, Vine, or Instagram in the Embed field.',
+    'description' => 'Paste embed code from Twitter, Vine, or Instagram in the Embed field. Please note that emojis need to be stripped out or replaced with standard text.',
     'display' => array(
       'default' => array(
         'label' => 'above',
@@ -1771,7 +1771,7 @@ function tpf_content_inline_content_field_default_field_instances() {
   t('Newsletter');
   t('Orientation');
   t('Paste Iframe embed code in the Embed field.');
-  t('Paste embed code from Twitter, Vine, or Instagram in the Embed field.');
+  t('Paste embed code from Twitter, Vine, or Instagram in the Embed field. Please note that emojis need to be stripped out or replaced with standard text.');
   t('Paste embed code from YouTube in the Embed field.');
   t('Playlist');
   t('Playlist View Mode');
