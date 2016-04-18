@@ -8,61 +8,49 @@
  * Callback for fbia/feed
  */
 function tp_fbia_page_feed() {
+  //Get feed range from settings page
+  $range = variable_get('tp_fbia_number_results_in_feed', 20);
 
-  $cache_lifetime = variable_get('tp_fbia_feed_cache_lifetime', 180);
-  $cache = 'tp_fbia_feed';
-  if($cached = cache_get($cache, 'cache'))  {
-    $feed = $cached->data;
+  //Load updated nodes
+  $fbia_nodes = new EntityFieldQuery();
+  $fbia_nodes->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', array('openpublish_article', 'feature_article'))
+    ->addTag('node_is_not_sponsored')
+    ->propertyCondition('status', NODE_PUBLISHED)
+    ->propertyOrderBy('changed', 'DESC')
+    ->range(0, $range);
+  $fbia_nodes = $fbia_nodes->execute();
+  $fbia_nodes = $fbia_nodes['node'];
+
+  //Items
+  $items = array();
+  foreach($fbia_nodes as $fbia_node) {
+    $fbia_node = node_load($fbia_node->nid);
+    $items[] = _tp_fbia_item_build($fbia_node);
   }
-  if(empty($feed)) {
 
-    //Get feed range from settings page
-    $range = variable_get('tp_fbia_number_results_in_feed', 20);
+  //Build Date
+  $buildDate = date('c', time());
 
-    //Load updated nodes
-    $fbia_nodes = new EntityFieldQuery();
-    $fbia_nodes->entityCondition('entity_type', 'node')
-      ->entityCondition('bundle', array('openpublish_article', 'feature_article'))
-      ->addTag('node_is_not_sponsored')
-      ->propertyCondition('status', NODE_PUBLISHED)
-      ->propertyOrderBy('changed', 'DESC')
-      ->range(0, $range);
-    $fbia_nodes = $fbia_nodes->execute();
-    $fbia_nodes = $fbia_nodes['node'];
+  //Title
+  $title = variable_get('fb_instant_articles_channel_title', variable_get('site_name', t('TakePart')));
 
-    //Items
-    $items = array();
-    foreach($fbia_nodes as $fbia_node) {
-      $fbia_node = node_load($fbia_node->nid);
-      $items[] = _tp_fbia_item_build($fbia_node);
-    }
+  //Description
+  $description = variable_get('tp_fbia_channel_description', variable_get('site_slogan', t('Stories That Matter, Action That Counts')));
 
-    //Build Date
-    $buildDate = date('c', time());
+  //Url
+  global $base_url;
 
-    //Title
-    $title = variable_get('fb_instant_articles_channel_title', variable_get('site_name', t('TakePart')));
-
-    //Description
-    $description = variable_get('tp_fbia_channel_description', variable_get('site_slogan', t('Stories That Matter, Action That Counts')));
-
-    //Url
-    global $base_url;
-
-    //Return themed feed page
-    $feed = theme('tp_fbia_feed_page', array(
-      'title'       => $title,
-      'description' => $description,
-      'url'         => $base_url,
-      'buildDate'   => $buildDate,
-      'items'       => $items
-    ));
-
-    cache_set($cache, $feed, 'cache', REQUEST_TIME + $cache_lifetime);
-  }
+  //Return themed feed page
+  $feed = theme('tp_fbia_feed_page', array(
+    'title'       => $title,
+    'description' => $description,
+    'url'         => $base_url,
+    'buildDate'   => $buildDate,
+    'items'       => $items
+  ));
 
   return $feed;
-
 }
 
 /**

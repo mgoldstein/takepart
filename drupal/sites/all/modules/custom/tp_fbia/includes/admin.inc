@@ -31,8 +31,9 @@ function tp_fbia_admin_settings_form() {
   );
   $form['tp_fbia_feed_cache_lifetime'] = array(
     '#type' => 'textfield',
-    '#title' => t('How long to cache the results (in seconds)?'),
+    '#title' => t('Disabled. How long to cache the results (in seconds)?'),
     '#default_value' => variable_get('tp_fbia_feed_cache_lifetime', 180),
+    '#disabled' => true,
     '#size' => 10,
   );
 
