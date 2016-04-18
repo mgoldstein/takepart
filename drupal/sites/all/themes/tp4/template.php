@@ -1992,10 +1992,22 @@ function tp4_field__field_author__openpublish_article($variables) {
     return $output;
 }
 
+function tp4_field__field_author__feature_article($variables) {
+  return tp4_field__field_author__openpublish_article($variables);
+}
+ 
 function tp4_field__field_author__openpublish_photo_gallery($variables) {
-    return tp4_field__field_author__openpublish_article($variables);
+  return tp4_field__field_author__openpublish_article($variables);
 }
 
+function tp4_field__field_author__video($variables) {
+  return tp4_field__field_author__openpublish_article($variables);
+}
+
+function tp4_field__field_author__video_playlist($variables) {
+  return tp4_field__field_author__openpublish_article($variables);
+}
+ 
 function tp4_field__field_flashcard_page_headline__flashcard($variables) {
     $output = '<h1 class="node-title ' . $variables['classes'] . '"' . $variables['attributes'] . '>';
 
