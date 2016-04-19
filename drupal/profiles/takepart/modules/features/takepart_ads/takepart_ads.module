@@ -156,7 +156,7 @@ function takepart_ads_preprocess_page(&$vars) {
               $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') . '/' . $ad . "', [[300, 50], [320, 50]], '" . $gptad . "').addService(googletag.pubads());\n";
             } else if(strpos($ad, 'Responsive') !== FALSE) {
               $gptad = $gptad.'-'.$lr[0];
-              $gptad_html .= 'var mapping = googletag.sizeMapping().addSize([980, 0], [970,250]).addSize([768, 0], [728,90]).addSize([0, 0], [320,50]).build();';
+              $gptad_html .= 'var mapping = googletag.sizeMapping().addSize([980, 0], [[970,250],[728,90]]).addSize([768, 0], [728,90]).addSize([0, 0], [320,50]).build();';
               $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') . '/' . $ad . "', [320, 50], '" . $gptad . "').addService(googletag.pubads()).defineSizeMapping(mapping);;\n";
 		        } else {
 	            $gptad_html .= 'googletag.defineSlot(\'/' . variable_get('takepart_ads_dfp_property_code_gpt', '4355895') . '/' . $ad . "', [" . $lr[0] . ', ' . $lr[1] . "], '" . $gptad . "').addService(googletag.pubads());\n";
