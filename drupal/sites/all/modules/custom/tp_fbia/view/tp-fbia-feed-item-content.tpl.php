@@ -32,26 +32,12 @@
         <?php endforeach; ?>
 
         <?php /* AD CODE */ ?>
-        <?php /* TODO: uncomment when done
-        <section class="op-ad-template">
-          <!-- Ads to be automatically placed throughout the article -->
-          <figure class="op-ad">
-            <iframe src="<!-- TAKEPART DFP URL -->" height="<!-- AD HEIGHT -->" width="<!-- AD WIDTH -->"></iframe>
-          </figure>
-          <figure class="op-ad op-ad-default">
-            <iframe src="<!-- TAKEPART DFP URL -->" height="<!-- AD HEIGHT -->" width="<!-- AD WIDTH -->"></iframe>
-          </figure>
-          <figure class="op-ad">
-            <iframe src="<!-- TAKEPART DFP URL -->" height="<!-- AD HEIGHT -->" width="<!-- AD WIDTH -->"></iframe>
-          </figure>
-        </section>
-        */ ?>
+        <?php print $ads; ?>
 
       </header>
 
       <?php print $body; ?>
 
-      <?php /* AD code */ ?>
       <?php /* TODO: uncomment when done
       <figure class="op-tracker">
           <iframe>
