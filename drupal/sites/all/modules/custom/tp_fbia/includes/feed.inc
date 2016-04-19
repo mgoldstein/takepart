@@ -22,11 +22,23 @@ function tp_fbia_page_feed() {
   $fbia_nodes = $fbia_nodes->execute();
   $fbia_nodes = $fbia_nodes['node'];
 
+   //Ads - Currently set to 4. The for loop below should get updated if we want to support more via admin.
+   //Since we are displaying the same ad tags for all nodes, I'm adding this logic here to avoid redundancy.
+    $ad_settings = array();
+    for ($ad_ctr = 0; $ad_ctr <4; $ad_ctr++) {
+      $ad_configuration = variable_get('tp_fbia_ads_config_'.$ad_ctr , '');
+      if (!empty($ad_configuration['ad_slot'])) {
+        $ad_settings[] = $ad_configuration;
+      }
+    }
+    //Get the markup for Ads
+    $fbia_ads = _tp_fbia_build_ads($ad_settings);
+
   //Items
   $items = array();
   foreach($fbia_nodes as $fbia_node) {
     $fbia_node = node_load($fbia_node->nid);
-    $items[] = _tp_fbia_item_build($fbia_node);
+    $items[] = _tp_fbia_item_build($fbia_node, $fbia_ads);
   }
 
   //Build Date
@@ -78,7 +90,7 @@ function tp_fbia_html_feed($page_callback_result) {
 /**
  * Builds a feed item for the FBIA feed.rss page
  */
-function _tp_fbia_item_build($node) {
+function _tp_fbia_item_build($node , $ad) {
 
   //Link
   global $base_url;
@@ -108,8 +120,9 @@ function _tp_fbia_item_build($node) {
     $description = $description[0]['value'];
   }
 
+
   //Content
-  $content = _tp_fbia_item_content_build($node);
+  $content = _tp_fbia_item_content_build($node, $ad);
 
   //Return the themed item
   return theme('tp_fbia_feed_item', array(
@@ -127,7 +140,7 @@ function _tp_fbia_item_build($node) {
 /**
  * Builds a feed item for the FBIA feed.rss page
  */
-function _tp_fbia_item_content_build($node) {
+function _tp_fbia_item_content_build($node, $ad) {
 
   //URL
   global $base_url;
@@ -197,7 +210,7 @@ function _tp_fbia_item_content_build($node) {
 
   $related = tp_fbia_item_related_url($node);
 
-  //TODO: body, ads, analytics
+  //TODO: analytics
 
   return theme('tp_fbia_feed_item_content', array(
     'url'           => $url,
@@ -211,7 +224,8 @@ function _tp_fbia_item_content_build($node) {
     'body'          => isset($body) ? $body : '',
     'authors'       => $authors,
     'related_title' => $related['title'],
-    'related_url'   => $related['url']
+    'related_url'   => $related['url'],
+    'ads'           => $ad,
   ));
 
 }
@@ -543,4 +557,93 @@ function tp_fbia_query_related_url_sponsored_alter(QueryAlterableInterface $quer
   $query->join('publication_date', 'pa', 'node.nid = pa.nid');
   $query->join('field_data_field_sponsored', 's', 'node.nid = s.entity_id AND s.entity_type = :entity_type');
   $query->orderBy('pa.published_at', 'DESC');
+}
+
+/*
+ * Builds the feed element for Ads
+ */
+function _tp_fbia_build_ads ($fbia_ads) {
+  $feed = '';
+  $NL = "\r\n";
+  $feed .= '<section class="op-ad-template">' . $NL;
+  foreach ($fbia_ads as $key) {
+    $ad_slot = $key['ad_slot'];
+    $gpd_id = $key['gpd_id'];
+    $ad_width = $key['ad_width'];
+    $ad_height = $key['ad_height'];
+    $multiple_ads = $key['multiple_ads_check'];
+
+    $feed .= '  <figure class="op-ad' . ($multiple_ads ? ' op-ad-default' : '') . '">' . $NL;
+    $feed .= '    <iframe height ="' . $ad_height . '" width="' . $ad_width . '">' . $NL;
+    $feed .= '      ' . _tp_fbia_ad_load_js() . $NL;
+    $feed .= '      ' . _tp_fbia_ad_define_slot($ad_width, $ad_height, $ad_slot, $gpd_id) . $NL;
+    $feed .= '      <div id="' . $gpd_id . '">' . $NL;
+    $feed .= '        ' . _tp_fbia_ad_display($gpd_id);
+    $feed .= '      </div>' . $NL;
+    $feed .= '    </iframe>' .$NL;
+    $feed .= '  </figure>' .$NL;
+  }
+  $feed .= '</section>';
+  return $feed;
+}
+
+/*
+ * Markup to Load the Google services
+ */
+function _tp_fbia_ad_load_js() {
+  $src =  '(function() {
+          var useSSL = \'https:\' == document.location.protocol;
+          var src = (useSSL ? \'https:\' : \'http:\') +
+            \'//www.googletagservices.com/tag/js/gpt.js\';
+          document.write(\'<scr\' + \'ipt src="\' + src + \'"><\' +\'/scr\' + \'ipt>\');
+        })();';
+
+  $markup = theme('html_tag', array(
+  'element' => array(
+      '#tag' => 'script',
+      '#attributes' => array(
+        'type' => 'text/javascript'
+      ),
+      '#value' => $src
+    )
+  ));
+  return $markup;
+}
+
+/*
+ * Markup to define Ad Slot
+ */
+function _tp_fbia_ad_define_slot($width, $height, $slot, $gpd_id) {
+  $src = "googletag.defineSlot('/4355895/"  . $slot . "', [" . $width . "," . $height . "], '" . $gpd_id . "').addService(googletag.pubads());
+        googletag.enableServices();";
+
+  $markup = theme('html_tag', array(
+  'element' => array(
+      '#tag' => 'script',
+      '#attributes' => array(
+        'type' => 'text/javascript'
+      ),
+      '#value' => $src
+    )
+  ));
+
+  return $markup;
+}
+
+/*
+ * Markup for displaying the Ad
+ */
+function _tp_fbia_ad_display($gpd_id) {
+  $src = "googletag.display('" . $gpd_id . "');";
+  $markup = theme('html_tag', array(
+  'element' => array(
+      '#tag' => 'script',
+      '#attributes' => array(
+        'type' => 'text/javascript'
+      ),
+      '#value' => $src
+    )
+  ));
+
+  return $markup;
 }
