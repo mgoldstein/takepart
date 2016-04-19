@@ -130,7 +130,7 @@ function _tp_fbia_item_build($node , $ad) {
     'link'        => $link,
     'guid'        => $guid,
     'pubDate'     => $published,
-    'author'      => $authors,
+    'authors'      => $authors,
     'description' => $description,
     'content'     => $content
   ));
@@ -528,9 +528,9 @@ function tp_fbia_query_related_url_topic_alter(QueryAlterableInterface $query) {
   }
   //Only get content that was published in past 90 days
   $time_check = 24 * 60 * 60 * 90;
-  $query->join('field_data_field_sponsored', 's', 'node.nid = s.entity_id AND s.entity_type = :entity_type');
+  $query->join('publication_date', 'pa', 'node.nid = pa.nid AND (UNIX_TIMESTAMP() - pa.published_at) < '.$time_check);
   $query->join('field_data_field_topic', 't', 'node.nid = t.entity_id AND t.entity_type = :entity_type AND t.delta = 0 AND t.field_topic_tid = '.$topic);
-  $query->leftJoin('publication_date', 'pa', 'node.nid = pa.nid AND (UNIX_TIMESTAMP() - pa.published_at) < '.$time_check);
+  $query->join('field_data_field_sponsored', 's', 'node.nid = s.entity_id AND s.entity_type = :entity_type');
   $query->orderBy('pa.published_at', 'DESC');
 }
 
@@ -554,8 +554,8 @@ function tb_tbia_related_url_sponsored() {
  * Gets the node that is just sponsored
  */
 function tp_fbia_query_related_url_sponsored_alter(QueryAlterableInterface $query) {
+  $query->join('publication_date', 'pa', 'node.nid = pa.nid');
   $query->join('field_data_field_sponsored', 's', 'node.nid = s.entity_id AND s.entity_type = :entity_type');
-  $query->leftJoin('publication_date', 'pa', 'node.nid = pa.nid');
   $query->orderBy('pa.published_at', 'DESC');
 }
 

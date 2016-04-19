@@ -22,7 +22,7 @@
 
         <?php /* Timestamps */ ?>
         <time class="op-published" dateTime="<?php print date('c', $pubDate); ?>"><?php print date('M d, Y', $pubDate); ?></time>
-        <time class="op-modified" dateTime="<?php print date('c', $updatedDate); ?>"><?php print date('M d, Y, h:i A', $pubDate); ?></time>
+        <time class="op-modified" dateTime="<?php print date('c', $updatedDate); ?>"><?php print date('M d, Y, h:i A', $updatedDate); ?></time>
 
         <?php /* Authors */ ?>
         <?php foreach($authors as $author): ?>
