@@ -166,7 +166,7 @@
   };
 
   // utility function to refresh ads
-  var refreshDfpAds = function () {console.log('refresh ads');
+  var refreshDfpAds = function () {
     if (typeof googletag != 'undefined') {
       //Size up the ads to max height
       //This is targetting only the desktop ad slot to prevent the screen from
@@ -175,7 +175,7 @@
         if($('#block-boxes-takepart').find('.leaderboard-ad').height() >= $('#block-boxes-takepart').height()) {
           $('#block-boxes-takepart').css('height',$('#block-boxes-takepart').find('.leaderboard-ad').height());
         }
-      }console.log('refresh ads1');
+      }
 	    googletag.pubads().refresh();
     }
   };
