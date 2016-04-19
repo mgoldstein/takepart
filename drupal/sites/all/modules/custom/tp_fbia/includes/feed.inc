@@ -117,7 +117,7 @@ function _tp_fbia_item_build($node) {
     'link'        => $link,
     'guid'        => $guid,
     'pubDate'     => $published,
-    'author'      => $authors,
+    'authors'      => $authors,
     'description' => $description,
     'content'     => $content
   ));
