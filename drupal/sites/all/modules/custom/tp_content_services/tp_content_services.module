@@ -118,21 +118,24 @@ function tp_content_services_notify_service($node, $insup = '') {
   $data = json_decode($ret->data);
   if($ret->code == 202 && isset($data->enqueued) && $data->enqueued) {
     watchdog('Content Notify Service',
-      '%insup Node%nid %title of %type. Content Service was notified correctly.',
+      '%insup Node%nid %title of %type. Content Service was notified correctly. %data %json',
       array(
         '%insup' => $insup,
         '%nid' => $node->nid,
         '%title' => $node->title,
         '%type' => $node->type,
+        '%data' => $ret->data,
+        '%json' => $json
       ));
   } else {
-    watchdog('Content Notify Service', '%insup Node%nid %title of %type. Content Service Failed to notify correctly. %data',
+    watchdog('Content Notify Service', '%insup Node%nid %title of %type. Content Service Failed to notify correctly. %data  %json',
       array(
         '%insup' => $insup,
         '%nid' => $node->nid,
         '%title' => $node->title,
         '%type' => $node->type,
-        '%data' => $ret->data
+        '%data' => $ret->data,
+        '%json' => $json
       ),
       WATCHDOG_ERROR);
   }
