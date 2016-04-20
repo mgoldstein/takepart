@@ -547,6 +547,9 @@ function tpf_config_metatag_metatag_export_default() {
       'abstract' => array(
         'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:body}]',
       ),
+      'canonical' => array(
+        'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
+      ),
       'fb:admins' => array(
         'value' => 1327833247,
       ),
@@ -570,9 +573,6 @@ function tpf_config_metatag_metatag_export_default() {
       ),
       'twitter:description' => array(
         'value' => '[node:field_article_subhead]',
-      ),
-      'sailthru.author' => array(
-        'value' => '[sailthru_metatags:author]',
       ),
       'twitter:image' => array(
         'value' => '[tp_og_image:thumbnail:{node:nid}]',
@@ -778,9 +778,6 @@ function tpf_config_metatag_metatag_export_default() {
       ),
       'sailthru.author' => array(
         'value' => '[sailthru_metatags:author]',
-      ),
-      'twitter:image' => array(
-        'value' => '[tp_og_image:thumbnail:{node:nid}]',
       ),
     ),
   );
