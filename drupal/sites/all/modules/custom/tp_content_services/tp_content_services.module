@@ -36,7 +36,8 @@ function tp_content_services_node_update($node) {
   if((isset($node->workbench_moderation['updating_live_revision']) && $node->workbench_moderation['updating_live_revision'] == 1)
     && in_array($node->type, array('openpublish_article','feature_article','openpublish_photo_gallery','video'))) {
     if($node->workbench_moderation['current']->published == 1 ||
-      (isset($node->workbench_moderation['current']->unpublising) && $node->workbench_moderation['current']->unpublishing == 1)){
+      (isset($node->workbench_moderation['current']->unpublishing) && $node->workbench_moderation['current']->unpublishing == 1)){
+        error_log('notify');error_log($node->status);
       tp_content_services_notify_service($node, 'update');
     }
   }
