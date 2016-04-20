@@ -33,8 +33,12 @@ function tp_content_services_node_insert($node) {
  * hook_node_update
  */
 function tp_content_services_node_update($node) {
-  if(in_array($node->type, array('openpublish_article','feature_article','openpublish_photo_gallery','video'))) {
-    tp_content_services_notify_service($node, 'update');
+  if((isset($node->workbench_moderation['updating_live_revision']) && $node->workbench_moderation['updating_live_revision'] == 1)
+    && in_array($node->type, array('openpublish_article','feature_article','openpublish_photo_gallery','video'))) {
+    if($node->workbench_moderation['current']->published == 1 ||
+      (isset($node->workbench_moderation['current']->unpublishing) && $node->workbench_moderation['current']->unpublishing == 1)){
+      tp_content_services_notify_service($node, 'update');
+    }
   }
 }
 
