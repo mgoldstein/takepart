@@ -281,6 +281,133 @@ function tpf_feature_workbench_settings_views_default_views() {
   $handler->display->display_options['menu']['title'] = 'Day';
   $handler->display->display_options['menu']['weight'] = '3';
   $handler->display->display_options['menu']['context'] = 0;
+
+  /* Display: No Due Date */
+  $handler = $view->new_display('page', 'No Due Date', 'page_2');
+  $handler->display->display_options['display_description'] = 'Content missing a due date';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'field_author' => 'field_author',
+    'state' => 'state',
+    'field_assigned_editor' => 'field_assigned_editor',
+    'edit_node' => 'edit_node',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_author' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'state' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'field_assigned_editor' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'edit_node' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['title']['hide_alter_empty'] = FALSE;
+  /* Field: Content: Author(s) */
+  $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
+  $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['element_type'] = 'span';
+  $handler->display->display_options['fields']['field_author']['element_label_type'] = 'span';
+  $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
+  $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
+  /* Field: Workbench Moderation: State */
+  $handler->display->display_options['fields']['state']['id'] = 'state';
+  $handler->display->display_options['fields']['state']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['fields']['state']['field'] = 'state';
+  $handler->display->display_options['fields']['state']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['state']['element_class'] = '[state]';
+  $handler->display->display_options['fields']['state']['machine_name'] = 0;
+  /* Field: Content: Assigned Editor */
+  $handler->display->display_options['fields']['field_assigned_editor']['id'] = 'field_assigned_editor';
+  $handler->display->display_options['fields']['field_assigned_editor']['table'] = 'field_data_field_assigned_editor';
+  $handler->display->display_options['fields']['field_assigned_editor']['field'] = 'field_assigned_editor';
+  /* Field: Content: Edit link */
+  $handler->display->display_options['fields']['edit_node']['id'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['table'] = 'views_entity_node';
+  $handler->display->display_options['fields']['edit_node']['field'] = 'edit_node';
+  $handler->display->display_options['fields']['edit_node']['label'] = '';
+  $handler->display->display_options['fields']['edit_node']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['edit_node']['text'] = 'edit';
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'openpublish_article' => 'openpublish_article',
+    'feature_article' => 'feature_article',
+    'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+    'video' => 'video',
+    'video_playlist' => 'video_playlist',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Workbench Moderation: Current */
+  $handler->display->display_options['filters']['is_current']['id'] = 'is_current';
+  $handler->display->display_options['filters']['is_current']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['filters']['is_current']['field'] = 'is_current';
+  $handler->display->display_options['filters']['is_current']['value'] = '1';
+  $handler->display->display_options['filters']['is_current']['group'] = 1;
+  /* Filter criterion: Workbench Moderation: State */
+  $handler->display->display_options['filters']['state']['id'] = 'state';
+  $handler->display->display_options['filters']['state']['table'] = 'workbench_moderation_node_history';
+  $handler->display->display_options['filters']['state']['field'] = 'state';
+  $handler->display->display_options['filters']['state']['operator'] = 'not in';
+  $handler->display->display_options['filters']['state']['value'] = array(
+    'published' => 'published',
+  );
+  $handler->display->display_options['filters']['state']['group'] = 1;
+  /* Filter criterion: Content: Due Date (field_due_date) */
+  $handler->display->display_options['filters']['field_due_date_value']['id'] = 'field_due_date_value';
+  $handler->display->display_options['filters']['field_due_date_value']['table'] = 'field_data_field_due_date';
+  $handler->display->display_options['filters']['field_due_date_value']['field'] = 'field_due_date_value';
+  $handler->display->display_options['filters']['field_due_date_value']['operator'] = 'empty';
+  $handler->display->display_options['filters']['field_due_date_value']['granularity'] = 'minute';
+  $handler->display->display_options['filters']['field_due_date_value']['year_range'] = '-0:+1';
+  $handler->display->display_options['path'] = 'admin/reports/editorial-pipeline/no_due_date';
   $export['editorial_pipeline'] = $view;
 
   return $export;
