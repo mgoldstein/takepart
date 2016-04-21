@@ -521,7 +521,7 @@ a.column-header:hover{
  *Photo Galleries
  */
 #block-views-photo-galleries-promo-block{
-  font: 100 1.142857143em/1.25 $primary-serif-font;
+  font: 100 16px/1.25 $primary-serif-font;
   .views-row{
     margin-bottom: 20px;
     .views-field-field-promo-headline {
@@ -536,6 +536,15 @@ a.column-header:hover{
   }
   .block-title{
     margin-bottom: 8px;
+  }
+}
+
+#block-bean-takepart-video-media-block {
+  h2 {
+    padding: 0 10px;
+  }
+  a {
+    font: 100 16px/1.25 $primary-serif-font;
   }
 }
 /*

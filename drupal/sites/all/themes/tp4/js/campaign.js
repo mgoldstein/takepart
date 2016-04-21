@@ -97,24 +97,28 @@
       //Full Screen Ambient Video
       //Assuming there is only a top video
       var adjustCardBackgroundVideo = function() {
+
+        $ambient_card = $('.is-ambient.has-videoBG');
+        $ambient_video = $('.is-ambient.has-videoBG video');
+
         //find/set video ratio
         if(window.videoRatio !== 'undefined') {
-          window.videoRatio = $('.has-videoBG video').width()/$('.has-videoBG video').height();
+          window.videoRatio = $ambient_video.width()/$ambient_video.height();
         }
         var winh = window.innerHeight;
         var winw = window.innerWidth;
         //Set the parent divs to set heights
-        $('.has-videoBG').parent('.card-wrapper').height('100%');
-        $('.has-videoBG').parents('.swipe-wrap').height('100%');
-        $('.has-videoBG').parents('.tray-img-width-full').height(winh);
+        $ambient_card.parent('.card-wrapper').height('100%');
+        $ambient_card.parents('.swipe-wrap').height('100%');
+        $ambient_card.parents('.tray-img-width-full').height(winh);
         //check to see if the screen ratio needs us to
         //Change if we are using the height or width as our set variable
         if((winw/winh) >= window.videoRatio) {
-          $('.has-videoBG video').height(winw/window.videoRatio);
-          $('.has-videoBG video').width(winw);
+          $ambient_video.height(winw/window.videoRatio);
+          $ambient_video.width(winw);
         } else {
-          $('.has-videoBG video').height(winh);
-          $('.has-videoBG video').width(winh*window.videoRatio);
+          $ambient_video.height(winh);
+          $ambient_video.width(winh*window.videoRatio);
         }
       };
 
@@ -261,8 +265,8 @@
                   if ($('.node-campaign-page').length == 0) {
                     video.setAttribute('autoplay', '');
                   }
-                  //Set the volume if set via CMS
                   video.setAttribute('loop', '');
+                  //Set the volume if set via CMS
                   if (volume) {
                     video.volume = volume;
                   }

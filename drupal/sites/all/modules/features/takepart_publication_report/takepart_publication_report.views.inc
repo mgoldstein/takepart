@@ -20,11 +20,3 @@ function takepart_publication_report_views_query_alter(&$view, &$query) {
         }
     }
 }
-
-/*
-function takepart_publication_report_views_pre_execute(&$view) {
-    if ($view->name == 'publication_report') {
-        dpq($view->build_info['query']);
-    }
-}
-*/

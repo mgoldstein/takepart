@@ -40,6 +40,36 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_editorial_dates|node|openpublish_photo_gallery|form';
+  $field_group->group_name = 'group_editorial_dates';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'openpublish_photo_gallery';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Editorial Info',
+    'weight' => '15',
+    'children' => array(
+      0 => 'field_due_date',
+      1 => 'field_run_date',
+      2 => 'field_assigned_editor',
+    ),
+    'format_type' => 'tab',
+    'format_settings' => array(
+      'label' => 'Editorial Info',
+      'instance_settings' => array(
+        'required_fields' => 0,
+        'classes' => '',
+        'description' => '',
+      ),
+      'formatter' => 'closed',
+    ),
+  );
+  $field_groups['group_editorial_dates|node|openpublish_photo_gallery|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_photo_gallery_main|node|openpublish_photo_gallery|form';
   $field_group->group_name = 'group_photo_gallery_main';
   $field_group->entity_type = 'node';
@@ -112,7 +142,7 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '6',
+    'weight' => '7',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_text',
@@ -143,7 +173,7 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Related',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_related_stories',
     ),
@@ -169,7 +199,7 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_series',
       1 => 'field_free_tag',
@@ -194,6 +224,7 @@ function tpf_content_photo_gallery_field_group_info() {
   // Translatables
   // Included for use with string extractors like potx.
   t('Deprecated');
+  t('Editorial Info');
   t('Main');
   t('Photos');
   t('Promo');

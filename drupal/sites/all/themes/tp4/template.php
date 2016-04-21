@@ -559,6 +559,11 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
     $variables['classes_array'][] = 'has-mute-button';
   }
 
+  //Check if there is a back-to-top link
+  if ($variables['field_campaign_back_to_top'][0]['value'] == 1) {
+    $variables['classes_array'][] = 'has-back-to-top';
+  }
+
   // Check whether facebook comments should be enabled
   foreach (field_get_items('node', $variables['node'], 'field_campaign_facebook_comments') as $item) {
     $variables['show_facebook_comments'] = $item['value'];
@@ -1620,13 +1625,13 @@ function tp4_campaign_background_rules(&$variables){
       $bg = file_create_url($video_poster[0]['uri']);
       //image style for tablet and mobile
       $variables['background_image_desktop'][] = "background-image: url('$bg');";
-      if($bgtablet = image_style_path('large_responsive_tablet', $background[0]['uri'])) {
+      if($bgtablet = image_style_path('large_responsive_tablet', $video_poster[0]['uri'])) {
         $bgtablet = file_create_url($bgtablet);
         $variables['background_image_tablet'][] = "background-image: url('$bgtablet');";
       } else {
         $variables['background_image_tablet'][] = "background-image: url('$bg');";
       }
-      if($bgmobile = image_style_path('large_responsive_mobile', $background[0]['uri'])) {
+      if($bgmobile = image_style_path('large_responsive_mobile', $video_poster[0]['uri'])) {
         $bgmobile = file_create_url($bgmobile);
         $variables['background_image_mobile'][] = "background-image: url('$bgmobile');";
       } else {
@@ -1987,10 +1992,22 @@ function tp4_field__field_author__openpublish_article($variables) {
     return $output;
 }
 
+function tp4_field__field_author__feature_article($variables) {
+  return tp4_field__field_author__openpublish_article($variables);
+}
+ 
 function tp4_field__field_author__openpublish_photo_gallery($variables) {
-    return tp4_field__field_author__openpublish_article($variables);
+  return tp4_field__field_author__openpublish_article($variables);
 }
 
+function tp4_field__field_author__video($variables) {
+  return tp4_field__field_author__openpublish_article($variables);
+}
+
+function tp4_field__field_author__video_playlist($variables) {
+  return tp4_field__field_author__openpublish_article($variables);
+}
+ 
 function tp4_field__field_flashcard_page_headline__flashcard($variables) {
     $output = '<h1 class="node-title ' . $variables['classes'] . '"' . $variables['attributes'] . '>';
 

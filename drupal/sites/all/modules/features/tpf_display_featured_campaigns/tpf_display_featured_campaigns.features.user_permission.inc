@@ -13,33 +13,21 @@ function tpf_display_featured_campaigns_user_default_permissions() {
   // Exported permission: 'create any featured_campaigns_module bean'.
   $permissions['create any featured_campaigns_module bean'] = array(
     'name' => 'create any featured_campaigns_module bean',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'layout editor' => 'layout editor',
-    ),
+    'roles' => array(),
     'module' => 'bean',
   );
 
   // Exported permission: 'delete any featured_campaigns_module bean'.
   $permissions['delete any featured_campaigns_module bean'] = array(
     'name' => 'delete any featured_campaigns_module bean',
-    'roles' => array(
-      'administrator' => 'administrator',
-    ),
+    'roles' => array(),
     'module' => 'bean',
   );
 
   // Exported permission: 'edit any featured_campaigns_module bean'.
   $permissions['edit any featured_campaigns_module bean'] = array(
     'name' => 'edit any featured_campaigns_module bean',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'contributor' => 'contributor',
-      'editor' => 'editor',
-      'layout editor' => 'layout editor',
-    ),
+    'roles' => array(),
     'module' => 'bean',
   );
 

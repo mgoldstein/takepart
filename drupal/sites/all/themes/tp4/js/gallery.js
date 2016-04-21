@@ -168,7 +168,15 @@
   // utility function to refresh ads
   var refreshDfpAds = function () {
     if (typeof googletag != 'undefined') {
-	 googletag.pubads().refresh();
+      //Size up the ads to max height
+      //This is targetting only the desktop ad slot to prevent the screen from
+      //jumping when the ad gets refreshed
+      if($('#block-boxes-takepart').find('.leaderboard-ad').is(":visible")) {
+        if($('#block-boxes-takepart').find('.leaderboard-ad').height() >= $('#block-boxes-takepart').height()) {
+          $('#block-boxes-takepart').css('height',$('#block-boxes-takepart').find('.leaderboard-ad').height());
+        }
+      }
+	    googletag.pubads().refresh();
     }
   };
 

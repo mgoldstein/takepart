@@ -5,7 +5,7 @@ $conf += array(
   // 'omniture_account_name' => 'takepartprod',
   // 'dtm_script_src' => '//assets.adobedtm.com/1bfdeeddf2a7ac04657b15540f0e8de06d3ee618/satelliteLib-67f52c9fb4acac0165b6ab3557a90e9fc355338e.js',
     'omniture_account_name' => 'takepart-dtm-test',
-    'dtm_script_src' => '//assets.adobedtm.com/1bfdeeddf2a7ac04657b15540f0e8de06d3ee618/satelliteLib-e72f040081d6d4caa0027d0ba1c74cd46d514484.js',  
+    'dtm_script_src' => '//assets.adobedtm.com/1bfdeeddf2a7ac04657b15540f0e8de06d3ee618/satelliteLib-e72f040081d6d4caa0027d0ba1c74cd46d514484.js',
 );
 
 // Production Facebook App ID
@@ -37,7 +37,7 @@ $conf['search_api_solr_overrides'] = array(
   'takepart_solr_production' => array(
     'name' => t('TakePart SOLR (Production settings)'),
     'options' => array(
-      'host' => '10.2.5.50', // new host
+      'host' => 'prod-solr.takepart.com', // new host
       'port' => 8080,
       'path' => '/solr/takepart_core',
     ),

@@ -25,7 +25,7 @@ function fresh_preprocess_page(&$variables) {
     $variables['page']['left_drawer']['menu']['#markup'] = '<div class="mobile-menu">'. $menu. '</div>';
 
     //Descriptive Text
-    $variables['page']['left_drawer']['text']['#markup'] = '<span class = "about">TakePart -- a digital news & lifestyle magazine and social action platform -- is a division of Participant Media, the company behind Pivot Television Network and important films such as An Inconvenient Truth, Waiting for Superman, Food, Inc., and many others.</span>';
+    $variables['page']['left_drawer']['text']['#markup'] = '<span class = "about">TakePart is the digital news and lifestyle magazine from <a href="http://www.participantmedia.com" target="_blank">Participant Media</a>, the company behind such acclaimed documentaries as CITIZENFOUR, An Inconvenient Truth and Food, Inc. and feature films including Lincoln and Spotlight.</span>';
 
     //Social Icons for Destkop - feature article
     $mobile_menu = theme('base_social_follow');

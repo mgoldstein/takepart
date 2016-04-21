@@ -59,6 +59,16 @@
         padding: 10px 15px;
         position: relative;
       }
+      .has-videoBG {
+        .videoBG-wrapper {
+          position: absolute;
+          width: 100%;
+          video.background-video {
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
     }
       .tap-action-wrapper {
         &.align-right, &.align-left, &.align-center {

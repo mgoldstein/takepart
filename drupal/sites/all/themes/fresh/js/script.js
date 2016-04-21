@@ -6,6 +6,8 @@
 
 (function ($, Drupal, window, document, undefined) {
 
+  window.initialVid = true;
+
   Drupal.behaviors.mobileMenuToggle = {
     attach: function(context, settings) {
 
@@ -292,6 +294,59 @@
         $('.tou-close').click(function() {
           $('.tou-alert').slideUp('slow');
         });
+      }
+    }
+  };
+
+  /*
+   * Create ambient video on feature article
+   */
+   Drupal.behaviors.featureVideoBG = {
+    attach: window.createVideoBG = function($vid_wrapper) {
+      var Environment = {
+        isAndroid: function() {
+          return navigator.userAgent.match(/Android/i);
+        },
+        isBlackBerry: function() {
+          return navigator.userAgent.match(/BlackBerry/i);
+        },
+        isIOS: function() {
+          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+        },
+        isOpera: function() {
+          return navigator.userAgent.match(/Opera Mini/i);
+        },
+        isWindows: function() {
+          return navigator.userAgent.match(/IEMobile/i);
+        },
+        isMobile: function() {
+          return (Environment.isAndroid() || Environment.isBlackBerry() || Environment.isIOS() || Environment.isOpera() || Environment.isWindows());
+        }
+      };
+      window.isMobile = Environment.isMobile();
+
+      //The $vid_wrapper param is not set on initial load
+      //It gets set on autoloaded nodes
+      if (window.initialVid) {
+        $vid_wrapper = $('.feature-image.has-videoBG');
+        window.initialVid = false;
+      }
+      var src = $vid_wrapper.data('video-bg');
+      if(!Environment.isMobile()){
+        var videoWrapper = document.createElement("div");
+        var video = document.createElement("video");
+        var videoSource = document.createElement("source");
+        videoWrapper.className = 'videoBG-wrapper';
+        videoSource.type = "video/mp4";
+        videoSource.src = src;
+        video.className = 'background-video';
+        video.setAttribute('autoplay', '');
+        video.setAttribute('muted', '');
+        video.setAttribute('loop', '');
+        video.appendChild(videoSource);
+        videoWrapper.appendChild(video);
+        $vid_wrapper.prepend(videoWrapper);
+        $vid_wrapper.addClass('video-created');
       }
     }
   };

@@ -16,6 +16,9 @@ files[] = handlers/InlineContentTapEmbed.class.php
 files[] = handlers/InlineContentImage.class.php
 files[] = handlers/InlineContentAdBlock.class.php
 files[] = handlers/InlineContentPullQuote.class.php
+files[] = handlers/InlineContentSocialEmbed.class.php
+files[] = handlers/InlineContentYoutubeEmbed.class.php
+files[] = handlers/InlineContentIframeEmbed.class.php
 files[] = handlers/InlineContentVideo.class.php
 files[] = handlers/InlineContentVideoPlaylist.class.php
 
