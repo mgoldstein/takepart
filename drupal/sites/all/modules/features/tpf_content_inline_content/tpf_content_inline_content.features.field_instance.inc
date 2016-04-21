@@ -246,9 +246,10 @@ function tpf_content_inline_content_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 1,
+        'type' => 'text_default',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'inline_content',
@@ -677,8 +678,9 @@ function tpf_content_inline_content_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 1,
       ),
     ),
@@ -1618,8 +1620,9 @@ function tpf_content_inline_content_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 1,
       ),
     ),
