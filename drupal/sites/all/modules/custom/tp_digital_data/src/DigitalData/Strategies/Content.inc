@@ -193,9 +193,11 @@ class ddContent extends ddDefaultPage {
     if($inline = field_get_items('node', $node, 'field_inline_replacements')) {
       foreach($inline as $i) {
         $load = entity_load('inline_content', array($i['target_id']));
-        if($tap_widget = field_get_items('inline_content', $load[$i['target_id']], 'field_ic_tap_widget_type')) {
-          if($tap_widget[0]['value'] == 'influence_widget') {
-            $show_influence = true;
+        if(is_object($load[$i['target_id']]) && isset($load[$i['target_id']]->field_ic_tap_widget_type)) {
+          if($tap_widget = field_get_items('inline_content', $load[$i['target_id']], 'field_ic_tap_widget_type')) {
+            if($tap_widget[0]['value'] == 'influence_widget') {
+              $show_influence = true;
+            }
           }
         }
       }
