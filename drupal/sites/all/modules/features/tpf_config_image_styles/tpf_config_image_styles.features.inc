@@ -102,6 +102,21 @@ function tpf_config_image_styles_image_default_styles() {
     ),
   );
 
+  // Exported image style: campaign_news_3x2_mobile.
+  $styles['campaign_news_3x2_mobile'] = array(
+    'label' => 'campaign_news_3x2_mobile',
+    'effects' => array(
+      68 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 768,
+          'height' => 512,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: embed_gallery_thumb.
   $styles['embed_gallery_thumb'] = array(
     'label' => 'embed_gallery_thumb',

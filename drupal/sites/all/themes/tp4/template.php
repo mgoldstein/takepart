@@ -624,17 +624,20 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
   else{ //Media is a photo
 
-    $image = field_get_items('node', $variables['node'], 'field_campaign_media_photo');
-    if(!empty($image)){
-      $image = file_create_url($image[0]['uri']);
+    if($image = field_get_items('node', $variables['node'], 'field_campaign_media_photo')){
+      $file = $image[0];
+      $mapping = picture_mapping_load('feature_main_image');
+      $file['breakpoints'] = picture_get_mapping_breakpoints($mapping);
+      $file['attributes'] = array();
+      $image = theme('picture', $file);
     }
     //Check if photo has a link
     $image_url = field_get_items('node', $variables['node'], 'field_campaign_media_image_link');
     if(!empty($image_url) && !empty($image)){
-      $media = l('<img src="'. $image. '" alt="'.$alt.'">', $image_url[0]['url'], array('html' => true, 'attributes' => array('target' => $image_url[0]['attributes']['target'], 'class' => array('media'))));
+      $media = l($image, $image_url[0]['url'], array('html' => true, 'attributes' => array('target' => $image_url[0]['attributes']['target'], 'class' => array('media'))));
     }
     else{
-      $media = '<img src="'. $image. '" alt="'.$alt.'">';
+      $media = $image;
     }
 
   }
@@ -1279,10 +1282,12 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         $headline = tp4_render_field_value('node', $node, 'field_promo_headline');
       }
 
-      $image = file_create_url($file->uri);
-      $image = image_style_url('campaign_news_3x2', $file->uri);
-      $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
-      $image = '<img src="'. $image. '" alt="'.$alt.'">';  //image
+      $mapping = picture_mapping_load('campaign_news_image');
+      $file->breakpoints = picture_get_mapping_breakpoints($mapping);
+      $file->attributes = array();
+      $file->alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
+      $image = theme('picture', (array) $file);
+
       $center = '';  // single news reference will use one column now
       $path = drupal_get_path_alias('node/'. $node->nid);
       $center .='<div class ="single-news-wrapper">';
@@ -1347,10 +1352,11 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
         $headline .= _tp4_support_sponsor_flag($node);
 
-        $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
-        $image = file_create_url($file->uri);
-        $image = image_style_url('campaign_news_3x2', $file->uri);
-        $media = '<img src="'. $image. '" alt="'.$alt.'">';
+        $mapping = picture_mapping_load('campaign_news_image');
+        $file->breakpoints = picture_get_mapping_breakpoints($mapping);
+        $file->attributes = array();
+        $file->alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
+        $media = theme('picture', (array) $file);
         $news_column = $media;
         $news_column .= '<h4>'. $headline. '</h4>';
 
@@ -1436,8 +1442,12 @@ function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
   $image = field_get_items('taxonomy_term', $campaign_category, 'field_campaign_category_image');
 
   if(!empty($image)){
-    $image = file_create_url($image[0]['uri']);
-    $image = '<img src="'. $image. '">';
+    $file = $image[0];
+    $mapping = picture_mapping_load('large');
+    $file['breakpoints'] = picture_get_mapping_breakpoints($mapping);
+    $file['attributes'] = array();
+    $image = theme('picture', $file);
+
     $branding_text = tp4_render_field_value('taxonomy_term', $campaign_category, 'field_campaign_category_text');
     $center .= '<div class="branding-content">';
     if(!empty($branding_text)){
@@ -1503,7 +1513,11 @@ function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
   $center = '';
   $center .= '<div class="center-inner">';
   foreach($field_collections as $key => $collection){
-    $image = tp4_render_field_value('field_collection_item', $collection, 'field_promo_thumbnail');
+    $file = $collection->field_promo_thumbnail[LANGUAGE_NONE][0];
+    $mapping = picture_mapping_load('large');
+    $file['breakpoints'] = picture_get_mapping_breakpoints($mapping);
+    $file['attributes'] = array();
+    $image = theme('picture', $file);
     $text = tp4_render_field_value('field_collection_item', $collection, 'field_promo_text');
     $link = field_get_items('field_collection_item', $collection, 'field_campaign_multigrid_link');
     $target = (isset($link[0]['attributes']['target']) ? $link[0]['attributes']['target'] : '_self');
