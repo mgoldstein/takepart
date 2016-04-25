@@ -203,6 +203,10 @@ function _tp_fbia_item_content_build($node, $ad) {
     if ($inline_replacement = field_get_items('node' , $node , 'field_inline_replacements')) {
       //keep track of IR's postion and whether they qualify for FBIA
       $ir_order = _tp_fbia_inline_replacement_filter($inline_replacement);
+
+      //Add domain to the internal paths
+      $body = tp_fbia_update_internal_links($body);
+
       //Insert Inline Replacement into body
       $body = _tp_fbia_search_and_replace($body, $ir_order);
     }
@@ -646,4 +650,25 @@ function _tp_fbia_ad_display($gpd_id) {
   ));
 
   return $markup;
+}
+
+/*
+ * Update the internal links to include the domain name if link value doens't start with http, //
+ * OR it doesn't include takepart.com
+ *
+ */
+function tp_fbia_update_internal_links ($body) {
+  $match = array();
+  $links = preg_match_all('/<a [^>]*href="(.+)"/', $body, $match);
+  global $base_url;
+  if (count($match)) {
+    foreach ($match[1] as $link_val) {
+      if (substr($link_val, 0, 4) != 'http' && substr($link_val, 0, 2) != '//' && strpos($link_val, "takepart.com") === FALSE) {
+        //Prepend the domain name to the link
+        $new_link_val = $base_url . $link_val;
+        $body = str_replace($link_val, $new_link_val, $body);
+      }
+    }
+  }
+  return $body;
 }
