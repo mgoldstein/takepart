@@ -189,6 +189,9 @@
                 // needs to happen after page info updates for DTM
                 if ( window.newTapWidgets == true ) {
                   TP.scope = $(value).data('ddlPageId');
+                  if($('.takepart-modal-container').length) {
+                    $('.takepart-modal-container').remove();
+                  }
                   TP.Bootstrapper && new TP.Bootstrapper().start();
                   TAP.Widget      && TAP.Widget.addWidgets();
                   window.newTapWidgets = false;
