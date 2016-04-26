@@ -161,140 +161,6 @@ Instead, select two dates to search for all content published between those date
   $handler->display->display_options['filters']['published_at']['table'] = 'publication_date';
   $handler->display->display_options['filters']['published_at']['field'] = 'published_at';
   $handler->display->display_options['filters']['published_at']['operator'] = 'between';
-  $handler->display->display_options['filters']['published_at']['value']['min'] = '2015-01-01';
-  $handler->display->display_options['filters']['published_at']['value']['max'] = '2015-01-02';
-  $handler->display->display_options['filters']['published_at']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['published_at']['expose']['operator_id'] = 'published_at_op';
-  $handler->display->display_options['filters']['published_at']['expose']['label'] = 'Published between';
-  $handler->display->display_options['filters']['published_at']['expose']['operator'] = 'published_at_op';
-  $handler->display->display_options['filters']['published_at']['expose']['identifier'] = 'published_at';
-  $handler->display->display_options['filters']['published_at']['expose']['required'] = TRUE;
-  $handler->display->display_options['filters']['published_at']['expose']['remember'] = TRUE;
-  $handler->display->display_options['filters']['published_at']['expose']['remember_roles'] = array(
-    2 => 0,
-    5 => '5',
-    6 => '6',
-    7 => '7',
-    1 => 0,
-    3 => 0,
-    8 => 0,
-  );
-  /* Filter criterion: Field: Topic (field_topic) */
-  $handler->display->display_options['filters']['field_topic_tid']['id'] = 'field_topic_tid';
-  $handler->display->display_options['filters']['field_topic_tid']['table'] = 'field_data_field_topic';
-  $handler->display->display_options['filters']['field_topic_tid']['field'] = 'field_topic_tid';
-  $handler->display->display_options['filters']['field_topic_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_topic_tid']['expose']['operator_id'] = 'field_topic_tid_op';
-  $handler->display->display_options['filters']['field_topic_tid']['expose']['label'] = 'Primary Topic';
-  $handler->display->display_options['filters']['field_topic_tid']['expose']['operator'] = 'field_topic_tid_op';
-  $handler->display->display_options['filters']['field_topic_tid']['expose']['identifier'] = 'field_topic_tid';
-  $handler->display->display_options['filters']['field_topic_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-  );
-  $handler->display->display_options['filters']['field_topic_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_topic_tid']['vocabulary'] = 'topic';
-  /* Filter criterion: Content: Author(s) (field_author) */
-  $handler->display->display_options['filters']['field_author_nid']['id'] = 'field_author_nid';
-  $handler->display->display_options['filters']['field_author_nid']['table'] = 'field_data_field_author';
-  $handler->display->display_options['filters']['field_author_nid']['field'] = 'field_author_nid';
-  $handler->display->display_options['filters']['field_author_nid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_author_nid']['expose']['operator_id'] = 'field_author_nid_op';
-  $handler->display->display_options['filters']['field_author_nid']['expose']['label'] = 'Author(s)';
-  $handler->display->display_options['filters']['field_author_nid']['expose']['operator'] = 'field_author_nid_op';
-  $handler->display->display_options['filters']['field_author_nid']['expose']['identifier'] = 'field_author_nid';
-  $handler->display->display_options['filters']['field_author_nid']['expose']['remember'] = TRUE;
-  $handler->display->display_options['filters']['field_author_nid']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['field_author_nid']['expose']['remember_roles'] = array(
-    2 => 0,
-    6 => '6',
-    7 => '7',
-    1 => 0,
-    3 => 0,
-    8 => 0,
-    5 => 0,
-  );
-  /* Filter criterion: Content: Admin Tag (field_admin_tag) */
-  $handler->display->display_options['filters']['field_admin_tag_tid']['id'] = 'field_admin_tag_tid';
-  $handler->display->display_options['filters']['field_admin_tag_tid']['table'] = 'field_data_field_admin_tag';
-  $handler->display->display_options['filters']['field_admin_tag_tid']['field'] = 'field_admin_tag_tid';
-  $handler->display->display_options['filters']['field_admin_tag_tid']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['field_admin_tag_tid']['expose']['operator_id'] = 'field_admin_tag_tid_op';
-  $handler->display->display_options['filters']['field_admin_tag_tid']['expose']['label'] = 'Admin Tag';
-  $handler->display->display_options['filters']['field_admin_tag_tid']['expose']['operator'] = 'field_admin_tag_tid_op';
-  $handler->display->display_options['filters']['field_admin_tag_tid']['expose']['identifier'] = 'field_admin_tag_tid';
-  $handler->display->display_options['filters']['field_admin_tag_tid']['expose']['remember_roles'] = array(
-    2 => '2',
-    1 => 0,
-    3 => 0,
-    8 => 0,
-    5 => 0,
-    6 => 0,
-    7 => 0,
-  );
-  $handler->display->display_options['filters']['field_admin_tag_tid']['type'] = 'select';
-  $handler->display->display_options['filters']['field_admin_tag_tid']['vocabulary'] = 'admin_tag';
-
-  /* Display: Page */
-  $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 1;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'openpublish_article' => 'openpublish_article',
-    'campaign' => 'campaign',
-    'feature_article' => 'feature_article',
-    'flashcard' => 'flashcard',
-    'takepart_page' => 'takepart_page',
-    'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-    'video' => 'video',
-    'video_playlist' => 'video_playlist',
-  );
-  $handler->display->display_options['filters']['type']['exposed'] = TRUE;
-  $handler->display->display_options['filters']['type']['expose']['operator_id'] = 'type_op';
-  $handler->display->display_options['filters']['type']['expose']['label'] = 'Content Type';
-  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
-  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
-  $handler->display->display_options['filters']['type']['expose']['required'] = TRUE;
-  $handler->display->display_options['filters']['type']['expose']['remember'] = TRUE;
-  $handler->display->display_options['filters']['type']['expose']['multiple'] = TRUE;
-  $handler->display->display_options['filters']['type']['expose']['remember_roles'] = array(
-    2 => 0,
-    6 => '6',
-    7 => '7',
-    1 => 0,
-    3 => 0,
-    8 => 0,
-    5 => 0,
-  );
-  $handler->display->display_options['filters']['type']['expose']['reduce'] = TRUE;
-  $handler->display->display_options['filters']['type']['group_info']['label'] = 'Type';
-  $handler->display->display_options['filters']['type']['group_info']['identifier'] = 'type';
-  $handler->display->display_options['filters']['type']['group_info']['remember'] = FALSE;
-  $handler->display->display_options['filters']['type']['group_info']['group_items'] = array(
-    1 => array(),
-    2 => array(),
-    3 => array(),
-  );
-  /* Filter criterion: Node: Published at */
-  $handler->display->display_options['filters']['published_at']['id'] = 'published_at';
-  $handler->display->display_options['filters']['published_at']['table'] = 'publication_date';
-  $handler->display->display_options['filters']['published_at']['field'] = 'published_at';
-  $handler->display->display_options['filters']['published_at']['operator'] = 'between';
   $handler->display->display_options['filters']['published_at']['value']['min'] = '2016-01-01';
   $handler->display->display_options['filters']['published_at']['value']['max'] = '2016-01-02';
   $handler->display->display_options['filters']['published_at']['exposed'] = TRUE;
@@ -372,6 +238,29 @@ Instead, select two dates to search for all content published between those date
   );
   $handler->display->display_options['filters']['field_admin_tag_tid']['type'] = 'select';
   $handler->display->display_options['filters']['field_admin_tag_tid']['vocabulary'] = 'admin_tag';
+  /* Filter criterion: Content: Series (field_series) */
+  $handler->display->display_options['filters']['field_series_tid']['id'] = 'field_series_tid';
+  $handler->display->display_options['filters']['field_series_tid']['table'] = 'field_data_field_series';
+  $handler->display->display_options['filters']['field_series_tid']['field'] = 'field_series_tid';
+  $handler->display->display_options['filters']['field_series_tid']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_series_tid']['expose']['operator_id'] = 'field_series_tid_op';
+  $handler->display->display_options['filters']['field_series_tid']['expose']['label'] = 'Series';
+  $handler->display->display_options['filters']['field_series_tid']['expose']['operator'] = 'field_series_tid_op';
+  $handler->display->display_options['filters']['field_series_tid']['expose']['identifier'] = 'field_series_tid';
+  $handler->display->display_options['filters']['field_series_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    8 => 0,
+    5 => 0,
+    6 => 0,
+    7 => 0,
+  );
+  $handler->display->display_options['filters']['field_series_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_series_tid']['vocabulary'] = 'series';
+
+  /* Display: Page */
+  $handler = $view->new_display('page', 'Page', 'page');
   $handler->display->display_options['path'] = 'admin/reports/publication-report';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Publication Report';
