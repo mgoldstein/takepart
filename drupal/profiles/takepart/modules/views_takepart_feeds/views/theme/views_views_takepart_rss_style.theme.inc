@@ -79,7 +79,8 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
 	   $xml .= "\t\t\t<author>" . $object->content . "</author>\n";
 	 } elseif (($id === 'field_article_subhead' && $object->content != '') ||
 	   ($id == 'field_subhead' && $object->content != '')) {
-	   $xml .= "\t\t\t<description><![CDATA[" . $object->content . "]]></description>\n";
+	   $description = $object->content;
+	   $xml .= "\t\t\t<description><![CDATA[" . $description . "]]></description>\n";
 	 } elseif ($id === 'field_topic' && $object->content != '') {
 	   $xml .= _build_category_nodes($object->content);
 	 } elseif ($id == 'field_thumbnail' && $object->content != '') {
@@ -109,27 +110,30 @@ function template_preprocess_views_views_takepart_rss_style_rssimages(&$vars) {
 	 }
     }
 
-    if ($actions && $actions != 'none') {
-      $content .= $actions;
-    } else {
-      if($actions != 'none') {
-        //Load from api call
-        $content .= _build_actions_for_yahoo_rss_feed('', $poslink) . "\n\n";
-      }
-    }
-    if($view) {
-      $content .= $view;
-    }
-    if ($related_content) {
-      $content .= "\n\n<nav><h2><strong>Related stories on TakePart:</strong></h2><br/>\n\n" . $related_content . '</nav>';
-    }
-
-    $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/") . $s;
-    $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":" . $_SERVER["SERVER_PORT"]);
-    $urlprefix = $protocol . "://" . $_SERVER['SERVER_NAME'] . $port;
-    $content = preg_replace('#(href|src)="([^:"]*)(?:")#', '$1="' . $urlprefix . '$2"', $content);
     if ($content != '') {
+      if ($actions && $actions != 'none') {
+        $content .= $actions;
+      } else {
+        if ($actions != 'none') {
+          // Load from api call
+          $content .= _build_actions_for_yahoo_rss_feed('', $poslink) . "\n\n";
+        }
+      }
+      if ($view) {
+        $content .= $view;
+      }
+      if ($related_content) {
+        $content .= "\n\n<nav><h2><strong>Related stories on TakePart:</strong></h2><br/>\n\n" . $related_content . '</nav>';
+      }
+
+      $protocol = _takepart_rss_strleft(strtolower($_SERVER["SERVER_PROTOCOL"]), "/") . $s;
+      $port = ($_SERVER["SERVER_PORT"] == "80") ? "" : (":" . $_SERVER["SERVER_PORT"]);
+      $urlprefix = $protocol . "://" . $_SERVER['SERVER_NAME'] . $port;
+	 $content = preg_replace('#(href|src)="([^:"]*)(?:")#', '$1="' . $urlprefix . '$2"', $content);
       $xml .= "\t\t\t<content:encoded><![CDATA[" . str_replace('<hr>', '', $content) . "]]></content:encoded>\n";
+    }
+    else if ($description != ''){
+	 $xml .= "\t\t\t<content:encoded><![CDATA[" . $description . "]]></content:encoded>\n";
     }
     $xml .= "\t\t</item>\n";
   }
