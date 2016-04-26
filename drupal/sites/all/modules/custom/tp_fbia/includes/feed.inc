@@ -290,6 +290,8 @@ function _tp_fbia_social_embed($ir_embed, $ir_type) {
     $feed .= '  </iframe>' . $NL;
   }
   elseif($ir_type == 'youtube_embed') {
+    //remove whitespace from beginning and end of embed code
+    $ir_embed = trim($ir_embed);
     //Youtube Embed code should be wrapped with iframe
     if (strpos($ir_embed, '<iframe') !== 0) {
       return false;
@@ -309,6 +311,8 @@ function _tp_fbia_social_embed($ir_embed, $ir_type) {
 function _tp_fbia_interactive_iframe($ir_field) {
   $NL = "\r\n";
   $ir_embed = $ir_field->field_ic_fia_embed['und'][0]['safe_value'];
+  //remove whitespace from beginning and end of embed code
+  $ir_embed = trim($ir_embed);
   //Embed code should be wrapped with iframe
   if (strpos($ir_embed, '<iframe') !== 0) {
     return false;
@@ -316,11 +320,11 @@ function _tp_fbia_interactive_iframe($ir_field) {
   //Add no-magin class
   $ir_iframe_embed = substr_replace($ir_embed, '<iframe class="no-margin"', 0 , 7);
   //Remove the wdith attributes
-  $ir_iframe_embed = preg_replace('/width=\"[0-9]*\"/', '' , $ir_iframe_embed);
+  //$ir_iframe_embed = preg_replace('/width=\"[0-9]*\"/', '' , $ir_iframe_embed);
 
   $feed  = '<figure class="op-interactive">' . $NL;
   $feed .= '  ' . $ir_iframe_embed . $NL;
-  if(isset($ir_field->field_ic_citation)) {
+  if(!empty($ir_field->field_ic_citation)) {
     $ir_iframe_caption = $ir_field->field_ic_citation['und'][0]['safe_value'];
     $feed .= '  <figcaption>' . $ir_iframe_caption . '</figcaption>' .$NL;
   }
