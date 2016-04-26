@@ -204,7 +204,7 @@ function _tp_fbia_item_content_build($node, $ad) {
       //keep track of IR's postion and whether they qualify for FBIA
       $ir_order = _tp_fbia_inline_replacement_filter($inline_replacement);
 
-      //Add domain to the internal paths
+      //Add domain & query params to the internal paths
       $body = tp_fbia_update_internal_links($body);
 
       //Insert Inline Replacement into body
@@ -658,21 +658,37 @@ function _tp_fbia_ad_display($gpd_id) {
 
 /*
  * Update the internal links to include the domain name if link value doens't start with http, //
- * OR it doesn't include takepart.com
- *
+ * OR it doesn't include takepart.com.
+ * Also append any takepart link with CMPID query param.
  */
 function tp_fbia_update_internal_links ($body) {
   $match = array();
-  $links = preg_match_all('/<a [^>]*href="(.+)"/', $body, $match);
+  $links = preg_match_all('/href=["\']?([^"\'>]+)["\']?/', $body, $match);
   global $base_url;
   if (count($match)) {
     foreach ($match[1] as $link_val) {
+
+      $cmpid = strpos($link_val, '?') === FALSE ? '?cmpid=tp-rss-fbinstant' : '&cmpid=tp-rss-fbinstant';
+      //This logic should catch links created using the internal link option in the wysiwyg
       if (substr($link_val, 0, 4) != 'http' && substr($link_val, 0, 2) != '//' && strpos($link_val, "takepart.com") === FALSE) {
-        //Prepend the domain name to the link
-        $new_link_val = $base_url . $link_val;
-        $body = str_replace($link_val, $new_link_val, $body);
+        //Prepend the domain name to the link & append the query param
+        $new_link_val = '"' . $base_url . $link_val . $cmpid . '"';
+        $link_val = '"' . $link_val . '"';
+        //Catch any duplicate links in the body
+        if (strpos($body, $new_link_val) === FALSE) {
+          $body = str_replace($link_val, $new_link_val, $body);
+        }
+      }
+      else if (strpos($link_val, "takepart.com") !== FALSE) {
+        //The else should catch any takepart.com links that have been created as absolute in the wysiwyg
+        $new_link_val = '"' . $link_val . $cmpid . '"';
+        $link_val = '"' . $link_val . '"';
+        if (strpos($body, $new_link_val) === FALSE) {
+          $body = str_replace($link_val, $new_link_val, $body);
+        }
       }
     }
   }
+
   return $body;
 }
