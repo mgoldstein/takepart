@@ -199,7 +199,7 @@
     if($('.fresh-content-wrapper').length && $('.sticky-wrapper .social').length) {
       //Only do this on Desktop so we check for mobile
       if(window.innerWidth >= 768) {
-        var elem = $('.fresh-content-wrapper').nextAll(), count = elem.length, showSticky = true;
+        var elem = $('.fresh-content-wrapper').nextAll(':not(#block-workbench-block)'), count = elem.length, showSticky = true;
         //Get the sticky measurements
         window.stickHeight = $('.sticky-wrapper .social').height();
         window.stickTop = $('.sticky-wrapper .social').offset().top;
