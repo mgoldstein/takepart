@@ -15,5 +15,17 @@ jQuery(function ($) {
 	 window.top.location.replace('#back');
     });
 
+    //Set the exclude from newsletter checkbox for sponsored content.
+    if($('#edit-field-sponsored-und').length && $('#edit-field-newsletter-feed-exclude-und-1').length) {
+      $('#edit-field-sponsored-und').on('change',function(){
+        if($(this).val() != "_none") {
+          $('#edit-field-newsletter-feed-exclude-und-1').prop('checked', true);
+          alert("The \"Exclude from Newsletters\" checkbox was checked automatically because you chose a sponsor.");
+        } else {
+          $('#edit-field-newsletter-feed-exclude-und-1').prop('checked', false);
+        }
+      });
+    }
+
   });
 });
