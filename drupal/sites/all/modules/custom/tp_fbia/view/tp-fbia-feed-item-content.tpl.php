@@ -41,13 +41,11 @@
 
       <?php print $body; ?>
 
-      <?php /* TODO: uncomment when done
+      <?php /* Adobe Analytics */ ?>
       <figure class="op-tracker">
-          <iframe>
-            <!-- ADOBE ANALYTICS EMBED -->
+          <iframe src="<?php print $analytics_url; ?>">
           </iframe>
       </figure>
-      */ ?>
 
       <?php /* Google Analytics */ ?>
 

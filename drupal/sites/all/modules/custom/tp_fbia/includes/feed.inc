@@ -214,7 +214,8 @@ function _tp_fbia_item_content_build($node, $ad) {
 
   $related = tp_fbia_item_related_url($node);
 
-  //TODO: analytics
+  //Analytics Url
+  $analytics_url = $base_url. '/fbia/'. $node->nid. '/analytics';
 
   return theme('tp_fbia_feed_item_content', array(
     'url'           => $url,
@@ -230,6 +231,7 @@ function _tp_fbia_item_content_build($node, $ad) {
     'related_title' => $related['title'],
     'related_url'   => $related['url'],
     'ads'           => $ad,
+    'analytics_url' => $analytics_url
   ));
 
 }
