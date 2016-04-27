@@ -11,9 +11,10 @@ function tp_fbia_page_analytics($node) {
 
   if(!empty($node)) {
 
-    //TODO: this is terrible.
-    module_load_include('inc', 'tp_auto_scroll', 'inc/tp_auto_scroll_ddl');
-    $ddl = tp_auto_scroll_build_ddl_content($node);
+
+    /* Get the DDL */
+    module_load_include('inc', 'tp_digital_data', 'includes/common');
+    $ddl = tp_digital_data_build_ddl_content($node);
     $ddl = drupal_json_encode($ddl);
 
     $dtm_js = variable_get('dtm_script_src', '');
