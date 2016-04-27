@@ -46,8 +46,8 @@
       </figure>
       */ ?>
 
-      <?php /* Google Analytics  */ ?>
-      <?php /* TODO: uncomment when done
+      <?php /* Google Analytics */ ?>
+
       <figure class="op-tracker">
         <iframe>
           <script>
@@ -60,7 +60,44 @@
           </script>
         </iframe>
       </figure>
-      */ ?>
+
+     <?php /* PubExchange Tracking */ ?>
+
+      <figure class="op-tracker">
+        <iframe>
+        <script>(function(l,d) {
+          if (l.search.length){
+            markup_versionar m, u = {}, s = /([^&=]+)=?([^&]*)/g, q = l.search.substring(1);
+            while (m = s.exec(q)) u[m[1]] = m[2];
+              if (("pefbs" in u) && ("pefba" in u) && ("pefbt" in u)) {
+                var pe = d.createElement("script"); pe.type = "text/javascript"; pe.async = true;
+                pe.src = "http://traffic.pubexchange.com/click/" + u.pefbt + "/" + u.pefbs + "/" + u.pefba;
+                var t = d.getElementsByTagName("script")[0]; t.parentNode.insertBefore(pe, t);
+              }
+            }
+        }(window.location, document));</script>
+        </iframe>
+      </figure>
+      <?php /* comScore Tracking */ ?>
+
+      <figure class="op-tracker">
+        <iframe>
+          <script>
+            var _comscore = _comscore || [];
+            _comscore.push({ c1: "2", c2: "14223123", c3: "", c4: "<?php print $url; ?>", c5: "", c6: "", c15: "" });
+            (function() {
+              var s = document.createElement("script"), el = document.getElementsByTagName("script")[0]; s.async = true;
+              s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/beacon.js";
+              el.parentNode.insertBefore(s, el);
+            })();
+          </script>
+          <noscript>
+            <img src="http://b.scorecardresearch.com/p?c1=2&c2=14223123&c3=&c4=<?php print $url; ?>&c5=&c6=&c15=&cv=2..0&cj=1" />
+          </noscript>
+        </iframe>
+      </figure>
+
+      <?php /* End of Analytics */ ?>
 
       <footer>
 
