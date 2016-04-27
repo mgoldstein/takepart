@@ -15,9 +15,12 @@
         <h2><?php print $subhead; ?></h2>
 
         <?php /* Main Image */ ?>
+
         <figure>
           <img src="<?php print $image_url; ?>" />
-          <figcaption><?php print $image_caption; ?></figcaption>
+          <?php if (!empty($image_caption)): ?>
+            <figcaption><?php print $image_caption; ?></figcaption>
+          <?php endif; ?>
         </figure>
 
         <?php /* Timestamps */ ?>

@@ -434,11 +434,13 @@ function _tp_fbia_video($ir_nid) {
   else if (strpos($vid_url , 'youtube') !== FALSE) {
     //Youtube hosted video uses the embedded code
     $embed_code = $node->field_video['und'][0]['tp_videos_metadata']->embed_code;
+    //remove width/height params
     $embed_code = preg_replace('/(width|height)=\"\d*\"\s/', '', $embed_code);
+    //remove ?feature=oembed query param
+    $embed_code = str_replace('?feature=oembed', '', $embed_code);
+
     $feed  = '<figure class="op-social">' . $NL;
-    $feed .= '  <iframe>' . $NL;
-    $feed .= '    ' . $embed_code . $NL;
-    $feed .= '  </iframe>' . $NL;
+    $feed .= '  ' . $embed_code . $NL;
     $feed .= '</figure>';
   }
   else {
