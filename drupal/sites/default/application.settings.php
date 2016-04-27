@@ -1,9 +1,25 @@
 <?php
 
-// Include the local settings that define the specifics of the instance,
-// including the ENVIRONMENT type.
-if (file_exists(dirname(__FILE__) . '/settings.local.inc')) {
-  include_once dirname(__FILE__) . '/settings.local.inc';
+//Include the Environment type based on the webserver variable
+//We are translating as the app_env is different than what is already in the code
+switch($_SERVER['APP_ENV']){
+  case 'dev':
+  case 'development':
+  default:
+    define('ENVIRONMENT', 'development');
+  break;
+  case 'qa':
+    define('ENVIRONMENT', 'qa');
+  break;
+  case 'staging':
+  case 'stage':
+    define('ENVIRONMENT', 'stage');
+  break;
+  case 'prod':
+  case 'production':
+  case 'live':
+    define('ENVIRONMENT', 'production');
+  break;
 }
 
 // Include the environment specific settings.
@@ -117,7 +133,7 @@ switch(ENVIRONMENT) {
     $domain = 'qa-api.participant.com';
     $conf['takepart_api_domain'] = "http://qa-api.takepart.com";
   break;
-  case 'staging':
+  case 'stage':
     $domain = 'stage-api.participant.com';
     $conf['takepart_api_domain'] = "http://stage-api.takepart.com";
   break;
@@ -168,4 +184,9 @@ if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
      break;
    }
  }
+}
+
+// Include the local settings that define the specifics of the instance
+if (file_exists(dirname(__FILE__) . '/settings.local.inc')) {
+  include_once dirname(__FILE__) . '/settings.local.inc';
 }
