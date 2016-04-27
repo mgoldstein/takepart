@@ -90,6 +90,7 @@
     og_desc = og_desc.length ? og_desc : $('<meta property="og:description" />').appendTo('head');
     og_desc.attr('content', shareDescription);
     tp_social_config.services.mailto.title = shareHeadline;
+
   };
 
   // prevent 2 email calls from firing
@@ -180,6 +181,11 @@
     }
   };
 
+  //We would like to know what slide type is being shared
+  var updateDTMslidetype = function(type) {
+    window.digitalData.slideType = type;
+  }
+
   // utility funcitions to show/hide and replace facebook comments
   var $facebookComments = null;
   var facebookCommentsTemplate = null;
@@ -246,6 +252,9 @@
 	 $('body').removeClass('gallery-showing');
 	 gallery.currentCaption = null;
 
+   //Update DTM DigitalData
+   updateDTMslidetype("cover slide");
+
 	 /* setTimeout(function() {
 	  refreshMailto();
 	  }, 2000);
@@ -272,6 +281,10 @@
 	 var token = getCurrentToken();
 	 this.hpushCurrentSlide(replace);
 	 showFacebookComments(token);
+
+   //Update DTM DigitalData
+   updateDTMslidetype("photo slide");
+
 	 /* setTimeout(function() {
 	  refreshMailto();
 	  }, 1000);
@@ -289,9 +302,9 @@
 	 // go to the next gallery if there is one; in any case, return
 	 if (this.currentSlideIndex == (this.slideshow.getNumSlides() - 1)) {
 	   if (this.$nextGallery.length) {
-		var $anchor = this.$nextGallery.find('a:first');
-		$anchor.trigger(click);
-		window.location.href = $anchor.attr('href');
+    var $anchor = this.$nextGallery.find('a:first');
+    $anchor.trigger(click);
+    window.location.href = $anchor.attr('href');
 	   }
 	   return;
 	 }
@@ -351,6 +364,13 @@
 	 this.$previousSlide.toggleClass('hidden', onFirstSlide && !this.hasCover);
 	 this.$nextSlide.toggleClass('hidden', onLastSlide);
 	 this.$nextGalleryNavLink.toggleClass('hidden', !(onLastSlide && this.$nextGallery.length));
+
+   //Update DTM with the type of slide
+   if(onLastSlide && this.$nextGallery.length) {
+     updateDTMslidetype("up next slide");
+   } else {
+     updateDTMslidetype("photo slide");
+   }
 
 	 // only update the history and state of the page
 	 // if the gallery is showing.
