@@ -1577,9 +1577,11 @@ function tp4_campaign_background_rules(&$variables){
   else{
     $variables['classes_array'][] = 'card-width-980';
   }
+  $background_crop_value = 0;
   if($background_crop = field_get_items('node', $variables['node'], 'field_campaign_bg_crop')){
     if($background_crop[0]['value'] == 1){
       $variables['classes_array'][] = 'background-crop';
+      $background_crop_value = $background_crop[0]['value'];
     }
   }
   /* Content Full Bleed */
@@ -1612,19 +1614,26 @@ function tp4_campaign_background_rules(&$variables){
   $bg = '';
   if($background = field_get_items('node', $variables['node'], 'field_campaign_background')){
     $bg = file_create_url($background[0]['uri']);
-    //image style for tablet and mobile
-    $variables['background_image_desktop'][] = "background-image: url('$bg');";
-    if($bgtablet = image_style_path('large_responsive_tablet', $background[0]['uri'])) {
-      $bgtablet = file_create_url($bgtablet);
-      $variables['background_image_tablet'][] = "background-image: url('$bgtablet');";
-    } else {
+    if($background_crop_value) {
+      //image style for tablet and mobile
+      $variables['background_image_desktop'][] = "background-image: url('$bg');";
       $variables['background_image_tablet'][] = "background-image: url('$bg');";
-    }
-    if($bgmobile = image_style_path('large_responsive_mobile', $background[0]['uri'])) {
-      $bgmobile = file_create_url($bgmobile);
-      $variables['background_image_mobile'][] = "background-image: url('$bgmobile');";
-    } else {
       $variables['background_image_mobile'][] = "background-image: url('$bg');";
+    } else {
+      //image style for tablet and mobile
+      $variables['background_image_desktop'][] = "background-image: url('$bg');";
+      if($bgtablet = image_style_path('large_responsive_tablet', $background[0]['uri'])) {
+        $bgtablet = file_create_url($bgtablet);
+        $variables['background_image_tablet'][] = "background-image: url('$bgtablet');";
+      } else {
+        $variables['background_image_tablet'][] = "background-image: url('$bg');";
+      }
+      if($bgmobile = image_style_path('large_responsive_mobile', $background[0]['uri'])) {
+        $bgmobile = file_create_url($bgmobile);
+        $variables['background_image_mobile'][] = "background-image: url('$bgmobile');";
+      } else {
+        $variables['background_image_mobile'][] = "background-image: url('$bg');";
+      }
     }
     $variables['background_class'] = $variables['type'].$variables['nid'];
     $variables['classes_array'][] = $variables['type'].$variables['nid'];
@@ -2009,7 +2018,7 @@ function tp4_field__field_author__openpublish_article($variables) {
 function tp4_field__field_author__feature_article($variables) {
   return tp4_field__field_author__openpublish_article($variables);
 }
- 
+
 function tp4_field__field_author__openpublish_photo_gallery($variables) {
   return tp4_field__field_author__openpublish_article($variables);
 }
@@ -2021,7 +2030,7 @@ function tp4_field__field_author__video($variables) {
 function tp4_field__field_author__video_playlist($variables) {
   return tp4_field__field_author__openpublish_article($variables);
 }
- 
+
 function tp4_field__field_flashcard_page_headline__flashcard($variables) {
     $output = '<h1 class="node-title ' . $variables['classes'] . '"' . $variables['attributes'] . '>';
 
