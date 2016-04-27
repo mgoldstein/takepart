@@ -88,6 +88,12 @@ function tp_content_services_notify_service($node, $insup = '') {
     $pub_date = '';
   }
 
+  //Check for newsletter Exclude
+  $newsletter = 0;
+  if($field_exclude_newsletter = field_get_items('node', $node, 'field_newsletter_feed_exclude')) {
+    $newsletter = $field_exclude_newsletter[0]['value'];
+  }
+
   $json = '{
      "url":"'.url('node/'.$node->nid, array('absolute' => TRUE)).'",
      "title":"'.$node->title.'",
@@ -95,6 +101,7 @@ function tp_content_services_notify_service($node, $insup = '') {
      "publish_date":"'.$pub_date.'",
      "published":"'.$node->status.'",
      "tags":"'.$tags.'",
+     "newsletter_exclude":"'.$newsletter.'",
      "image_url":{
         "full":{
            "url":"'.$image.'"
