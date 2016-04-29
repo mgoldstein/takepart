@@ -17,7 +17,6 @@ switch($_SERVER['APP_ENV']){
   break;
   case 'prod':
   case 'production':
-  case 'live':
     define('ENVIRONMENT', 'production');
   break;
 }
