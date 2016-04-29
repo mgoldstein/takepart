@@ -209,7 +209,17 @@ function _tp_fbia_item_content_build($node, $ad) {
 
       //Insert Inline Replacement into body
       $body = _tp_fbia_search_and_replace($body, $ir_order);
+
+      //Implement the TAP link
+      $tap_id = variable_get('tab_ir_id' , '');
+      module_load_include('module' , 'views_takepart_rss');
+      $tap_link = _build_actions_for_yahoo_rss_feed($tap_id , '');
+      $tap_link = str_replace('?cmpid=tp-rss', '?cmpid=tp-rss-fbinstant' , $tap_link) . "\r\n";;
+      //Insert the TAP link before the last body paragraph
+      $last_p_post = strrpos($body, '<p>');
+      $body = substr_replace($body, $tap_link , $last_p_post , 0);
     }
+
   }
 
   $related = tp_fbia_item_related_url($node);
@@ -242,6 +252,10 @@ function _tp_fbia_item_content_build($node, $ad) {
  */
 function _tp_fbia_inline_replacement_filter($inline_replacement) {
   $ir_order = $inline_replacement;
+  $tap_ctr = 0;
+  //Reset tap link
+  variable_set('tab_ir_id' , '');
+
   foreach ($inline_replacement as $key => $ir_id) {
     //Get the IR Type
     $ir_fields = entity_load('inline_content', $ir_id);
@@ -272,6 +286,13 @@ function _tp_fbia_inline_replacement_filter($inline_replacement) {
         $ir_order[$key]['fbia_feed'] = _tp_fbia_related_articles($ir_fields->field_ic_content,$related_content_ctr,$related_consolidated_links);
         $ir_order[$key]['type'] = $ir_type;
         break;
+      case 'tap_embed':
+      case 'take_action_widget':
+        //Only 1 tap link can be added per node
+        if ($tap_ctr == 0) {
+          variable_set('tab_ir_id' , $ir_id['target_id']);
+          $tap_ctr ++;
+        }
     }
   }
   //Consolidate the related articles
