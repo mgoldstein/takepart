@@ -13,7 +13,7 @@ switch($_SERVER['APP_ENV']){
   break;
   case 'staging':
   case 'stage':
-    define('ENVIRONMENT', 'stage');
+    define('ENVIRONMENT', 'staging');
   break;
   case 'prod':
   case 'production':
@@ -132,7 +132,7 @@ switch(ENVIRONMENT) {
     $domain = 'qa-api.participant.com';
     $conf['takepart_api_domain'] = "http://qa-api.takepart.com";
   break;
-  case 'stage':
+  case 'staging':
     $domain = 'stage-api.participant.com';
     $conf['takepart_api_domain'] = "http://stage-api.takepart.com";
   break;
