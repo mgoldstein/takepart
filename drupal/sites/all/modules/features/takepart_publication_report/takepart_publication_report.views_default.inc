@@ -49,19 +49,38 @@ function takepart_publication_report_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'Instructions';
   $handler->display->display_options['header']['area']['content'] = '<p>Publication dates are stored with the time down to the second, so exact matches on a date value will not return any results.
-Instead, select two dates to search for all content published between those dates. Set the date range below using YYYY-MM-DD format.</p>';
+Instead, select two dates to search for all content published between those dates. Set the date range below using YYYY-MM-DD format.</p><br />';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Header: Global: Result summary */
   $handler->display->display_options['header']['result']['id'] = 'result';
   $handler->display->display_options['header']['result']['table'] = 'views';
   $handler->display->display_options['header']['result']['field'] = 'result';
   $handler->display->display_options['header']['result']['content'] = '<h3>Total Results: @total</h3>';
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area_1']['id'] = 'area_1';
+  $handler->display->display_options['header']['area_1']['table'] = 'views';
+  $handler->display->display_options['header']['area_1']['field'] = 'area';
+  $handler->display->display_options['header']['area_1']['content'] = '<style type="text/css">
+#edit-field-topic-tid-wrapper .description {
+  display: none;
+}
+#edit-field-admin-tag-tid-wrapper .description {
+  display: none;
+}
+#views-exposed-form-publication-report-page select#edit-field-author-nid {
+  width: 200px;
+}
+.view-id-publication_report h3 {
+  font-size: 16px
+}
+</style>';
+  $handler->display->display_options['header']['area_1']['format'] = 'no_wysiwg_full_html';
   /* Footer: Global: Result summary */
   $handler->display->display_options['footer']['result']['id'] = 'result';
   $handler->display->display_options['footer']['result']['table'] = 'views';
   $handler->display->display_options['footer']['result']['field'] = 'result';
   $handler->display->display_options['footer']['result']['label'] = 'Total Results';
-  $handler->display->display_options['footer']['result']['content'] = '<br><p>Total Results: @total</p>';
+  $handler->display->display_options['footer']['result']['content'] = '<br><h3>Total Results: @total</h3>';
   /* Field: Node: Published at */
   $handler->display->display_options['fields']['published_at']['id'] = 'published_at';
   $handler->display->display_options['fields']['published_at']['table'] = 'publication_date';
