@@ -156,8 +156,8 @@ function tpf_content_campaigns_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'campaign_full_html' => 'campaign_full_html',
-          'full_html' => 0,
-          'limited_html' => 0,
+          'full_html' => 'full_html',
+          'limited_html' => 'limited_html',
           'no_wysiwg_full_html' => 'no_wysiwg_full_html',
           'php_code' => 0,
           'plain_text' => 0,
