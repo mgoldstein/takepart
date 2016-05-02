@@ -68,7 +68,7 @@
         <iframe>
         <script>(function(l,d) {
           if (l.search.length){
-            markup_versionar m, u = {}, s = /([^&=]+)=?([^&]*)/g, q = l.search.substring(1);
+            var m, u = {}, s = /([^&=]+)=?([^&]*)/g, q = l.search.substring(1);
             while (m = s.exec(q)) u[m[1]] = m[2];
               if (("pefbs" in u) && ("pefba" in u) && ("pefbt" in u)) {
                 var pe = d.createElement("script"); pe.type = "text/javascript"; pe.async = true;
