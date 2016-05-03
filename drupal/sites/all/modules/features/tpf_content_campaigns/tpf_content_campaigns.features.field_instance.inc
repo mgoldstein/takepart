@@ -8152,7 +8152,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
-          'campaign_full_html' => 'campaign_full_html',
+          'campaign_full_html' => 0,
           'full_html' => 0,
           'limited_html' => 0,
           'no_wysiwg_full_html' => 'no_wysiwg_full_html',
