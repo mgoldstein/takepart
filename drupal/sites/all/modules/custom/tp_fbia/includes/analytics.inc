@@ -11,6 +11,7 @@ function tp_fbia_page_analytics($node) {
 
   if(!empty($node)) {
 
+    node_view($node, 'full');
     /* Get the DDL */
     module_load_include('inc', 'tp_digital_data', 'includes/common');
     $ddl = tp_digital_data_build_ddl_content($node);
