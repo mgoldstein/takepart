@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <?php print $head; ?>
 </head>
 <body>
-  <?php print $content; ?>
+  <?php print $body; ?>
 </body>
 </html>

@@ -11,10 +11,11 @@ function tp_fbia_page_analytics($node) {
 
   if(!empty($node)) {
 
-
     /* Get the DDL */
     module_load_include('inc', 'tp_digital_data', 'includes/common');
     $ddl = tp_digital_data_build_ddl_content($node);
+    //Add FBIA value
+    $ddl['page']['pageInfo']['fbia'] = 'Facebook Instant Article';
     $ddl = drupal_json_encode($ddl);
 
     $dtm_js = variable_get('dtm_script_src', '');
@@ -37,11 +38,11 @@ function tp_fbia_page_analytics($node) {
  * @param $page_callback_result
  */
 function tp_fbia_html_analytics($page_callback_result) {
-
   // Pass variables to the template.
   $variables = array(
     'head_title'  => drupal_set_title('Analytics'),
-    'content'     => $page_callback_result,
+    'head' => $page_callback_result['head'],
+    'body' => $page_callback_result['body']
   );
 
   print theme('tp_fbia_html_analytics', $variables);
@@ -52,8 +53,8 @@ function tp_fbia_html_analytics($page_callback_result) {
  * Implements theme_HOOK
  */
 function theme_tp_fbia_page_analytics(&$variables) {
-
-  $markup = theme('html_tag', array(
+  $markup = array();
+  $markup['head'] = theme('html_tag', array(
     'element' => array(
       '#tag' => 'script',
       '#attributes' => array(
@@ -65,18 +66,18 @@ function theme_tp_fbia_page_analytics(&$variables) {
   ));
 
   //DDl
-  $markup .= theme('html_tag', array(
+  $markup['head'] .= theme('html_tag', array(
     'element' => array(
       '#tag' => 'script',
       '#attributes' => array(
         'type' => 'text/javascript'
       ),
-      '#value' => $variables['ddl']
+      '#value' => 'window.digitalData =' . $variables['ddl']
     )
   ));
 
   //DTM Bottom
-  $markup .= theme('html_tag', array(
+  $markup['body'] = theme('html_tag', array(
     'element' => array(
       '#tag' => 'script',
       '#attributes' => array(
