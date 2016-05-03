@@ -308,9 +308,14 @@ function _tp_fbia_social_embed($ir_embed, $ir_type) {
   $NL = "\r\n";
   $feed  = '<figure class="op-social">' . $NL;
   if ($ir_type == 'social_embed') {
-    $feed .= '  <iframe>' . $NL;
+    //Vine embed code already includes an iframe
+    if (strpos($ir_embed, 'vine') === FALSE) {
+      $feed .= '  <iframe>' . $NL;
+    }
     $feed .= '    ' . $ir_embed . $NL;
-    $feed .= '  </iframe>' . $NL;
+    if (strpos($ir_embed, 'vine') === FALSE) {
+      $feed .= '  </iframe>' . $NL;
+    }
   }
   elseif($ir_type == 'youtube_embed') {
     //remove whitespace from beginning and end of embed code
