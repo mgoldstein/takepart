@@ -3131,7 +3131,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_promo_headline',
     'label' => 'Promo Headline',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -25092,7 +25092,7 @@ Note: If you manually reference more items than selected here, the number refere
     'entity_type' => 'node',
     'field_name' => 'field_promo_headline',
     'label' => 'Promo Headline',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
