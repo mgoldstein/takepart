@@ -1,7 +1,7 @@
 name = TakePart Config Image Styles
 core = 7.x
 package = Config
-version = 7.x-1.5
+version = 7.x-1.6
 project = tpf_config_image_styles
 dependencies[] = context
 dependencies[] = ctools
@@ -14,6 +14,7 @@ features[image][] = action_main_image
 features[image][] = action_medium_preview
 features[image][] = action_summary_group
 features[image][] = campaign_news_3x2
+features[image][] = campaign_news_3x2_mobile
 features[image][] = embed_gallery_thumb
 features[image][] = feature_article_full
 features[image][] = feature_article_hero

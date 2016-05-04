@@ -242,13 +242,14 @@ function tpf_content_inline_content_field_default_field_instances() {
     'bundle' => 'interactive_iframe',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => 'Paste Iframe embed code in the Embed field.',
+    'description' => 'Paste Iframe embed code in the Embed field. Embed code must start and end with an iframe tag. Otherwise, use the HTML Block Inline Replacement.',
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 1,
+        'type' => 'text_default',
+        'weight' => 3,
       ),
     ),
     'entity_type' => 'inline_content',
@@ -677,8 +678,9 @@ function tpf_content_inline_content_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 1,
       ),
     ),
@@ -1618,8 +1620,9 @@ function tpf_content_inline_content_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'text_default',
         'weight' => 1,
       ),
     ),
@@ -1770,7 +1773,7 @@ function tpf_content_inline_content_field_default_field_instances() {
   t('Media');
   t('Newsletter');
   t('Orientation');
-  t('Paste Iframe embed code in the Embed field.');
+  t('Paste Iframe embed code in the Embed field. Embed code must start and end with an iframe tag. Otherwise, use the HTML Block Inline Replacement.');
   t('Paste embed code from Twitter, Vine, or Instagram in the Embed field. Please note that emojis need to be stripped out or replaced with standard text.');
   t('Paste embed code from YouTube in the Embed field.');
   t('Playlist');

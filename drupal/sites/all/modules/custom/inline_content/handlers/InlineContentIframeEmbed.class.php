@@ -52,12 +52,15 @@ class InlineContentIframeEmbed extends InlineContentReplacementController {
     return $content;
   }
 
-  /*public function validate($form, &$form_state, $replacement) {
+  public function validate($form, &$form_state, $replacement) {
 
     $embed_code = $form['#entity']->field_ic_fia_embed['und'][0]['value'];
-    if (strpos($embed_code , 'iframe') === FALSE) {
-       form_error($form['field_ic_fia_embed'] ,t('Only Iframe Player embeds are supported in this Inline Replacement.'));
+    //remove whitespace from beginning and end of embed code
+    $embed_code = trim($embed_code);
+    //The embed code should be wrapped with iframe tags
+    if ((substr($embed_code,0,7) != '<iframe') || substr($embed_code , (strlen($embed_code) - 9) , 9) != '</iframe>') {
+      form_error($form['field_ic_fia_embed'] ,t('Embed code must start and end with an iframe tag. Otherwise, use the HTML Block Inline Replacement.'));
     }
-  }*/
+  }
 
 }

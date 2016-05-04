@@ -147,6 +147,11 @@ blockquote.pullquote {
     }
   }
 }
+.inline-social-embed-wrapper {
+  @include breakpoint($breakpoint-tablet) {
+    max-width: 650px;
+  }
+}
 
 .inline-social-embed-wrapper,
 .inline-social-embed-wrapper > *:not(script),

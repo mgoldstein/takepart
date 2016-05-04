@@ -13,6 +13,34 @@ function tpf_responsive_images_default_picture_mapping() {
   $picture_mapping = new PictureMapping();
   $picture_mapping->disabled = FALSE; /* Edit this to true to make a default picture_mapping disabled initially */
   $picture_mapping->api_version = 2;
+  $picture_mapping->label = 'Campaign News Image';
+  $picture_mapping->machine_name = 'campaign_news_image';
+  $picture_mapping->breakpoint_group = 'large';
+  $picture_mapping->mapping = array(
+    'breakpoints.theme.base.base_large_desktop' => array(
+      '1x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'campaign_news_3x2',
+      ),
+    ),
+    'breakpoints.theme.base.base_large_tablet' => array(
+      '1x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'campaign_news_3x2',
+      ),
+    ),
+    'breakpoints.theme.base.base_large_mobile' => array(
+      '1x' => array(
+        'mapping_type' => 'image_style',
+        'image_style' => 'campaign_news_3x2_mobile',
+      ),
+    ),
+  );
+  $export['campaign_news_image'] = $picture_mapping;
+
+  $picture_mapping = new PictureMapping();
+  $picture_mapping->disabled = FALSE; /* Edit this to true to make a default picture_mapping disabled initially */
+  $picture_mapping->api_version = 2;
   $picture_mapping->label = 'Feature Article: Full';
   $picture_mapping->machine_name = 'feature_article_full';
   $picture_mapping->breakpoint_group = 'large';

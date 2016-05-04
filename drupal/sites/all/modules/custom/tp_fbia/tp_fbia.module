@@ -85,7 +85,8 @@ function tp_fbia_theme() {
     'tp_fbia_html_analytics' => array(
       'template' => 'view/tp-fbia-analytics-html',
       'variables' => array(
-        'content'   => ''
+        'head'   => '',
+        'body' => ''
       ),
     ),
 

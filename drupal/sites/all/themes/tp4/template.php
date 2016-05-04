@@ -76,9 +76,20 @@ function tp4_preprocess_html(&$variables, $hook) {
     if ($variables['page']['content']['system_main']['#entity_view_mode']['bundle'] == 'topic') {
         $variables['classes_array'][] = 'vocabulary-topic';
     }
+    drupal_add_js('
+      window.optimizely = window.optimizely || [];
+      window.optimizely.push("activateSiteCatalyst");
+',
+	 array(
+        'type' => 'inline',
+        'scope' => 'header',
+        'group' => JS_DEFAULT,
+        'every_page' => TRUE,
+        'weight' => -2,
+    ));
     drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
         'type' => 'external',
-        'scope' => 'footer',
+        'scope' => 'header',
         'group' => JS_DEFAULT,
         'every_page' => TRUE,
         'weight' => -1,
@@ -624,17 +635,20 @@ function tp4_preprocess_node__campaign_card_media(&$variables, $hook) {
 
   else{ //Media is a photo
 
-    $image = field_get_items('node', $variables['node'], 'field_campaign_media_photo');
-    if(!empty($image)){
-      $image = file_create_url($image[0]['uri']);
+    if($image = field_get_items('node', $variables['node'], 'field_campaign_media_photo')){
+      $file = $image[0];
+      $mapping = picture_mapping_load('feature_main_image');
+      $file['breakpoints'] = picture_get_mapping_breakpoints($mapping);
+      $file['attributes'] = array();
+      $image = theme('picture', $file);
     }
     //Check if photo has a link
     $image_url = field_get_items('node', $variables['node'], 'field_campaign_media_image_link');
     if(!empty($image_url) && !empty($image)){
-      $media = l('<img src="'. $image. '" alt="'.$alt.'">', $image_url[0]['url'], array('html' => true, 'attributes' => array('target' => $image_url[0]['attributes']['target'], 'class' => array('media'))));
+      $media = l($image, $image_url[0]['url'], array('html' => true, 'attributes' => array('target' => $image_url[0]['attributes']['target'], 'class' => array('media'))));
     }
     else{
-      $media = '<img src="'. $image. '" alt="'.$alt.'">';
+      $media = $image;
     }
 
   }
@@ -1279,10 +1293,12 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
         $headline = tp4_render_field_value('node', $node, 'field_promo_headline');
       }
 
-      $image = file_create_url($file->uri);
-      $image = image_style_url('campaign_news_3x2', $file->uri);
-      $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
-      $image = '<img src="'. $image. '" alt="'.$alt.'">';  //image
+      $mapping = picture_mapping_load('campaign_news_image');
+      $file->breakpoints = picture_get_mapping_breakpoints($mapping);
+      $file->attributes = array();
+      $file->alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
+      $image = theme('picture', (array) $file);
+
       $center = '';  // single news reference will use one column now
       $path = drupal_get_path_alias('node/'. $node->nid);
       $center .='<div class ="single-news-wrapper">';
@@ -1347,10 +1363,11 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
 
         $headline .= _tp4_support_sponsor_flag($node);
 
-        $alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
-        $image = file_create_url($file->uri);
-        $image = image_style_url('campaign_news_3x2', $file->uri);
-        $media = '<img src="'. $image. '" alt="'.$alt.'">';
+        $mapping = picture_mapping_load('campaign_news_image');
+        $file->breakpoints = picture_get_mapping_breakpoints($mapping);
+        $file->attributes = array();
+        $file->alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
+        $media = theme('picture', (array) $file);
         $news_column = $media;
         $news_column .= '<h4>'. $headline. '</h4>';
 
@@ -1436,8 +1453,12 @@ function tp4_preprocess_node__campaign_card_branding(&$variables, $hook) {
   $image = field_get_items('taxonomy_term', $campaign_category, 'field_campaign_category_image');
 
   if(!empty($image)){
-    $image = file_create_url($image[0]['uri']);
-    $image = '<img src="'. $image. '">';
+    $file = $image[0];
+    $mapping = picture_mapping_load('large');
+    $file['breakpoints'] = picture_get_mapping_breakpoints($mapping);
+    $file['attributes'] = array();
+    $image = theme('picture', $file);
+
     $branding_text = tp4_render_field_value('taxonomy_term', $campaign_category, 'field_campaign_category_text');
     $center .= '<div class="branding-content">';
     if(!empty($branding_text)){
@@ -1503,7 +1524,11 @@ function tp4_preprocess_node__campaign_card_multi_column(&$variables, $hook) {
   $center = '';
   $center .= '<div class="center-inner">';
   foreach($field_collections as $key => $collection){
-    $image = tp4_render_field_value('field_collection_item', $collection, 'field_promo_thumbnail');
+    $file = $collection->field_promo_thumbnail[LANGUAGE_NONE][0];
+    $mapping = picture_mapping_load('large');
+    $file['breakpoints'] = picture_get_mapping_breakpoints($mapping);
+    $file['attributes'] = array();
+    $image = theme('picture', $file);
     $text = tp4_render_field_value('field_collection_item', $collection, 'field_promo_text');
     $link = field_get_items('field_collection_item', $collection, 'field_campaign_multigrid_link');
     $target = (isset($link[0]['attributes']['target']) ? $link[0]['attributes']['target'] : '_self');
@@ -1563,9 +1588,11 @@ function tp4_campaign_background_rules(&$variables){
   else{
     $variables['classes_array'][] = 'card-width-980';
   }
+  $background_crop_value = 0;
   if($background_crop = field_get_items('node', $variables['node'], 'field_campaign_bg_crop')){
     if($background_crop[0]['value'] == 1){
       $variables['classes_array'][] = 'background-crop';
+      $background_crop_value = $background_crop[0]['value'];
     }
   }
   /* Content Full Bleed */
@@ -1598,19 +1625,26 @@ function tp4_campaign_background_rules(&$variables){
   $bg = '';
   if($background = field_get_items('node', $variables['node'], 'field_campaign_background')){
     $bg = file_create_url($background[0]['uri']);
-    //image style for tablet and mobile
-    $variables['background_image_desktop'][] = "background-image: url('$bg');";
-    if($bgtablet = image_style_path('large_responsive_tablet', $background[0]['uri'])) {
-      $bgtablet = file_create_url($bgtablet);
-      $variables['background_image_tablet'][] = "background-image: url('$bgtablet');";
-    } else {
+    if($background_crop_value) {
+      //image style for tablet and mobile
+      $variables['background_image_desktop'][] = "background-image: url('$bg');";
       $variables['background_image_tablet'][] = "background-image: url('$bg');";
-    }
-    if($bgmobile = image_style_path('large_responsive_mobile', $background[0]['uri'])) {
-      $bgmobile = file_create_url($bgmobile);
-      $variables['background_image_mobile'][] = "background-image: url('$bgmobile');";
-    } else {
       $variables['background_image_mobile'][] = "background-image: url('$bg');";
+    } else {
+      //image style for tablet and mobile
+      $variables['background_image_desktop'][] = "background-image: url('$bg');";
+      if($bgtablet = image_style_path('large_responsive_tablet', $background[0]['uri'])) {
+        $bgtablet = file_create_url($bgtablet);
+        $variables['background_image_tablet'][] = "background-image: url('$bgtablet');";
+      } else {
+        $variables['background_image_tablet'][] = "background-image: url('$bg');";
+      }
+      if($bgmobile = image_style_path('large_responsive_mobile', $background[0]['uri'])) {
+        $bgmobile = file_create_url($bgmobile);
+        $variables['background_image_mobile'][] = "background-image: url('$bgmobile');";
+      } else {
+        $variables['background_image_mobile'][] = "background-image: url('$bg');";
+      }
     }
     $variables['background_class'] = $variables['type'].$variables['nid'];
     $variables['classes_array'][] = $variables['type'].$variables['nid'];
@@ -1995,7 +2029,7 @@ function tp4_field__field_author__openpublish_article($variables) {
 function tp4_field__field_author__feature_article($variables) {
   return tp4_field__field_author__openpublish_article($variables);
 }
- 
+
 function tp4_field__field_author__openpublish_photo_gallery($variables) {
   return tp4_field__field_author__openpublish_article($variables);
 }
@@ -2007,7 +2041,7 @@ function tp4_field__field_author__video($variables) {
 function tp4_field__field_author__video_playlist($variables) {
   return tp4_field__field_author__openpublish_article($variables);
 }
- 
+
 function tp4_field__field_flashcard_page_headline__flashcard($variables) {
     $output = '<h1 class="node-title ' . $variables['classes'] . '"' . $variables['attributes'] . '>';
 

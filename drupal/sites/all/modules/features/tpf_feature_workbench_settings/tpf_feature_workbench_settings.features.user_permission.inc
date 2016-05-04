@@ -15,6 +15,7 @@ function tpf_feature_workbench_settings_user_default_permissions() {
     'name' => 'access workbench',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
     ),
     'module' => 'workbench',
   );
@@ -42,6 +43,7 @@ function tpf_feature_workbench_settings_user_default_permissions() {
     'name' => 'bypass workbench moderation',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
     ),
     'module' => 'workbench_moderation',
   );
@@ -51,6 +53,7 @@ function tpf_feature_workbench_settings_user_default_permissions() {
     'name' => 'use workbench_media add form',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
     ),
     'module' => 'workbench_media',
   );

@@ -161,6 +161,7 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'create field_due_date',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
       'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
@@ -189,6 +190,8 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'create field_promo_text',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
   );
@@ -198,6 +201,7 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'create field_run_date',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
       'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
@@ -237,6 +241,7 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'edit field_due_date',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
       'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
@@ -265,6 +270,8 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'edit field_promo_text',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
   );
@@ -274,6 +281,7 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'edit field_run_date',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
       'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
@@ -305,6 +313,7 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'edit own field_due_date',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
       'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
@@ -333,6 +342,8 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'edit own field_promo_text',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
   );
@@ -342,6 +353,8 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'edit own field_run_date',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
   );
@@ -522,6 +535,8 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'view field_promo_text',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
   );
@@ -562,6 +577,7 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'view own field_due_date',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
       'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
@@ -590,6 +606,8 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'view own field_promo_text',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
+      'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
   );
@@ -599,6 +617,7 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'view own field_run_date',
     'roles' => array(
       'administrator' => 'administrator',
+      'editor' => 'editor',
       'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',

@@ -203,14 +203,29 @@ function _tp_fbia_item_content_build($node, $ad) {
     if ($inline_replacement = field_get_items('node' , $node , 'field_inline_replacements')) {
       //keep track of IR's postion and whether they qualify for FBIA
       $ir_order = _tp_fbia_inline_replacement_filter($inline_replacement);
+
+      //Add domain & query params to the internal paths
+      $body = tp_fbia_update_internal_links($body);
+
       //Insert Inline Replacement into body
       $body = _tp_fbia_search_and_replace($body, $ir_order);
+
+      //Implement the TAP link
+      $tap_id = variable_get('tab_ir_id' , '');
+      module_load_include('module' , 'views_takepart_rss');
+      $tap_link = _build_actions_for_yahoo_rss_feed($tap_id , '');
+      $tap_link = str_replace('?cmpid=tp-rss', '?cmpid=tp-rss-fbinstant' , $tap_link) . "\r\n";;
+      //Insert the TAP link before the last body paragraph
+      $last_p_post = strrpos($body, '<p>');
+      $body = substr_replace($body, $tap_link , $last_p_post , 0);
     }
+
   }
 
   $related = tp_fbia_item_related_url($node);
 
-  //TODO: analytics
+  //Analytics Url
+  $analytics_url = $base_url. '/fbia/'. $node->nid. '/analytics';
 
   return theme('tp_fbia_feed_item_content', array(
     'url'           => $url,
@@ -226,6 +241,7 @@ function _tp_fbia_item_content_build($node, $ad) {
     'related_title' => $related['title'],
     'related_url'   => $related['url'],
     'ads'           => $ad,
+    'analytics_url' => $analytics_url
   ));
 
 }
@@ -236,6 +252,10 @@ function _tp_fbia_item_content_build($node, $ad) {
  */
 function _tp_fbia_inline_replacement_filter($inline_replacement) {
   $ir_order = $inline_replacement;
+  $tap_ctr = 0;
+  //Reset tap link
+  variable_set('tab_ir_id' , '');
+
   foreach ($inline_replacement as $key => $ir_id) {
     //Get the IR Type
     $ir_fields = entity_load('inline_content', $ir_id);
@@ -266,6 +286,13 @@ function _tp_fbia_inline_replacement_filter($inline_replacement) {
         $ir_order[$key]['fbia_feed'] = _tp_fbia_related_articles($ir_fields->field_ic_content,$related_content_ctr,$related_consolidated_links);
         $ir_order[$key]['type'] = $ir_type;
         break;
+      case 'tap_embed':
+      case 'take_action_widget':
+        //Only 1 tap link can be added per node
+        if ($tap_ctr == 0) {
+          variable_set('tab_ir_id' , $ir_id['target_id']);
+          $tap_ctr ++;
+        }
     }
   }
   //Consolidate the related articles
@@ -281,11 +308,18 @@ function _tp_fbia_social_embed($ir_embed, $ir_type) {
   $NL = "\r\n";
   $feed  = '<figure class="op-social">' . $NL;
   if ($ir_type == 'social_embed') {
-    $feed .= '  <iframe>' . $NL;
+    //Vine embed code already includes an iframe
+    if (strpos($ir_embed, 'vine') === FALSE) {
+      $feed .= '  <iframe>' . $NL;
+    }
     $feed .= '    ' . $ir_embed . $NL;
-    $feed .= '  </iframe>' . $NL;
+    if (strpos($ir_embed, 'vine') === FALSE) {
+      $feed .= '  </iframe>' . $NL;
+    }
   }
   elseif($ir_type == 'youtube_embed') {
+    //remove whitespace from beginning and end of embed code
+    $ir_embed = trim($ir_embed);
     //Youtube Embed code should be wrapped with iframe
     if (strpos($ir_embed, '<iframe') !== 0) {
       return false;
@@ -305,6 +339,8 @@ function _tp_fbia_social_embed($ir_embed, $ir_type) {
 function _tp_fbia_interactive_iframe($ir_field) {
   $NL = "\r\n";
   $ir_embed = $ir_field->field_ic_fia_embed['und'][0]['safe_value'];
+  //remove whitespace from beginning and end of embed code
+  $ir_embed = trim($ir_embed);
   //Embed code should be wrapped with iframe
   if (strpos($ir_embed, '<iframe') !== 0) {
     return false;
@@ -312,11 +348,11 @@ function _tp_fbia_interactive_iframe($ir_field) {
   //Add no-magin class
   $ir_iframe_embed = substr_replace($ir_embed, '<iframe class="no-margin"', 0 , 7);
   //Remove the wdith attributes
-  $ir_iframe_embed = preg_replace('/width=\"[0-9]*\"/', '' , $ir_iframe_embed);
+  //$ir_iframe_embed = preg_replace('/width=\"[0-9]*\"/', '' , $ir_iframe_embed);
 
   $feed  = '<figure class="op-interactive">' . $NL;
   $feed .= '  ' . $ir_iframe_embed . $NL;
-  if(isset($ir_field->field_ic_citation)) {
+  if(!empty($ir_field->field_ic_citation)) {
     $ir_iframe_caption = $ir_field->field_ic_citation['und'][0]['safe_value'];
     $feed .= '  <figcaption>' . $ir_iframe_caption . '</figcaption>' .$NL;
   }
@@ -426,11 +462,13 @@ function _tp_fbia_video($ir_nid) {
   else if (strpos($vid_url , 'youtube') !== FALSE) {
     //Youtube hosted video uses the embedded code
     $embed_code = $node->field_video['und'][0]['tp_videos_metadata']->embed_code;
+    //remove width/height params
     $embed_code = preg_replace('/(width|height)=\"\d*\"\s/', '', $embed_code);
+    //remove ?feature=oembed query param
+    $embed_code = str_replace('?feature=oembed', '', $embed_code);
+
     $feed  = '<figure class="op-social">' . $NL;
-    $feed .= '  <iframe>' . $NL;
-    $feed .= '    ' . $embed_code . $NL;
-    $feed .= '  </iframe>' . $NL;
+    $feed .= '  ' . $embed_code . $NL;
     $feed .= '</figure>';
   }
   else {
@@ -646,4 +684,41 @@ function _tp_fbia_ad_display($gpd_id) {
   ));
 
   return $markup;
+}
+
+/*
+ * Update the internal links to include the domain name if link value doens't start with http, //
+ * OR it doesn't include takepart.com.
+ * Also append any takepart link with CMPID query param.
+ */
+function tp_fbia_update_internal_links ($body) {
+  $match = array();
+  $links = preg_match_all('/href=["\']?([^"\'>]+)["\']?/', $body, $match);
+  global $base_url;
+  if (count($match)) {
+    foreach ($match[1] as $link_val) {
+
+      $cmpid = strpos($link_val, '?') === FALSE ? '?cmpid=tp-rss-fbinstant' : '&cmpid=tp-rss-fbinstant';
+      //This logic should catch links created using the internal link option in the wysiwyg
+      if (substr($link_val, 0, 4) != 'http' && substr($link_val, 0, 2) != '//' && strpos($link_val, "takepart.com") === FALSE) {
+        //Prepend the domain name to the link & append the query param
+        $new_link_val = '"' . $base_url . $link_val . $cmpid . '"';
+        $link_val = '"' . $link_val . '"';
+        //Catch any duplicate links in the body
+        if (strpos($body, $new_link_val) === FALSE) {
+          $body = str_replace($link_val, $new_link_val, $body);
+        }
+      }
+      else if (strpos($link_val, "takepart.com") !== FALSE) {
+        //The else should catch any takepart.com links that have been created as absolute in the wysiwyg
+        $new_link_val = '"' . $link_val . $cmpid . '"';
+        $link_val = '"' . $link_val . '"';
+        if (strpos($body, $new_link_val) === FALSE) {
+          $body = str_replace($link_val, $new_link_val, $body);
+        }
+      }
+    }
+  }
+
+  return $body;
 }
