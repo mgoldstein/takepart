@@ -456,6 +456,12 @@ function inline_content_replacement_types() {
     'controller' => 'InlineContentYoutubeEmbed',
   );
 
+  $types['ambient_video'] = array(
+    'label' => t('Video: Ambient'),
+    'description' => t('Add full screen ambient video.'),
+    'controller' => 'InlineContentAmbientVideo',
+  );
+
   return $types;
 }
 
