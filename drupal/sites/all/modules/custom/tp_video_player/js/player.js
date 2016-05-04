@@ -221,15 +221,10 @@
         jwplayer(element_id).setControls(false);
         $('#' + element_id).parent().addClass('playing');
         $('#' + element_id).css('background-color', 'white');
-        console.log('DID the onplay happen');
       });
 
       jwplayer(element_id).onPause(function(event) {
         $('#' + element_id).parent().removeClass('playing');
-      });
-    } else {
-      jwplayer(element_id).onPlay(function(event) {
-        console.log($('#' + element_id));
       });
     }
 
