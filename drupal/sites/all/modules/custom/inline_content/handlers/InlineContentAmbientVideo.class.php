@@ -43,7 +43,7 @@ class InlineContentAmbientVideo extends InlineContentReplacementController {
       //ambient video background for feature article
       $vid_bg_src = $file[0]['uri'];
       $vid_bg_src = file_create_url($vid_bg_src);
-      $vid_bg = '<div class = "feature-ambient-image has-videoBG" data-video-bg="' . $vid_bg_src . '">'.$img_bg.'</div>';
+      $vid_bg = '<div class = "full-width feature-ambient-image has-videoBG" data-video-bg="' . $vid_bg_src . '">'.$img_bg.'</div>';
     }
 
     $content['#replacements'][] = array(
