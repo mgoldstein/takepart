@@ -331,6 +331,7 @@
         $vid_wrapper = $('.feature-image.has-videoBG');
         window.initialVid = false;
       }
+      
       var src = $vid_wrapper.data('video-bg');
       if(!Environment.isMobile()){
         var videoWrapper = document.createElement("div");
@@ -348,6 +349,29 @@
         $vid_wrapper.prepend(videoWrapper);
         $vid_wrapper.addClass('video-created');
       }
+      $('.feature-ambient-image.has-videoBG').each(function(){
+        if(!$(this).hasClass('processed')) {
+          $vid_wrapper = $(this);
+          var src = $vid_wrapper.data('video-bg');
+          if(!Environment.isMobile()){
+            var videoWrapper = document.createElement("div");
+            var video = document.createElement("video");
+            var videoSource = document.createElement("source");
+            videoWrapper.className = 'videoBG-wrapper';
+            videoSource.type = "video/mp4";
+            videoSource.src = src;
+            video.className = 'background-video';
+            video.setAttribute('autoplay', '');
+            video.setAttribute('muted', '');
+            video.setAttribute('loop', '');
+            video.appendChild(videoSource);
+            videoWrapper.appendChild(video);
+            $vid_wrapper.prepend(videoWrapper);
+            $vid_wrapper.addClass('video-created');
+          }
+          $(this).addClass('processed');
+        }
+      });
     }
   };
 
