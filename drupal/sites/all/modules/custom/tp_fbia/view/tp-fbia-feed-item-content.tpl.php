@@ -42,8 +42,10 @@
       <?php print $body; ?>
 
       <?php /* Adobe Analytics */ ?>
+
       <figure class="op-tracker">
-          <iframe src="<?php print $analytics_url; ?>">
+          <iframe>
+            <?php print $adobe_analytics; ?>
           </iframe>
       </figure>
 

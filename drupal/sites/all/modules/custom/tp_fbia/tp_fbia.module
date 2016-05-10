@@ -44,16 +44,6 @@ function tp_fbia_menu() {
     'file' => 'includes/admin.inc',
   );
 
-  //Each article needs it's own analytics page to get iframed in
-  $items['fbia/%node/analytics'] = array (
-    'page callback' => 'tp_fbia_page_analytics',
-    'delivery callback' => 'tp_fbia_html_analytics',
-    'page arguments' => array(1),
-    'access callback' => true,
-    'type' => MENU_CALLBACK,
-    'file' => 'includes/analytics.inc',
-  );
-
   return $items;
 
 }
