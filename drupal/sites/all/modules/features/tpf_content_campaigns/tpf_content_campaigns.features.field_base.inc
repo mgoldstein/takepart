@@ -210,6 +210,9 @@ function tpf_content_campaigns_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_campaign_bg_image_position',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -235,6 +238,9 @@ function tpf_content_campaigns_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_campaign_bg_video_poster',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
