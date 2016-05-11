@@ -296,6 +296,11 @@ function _tp_fbia_inline_replacement_filter($inline_replacement) {
           variable_set('tab_ir_id' , $ir_id['target_id']);
           $tap_ctr ++;
         }
+        break;
+      case 'pull_quote':
+        $ir_order[$key]['fbia_feed'] = _tp_fbia_pull_quote($ir_fields);
+        $ir_order[$key]['type'] = $ir_type;
+        break;
     }
   }
   //Consolidate the related articles
@@ -480,6 +485,24 @@ function _tp_fbia_video($ir_nid) {
   return $feed;
 }
 
+/*
+ * Create the feed element for pull quotes
+ */
+function _tp_fbia_pull_quote($ir_field) {
+  $NL = "\r\n";
+  if ($ir_quote = $ir_field->field_ic_quotation['und'][0]['safe_value']) {
+    $feed = '<aside>' . $NL;
+    $feed .= $ir_quote . $NL;
+    if ($ir_citation = $ir_field->field_ic_citation['und'][0]['safe_value']) {
+      $feed .= '  <cite>' . $ir_citation . '</cite>' . $NL;
+    }
+    $feed .= '</aside>';
+    return $feed;
+  }
+  else {
+    return false;
+  }
+}
 /*
  * Replace all instances of <hr> with the inline replcament feed elements
  * @param $search - the string that contains <hr>
