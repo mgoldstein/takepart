@@ -10,7 +10,7 @@
 function tpf_content_field_bases_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'body'
+  // Exported field_base: 'body'.
   $field_bases['body'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -31,7 +31,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'comment_body'
+  // Exported field_base: 'comment_body'.
   $field_bases['comment_body'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -55,7 +55,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_action_icon'
+  // Exported field_base: 'field_action_icon'.
   $field_bases['field_action_icon'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -76,7 +76,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_action_main_image'
+  // Exported field_base: 'field_action_main_image'.
   $field_bases['field_action_main_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -95,7 +95,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'media',
   );
 
-  // Exported field_base: 'field_action_open_label'
+  // Exported field_base: 'field_action_open_label'.
   $field_bases['field_action_open_label'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -116,7 +116,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_action_taken'
+  // Exported field_base: 'field_action_taken'.
   $field_bases['field_action_taken'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -137,7 +137,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_action_type'
+  // Exported field_base: 'field_action_type'.
   $field_bases['field_action_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -165,7 +165,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_action_type_label'
+  // Exported field_base: 'field_action_type_label'.
   $field_bases['field_action_type_label'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -186,7 +186,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_action_url'
+  // Exported field_base: 'field_action_url'.
   $field_bases['field_action_url'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -215,7 +215,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_admin_tag'
+  // Exported field_base: 'field_admin_tag'.
   $field_bases['field_admin_tag'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -246,7 +246,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_agency'
+  // Exported field_base: 'field_agency'.
   $field_bases['field_agency'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -273,7 +273,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_allowed_regions'
+  // Exported field_base: 'field_allowed_regions'.
   $field_bases['field_allowed_regions'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -294,7 +294,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_article_background_video'
+  // Exported field_base: 'field_article_background_video'.
   $field_bases['field_article_background_video'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -374,7 +374,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_article_main_image'
+  // Exported field_base: 'field_article_main_image'.
   $field_bases['field_article_main_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -396,7 +396,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'media',
   );
 
-  // Exported field_base: 'field_article_subhead'
+  // Exported field_base: 'field_article_subhead'.
   $field_bases['field_article_subhead'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -417,7 +417,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_assigned_editor'
+  // Exported field_base: 'field_assigned_editor'.
   $field_bases['field_assigned_editor'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -457,7 +457,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'user_reference',
   );
 
-  // Exported field_base: 'field_associated_content'
+  // Exported field_base: 'field_associated_content'.
   $field_bases['field_associated_content'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -503,7 +503,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_author'
+  // Exported field_base: 'field_author'.
   $field_bases['field_author'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -537,7 +537,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_author_links'
+  // Exported field_base: 'field_author_links'.
   $field_bases['field_author_links'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -566,7 +566,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_autoload'
+  // Exported field_base: 'field_autoload'.
   $field_bases['field_autoload'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -591,7 +591,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_brand_category'
+  // Exported field_base: 'field_brand_category'.
   $field_bases['field_brand_category'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -628,7 +628,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_call_to_action'
+  // Exported field_base: 'field_call_to_action'.
   $field_bases['field_call_to_action'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -649,7 +649,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_campaign_background'
+  // Exported field_base: 'field_campaign_background'.
   $field_bases['field_campaign_background'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -674,7 +674,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_campaign_base_url'
+  // Exported field_base: 'field_campaign_base_url'.
   $field_bases['field_campaign_base_url'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -695,7 +695,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_campaign_bg_color'
+  // Exported field_base: 'field_campaign_bg_color'.
   $field_bases['field_campaign_bg_color'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -730,7 +730,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'color_field_rgb',
   );
 
-  // Exported field_base: 'field_campaign_bg_video'
+  // Exported field_base: 'field_campaign_bg_video'.
   $field_bases['field_campaign_bg_video'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -756,7 +756,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_campaign_bgw'
+  // Exported field_base: 'field_campaign_bgw'.
   $field_bases['field_campaign_bgw'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -784,7 +784,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_campaign_bgw_image'
+  // Exported field_base: 'field_campaign_bgw_image'.
   $field_bases['field_campaign_bgw_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -812,7 +812,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_campaign_branding_category'
+  // Exported field_base: 'field_campaign_branding_category'.
   $field_bases['field_campaign_branding_category'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -840,7 +840,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_campaign_branding_text'
+  // Exported field_base: 'field_campaign_branding_text'.
   $field_bases['field_campaign_branding_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -859,7 +859,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_campaign_branding_url'
+  // Exported field_base: 'field_campaign_branding_url'.
   $field_bases['field_campaign_branding_url'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -888,7 +888,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_campaign_card_reference'
+  // Exported field_base: 'field_campaign_card_reference'.
   $field_bases['field_campaign_card_reference'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -933,7 +933,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_campaign_card_title'
+  // Exported field_base: 'field_campaign_card_title'.
   $field_bases['field_campaign_card_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -954,7 +954,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_campaign_category_image'
+  // Exported field_base: 'field_campaign_category_image'.
   $field_bases['field_campaign_category_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -976,7 +976,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_campaign_facebook_comments'
+  // Exported field_base: 'field_campaign_facebook_comments'.
   $field_bases['field_campaign_facebook_comments'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1001,7 +1001,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_campaign_full_width'
+  // Exported field_base: 'field_campaign_full_width'.
   $field_bases['field_campaign_full_width'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1026,7 +1026,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_campaign_hp'
+  // Exported field_base: 'field_campaign_hp'.
   $field_bases['field_campaign_hp'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1055,7 +1055,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_campaign_iframe'
+  // Exported field_base: 'field_campaign_iframe'.
   $field_bases['field_campaign_iframe'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1076,7 +1076,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_campaign_iframe_type'
+  // Exported field_base: 'field_campaign_iframe_type'.
   $field_bases['field_campaign_iframe_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1101,7 +1101,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_campaign_instructional'
+  // Exported field_base: 'field_campaign_instructional'.
   $field_bases['field_campaign_instructional'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1120,7 +1120,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_campaign_logo'
+  // Exported field_base: 'field_campaign_logo'.
   $field_bases['field_campaign_logo'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1142,7 +1142,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_campaign_logo_position'
+  // Exported field_base: 'field_campaign_logo_position'.
   $field_bases['field_campaign_logo_position'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1168,7 +1168,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_campaign_media_caption'
+  // Exported field_base: 'field_campaign_media_caption'.
   $field_bases['field_campaign_media_caption'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1187,7 +1187,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_campaign_media_image_link'
+  // Exported field_base: 'field_campaign_media_image_link'.
   $field_bases['field_campaign_media_image_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1216,7 +1216,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_campaign_media_photo'
+  // Exported field_base: 'field_campaign_media_photo'.
   $field_bases['field_campaign_media_photo'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1238,7 +1238,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_campaign_media_title'
+  // Exported field_base: 'field_campaign_media_title'.
   $field_bases['field_campaign_media_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1259,7 +1259,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_campaign_media_video'
+  // Exported field_base: 'field_campaign_media_video'.
   $field_bases['field_campaign_media_video'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1294,7 +1294,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_campaign_menu'
+  // Exported field_base: 'field_campaign_menu'.
   $field_bases['field_campaign_menu'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1315,7 +1315,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_campaign_menu_bg_color'
+  // Exported field_base: 'field_campaign_menu_bg_color'.
   $field_bases['field_campaign_menu_bg_color'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1341,7 +1341,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'color_field_rgb',
   );
 
-  // Exported field_base: 'field_campaign_menu_bg_image'
+  // Exported field_base: 'field_campaign_menu_bg_image'.
   $field_bases['field_campaign_menu_bg_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1363,7 +1363,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_campaign_menu_bg_image_w'
+  // Exported field_base: 'field_campaign_menu_bg_image_w'.
   $field_bases['field_campaign_menu_bg_image_w'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1388,7 +1388,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_campaign_menu_color_child'
+  // Exported field_base: 'field_campaign_menu_color_child'.
   $field_bases['field_campaign_menu_color_child'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1414,7 +1414,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'color_field_rgb',
   );
 
-  // Exported field_base: 'field_campaign_menu_width'
+  // Exported field_base: 'field_campaign_menu_width'.
   $field_bases['field_campaign_menu_width'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1439,7 +1439,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_campaign_min_height'
+  // Exported field_base: 'field_campaign_min_height'.
   $field_bases['field_campaign_min_height'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1454,7 +1454,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_campaign_news_count'
+  // Exported field_base: 'field_campaign_news_count'.
   $field_bases['field_campaign_news_count'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1491,7 +1491,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_campaign_news_filter_tag'
+  // Exported field_base: 'field_campaign_news_filter_tag'.
   $field_bases['field_campaign_news_filter_tag'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1529,7 +1529,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_campaign_newsletter'
+  // Exported field_base: 'field_campaign_newsletter'.
   $field_bases['field_campaign_newsletter'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1562,7 +1562,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_campaign_reference'
+  // Exported field_base: 'field_campaign_reference'.
   $field_bases['field_campaign_reference'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1599,7 +1599,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_campaign_seo_title'
+  // Exported field_base: 'field_campaign_seo_title'.
   $field_bases['field_campaign_seo_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1620,7 +1620,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_campaign_sms'
+  // Exported field_base: 'field_campaign_sms'.
   $field_bases['field_campaign_sms'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1639,7 +1639,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_campaign_sms_legal'
+  // Exported field_base: 'field_campaign_sms_legal'.
   $field_bases['field_campaign_sms_legal'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1658,7 +1658,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_campaign_social_follow'
+  // Exported field_base: 'field_campaign_social_follow'.
   $field_bases['field_campaign_social_follow'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -1680,7 +1680,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_campaign_style_setting'
+  // Exported field_base: 'field_campaign_style_setting'.
   $field_bases['field_campaign_style_setting'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1711,7 +1711,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_campaign_text_left'
+  // Exported field_base: 'field_campaign_text_left'.
   $field_bases['field_campaign_text_left'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1730,7 +1730,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_campaign_text_right'
+  // Exported field_base: 'field_campaign_text_right'.
   $field_bases['field_campaign_text_right'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1749,7 +1749,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_campaign_tray'
+  // Exported field_base: 'field_campaign_tray'.
   $field_bases['field_campaign_tray'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -1784,7 +1784,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_campaign_tray_title'
+  // Exported field_base: 'field_campaign_tray_title'.
   $field_bases['field_campaign_tray_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1805,7 +1805,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_campaign_video_modal'
+  // Exported field_base: 'field_campaign_video_modal'.
   $field_bases['field_campaign_video_modal'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1820,7 +1820,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'tp_media_modal',
   );
 
-  // Exported field_base: 'field_caption'
+  // Exported field_base: 'field_caption'.
   $field_bases['field_caption'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1841,7 +1841,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_card_text'
+  // Exported field_base: 'field_card_text'.
   $field_bases['field_card_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1860,7 +1860,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_credits'
+  // Exported field_base: 'field_credits'.
   $field_bases['field_credits'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -1887,7 +1887,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_dfp_creative_id'
+  // Exported field_base: 'field_dfp_creative_id'.
   $field_bases['field_dfp_creative_id'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1908,7 +1908,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_display_cover'
+  // Exported field_base: 'field_display_cover'.
   $field_bases['field_display_cover'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1933,7 +1933,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_display_tab_banner'
+  // Exported field_base: 'field_display_tab_banner'.
   $field_bases['field_display_tab_banner'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1958,7 +1958,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_due_date'
+  // Exported field_base: 'field_due_date'.
   $field_bases['field_due_date'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -1990,7 +1990,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_featured_campaign_link'
+  // Exported field_base: 'field_featured_campaign_link'.
   $field_bases['field_featured_campaign_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2019,7 +2019,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_featured_campaign_page'
+  // Exported field_base: 'field_featured_campaign_page'.
   $field_bases['field_featured_campaign_page'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2054,7 +2054,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_featured_campaigns'
+  // Exported field_base: 'field_featured_campaigns'.
   $field_bases['field_featured_campaigns'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -2076,7 +2076,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_flashcard_display_name'
+  // Exported field_base: 'field_flashcard_display_name'.
   $field_bases['field_flashcard_display_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2097,7 +2097,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_flashcard_organizations'
+  // Exported field_base: 'field_flashcard_organizations'.
   $field_bases['field_flashcard_organizations'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -2119,7 +2119,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_flashcard_page_headline'
+  // Exported field_base: 'field_flashcard_page_headline'.
   $field_bases['field_flashcard_page_headline'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2140,7 +2140,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_flashcard_pronunciation'
+  // Exported field_base: 'field_flashcard_pronunciation'.
   $field_bases['field_flashcard_pronunciation'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2161,7 +2161,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_flashcard_related'
+  // Exported field_base: 'field_flashcard_related'.
   $field_bases['field_flashcard_related'] = array(
     'active' => 1,
     'cardinality' => 8,
@@ -2200,7 +2200,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_flashcard_related_category'
+  // Exported field_base: 'field_flashcard_related_category'.
   $field_bases['field_flashcard_related_category'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -2236,7 +2236,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_flashcard_related_cta_text'
+  // Exported field_base: 'field_flashcard_related_cta_text'.
   $field_bases['field_flashcard_related_cta_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2257,7 +2257,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_flashcard_related_primary'
+  // Exported field_base: 'field_flashcard_related_primary'.
   $field_bases['field_flashcard_related_primary'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2296,7 +2296,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_flashcard_short_definition'
+  // Exported field_base: 'field_flashcard_short_definition'.
   $field_bases['field_flashcard_short_definition'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2315,7 +2315,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_flashcard_synonyms'
+  // Exported field_base: 'field_flashcard_synonyms'.
   $field_bases['field_flashcard_synonyms'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -2336,7 +2336,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_follow_google'
+  // Exported field_base: 'field_follow_google'.
   $field_bases['field_follow_google'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2365,7 +2365,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_follow_twitter'
+  // Exported field_base: 'field_follow_twitter'.
   $field_bases['field_follow_twitter'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2394,7 +2394,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_free_tag'
+  // Exported field_base: 'field_free_tag'.
   $field_bases['field_free_tag'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -2421,7 +2421,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_free_tag_context'
+  // Exported field_base: 'field_free_tag_context'.
   $field_bases['field_free_tag_context'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2438,7 +2438,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'context_field',
   );
 
-  // Exported field_base: 'field_gallery_images'
+  // Exported field_base: 'field_gallery_images'.
   $field_bases['field_gallery_images'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -2457,7 +2457,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'media',
   );
 
-  // Exported field_base: 'field_gallery_main_image'
+  // Exported field_base: 'field_gallery_main_image'.
   $field_bases['field_gallery_main_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2476,7 +2476,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'media',
   );
 
-  // Exported field_base: 'field_html_title'
+  // Exported field_base: 'field_html_title'.
   $field_bases['field_html_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2497,7 +2497,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_ic_action'
+  // Exported field_base: 'field_ic_action'.
   $field_bases['field_ic_action'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2550,7 +2550,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_ic_alignment'
+  // Exported field_base: 'field_ic_alignment'.
   $field_bases['field_ic_alignment'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2578,7 +2578,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_ic_article_url'
+  // Exported field_base: 'field_ic_article_url'.
   $field_bases['field_ic_article_url'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2607,7 +2607,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_ic_citation'
+  // Exported field_base: 'field_ic_citation'.
   $field_bases['field_ic_citation'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2631,7 +2631,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_ic_content'
+  // Exported field_base: 'field_ic_content'.
   $field_bases['field_ic_content'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -2681,7 +2681,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_ic_expanded'
+  // Exported field_base: 'field_ic_expanded'.
   $field_bases['field_ic_expanded'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2706,7 +2706,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_ic_fia_embed'
+  // Exported field_base: 'field_ic_fia_embed'.
   $field_bases['field_ic_fia_embed'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2728,7 +2728,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_ic_image'
+  // Exported field_base: 'field_ic_image'.
   $field_bases['field_ic_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2747,7 +2747,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'media',
   );
 
-  // Exported field_base: 'field_ic_image_format'
+  // Exported field_base: 'field_ic_image_format'.
   $field_bases['field_ic_image_format'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2774,7 +2774,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_ic_image_label'
+  // Exported field_base: 'field_ic_image_label'.
   $field_bases['field_ic_image_label'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2795,7 +2795,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_ic_label'
+  // Exported field_base: 'field_ic_label'.
   $field_bases['field_ic_label'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2816,7 +2816,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_ic_markup'
+  // Exported field_base: 'field_ic_markup'.
   $field_bases['field_ic_markup'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2835,7 +2835,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_ic_media'
+  // Exported field_base: 'field_ic_media'.
   $field_bases['field_ic_media'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2854,7 +2854,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'media',
   );
 
-  // Exported field_base: 'field_ic_newsletter'
+  // Exported field_base: 'field_ic_newsletter'.
   $field_bases['field_ic_newsletter'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2887,7 +2887,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_ic_orientation'
+  // Exported field_base: 'field_ic_orientation'.
   $field_bases['field_ic_orientation'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2912,7 +2912,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_ic_playlist'
+  // Exported field_base: 'field_ic_playlist'.
   $field_bases['field_ic_playlist'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2947,7 +2947,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_ic_quotation'
+  // Exported field_base: 'field_ic_quotation'.
   $field_bases['field_ic_quotation'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2966,7 +2966,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_ic_tap_widget_alignment'
+  // Exported field_base: 'field_ic_tap_widget_alignment'.
   $field_bases['field_ic_tap_widget_alignment'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -2992,7 +2992,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_ic_tap_widget_type'
+  // Exported field_base: 'field_ic_tap_widget_type'.
   $field_bases['field_ic_tap_widget_type'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3017,7 +3017,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_image_title'
+  // Exported field_base: 'field_image_title'.
   $field_bases['field_image_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3038,7 +3038,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_inline_replacements'
+  // Exported field_base: 'field_inline_replacements'.
   $field_bases['field_inline_replacements'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -3074,7 +3074,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_listing_collection'
+  // Exported field_base: 'field_listing_collection'.
   $field_bases['field_listing_collection'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -3096,7 +3096,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_main_image'
+  // Exported field_base: 'field_main_image'.
   $field_bases['field_main_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3115,7 +3115,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'media',
   );
 
-  // Exported field_base: 'field_main_image_format'
+  // Exported field_base: 'field_main_image_format'.
   $field_bases['field_main_image_format'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3133,7 +3133,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'formatter',
   );
 
-  // Exported field_base: 'field_main_img_to_thumb'
+  // Exported field_base: 'field_main_img_to_thumb'.
   $field_bases['field_main_img_to_thumb'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3158,7 +3158,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_media_alt'
+  // Exported field_base: 'field_media_alt'.
   $field_bases['field_media_alt'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3179,7 +3179,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_media_caption'
+  // Exported field_base: 'field_media_caption'.
   $field_bases['field_media_caption'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3198,7 +3198,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_media_title'
+  // Exported field_base: 'field_media_title'.
   $field_bases['field_media_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3219,7 +3219,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_media_video_playlist'
+  // Exported field_base: 'field_media_video_playlist'.
   $field_bases['field_media_video_playlist'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3254,7 +3254,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_menu_color_parent'
+  // Exported field_base: 'field_menu_color_parent'.
   $field_bases['field_menu_color_parent'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3280,7 +3280,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'color_field_rgb',
   );
 
-  // Exported field_base: 'field_newsletter_feed_exclude'
+  // Exported field_base: 'field_newsletter_feed_exclude'.
   $field_bases['field_newsletter_feed_exclude'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -3304,7 +3304,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_organizaiton_link'
+  // Exported field_base: 'field_organizaiton_link'.
   $field_bases['field_organizaiton_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3333,7 +3333,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_organization_image'
+  // Exported field_base: 'field_organization_image'.
   $field_bases['field_organization_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3352,7 +3352,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'media',
   );
 
-  // Exported field_base: 'field_organization_label'
+  // Exported field_base: 'field_organization_label'.
   $field_bases['field_organization_label'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3373,7 +3373,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_organization_name'
+  // Exported field_base: 'field_organization_name'.
   $field_bases['field_organization_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3394,7 +3394,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_page_context'
+  // Exported field_base: 'field_page_context'.
   $field_bases['field_page_context'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3411,7 +3411,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'context_field',
   );
 
-  // Exported field_base: 'field_page_main_image'
+  // Exported field_base: 'field_page_main_image'.
   $field_bases['field_page_main_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3430,7 +3430,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'media',
   );
 
-  // Exported field_base: 'field_page_name'
+  // Exported field_base: 'field_page_name'.
   $field_bases['field_page_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3451,7 +3451,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_page_subhead'
+  // Exported field_base: 'field_page_subhead'.
   $field_bases['field_page_subhead'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3472,7 +3472,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_permanent_title'
+  // Exported field_base: 'field_permanent_title'.
   $field_bases['field_permanent_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3493,7 +3493,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_photo_gallery_slideshow'
+  // Exported field_base: 'field_photo_gallery_slideshow'.
   $field_bases['field_photo_gallery_slideshow'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3510,7 +3510,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'views_field',
   );
 
-  // Exported field_base: 'field_post_vote_message'
+  // Exported field_base: 'field_post_vote_message'.
   $field_bases['field_post_vote_message'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3529,7 +3529,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_profile_address'
+  // Exported field_base: 'field_profile_address'.
   $field_bases['field_profile_address'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3548,7 +3548,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_profile_email'
+  // Exported field_base: 'field_profile_email'.
   $field_bases['field_profile_email'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3569,7 +3569,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_profile_first_name'
+  // Exported field_base: 'field_profile_first_name'.
   $field_bases['field_profile_first_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3590,7 +3590,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_profile_job_title'
+  // Exported field_base: 'field_profile_job_title'.
   $field_bases['field_profile_job_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3611,7 +3611,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_profile_last_name'
+  // Exported field_base: 'field_profile_last_name'.
   $field_bases['field_profile_last_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3632,7 +3632,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_profile_organization'
+  // Exported field_base: 'field_profile_organization'.
   $field_bases['field_profile_organization'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3653,7 +3653,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_profile_phone'
+  // Exported field_base: 'field_profile_phone'.
   $field_bases['field_profile_phone'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3674,7 +3674,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_profile_photo'
+  // Exported field_base: 'field_profile_photo'.
   $field_bases['field_profile_photo'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3696,7 +3696,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_profile_user'
+  // Exported field_base: 'field_profile_user'.
   $field_bases['field_profile_user'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3729,7 +3729,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'user_reference',
   );
 
-  // Exported field_base: 'field_promo_content'
+  // Exported field_base: 'field_promo_content'.
   $field_bases['field_promo_content'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3771,7 +3771,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_promo_content_collection'
+  // Exported field_base: 'field_promo_content_collection'.
   $field_bases['field_promo_content_collection'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -3793,7 +3793,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'field_collection',
   );
 
-  // Exported field_base: 'field_promo_headline'
+  // Exported field_base: 'field_promo_headline'.
   $field_bases['field_promo_headline'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3814,7 +3814,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_promo_headline_wysiw'
+  // Exported field_base: 'field_promo_headline_wysiw'.
   $field_bases['field_promo_headline_wysiw'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3833,7 +3833,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_promo_label'
+  // Exported field_base: 'field_promo_label'.
   $field_bases['field_promo_label'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3854,7 +3854,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_promo_short_headline'
+  // Exported field_base: 'field_promo_short_headline'.
   $field_bases['field_promo_short_headline'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3878,7 +3878,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_promo_text'
+  // Exported field_base: 'field_promo_text'.
   $field_bases['field_promo_text'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3900,7 +3900,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
-  // Exported field_base: 'field_promo_thumbnail'
+  // Exported field_base: 'field_promo_thumbnail'.
   $field_bases['field_promo_thumbnail'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3922,7 +3922,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_related_stories'
+  // Exported field_base: 'field_related_stories'.
   $field_bases['field_related_stories'] = array(
     'active' => 1,
     'cardinality' => 3,
@@ -3972,7 +3972,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_rights'
+  // Exported field_base: 'field_rights'.
   $field_bases['field_rights'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -3993,7 +3993,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_run_date'
+  // Exported field_base: 'field_run_date'.
   $field_bases['field_run_date'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4025,7 +4025,31 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'datetime',
   );
 
-  // Exported field_base: 'field_series'
+  // Exported field_base: 'field_s3_css_filename'.
+  $field_bases['field_s3_css_filename'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_s3_css_filename',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(
+      'max_length' => 255,
+    ),
+    'translatable' => 0,
+    'type' => 'text',
+  );
+
+  // Exported field_base: 'field_series'.
   $field_bases['field_series'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4053,7 +4077,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_series_context'
+  // Exported field_base: 'field_series_context'.
   $field_bases['field_series_context'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4070,7 +4094,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'context_field',
   );
 
-  // Exported field_base: 'field_series_graphic_header'
+  // Exported field_base: 'field_series_graphic_header'.
   $field_bases['field_series_graphic_header'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4092,7 +4116,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_series_graphic_header_link'
+  // Exported field_base: 'field_series_graphic_header_link'.
   $field_bases['field_series_graphic_header_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4121,7 +4145,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_sharing_inline'
+  // Exported field_base: 'field_sharing_inline'.
   $field_bases['field_sharing_inline'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4146,7 +4170,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_social_link'
+  // Exported field_base: 'field_social_link'.
   $field_bases['field_social_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4175,7 +4199,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_social_network'
+  // Exported field_base: 'field_social_network'.
   $field_bases['field_social_network'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4210,7 +4234,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_subhead'
+  // Exported field_base: 'field_subhead'.
   $field_bases['field_subhead'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4231,7 +4255,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_syndication'
+  // Exported field_base: 'field_syndication'.
   $field_bases['field_syndication'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -4255,7 +4279,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_tab_action_override'
+  // Exported field_base: 'field_tab_action_override'.
   $field_bases['field_tab_action_override'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -4311,7 +4335,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'field_tab_call_to_action'
+  // Exported field_base: 'field_tab_call_to_action'.
   $field_bases['field_tab_call_to_action'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4332,7 +4356,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_thumbnail'
+  // Exported field_base: 'field_thumbnail'.
   $field_bases['field_thumbnail'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4351,7 +4375,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'media',
   );
 
-  // Exported field_base: 'field_title_color'
+  // Exported field_base: 'field_title_color'.
   $field_bases['field_title_color'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4376,7 +4400,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_topic'
+  // Exported field_base: 'field_topic'.
   $field_bases['field_topic'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -4404,7 +4428,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_topic_box'
+  // Exported field_base: 'field_topic_box'.
   $field_bases['field_topic_box'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4432,7 +4456,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'taxonomy_term_reference',
   );
 
-  // Exported field_base: 'field_topic_box_image'
+  // Exported field_base: 'field_topic_box_image'.
   $field_bases['field_topic_box_image'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4454,7 +4478,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_topic_box_link'
+  // Exported field_base: 'field_topic_box_link'.
   $field_bases['field_topic_box_link'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4483,7 +4507,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_tp_campaign_show_title'
+  // Exported field_base: 'field_tp_campaign_show_title'.
   $field_bases['field_tp_campaign_show_title'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4508,7 +4532,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_trays_initially_load'
+  // Exported field_base: 'field_trays_initially_load'.
   $field_bases['field_trays_initially_load'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4547,7 +4571,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'list_integer',
   );
 
-  // Exported field_base: 'field_type_label'
+  // Exported field_base: 'field_type_label'.
   $field_bases['field_type_label'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4568,7 +4592,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_units_plural'
+  // Exported field_base: 'field_units_plural'.
   $field_bases['field_units_plural'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4589,7 +4613,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_units_single'
+  // Exported field_base: 'field_units_single'.
   $field_bases['field_units_single'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4610,7 +4634,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_video'
+  // Exported field_base: 'field_video'.
   $field_bases['field_video'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -4633,7 +4657,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'file',
   );
 
-  // Exported field_base: 'field_video_list'
+  // Exported field_base: 'field_video_list'.
   $field_bases['field_video_list'] = array(
     'active' => 1,
     'cardinality' => -1,
@@ -4683,7 +4707,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'node_reference',
   );
 
-  // Exported field_base: 'file'
+  // Exported field_base: 'file'.
   $field_bases['file'] = array(
     'active' => 1,
     'cardinality' => 1,
