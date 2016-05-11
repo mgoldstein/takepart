@@ -49,3 +49,4 @@ drupal/*.sublime-project
 drupal/*.sublime-workspace
 drupal/*.sublime-projectcompletions
 /drupal/sites/all/modules/contrib/examples/
+/drupal/sites/default/local.settings.php
