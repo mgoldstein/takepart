@@ -215,7 +215,11 @@ function _tp_fbia_item_content_build($node, $ad) {
       $tap_id = variable_get('tab_ir_id' , '');
       module_load_include('module' , 'views_takepart_rss');
       $tap_link = _build_actions_for_yahoo_rss_feed($tap_id , '');
-      $tap_link = str_replace('?cmpid=tp-rss', '?cmpid=tp-rss-fbinstant' , $tap_link) . "\r\n";;
+      $tap_link = str_replace('?cmpid=tp-rss', '?cmpid=tp-rss-fbinstant' , $tap_link) . "\r\n";
+      //Remove the dir attribute from <p> tags on body
+      $body = str_replace('<p dir="ltr">', '<p>', $body);
+      $body = str_replace('<p dir="rtl">', '<p>', $body);
+      $body = str_replace('<p dir="auto">', '<p>', $body);
       //Insert the TAP link before the last body paragraph
       $last_p_post = strrpos($body, '<p>');
       $body = substr_replace($body, $tap_link , $last_p_post , 0);
