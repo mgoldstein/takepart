@@ -17,14 +17,6 @@ $conf += array(
 // Development & Staging Facebook App ID
 $conf += array('facebook_app_id' => '247137505296280');
 
-// Turn off page compression and CSS and JS preprocessing
-
-/* THE BELOW SHOULD NOT BE APART OF SETTINGS.PHP */
-// $conf += array(
-//   'page_compression' => FALSE,
-//   'preprocess_css' => FALSE,
-//   'preprocess_js' => FALSE,
-// );
 // Log signups for debugging
 $conf += array('pm_signup_log' => TRUE);
 
@@ -50,4 +42,11 @@ $conf['search_api_solr_overrides'] = array(
     ),
   ),
 );
+
+// Elasticache
+$conf['memcache_servers'] = array(
+  'dev-memcached.bxiq81.cfg.use1.cache.amazonaws.com:11211' => 'default'
+);
+$conf['memcache_key_prefix'] = 'dev';
+
 //$conf['search_api_page_block_delta'] = 3;

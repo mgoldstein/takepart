@@ -43,4 +43,11 @@ $conf['search_api_solr_overrides'] = array(
     ),
   ),
 );
+
+// Elasticache
+$conf['memcache_servers'] = array(
+  'prod-memcached.bxiq81.cfg.use1.cache.amazonaws.com:11211' => 'default'
+);
+$conf['memcache_key_prefix'] = 'prod';
+
 // $conf['search_api_page_block_delta'] = 3;
