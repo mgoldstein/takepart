@@ -765,6 +765,12 @@
 	      $('.mobile-menu > ul > li').click(function(){
 	        if (!$(this).hasClass('show')) {
 	          $(this).addClass("show" );
+						//Once upon time there was a transparent nav menu on campaigns that
+						//did not want to show up on safari(ios and OSX) The DOM did not want
+						//to repaint when the body was position:fixed. But the body needed to be fixed
+						//in order for the hamburger menu to be scrollable. So along came the below
+						///fix that will help the nav menu show up when the parent element is clicked.
+						$(this).find('.menu').hide().show(0);
 	        }
 	      });
 			});
