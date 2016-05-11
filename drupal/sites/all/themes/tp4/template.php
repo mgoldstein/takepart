@@ -568,7 +568,7 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
       if($campaign_css_s3_path = variable_get('campaign_css_s3_path', '')) {
         drupal_add_css($campaign_css_s3_path.$campaign_css_s3_file, array('group' => CSS_THEME, 'weight' => 999, 'type' => 'external'));
       } else {
-        drupal_set_message("S3 css path does not exist.", 'error');
+        watchdog("Campaigns", "S3 css path does not exist. NODE: %node", array('%node' => $campaign_node->nid), WATCHDOG_ERROR);
       }
     }
 
