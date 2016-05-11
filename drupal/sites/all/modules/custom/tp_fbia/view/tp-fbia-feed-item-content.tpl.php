@@ -10,18 +10,16 @@
   <body>
     <article>
       <header>
+        <?php /* Kicker */ ?>
+        <?php if ($type == 'feature'): ?>
+
+          <h3 class="op-kicker">
+            TakePart #longform
+          </h3>
+        <?php endif; ?>
 
         <h1><?php print $title; ?></h1>
         <h2><?php print $subhead; ?></h2>
-
-        <?php /* Main Image */ ?>
-
-        <figure>
-          <img src="<?php print $image_url; ?>" />
-          <?php if (!empty($image_caption)): ?>
-            <figcaption><?php print $image_caption; ?></figcaption>
-          <?php endif; ?>
-        </figure>
 
         <?php /* Timestamps */ ?>
         <time class="op-published" dateTime="<?php print date('c', $pubDate); ?>"><?php print date('M d, Y', $pubDate); ?></time>
@@ -38,6 +36,15 @@
         <?php print $ads; ?>
 
       </header>
+
+        <?php /* Main Image */ ?>
+
+        <figure>
+          <img src="<?php print $image_url; ?>" />
+          <?php if (!empty($image_caption)): ?>
+            <figcaption><?php print $image_caption; ?></figcaption>
+          <?php endif; ?>
+        </figure>
 
       <?php print $body; ?>
 
