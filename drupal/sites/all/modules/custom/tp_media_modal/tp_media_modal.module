@@ -82,7 +82,7 @@ function tp_media_modal_field_formatter_view($entity_type, $entity, $field, $ins
         if(!empty($item['video'])) {
           $video_node = node_load($item['video']);
           if($video_file = field_get_items('node', $video_node, 'field_video')) {
-            $video_file = file_create_url($video_file[0]['uri']);
+            $video_file = tp_videos_token_attached_video_file_url($video_node);
           }
 
         }
@@ -100,7 +100,7 @@ function tp_media_modal_field_formatter_view($entity_type, $entity, $field, $ins
             'video_file' => isset($video_file) ? $video_file : '',
             'video_title' => $video_node->title,
             'button_content'=> $button_text,
-            'id' => isset($entity->nid) ? $entity->nid : ''
+            'nid' => isset($entity->nid) ? $entity->nid : ''
           )),
         );
       }
@@ -239,7 +239,7 @@ function tp_media_modal_theme() {
         'button_content' => '',
         'video_title' => '',
         'video_file' => '',
-        'id' => ''
+        'nid' => ''
       )
     ),
 
