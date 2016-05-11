@@ -159,6 +159,7 @@ function _tp_fbia_item_content_build($node, $ad) {
       $type = 'uh-oh';
   }
 
+
   //Subhead
   if($subhead = field_get_items('node', $node, 'field_article_subhead')) {
     $subhead = $subhead[0]['value'];
@@ -382,7 +383,7 @@ function _tp_fbia_inline_image($ir_field) {
     $feed  = '<figure>' . $NL;
     $feed .= '  <img src="' . $ir_image_src . '"/>' . $NL;
     if ($ir_image_caption = $ir_image->field_media_caption) {
-      $ir_image_caption = $ir_image_caption['und'][0]['safe_value'];
+      $ir_image_caption = strip_tags($ir_image_caption['und'][0]['value']);
       $feed .= '  <figcaption>' . $ir_image_caption . '</figcaption>' . $NL;
     }
     $feed .= '</figure>';
