@@ -49,4 +49,6 @@ $conf['memcache_servers'] = array(
 );
 $conf['memcache_key_prefix'] = 'stage';
 
+$conf['campaign_css_s3_path'] = 'https://s3.amazonaws.com/takepart-campaigns/dev/styles/';
+
 // $conf['search_api_page_block_delta'] = 3;

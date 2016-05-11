@@ -549,13 +549,17 @@
 
                 if($('body').hasClass('campaign-display')){
                     /* Append Modal Background to Page */
-                    var modalBG = document.createElement('div');
-                    modalBG.className = 'modal-bg';
-                    $('body').append(modalBG);
+										if($('.modal-bg').length === 0) {
+	                    var modalBG = document.createElement('div');
+	                    modalBG.className = 'modal-bg';
+	                    $('body').append(modalBG);
+										}
 
-                    var closeButton = document.createElement('a');
-                    closeButton.className = 'close-btn';
-                    closeButton.innerHTML = '<div class="icon i-close"></div>';
+										if($('.close-btn').length === 0) {
+	                    var closeButton = document.createElement('a');
+	                    closeButton.className = 'close-btn';
+	                    closeButton.innerHTML = '<div class="icon i-close"></div>';
+										}
 
                     /* Append overlay content to body */
                     $('.modal-content').each(function(){
@@ -567,16 +571,22 @@
                     $('.modal-content.jwp').each(function(){
                       var playerId = $(this).data('jwp-id');
 
-                      var file = $(this).data('jwp-file');
-                      var title = $(this).data('jwp-title');
-                      window.playerInstance = [];
-                      playerInstance[playerId] = jwplayer('jwp-' + playerId).setup({
-                          file: file,
-                          width: '100%',
-                          aspectratio: '16:9',
-                          primary: 'html5',
-                          title: title
-                        });
+											if(!$(this).hasClass('jwp-'+playerId+'-processed')) {
+												$(this).addClass('jwp-'+playerId+'-processed');
+	                      var file = $(this).data('jwp-file');
+	                      var title = $(this).data('jwp-title');
+												if ( typeof window.playerInstance === 'undefined') {
+													console.log('player array');
+													window.playerInstance = [];
+												}
+	                      window.playerInstance[playerId] = jwplayer('jwp-' + playerId).setup({
+	                        file: file,
+	                        width: '100%',
+	                        aspectratio: '16:9',
+	                        primary: 'html5',
+	                        title: title
+	                      });
+											}
                     });
 
                     $('.show-modal').click(function(event){

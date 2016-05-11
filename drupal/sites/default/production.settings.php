@@ -50,4 +50,6 @@ $conf['memcache_servers'] = array(
 );
 $conf['memcache_key_prefix'] = 'prod';
 
+$conf['campaign_css_s3_path'] = 'https://s3.amazonaws.com/takepart-campaigns/prod/styles/';
+
 // $conf['search_api_page_block_delta'] = 3;

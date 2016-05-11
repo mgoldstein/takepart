@@ -85,6 +85,8 @@ function tpf_content_campaigns_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'campaign_full_html' => 'campaign_full_html',
+          'full_html' => 'full_html',
+          'limited_html' => 'limited_html',
           'no_wysiwg_full_html' => 'no_wysiwg_full_html',
           'php_code' => 'php_code',
           'plain_text' => 'plain_text',
@@ -154,8 +156,8 @@ function tpf_content_campaigns_field_default_field_instances() {
       'better_formats' => array(
         'allowed_formats' => array(
           'campaign_full_html' => 'campaign_full_html',
-          'full_html' => 'full_html',
-          'limited_html' => 'limited_html',
+          'full_html' => 0,
+          'limited_html' => 0,
           'no_wysiwg_full_html' => 'no_wysiwg_full_html',
           'php_code' => 0,
           'plain_text' => 0,
@@ -369,7 +371,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 19,
+        'weight' => 16,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -496,7 +498,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'link' => FALSE,
         ),
         'type' => 'entityreference_label',
-        'weight' => 39,
+        'weight' => 31,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -587,13 +589,19 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'media_image_formatter',
+        'module' => 'colorbox',
         'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
+          'colorbox_caption' => 'auto',
+          'colorbox_caption_custom' => '',
+          'colorbox_gallery' => 'post',
+          'colorbox_gallery_custom' => '',
+          'colorbox_image_style' => '',
+          'colorbox_multivalue_index' => NULL,
+          'colorbox_node_style' => '',
+          'colorbox_node_style_first' => '',
         ),
-        'type' => 'image',
-        'weight' => 2,
+        'type' => 'colorbox',
+        'weight' => 1,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -708,7 +716,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 27,
+        'weight' => 23,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -832,7 +840,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'color_field',
         'settings' => array(),
         'type' => 'color_field_default_formatter',
-        'weight' => 3,
+        'weight' => 2,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -923,7 +931,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 6,
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1014,7 +1022,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 7,
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1105,7 +1113,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 41,
+        'weight' => 33,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1186,7 +1194,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'link',
         'settings' => array(),
         'type' => 'link_default',
-        'weight' => 24,
+        'weight' => 20,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1288,13 +1296,19 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'media_image_formatter',
+        'module' => 'colorbox',
         'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
+          'colorbox_caption' => 'auto',
+          'colorbox_caption_custom' => '',
+          'colorbox_gallery' => 'post',
+          'colorbox_gallery_custom' => '',
+          'colorbox_image_style' => '',
+          'colorbox_multivalue_index' => NULL,
+          'colorbox_node_style' => '',
+          'colorbox_node_style_first' => '',
         ),
-        'type' => 'image',
-        'weight' => 4,
+        'type' => 'colorbox',
+        'weight' => 3,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1413,7 +1427,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 10,
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1501,7 +1515,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 1,
+        'weight' => 0,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1591,7 +1605,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'color_field',
         'settings' => array(),
         'type' => 'color_field_default_formatter',
-        'weight' => 15,
+        'weight' => 13,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1674,13 +1688,19 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'media_image_formatter',
+        'module' => 'colorbox',
         'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
+          'colorbox_caption' => 'auto',
+          'colorbox_caption_custom' => '',
+          'colorbox_gallery' => 'post',
+          'colorbox_gallery_custom' => '',
+          'colorbox_image_style' => '',
+          'colorbox_multivalue_index' => NULL,
+          'colorbox_node_style' => '',
+          'colorbox_node_style_first' => '',
         ),
-        'type' => 'image',
-        'weight' => 12,
+        'type' => 'colorbox',
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1799,7 +1819,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 13,
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1890,7 +1910,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'color_field',
         'settings' => array(),
         'type' => 'color_field_default_formatter',
-        'weight' => 9,
+        'weight' => 8,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1981,7 +2001,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 14,
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2073,7 +2093,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 5,
+        'weight' => 4,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2169,7 +2189,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'thousand_separator' => ' ',
         ),
         'type' => 'number_integer',
-        'weight' => 35,
+        'weight' => 27,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2264,7 +2284,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 36,
+        'weight' => 28,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2336,7 +2356,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 16,
+      'weight' => 35,
     ),
   );
 
@@ -2356,7 +2376,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 37,
+        'weight' => 29,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2428,7 +2448,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_select',
-      'weight' => 17,
+      'weight' => 36,
     ),
   );
 
@@ -2444,7 +2464,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 42,
+        'weight' => 34,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2524,7 +2544,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 28,
+        'weight' => 24,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2618,7 +2638,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 13,
+      'weight' => 32,
     ),
   );
 
@@ -2633,7 +2653,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 30,
+        'weight' => 26,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2727,7 +2747,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'file_generic',
-      'weight' => 15,
+      'weight' => 34,
     ),
   );
 
@@ -2739,13 +2759,19 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'media_image_formatter',
+        'module' => 'colorbox',
         'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
+          'colorbox_caption' => 'auto',
+          'colorbox_caption_custom' => '',
+          'colorbox_gallery' => 'post',
+          'colorbox_gallery_custom' => '',
+          'colorbox_image_style' => '',
+          'colorbox_multivalue_index' => NULL,
+          'colorbox_node_style' => '',
+          'colorbox_node_style_first' => '',
         ),
-        'type' => 'image',
-        'weight' => 29,
+        'type' => 'colorbox',
+        'weight' => 25,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2844,7 +2870,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 14,
+      'weight' => 33,
     ),
   );
 
@@ -2864,7 +2890,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'color_field',
         'settings' => array(),
         'type' => 'color_field_default_formatter',
-        'weight' => 8,
+        'weight' => 7,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2951,7 +2977,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 38,
+        'weight' => 30,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3075,7 +3101,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 17,
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3135,7 +3161,7 @@ function tpf_content_campaigns_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_promo_headline',
     'label' => 'Promo Headline',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -3199,7 +3225,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 18,
+        'weight' => 15,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3323,7 +3349,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 20,
+        'weight' => 17,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3437,6 +3463,123 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-campaign-field_s3_css_filename'.
+  $field_instances['node-campaign-field_s3_css_filename'] = array(
+    'bundle' => 'campaign',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 35,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_s3_css_filename',
+    'label' => 'S3 CSS filename',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'campaign_full_html' => 'campaign_full_html',
+          'full_html' => 'full_html',
+          'limited_html' => 'limited_html',
+          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'campaign_full_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'limited_html' => array(
+              'weight' => 0,
+            ),
+            'no_wysiwg_full_html' => array(
+              'weight' => 0,
+            ),
+            'php_code' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 31,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign-field_series'.
   $field_instances['node-campaign-field_series'] = array(
     'bundle' => 'campaign',
@@ -3449,7 +3592,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 26,
+        'weight' => 22,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -3537,7 +3680,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'node_reference',
         'settings' => array(),
         'type' => 'node_reference_default',
-        'weight' => 23,
+        'weight' => 19,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -3629,7 +3772,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'file_view_mode' => 'default',
         ),
         'type' => 'media',
-        'weight' => 22,
+        'weight' => 18,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -3750,7 +3893,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 25,
+        'weight' => 21,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -8155,7 +8298,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'limited_html' => 0,
           'no_wysiwg_full_html' => 'no_wysiwg_full_html',
           'php_code' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -8193,8 +8336,6 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js' => '',
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_label_summary' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_summary' => '',
         'maxlength_js_truncate_html' => 0,
         'rows' => 20,
         'summary_rows' => 5,
@@ -9532,7 +9673,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'campaign_full_html' => 'campaign_full_html',
           'full_html' => 0,
           'limited_html' => 0,
-          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'no_wysiwg_full_html' => 0,
           'php_code' => 0,
           'plain_text' => 'plain_text',
         ),
@@ -9967,7 +10108,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'campaign_full_html' => 'campaign_full_html',
           'full_html' => 0,
           'limited_html' => 0,
-          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'no_wysiwg_full_html' => 0,
           'php_code' => 0,
           'plain_text' => 'plain_text',
         ),
@@ -10007,8 +10148,6 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js' => '',
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_label_summary' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_summary' => '',
         'maxlength_js_truncate_html' => 0,
         'rows' => 20,
         'summary_rows' => 5,
@@ -11321,7 +11460,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'campaign_full_html' => 'campaign_full_html',
           'full_html' => 0,
           'limited_html' => 0,
-          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'no_wysiwg_full_html' => 0,
           'php_code' => 0,
           'plain_text' => 'plain_text',
         ),
@@ -11450,7 +11589,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'limited_html' => 0,
           'no_wysiwg_full_html' => 'no_wysiwg_full_html',
           'php_code' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -13671,7 +13810,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'limited_html' => 0,
           'no_wysiwg_full_html' => 'no_wysiwg_full_html',
           'php_code' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -15176,7 +15315,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'campaign_full_html' => 'campaign_full_html',
           'full_html' => 0,
           'limited_html' => 0,
-          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'no_wysiwg_full_html' => 0,
           'php_code' => 0,
           'plain_text' => 'plain_text',
         ),
@@ -15394,7 +15533,7 @@ function tpf_content_campaigns_field_default_field_instances() {
           'campaign_full_html' => 'campaign_full_html',
           'full_html' => 0,
           'limited_html' => 0,
-          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'no_wysiwg_full_html' => 0,
           'php_code' => 0,
           'plain_text' => 'plain_text',
         ),
@@ -17083,7 +17222,7 @@ Note: If you manually reference more items than selected here, the number refere
           'campaign_full_html' => 'campaign_full_html',
           'full_html' => 0,
           'limited_html' => 0,
-          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'no_wysiwg_full_html' => 0,
           'php_code' => 0,
           'plain_text' => 'plain_text',
         ),
@@ -17387,7 +17526,7 @@ Note: If you manually reference more items than selected here, the number refere
           'campaign_full_html' => 'campaign_full_html',
           'full_html' => 0,
           'limited_html' => 0,
-          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'no_wysiwg_full_html' => 0,
           'php_code' => 0,
           'plain_text' => 'plain_text',
         ),
@@ -17508,40 +17647,6 @@ Note: If you manually reference more items than selected here, the number refere
     'label' => 'Legal SMS',
     'required' => 0,
     'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'campaign_full_html' => 'campaign_full_html',
-          'full_html' => 0,
-          'limited_html' => 0,
-          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
-          'php_code' => 0,
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 1,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'campaign_full_html' => array(
-              'weight' => 0,
-            ),
-            'full_html' => array(
-              'weight' => 0,
-            ),
-            'limited_html' => array(
-              'weight' => 0,
-            ),
-            'no_wysiwg_full_html' => array(
-              'weight' => 0,
-            ),
-            'php_code' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => 10,
-            ),
-          ),
-        ),
-      ),
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -17944,7 +18049,7 @@ Note: If you manually reference more items than selected here, the number refere
           'limited_html' => 0,
           'no_wysiwg_full_html' => 'no_wysiwg_full_html',
           'php_code' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -17982,8 +18087,6 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js' => '',
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_label_summary' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_summary' => '',
         'maxlength_js_truncate_html' => 0,
         'rows' => 20,
         'summary_rows' => 5,
@@ -19091,7 +19194,7 @@ Note: If you manually reference more items than selected here, the number refere
           'limited_html' => 0,
           'no_wysiwg_full_html' => 'no_wysiwg_full_html',
           'php_code' => 0,
-          'plain_text' => 'plain_text',
+          'plain_text' => 0,
         ),
         'allowed_formats_toggle' => 1,
         'default_order_toggle' => 0,
@@ -21567,7 +21670,7 @@ Note: If you manually reference more items than selected here, the number refere
           'campaign_full_html' => 'campaign_full_html',
           'full_html' => 0,
           'limited_html' => 0,
-          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'no_wysiwg_full_html' => 0,
           'php_code' => 0,
           'plain_text' => 'plain_text',
         ),
@@ -21694,7 +21797,7 @@ Note: If you manually reference more items than selected here, the number refere
           'campaign_full_html' => 'campaign_full_html',
           'full_html' => 0,
           'limited_html' => 0,
-          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'no_wysiwg_full_html' => 0,
           'php_code' => 0,
           'plain_text' => 'plain_text',
         ),
@@ -22033,8 +22136,8 @@ Note: If you manually reference more items than selected here, the number refere
       'better_formats' => array(
         'allowed_formats' => array(
           'campaign_full_html' => 'campaign_full_html',
-          'full_html' => 0,
-          'limited_html' => 0,
+          'full_html' => 'full_html',
+          'limited_html' => 'limited_html',
           'no_wysiwg_full_html' => 'no_wysiwg_full_html',
           'php_code' => 0,
           'plain_text' => 'plain_text',
@@ -22075,8 +22178,6 @@ Note: If you manually reference more items than selected here, the number refere
         'maxlength_js' => '',
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_label_summary' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'maxlength_js_summary' => '',
         'maxlength_js_truncate_html' => 0,
         'rows' => 20,
         'summary_rows' => 5,
@@ -25290,7 +25391,7 @@ Note: If you manually reference more items than selected here, the number refere
     'entity_type' => 'node',
     'field_name' => 'field_promo_headline',
     'label' => 'Promo Headline',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -27409,6 +27510,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Reference an action.');
   t('Required to sort campaigns for feeds and analytics');
   t('Right Text');
+  t('S3 CSS filename');
   t('SEO Title');
   t('SMS');
   t('Series');

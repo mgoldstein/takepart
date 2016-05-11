@@ -224,8 +224,10 @@ function _tp_fbia_item_content_build($node, $ad) {
 
   $related = tp_fbia_item_related_url($node);
 
-  //Analytics Url
-  $analytics_url = $base_url. '/fbia/'. $node->nid. '/analytics';
+
+  //Adobe Analytics
+  module_load_include('inc' , 'tp_fbia' , 'includes/analytics');
+  $adobe_analytics = tp_fbia_page_analytics($node);
 
   return theme('tp_fbia_feed_item_content', array(
     'url'           => $url,
@@ -241,7 +243,8 @@ function _tp_fbia_item_content_build($node, $ad) {
     'related_title' => $related['title'],
     'related_url'   => $related['url'],
     'ads'           => $ad,
-    'analytics_url' => $analytics_url
+    'adobe_analytics' => $adobe_analytics,
+
   ));
 
 }
@@ -293,6 +296,11 @@ function _tp_fbia_inline_replacement_filter($inline_replacement) {
           variable_set('tab_ir_id' , $ir_id['target_id']);
           $tap_ctr ++;
         }
+        break;
+      case 'pull_quote':
+        $ir_order[$key]['fbia_feed'] = _tp_fbia_pull_quote($ir_fields);
+        $ir_order[$key]['type'] = $ir_type;
+        break;
     }
   }
   //Consolidate the related articles
@@ -477,6 +485,24 @@ function _tp_fbia_video($ir_nid) {
   return $feed;
 }
 
+/*
+ * Create the feed element for pull quotes
+ */
+function _tp_fbia_pull_quote($ir_field) {
+  $NL = "\r\n";
+  if ($ir_quote = $ir_field->field_ic_quotation['und'][0]['safe_value']) {
+    $feed = '<aside>' . $NL;
+    $feed .= $ir_quote . $NL;
+    if ($ir_citation = $ir_field->field_ic_citation['und'][0]['safe_value']) {
+      $feed .= '  <cite>' . $ir_citation . '</cite>' . $NL;
+    }
+    $feed .= '</aside>';
+    return $feed;
+  }
+  else {
+    return false;
+  }
+}
 /*
  * Replace all instances of <hr> with the inline replcament feed elements
  * @param $search - the string that contains <hr>
