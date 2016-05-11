@@ -10,6 +10,13 @@
   <body>
     <article>
       <header>
+        <?php /* Kicker */ ?>
+        <?php if ($type == 'feature'): ?>
+
+          <h3 class="op-kicker">
+            TakePart #longform
+          </h3>
+        <?php endif; ?>
 
         <h1><?php print $title; ?></h1>
         <h2><?php print $subhead; ?></h2>
