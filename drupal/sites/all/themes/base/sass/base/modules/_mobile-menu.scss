@@ -5,6 +5,7 @@ body {
   overflow-x: hidden
 }
 body.mobile-menu-show{
+  overflow: hidden;
   position: fixed;
 }
 #page-wrapper,
@@ -53,6 +54,9 @@ nav#mobile-menu{
       font-size: 16px;
       text-transform: none;
       border-bottom: none;
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 }
