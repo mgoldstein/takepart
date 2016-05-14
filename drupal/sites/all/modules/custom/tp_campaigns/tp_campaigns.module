@@ -291,6 +291,14 @@ function tp_campaigns_form_campaign_node_form_alter(&$form, &$form_state){
       $form['field_campaign_menu']['#attributes']['class'][] = 'disabled';
     }
   }
+
+  //For campaigns we provide a list of menus to reference for the content link
+  $menus = menu_get_menus();
+  $form['field_content_menu'][LANGUAGE_NONE]['#options'] = array_merge($form['field_content_menu'][LANGUAGE_NONE]['#options'], $menus);
+  //Need to set the default as it does not auto set because we are creating a custom list
+  if($content_menu_default = field_get_items('node', $form['#node'], 'field_content_menu')) {
+    $form['field_content_menu'][LANGUAGE_NONE]['#default_value'] = array($content_menu_default[0]['value']);
+  }
 }
 
 /*
