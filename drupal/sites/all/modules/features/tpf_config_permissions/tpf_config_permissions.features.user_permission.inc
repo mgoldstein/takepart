@@ -185,17 +185,6 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'create field_promo_text'.
-  $permissions['create field_promo_text'] = array(
-    'name' => 'create field_promo_text',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-      'layout editor' => 'layout editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'create field_run_date'.
   $permissions['create field_run_date'] = array(
     'name' => 'create field_run_date',
@@ -265,17 +254,6 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'edit field_promo_text'.
-  $permissions['edit field_promo_text'] = array(
-    'name' => 'edit field_promo_text',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-      'layout editor' => 'layout editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'edit field_run_date'.
   $permissions['edit field_run_date'] = array(
     'name' => 'edit field_run_date',
@@ -333,17 +311,6 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'edit own field_promo_short_headline',
     'roles' => array(
       'administrator' => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'edit own field_promo_text'.
-  $permissions['edit own field_promo_text'] = array(
-    'name' => 'edit own field_promo_text',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-      'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
   );
@@ -530,17 +497,6 @@ function tpf_config_permissions_user_default_permissions() {
     'module' => 'field_permissions',
   );
 
-  // Exported permission: 'view field_promo_text'.
-  $permissions['view field_promo_text'] = array(
-    'name' => 'view field_promo_text',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-      'layout editor' => 'layout editor',
-    ),
-    'module' => 'field_permissions',
-  );
-
   // Exported permission: 'view field_run_date'.
   $permissions['view field_run_date'] = array(
     'name' => 'view field_run_date',
@@ -597,17 +553,6 @@ function tpf_config_permissions_user_default_permissions() {
     'name' => 'view own field_promo_short_headline',
     'roles' => array(
       'administrator' => 'administrator',
-    ),
-    'module' => 'field_permissions',
-  );
-
-  // Exported permission: 'view own field_promo_text'.
-  $permissions['view own field_promo_text'] = array(
-    'name' => 'view own field_promo_text',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'editor' => 'editor',
-      'layout editor' => 'layout editor',
     ),
     'module' => 'field_permissions',
   );
