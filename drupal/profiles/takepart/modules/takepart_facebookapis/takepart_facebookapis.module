@@ -30,7 +30,9 @@ function takepart_facebookapis_init_code($app_id) {
       var fbAddComment = new CustomEvent( 'fbAddComment', { detail: response } );
       if ( typeof DTM != "undefined" )
         DTM.fbAddCommentResponse = response;
-      document.body.dispatchEvent( fbAddComment );
+
+      if ( typeof response != "undefined" && response.message )
+        document.body.dispatchEvent( fbAddComment );
     }
 
     window.fbAsyncInit = function() {
