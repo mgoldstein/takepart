@@ -1089,6 +1089,7 @@ function tpf_content_campaigns_field_group_info() {
       2 => 'field_images_for_css',
       3 => 'field_campaign_style_setting',
       4 => 'field_campaign_style',
+      5 => 'field_s3_css_filename',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1429,6 +1430,7 @@ function tpf_content_campaigns_field_group_info() {
       1 => 'field_topic',
       2 => 'field_sponsored',
       3 => 'field_campaign_type',
+      4 => 'field_content_menu',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

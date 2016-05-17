@@ -119,6 +119,10 @@ function tp_digital_data_build_ddl_content($node){
    $data['page']['pageInfo']['influenceBanner'] =  "No Influence Banner";
   }
 
+  if($campaignContent = field_get_items('node', $node, 'field_editor_campaign_reference')) {
+    $data['page']['pageInfo']['campaignContent'] = "1";
+  }
+
   $data['page']['pageInfo']['pageId'] = $pageID;
   $data['page']['pageInfo']['pageTitle'] = $node->title;
   $data['page']['pageInfo']['pageUrl'] = $full_path;

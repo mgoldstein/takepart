@@ -77,9 +77,9 @@ function tpf_content_video_field_group_info() {
     'label' => 'Editorial Info',
     'weight' => '39',
     'children' => array(
-      0 => 'field_due_date',
-      1 => 'field_run_date',
-      2 => 'field_assigned_editor',
+      0 => 'field_assigned_editor',
+      1 => 'field_due_date',
+      2 => 'field_run_date',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -107,9 +107,9 @@ function tpf_content_video_field_group_info() {
     'label' => 'Editorial Info',
     'weight' => '59',
     'children' => array(
-      0 => 'field_due_date',
-      1 => 'field_run_date',
-      2 => 'field_assigned_editor',
+      0 => 'field_assigned_editor',
+      1 => 'field_due_date',
+      2 => 'field_run_date',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -263,6 +263,7 @@ function tpf_content_video_field_group_info() {
       3 => 'field_topic',
       4 => 'field_sponsored',
       5 => 'field_topic_box',
+      6 => 'field_editor_campaign_reference',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -295,6 +296,7 @@ function tpf_content_video_field_group_info() {
       3 => 'field_topic',
       4 => 'field_sponsored',
       5 => 'field_topic_box',
+      6 => 'field_editor_campaign_reference',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
