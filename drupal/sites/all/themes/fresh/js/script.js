@@ -272,32 +272,6 @@
     }
   };
 
-  /**
-   * Set a Cookie/Message for the updated Terms of Use
-   */
-  Drupal.behaviors.TouCookie = {
-    attach: function() {
-      if (document.cookie.search('tou') == -1) {
-        //Set the cookie - 5 years
-        exdays = 1825;
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-        var expires = d.toGMTString();
-        document.cookie="tou=1; expires=" + expires + "; path=/";
-        var markup = '\
-        <div class="tou-alert">\
-          <p>We have updated our <a href="http://www.takepart.com/terms-of-service">Terms Of Service</a>\
-           and <a href = "http://www.takepart.com/privacy-policy">Privacy Policy</a>.</p>\
-          <span class="tou-close">close</span>\
-        </div>';
-        $('#page-wrapper').prepend(markup);
-        $('.tou-close').click(function() {
-          $('.tou-alert').slideUp('slow');
-        });
-      }
-    }
-  };
-
   /*
    * Create ambient video on feature article
    */
@@ -331,6 +305,7 @@
         $vid_wrapper = $('.feature-image.has-videoBG');
         window.initialVid = false;
       }
+      
       var src = $vid_wrapper.data('video-bg');
       if(!Environment.isMobile()){
         var videoWrapper = document.createElement("div");
@@ -348,6 +323,29 @@
         $vid_wrapper.prepend(videoWrapper);
         $vid_wrapper.addClass('video-created');
       }
+      $('.feature-ambient-image.has-videoBG').each(function(){
+        if(!$(this).hasClass('processed')) {
+          $vid_wrapper = $(this);
+          var src = $vid_wrapper.data('video-bg');
+          if(!Environment.isMobile()){
+            var videoWrapper = document.createElement("div");
+            var video = document.createElement("video");
+            var videoSource = document.createElement("source");
+            videoWrapper.className = 'videoBG-wrapper';
+            videoSource.type = "video/mp4";
+            videoSource.src = src;
+            video.className = 'background-video';
+            video.setAttribute('autoplay', '');
+            video.setAttribute('muted', '');
+            video.setAttribute('loop', '');
+            video.appendChild(videoSource);
+            videoWrapper.appendChild(video);
+            $vid_wrapper.prepend(videoWrapper);
+            $vid_wrapper.addClass('video-created');
+          }
+          $(this).addClass('processed');
+        }
+      });
     }
   };
 

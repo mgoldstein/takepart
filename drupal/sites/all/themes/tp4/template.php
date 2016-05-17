@@ -563,6 +563,15 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
         drupal_add_css($uri, array('group' => CSS_THEME, 'weight' => 999));
     }
 
+    if($campaign_css_s3 = field_get_items('node', $campaign_node, 'field_s3_css_filename')) {
+      $campaign_css_s3_file = $campaign_css_s3[0]['safe_value'];
+      if($campaign_css_s3_path = variable_get('campaign_css_s3_path', '')) {
+        drupal_add_css($campaign_css_s3_path.$campaign_css_s3_file, array('group' => CSS_THEME, 'weight' => 999, 'type' => 'external'));
+      } else {
+        watchdog("Campaigns", "S3 css path does not exist. NODE: %node", array('%node' => $campaign_node->nid), WATCHDOG_ERROR);
+      }
+    }
+
   }
 
   //Check if there should be a mute button

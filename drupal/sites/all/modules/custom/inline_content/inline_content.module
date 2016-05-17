@@ -456,6 +456,12 @@ function inline_content_replacement_types() {
     'controller' => 'InlineContentYoutubeEmbed',
   );
 
+  $types['ambient_video'] = array(
+    'label' => t('Video: Ambient'),
+    'description' => t('Add full screen ambient video.'),
+    'controller' => 'InlineContentAmbientVideo',
+  );
+
   return $types;
 }
 
@@ -826,4 +832,24 @@ function inline_content_source_fields_info($entity_type = 'node') {
   }
 
   return $source_fields_info[$entity_type];
+}
+
+/**
+ * Implement drupal_alter on inline_entity_form_settings
+ * This limits ambient video to featured articles
+ */
+function inline_content_inline_entity_form_settings_alter(&$settings, &$field, &$instance) {
+  //If we are displaying all make sure not to show ambient_video except on feature_article
+  if (empty($settings['bundles'])) {
+    $info = entity_get_info($settings['entity_type']);
+    foreach ($info['bundles'] as $bundle_name => $bundle_info) {
+      if($bundle_name == 'ambient_video') {
+        if($instance['bundle'] == 'feature_article') {
+          $settings['bundles'][] = $bundle_name;
+        }
+      } else {
+        $settings['bundles'][] = $bundle_name;
+      }
+    }
+  }
 }

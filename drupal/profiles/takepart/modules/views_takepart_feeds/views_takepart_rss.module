@@ -345,19 +345,14 @@ function _build_actions_for_yahoo_rss_feed($content, $from = '') {
               }
               $ret .= _action_url_builder($url, $term->name, $title);
             }
+          } else {
+            $ret = _action_url_get($from);
           }
         }
       }
     }
   } else {
-    $api = "http://takeaction.takepart.com";
-    //Need to make api call for action
-    $action_res = drupal_http_request($api."/api/v2/actions/recommended?url=".$from);
-    if(isset($action_res)) {
-      $act = json_decode($action_res->data);
-      $act = $act->actions[0];
-      $ret .= _action_url_builder($api.$act->url, $act->type, $act->title);
-    }
+    $ret = _action_url_get($from);
   }
   if ($ret) {
     return $ret;
@@ -366,6 +361,23 @@ function _build_actions_for_yahoo_rss_feed($content, $from = '') {
   }
   return '';
 }
+
+/**
+ * function to call the endpoint and return a tap action
+ */
+function _action_url_get($from) {
+  $api = "http://takeaction.takepart.com";
+  //Need to make api call for action
+  $action_res = drupal_http_request($api."/api/v2/actions/recommended?url=".$from);
+  $ret = '';
+  if(isset($action_res)) {
+    $act = json_decode($action_res->data);
+    $act = $act->actions[0];
+    $ret .= _action_url_builder($api.$act->url, $act->type, $act->title);
+  }
+  return $ret;
+}
+
 
 /**
  * function to build the return for actions

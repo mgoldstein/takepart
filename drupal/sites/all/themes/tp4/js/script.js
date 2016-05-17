@@ -549,13 +549,17 @@
 
                 if($('body').hasClass('campaign-display')){
                     /* Append Modal Background to Page */
-                    var modalBG = document.createElement('div');
-                    modalBG.className = 'modal-bg';
-                    $('body').append(modalBG);
+										if($('.modal-bg').length === 0) {
+	                    var modalBG = document.createElement('div');
+	                    modalBG.className = 'modal-bg';
+	                    $('body').append(modalBG);
+										}
 
-                    var closeButton = document.createElement('a');
-                    closeButton.className = 'close-btn';
-                    closeButton.innerHTML = '<div class="icon i-close"></div>';
+										if($('.close-btn').length === 0) {
+	                    var closeButton = document.createElement('a');
+	                    closeButton.className = 'close-btn';
+	                    closeButton.innerHTML = '<div class="icon i-close"></div>';
+										}
 
                     /* Append overlay content to body */
                     $('.modal-content').each(function(){
@@ -567,16 +571,22 @@
                     $('.modal-content.jwp').each(function(){
                       var playerId = $(this).data('jwp-id');
 
-                      var file = $(this).data('jwp-file');
-                      var title = $(this).data('jwp-title');
-                      window.playerInstance = [];
-                      playerInstance[playerId] = jwplayer('jwp-' + playerId).setup({
-                          file: file,
-                          width: '100%',
-                          aspectratio: '16:9',
-                          primary: 'html5',
-                          title: title
-                        });
+											if(!$(this).hasClass('jwp-'+playerId+'-processed')) {
+												$(this).addClass('jwp-'+playerId+'-processed');
+	                      var file = $(this).data('jwp-file');
+	                      var title = $(this).data('jwp-title');
+												if ( typeof window.playerInstance === 'undefined') {
+													console.log('player array');
+													window.playerInstance = [];
+												}
+	                      window.playerInstance[playerId] = jwplayer('jwp-' + playerId).setup({
+	                        file: file,
+	                        width: '100%',
+	                        aspectratio: '16:9',
+	                        primary: 'html5',
+	                        title: title
+	                      });
+											}
                     });
 
                     $('.show-modal').click(function(event){
@@ -632,38 +642,6 @@
             });
         }
     };
-
-  /**
-   * Set a Cookie/Message for the updated Terms of Use
-   */
-  Drupal.behaviors.TouCookie = {
-    attach: function() {
-      if (document.cookie.search('tou') == -1) {
-        //Set the cookie - 5 years
-        exdays = 1825;
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-        var expires = d.toGMTString();
-        document.cookie="tou=1; expires=" + expires + "; path=/";
-        var markup = '\
-        <div class="tou-alert">\
-          <p>We have updated our <a href="http://www.takepart.com/terms-of-service">Terms Of Service</a>\
-           and <a href = "http://www.takepart.com/privacy-policy">Privacy Policy</a>.</p>\
-          <span class="tou-close">close</span>\
-        </div>';
-        $('#page-wrap').prepend(markup);
-        $('.tou-close').click(function() {
-          $('.tou-alert').slideUp('slow',function(){
-						//for campaign pages run the body check so it will not leave the user
-						//trapped with no scrollbar
-						if (typeof campaignBodyCheck === "function") {
-							campaignBodyCheck();
-						}
-          });
-        });
-      }
-    }
-  };
 
 	Drupal.behaviors.mobileMenuToggle = {
     attach: function(context, settings) {
@@ -755,6 +733,12 @@
 	      $('.mobile-menu > ul > li').click(function(){
 	        if (!$(this).hasClass('show')) {
 	          $(this).addClass("show" );
+						//Once upon time there was a transparent nav menu on campaigns that
+						//did not want to show up on safari(ios and OSX) The DOM did not want
+						//to repaint when the body was position:fixed. But the body needed to be fixed
+						//in order for the hamburger menu to be scrollable. So along came the below
+						///fix that will help the nav menu show up when the parent element is clicked.
+						$(this).find('.menu').hide().show(0);
 	        }
 	      });
 			});

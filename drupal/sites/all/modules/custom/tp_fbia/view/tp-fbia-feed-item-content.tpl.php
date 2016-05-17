@@ -10,6 +10,13 @@
   <body>
     <article>
       <header>
+        <?php /* Kicker */ ?>
+        <?php if ($type == 'feature'): ?>
+
+          <h3 class="op-kicker">
+            TakePart #longform
+          </h3>
+        <?php endif; ?>
 
         <h1><?php print $title; ?></h1>
         <h2><?php print $subhead; ?></h2>
@@ -42,8 +49,10 @@
       <?php print $body; ?>
 
       <?php /* Adobe Analytics */ ?>
+
       <figure class="op-tracker">
-          <iframe src="<?php print $analytics_url; ?>">
+          <iframe>
+            <?php print $adobe_analytics; ?>
           </iframe>
       </figure>
 
