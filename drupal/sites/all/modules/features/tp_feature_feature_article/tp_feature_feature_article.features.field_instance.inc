@@ -10,7 +10,7 @@
 function tp_feature_feature_article_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-feature_article-body'
+  // Exported field_instance: 'node-feature_article-body'.
   $field_instances['node-feature_article-body'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -107,12 +107,12 @@ function tp_feature_feature_article_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 10,
+      'weight' => 8,
     ),
     'widget_type' => 'text_textarea_with_summary',
   );
 
-  // Exported field_instance: 'node-feature_article-field_admin_tag'
+  // Exported field_instance: 'node-feature_article-field_admin_tag'.
   $field_instances['node-feature_article-field_admin_tag'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -198,7 +198,8 @@ function tp_feature_feature_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_article_background_video'
+  // Exported field_instance:
+  // 'node-feature_article-field_article_background_video'.
   $field_instances['node-feature_article-field_article_background_video'] = array(
     'bundle' => 'feature_article',
     'deleted' => 0,
@@ -301,7 +302,8 @@ function tp_feature_feature_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_article_featured_link'
+  // Exported field_instance:
+  // 'node-feature_article-field_article_featured_link'.
   $field_instances['node-feature_article-field_article_featured_link'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -402,11 +404,11 @@ function tp_feature_feature_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_article_main_image'
+  // Exported field_instance: 'node-feature_article-field_article_main_image'.
   $field_instances['node-feature_article-field_article_main_image'] = array(
     'bundle' => 'feature_article',
     'deleted' => 0,
@@ -524,7 +526,7 @@ function tp_feature_feature_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_article_subhead'
+  // Exported field_instance: 'node-feature_article-field_article_subhead'.
   $field_instances['node-feature_article-field_article_subhead'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -616,11 +618,11 @@ function tp_feature_feature_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_assigned_editor'
+  // Exported field_instance: 'node-feature_article-field_assigned_editor'.
   $field_instances['node-feature_article-field_assigned_editor'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -703,7 +705,7 @@ function tp_feature_feature_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_author'
+  // Exported field_instance: 'node-feature_article-field_author'.
   $field_instances['node-feature_article-field_author'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -796,11 +798,11 @@ function tp_feature_feature_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_autoload'
+  // Exported field_instance: 'node-feature_article-field_autoload'.
   $field_instances['node-feature_article-field_autoload'] = array(
     'bundle' => 'feature_article',
     'default_value' => array(
@@ -884,7 +886,7 @@ function tp_feature_feature_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_dfp_creative_id'
+  // Exported field_instance: 'node-feature_article-field_dfp_creative_id'.
   $field_instances['node-feature_article-field_dfp_creative_id'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -999,11 +1001,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 16,
+      'weight' => 13,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_due_date'
+  // Exported field_instance: 'node-feature_article-field_due_date'.
   $field_instances['node-feature_article-field_due_date'] = array(
     'bundle' => 'feature_article',
     'deleted' => 0,
@@ -1100,7 +1102,7 @@ Change this only if you know what you are doing.',
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-feature_article-field_free_tag'
+  // Exported field_instance: 'node-feature_article-field_free_tag'.
   $field_instances['node-feature_article-field_free_tag'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -1195,7 +1197,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_inline_replacements'
+  // Exported field_instance: 'node-feature_article-field_inline_replacements'.
   $field_instances['node-feature_article-field_inline_replacements'] = array(
     'bundle' => 'feature_article',
     'deleted' => 0,
@@ -1283,7 +1285,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_main_img_to_thumb'
+  // Exported field_instance: 'node-feature_article-field_main_img_to_thumb'.
   $field_instances['node-feature_article-field_main_img_to_thumb'] = array(
     'bundle' => 'feature_article',
     'default_value' => array(
@@ -1368,7 +1370,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_newsletter_feed_exclude'
+  // Exported field_instance:
+  // 'node-feature_article-field_newsletter_feed_exclude'.
   $field_instances['node-feature_article-field_newsletter_feed_exclude'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -1448,11 +1451,11 @@ Change this only if you know what you are doing.',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 23,
+      'weight' => 21,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_permanent_title'
+  // Exported field_instance: 'node-feature_article-field_permanent_title'.
   $field_instances['node-feature_article-field_permanent_title'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -1571,11 +1574,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_promo_headline'
+  // Exported field_instance: 'node-feature_article-field_promo_headline'.
   $field_instances['node-feature_article-field_promo_headline'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -1668,7 +1671,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_promo_short_headline'
+  // Exported field_instance: 'node-feature_article-field_promo_short_headline'.
   $field_instances['node-feature_article-field_promo_short_headline'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -1755,7 +1758,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_promo_text'
+  // Exported field_instance: 'node-feature_article-field_promo_text'.
   $field_instances['node-feature_article-field_promo_text'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -1848,7 +1851,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_related_stories'
+  // Exported field_instance: 'node-feature_article-field_related_stories'.
   $field_instances['node-feature_article-field_related_stories'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -1935,11 +1938,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 12,
+      'weight' => 10,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_run_date'
+  // Exported field_instance: 'node-feature_article-field_run_date'.
   $field_instances['node-feature_article-field_run_date'] = array(
     'bundle' => 'feature_article',
     'deleted' => 0,
@@ -2036,7 +2039,7 @@ Change this only if you know what you are doing.',
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-feature_article-field_series'
+  // Exported field_instance: 'node-feature_article-field_series'.
   $field_instances['node-feature_article-field_series'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -2128,7 +2131,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_syndication'
+  // Exported field_instance: 'node-feature_article-field_syndication'.
   $field_instances['node-feature_article-field_syndication'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -2210,11 +2213,11 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 21,
+      'weight' => 18,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_tab_action_override'
+  // Exported field_instance: 'node-feature_article-field_tab_action_override'.
   $field_instances['node-feature_article-field_tab_action_override'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -2305,11 +2308,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 13,
+      'weight' => 11,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_thumbnail'
+  // Exported field_instance: 'node-feature_article-field_thumbnail'.
   $field_instances['node-feature_article-field_thumbnail'] = array(
     'bundle' => 'feature_article',
     'deleted' => 0,
@@ -2424,11 +2427,11 @@ Change this only if you know what you are doing.',
         'view' => 'media_views_widget_default--default',
       ),
       'type' => 'media_generic',
-      'weight' => 21,
+      'weight' => 9,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_title_color'
+  // Exported field_instance: 'node-feature_article-field_title_color'.
   $field_instances['node-feature_article-field_title_color'] = array(
     'bundle' => 'feature_article',
     'default_value' => array(
@@ -2514,11 +2517,11 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 9,
+      'weight' => 7,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_topic'
+  // Exported field_instance: 'node-feature_article-field_topic'.
   $field_instances['node-feature_article-field_topic'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -2612,7 +2615,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_topic_box'
+  // Exported field_instance: 'node-feature_article-field_topic_box'.
   $field_instances['node-feature_article-field_topic_box'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
