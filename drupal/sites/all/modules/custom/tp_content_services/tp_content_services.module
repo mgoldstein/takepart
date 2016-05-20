@@ -33,7 +33,7 @@ function tp_content_services_node_insert($node) {
  * hook_node_update
  */
 function tp_content_services_node_update($node) {
-  if((isset($node->workbench_moderation['updating_live_revision']) && $node->workbench_moderation['updating_live_revision'] == 1)
+  if((isset($node->workbench_moderation['updating_live_revision']) && $node->workbench_moderation['updating_live_revision'])
     && in_array($node->type, array('openpublish_article','feature_article','openpublish_photo_gallery','video'))) {
     if($node->workbench_moderation['current']->published == 1 ||
       (isset($node->workbench_moderation['current']->unpublishing) && $node->workbench_moderation['current']->unpublishing == 1)){
@@ -94,25 +94,37 @@ function tp_content_services_notify_service($node, $insup = '') {
     $newsletter = $field_exclude_newsletter[0]['value'];
   }
 
-  $json = '{
-     "url":"'.url('node/'.$node->nid, array('absolute' => TRUE)).'",
-     "title":"'.$node->title.'",
-     "description":"'.$description.'",
-     "publish_date":"'.$pub_date.'",
-     "published":"'.$node->status.'",
-     "tags":"'.$tags.'",
-     "newsletter_exclude":"'.$newsletter.'",
-     "image_url":{
-        "full":{
-           "url":"'.$image.'"
-        },
-        "thumb":{
-           "url":"'.$thumb.'"
-        }
-     },
-     "author":"'.$author.'",
-     "access_token": "'.variable_get('content_services_access_token','').'"
-  }';
+  $intro = '';
+  if($introduction = field_get_items('node', $node, 'body')) {
+    $dom = new DOMDocument;
+    $dom->loadHTML(mb_convert_encoding($introduction[0]['value'], 'HTML-ENTITIES', 'UTF-8'));
+    $ptags = $dom->getElementsByTagName('p');
+    for($i = 0; $i < 3; $i++) {
+      if(isset($ptags[$i])) {
+        $intro .= '<p>'.$ptags[$i]->nodeValue.'</p>';
+      } else {
+        break;
+      }
+    }
+  }
+
+  $json = array(
+      "url" => url('node/'.$node->nid, array('absolute' => TRUE)),
+      "title" => $node->title,
+      "publish_date" => $pub_date,
+      "published" => $node->status,
+      "tags" => $tags,
+      "newsletter_exclude" => $newsletter,
+      "introduction" => $intro,
+      "image_url" => array(
+          "full" => array("url" => $image),
+          "thumb" => array("url" => $thumb),
+      ),
+      "author" => $author,
+      "access_token" => variable_get('content_services_access_token','')
+  );
+
+  $json = json_encode($json);
 
   $endpoint = variable_get('takepart_api_domain', '').variable_get('content_services_endpoint','');
 
