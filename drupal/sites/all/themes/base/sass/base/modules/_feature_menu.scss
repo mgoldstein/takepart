@@ -6,6 +6,9 @@ body.campaign-transparent-nav {
   .left-drawer-control  {
     display: none;
   }
+  nav#mobile-menu span.about {
+    display: none;
+  }
 @include breakpoint($breakpoint-tablet){
   .feature-modal {
     position: fixed;
@@ -105,6 +108,10 @@ body.campaign-transparent-nav {
       display: inline-block;
       padding: 16px 25px 20px 55px;
       letter-spacing: 0.2px;
+      a {
+        color: #018B73;
+        text-decoration: none;
+      }
     }
   }
 
