@@ -21,11 +21,12 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Background',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_article_main_image',
-      1 => 'field_main_img_to_thumb',
-      2 => 'field_article_background_video',
+      1 => 'field_thumbnail',
+      2 => 'field_main_img_to_thumb',
+      3 => 'field_article_background_video',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -52,7 +53,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Autoload Settings',
-    'weight' => '24',
+    'weight' => '22',
     'children' => array(
       0 => 'field_autoload',
     ),
@@ -79,11 +80,11 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Editorial Info',
-    'weight' => '23',
+    'weight' => '20',
     'children' => array(
-      0 => 'field_due_date',
-      1 => 'field_run_date',
-      2 => 'field_assigned_editor',
+      0 => 'field_assigned_editor',
+      1 => 'field_due_date',
+      2 => 'field_run_date',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -109,7 +110,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline Replacements',
-    'weight' => '11',
+    'weight' => '9',
     'children' => array(
       0 => 'field_inline_replacements',
     ),
@@ -136,12 +137,11 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '14',
+    'weight' => '0',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
       2 => 'field_promo_text',
-      3 => 'field_thumbnail',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -166,7 +166,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '15',
+    'weight' => '12',
     'children' => array(
       0 => 'field_admin_tag',
       1 => 'field_free_tag',

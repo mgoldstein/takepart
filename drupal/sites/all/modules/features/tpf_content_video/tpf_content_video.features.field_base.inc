@@ -10,7 +10,7 @@
 function tpf_content_video_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_playlist_filter'
+  // Exported field_base: 'field_playlist_filter'.
   $field_bases['field_playlist_filter'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -48,7 +48,7 @@ function tpf_content_video_field_default_field_bases() {
     'type' => 'entityreference',
   );
 
-  // Exported field_base: 'field_playlist_filter_sorting'
+  // Exported field_base: 'field_playlist_filter_sorting'.
   $field_bases['field_playlist_filter_sorting'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -73,7 +73,7 @@ function tpf_content_video_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_playlist_items_count'
+  // Exported field_base: 'field_playlist_items_count'.
   $field_bases['field_playlist_items_count'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -88,7 +88,7 @@ function tpf_content_video_field_default_field_bases() {
     'type' => 'number_integer',
   );
 
-  // Exported field_base: 'field_playlist_view_mode'
+  // Exported field_base: 'field_playlist_view_mode'.
   $field_bases['field_playlist_view_mode'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -114,7 +114,7 @@ function tpf_content_video_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_show_title'
+  // Exported field_base: 'field_show_title'.
   $field_bases['field_show_title'] = array(
     'active' => 1,
     'cardinality' => 1,

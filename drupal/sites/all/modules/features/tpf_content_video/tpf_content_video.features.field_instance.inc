@@ -10,7 +10,7 @@
 function tpf_content_video_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-video-body'
+  // Exported field_instance: 'node-video-body'.
   $field_instances['node-video-body'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -121,11 +121,11 @@ function tpf_content_video_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
-  // Exported field_instance: 'node-video-field_admin_tag'
+  // Exported field_instance: 'node-video-field_admin_tag'.
   $field_instances['node-video-field_admin_tag'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -230,7 +230,7 @@ function tpf_content_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-video-field_allowed_regions'
+  // Exported field_instance: 'node-video-field_allowed_regions'.
   $field_instances['node-video-field_allowed_regions'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -338,7 +338,7 @@ function tpf_content_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-video-field_article_subhead'
+  // Exported field_instance: 'node-video-field_article_subhead'.
   $field_instances['node-video-field_article_subhead'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -446,11 +446,11 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
-  // Exported field_instance: 'node-video-field_assigned_editor'
+  // Exported field_instance: 'node-video-field_assigned_editor'.
   $field_instances['node-video-field_assigned_editor'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -551,7 +551,7 @@ function tpf_content_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-video-field_author'
+  // Exported field_instance: 'node-video-field_author'.
   $field_instances['node-video-field_author'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -658,11 +658,11 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
-  // Exported field_instance: 'node-video-field_autoload'
+  // Exported field_instance: 'node-video-field_autoload'.
   $field_instances['node-video-field_autoload'] = array(
     'bundle' => 'video',
     'default_value' => array(
@@ -764,7 +764,7 @@ function tpf_content_video_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-video-field_dfp_creative_id'
+  // Exported field_instance: 'node-video-field_dfp_creative_id'.
   $field_instances['node-video-field_dfp_creative_id'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -897,11 +897,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 20,
+      'weight' => 19,
     ),
   );
 
-  // Exported field_instance: 'node-video-field_due_date'
+  // Exported field_instance: 'node-video-field_due_date'.
   $field_instances['node-video-field_due_date'] = array(
     'bundle' => 'video',
     'deleted' => 0,
@@ -1015,7 +1015,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video-field_free_tag'
+  // Exported field_instance: 'node-video-field_free_tag'.
   $field_instances['node-video-field_free_tag'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -1124,7 +1124,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video-field_inline_replacements'
+  // Exported field_instance: 'node-video-field_inline_replacements'.
   $field_instances['node-video-field_inline_replacements'] = array(
     'bundle' => 'video',
     'deleted' => 0,
@@ -1230,11 +1230,11 @@ Change this only if you know what you are doing.',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
-  // Exported field_instance: 'node-video-field_permanent_title'
+  // Exported field_instance: 'node-video-field_permanent_title'.
   $field_instances['node-video-field_permanent_title'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -1371,11 +1371,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
-  // Exported field_instance: 'node-video-field_promo_headline'
+  // Exported field_instance: 'node-video-field_promo_headline'.
   $field_instances['node-video-field_promo_headline'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -1483,7 +1483,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video-field_promo_short_headline'
+  // Exported field_instance: 'node-video-field_promo_short_headline'.
   $field_instances['node-video-field_promo_short_headline'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -1590,7 +1590,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video-field_promo_text'
+  // Exported field_instance: 'node-video-field_promo_text'.
   $field_instances['node-video-field_promo_text'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -1699,7 +1699,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video-field_related_stories'
+  // Exported field_instance: 'node-video-field_related_stories'.
   $field_instances['node-video-field_related_stories'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -1806,11 +1806,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
-  // Exported field_instance: 'node-video-field_run_date'
+  // Exported field_instance: 'node-video-field_run_date'.
   $field_instances['node-video-field_run_date'] = array(
     'bundle' => 'video',
     'deleted' => 0,
@@ -1924,7 +1924,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video-field_series'
+  // Exported field_instance: 'node-video-field_series'.
   $field_instances['node-video-field_series'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -2030,7 +2030,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video-field_sharing_inline'
+  // Exported field_instance: 'node-video-field_sharing_inline'.
   $field_instances['node-video-field_sharing_inline'] = array(
     'bundle' => 'video',
     'default_value' => array(
@@ -2136,11 +2136,11 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
-  // Exported field_instance: 'node-video-field_tab_action_override'
+  // Exported field_instance: 'node-video-field_tab_action_override'.
   $field_instances['node-video-field_tab_action_override'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -2244,11 +2244,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
-  // Exported field_instance: 'node-video-field_thumbnail'
+  // Exported field_instance: 'node-video-field_thumbnail'.
   $field_instances['node-video-field_thumbnail'] = array(
     'bundle' => 'video',
     'deleted' => 0,
@@ -2382,7 +2382,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video-field_topic'
+  // Exported field_instance: 'node-video-field_topic'.
   $field_instances['node-video-field_topic'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -2489,7 +2489,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video-field_topic_box'
+  // Exported field_instance: 'node-video-field_topic_box'.
   $field_instances['node-video-field_topic_box'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -2596,7 +2596,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video-field_video'
+  // Exported field_instance: 'node-video-field_video'.
   $field_instances['node-video-field_video'] = array(
     'bundle' => 'video',
     'deleted' => 0,
@@ -2736,11 +2736,11 @@ Change this only if you know what you are doing.',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-body'
+  // Exported field_instance: 'node-video_playlist-body'.
   $field_instances['node-video_playlist-body'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -2890,11 +2890,11 @@ Change this only if you know what you are doing.',
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_admin_tag'
+  // Exported field_instance: 'node-video_playlist-field_admin_tag'.
   $field_instances['node-video_playlist-field_admin_tag'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -2999,7 +2999,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_allowed_regions'
+  // Exported field_instance: 'node-video_playlist-field_allowed_regions'.
   $field_instances['node-video_playlist-field_allowed_regions'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -3141,7 +3141,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_article_subhead'
+  // Exported field_instance: 'node-video_playlist-field_article_subhead'.
   $field_instances['node-video_playlist-field_article_subhead'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -3283,11 +3283,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_assigned_editor'
+  // Exported field_instance: 'node-video_playlist-field_assigned_editor'.
   $field_instances['node-video_playlist-field_assigned_editor'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -3388,7 +3388,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_author'
+  // Exported field_instance: 'node-video_playlist-field_author'.
   $field_instances['node-video_playlist-field_author'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -3495,11 +3495,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_autoload'
+  // Exported field_instance: 'node-video_playlist-field_autoload'.
   $field_instances['node-video_playlist-field_autoload'] = array(
     'bundle' => 'video_playlist',
     'default_value' => array(
@@ -3601,7 +3601,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_dfp_creative_id'
+  // Exported field_instance: 'node-video_playlist-field_dfp_creative_id'.
   $field_instances['node-video_playlist-field_dfp_creative_id'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -3738,7 +3738,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_due_date'
+  // Exported field_instance: 'node-video_playlist-field_due_date'.
   $field_instances['node-video_playlist-field_due_date'] = array(
     'bundle' => 'video_playlist',
     'deleted' => 0,
@@ -3852,7 +3852,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_free_tag'
+  // Exported field_instance: 'node-video_playlist-field_free_tag'.
   $field_instances['node-video_playlist-field_free_tag'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -3961,7 +3961,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_inline_replacements'
+  // Exported field_instance: 'node-video_playlist-field_inline_replacements'.
   $field_instances['node-video_playlist-field_inline_replacements'] = array(
     'bundle' => 'video_playlist',
     'deleted' => 0,
@@ -4067,11 +4067,11 @@ Change this only if you know what you are doing.',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_permanent_title'
+  // Exported field_instance: 'node-video_playlist-field_permanent_title'.
   $field_instances['node-video_playlist-field_permanent_title'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -4208,11 +4208,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_playlist_filter'
+  // Exported field_instance: 'node-video_playlist-field_playlist_filter'.
   $field_instances['node-video_playlist-field_playlist_filter'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -4324,7 +4324,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_playlist_filter_sorting'
+  // Exported field_instance:
+  // 'node-video_playlist-field_playlist_filter_sorting'.
   $field_instances['node-video_playlist-field_playlist_filter_sorting'] = array(
     'bundle' => 'video_playlist',
     'default_value' => array(
@@ -4433,7 +4434,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_playlist_items_count'
+  // Exported field_instance: 'node-video_playlist-field_playlist_items_count'.
   $field_instances['node-video_playlist-field_playlist_items_count'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -4541,7 +4542,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_playlist_view_mode'
+  // Exported field_instance: 'node-video_playlist-field_playlist_view_mode'.
   $field_instances['node-video_playlist-field_playlist_view_mode'] = array(
     'bundle' => 'video_playlist',
     'default_value' => array(
@@ -4650,7 +4651,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_promo_headline'
+  // Exported field_instance: 'node-video_playlist-field_promo_headline'.
   $field_instances['node-video_playlist-field_promo_headline'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -4791,7 +4792,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_promo_short_headline'
+  // Exported field_instance: 'node-video_playlist-field_promo_short_headline'.
   $field_instances['node-video_playlist-field_promo_short_headline'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -4932,7 +4933,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_promo_text'
+  // Exported field_instance: 'node-video_playlist-field_promo_text'.
   $field_instances['node-video_playlist-field_promo_text'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -5075,7 +5076,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_related_stories'
+  // Exported field_instance: 'node-video_playlist-field_related_stories'.
   $field_instances['node-video_playlist-field_related_stories'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -5182,11 +5183,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_run_date'
+  // Exported field_instance: 'node-video_playlist-field_run_date'.
   $field_instances['node-video_playlist-field_run_date'] = array(
     'bundle' => 'video_playlist',
     'deleted' => 0,
@@ -5300,7 +5301,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_series'
+  // Exported field_instance: 'node-video_playlist-field_series'.
   $field_instances['node-video_playlist-field_series'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -5406,7 +5407,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_sharing_inline'
+  // Exported field_instance: 'node-video_playlist-field_sharing_inline'.
   $field_instances['node-video_playlist-field_sharing_inline'] = array(
     'bundle' => 'video_playlist',
     'default_value' => array(
@@ -5516,7 +5517,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_show_title'
+  // Exported field_instance: 'node-video_playlist-field_show_title'.
   $field_instances['node-video_playlist-field_show_title'] = array(
     'bundle' => 'video_playlist',
     'default_value' => array(
@@ -5625,7 +5626,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_tab_action_override'
+  // Exported field_instance: 'node-video_playlist-field_tab_action_override'.
   $field_instances['node-video_playlist-field_tab_action_override'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -5729,11 +5730,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_thumbnail'
+  // Exported field_instance: 'node-video_playlist-field_thumbnail'.
   $field_instances['node-video_playlist-field_thumbnail'] = array(
     'bundle' => 'video_playlist',
     'deleted' => 0,
@@ -5866,7 +5867,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_topic'
+  // Exported field_instance: 'node-video_playlist-field_topic'.
   $field_instances['node-video_playlist-field_topic'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -5973,7 +5974,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_topic_box'
+  // Exported field_instance: 'node-video_playlist-field_topic_box'.
   $field_instances['node-video_playlist-field_topic_box'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
@@ -6080,7 +6081,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_video_list'
+  // Exported field_instance: 'node-video_playlist-field_video_list'.
   $field_instances['node-video_playlist-field_video_list'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
