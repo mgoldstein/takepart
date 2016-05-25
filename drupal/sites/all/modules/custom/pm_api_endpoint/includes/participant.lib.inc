@@ -12,7 +12,7 @@ class ParticipantAPI {
    */
   function __construct($api_domain, $api_key) {
     $this->apiKey = $api_key;
-    $this->apiURL = "https://$api_domain/v1/esp/lists";
+    $this->apiURL = "https://$api_domain/api/v1/esp/lists";
     $this->responseType = 'json';
   }
 
