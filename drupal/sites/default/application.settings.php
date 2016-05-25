@@ -87,7 +87,8 @@ if (!array_key_exists('participant_api_accounts', $conf)) {
   $conf['participant_api_accounts'] = array();
 }
 switch (ENVIRONMENT) {
-  case 'development';
+  case 'development':
+  case 'local':
     $domain = 'dev-api.takepart.com';
     $conf['takepart_api_domain'] = "http://dev-api.takepart.com";
     break;
