@@ -217,7 +217,7 @@
                 showSticky = false;
               }
             });
-          }console.log($(this));
+          }
           //Hide the share between moreon section and the top of the next article
           var moreontop = $(this).find('.tp-more-on-takepart').offset().top;
           var arttop = $(this).parents('.fresh-content-wrapper').offset().top;
