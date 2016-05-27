@@ -265,10 +265,10 @@ function tpf_content_video_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'locations' => array(
-          'weight' => '18',
+          'weight' => '19',
         ),
         'metatags' => array(
-          'weight' => '17',
+          'weight' => '18',
         ),
         'title' => array(
           'weight' => '0',
@@ -277,10 +277,10 @@ function tpf_content_video_strongarm() {
           'weight' => '14',
         ),
         'redirect' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
         'xmlsitemap' => array(
-          'weight' => '16',
+          'weight' => '17',
         ),
       ),
       'display' => array(),

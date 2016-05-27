@@ -52,7 +52,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Autoload Settings',
-    'weight' => '24',
+    'weight' => '23',
     'children' => array(
       0 => 'field_autoload',
     ),
@@ -79,7 +79,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Editorial Info',
-    'weight' => '23',
+    'weight' => '22',
     'children' => array(
       0 => 'field_assigned_editor',
       1 => 'field_due_date',
@@ -109,7 +109,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline Replacements',
-    'weight' => '11',
+    'weight' => '8',
     'children' => array(
       0 => 'field_inline_replacements',
     ),
@@ -136,7 +136,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '14',
+    'weight' => '11',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
@@ -166,7 +166,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '15',
+    'weight' => '12',
     'children' => array(
       0 => 'field_admin_tag',
       1 => 'field_free_tag',
@@ -175,6 +175,7 @@ function tp_feature_feature_article_field_group_info() {
       4 => 'field_sponsored',
       5 => 'field_topic_box',
       6 => 'field_editor_campaign_reference',
+      7 => 'field_campaign_promo_opt_out',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
