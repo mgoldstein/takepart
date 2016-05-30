@@ -119,7 +119,7 @@
         <?php endif; ?>
 
 
-        <small>&copy; <?php print date('Y'); ?> TakePart, LLC. All rights reserved.</small>
+        <small>TakePart is the digital news magazine from Participant Media, the company behind acclaimed films Spotlight, CITIZENFOUR and An Inconvenient Truth. &copy; <?php print date('Y'); ?> TakePart, LLC. All rights reserved.</small>
 
       </footer>
     </article>
