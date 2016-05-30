@@ -1561,6 +1561,7 @@ body.campaign-display{
     @include breakpoint($breakpoint-desktop){
     .has-back-to-top {
         .field-name-field-campaign-back-to-top {
+            display: none;
             position: fixed;
             bottom: 25px;
             right: 25px;
