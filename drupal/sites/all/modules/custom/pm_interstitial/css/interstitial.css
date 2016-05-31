@@ -16,7 +16,7 @@ body {
   font-size: 14px;
 }
 
-/* line 12, ../sass/interstitial.scss */
+/* line 11, ../sass/interstitial.scss */
 #site-footer,
 #site-header {
   display: none;
@@ -31,7 +31,7 @@ header img {
 /* line 23, ../sass/interstitial.scss */
 #page-wrapper.campaign {
   max-width: 400px;
-  height: 475px;
+  height: 485px;
 }
 
 /* line 28, ../sass/interstitial.scss */
@@ -76,5 +76,5 @@ header img {
 
 /* line 62, ../sass/interstitial.scss */
 #page.main .content a {
-  color: #018b73;
+  color: #018B73;
 }
