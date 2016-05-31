@@ -964,6 +964,14 @@ body.campaign-display{
             }
         }
     }
+    .card.node-campaign-card-iframe.full-width-iframe {
+        padding-bottom: 0;
+        .card-inner {
+            max-width: 100%;
+            padding: 0;
+        }
+    }
+
     /* TAP Widget */
     .node-campaign-card-tap-widget {
         .left, .right{

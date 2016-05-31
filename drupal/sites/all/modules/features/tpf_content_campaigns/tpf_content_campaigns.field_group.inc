@@ -818,8 +818,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_video',
-      3 => 'group_background_image',
+      2 => 'group_background_image',
+      3 => 'group_background_video',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1155,6 +1155,7 @@ function tpf_content_campaigns_field_group_info() {
       2 => 'field_campaign_iframe_width',
       3 => 'field_campaign_iframe',
       4 => 'field_campaign_iframe_type',
+      5 => 'field_campaign_iframe_full_width',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

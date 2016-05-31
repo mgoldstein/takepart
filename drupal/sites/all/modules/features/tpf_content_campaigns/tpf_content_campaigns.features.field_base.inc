@@ -210,9 +210,6 @@ function tpf_content_campaigns_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_campaign_bg_image_position',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
     'indexes' => array(
       'value' => array(
         0 => 'value',
@@ -238,9 +235,6 @@ function tpf_content_campaigns_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_campaign_bg_video_poster',
-    'field_permissions' => array(
-      'type' => 0,
-    ),
     'indexes' => array(
       'fid' => array(
         0 => 'fid',
@@ -288,6 +282,34 @@ function tpf_content_campaigns_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_campaign_disable_menu',
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_campaign_iframe_full_width'.
+  $field_bases['field_campaign_iframe_full_width'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_campaign_iframe_full_width',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'value' => array(
         0 => 'value',
