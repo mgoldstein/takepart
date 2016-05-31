@@ -102,7 +102,7 @@
       viewport.bottom = viewport.top + win.height();
       var article_offset = $(this).offset();
       article_offset.bottom = article_offset.top + $(this).height();
-      var article_wrapper = $(this).parent();
+      var article_wrapper = $(this).parents('.fresh-content-wrapper');
       //adds class based if article is active in view
       if (article_offset.top < viewport.bottom && article_offset.bottom > viewport.bottom) {
         //add the class if it's not there
