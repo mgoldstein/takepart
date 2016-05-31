@@ -1,7 +1,7 @@
 name = TakePart Taxonomy Topic
 core = 7.x
 package = Taxonomy
-version = 7.x-1.01
+version = 7.x-1.2
 project = tpf_taxonomy_topic
 dependencies[] = context
 dependencies[] = context_field
