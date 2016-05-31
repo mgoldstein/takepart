@@ -129,19 +129,19 @@ function tp_feature_feature_article_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '17',
+          'weight' => '14',
         ),
         'redirect' => array(
-          'weight' => '18',
+          'weight' => '15',
         ),
         'xmlsitemap' => array(
-          'weight' => '19',
+          'weight' => '17',
         ),
         'metatags' => array(
-          'weight' => '20',
+          'weight' => '18',
         ),
         'locations' => array(
-          'weight' => '22',
+          'weight' => '20',
         ),
         'workbench_access' => array(
           'weight' => '0',

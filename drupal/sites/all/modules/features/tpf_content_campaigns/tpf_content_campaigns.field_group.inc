@@ -1074,6 +1074,36 @@ function tpf_content_campaigns_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_cic|node|campaign|form';
+  $field_group->group_name = 'group_cic';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Content Inside Campaign',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_content_menu',
+      1 => 'field_content_menu_description',
+      2 => 'field_content_menu_logo',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-cic field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_cic|node|campaign|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_custom_styling|node|campaign|form';
   $field_group->group_name = 'group_custom_styling';
   $field_group->entity_type = 'node';
@@ -1082,7 +1112,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Custom Styling',
-    'weight' => '9',
+    'weight' => '11',
     'children' => array(
       0 => 'field_css',
       1 => 'field_fonts_for_css',
@@ -1430,7 +1460,6 @@ function tpf_content_campaigns_field_group_info() {
       1 => 'field_topic',
       2 => 'field_sponsored',
       3 => 'field_campaign_type',
-      4 => 'field_content_menu',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1483,6 +1512,7 @@ function tpf_content_campaigns_field_group_info() {
   t('Background');
   t('Background Image');
   t('Background Video');
+  t('Content Inside Campaign');
   t('Custom Styling');
   t('Header/Branding');
   t('Logo');

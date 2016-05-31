@@ -21,7 +21,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Autoload Settings',
-    'weight' => '35',
+    'weight' => '20',
     'children' => array(
       0 => 'field_autoload',
     ),
@@ -75,7 +75,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Editorial Info',
-    'weight' => '39',
+    'weight' => '21',
     'children' => array(
       0 => 'field_assigned_editor',
       1 => 'field_due_date',
@@ -264,6 +264,7 @@ function tpf_content_video_field_group_info() {
       4 => 'field_sponsored',
       5 => 'field_topic_box',
       6 => 'field_editor_campaign_reference',
+      7 => 'field_campaign_promo_opt_out',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -297,6 +298,7 @@ function tpf_content_video_field_group_info() {
       4 => 'field_sponsored',
       5 => 'field_topic_box',
       6 => 'field_editor_campaign_reference',
+      7 => 'field_campaign_promo_opt_out',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

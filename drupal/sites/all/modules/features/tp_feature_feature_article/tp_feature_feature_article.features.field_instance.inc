@@ -107,7 +107,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 10,
+      'weight' => 7,
     ),
     'widget_type' => 'text_textarea_with_summary',
   );
@@ -194,7 +194,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -886,6 +886,92 @@ function tp_feature_feature_article_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'node-feature_article-field_campaign_promo_opt_out'.
+  $field_instances['node-feature_article-field_campaign_promo_opt_out'] = array(
+    'bundle' => 'feature_article',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'If you tag this content with an editorial campaign, it is encouraged to add the campaign promo sidebar inline replacement.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 32,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_promo_opt_out',
+    'label' => 'I don\'t wish to add the campaign promo sidebar inline replacement to this piece of content.',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 14,
+    ),
+  );
+
   // Exported field_instance: 'node-feature_article-field_dfp_creative_id'.
   $field_instances['node-feature_article-field_dfp_creative_id'] = array(
     'bundle' => 'feature_article',
@@ -1001,7 +1087,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 16,
+      'weight' => 13,
     ),
   );
 
@@ -1279,7 +1365,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -1541,7 +1627,7 @@ Change this only if you know what you are doing.',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 23,
+      'weight' => 21,
     ),
   );
 
@@ -2028,7 +2114,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 12,
+      'weight' => 9,
     ),
   );
 
@@ -2217,7 +2303,7 @@ Change this only if you know what you are doing.',
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -2303,7 +2389,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 21,
+      'weight' => 19,
     ),
   );
 
@@ -2398,7 +2484,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 13,
+      'weight' => 10,
     ),
   );
 
@@ -2607,7 +2693,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 9,
+      'weight' => 6,
     ),
   );
 
@@ -2790,7 +2876,7 @@ Change this only if you know what you are doing.',
         'track_list' => 0,
       ),
       'type' => 'term_reference_tree',
-      'weight' => 18,
+      'weight' => 19,
     ),
   );
 
@@ -2810,7 +2896,9 @@ Change this only if you know what you are doing.');
   t('Due Date');
   t('Featured Link');
   t('Free Tag');
+  t('I don\'t wish to add the campaign promo sidebar inline replacement to this piece of content.');
   t('If an ambient video is uploaded, an image with the same aspect ratios should be uploaded using the Main Image field.');
+  t('If you tag this content with an editorial campaign, it is encouraged to add the campaign promo sidebar inline replacement.');
   t('Inline Replacements');
   t('Limited at 70 characters');
   t('Main Image');
