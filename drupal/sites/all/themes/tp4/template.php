@@ -1414,6 +1414,11 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
     $variables['classes_array'][] = 'has-instructional';
   }
 
+  //Full Width card
+  if ($variables['field_campaign_iframe_full_width']['und'][0]['value']) {
+    $variables['classes_array'][] = 'full-width-iframe';
+  }
+
   $center = '';
   $height = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_height');
   $width = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_width');

@@ -8341,7 +8341,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -8356,7 +8356,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 13,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -8471,7 +8471,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 17,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -8744,7 +8744,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'module' => 'file',
         'settings' => array(),
         'type' => 'file_default',
-        'weight' => 16,
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -8845,13 +8845,19 @@ function tpf_content_campaigns_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
-        'module' => 'media_image_formatter',
+        'module' => 'colorbox',
         'settings' => array(
-          'image_link' => '',
-          'image_style' => '',
+          'colorbox_caption' => 'auto',
+          'colorbox_caption_custom' => '',
+          'colorbox_gallery' => 'post',
+          'colorbox_gallery_custom' => '',
+          'colorbox_image_style' => '',
+          'colorbox_multivalue_index' => NULL,
+          'colorbox_node_style' => '',
+          'colorbox_node_style_first' => '',
         ),
-        'type' => 'image',
-        'weight' => 17,
+        'type' => 'colorbox',
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -8963,7 +8969,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 16,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -9054,7 +9060,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 15,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -9311,6 +9317,91 @@ function tpf_content_campaigns_field_default_field_instances() {
   );
 
   // Exported field_instance:
+  // 'node-campaign_card_iframe-field_campaign_iframe_full_width'.
+  $field_instances['node-campaign_card_iframe-field_campaign_iframe_full_width'] = array(
+    'bundle' => 'campaign_card_iframe',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 18,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_iframe_full_width',
+    'label' => 'Full width',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 7,
+    ),
+  );
+
+  // Exported field_instance:
   // 'node-campaign_card_iframe-field_campaign_iframe_height'.
   $field_instances['node-campaign_card_iframe-field_campaign_iframe_height'] = array(
     'bundle' => 'campaign_card_iframe',
@@ -9403,7 +9494,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -9589,7 +9680,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'number',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -9732,7 +9823,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -9915,7 +10006,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -27452,6 +27543,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Filter');
   t('Fonts for CSS');
   t('Free Tag');
+  t('Full width');
   t('Height in pixels.  Do not include \'px\'');
   t('How many news articles do you want to display?
 Note: If you manually reference more items than selected here, the number referenced will override your selection here.');
