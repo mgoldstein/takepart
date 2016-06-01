@@ -234,7 +234,6 @@ function tp4_preprocess_page(&$variables) {
     }
   }
 
-
   if(isset($variables['node']) && $variables['node']->type == 'campaign_page'){
 
     // Make sure the Campaign Page references a Campaign
@@ -252,7 +251,6 @@ function tp4_preprocess_page(&$variables) {
       drupal_add_css('.promoted.sponsor-'.$s[0]['tid'].' {display: none;}', array('type' => 'inline'));
     }
   }
-
 
   $variables['skinny'] = render($variables['page']['skinny']);
   $variables['sidebar'] = render($variables['page']['sidebar']);
@@ -306,8 +304,6 @@ function tp4_preprocess_page(&$variables) {
       );
     }
   }
-
-
 
   //stuff for the campaign page
   if($variables['node']->type == 'campaign_page'){
@@ -380,8 +376,6 @@ function tp4_preprocess_page(&$variables) {
       )), 'setting');
       drupal_add_js(drupal_get_path('theme', 'tp4'). '/js/vendor/stickUp/stickUp.js');
 
-
-
       $header = module_invoke('tp_campaigns', 'block_view', 'tp_campaigns_hero');
       $campaign_menu = theme('html_tag', array(
         'element' => array(
@@ -390,12 +384,11 @@ function tp4_preprocess_page(&$variables) {
           '#attributes' => array(
             'class' => 'block',
             'id' => 'block-tp-campaigns-tp-campaigns-hero'
-          )
-        )
-      ));
+        ))));
       $variables['page']['header']['campaign_header']['#markup'] = $campaign_menu;
     }
   }
+  _tp4_on_our_radar_block($variables);
 }
 
 /**
@@ -1779,10 +1772,17 @@ function _tp4_on_our_radar_block(&$variables) {
          '#value' => '',
          '#attributes' => array(
            'id' => 'pubexchange_related_links',
+		 'data-pubexchange-module-id' => '514',
+		 'class' => 'pubexchange_module',
      ))));
-  drupal_add_js('(function(d, s, id)
-    { var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.async = true; js.src = "http://cdn.pubexchange.com/modules/partner/take_part"; pjs.parentNode.insertBefore(js, pjs); }
-    (document, "script", "pubexchange-jssdk"));',
+  drupal_add_js('(function(w, d, s, id) {
+  w.PUBX=w.PUBX || {pub: "take_part", discover: false, lazy: true};
+  var js, pjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//main.pubexchange.com/loader.min.js";
+  pjs.parentNode.insertBefore(js, pjs);
+}(window, document, "script", "pubexchange-jssdk"));',
     array(
       'type' => 'inline',
       'scope' => 'footer',
