@@ -110,17 +110,17 @@ function tp_content_services_notify_service($node, $insup = '') {
 
   $json = array(
       "url" => url('node/'.$node->nid, array('absolute' => TRUE)),
-      "title" => $node->title,
-      "publish_date" => $pub_date,
-      "published" => $node->status,
-      "tags" => $tags,
-      "newsletter_exclude" => $newsletter,
+      "title" => (string)$node->title,
+      "publish_date" => (string)$pub_date,
+      "published" => (string)$node->status,
+      "tags" => (string)$tags,
+      "newsletter_exclude" => (string)$newsletter,
       "introduction" => $intro,
       "image_url" => array(
           "full" => array("url" => $image),
           "thumb" => array("url" => $thumb),
       ),
-      "author" => $author,
+      "author" => (string)$author,
       "access_token" => variable_get('content_services_access_token','')
   );
 
