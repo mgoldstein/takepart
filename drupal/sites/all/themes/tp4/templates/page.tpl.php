@@ -62,6 +62,7 @@
   <div class="suffix-wrapper">
     <div id="suffix">
       <?php print render($page['suffix']); ?>
+	 <?php print render($on_our_radar); ?>
     </div>
   </div>
 
