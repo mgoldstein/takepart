@@ -938,9 +938,35 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   //background properties
   tp4_campaign_background_rules($variables);
 
+  //Parallax field - commented out till we have a better understanding of future products.
+  /*$parallax_container = array();
+  if ($parallax = $variables['node']->field_campaign_parallax_image['und']) {
+    //Editors can upload multiple fields
+    foreach ($parallax as $key => $file) {
+      $parallax_container[] = 'parallax-' . $key;
+      $background = $file['uri'];
+      $bg = file_create_url($file['uri']);
+      //set background image for tablet and mobile
+      $variables['parallax_bg'][$key]['background_image_desktop'] = "background-image: url('$bg');";
+      if($bgtablet = image_style_path('large_responsive_tablet', $background)) {
+        $bgtablet = file_create_url($bgtablet);
+        $variables['parallax_bg'][$key]['background_image_tablet'] = "background-image: url('$bgtablet');";
+      } else {
+        $variables['parallax_bg'][$key]['background_image_tablet'] = "background-image: url('$bg');";
+      }
+      if($bgmobile = image_style_path('large_responsive_mobile', $background)) {
+        $bgmobile = file_create_url($bgmobile);
+        $variables['parallax_bg'][$key]['background_image_mobile'] = "background-image: url('$bgmobile');";
+      } else {
+        $variables['parallax_bg'][$key]['background_image_mobile'] = "background-image: url('$bg');";
+      }
+    }
+  }*/
+
   $variables['center'] = $center;
   $variables['left'] = $left;
   $variables['right'] = $right;
+  //$variables['parallax'] = $parallax_container;
 }
 
 
@@ -1655,6 +1681,14 @@ function tp4_campaign_background_rules(&$variables){
     }
     $variables['background_class'] = $variables['type'].$variables['nid'];
     $variables['classes_array'][] = $variables['type'].$variables['nid'];
+
+    //Add parallax class
+    if($is_parallax = field_get_items('node' , $variables['node'] , 'field_campaign_bg_parallax')) {
+      if ($is_parallax[0]['value'] == 1) {
+        $variables['classes_array'][] = 'parallax-bg';
+      }
+    }
+
   }
 
   /* Background Video */
