@@ -1766,7 +1766,8 @@ function tp4_preprocess_node__flashcard(&$variables) {
  * Utility function to provide "On Our Radar" block to node templates
  */
 function _tp4_on_our_radar_block(&$variables) {
-  $variables['on_our_radar'] = theme('html_tag', array(
+  if ($variables['is_front'] != TRUE) {
+    $variables['on_our_radar'] = theme('html_tag', array(
          'element' => array(
          '#tag' => 'div',
          '#value' => '',
@@ -1775,20 +1776,21 @@ function _tp4_on_our_radar_block(&$variables) {
 		 'data-pubexchange-module-id' => '514',
 		 'class' => 'pubexchange_module',
      ))));
-  drupal_add_js('(function(w, d, s, id) {
-  w.PUBX=w.PUBX || {pub: "take_part", discover: false, lazy: true};
-  var js, pjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id; js.async = true;
-  js.src = "//main.pubexchange.com/loader.min.js";
-  pjs.parentNode.insertBefore(js, pjs);
+    drupal_add_js('(function(w, d, s, id) {
+w.PUBX=w.PUBX || {pub: "take_part", discover: false, lazy: true};
+var js, pjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id; js.async = true;
+js.src = "//main.pubexchange.com/loader.min.js";
+pjs.parentNode.insertBefore(js, pjs);
 }(window, document, "script", "pubexchange-jssdk"));',
-    array(
-      'type' => 'inline',
-      'scope' => 'footer',
-      'weight' => 10
-    )
-  );
+      array(
+        'type' => 'inline',
+        'scope' => 'footer',
+        'weight' => 10
+      )
+    );
+  }
 }
 
 /**
