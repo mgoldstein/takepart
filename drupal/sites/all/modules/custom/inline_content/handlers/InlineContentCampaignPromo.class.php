@@ -29,10 +29,13 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
     $campaign_id = $node -> field_editor_campaign_reference['und'][0]['target_id'];
 
     //Campaign Associated Info
+    $campaign_info = array();
     $campaign = node_load($campaign_id);
-    $campaign_title = $campaign -> title;
-    $campaign_description = $campaign ->field_content_menu_description['und'][0]['value'];
-    $campaign_url = url('node/'.$campaign_id, array('absolute' => TRUE));
+    $campaign_info['title'] = $campaign -> title;
+    $campaign_info['description'] = $campaign ->field_content_menu_description[LANGUAGE_NONE][0]['value'];
+    $campaign_info['url'] = url('node/'.$campaign_id, array('absolute' => TRUE));
+    $campaign_info['vol'] = $campaign ->field_content_issue_volume[LANGUAGE_NONE][0]['value'];
+    $campaign_info['bg_color'] = $campaign ->field_content_promo_bg[LANGUAGE_NONE][0]['rgb'];
 
     //Queue for all the nodes that reference the campaign_id
     $query = new EntityFieldQuery();
@@ -55,6 +58,7 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
         $cic_thumb = file_load($fid);
         //This image style could differ once we have final designs.
         $cic_info[$article_ctr]['thumbnail'] = image_style_url('inline_thumbnail', $cic_thumb->uri);
+        $cic_info[$article_ctr]['nid'] = $cid->nid;
 
         $article_ctr++;
         //Only 3 stories diplayed on the sidebar
@@ -67,10 +71,7 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
     //TODO:Need to determine what to display when this the only node associated with the campaign.
     if ($story_num > 0) {
     $markup = theme('inline_content_campaign_promo' , array(
-      'campaign_title' => $campaign_title,
-      'campaing_stories' => $story_num,
-      'campaign_description' => $campaign_description,
-      'campaign_url' => $campaign_url,
+      'campaign_info' => $campaign_info,
       'cic_info' => $cic_info
     ));
      $content['#replacements'][] = array(

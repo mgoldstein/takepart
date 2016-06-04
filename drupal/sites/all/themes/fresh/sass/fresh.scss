@@ -168,6 +168,57 @@ blockquote.pullquote {
   margin-bottom: 12px;
   text-align: center;
 }
+.inline-interactive-campaign-promo {
+  .stories-item-1,
+  .stories-item-2 {
+      display: none;
+  }
+  width: 100%;
+  @include breakpoint($breakpoint-phablet) {
+    .stories-item-1,
+    .stories-item-2 {
+      display: block;
+    }
+    width: 244px;
+    float: left;
+    margin-right: 30px;
+  }
+  img {
+    width: 100%;
+    @include breakpoint($breakpoint-phablet) {
+      width: 211px;
+    }
+  }
+  h4, h3 {
+    padding: 0;
+    margin: 0;
+  }
+  .stories-header {
+    color: #FFFFFF;
+    padding: 28px 23px;
+    a {
+      color: #FFFFFF;
+    }
+    .campaign-description {
+      font-size: 16px;
+      margin-bottom: 0;
+      line-height: 24px;
+    }
+  }
+  .stories-wrapper {
+    padding: 22px 15px;
+    p {
+      margin-top: 13px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+    a,
+    a:hover {
+      color: #3A383A;
+      font-weight: bold;
+    }
+  }
+}
 .align-center {
   .inline-feature-image {
     img {

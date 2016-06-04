@@ -736,10 +736,7 @@ function inline_content_theme() {
     'inline_content_campaign_promo' => array(
       'template' => 'inline-content-campaign-promo',
       'variables' => array(
-        'campaign_title' => '',
-        'campaign_stories' => '',
-        'campaign_description' => '',
-        'campaign_url' => '',
+        'campaign_info' => '',
         'cic_info' => ''
       )
     )

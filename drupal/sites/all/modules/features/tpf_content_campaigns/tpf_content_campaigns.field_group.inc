@@ -1087,6 +1087,8 @@ function tpf_content_campaigns_field_group_info() {
       0 => 'field_content_menu',
       1 => 'field_content_menu_description',
       2 => 'field_content_menu_logo',
+      3 => 'field_content_issue_volume',
+      4 => 'field_content_promo_bg',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
