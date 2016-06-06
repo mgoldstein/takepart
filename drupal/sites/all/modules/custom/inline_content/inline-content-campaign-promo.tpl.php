@@ -20,7 +20,7 @@
   <div class = "stories-wrapper" style="border: 2px solid <?php print $campaign_info['bg_color']; ?>">
     <?php  //Loop through $cic_info array for image and promo title
       foreach($cic_info AS $k => $cic):
-        print '<div class="stories-item-'.$k.'">';
+        print '<div class="stories-item stories-item-'.$k.'">';
         $item = theme_image(array('path' => $cic['thumbnail'],'alt' => $cic['title']));
         $item .= '<p class="stories-title">'.$cic['title'].'</p>';
         print l($item, 'node/'.$cic['nid'], array('html'=>TRUE));
