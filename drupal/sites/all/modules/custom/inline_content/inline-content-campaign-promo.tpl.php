@@ -6,19 +6,28 @@
 ?>
 
 <div class="inline-interactive-campaign-promo">
-  <h1 class="campaign-title">
-    <?php print $campaign_title; ?>
-  </h1>
-  <p class= "number">
-    <?php print $campaing_stories; ?>
-  </p>
-  <p class = "campaign-description">
-    <?php print $campaign_description; ?>
-  </p>
-  <div class = "stories-wrapper">
-    <!-- Just a placeholder till we have final designs -->
-    <?php //TODO: Loop through $cic_info array for image and promo title?>
+  <div class="stories-header" style="background-color: <?php print $campaign_info['bg_color']; ?>">
+    <h3 class="campaign-title">
+      <?php print l($campaign_info['title'], $campaign_info['url']); ?>
+    </h3>
+    <h4>
+      BIG ISSUE vol. <?php print $campaign_info['vol']; ?>
+    </h4>
+    <p class = "campaign-description">
+      <?php print $campaign_info['description']; ?>
+    </p>
   </div>
-  <a class = "see-more" href = " <?php print $campaign_url ?> ">More <?php print $campaign_title ?></a>
+  <div class = "stories-wrapper" style="border: 2px solid <?php print $campaign_info['bg_color']; ?>">
+    <?php  //Loop through $cic_info array for image and promo title
+      foreach($cic_info AS $k => $cic):
+        print '<div class="stories-item-'.$k.'">';
+        $item = theme_image(array('path' => $cic['thumbnail'],'alt' => $cic['title']));
+        $item .= '<p class="stories-title">'.$cic['title'].'</p>';
+        print l($item, 'node/'.$cic['nid'], array('html'=>TRUE));
+        print '</div>';
+      endforeach;
+    ?>
+  </div>
 
+  <?php //PLACEHOLDER for link to stories landing print $campaing_info['stories']; ?>
 </div>
