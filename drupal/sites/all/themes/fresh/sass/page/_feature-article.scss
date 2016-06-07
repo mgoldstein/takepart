@@ -145,6 +145,19 @@
         margin: 15px 0;
       }
     }
+    .inline-interactive-campaign-promo {
+      @include breakpoint($breakpoint-tablet) {
+        max-width: 768px;
+        width: auto;
+        float: none;
+        margin: 0 auto;
+        .inline-campaign-promo-wrapper {
+          width: 244px;
+          margin: 10px 25px;
+          float: left;
+        }
+      }
+    }
     @include breakpoint($breakpoint-tablet) {
       .series-navigation-wrapper,
       #more-on-takepart,
