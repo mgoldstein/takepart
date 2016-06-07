@@ -10,7 +10,7 @@
 function tpf_content_article_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-openpublish_article-body'
+  // Exported field_instance: 'node-openpublish_article-body'.
   $field_instances['node-openpublish_article-body'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -112,7 +112,7 @@ function tpf_content_article_field_default_field_instances() {
     'widget_type' => 'text_textarea_with_summary',
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_admin_tag'
+  // Exported field_instance: 'node-openpublish_article-field_admin_tag'.
   $field_instances['node-openpublish_article-field_admin_tag'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -123,7 +123,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 23,
+        'weight' => 24,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -198,7 +198,8 @@ function tpf_content_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_article_main_image'
+  // Exported field_instance:
+  // 'node-openpublish_article-field_article_main_image'.
   $field_instances['node-openpublish_article-field_article_main_image'] = array(
     'bundle' => 'openpublish_article',
     'deleted' => 0,
@@ -285,7 +286,7 @@ function tpf_content_article_field_default_field_instances() {
     'label' => 'Main Image',
     'required' => 0,
     'settings' => array(
-      'file_extensions' => 'jpg jpeg gif png txt doc docx xls xlsx pdf ppt pptx pps ppsx odt ods odp mp3 mov m4v mp4 mpeg avi ogg oga ogv wmv ico',
+      'file_extensions' => 'jpg',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -293,24 +294,32 @@ function tpf_content_article_field_default_field_instances() {
       'module' => 'media',
       'settings' => array(
         'allowed_schemes' => array(
+          'jwplatform-channel' => 0,
+          'jwplatform-video' => 0,
+          'private' => 0,
           'public' => 'public',
+          'youtube' => 0,
         ),
         'allowed_types' => array(
           'audio' => 0,
-          'default' => 0,
+          'document' => 0,
           'image' => 'image',
           'video' => 0,
         ),
-        'browser_plugins' => array(),
+        'browser_plugins' => array(
+          'media_default--media_browser_1' => 0,
+          'media_default--media_browser_my_files' => 0,
+          'media_internet' => 0,
+          'upload' => 0,
+        ),
         'progress_indicator' => 'throbber',
-        'view' => 'media_views_widget_default--default',
       ),
       'type' => 'media_generic',
       'weight' => 5,
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_article_subhead'
+  // Exported field_instance: 'node-openpublish_article-field_article_subhead'.
   $field_instances['node-openpublish_article-field_article_subhead'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -406,7 +415,7 @@ function tpf_content_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_assigned_editor'
+  // Exported field_instance: 'node-openpublish_article-field_assigned_editor'.
   $field_instances['node-openpublish_article-field_assigned_editor'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -418,7 +427,7 @@ function tpf_content_article_field_default_field_instances() {
         'module' => 'user_reference',
         'settings' => array(),
         'type' => 'user_reference_default',
-        'weight' => 33,
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -489,7 +498,7 @@ function tpf_content_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_author'
+  // Exported field_instance: 'node-openpublish_article-field_author'.
   $field_instances['node-openpublish_article-field_author'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -586,7 +595,7 @@ function tpf_content_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_autoload'
+  // Exported field_instance: 'node-openpublish_article-field_autoload'.
   $field_instances['node-openpublish_article-field_autoload'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => array(
@@ -601,7 +610,7 @@ function tpf_content_article_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 30,
+        'weight' => 28,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -670,7 +679,92 @@ function tpf_content_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_dfp_creative_id'
+  // Exported field_instance:
+  // 'node-openpublish_article-field_campaign_promo_opt_out'.
+  $field_instances['node-openpublish_article-field_campaign_promo_opt_out'] = array(
+    'bundle' => 'openpublish_article',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'If you tag this content with an editorial campaign, it is encouraged to add the campaign promo sidebar inline replacement.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 13,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_promo_opt_out',
+    'label' => 'I don\'t wish to add the campaign promo sidebar inline replacement to this piece of content.',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 10,
+    ),
+  );
+
+  // Exported field_instance: 'node-openpublish_article-field_dfp_creative_id'.
   $field_instances['node-openpublish_article-field_dfp_creative_id'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -683,7 +777,7 @@ Change this only if you know what you are doing.',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
-        'weight' => 27,
+        'weight' => 7,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -785,11 +879,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_due_date'
+  // Exported field_instance: 'node-openpublish_article-field_due_date'.
   $field_instances['node-openpublish_article-field_due_date'] = array(
     'bundle' => 'openpublish_article',
     'deleted' => 0,
@@ -806,7 +900,7 @@ Change this only if you know what you are doing.',
           'multiple_to' => '',
         ),
         'type' => 'date_default',
-        'weight' => 31,
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -886,7 +980,90 @@ Change this only if you know what you are doing.',
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_free_tag'
+  // Exported field_instance:
+  // 'node-openpublish_article-field_editor_campaign_reference'.
+  $field_instances['node-openpublish_article-field_editor_campaign_reference'] = array(
+    'bundle' => 'openpublish_article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'Please choose the editorial campaign you would like to link this content. This content will be pulled into the campaign.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 14,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_editor_campaign_reference',
+    'label' => 'Campaign Content Link',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-openpublish_article-field_free_tag'.
   $field_instances['node-openpublish_article-field_free_tag'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -977,11 +1154,12 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_inline_replacements'
+  // Exported field_instance:
+  // 'node-openpublish_article-field_inline_replacements'.
   $field_instances['node-openpublish_article-field_inline_replacements'] = array(
     'bundle' => 'openpublish_article',
     'deleted' => 0,
@@ -991,7 +1169,7 @@ Change this only if you know what you are doing.',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 21,
+        'weight' => 22,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1061,7 +1239,11 @@ Change this only if you know what you are doing.',
       'settings' => array(
         'fields' => array(),
         'type_settings' => array(
+          'allow_new' => 1,
           'delete_references' => 1,
+          'label_plural' => 'entities',
+          'label_singular' => 'entity',
+          'override_labels' => 0,
         ),
       ),
       'type' => 'inline_entity_form',
@@ -1069,7 +1251,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_main_image_format'
+  // Exported field_instance:
+  // 'node-openpublish_article-field_main_image_format'.
   $field_instances['node-openpublish_article-field_main_image_format'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => array(
@@ -1085,7 +1268,7 @@ Change this only if you know what you are doing.',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 22,
+        'weight' => 23,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1159,7 +1342,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_main_img_to_thumb'
+  // Exported field_instance:
+  // 'node-openpublish_article-field_main_img_to_thumb'.
   $field_instances['node-openpublish_article-field_main_img_to_thumb'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => array(
@@ -1175,7 +1359,7 @@ Change this only if you know what you are doing.',
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 29,
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1244,7 +1428,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_newsletter_feed_exclude'
+  // Exported field_instance:
+  // 'node-openpublish_article-field_newsletter_feed_exclude'.
   $field_instances['node-openpublish_article-field_newsletter_feed_exclude'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -1255,7 +1440,7 @@ Change this only if you know what you are doing.',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 15,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1326,11 +1511,11 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_permanent_title'
+  // Exported field_instance: 'node-openpublish_article-field_permanent_title'.
   $field_instances['node-openpublish_article-field_permanent_title'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -1341,7 +1526,7 @@ Change this only if you know what you are doing.',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 16,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1453,7 +1638,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_promo_headline'
+  // Exported field_instance: 'node-openpublish_article-field_promo_headline'.
   $field_instances['node-openpublish_article-field_promo_headline'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -1464,7 +1649,7 @@ Change this only if you know what you are doing.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 18,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1546,7 +1731,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_promo_short_headline'
+  // Exported field_instance:
+  // 'node-openpublish_article-field_promo_short_headline'.
   $field_instances['node-openpublish_article-field_promo_short_headline'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -1557,7 +1743,7 @@ Change this only if you know what you are doing.',
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 24,
+        'weight' => 25,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1633,7 +1819,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_promo_text'
+  // Exported field_instance: 'node-openpublish_article-field_promo_text'.
   $field_instances['node-openpublish_article-field_promo_text'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -1644,7 +1830,7 @@ Change this only if you know what you are doing.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 17,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1726,7 +1912,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_related_stories'
+  // Exported field_instance: 'node-openpublish_article-field_related_stories'.
   $field_instances['node-openpublish_article-field_related_stories'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -1818,7 +2004,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_run_date'
+  // Exported field_instance: 'node-openpublish_article-field_run_date'.
   $field_instances['node-openpublish_article-field_run_date'] = array(
     'bundle' => 'openpublish_article',
     'deleted' => 0,
@@ -1835,7 +2021,7 @@ Change this only if you know what you are doing.',
           'multiple_to' => '',
         ),
         'type' => 'date_default',
-        'weight' => 32,
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1915,7 +2101,7 @@ Change this only if you know what you are doing.',
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_series'
+  // Exported field_instance: 'node-openpublish_article-field_series'.
   $field_instances['node-openpublish_article-field_series'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -1926,7 +2112,7 @@ Change this only if you know what you are doing.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 21,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2003,11 +2189,11 @@ Change this only if you know what you are doing.',
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_syndication'
+  // Exported field_instance: 'node-openpublish_article-field_syndication'.
   $field_instances['node-openpublish_article-field_syndication'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -2018,7 +2204,7 @@ Change this only if you know what you are doing.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 25,
+        'weight' => 26,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2089,11 +2275,12 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_tab_action_override'
+  // Exported field_instance:
+  // 'node-openpublish_article-field_tab_action_override'.
   $field_instances['node-openpublish_article-field_tab_action_override'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -2104,7 +2291,7 @@ Change this only if you know what you are doing.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 20,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -2188,7 +2375,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_thumbnail'
+  // Exported field_instance: 'node-openpublish_article-field_thumbnail'.
   $field_instances['node-openpublish_article-field_thumbnail'] = array(
     'bundle' => 'openpublish_article',
     'deleted' => 0,
@@ -2198,7 +2385,7 @@ Change this only if you know what you are doing.',
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 13,
+        'weight' => 19,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -2311,7 +2498,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_topic'
+  // Exported field_instance: 'node-openpublish_article-field_topic'.
   $field_instances['node-openpublish_article-field_topic'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -2405,7 +2592,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_article-field_topic_box'
+  // Exported field_instance: 'node-openpublish_article-field_topic_box'.
   $field_instances['node-openpublish_article-field_topic_box'] = array(
     'bundle' => 'openpublish_article',
     'default_value' => NULL,
@@ -2417,7 +2604,7 @@ Change this only if you know what you are doing.',
         'module' => 'taxonomy',
         'settings' => array(),
         'type' => 'taxonomy_term_reference_link',
-        'weight' => 28,
+        'weight' => 8,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -2490,7 +2677,7 @@ Change this only if you know what you are doing.',
         'track_list' => 0,
       ),
       'type' => 'term_reference_tree',
-      'weight' => 21,
+      'weight' => 15,
     ),
   );
 
@@ -2502,17 +2689,21 @@ Change this only if you know what you are doing.',
   t('Author(s)');
   t('Autoload Content');
   t('Body');
+  t('Campaign Content Link');
   t('DFP Creative ID');
   t('DFP Creative ID will automatically generate if this node references a Sponsored term with a DFP ID.
 Change this only if you know what you are doing.');
   t('Due Date');
   t('Free Tag');
+  t('I don\'t wish to add the campaign promo sidebar inline replacement to this piece of content.');
+  t('If you tag this content with an editorial campaign, it is encouraged to add the campaign promo sidebar inline replacement.');
   t('Inline Replacements');
   t('Limited at 70 characters');
   t('Main Image');
   t('Main Image Format');
   t('Make this my thumbnail image.');
   t('Newsletters');
+  t('Please choose the editorial campaign you would like to link this content. This content will be pulled into the campaign.');
   t('Promo Headline');
   t('Promo Short Headline');
   t('Promo Text');

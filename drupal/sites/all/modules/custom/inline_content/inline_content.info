@@ -22,6 +22,9 @@ files[] = handlers/InlineContentIframeEmbed.class.php
 files[] = handlers/InlineContentVideo.class.php
 files[] = handlers/InlineContentVideoPlaylist.class.php
 files[] = handlers/InlineContentAmbientVideo.class.php
+files[] = handlers/InlineContentCampaignPromo.class.php
+
+
 
 dependencies[] = inline_entity_form
 dependencies[] = entity

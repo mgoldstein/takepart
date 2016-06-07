@@ -168,6 +168,85 @@ blockquote.pullquote {
   margin-bottom: 12px;
   text-align: center;
 }
+.inline-interactive-campaign-promo {
+  .stories-item-1,
+  .stories-item-2 {
+      display: none;
+  }
+  width: 100%;
+  @include breakpoint($breakpoint-tablet) {
+    .stories-item-1,
+    .stories-item-2 {
+      display: block;
+    }
+    width: 244px;
+    float: left;
+    margin-right: 30px;
+  }
+  img {
+    width: 100%;
+    @include breakpoint($breakpoint-tablet) {
+      width: 211px;
+    }
+  }
+  h4, h3 {
+    padding: 0;
+    margin: 0;
+  }
+  .stories-header {
+    color: #FFFFFF;
+    padding: 28px 23px;
+    a {
+      color: #FFFFFF;
+    }
+    .campaign-description {
+      font-size: 16px;
+      margin-bottom: 0;
+      line-height: 24px;
+    }
+  }
+  .stories-wrapper {
+    padding: 22px 15px;
+    p {
+      margin-top: 13px;
+      font-size: 16px;
+      line-height: 24px;
+    }
+    a,
+    a:hover {
+      color: #3A383A;
+      font-family: $primary-sans-font;
+      font-weight: bold;
+    }
+  }
+  .stories-footer {
+    text-align: center;
+    padding: 25px 0;
+    a {
+      color: #FFFFFF;
+      font-family: $primary-sans-font;
+      font-weight: bold;
+    }
+    a:after {
+      content: '\2192';
+      padding-left: 3px;
+      font-size: 16px;
+    }
+  }
+}
+.node-feature-article .inline-interactive-campaign-promo {
+  @include breakpoint($breakpoint-tablet) {
+    max-width: 768px;
+    width: auto;
+    float: none;
+    margin: 0 auto;
+    .inline-campaign-promo-wrapper {
+      width: 244px;
+      margin: 10px 25px;
+      float: left;
+    }
+  }
+}
 .align-center {
   .inline-feature-image {
     img {
