@@ -8,7 +8,7 @@
 <div class="inline-interactive-campaign-promo">
   <div class="stories-header" style="background-color: <?php print $campaign_info['bg_color']; ?>">
     <h3 class="campaign-title">
-      <?php print l($campaign_info['title'], $campaign_info['url']); ?>
+      <?php print l($campaign_info['title'], $campaign_info['url'], array('attributes' => array('class' => array('stories-header-link')))); ?>
     </h3>
     <h4>
       BIG ISSUE vol. <?php print $campaign_info['vol']; ?>
