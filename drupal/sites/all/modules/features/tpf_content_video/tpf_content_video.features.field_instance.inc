@@ -121,7 +121,7 @@ function tpf_content_video_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -446,7 +446,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -658,7 +658,7 @@ function tpf_content_video_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -1000,7 +1000,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 20,
+      'weight' => 19,
     ),
   );
 
@@ -1436,7 +1436,7 @@ Change this only if you know what you are doing.',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -1577,7 +1577,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -1671,7 +1671,7 @@ Change this only if you know what you are doing.',
     'entity_type' => 'node',
     'field_name' => 'field_promo_headline',
     'label' => 'Promo Headline',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -2012,7 +2012,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -2342,7 +2342,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_onoff',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -2450,7 +2450,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -2942,7 +2942,7 @@ Change this only if you know what you are doing.',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -3096,7 +3096,7 @@ Change this only if you know what you are doing.',
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -3489,7 +3489,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -3701,7 +3701,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -4162,6 +4162,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
+<<<<<<< HEAD
   // Exported field_instance:
   // 'node-video_playlist-field_editor_campaign_reference'.
   $field_instances['node-video_playlist-field_editor_campaign_reference'] = array(
@@ -4266,6 +4267,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
+=======
+>>>>>>> develop
   // Exported field_instance: 'node-video_playlist-field_free_tag'.
   $field_instances['node-video_playlist-field_free_tag'] = array(
     'bundle' => 'video_playlist',
@@ -4481,7 +4484,7 @@ Change this only if you know what you are doing.',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -4622,7 +4625,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -5154,7 +5157,7 @@ Change this only if you know what you are doing.',
     'entity_type' => 'node',
     'field_name' => 'field_promo_headline',
     'label' => 'Promo Headline',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -5597,7 +5600,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -6144,7 +6147,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 

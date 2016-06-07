@@ -24,6 +24,27 @@
 }
 </style>
 <?php } ?>
+<!-- This sets the bg for parallax field
+<?php if($variables['parallax_bg']) { ?>
+<style>
+<?php foreach ($variables['parallax_bg'] as $key => $parallax_bg) { ?>
+  .<?php print ($variables['background_class'] . ' .parallax-' . $key); ?> {
+    <?php print $parallax_bg['background_image_mobile']; ?>
+  }
+  @media only screen and (min-width: 728px) {
+    .<?php print ($variables['background_class'] . ' .parallax-' . $key); ?> {
+      <?php print $parallax_bg['background_image_tablet']; ?>
+    }
+  }
+  @media only screen and (min-width: 980px) {
+    .<?php print ($variables['background_class'] . ' .parallax-' . $key); ?> {
+      <?php print $parallax_bg['background_image_desktop']; ?>
+    }
+  }
+  <?php } ?>
+  </style>
+<?php } ?>
+ -->
 <div class="card campaign-1col <?php print implode(' ', $variables['classes_array']) ?>" style="<?php print implode(' ', $variables['styles']); ?> <?php  print $variables['attributes']; ?>">
   <?php print render($title_prefix); ?>
   <article class="card-inner<?php if(isset($variables['slim_text'])){ print " ".$variables['slim_text']; }?>">
@@ -40,4 +61,9 @@
       <?php print $variables['center']; ?>
     </div>
   </article>
-</div>
+<!--   <?php foreach ($variables['parallax'] as $parallax_class): ?>
+    <div class = "parallax <?php print $parallax_class; ?>">
+    </div>
+  <?php endforeach; ?> -->
+<!-- </div> -->
+  </div>

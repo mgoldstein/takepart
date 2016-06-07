@@ -10,7 +10,7 @@
 function tpf_content_photo_gallery_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-body'
+  // Exported field_instance: 'node-openpublish_photo_gallery-body'.
   $field_instances['node-openpublish_photo_gallery-body'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -112,12 +112,12 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 7,
+      'weight' => 8,
     ),
     'widget_type' => 'text_textarea_with_summary',
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_admin_tag'
+  // Exported field_instance: 'node-openpublish_photo_gallery-field_admin_tag'.
   $field_instances['node-openpublish_photo_gallery-field_admin_tag'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -216,7 +216,8 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_assigned_editor'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_assigned_editor'.
   $field_instances['node-openpublish_photo_gallery-field_assigned_editor'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -311,7 +312,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_author'
+  // Exported field_instance: 'node-openpublish_photo_gallery-field_author'.
   $field_instances['node-openpublish_photo_gallery-field_author'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -413,7 +414,8 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_dfp_creative_id'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_dfp_creative_id'.
   $field_instances['node-openpublish_photo_gallery-field_dfp_creative_id'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -540,11 +542,12 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 72,
+      'weight' => 9,
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_display_cover'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_display_cover'.
   $field_instances['node-openpublish_photo_gallery-field_display_cover'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => array(
@@ -647,7 +650,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_display_tab_banner'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_display_tab_banner'.
   $field_instances['node-openpublish_photo_gallery-field_display_tab_banner'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => array(
@@ -750,7 +754,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_due_date'
+  // Exported field_instance: 'node-openpublish_photo_gallery-field_due_date'.
   $field_instances['node-openpublish_photo_gallery-field_due_date'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'deleted' => 0,
@@ -858,7 +862,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_free_tag'
+  // Exported field_instance: 'node-openpublish_photo_gallery-field_free_tag'.
   $field_instances['node-openpublish_photo_gallery-field_free_tag'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -960,7 +964,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_gallery_images'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_gallery_images'.
   $field_instances['node-openpublish_photo_gallery-field_gallery_images'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'deleted' => 0,
@@ -1079,7 +1084,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_gallery_main_image'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_gallery_main_image'.
   $field_instances['node-openpublish_photo_gallery-field_gallery_main_image'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'deleted' => 0,
@@ -1187,7 +1193,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_inline_replacements'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_inline_replacements'.
   $field_instances['node-openpublish_photo_gallery-field_inline_replacements'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'deleted' => 0,
@@ -1286,11 +1293,12 @@ Change this only if you know what you are doing.',
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_main_img_to_thumb'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_main_img_to_thumb'.
   $field_instances['node-openpublish_photo_gallery-field_main_img_to_thumb'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => array(
@@ -1387,7 +1395,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_permanent_title'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_permanent_title'.
   $field_instances['node-openpublish_photo_gallery-field_permanent_title'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -1518,11 +1527,12 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_photo_gallery_slideshow'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_photo_gallery_slideshow'.
   $field_instances['node-openpublish_photo_gallery-field_photo_gallery_slideshow'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -1623,11 +1633,12 @@ Change this only if you know what you are doing.',
         'widget_setting' => 'bob',
       ),
       'type' => 'views_field',
-      'weight' => 12,
+      'weight' => 14,
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_promo_headline'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_promo_headline'.
   $field_instances['node-openpublish_photo_gallery-field_promo_headline'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -1711,7 +1722,7 @@ Change this only if you know what you are doing.',
     'entity_type' => 'node',
     'field_name' => 'field_promo_headline',
     'label' => 'Promo Headline',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -1727,7 +1738,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_promo_short_headline'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_promo_short_headline'.
   $field_instances['node-openpublish_photo_gallery-field_promo_short_headline'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -1827,7 +1839,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_promo_text'
+  // Exported field_instance: 'node-openpublish_photo_gallery-field_promo_text'.
   $field_instances['node-openpublish_photo_gallery-field_promo_text'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -1927,7 +1939,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_related_stories'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_related_stories'.
   $field_instances['node-openpublish_photo_gallery-field_related_stories'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -2029,11 +2042,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_run_date'
+  // Exported field_instance: 'node-openpublish_photo_gallery-field_run_date'.
   $field_instances['node-openpublish_photo_gallery-field_run_date'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'deleted' => 0,
@@ -2141,7 +2154,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_series'
+  // Exported field_instance: 'node-openpublish_photo_gallery-field_series'.
   $field_instances['node-openpublish_photo_gallery-field_series'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -2240,7 +2253,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_subhead'
+  // Exported field_instance: 'node-openpublish_photo_gallery-field_subhead'.
   $field_instances['node-openpublish_photo_gallery-field_subhead'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -2341,7 +2354,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_tab_action_override'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_tab_action_override'.
   $field_instances['node-openpublish_photo_gallery-field_tab_action_override'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -2439,11 +2453,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 9,
+      'weight' => 11,
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_thumbnail'
+  // Exported field_instance: 'node-openpublish_photo_gallery-field_thumbnail'.
   $field_instances['node-openpublish_photo_gallery-field_thumbnail'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'deleted' => 0,
@@ -2568,11 +2582,11 @@ Change this only if you know what you are doing.',
         'progress_indicator' => 'throbber',
       ),
       'type' => 'media_generic',
-      'weight' => 68,
+      'weight' => 7,
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_topic'
+  // Exported field_instance: 'node-openpublish_photo_gallery-field_topic'.
   $field_instances['node-openpublish_photo_gallery-field_topic'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -2672,7 +2686,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_topic_box'
+  // Exported field_instance: 'node-openpublish_photo_gallery-field_topic_box'.
   $field_instances['node-openpublish_photo_gallery-field_topic_box'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -2773,7 +2787,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_tp_campaign_show_title'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_tp_campaign_show_title'.
   $field_instances['node-openpublish_photo_gallery-field_tp_campaign_show_title'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => array(
@@ -2872,7 +2887,7 @@ Change this only if you know what you are doing.',
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 

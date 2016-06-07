@@ -87,6 +87,7 @@ function tpf_content_campaigns_field_group_info() {
       1 => 'field_campaign_bgw_image',
       2 => 'field_campaign_bg_crop',
       3 => 'field_campaign_bg_image_position',
+      4 => 'field_campaign_bg_parallax',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -147,6 +148,7 @@ function tpf_content_campaigns_field_group_info() {
       1 => 'field_campaign_bgw_image',
       2 => 'field_campaign_bg_crop',
       3 => 'field_campaign_bg_image_position',
+      4 => 'field_campaign_bg_parallax',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -177,6 +179,7 @@ function tpf_content_campaigns_field_group_info() {
       1 => 'field_campaign_bgw_image',
       2 => 'field_campaign_bg_crop',
       3 => 'field_campaign_bg_image_position',
+      4 => 'field_campaign_bg_parallax',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -297,6 +300,7 @@ function tpf_content_campaigns_field_group_info() {
       1 => 'field_campaign_bgw_image',
       2 => 'field_campaign_bg_crop',
       3 => 'field_campaign_bg_image_position',
+      4 => 'field_campaign_bg_parallax',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -467,7 +471,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = 'group_background';
   $field_group->data = array(
     'label' => 'Background Video',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_campaign_bg_video',
       1 => 'field_campaign_bg_video_poster',
@@ -556,8 +560,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background Video',
     'weight' => '12',
     'children' => array(
-      0 => 'field_campaign_bg_video_poster',
-      1 => 'field_campaign_bg_video',
+      0 => 'field_campaign_bg_video',
+      1 => 'field_campaign_bg_video_poster',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -818,8 +822,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_video',
-      3 => 'group_background_image',
+      2 => 'group_background_image',
+      3 => 'group_background_video',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -878,8 +882,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_video',
-      3 => 'group_background_image',
+      2 => 'group_background_image',
+      3 => 'group_background_video',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1187,6 +1191,7 @@ function tpf_content_campaigns_field_group_info() {
       2 => 'field_campaign_iframe_width',
       3 => 'field_campaign_iframe',
       4 => 'field_campaign_iframe_type',
+      5 => 'field_campaign_iframe_full_width',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

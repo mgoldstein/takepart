@@ -48,7 +48,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Autoload Settings',
-    'weight' => '55',
+    'weight' => '21',
     'children' => array(
       0 => 'field_autoload',
     ),
@@ -105,7 +105,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Editorial Info',
-    'weight' => '59',
+    'weight' => '22',
     'children' => array(
       0 => 'field_assigned_editor',
       1 => 'field_due_date',
@@ -165,7 +165,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Playlist Settings',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'field_playlist_filter',
       1 => 'field_playlist_filter_sorting',
@@ -195,7 +195,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '9',
+    'weight' => '0',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',
@@ -225,7 +225,7 @@ function tpf_content_video_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '10',
+    'weight' => '0',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_short_headline',

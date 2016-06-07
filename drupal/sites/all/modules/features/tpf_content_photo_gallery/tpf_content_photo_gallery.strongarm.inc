@@ -132,22 +132,22 @@ function tpf_content_photo_gallery_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'path' => array(
-          'weight' => '9',
-        ),
-        'xmlsitemap' => array(
-          'weight' => '10',
-        ),
-        'metatags' => array(
-          'weight' => '13',
-        ),
-        'redirect' => array(
           'weight' => '11',
         ),
+        'xmlsitemap' => array(
+          'weight' => '12',
+        ),
+        'metatags' => array(
+          'weight' => '15',
+        ),
+        'redirect' => array(
+          'weight' => '13',
+        ),
         'locations' => array(
-          'weight' => '14',
+          'weight' => '16',
         ),
       ),
       'display' => array(),

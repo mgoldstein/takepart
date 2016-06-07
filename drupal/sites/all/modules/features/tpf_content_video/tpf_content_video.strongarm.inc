@@ -175,10 +175,10 @@ function tpf_content_video_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '16',
+          'weight' => '15',
         ),
         'title' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'path' => array(
           'weight' => '12',
@@ -187,10 +187,10 @@ function tpf_content_video_strongarm() {
           'weight' => '13',
         ),
         'xmlsitemap' => array(
-          'weight' => '15',
+          'weight' => '14',
         ),
         'locations' => array(
-          'weight' => '17',
+          'weight' => '16',
         ),
       ),
       'display' => array(),
@@ -271,7 +271,7 @@ function tpf_content_video_strongarm() {
           'weight' => '18',
         ),
         'title' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'path' => array(
           'weight' => '14',

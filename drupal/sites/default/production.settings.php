@@ -37,10 +37,26 @@ $conf['search_api_solr_overrides'] = array(
   'takepart_solr_production' => array(
     'name' => t('TakePart SOLR (Production settings)'),
     'options' => array(
-      'host' => 'prod-solr.takepart.com', // new host
-      'port' => 8080,
-      'path' => '/solr/takepart_core',
+	 'host' => 'prod-solr.takepart.com', // new host
+	 'port' => 8080,
+	 'path' => '/solr/takepart_core',
     ),
   ),
 );
-// $conf['search_api_page_block_delta'] = 3;
+
+// Elasticache
+$conf['cache_backends'][] = 'sites/all/modules/contrib/memcache/memcache.inc';
+$conf += array(
+  'cache_default_class' => 'MemCacheDrupal',
+  'cache_class_cache_form' => 'DrupalDatabaseCache',
+  'page_cache_without_database' => TRUE,
+  'page_cache_invoke_hooks' => FALSE,
+  'lock_inc' => 'sites/all/modules/contrib/memcache/memcache-lock.inc',
+  'memcache_stampede_protection' => TRUE,
+  'memcache_servers' => array(
+    'prod-memcached.bxiq81.cfg.use1.cache.amazonaws.com:11211' => 'default',
+  ),
+  'memcache_key_prefix' => 'prod',
+);
+
+$conf['campaign_css_s3_path'] = 'https://s3.amazonaws.com/takepart-campaigns/prod/styles/';

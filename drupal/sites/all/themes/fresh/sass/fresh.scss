@@ -343,6 +343,9 @@ article {
 .video_playlist-wrapper,
 .article-wrapper,
 .video-wrapper {
-  max-width: 970px;
-  margin: 0 auto;
+  .fresh-inner-content-wrapper{
+    max-width: 970px;
+    margin: 0 auto;
+  }
+  max-width: 100%;
 }

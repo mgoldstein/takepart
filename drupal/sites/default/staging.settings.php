@@ -14,7 +14,7 @@ $conf += array(
   'takeaction_domain' => 'stage-takeaction.takepart.com',
   'services_domain' => 'stage-api.takepart.com',
   'tapembed_domain' => 'stage-tapembed.takepart.com',
-  );
+);
 
 // Log signups for debugging
 $conf += array('pm_signup_log' => TRUE);
@@ -35,11 +35,27 @@ $conf['search_api_solr_overrides'] = array(
   'takepart_solr_production' => array(
     'name' => t('TakePart SOLR Production (Stage settings)'),
     'options' => array(
-      //'host' => '10.1.15.50', // old host
+	 //'host' => '10.1.15.50', // old host
 	 'host' => '10.1.15.30', // new host
-      'port' => 8080,
-      'path' => '/solr/takepart_core',
+	 'port' => 8080,
+	 'path' => '/solr/takepart_core',
     ),
   ),
 );
-// $conf['search_api_page_block_delta'] = 3;
+
+// Elasticache
+$conf['cache_backends'][] = 'sites/all/modules/contrib/memcache/memcache.inc';
+$conf += array(
+  'cache_default_class' => 'MemCacheDrupal',
+  'cache_class_cache_form' => 'DrupalDatabaseCache',
+  'page_cache_without_database' => TRUE,
+  'page_cache_invoke_hooks' => FALSE,
+  'lock_inc' => 'sites/all/modules/contrib/memcache/memcache-lock.inc',
+  'memcache_stampede_protection' => TRUE,
+  'memcache_servers' => array(
+    'stage-memcached.bxiq81.cfg.use1.cache.amazonaws.com:11211' => 'default',
+  ),
+  'memcache_key_prefix' => 'stage',
+);
+
+$conf['campaign_css_s3_path'] = 'https://s3.amazonaws.com/takepart-campaigns/dev/styles/';

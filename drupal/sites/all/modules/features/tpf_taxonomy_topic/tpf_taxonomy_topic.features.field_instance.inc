@@ -10,7 +10,8 @@
 function tpf_taxonomy_topic_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'field_collection_item-field_promo_content_collection-field_promo_content'
+  // Exported field_instance:
+  // 'field_collection_item-field_promo_content_collection-field_promo_content'.
   $field_instances['field_collection_item-field_promo_content_collection-field_promo_content'] = array(
     'bundle' => 'field_promo_content_collection',
     'default_value' => NULL,
@@ -48,7 +49,8 @@ function tpf_taxonomy_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_promo_content_collection-field_promo_headline'
+  // Exported field_instance:
+  // 'field_collection_item-field_promo_content_collection-field_promo_headline'.
   $field_instances['field_collection_item-field_promo_content_collection-field_promo_headline'] = array(
     'bundle' => 'field_promo_content_collection',
     'default_value' => NULL,
@@ -68,6 +70,40 @@ function tpf_taxonomy_topic_field_default_field_instances() {
     'label' => 'Promo Headline',
     'required' => 0,
     'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'campaign_full_html' => 'campaign_full_html',
+          'full_html' => 'full_html',
+          'limited_html' => 'limited_html',
+          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'campaign_full_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'limited_html' => array(
+              'weight' => 0,
+            ),
+            'no_wysiwg_full_html' => array(
+              'weight' => 0,
+            ),
+            'php_code' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
       'text_processing' => 0,
       'user_register_form' => FALSE,
     ),
@@ -75,6 +111,8 @@ function tpf_taxonomy_topic_field_default_field_instances() {
       'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'size' => 60,
       ),
       'type' => 'text_textfield',
@@ -82,7 +120,8 @@ function tpf_taxonomy_topic_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_promo_content_collection-field_promo_label'
+  // Exported field_instance:
+  // 'field_collection_item-field_promo_content_collection-field_promo_label'.
   $field_instances['field_collection_item-field_promo_content_collection-field_promo_label'] = array(
     'bundle' => 'field_promo_content_collection',
     'default_value' => NULL,
@@ -117,7 +156,8 @@ Text that labels what the promo is ("Most Popular"  "Trending").',
     ),
   );
 
-  // Exported field_instance: 'field_collection_item-field_promo_content_collection-field_promo_thumbnail'
+  // Exported field_instance:
+  // 'field_collection_item-field_promo_content_collection-field_promo_thumbnail'.
   $field_instances['field_collection_item-field_promo_content_collection-field_promo_thumbnail'] = array(
     'bundle' => 'field_promo_content_collection',
     'deleted' => 0,
@@ -161,7 +201,7 @@ Text that labels what the promo is ("Most Popular"  "Trending").',
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-topic-field_html_title'
+  // Exported field_instance: 'taxonomy_term-topic-field_html_title'.
   $field_instances['taxonomy_term-topic-field_html_title'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -201,7 +241,8 @@ Text that labels what the promo is ("Most Popular"  "Trending").',
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-topic-field_promo_content_collection'
+  // Exported field_instance:
+  // 'taxonomy_term-topic-field_promo_content_collection'.
   $field_instances['taxonomy_term-topic-field_promo_content_collection'] = array(
     'bundle' => 'topic',
     'default_value' => NULL,
@@ -239,7 +280,7 @@ Text that labels what the promo is ("Most Popular"  "Trending").',
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-topic-field_topic_context'
+  // Exported field_instance: 'taxonomy_term-topic-field_topic_context'.
   $field_instances['taxonomy_term-topic-field_topic_context'] = array(
     'bundle' => 'topic',
     'default_value' => array(
@@ -305,7 +346,7 @@ Text that labels what the promo is ("Most Popular"  "Trending").',
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-topic_box-field_topic_box_image'
+  // Exported field_instance: 'taxonomy_term-topic_box-field_topic_box_image'.
   $field_instances['taxonomy_term-topic_box-field_topic_box_image'] = array(
     'bundle' => 'topic_box',
     'deleted' => 0,
@@ -350,7 +391,7 @@ Text that labels what the promo is ("Most Popular"  "Trending").',
     ),
   );
 
-  // Exported field_instance: 'taxonomy_term-topic_box-field_topic_box_link'
+  // Exported field_instance: 'taxonomy_term-topic_box-field_topic_box_link'.
   $field_instances['taxonomy_term-topic_box-field_topic_box_link'] = array(
     'bundle' => 'topic_box',
     'default_value' => NULL,

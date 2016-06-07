@@ -404,7 +404,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
@@ -618,7 +618,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
@@ -798,7 +798,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -1750,7 +1750,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -1831,7 +1831,7 @@ Change this only if you know what you are doing.',
     'entity_type' => 'node',
     'field_name' => 'field_promo_headline',
     'label' => 'Promo Headline',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'text_processing' => 0,
       'user_register_form' => FALSE,
@@ -2603,7 +2603,7 @@ Change this only if you know what you are doing.',
         'view' => 'media_views_widget_default--default',
       ),
       'type' => 'media_generic',
-      'weight' => 21,
+      'weight' => 9,
     ),
   );
 

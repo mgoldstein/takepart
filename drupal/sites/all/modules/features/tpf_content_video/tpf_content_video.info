@@ -33,6 +33,7 @@ dependencies[] = tp_videos
 dependencies[] = tpf_content_field_bases
 dependencies[] = tpf_display_views
 dependencies[] = tpf_feature_newsletter_curation
+dependencies[] = user_reference
 features[ctools][] = field_group:field_group:1
 features[ctools][] = pm_jwplayer:pm_jwplayer_presets:1
 features[ctools][] = strongarm:strongarm:1

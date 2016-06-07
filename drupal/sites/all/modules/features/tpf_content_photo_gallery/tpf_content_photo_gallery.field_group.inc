@@ -48,11 +48,11 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Editorial Info',
-    'weight' => '15',
+    'weight' => '17',
     'children' => array(
-      0 => 'field_due_date',
-      1 => 'field_run_date',
-      2 => 'field_assigned_editor',
+      0 => 'field_assigned_editor',
+      1 => 'field_due_date',
+      2 => 'field_run_date',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -78,17 +78,19 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Main',
-    'weight' => '4',
+    'weight' => '5',
     'children' => array(
       0 => 'body',
       1 => 'field_author',
       2 => 'field_gallery_main_image',
-      3 => 'field_subhead',
-      4 => 'field_tab_action_override',
-      5 => 'field_display_cover',
-      6 => 'field_inline_replacements',
-      7 => 'field_display_tab_banner',
-      8 => 'field_main_img_to_thumb',
+      3 => 'field_thumbnail',
+      4 => 'field_subhead',
+      5 => 'field_tab_action_override',
+      6 => 'field_display_cover',
+      7 => 'field_inline_replacements',
+      8 => 'field_display_tab_banner',
+      9 => 'field_related_stories',
+      10 => 'field_main_img_to_thumb',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -114,7 +116,7 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Photos',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_gallery_images',
     ),
@@ -142,21 +144,20 @@ function tpf_content_photo_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '7',
+    'weight' => '0',
     'children' => array(
       0 => 'field_promo_headline',
       1 => 'field_promo_text',
-      2 => 'field_thumbnail',
-      3 => 'field_promo_short_headline',
-      4 => 'field_newsletter_feed_exclude',
-      5 => 'field_dfp_creative_id',
+      2 => 'field_promo_short_headline',
     ),
-    'format_type' => 'tab',
+    'format_type' => 'fieldset',
     'format_settings' => array(
-      'formatter' => 'closed',
+      'formatter' => 'collapsible',
       'instance_settings' => array(
+        'description' => '',
         'classes' => '',
         'required_fields' => 1,
+        'id' => '',
       ),
     ),
   );

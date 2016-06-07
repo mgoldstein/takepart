@@ -164,13 +164,11 @@
    * Sticky Share Left Align
    */
   window.tp_shareLeftAlign = function() {
-    if(window.featureFirst) {
-      var leftAlign = (((window.innerWidth - 780)/2) - $('.sticky-wrapper aside').width()) - 35;
-      if(leftAlign > 0) {
-        $('.sticky-wrapper').css('left', leftAlign);
-      } else {
-        $('.sticky-wrapper').css('left', 0);
-      }
+    var leftAlign = (((window.innerWidth - 780)/2) - $('.sticky-wrapper aside').width()) - 35;
+    if(leftAlign > 0) {
+      $('.sticky-wrapper').css('left', leftAlign);
+    } else {
+      $('.sticky-wrapper').css('left', 0);
     }
   };
 
@@ -222,8 +220,8 @@
           }
           //Hide the share between moreon section and the top of the next article
           var moreontop = $(this).find('.tp-more-on-takepart').offset().top;
-          var arttop = $(this).parent().offset().top;
-          var artbot = arttop + $(this).parent().height() + 15;
+          var arttop = $(this).parents('.fresh-content-wrapper').offset().top;
+          var artbot = arttop + $(this).parents('.fresh-content-wrapper').height() + 15;
           //Showing after it passes the first section
           var artbegin = $(this).find('.section').offset().top - 15;
           //Checking the bottom of the sticky share first and then the top of the

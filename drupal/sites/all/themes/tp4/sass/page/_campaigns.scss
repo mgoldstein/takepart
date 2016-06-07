@@ -861,6 +861,15 @@ body.campaign-display{
             padding-bottom: 0;
         }
     }
+    .card.parallax-bg {
+        background-attachment: fixed;
+        @media only screen and (max-width: 980px) {
+            min-height: inherit !important;
+            background-size: inherit !important;
+        }
+    }
+
+
     .card video.background-video{
       width: 100%;
       position: absolute;
@@ -964,6 +973,14 @@ body.campaign-display{
             }
         }
     }
+    .card.node-campaign-card-iframe.full-width-iframe {
+        padding-bottom: 0;
+        .card-inner {
+            max-width: 100%;
+            padding: 0;
+        }
+    }
+
     /* TAP Widget */
     .node-campaign-card-tap-widget {
         .left, .right{
@@ -1561,6 +1578,7 @@ body.campaign-display{
     @include breakpoint($breakpoint-desktop){
     .has-back-to-top {
         .field-name-field-campaign-back-to-top {
+            display: none;
             position: fixed;
             bottom: 25px;
             right: 25px;

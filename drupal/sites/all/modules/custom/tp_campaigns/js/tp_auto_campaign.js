@@ -59,6 +59,15 @@
      $('.node-campaign-card-multi-column').not('.animated').each(function() {
        multiColumnAnimation($(this));
      });
+    //Display back-to-top after 350px scroll
+    if ($('.has-back-to-top').length != 0 && $('.has-back-to-top.visible').length == 0) {
+      var y = $(window).scrollTop();
+      if (y > 350) {
+        $('.field-name-field-campaign-back-to-top').fadeIn();
+        $('.has-back-to-top').addClass('visible');
+      }
+    }
+
 
     });
 

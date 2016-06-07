@@ -26,6 +26,15 @@ function takepart_facebookapis_init_code($app_id) {
   $code = <<<EOC
   <div id="fb-root"></div>
   <script type="text/javascript">
+   function triggerFbAddComment(response) {
+      var fbAddComment = new CustomEvent( 'fbAddComment', { detail: response } );
+      if ( typeof DTM != "undefined" )
+        DTM.fbAddCommentResponse = response;
+
+      if ( typeof response != "undefined" && response.message )
+        document.body.dispatchEvent( fbAddComment );
+    }
+
     window.fbAsyncInit = function() {
       FB.init({
         appId: '{$app_id}',
@@ -34,6 +43,9 @@ function takepart_facebookapis_init_code($app_id) {
         cookie: true,
 	   xfbml: true
       });
+
+    FB.Event.subscribe('comment.create', triggerFbAddComment );
+
     };
 
     (function(d, s, id){
