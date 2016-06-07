@@ -174,7 +174,7 @@ blockquote.pullquote {
       display: none;
   }
   width: 100%;
-  @include breakpoint($breakpoint-phablet) {
+  @include breakpoint($breakpoint-tablet) {
     .stories-item-1,
     .stories-item-2 {
       display: block;
@@ -185,7 +185,7 @@ blockquote.pullquote {
   }
   img {
     width: 100%;
-    @include breakpoint($breakpoint-phablet) {
+    @include breakpoint($breakpoint-tablet) {
       width: 211px;
     }
   }
@@ -215,7 +215,35 @@ blockquote.pullquote {
     a,
     a:hover {
       color: #3A383A;
+      font-family: $primary-sans-font;
       font-weight: bold;
+    }
+  }
+  .stories-footer {
+    text-align: center;
+    padding: 25px 0;
+    a {
+      color: #FFFFFF;
+      font-family: $primary-sans-font;
+      font-weight: bold;
+    }
+    a:after {
+      content: '\2192';
+      padding-left: 3px;
+      font-size: 16px;
+    }
+  }
+}
+.node-feature-article .inline-interactive-campaign-promo {
+  @include breakpoint($breakpoint-tablet) {
+    max-width: 768px;
+    width: auto;
+    float: none;
+    margin: 0 auto;
+    .inline-campaign-promo-wrapper {
+      width: 244px;
+      margin: 10px 25px;
+      float: left;
     }
   }
 }
