@@ -4162,7 +4162,6 @@ Change this only if you know what you are doing.',
     ),
   );
 
-<<<<<<< HEAD
   // Exported field_instance:
   // 'node-video_playlist-field_editor_campaign_reference'.
   $field_instances['node-video_playlist-field_editor_campaign_reference'] = array(
@@ -4267,8 +4266,6 @@ Change this only if you know what you are doing.',
     ),
   );
 
-=======
->>>>>>> develop
   // Exported field_instance: 'node-video_playlist-field_free_tag'.
   $field_instances['node-video_playlist-field_free_tag'] = array(
     'bundle' => 'video_playlist',
