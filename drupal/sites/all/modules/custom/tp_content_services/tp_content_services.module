@@ -99,9 +99,18 @@ function tp_content_services_notify_service($node, $insup = '') {
     $dom = new DOMDocument;
     $dom->loadHTML(mb_convert_encoding($introduction[0]['value'], 'HTML-ENTITIES', 'UTF-8'));
     $ptags = $dom->getElementsByTagName('p');
-    for($i = 0; $i < 3; $i++) {
+    $i = 0;
+    $j = 0;
+    while($j < 3) {
+      error_log('in');
       if(isset($ptags[$i])) {
-        $intro .= '<p>'.$ptags[$i]->nodeValue.'</p>';
+        error_log($ptags[$i]->nodeValue);
+        if(!empty($ptags[$i]->nodeValue) && $ptags[$i]->nodeValue != "\xc2\xa0") {
+          error_log('p');
+          $intro .= '<p>'.$ptags[$i]->nodeValue.'</p>';
+          $j++;
+        }
+        $i++;
       } else {
         break;
       }
