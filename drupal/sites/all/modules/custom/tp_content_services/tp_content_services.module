@@ -122,6 +122,7 @@ function tp_content_services_notify_service($node, $insup = '') {
       "title" => (string)$node->title,
       "publish_date" => (string)$pub_date,
       "published" => (string)$node->status,
+      "description" => $description,
       "tags" => (string)$tags,
       "newsletter_exclude" => (string)$newsletter,
       "introduction" => $intro,
