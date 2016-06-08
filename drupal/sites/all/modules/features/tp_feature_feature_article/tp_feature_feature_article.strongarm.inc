@@ -135,13 +135,13 @@ function tp_feature_feature_article_strongarm() {
           'weight' => '15',
         ),
         'xmlsitemap' => array(
-          'weight' => '16',
-        ),
-        'metatags' => array(
           'weight' => '17',
         ),
+        'metatags' => array(
+          'weight' => '18',
+        ),
         'locations' => array(
-          'weight' => '19',
+          'weight' => '20',
         ),
         'workbench_access' => array(
           'weight' => '0',

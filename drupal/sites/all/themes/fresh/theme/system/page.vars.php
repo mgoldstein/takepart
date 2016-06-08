@@ -11,7 +11,13 @@ function fresh_preprocess_page(&$variables) {
     )),
   'setting');
 
-
+  $data_menu = 'menu-megamenu';
+  if($campaign_content = field_get_items('node', $variables['node'], 'field_editor_campaign_reference')){
+    $camp = node_load($campaign_content[0]['target_id']);
+    if($content_menu = field_get_items('node', $camp, 'field_content_menu')) {
+      $data_menu = $content_menu[0]['value'];
+    }
+  }
   /* Add special mobile menu when nav is transparent */
   if($variables['node'] && $variables['node']->type == 'feature_article'){
 
@@ -21,7 +27,7 @@ function fresh_preprocess_page(&$variables) {
     //Social Icons for mobile
     $mobile_menu = theme('base_social_follow');
     $variables['page']['left_drawer']['social']['#markup'] = '<div class="mobile-menu-header">'. $mobile_menu. '</div>';
-    $menu = drupal_render(menu_tree_output(menu_tree_all_data('menu-megamenu')));
+    $menu = drupal_render(menu_tree_output(menu_tree_all_data($data_menu)));
     $variables['page']['left_drawer']['menu']['#markup'] = '<div class="mobile-menu">'. $menu. '</div>';
 
     //Descriptive Text
@@ -37,10 +43,9 @@ function fresh_preprocess_page(&$variables) {
     $variables['page']['left_drawer']['social']['#markup'] = '<div class="mobile-menu-header">'. $mobile_menu. '</div>';
 
     //Menu
-    $menu = drupal_render(menu_tree_output(menu_tree_all_data('menu-megamenu')));
+    $menu = drupal_render(menu_tree_output(menu_tree_all_data($data_menu)));
     $variables['page']['left_drawer']['menu']['#markup'] = '<div class="mobile-menu">'. $menu. '</div>';
   }
-
   //Header
   $header = theme('base_mobile_header');
   $variables['page']['header']['mobile_menu']['#markup'] = $header;

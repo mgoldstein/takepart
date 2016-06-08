@@ -53,7 +53,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Autoload Settings',
-    'weight' => '22',
+    'weight' => '23',
     'children' => array(
       0 => 'field_autoload',
     ),
@@ -80,7 +80,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Editorial Info',
-    'weight' => '20',
+    'weight' => '22',
     'children' => array(
       0 => 'field_assigned_editor',
       1 => 'field_due_date',
@@ -110,7 +110,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline Replacements',
-    'weight' => '9',
+    'weight' => '8',
     'children' => array(
       0 => 'field_inline_replacements',
     ),
@@ -174,6 +174,8 @@ function tp_feature_feature_article_field_group_info() {
       3 => 'field_topic',
       4 => 'field_sponsored',
       5 => 'field_topic_box',
+      6 => 'field_editor_campaign_reference',
+      7 => 'field_campaign_promo_opt_out',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
