@@ -55,6 +55,9 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
         $cic  = node_load($cid->nid);
         $cic_info[$article_ctr]['title'] = $cic->field_promo_headline['und'][0]['value'];
         $fid = $cic->field_thumbnail['und'][0]['fid'];
+        if(!isset($fid) || empty($fid)) {
+          continue;
+        }
         $cic_thumb = file_load($fid);
         //This image style could differ once we have final designs.
         $cic_info[$article_ctr]['thumbnail'] = image_style_url('inline_thumbnail', $cic_thumb->uri);
@@ -68,16 +71,17 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
       }
     }
     $story_num = count($result['node']);
-    //TODO:Need to determine what to display when this the only node associated with the campaign.
-    if ($story_num > 0) {
-    $markup = theme('inline_content_campaign_promo' , array(
-      'campaign_info' => $campaign_info,
-      'cic_info' => $cic_info
-    ));
-     $content['#replacements'][] = array(
-      '#type' => 'markup',
+
+    //Nothing will show up if there is only 1 node tagged
+    if ($story_num > 1) {
+      $markup = theme('inline_content_campaign_promo' , array(
+        'campaign_info' => $campaign_info,
+        'cic_info' => $cic_info
+      ));
+      $content['#replacements'][] = array(
+        '#type' => 'markup',
         '#markup' => $markup,
-     );
+      );
     }
 
     return $content;
