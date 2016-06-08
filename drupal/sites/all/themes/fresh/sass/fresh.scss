@@ -168,6 +168,7 @@ blockquote.pullquote {
   margin-bottom: 12px;
   text-align: center;
 }
+
 .inline-interactive-campaign-promo {
   .stories-item-1,
   .stories-item-2 {
@@ -231,19 +232,6 @@ blockquote.pullquote {
       content: '\2192';
       padding-left: 3px;
       font-size: 16px;
-    }
-  }
-}
-.node-feature-article .inline-interactive-campaign-promo {
-  @include breakpoint($breakpoint-tablet) {
-    max-width: 768px;
-    width: auto;
-    float: none;
-    margin: 0 auto;
-    .inline-campaign-promo-wrapper {
-      width: 244px;
-      margin: 10px 25px;
-      float: left;
     }
   }
 }
