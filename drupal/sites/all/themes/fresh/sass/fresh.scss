@@ -204,7 +204,7 @@ blockquote.pullquote {
   }
   .stories-header {
     color: #FFFFFF;
-    padding: 25px 20px 20px 20px;
+    padding: 20px;
     border-top-right-radius: 2px;
     border-top-left-radius: 2px;
     a {
@@ -243,6 +243,9 @@ blockquote.pullquote {
       color: #FFFFFF;
       font-family: $primary-sans-font;
       font-weight: bold;
+      &:hover {
+        text-decoration: none;
+      }
     }
     a:after {
       content: '\2192';
