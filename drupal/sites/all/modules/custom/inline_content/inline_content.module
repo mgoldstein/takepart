@@ -86,7 +86,7 @@ class InlineContentFormController extends EntityInlineEntityFormController {
      if ($replacement->type == 'campaign_promo') {
       $entity_form['label'] = array(
         '#type' => 'markup',
-        '#markup' => '<h3>Campaign Promo SideBar</h3>'
+        '#markup' => '<h3>Campaign Promo Sidebar</h3>'
       );
     }
 
@@ -374,7 +374,7 @@ function inline_content_replacement_types() {
   $types = array();
 
   $types['campaign_promo'] = array(
-    'label' => t('Campaign Promo SideBar'),
+    'label' => t('Campaign Promo Sidebar'),
     'description' => t('Left aligned campaign promo sidebar.'),
     'controller' => 'InlineContentCampaignPromo',
   );

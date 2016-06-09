@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the TakePart Field Bases feature.
  */
+
+include_once 'tpf_content_field_bases.features.inc';

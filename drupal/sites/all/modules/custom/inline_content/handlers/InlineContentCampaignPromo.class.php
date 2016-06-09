@@ -12,7 +12,7 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
   public function updateLabel($replacement) {
 
     // Format the label.
-    $replacement->label = t('Campaign Promo SideBar');
+    $replacement->label = t('Campaign Promo Sidebar');
   }
 
   /**

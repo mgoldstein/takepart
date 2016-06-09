@@ -170,6 +170,7 @@ blockquote.pullquote {
 }
 
 .inline-interactive-campaign-promo {
+  margin: 0 30px 20px 0;
   .stories-item-1,
   .stories-item-2 {
       display: none;
@@ -188,15 +189,24 @@ blockquote.pullquote {
     width: 100%;
     @include breakpoint($breakpoint-tablet) {
       width: 211px;
+      height: 125px;
     }
   }
   h4, h3 {
     padding: 0;
     margin: 0;
+    span.volume {
+      font-weight: 100;
+    }
+  }
+  h3.campaign-title {
+    text-transform: uppercase;
   }
   .stories-header {
     color: #FFFFFF;
-    padding: 28px 23px;
+    padding: 25px 20px 20px 20px;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 2px;
     a {
       color: #FFFFFF;
     }
@@ -207,11 +217,14 @@ blockquote.pullquote {
     }
   }
   .stories-wrapper {
-    padding: 22px 15px;
+    .stories-item  {
+      padding-bottom: 15px;
+    }
+    padding: 22px 15px 0px 15px;
     p {
       margin-top: 13px;
-      font-size: 16px;
-      line-height: 24px;
+      font-size: 14px;
+      line-height: 20px;
     }
     a,
     a:hover {
@@ -222,8 +235,11 @@ blockquote.pullquote {
   }
   .stories-footer {
     text-align: center;
-    padding: 25px 0;
+    padding: 20px 0;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
     a {
+      font-size: 16px;
       color: #FFFFFF;
       font-family: $primary-sans-font;
       font-weight: bold;
