@@ -189,7 +189,7 @@ blockquote.pullquote {
     width: 100%;
     @include breakpoint($breakpoint-tablet) {
       width: 211px;
-      height: 120px;
+      height: 125px;
     }
   }
   h4, h3 {
@@ -217,11 +217,14 @@ blockquote.pullquote {
     }
   }
   .stories-wrapper {
-    padding: 22px 15px 13px 15px;
+    .stories-item  {
+      padding-bottom: 15px;
+    }
+    padding: 22px 15px 0px 15px;
     p {
       margin-top: 13px;
       font-size: 14px;
-      line-height: 24px;
+      line-height: 20px;
     }
     a,
     a:hover {
