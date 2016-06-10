@@ -87,6 +87,7 @@ function tpf_content_campaigns_field_group_info() {
       1 => 'field_campaign_bgw_image',
       2 => 'field_campaign_bg_crop',
       3 => 'field_campaign_bg_image_position',
+      4 => 'field_campaign_bg_parallax',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -147,6 +148,7 @@ function tpf_content_campaigns_field_group_info() {
       1 => 'field_campaign_bgw_image',
       2 => 'field_campaign_bg_crop',
       3 => 'field_campaign_bg_image_position',
+      4 => 'field_campaign_bg_parallax',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -177,6 +179,7 @@ function tpf_content_campaigns_field_group_info() {
       1 => 'field_campaign_bgw_image',
       2 => 'field_campaign_bg_crop',
       3 => 'field_campaign_bg_image_position',
+      4 => 'field_campaign_bg_parallax',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -297,6 +300,7 @@ function tpf_content_campaigns_field_group_info() {
       1 => 'field_campaign_bgw_image',
       2 => 'field_campaign_bg_crop',
       3 => 'field_campaign_bg_image_position',
+      4 => 'field_campaign_bg_parallax',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -467,7 +471,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = 'group_background';
   $field_group->data = array(
     'label' => 'Background Video',
-    'weight' => '5',
+    'weight' => '6',
     'children' => array(
       0 => 'field_campaign_bg_video',
       1 => 'field_campaign_bg_video_poster',
@@ -556,8 +560,8 @@ function tpf_content_campaigns_field_group_info() {
     'label' => 'Background Video',
     'weight' => '12',
     'children' => array(
-      0 => 'field_campaign_bg_video_poster',
-      1 => 'field_campaign_bg_video',
+      0 => 'field_campaign_bg_video',
+      1 => 'field_campaign_bg_video_poster',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -818,8 +822,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_video',
-      3 => 'group_background_image',
+      2 => 'group_background_image',
+      3 => 'group_background_video',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -878,8 +882,8 @@ function tpf_content_campaigns_field_group_info() {
     'children' => array(
       0 => 'field_campaign_bg_color',
       1 => 'field_campaign_bgw',
-      2 => 'group_background_video',
-      3 => 'group_background_image',
+      2 => 'group_background_image',
+      3 => 'group_background_video',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1074,6 +1078,38 @@ function tpf_content_campaigns_field_group_info() {
   $field_group = new stdClass();
   $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
   $field_group->api_version = 1;
+  $field_group->identifier = 'group_cic|node|campaign|form';
+  $field_group->group_name = 'group_cic';
+  $field_group->entity_type = 'node';
+  $field_group->bundle = 'campaign';
+  $field_group->mode = 'form';
+  $field_group->parent_name = '';
+  $field_group->data = array(
+    'label' => 'Content Inside Campaign',
+    'weight' => '9',
+    'children' => array(
+      0 => 'field_content_menu',
+      1 => 'field_content_menu_description',
+      2 => 'field_content_menu_logo',
+      3 => 'field_content_issue_volume',
+      4 => 'field_content_promo_bg',
+    ),
+    'format_type' => 'fieldset',
+    'format_settings' => array(
+      'formatter' => 'collapsible',
+      'instance_settings' => array(
+        'description' => '',
+        'classes' => 'group-cic field-group-fieldset',
+        'required_fields' => 1,
+        'id' => '',
+      ),
+    ),
+  );
+  $field_groups['group_cic|node|campaign|form'] = $field_group;
+
+  $field_group = new stdClass();
+  $field_group->disabled = FALSE; /* Edit this to true to make a default field_group disabled initially */
+  $field_group->api_version = 1;
   $field_group->identifier = 'group_custom_styling|node|campaign|form';
   $field_group->group_name = 'group_custom_styling';
   $field_group->entity_type = 'node';
@@ -1082,7 +1118,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Custom Styling',
-    'weight' => '9',
+    'weight' => '11',
     'children' => array(
       0 => 'field_css',
       1 => 'field_fonts_for_css',
@@ -1155,6 +1191,7 @@ function tpf_content_campaigns_field_group_info() {
       2 => 'field_campaign_iframe_width',
       3 => 'field_campaign_iframe',
       4 => 'field_campaign_iframe_type',
+      5 => 'field_campaign_iframe_full_width',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -1482,6 +1519,7 @@ function tpf_content_campaigns_field_group_info() {
   t('Background');
   t('Background Image');
   t('Background Video');
+  t('Content Inside Campaign');
   t('Custom Styling');
   t('Header/Branding');
   t('Logo');

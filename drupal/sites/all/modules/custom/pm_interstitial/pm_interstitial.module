@@ -127,6 +127,7 @@ function pm_interstitial_page($type) {
 			'submit_caption' => variable_get('pm_interstitial_newsletter_submit_caption',''),
 			'footer' => variable_get('pm_interstitial_newsletter_footer',''),
 			'thank_you_message' => variable_get('pm_interstitial_newsletter_thank_you', ''),
+      'signup_name' => variable_get('pm_interstitial_newsletter_signup_name', 'newsletter_interstitial')
 		);
 
 		$vars = array(

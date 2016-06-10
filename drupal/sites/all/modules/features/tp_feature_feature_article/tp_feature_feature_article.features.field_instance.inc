@@ -10,7 +10,7 @@
 function tp_feature_feature_article_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-feature_article-body'
+  // Exported field_instance: 'node-feature_article-body'.
   $field_instances['node-feature_article-body'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -107,12 +107,12 @@ function tp_feature_feature_article_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 10,
+      'weight' => 7,
     ),
     'widget_type' => 'text_textarea_with_summary',
   );
 
-  // Exported field_instance: 'node-feature_article-field_admin_tag'
+  // Exported field_instance: 'node-feature_article-field_admin_tag'.
   $field_instances['node-feature_article-field_admin_tag'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -194,11 +194,12 @@ function tp_feature_feature_article_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_article_background_video'
+  // Exported field_instance:
+  // 'node-feature_article-field_article_background_video'.
   $field_instances['node-feature_article-field_article_background_video'] = array(
     'bundle' => 'feature_article',
     'deleted' => 0,
@@ -301,7 +302,8 @@ function tp_feature_feature_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_article_featured_link'
+  // Exported field_instance:
+  // 'node-feature_article-field_article_featured_link'.
   $field_instances['node-feature_article-field_article_featured_link'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -402,11 +404,11 @@ function tp_feature_feature_article_field_default_field_instances() {
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'link_field',
-      'weight' => 2,
+      'weight' => 3,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_article_main_image'
+  // Exported field_instance: 'node-feature_article-field_article_main_image'.
   $field_instances['node-feature_article-field_article_main_image'] = array(
     'bundle' => 'feature_article',
     'deleted' => 0,
@@ -524,7 +526,7 @@ function tp_feature_feature_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_article_subhead'
+  // Exported field_instance: 'node-feature_article-field_article_subhead'.
   $field_instances['node-feature_article-field_article_subhead'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -616,11 +618,11 @@ function tp_feature_feature_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 1,
+      'weight' => 2,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_assigned_editor'
+  // Exported field_instance: 'node-feature_article-field_assigned_editor'.
   $field_instances['node-feature_article-field_assigned_editor'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -703,7 +705,7 @@ function tp_feature_feature_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_author'
+  // Exported field_instance: 'node-feature_article-field_author'.
   $field_instances['node-feature_article-field_author'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -796,11 +798,11 @@ function tp_feature_feature_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_autoload'
+  // Exported field_instance: 'node-feature_article-field_autoload'.
   $field_instances['node-feature_article-field_autoload'] = array(
     'bundle' => 'feature_article',
     'default_value' => array(
@@ -884,7 +886,93 @@ function tp_feature_feature_article_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_dfp_creative_id'
+  // Exported field_instance:
+  // 'node-feature_article-field_campaign_promo_opt_out'.
+  $field_instances['node-feature_article-field_campaign_promo_opt_out'] = array(
+    'bundle' => 'feature_article',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'If you tag this content with an editorial campaign, it is encouraged to add the campaign promo sidebar inline replacement.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 32,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_promo_opt_out',
+    'label' => 'I don\'t wish to add the campaign promo sidebar inline replacement to this piece of content.',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance: 'node-feature_article-field_dfp_creative_id'.
   $field_instances['node-feature_article-field_dfp_creative_id'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -999,11 +1087,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 16,
+      'weight' => 13,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_due_date'
+  // Exported field_instance: 'node-feature_article-field_due_date'.
   $field_instances['node-feature_article-field_due_date'] = array(
     'bundle' => 'feature_article',
     'deleted' => 0,
@@ -1100,7 +1188,93 @@ Change this only if you know what you are doing.',
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-feature_article-field_free_tag'
+  // Exported field_instance:
+  // 'node-feature_article-field_editor_campaign_reference'.
+  $field_instances['node-feature_article-field_editor_campaign_reference'] = array(
+    'bundle' => 'feature_article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 31,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_editor_campaign_reference',
+    'label' => 'Campaign Content Link',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-feature_article-field_free_tag'.
   $field_instances['node-feature_article-field_free_tag'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -1191,11 +1365,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 14,
+      'weight' => 16,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_inline_replacements'
+  // Exported field_instance: 'node-feature_article-field_inline_replacements'.
   $field_instances['node-feature_article-field_inline_replacements'] = array(
     'bundle' => 'feature_article',
     'deleted' => 0,
@@ -1275,7 +1449,11 @@ Change this only if you know what you are doing.',
       'settings' => array(
         'fields' => array(),
         'type_settings' => array(
+          'allow_new' => 1,
           'delete_references' => 1,
+          'label_plural' => 'entities',
+          'label_singular' => 'entity',
+          'override_labels' => 0,
         ),
       ),
       'type' => 'inline_entity_form',
@@ -1283,7 +1461,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_main_img_to_thumb'
+  // Exported field_instance: 'node-feature_article-field_main_img_to_thumb'.
   $field_instances['node-feature_article-field_main_img_to_thumb'] = array(
     'bundle' => 'feature_article',
     'default_value' => array(
@@ -1368,7 +1546,8 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_newsletter_feed_exclude'
+  // Exported field_instance:
+  // 'node-feature_article-field_newsletter_feed_exclude'.
   $field_instances['node-feature_article-field_newsletter_feed_exclude'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -1448,11 +1627,11 @@ Change this only if you know what you are doing.',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 23,
+      'weight' => 21,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_permanent_title'
+  // Exported field_instance: 'node-feature_article-field_permanent_title'.
   $field_instances['node-feature_article-field_permanent_title'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -1571,11 +1750,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_promo_headline'
+  // Exported field_instance: 'node-feature_article-field_promo_headline'.
   $field_instances['node-feature_article-field_promo_headline'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -1668,7 +1847,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_promo_short_headline'
+  // Exported field_instance: 'node-feature_article-field_promo_short_headline'.
   $field_instances['node-feature_article-field_promo_short_headline'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -1755,7 +1934,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_promo_text'
+  // Exported field_instance: 'node-feature_article-field_promo_text'.
   $field_instances['node-feature_article-field_promo_text'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -1848,7 +2027,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_related_stories'
+  // Exported field_instance: 'node-feature_article-field_related_stories'.
   $field_instances['node-feature_article-field_related_stories'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -1935,11 +2114,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 12,
+      'weight' => 9,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_run_date'
+  // Exported field_instance: 'node-feature_article-field_run_date'.
   $field_instances['node-feature_article-field_run_date'] = array(
     'bundle' => 'feature_article',
     'deleted' => 0,
@@ -2036,7 +2215,7 @@ Change this only if you know what you are doing.',
     'workbench_access_field' => 0,
   );
 
-  // Exported field_instance: 'node-feature_article-field_series'
+  // Exported field_instance: 'node-feature_article-field_series'.
   $field_instances['node-feature_article-field_series'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -2124,11 +2303,11 @@ Change this only if you know what you are doing.',
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 13,
+      'weight' => 15,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_syndication'
+  // Exported field_instance: 'node-feature_article-field_syndication'.
   $field_instances['node-feature_article-field_syndication'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -2210,11 +2389,11 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 21,
+      'weight' => 19,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_tab_action_override'
+  // Exported field_instance: 'node-feature_article-field_tab_action_override'.
   $field_instances['node-feature_article-field_tab_action_override'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -2305,11 +2484,11 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 13,
+      'weight' => 10,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_thumbnail'
+  // Exported field_instance: 'node-feature_article-field_thumbnail'.
   $field_instances['node-feature_article-field_thumbnail'] = array(
     'bundle' => 'feature_article',
     'deleted' => 0,
@@ -2424,11 +2603,11 @@ Change this only if you know what you are doing.',
         'view' => 'media_views_widget_default--default',
       ),
       'type' => 'media_generic',
-      'weight' => 21,
+      'weight' => 9,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_title_color'
+  // Exported field_instance: 'node-feature_article-field_title_color'.
   $field_instances['node-feature_article-field_title_color'] = array(
     'bundle' => 'feature_article',
     'default_value' => array(
@@ -2514,11 +2693,11 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 9,
+      'weight' => 6,
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_topic'
+  // Exported field_instance: 'node-feature_article-field_topic'.
   $field_instances['node-feature_article-field_topic'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -2612,7 +2791,7 @@ Change this only if you know what you are doing.',
     ),
   );
 
-  // Exported field_instance: 'node-feature_article-field_topic_box'
+  // Exported field_instance: 'node-feature_article-field_topic_box'.
   $field_instances['node-feature_article-field_topic_box'] = array(
     'bundle' => 'feature_article',
     'default_value' => NULL,
@@ -2697,7 +2876,7 @@ Change this only if you know what you are doing.',
         'track_list' => 0,
       ),
       'type' => 'term_reference_tree',
-      'weight' => 17,
+      'weight' => 19,
     ),
   );
 
@@ -2710,13 +2889,16 @@ Change this only if you know what you are doing.',
   t('Autoload Content');
   t('Background Video');
   t('Body');
+  t('Campaign Content Link');
   t('DFP Creative ID');
   t('DFP Creative ID will automatically generate if this node references a Sponsored term with a DFP ID.
 Change this only if you know what you are doing.');
   t('Due Date');
   t('Featured Link');
   t('Free Tag');
+  t('I don\'t wish to add the campaign promo sidebar inline replacement to this piece of content.');
   t('If an ambient video is uploaded, an image with the same aspect ratios should be uploaded using the Main Image field.');
+  t('If you tag this content with an editorial campaign, it is encouraged to add the campaign promo sidebar inline replacement.');
   t('Inline Replacements');
   t('Limited at 70 characters');
   t('Main Image');

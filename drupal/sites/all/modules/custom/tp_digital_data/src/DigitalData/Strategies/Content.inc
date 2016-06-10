@@ -209,6 +209,14 @@ class ddContent extends ddDefaultPage {
       $data['page']['pageInfo']['influenceBanner'] =  "No Influence Banner";
     }
 
+    if($campaignContent = field_get_items('node', $node, 'field_editor_campaign_reference')) {
+      $campaign_id = $campaignContent[0]['target_id'];
+      //Get the campaign title
+      $campaign = node_load($campaign_id);
+      $campaign_title = $campaign -> title;
+      $data['page']['pageInfo']['campaignContent'] = $campaign_title;
+    }
+
     $data['page']['pageInfo']['pageId'] = $pageID;
     $data['page']['pageInfo']['pageTitle'] = $node->title;
     $data['page']['pageInfo']['pageUrl'] = $url;

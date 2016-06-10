@@ -58,7 +58,7 @@ function tpf_content_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Autoload Settings',
-    'weight' => '25',
+    'weight' => '23',
     'children' => array(
       0 => 'field_autoload',
     ),
@@ -116,11 +116,11 @@ function tpf_content_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Editorial Info',
-    'weight' => '27',
+    'weight' => '24',
     'children' => array(
-      0 => 'field_due_date',
-      1 => 'field_run_date',
-      2 => 'field_assigned_editor',
+      0 => 'field_assigned_editor',
+      1 => 'field_due_date',
+      2 => 'field_run_date',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -175,7 +175,7 @@ function tpf_content_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '13',
+    'weight' => '14',
     'children' => array(
       0 => 'field_free_tag',
       1 => 'field_series',
@@ -183,6 +183,8 @@ function tpf_content_article_field_group_info() {
       3 => 'field_admin_tag',
       4 => 'field_sponsored',
       5 => 'field_topic_box',
+      6 => 'field_editor_campaign_reference',
+      7 => 'field_campaign_promo_opt_out',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -234,7 +234,6 @@ function tp4_preprocess_page(&$variables) {
     }
   }
 
-
   if(isset($variables['node']) && $variables['node']->type == 'campaign_page'){
 
     // Make sure the Campaign Page references a Campaign
@@ -252,7 +251,6 @@ function tp4_preprocess_page(&$variables) {
       drupal_add_css('.promoted.sponsor-'.$s[0]['tid'].' {display: none;}', array('type' => 'inline'));
     }
   }
-
 
   $variables['skinny'] = render($variables['page']['skinny']);
   $variables['sidebar'] = render($variables['page']['sidebar']);
@@ -307,8 +305,6 @@ function tp4_preprocess_page(&$variables) {
     }
   }
 
-
-
   //stuff for the campaign page
   if($variables['node']->type == 'campaign_page'){
 
@@ -354,7 +350,7 @@ function tp4_preprocess_page(&$variables) {
       $variables['page']['trans_left_drawer']['menu']['#markup'] = '<div class="mobile-menu">'. $menu. '</div>';
 
       //Descriptive Text
-      $variables['page']['trans_left_drawer']['text']['#markup'] = '<span class = "about">TakePart -- a digital news & lifestyle magazine and social action platform -- is a division of Participant Media, the company behind Pivot Television Network and important films such as An Inconvenient Truth, Waiting for Superman, Food, Inc., and many others.</span>';
+      $variables['page']['trans_left_drawer']['text']['#markup'] = '<span class = "about">TakePart is the digital news and lifestyle magazine from <a href="http://www.participantmedia.com" target="_blank">Participant Media</a>, the company behind such acclaimed documentaries as CITIZENFOUR, An Inconvenient Truth and Food, Inc. and feature films including Lincoln and Spotlight.</span>';
 
       //Social Icons for Destkop - feature article
       $mobile_menu = theme('base_social_follow');
@@ -380,8 +376,6 @@ function tp4_preprocess_page(&$variables) {
       )), 'setting');
       drupal_add_js(drupal_get_path('theme', 'tp4'). '/js/vendor/stickUp/stickUp.js');
 
-
-
       $header = module_invoke('tp_campaigns', 'block_view', 'tp_campaigns_hero');
       $campaign_menu = theme('html_tag', array(
         'element' => array(
@@ -390,12 +384,11 @@ function tp4_preprocess_page(&$variables) {
           '#attributes' => array(
             'class' => 'block',
             'id' => 'block-tp-campaigns-tp-campaigns-hero'
-          )
-        )
-      ));
+        ))));
       $variables['page']['header']['campaign_header']['#markup'] = $campaign_menu;
     }
   }
+  _tp4_on_our_radar_block($variables);
 }
 
 /**
@@ -945,9 +938,35 @@ function tp4_preprocess_node__campaign_card_text(&$variables, $hook) {
   //background properties
   tp4_campaign_background_rules($variables);
 
+  //Parallax field - commented out till we have a better understanding of future products.
+  /*$parallax_container = array();
+  if ($parallax = $variables['node']->field_campaign_parallax_image['und']) {
+    //Editors can upload multiple fields
+    foreach ($parallax as $key => $file) {
+      $parallax_container[] = 'parallax-' . $key;
+      $background = $file['uri'];
+      $bg = file_create_url($file['uri']);
+      //set background image for tablet and mobile
+      $variables['parallax_bg'][$key]['background_image_desktop'] = "background-image: url('$bg');";
+      if($bgtablet = image_style_path('large_responsive_tablet', $background)) {
+        $bgtablet = file_create_url($bgtablet);
+        $variables['parallax_bg'][$key]['background_image_tablet'] = "background-image: url('$bgtablet');";
+      } else {
+        $variables['parallax_bg'][$key]['background_image_tablet'] = "background-image: url('$bg');";
+      }
+      if($bgmobile = image_style_path('large_responsive_mobile', $background)) {
+        $bgmobile = file_create_url($bgmobile);
+        $variables['parallax_bg'][$key]['background_image_mobile'] = "background-image: url('$bgmobile');";
+      } else {
+        $variables['parallax_bg'][$key]['background_image_mobile'] = "background-image: url('$bg');";
+      }
+    }
+  }*/
+
   $variables['center'] = $center;
   $variables['left'] = $left;
   $variables['right'] = $right;
+  //$variables['parallax'] = $parallax_container;
 }
 
 
@@ -1414,6 +1433,11 @@ function tp4_preprocess_node__campaign_card_iframe(&$variables, $hook) {
     $variables['classes_array'][] = 'has-instructional';
   }
 
+  //Full Width card
+  if ($variables['field_campaign_iframe_full_width']['und'][0]['value']) {
+    $variables['classes_array'][] = 'full-width-iframe';
+  }
+
   $center = '';
   $height = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_height');
   $width = tp4_render_field_value('node', $variables['node'], 'field_campaign_iframe_width');
@@ -1657,6 +1681,14 @@ function tp4_campaign_background_rules(&$variables){
     }
     $variables['background_class'] = $variables['type'].$variables['nid'];
     $variables['classes_array'][] = $variables['type'].$variables['nid'];
+
+    //Add parallax class
+    if($is_parallax = field_get_items('node' , $variables['node'] , 'field_campaign_bg_parallax')) {
+      if ($is_parallax[0]['value'] == 1) {
+        $variables['classes_array'][] = 'parallax-bg';
+      }
+    }
+
   }
 
   /* Background Video */
@@ -1768,22 +1800,31 @@ function tp4_preprocess_node__flashcard(&$variables) {
  * Utility function to provide "On Our Radar" block to node templates
  */
 function _tp4_on_our_radar_block(&$variables) {
-  $variables['on_our_radar'] = theme('html_tag', array(
+  if ($variables['is_front'] != TRUE) {
+    $variables['on_our_radar'] = theme('html_tag', array(
          'element' => array(
          '#tag' => 'div',
          '#value' => '',
          '#attributes' => array(
            'id' => 'pubexchange_related_links',
+		 'data-pubexchange-module-id' => '514',
+		 'class' => 'pubexchange_module',
      ))));
-  drupal_add_js('(function(d, s, id)
-    { var js, pjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.async = true; js.src = "http://cdn.pubexchange.com/modules/partner/take_part"; pjs.parentNode.insertBefore(js, pjs); }
-    (document, "script", "pubexchange-jssdk"));',
-    array(
-      'type' => 'inline',
-      'scope' => 'footer',
-      'weight' => 10
-    )
-  );
+    drupal_add_js('(function(w, d, s, id) {
+w.PUBX=w.PUBX || {pub: "take_part", discover: false, lazy: true};
+var js, pjs = d.getElementsByTagName(s)[0];
+if (d.getElementById(id)) return;
+js = d.createElement(s); js.id = id; js.async = true;
+js.src = "//main.pubexchange.com/loader.min.js";
+pjs.parentNode.insertBefore(js, pjs);
+}(window, document, "script", "pubexchange-jssdk"));',
+      array(
+        'type' => 'inline',
+        'scope' => 'footer',
+        'weight' => 10
+      )
+    );
+  }
 }
 
 /**

@@ -14,6 +14,12 @@ function tp_custom_tweaks_form_alter(&$form, &$form_state, $form_id) {
     }
     array_unshift($form['#after_build'], 'tp_custom_tweaks_form_after_build');
   }
+
+  //Validation for campaign promo on content types that include the campaign node reference
+  if ($form_id == 'feature_article_node_form' || $form_id == 'openpublish_article_node_form' ||$form_id == 'video_node_form' || $form_id == 'video_playlist_node_form') {
+    //$form['#validate'][] = 'tp_custom_tweaks_validation';
+    $form['#after_build'][] = 'tp_custom_tweaks_cic_after_build';
+  }
 }
 
 /*
@@ -23,4 +29,34 @@ function tp_custom_tweaks_form_after_build($form, &$form_state) {
   // unset maxlength on nid
   unset($form['options']['settings']['nid']['#maxlength']);
   return $form;
+}
+
+/*
+ * After build handler for the campaign promo inline replacement
+*/
+function tp_custom_tweaks_cic_after_build($form, &$form_state) {
+  $form['#validate'][] = 'tp_custom_tweaks_cic_validation';
+  return $form;
+}
+
+/*
+ * Validation for camopaign promo inline replacement
+ */
+function tp_custom_tweaks_cic_validation($form, &$form_state) {
+  //if content is tagged with a campaign and editor hasn't opted out, the campaign promop inline replacement should be present.
+  if ($form_state['values']['field_editor_campaign_reference']['und'][0]['target_id'] && !$form_state['values']['field_campaign_promo_opt_out']['und'][0]['value']) {
+
+    $campaign_promo = FALSE;
+    $ir = reset($form_state['inline_entity_form']);
+    foreach ($ir['entities'] as $key => $ir_entity) {
+      $ir_type = $ir_entity['entity']->type;
+      if ($ir_type == 'campaign_promo') {
+        $campaign_promo = TRUE;
+        break;
+      }
+    }
+    if (!$campaign_promo) {
+      form_error($form['field_campaign_promo_opt_out'] ,t('You have tagged this content with a campaign but haven\'t added the campaign promo sidebar inline replacement. If this is intentional, please opt-out by using the checkbox.' ));
+    }
+  }
 }

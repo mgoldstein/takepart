@@ -1,7 +1,7 @@
 <?php
 
-//Include the Environment type based on the webserver variable
-//We are translating as the app_env is different than what is already in the code
+// Include the Environment type based on the webserver variable
+// We are translating as the app_env is different than what is already in the code
 
 switch ($_SERVER['APP_ENV']) {
   case 'dev':
@@ -46,7 +46,6 @@ $conf += array(
 // Define the global application settings.
 // +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
 
-
 // HTTPS
 $conf['https'] = TRUE;
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
@@ -88,21 +87,22 @@ if (!array_key_exists('participant_api_accounts', $conf)) {
   $conf['participant_api_accounts'] = array();
 }
 switch (ENVIRONMENT) {
-  case 'development';
-    $domain = 'dev-api.participant.com';
+  case 'development':
+  case 'local':
+    $domain = 'dev-api.takepart.com';
     $conf['takepart_api_domain'] = "http://dev-api.takepart.com";
     break;
   case 'qa':
-    $domain = 'qa-api.participant.com';
+    $domain = 'qa-api.takepart.com';
     $conf['takepart_api_domain'] = "http://qa-api.takepart.com";
     break;
   case 'staging':
-    $domain = 'stage-api.participant.com';
+    $domain = 'stage-api.takepart.com';
     $conf['takepart_api_domain'] = "http://stage-api.takepart.com";
     break;
   case 'production':
   default:
-    $domain = 'api.participant.com';
+    $domain = 'api.takepart.com';
     $conf['takepart_api_domain'] = "http://api.takepart.com";
     break;
 }
