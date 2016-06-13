@@ -1,80 +1,105 @@
 <?php
 
-// Include the Environment type based on the webserver variable
-// We are translating as the app_env is different than what is already in the code
-
-switch ($_SERVER['APP_ENV']) {
-  case 'dev':
-  case 'development':
-  default:
-    define('ENVIRONMENT', 'development');
-    break;
-  case 'qa':
-    define('ENVIRONMENT', 'qa');
-    break;
-  case 'staging':
-  case 'stage':
-    define('ENVIRONMENT', 'staging');
-    break;
-  case 'prod':
-  case 'production':
-    define('ENVIRONMENT', 'production');
-    break;
-  case 'local':
-    define('ENVIRONMENT', 'local');
-    break;
+// Bring in unique settings for each environment
+$common_settings = dirname(__FILE__) . '/common.settings.php';
+if (file_exists($common_settings)) {
+  include_once $common_settings;
 }
 
-// Include the environment specific settings.
-$environment_settings_filename = dirname(__FILE__) . '/' . ENVIRONMENT . '.settings.php';
-if (file_exists($environment_settings_filename)) {
-  include_once $environment_settings_filename;
-}
+// Database configuration
+// Ensure the database configuration happens before any of the $conf array elements are defined. 
+// Else, you run into the possibility of the variables for the databases not being populated yet.
+// I can't explain it, but the behavior is solid when database definitions precede the $conf
+// definitions.
 
-// TAP Integration
-$conf += array(
-  'takeaction_widget_host' => "https://{$conf['takeaction_domain']}",
-  'takeaction_influence_overlay_js' => "//{$conf['takeaction_domain']}/assets/influence.js",
-  'signature_action_import_tap_domain' => "{$conf['takeaction_domain']}",
-  'signature_import_feed' => "https://{$conf['takeaction_domain']}/api/actions",
-  'takeaction_publisher_id' => 'd84909c52edcceb20c7bba62052b1b01',
-  'takeaction_widget_script' => '/assets/publisher.js?v=3.7',
-  'takeaction_awareness_script' => "//{$conf['takeaction_domain']}/assets/awareness.js",
-  'tap_embed_script' => "https://{$conf['tapembed_domain']}/embed.js?publisher=d84909c52edcceb20c7bba62052b1b01",
+// Master database
+$databases['default']['default'] = array(
+  'database' => $database_name,
+  'username' => $database_username,
+  'password' => $database_password,
+  'host'     => $database_host,
+  'port'     => $database_port,
+  'driver'   => $database_driver,
+  'prefix'   => $database_prefix,
+);
+// One or more slaves
+$databases['default']['slave'][] = array(
+  'database' => $database_name,
+  'username' => $database_username,
+  'password' => $database_password,
+  'host'     => $database_slave_host,
+  'port'     => $database_port,
+  'driver'   => $database_driver,
+  'prefix'   => $database_prefix,
 );
 
-// Define the global application settings.
-// +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+
+// Solr Server settings
+$conf['search_api_solr_overrides'] = array(
+  'takepart_solr_production' => array(
+    'name'    => t($solr_name),
+    'options' => array(
+    'host'    => $solr_host,
+    'port'    => $solr_port,
+    'path'    => $solr_path,
+    ),
+  ),
+);
 
-// HTTPS
-$conf['https'] = TRUE;
+// Ingest application settings into the application here
+
+$conf += array(
+  'omniture_account_name'              => $omniture_account_name,
+  'dtm_script_src'                     => $dtm_script_src,
+  'takeaction_domain'                  => $takeaction_domain,
+  'services_domain'                    => $services_domain,
+  'tapembed_domain'                    => $tapembed_domain,
+  'facebook_app_id'                    => $facebook_app_id,
+  'pm_signup_log'                      => $pm_signup_log,
+  'pm_jwplatform_auto_create_tag'      => $pm_jwplatform_auto_create_tag,
+  'pm_jwplatform_api_key'              => $pm_jwplatform_api_key,
+  'pm_jwplatform_api_secret'           => $pm_jwplatform_api_secret,
+  'pm_jwplatform_content_domain'       => $pm_jwplatform_content_domain,
+  'pm_jwplatform_content_dns_mask'     => $pm_jwplatform_content_dns_mask,
+  'tp_video_player_account_token'      => $tp_video_player_account_token,
+  'tp_video_player_key'                => $tp_video_player_key,
+  'centralized_login_widget_js'        => "https://$services_domain/assets/login_widget.js",
+  'digital_data_wrapper_js'            => "https://$services_domain/assets/dtm_data.js",
+  'takeaction_widget_host'             => "https://$takeaction_domain",
+  'takeaction_influence_overlay_js'    => "//$takeaction_domain/assets/influence.js",
+  'signature_action_import_tap_domain' => "$takeaction_domain",
+  'signature_import_feed'              => "https://$takeaction_domain/api/actions",
+  'takeaction_publisher_id'            => $takeaction_publisher_id,
+  'takeaction_widget_script'           => '/assets/publisher.js?v=3.7',
+  'takeaction_awareness_script'        => "//$takeaction_domain/assets/awareness.js",
+  'tap_embed_script'                   => "https://$tapembed_domain/embed.js?publisher=$takeaction_publisher_id",
+  'https'                              => TRUE,
+  'participant_api_default_account'    => $participant_api_default_account,
+  'shared_assets_path'                 => $shared_assets_path,
+);
+
+// Elasticache
+$conf['cache_backends'][] = $cache_backends;
+$conf += array(
+  'cache_default_class'          => 'MemCacheDrupal',
+  'cache_class_cache_form'       => 'DrupalDatabaseCache',
+  'page_cache_without_database'  => TRUE,
+  'page_cache_invoke_hooks'      => FALSE,
+  'lock_inc'                     => 'sites/all/modules/contrib/memcache/memcache-lock.inc',
+  'memcache_stampede_protection' => TRUE,
+  'memcache_servers'             => array(
+    "$memcache_host:$memcache_port" => 'default',
+  ),
+  'memcache_key_prefix'          => $APP_ENV,
+);
+
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
   $_SERVER['HTTPS'] = 'on';
 }
 
-// JWPlatform API account
-$conf += array(
-  'pm_jwplatform_api_key' => 'NnnOqH8r',
-  'pm_jwplatform_api_secret' => 'fJoeVtVS5YriI0Bnh8v6lo1i',
-  'pm_jwplatform_content_domain' => 'content.jwplatform.com',
-  'pm_jwplatform_content_dns_mask' => 'video.takepart.com',
-  'tp_video_player_account_token' => 'esP2FhWwEeODmBIxOUCPzg',
-  'tp_video_player_key' => 'xlvA/gqv5vAkINGetf3aFsus8xjtNRWt+WzQqA==',
-);
-
-// Services/Login Integration
-if (!array_key_exists('services_domain', $conf)) {
-  $conf['services_domain'] = 'accounts.takepart.com';
-}
-$conf += array(
-  'centralized_login_widget_js' => "https://{$conf['services_domain']}/assets/login_widget.js",
-  'digital_data_wrapper_js' => "https://{$conf['services_domain']}/assets/dtm_data.js",
-);
-
 // Email Personalization Integration
 $conf += array(
   'tp_content_feeds_tag_vocabularies' => array('topic'),
-  'tp_content_feeds_content_types' => array(
+  'tp_content_feeds_content_types'    => array(
     'feature_article',
     'openpublish_article',
     'openpublish_photo_gallery',
@@ -86,42 +111,17 @@ $conf += array(
 if (!array_key_exists('participant_api_accounts', $conf)) {
   $conf['participant_api_accounts'] = array();
 }
-switch (ENVIRONMENT) {
-  case 'development':
-  case 'local':
-    $domain = 'dev-api.takepart.com';
-    $conf['takepart_api_domain'] = "http://dev-api.takepart.com";
-    break;
-  case 'qa':
-    $domain = 'qa-api.takepart.com';
-    $conf['takepart_api_domain'] = "http://qa-api.takepart.com";
-    break;
-  case 'staging':
-    $domain = 'stage-api.takepart.com';
-    $conf['takepart_api_domain'] = "http://stage-api.takepart.com";
-    break;
-  case 'production':
-  default:
-    $domain = 'api.takepart.com';
-    $conf['takepart_api_domain'] = "http://api.takepart.com";
-    break;
-}
+
+$domain_array = array(
+  'domain' => $services_domain,
+  'key'    => $participant_api_accounts_key,
+);
 
 $conf['participant_api_accounts'] += array(
-  'takepart' => array(
-    'domain' => $domain,
-    'key' => 'db73d53413afcf95324c6d2c0f584cfb',
-  ),
-  'pivot' => array(
-    'domain' => $domain,
-    'key' => 'db73d53413afcf95324c6d2c0f584cfb',
-  ),
-  'participant' => array(
-    'domain' => $domain,
-    'key' => 'db73d53413afcf95324c6d2c0f584cfb',
-  ),
+  'takepart'    => $domain_array,
+  'pivot'       => $domain_array,
+  'participant' => $domain_array,
 );
-$conf += array('participant_api_default_account' => 'takepart');
 
 // reverse proxy support to make sure the real ip gets logged by Drupal
 // The next line is commented out inside settings.php
@@ -147,9 +147,4 @@ if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
 	 break;
     }
   }
-}
-
-// Include the local settings that define the specifics of the instance
-if (file_exists(dirname(__FILE__) . '/settings.local.inc')) {
-  include_once dirname(__FILE__) . '/settings.local.inc';
 }
