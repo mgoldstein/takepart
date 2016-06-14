@@ -883,14 +883,15 @@ tr.selected td {
 }
 
 .interstitial_modal_modal .tpmodal_close {
-  width: 40px;
-  height: 40px;
+  width: 15px;
+  height: 15px;
+  margin: 15px 15px 0 0;
   &:before, &::before{
     content: '\e617';
-    font-size: 24px;
+    font-size: 13px;
     position: absolute;
-    right: 5px;
-    top: 10px;
+    right: 0;
+    top: 0;
     color: gray;
     font-family: 'takepart';
     text-indent: 0;
