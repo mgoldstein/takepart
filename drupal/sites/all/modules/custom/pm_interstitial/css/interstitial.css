@@ -31,7 +31,7 @@ header img {
 /* line 23, ../sass/interstitial.scss */
 #page-wrapper.campaign {
   max-width: 400px;
-  height: 485px;
+  height: 100%;
 }
 
 /* line 28, ../sass/interstitial.scss */
@@ -39,42 +39,50 @@ header img {
   color: #000;
 }
 /* line 30, ../sass/interstitial.scss */
+#page.main.interstitial {
+  padding: 39px 50px;
+}
+/* line 33, ../sass/interstitial.scss */
 #page * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: "AdelleSans";
 }
-/* line 35, ../sass/interstitial.scss */
+/* line 39, ../sass/interstitial.scss */
 #page .interstitial {
   float: left;
   vertical-align: top;
   width: 100%;
   max-width: 400px;
 }
-/* line 41, ../sass/interstitial.scss */
-#page .content {
-  padding: 0 40px 20px;
+/* line 45, ../sass/interstitial.scss */
+#page h2 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.1em;
+  font-family: "AdelleSans";
+  font-weight: 900;
 }
-/* line 44, ../sass/interstitial.scss */
-#page .headline {
-  padding: 20px 40px 0;
-  margin-bottom: 5px;
-  font-size: 26px;
-  font-family: "Ashbury", "Times New Roman", Times, Georgia, serif;
-}
-/* line 50, ../sass/interstitial.scss */
+/* line 53, ../sass/interstitial.scss */
 #page .body p {
   margin-bottom: 5px;
 }
-/* line 53, ../sass/interstitial.scss */
+/* line 56, ../sass/interstitial.scss */
+#page .body h4 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 10px 0 0 0;
+}
+/* line 62, ../sass/interstitial.scss */
 #page p#dont {
   font-family: "Times New Roman", Times, Georgia, serif;
   font-size: 12px;
   clear: both;
-  margin: 0.5em 0;
+  margin: 10px 0 0;
 }
 
-/* line 62, ../sass/interstitial.scss */
+/* line 71, ../sass/interstitial.scss */
 #page.main .content a {
   color: #018B73;
 }

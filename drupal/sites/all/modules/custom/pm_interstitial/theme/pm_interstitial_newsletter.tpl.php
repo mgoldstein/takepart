@@ -1,11 +1,7 @@
 <header class="header">
-	<div>
-		<?php echo $image ?>
-	</div>
-
-	<h1 class="headline">
+	<h2>
 		<?php echo t($header) ?>
-	</h1>
+	</h2>
 </header>
 
 <div class="content">
