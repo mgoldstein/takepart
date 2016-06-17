@@ -22,15 +22,19 @@ header {
 
 #page-wrapper.campaign {
 	max-width: 400px;
-	height: 485px;
+	height: 100%;
 }
 
 #page {
 	color: #000;
+	&.main.interstitial {
+		padding: 39px 50px;
+	}
 	* {
 		-moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
+		font-family: $AdelleSans;
 	}
 	.interstitial {
 		float: left;
@@ -38,23 +42,28 @@ header {
 		width: 100%;
 		max-width: 400px;
 	}
-	.content {
-		padding: 0 40px 20px;
+	h2 {
+		margin: 0;
+		font-size: 32px;
+		line-height: 1.1em;
+		font-family: $AdelleSans;
+		font-weight: 900;
 	}
-	.headline {
-		padding: 20px 40px 0;
-		margin-bottom: 5px;
-		font-size: 26px;
-		font-family: $primary-serif-font;
-	}
-	 .body p {
-		margin-bottom: 5px;
+	.body{
+		p {
+			margin-bottom: 5px;
+		}
+		h4 {
+			font-size: 18px;
+			font-weight: 500;
+			margin: 10px 0 0 0;
+		}
 	}
 	p#dont {
 		font-family: $times-new-roman;
 		font-size: 12px;
 		clear:both;
-		margin: 0.5em 0;
+		margin: 10px 0 0;
 	}
 }
 
