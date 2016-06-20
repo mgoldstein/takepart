@@ -41,7 +41,7 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
     $query = new EntityFieldQuery();
     $query->entityCondition('entity_type', 'node')
     ->propertyCondition('status', 1)
-    ->propertyOrderBy('changed', 'DESC')
+    ->addTag('CICPromoPub')
     ->fieldCondition('field_editor_campaign_reference','target_id',$campaign_id,'=');
 
     $result = $query->execute();
@@ -70,10 +70,15 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
         }
       }
     }
-    $story_num = count($result['node']);
+    $campaign_info['story_num'] = count($result['node']);
 
     //Nothing will show up if there is only 1 node tagged
-    if ($story_num > 1) {
+    if ($campaign_info['story_num'] > 1) {
+      if($campaign_info['story_num'] > 5) {
+        $campaign_info['footer'] = t('See All @numb Stories', array('@numb' => $campaign_info['story_num']));
+      } else {
+        $campaign_info['footer'] = t('See All Stories', array('@numb' => $campaign_info['story_num']));
+      }
       $markup = theme('inline_content_campaign_promo' , array(
         'campaign_info' => $campaign_info,
         'cic_info' => $cic_info
