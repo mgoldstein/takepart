@@ -170,7 +170,7 @@ function tpf_content_campaigns_field_default_field_bases() {
     'settings' => array(
       'allowed_values' => array(
         0 => '',
-        1 => '<a href="#page-wrap"></a>',
+        1 => '<a href="#"></a>',
       ),
       'allowed_values_function' => '',
     ),
