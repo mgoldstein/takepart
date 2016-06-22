@@ -98,20 +98,25 @@ function tp_campaigns_tray_vars($entity){
 	if($items = field_get_items('node', $entity, 'field_campaign_card_reference')){
 		foreach($items as $key => $item){
 			$node = node_load($item['target_id']);
-			//Test for playlist to add special playlist class
-			if(isset($node->field_media_video_playlist) && !empty($node->field_media_video_playlist)) {
-				$playlist = true;
+			if(isset($node) && !empty($node)) {
+				//Test for playlist to add special playlist class
+				if(isset($node->field_media_video_playlist) && !empty($node->field_media_video_playlist)) {
+					$playlist = true;
+				}
+
+				if($card_title = field_get_items('node', $node, 'field_campaign_card_title')){
+					//If any card within a tray has a title we need to show a line above it
+					$title_exists = true;
+				}
+				$output = '';
+				$output .= '<div class="card-wrapper '. drupal_html_class($node->title). ' card-'. ($playlist === true?'video-playlist':'') .'">';
+	      $node_view = node_view($node, 'full', NULL);
+				$output .= drupal_render($node_view);
+				$output .= '</div>';
+				$tray_vars['cards'][] = $output;
+			} else {
+				$tray_vars['cards'][] = '';
 			}
-			if($card_title = field_get_items('node', $node, 'field_campaign_card_title')){
-				//If any card within a tray has a title we need to show a line above it
-				$title_exists = true;
-			}
-			$output = '';
-			$output .= '<div class="card-wrapper '. drupal_html_class($node->title). ' card-'. ($playlist === true?'video-playlist':'') .'">';
-      $node_view = node_view($node, 'full', NULL);
-			$output .= drupal_render($node_view);
-			$output .= '</div>';
-			$tray_vars['cards'][] = $output;
 		}
 	}
 	if($title_exists == true){
