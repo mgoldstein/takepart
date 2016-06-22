@@ -655,17 +655,16 @@
    */
   Drupal.behaviors.TouCookie = {
     attach: function () {
-	 if (document.cookie.search('tou') == -1) {
-	   //Set the cookie - 5 years
-	   exdays = 1825;
+	 if (document.cookie.search('ppu') == -1) {
+	   //Set the cookie - 30 days
+	   exdays = 30;
 	   var d = new Date();
 	   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
 	   var expires = d.toGMTString();
-	   document.cookie = "tou=1; expires=" + expires + "; path=/";
+	   document.cookie = "ppu=1; expires=" + expires + "; path=/";
 	   var markup = '\
          <div class="tou-alert">\
-           <p>We have updated our <a href="http://www.takepart.com/terms-of-service">Terms Of Service</a>\
-            and <a href = "http://www.takepart.com/privacy-policy">Privacy Policy</a>.</p>\
+           <p>We have updated our <a href = "http://www.takepart.com/privacy-policy">Privacy Policy</a>.</p>\
            <span class="tou-close">close</span>\
          </div>';
 	   $('#page-wrap').prepend(markup);

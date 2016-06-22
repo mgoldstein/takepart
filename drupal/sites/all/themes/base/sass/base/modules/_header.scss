@@ -1029,7 +1029,7 @@ body {
 }
 
 #page-wrapper,
- #page-wrap {
+#page-wrap {
   .tou-alert {
     padding: 38px 0 23px 0;
     position: relative;
@@ -1057,18 +1057,18 @@ body {
       @include breakpoint($breakpoint-tablet) {
         top: 20px;
         right: 17px;
-     }
-     top: 7px;
-     right: 10px;
-     color: #fff;
-     font-family: "AdelleSans";
-     cursor: pointer;
-     font-weight: 500;
-     font-size: 19px;
-     }
-   }
- }
- .node-type-feature-article #page-wrapper .tou-alert,
- .node-type-campaign-page #page-wrap .tou-alert {
-   margin-bottom: 0;
- }
+	 }
+	 top: 7px;
+	 right: 10px;
+	 color: #fff;
+	 font-family: "AdelleSans";
+	 cursor: pointer;
+	 font-weight: 500;
+	 font-size: 19px;
+    }
+  }
+}
+.node-type-feature-article #page-wrapper .tou-alert,
+.node-type-campaign-page #page-wrap .tou-alert {
+  margin-bottom: 0;
+}
