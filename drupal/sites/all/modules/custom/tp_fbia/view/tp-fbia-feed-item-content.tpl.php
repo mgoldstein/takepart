@@ -107,6 +107,13 @@
         </iframe>
       </figure>
 
+      <?php /* keywee tracking */ ?>
+      <figure class="op-tracker">
+        <iframe>
+          <script src="//dc8xl0ndzn2cb.cloudfront.net/js/takepart/v0/keywee.min.js" type="text/javascript" async=""></script>
+        </iframe>
+      </figure>
+
       <?php /* End of Analytics */ ?>
 
       <footer>
