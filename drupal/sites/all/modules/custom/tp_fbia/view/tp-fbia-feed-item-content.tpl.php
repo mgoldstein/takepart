@@ -110,7 +110,7 @@
       <?php /* keywee tracking */ ?>
       <figure class="op-tracker">
         <iframe>
-          <script src="//dc8xl0ndzn2cb.cloudfront.net/js/takepart/v0/keywee.min.js" type="text/javascript" async=""></script>
+          <script src="//dc8xl0ndzn2cb.cloudfront.net/js/takepart/v0/keywee.min.js" type="text/javascript" async></script>
         </iframe>
       </figure>
 
