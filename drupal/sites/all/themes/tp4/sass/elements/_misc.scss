@@ -868,51 +868,6 @@ tr.selected td {
   overflow: hidden;
 }
 
-/* Interstitials ------------------------- */
-
-/* Social */
-
-.interstitial_modal_modal.tpmodal_modal {
-  background: transparent;
-  border-radius: 0;
-  max-width: 100% !important;
-}
-
-.interstitial_modal_modal .tpmodal_content {
-  padding: 0;
-}
-
-.interstitial_modal_modal .tpmodal_close {
-  width: 15px;
-  height: 15px;
-  margin: 15px 15px 0 0;
-  &:before, &::before{
-    content: '\e617';
-    font-size: 13px;
-    position: absolute;
-    right: 0;
-    top: 0;
-    color: gray;
-    font-family: 'takepart';
-    text-indent: 0;
-  }
-}
-
-.interstitial_modal_modal iframe {
-  width: 400px;
-  height: 400px;
-  overflow: hidden;
-
-}
-.interstitial_modal_overlay{
-  background: #000;
-}
-.tpmodal_close{
-  margin: 5px 5px 0 0;
-  text-indent: 100%;
-  overflow: hidden;
-}
-
 /* Video Player ------------------------- */
 .tp-video-player{
   &.loading{
