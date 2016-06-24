@@ -1339,7 +1339,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Promo',
-    'weight' => '12',
+    'weight' => '13',
     'children' => array(
       0 => 'field_article_subhead',
       1 => 'field_promo_headline',
@@ -1403,7 +1403,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'SEO',
-    'weight' => '7',
+    'weight' => '8',
     'children' => array(
       0 => 'field_campaign_seo_title',
       1 => 'xmlsitemap',
@@ -1431,7 +1431,7 @@ function tpf_content_campaigns_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '18',
+    'weight' => '19',
     'children' => array(
       0 => 'field_author',
       1 => 'field_free_tag',

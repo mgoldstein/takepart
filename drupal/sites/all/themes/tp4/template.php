@@ -69,6 +69,12 @@ function tp4_preprocess_html(&$variables, $hook) {
       $transnav = field_get_items('node', $node, 'field_transparent_nav');
       if(isset($transnav) && $transnav[0]['value'] == 1) {
         $variables['classes_array'][] = drupal_html_class('campaign-transparent-nav');
+        //Transparent nav styling options
+        $transnav_style = field_get_items('node', $node, 'field_transparent_nav_style');
+        if (isset($transnav_style) && $transnav_style[0]['value'] == 'dark') {
+          $variables['classes_array'][] = drupal_html_class('transparent-nav-dark');
+        }
+
       }
     }
   }

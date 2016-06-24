@@ -2032,22 +2032,22 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '14',
+          'weight' => '15',
         ),
         'redirect' => array(
-          'weight' => '13',
+          'weight' => '14',
         ),
         'xmlsitemap' => array(
           'weight' => '4',
         ),
         'locations' => array(
-          'weight' => '16',
+          'weight' => '17',
         ),
       ),
       'display' => array(),
