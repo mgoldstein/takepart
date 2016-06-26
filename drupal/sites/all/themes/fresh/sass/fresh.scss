@@ -204,7 +204,7 @@ blockquote.pullquote {
   }
   .stories-header {
     color: #FFFFFF;
-    padding: 20px;
+    padding: 17px 20px 15px 20px;
     border-top-right-radius: 2px;
     border-top-left-radius: 2px;
     a {
@@ -214,13 +214,14 @@ blockquote.pullquote {
       font-size: 16px;
       margin-bottom: 0;
       line-height: 24px;
+      margin-top:12px;
     }
   }
   .stories-wrapper {
     .stories-item  {
-      padding-bottom: 15px;
+      padding-bottom: 4px;
     }
-    padding: 22px 15px 0px 15px;
+    padding: 19px 15px 0px 15px;
     p {
       margin-top: 13px;
       font-size: 14px;
@@ -235,7 +236,7 @@ blockquote.pullquote {
   }
   .stories-footer {
     text-align: center;
-    padding: 20px 0;
+    padding: 15px 0;
     border-bottom-right-radius: 2px;
     border-bottom-left-radius: 2px;
     a {
