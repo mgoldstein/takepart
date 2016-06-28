@@ -46,12 +46,11 @@ $conf['search_api_solr_overrides'] = array(
 );
 
 // Ingest application settings into the application here
-
 $conf += array(
   'omniture_account_name'              => $omniture_account_name,
   'dtm_script_src'                     => $dtm_script_src,
   'takeaction_domain'                  => $takeaction_domain,
-  'services_domain'                    => $services_domain,
+  'takepart_api_domain'                => $services_domain,
   'tapembed_domain'                    => $tapembed_domain,
   'facebook_app_id'                    => $facebook_app_id,
   'pm_signup_log'                      => $pm_signup_log,
