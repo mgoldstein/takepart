@@ -149,7 +149,7 @@ function takepart_ads_preprocess_page(&$vars) {
             }
             $gptad_html .= 'if (ad_call_check('.$lr[0].')) { ';
 
-           if ($ad === "VideoOverlay_HP" || "Interscroller") {
+           if ($ad === "VideoOverlay_HP") {
 			 $gptad_html .= "googletag.defineOutOfPageSlot('/" . variable_get('takepart_ads_dfp_property_code_gpt', '4355895')
 			   . '/' . $ad . "', '" . $gptad . "').addService(googletag.pubads());\n";
             } else if ($ad === "TP_Mobile_320x50") {
