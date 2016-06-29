@@ -22,16 +22,16 @@ body.page-overlay-ad{
 }
 
 .interstitial_modal_modal .tpmodal_close {
-  width: 15px;
-  height: 15px;
+  width: 30px;
+  height: 30px;
   margin: 15px 15px 0 0;
   line-height: 15px;
   &:before, &::before{
     content: '\e617';
-    font-size: 13px;
+    font-size: 15px;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 1px;
+    top: 1px;
     color: gray;
     font-family: 'takepart';
     text-indent: 0;
