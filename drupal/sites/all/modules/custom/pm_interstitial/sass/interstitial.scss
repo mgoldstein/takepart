@@ -28,7 +28,10 @@ header {
 #page {
 	color: #000;
 	&.main.interstitial {
-		padding: 39px 50px;
+		padding: 45px 50px;
+		.content {
+			padding-top: 4px;
+		}
 	}
 	* {
 		-moz-box-sizing: border-box;
@@ -63,7 +66,29 @@ header {
 		font-family: $times-new-roman;
 		font-size: 12px;
 		clear:both;
-		margin: 10px 0 0;
+		margin: 18px 0 0;
+	}
+	form {
+		.form-item-email {
+			margin-top: 14px;
+			margin-bottom: 10px;
+		}
+		#edit-email {
+			height: 40px;
+			border: 1px solid #C7C7C7;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			-ms-border-radius: 3px;
+			border-radius: 3px;
+		}
+		#edit-submit {
+			font-size: 20px;
+			line-height: 26px;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+			-ms-border-radius: 3px;
+			border-radius: 3px;
+		}
 	}
 }
 

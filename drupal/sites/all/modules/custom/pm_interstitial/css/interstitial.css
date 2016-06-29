@@ -40,23 +40,27 @@ header img {
 }
 /* line 30, ../sass/interstitial.scss */
 #page.main.interstitial {
-  padding: 39px 50px;
+  padding: 45px 50px;
 }
-/* line 33, ../sass/interstitial.scss */
+/* line 32, ../sass/interstitial.scss */
+#page.main.interstitial .content {
+  padding-top: 4px;
+}
+/* line 36, ../sass/interstitial.scss */
 #page * {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-family: "AdelleSans";
 }
-/* line 39, ../sass/interstitial.scss */
+/* line 42, ../sass/interstitial.scss */
 #page .interstitial {
   float: left;
   vertical-align: top;
   width: 100%;
   max-width: 400px;
 }
-/* line 45, ../sass/interstitial.scss */
+/* line 48, ../sass/interstitial.scss */
 #page h2 {
   margin: 0;
   font-size: 32px;
@@ -64,25 +68,48 @@ header img {
   font-family: "AdelleSans";
   font-weight: 900;
 }
-/* line 53, ../sass/interstitial.scss */
+/* line 56, ../sass/interstitial.scss */
 #page .body p {
   margin-bottom: 5px;
 }
-/* line 56, ../sass/interstitial.scss */
+/* line 59, ../sass/interstitial.scss */
 #page .body h4 {
   font-size: 18px;
   font-weight: 500;
   margin: 10px 0 0 0;
 }
-/* line 62, ../sass/interstitial.scss */
+/* line 65, ../sass/interstitial.scss */
 #page p#dont {
   font-family: "Times New Roman", Times, Georgia, serif;
   font-size: 12px;
   clear: both;
-  margin: 10px 0 0;
+  margin: 18px 0 0;
+}
+/* line 72, ../sass/interstitial.scss */
+#page form .form-item-email {
+  margin-top: 14px;
+  margin-bottom: 10px;
+}
+/* line 76, ../sass/interstitial.scss */
+#page form #edit-email {
+  height: 40px;
+  border: 1px solid #C7C7C7;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+}
+/* line 84, ../sass/interstitial.scss */
+#page form #edit-submit {
+  font-size: 20px;
+  line-height: 26px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  border-radius: 3px;
 }
 
-/* line 71, ../sass/interstitial.scss */
+/* line 96, ../sass/interstitial.scss */
 #page.main .content a {
   color: #018B73;
 }
