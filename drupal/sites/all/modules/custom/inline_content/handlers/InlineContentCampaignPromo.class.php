@@ -87,6 +87,32 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
       }
     }
 
+    //Admin check show unpublished
+    if($article_ctr < 3) {
+      if(user_access('view any unpublished content')) {
+        //Provide unpublished articles
+        $query = new EntityFieldQuery();
+        $query->entityCondition('entity_type', 'node')
+        ->propertyCondition('status', 0)
+        ->propertyOrderBy('created', 'DESC')
+        ->fieldCondition('field_editor_campaign_reference','target_id',$campaign_id,'=');
+        $result = $query->execute();
+
+        foreach ($result['node'] as $key => $cid) {
+          //Don't display the current article
+          if ($current_article_nid != $cid->nid) {
+            $this->getStoryNodes($cic_info, $cid, $article_ctr);
+            $article_ctr++;
+            //Only 3 stories diplayed on the sidebar
+            if ($article_ctr == 3) {
+              break;
+            }
+          }
+        }
+        $story_num = $story_num + count($result['node']);
+      }
+    }
+
     //Nothing will show up if there is only 1 node tagged
     if ($campaign_info['story_num'] > 1) {
       if($campaign_info['story_num'] > 5) {
@@ -116,7 +142,7 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
       $cic  = node_load($cid->nid);
       $cic_info[$article_ctr]['title'] = $cic->field_promo_headline['und'][0]['value'];
       $cic_info[$article_ctr]['nid'] = $cid->nid;
-      $cic_info[$article_ctr]['status'] = $cid->status;
+      $cic_info[$article_ctr]['status'] = $cic->status;
       $fid = $cic->field_thumbnail['und'][0]['fid'];
       if(!isset($fid) || empty($fid)) {
         return;
