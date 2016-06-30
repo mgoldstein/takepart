@@ -111,7 +111,7 @@
     </script>
   </footer>
 
-  <?php if ($show_fb_comments): ?>
+  <?php if ($show_comments): ?>
     <div id="article-comments">
       <h3 class="top-border">Comments <span>(<fb:comments-count href="<?php print $url_local; ?>"></fb:comments-count>)</span></h3>
       <fb:comments href="<?php print $url_local; ?>" numposts="15"></fb:comments>

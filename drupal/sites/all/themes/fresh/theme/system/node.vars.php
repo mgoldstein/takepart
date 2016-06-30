@@ -10,7 +10,7 @@ function fresh_preprocess_node(&$variables, $hook) {
   */
 
   $node = $variables['node'];
-  $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
+  $variables['show_comments'] = ($variables['status']) ? TRUE : FALSE;
   if ($variables['view_mode'] == 'full') {
     if ($node->type == 'openpublish_article' || $node->type == 'video' || $node->type == 'video_playlist' || $node->type == 'feature_article') {
       //Feature Artcile will use its own template
@@ -37,22 +37,6 @@ function fresh_preprocess_node(&$variables, $hook) {
       $function($variables, $hook);
     }
   }
-  //$variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
-
-  // $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
-
-  /* Run view-mode-specific preprocess functions */
-  // $function = __FUNCTION__ . '__' . $variables['view_mode'];
-  // if (function_exists($function)) {
-  //   $function($variables, $hook);
-  // }
-
-  /* Run node-type-specific preprocess functions */
-
-  // $function = __FUNCTION__ . '__' . $variables['node']->type;
-  // if (function_exists($function)) {
-  //   $function($variables, $hook);
-  // }
 }
 
 /**
@@ -211,9 +195,11 @@ function fresh_preprocess_node__autoload(&$variables) {
 
     /* Comments */
     $url = url('node/' . $variables['node']->nid, array('absolute' => true));
-    $variables['comments'] = theme('fresh_fb_comments', array('url' => $url, 'nid' => $variables['node']->nid));
+    $variables['comments'] = theme('fresh_disqus_comments', array('url' => $url, 'nid' => $variables['node']->nid));
 
-    $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
+    drupal_add_js(array('disqus' => array('disqus_id' => variable_get('disqus_id',''))), 'setting');
+
+    $variables['show_comments'] = ($variables['status']) ? TRUE : FALSE;
 
     /* Social Menu */
     $social_elements = array(

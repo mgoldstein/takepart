@@ -58,15 +58,10 @@
                 Drupal.behaviors.tp_video_player.attach();
               }
 
-              // Load comments box on button click for mobile display
-              $('a.comments-count').once('FBComments', function () {
-                $('a.comments-count').on('click', function(e){
-                  $(this).siblings('.fb-comments').attr('href', window.location.href).show();
-                  $(this).hide();
-                  e.preventDefault();
-                  return false;
-                });
-              });
+              //Load disqus comment count
+              if(typeof DISQUSWIDGETS !== 'undefined') {
+                DISQUSWIDGETS.getCount({reset: true});
+              }
 
               /* There are new Tap Widgets available on the page.  Delay these calls until page is active */
               window.newTapWidgets = true;

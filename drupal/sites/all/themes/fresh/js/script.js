@@ -383,4 +383,57 @@
     }
   };
 
+  /**
+   * Add Disqus comments to all fresh theme pages
+   * These are just add the js files and click function for the
+   * rendering of comments. Comments will only show up when requested
+   * with a button click.
+   */
+  Drupal.behaviors.disqus_init = {
+    attach: function(context, settings) {
+      $('body').once('disqus_init', function() {
+        //Init disqus comments
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//'+Drupal.settings.disqus.disqus_id+'.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s); })();
+        //Init disqus count of comments
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//'+Drupal.settings.disqus.disqus_id+'.disqus.com/count.js';
+          s.setAttribute('id', 'dsq-count-scr');
+          s.setAttribute('async', true);
+          (d.head || d.body).appendChild(s); })();
+        //Set the click state of the disqus button
+        $(document).on('click touchstart', '.disqus_render_button', function(event){
+          $('#disqus_thread').remove();
+          $('.disqus_render_button').show();
+          $(this).hide();
+          $(this).siblings('.disqus_thread_container').append($('<div id="disqus_thread"></div>'));
+          DISQUS.reset({
+            reload: true,
+            config: function () {
+              this.page.url = $(this).attr('data-disqus-link');
+              this.page.identifier = $(this).attr('data-disqus-id');
+              this.callbacks.onNewComment = [function(comment) {
+                triggerDisqusAddComment(comment);
+              }];
+            }
+          });
+          e.preventDefault();
+          return false;
+        });
+        function triggerDisqusAddComment(response) {
+           var disqusAddComment = new CustomEvent( 'disqusAddComment', { detail: response } );
+           if ( typeof DTM != "undefined" )
+             DTM.disqusAddCommentResponse = response;
+
+           if ( typeof response != "undefined" && response.id )
+             document.body.dispatchEvent( disqusAddComment );
+        }
+      });
+    }
+  };
+
 })(jQuery, Drupal, this, this.document);

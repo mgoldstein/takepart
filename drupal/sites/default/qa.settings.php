@@ -58,3 +58,5 @@ $conf += array(
 );
 
 $conf['campaign_css_s3_path'] = 'https://s3.amazonaws.com/takepart-campaigns/dev/styles/';
+
+$conf['disqus_id'] = 'takepartstage';
