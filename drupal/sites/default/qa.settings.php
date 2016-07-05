@@ -26,6 +26,9 @@ $memcache_port         = 11211;
 // Campain CSS s3 path
 $campaign_css_s3_path  = "https://s3.amazonaws.com/takepart-campaigns/dev/styles/";
 
+// Disqus account
+$conf['disqus_id'] = 'takepartstage';
+
 // Database settings
 $database_username     = 'root';
 $database_password     = 'master_user_password';

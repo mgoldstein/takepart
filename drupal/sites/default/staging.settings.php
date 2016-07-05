@@ -58,6 +58,8 @@ $conf += array(
   'memcache_key_prefix' => 'stage',
 );
 
+// Campain CSS s3 path
 $conf['campaign_css_s3_path'] = 'https://s3.amazonaws.com/takepart-campaigns/dev/styles/';
 
+// Disqus account
 $conf['disqus_id'] = 'takepartstage';

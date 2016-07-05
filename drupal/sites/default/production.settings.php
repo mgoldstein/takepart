@@ -59,6 +59,8 @@ $conf += array(
   'memcache_key_prefix' => 'prod',
 );
 
+// Campain CSS s3 path
 $conf['campaign_css_s3_path'] = 'https://s3.amazonaws.com/takepart-campaigns/prod/styles/';
 
+// Disqus account
 $conf['disqus_id'] = 'takepart';
