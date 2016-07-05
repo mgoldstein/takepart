@@ -75,6 +75,7 @@ $conf += array(
   'participant_api_default_account'    => $participant_api_default_account,
   'shared_assets_path'                 => $shared_assets_path,
   'campaign_css_s3_path'               => $campaign_css_s3_path,
+  'disqus_id'                          => $disqus_id,
 );
 
 // Elasticache
