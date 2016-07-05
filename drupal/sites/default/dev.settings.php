@@ -17,7 +17,7 @@ $pm_signup_log         = TRUE;
 $shared_assets_path    = "//s3.amazonaws.com/tab_assets/shared_assets_$APP_ENV/";
 
 // Solr settings
-$solr_host             = '10.1.10.30';
+$solr_host             = '10.1.5.30';
 
 // Elasticcache
 $memcache_host         = "$APP_ENV-memcached.bxiq81.cfg.use1.cache.amazonaws.com";
@@ -29,8 +29,8 @@ $campaign_css_s3_path  = "https://s3.amazonaws.com/takepart-campaigns/dev/styles
 // Database settings
 $database_username     = 'root';
 $database_password     = 'master_user_password';
-$database_host         = 'qaphp01.ctvzddorowz4.us-east-1.rds.amazonaws.com';
-$database_slave_host   = 'qaphp01-read.ctvzddorowz4.us-east-1.rds.amazonaws.com';
+$database_host         = 'devphp01.ctvzddorowz4.us-east-1.rds.amazonaws.com';
+$database_slave_host   = 'devphp01-read.ctvzddorowz4.us-east-1.rds.amazonaws.com';
 
 // Scream at the dev, maybe they'll fix something
 ini_set('error_reporting', E_ALL & ~E_NOTICE);
