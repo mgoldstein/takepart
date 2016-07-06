@@ -161,7 +161,7 @@
     }
 
     updateTo = setTimeout(function () {
-	 showDisqusComments(token);
+	 showFacebookComments(token);
 	 refreshDfpAds();
     }, 500);
   };
@@ -187,46 +187,27 @@
   }
 
   // utility funcitions to show/hide and replace facebook comments
-  var $GallComments = null;
-  var showDisqusComments = function (token) {
-    $GallComments = $GallComments || $('#gallery-comments');
-    if (token == 'next-gallery') {
-      $GallComments.hide();
-    } else {
-      $GallComments.show();
-    }
-    var identifier = 'comments-'+token;
-    if(identifier == 'comments-') {
-      identifier = 'comments-cover';
-    }
+  var $facebookComments = null;
+  var facebookCommentsTemplate = null;
+  var showFacebookComments = function (token) {
+    $facebookComments = $facebookComments || $('#gallery-comments');
 
-    updateDisqusComments(base_url + '/' + token, identifier);
+    if (token == 'next-gallery') {
+	 $facebookComments.hide();
+    } else {
+	 $facebookComments.show();
+    }
+    updateFacebookComments(base_url + '/' + token);
   };
 
-  var updateDisqusComments = function (url, identifier) {
-    $GallComments.find('#disqus_thread').remove();
-    $GallComments.append($('<div id="disqus_thread"></div>'));
-    $GallComments.find('.disqus-count-container').html('');
-    $GallComments.find('.disqus-count-container').html('(<span class="disqus-comment-count" data-disqus-identifier="'+identifier+'" data-disqus-url="'+url+'">0</span>)');
-    if(typeof DISQUS !== 'undefined') {
-      DISQUS.reset({
-        reload: true,
-        config: function () {
-          this.page.url = url;
-          this.page.identifier = identifier;
-          this.callbacks.onNewComment = [function(comment) {
-            var disqusAddComment = new CustomEvent( 'disqusAddComment', { detail: comment } );
-            if ( typeof DTM != "undefined" )
-              DTM.disqusAddCommentResponse = comment;
+  var updateFacebookComments = function (url) {
+    facebookCommentsTemplate = facebookCommentsTemplate || $('#facebook-comments-template').text();
 
-            if ( typeof comment != "undefined" && comment.id )
-              document.body.dispatchEvent( disqusAddComment );
-          }];
-        }
-      });
+    if (url) {
+	 $facebookComments.html(facebookCommentsTemplate.replace(/href="[^"]+"/g, 'href="' + url + '"'));
     }
-    if(typeof DISQUSWIDGETS !== 'undefined') {
-      DISQUSWIDGETS.getCount({reset: true});
+    if (window.FB) {
+	 FB.XFBML.parse($facebookComments[0]);
     }
   };
 
@@ -299,7 +280,7 @@
 	 // fail to fire when the first slide is loaded.
 	 var token = getCurrentToken();
 	 this.hpushCurrentSlide(replace);
-	 showDisqusComments(token);
+	 showFacebookComments(token);
 
    //Update DTM DigitalData
    updateDTMslidetype("photo slide");
@@ -536,6 +517,7 @@
 	   _satellite.track('gallery_enter');
 	   gallery.showGallery();
 	 });
+
 	 $('#gallery-enter-link, #next-gallery-enter-link')
 		    .on('mouseenter', function () {
 			 $(this).addClass('hover');

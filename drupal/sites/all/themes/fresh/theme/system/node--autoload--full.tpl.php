@@ -71,7 +71,7 @@
       <?php endif; ?>
 
       <?php if (!empty($variables['comments'])): ?>
-     <?php if ($show_comments): ?>
+     <?php if ($show_fb_comments): ?>
           <div class="comments"><a name="article-comments"></a>
       <?php print $variables['comments']; ?>
           </div>

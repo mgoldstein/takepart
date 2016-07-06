@@ -68,12 +68,6 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
         'link' => '',
       )
     ),
-    'fresh_disqus_comments' =>  array(
-      'variables' => array(
-        'url' => '',
-        'nid' => '',
-      )
-    ),
   );
 
 
