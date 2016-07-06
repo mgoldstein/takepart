@@ -2,6 +2,9 @@
   display: table;
   margin: 20px auto;
   width: 100%;
+  @include breakpoint($breakpoint-phablet) {
+    min-height: 185px;
+  }
   a.comments-count {
     display: block;
     clear: both;
@@ -14,5 +17,15 @@
     font-weight: bold;
     padding: 8px 14px;
     cursor: pointer;
+    @include breakpoint($breakpoint-phablet) {
+	 display: none;
+    }
+    .fb-comments {
+	 text-align: center;
+	 @include breakpoint($breakpoint-phablet) {
+	   display: block;
+	 }
+	 display: none;
+    }
   }
 }

@@ -59,22 +59,15 @@
             );
         </script>
     <?php print render($on_our_radar); ?>
-    <?php if ($show_comments): ?>
+    <?php if ($show_fb_comments): ?>
       <div id="gallery-comments">
-        <h3 class="top-border"><?php print t('Comments'); ?> <span class="disqus-count-container">(<span class="disqus-comment-count" data-disqus-identifier="comments-cover" data-disqus-url="<?php print url('node/'.$node->nid, array('absolute'=>TRUE)); ?>">0</span>)</span></h3>
-        <script id="dsq-count-scr" src="//<?php print variable_get('disqus_id',''); ?>.disqus.com/count.js" async></script>
-        <div id="disqus_thread"></div>
-        <script>
-            (function() {
-                var d = document, s = d.createElement('script');
-                s.src = '//<?php print variable_get('disqus_id',''); ?>.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-            })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        <h3 class="top-border"><?php print t('Comments'); ?> <span>(<fb:comments-count href="<?php print $url_production; ?>"></fb:comments-count>)</span></h3>
+        <fb:comments href="<?php print $url_production; ?>" numposts="15"></fb:comments>
       </div>
-
+      <script id="facebook-comments-template" type="text/x-javascript-template">
+        <h3 class="top-border"><?php print t('Comments'); ?> <span>(<fb:comments-count href="<?php print $url_production; ?>"></fb:comments-count>)</span></h3>
+        <fb:comments href="<?php print $url_production; ?>" numposts="15"></fb:comments>
+      </script>
     <?php endif; ?>
   </aside>
 </div>
