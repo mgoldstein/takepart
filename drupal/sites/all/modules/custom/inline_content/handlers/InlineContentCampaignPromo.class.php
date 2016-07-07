@@ -93,9 +93,9 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
     //Nothing will show up if there is only 1 node tagged
     if ($article_ctr > 0) {
       if($campaign_info['story_num'] >= 5) {
-        $campaign_info['footer'] = t('See All @numb Stories', array('@numb' => $campaign_info['story_num']));
+        $campaign_info['footer'] = t('See all @numb stories', array('@numb' => $campaign_info['story_num']));
       } else {
-        $campaign_info['footer'] = t('See All Stories', array('@numb' => $campaign_info['story_num']));
+        $campaign_info['footer'] = t('See all stories', array('@numb' => $campaign_info['story_num']));
       }
       $markup = theme('inline_content_campaign_promo' , array(
         'campaign_info' => $campaign_info,
