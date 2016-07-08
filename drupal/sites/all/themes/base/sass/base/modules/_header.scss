@@ -1027,3 +1027,48 @@ body {
 .header-wrapper.mobile {
   padding: 0 10px;
 }
+
+#page-wrapper,
+#page-wrap {
+  .tou-alert {
+    padding: 38px 0 23px 0;
+    position: relative;
+    z-index: 2;
+    @include breakpoint($breakpoint-tablet) {
+      padding: 23px 0;
+      margin-bottom: 20px;
+    }
+    background: #01BF9E;
+    p {
+      text-align: center;
+      margin: 0;
+      color: #fff;
+      font-family: "AdelleSans";
+      font-weight: 500;
+      font-size: 19px;
+    }
+    a {
+      color: #fff;
+      text-decoration: underline;
+      font-family: "AdelleSans";
+    }
+    .tou-close {
+      position: absolute;
+      @include breakpoint($breakpoint-tablet) {
+        top: 20px;
+        right: 17px;
+	 }
+	 top: 7px;
+	 right: 10px;
+	 color: #fff;
+	 font-family: "AdelleSans";
+	 cursor: pointer;
+	 font-weight: 500;
+	 font-size: 19px;
+    }
+  }
+}
+.node-type-feature-article #page-wrapper .tou-alert,
+.node-type-campaign-page #page-wrap .tou-alert {
+  margin-bottom: 0;
+}

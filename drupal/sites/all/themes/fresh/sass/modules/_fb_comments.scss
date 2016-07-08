@@ -20,12 +20,12 @@
     @include breakpoint($breakpoint-phablet) {
 	 display: none;
     }
-  }
-  .fb-comments {
-    text-align: center;
-    @include breakpoint($breakpoint-phablet) {
-	 display: block;
+    .fb-comments {
+	 text-align: center;
+	 @include breakpoint($breakpoint-phablet) {
+	   display: block;
+	 }
+	 display: none;
     }
-    display: none;
   }
 }

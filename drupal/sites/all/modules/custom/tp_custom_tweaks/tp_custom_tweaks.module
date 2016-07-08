@@ -40,7 +40,7 @@ function tp_custom_tweaks_cic_after_build($form, &$form_state) {
 }
 
 /*
- * Validation for camopaign promo inline replacement
+ * Validation for campaign promo inline replacement
  */
 function tp_custom_tweaks_cic_validation($form, &$form_state) {
   //if content is tagged with a campaign and editor hasn't opted out, the campaign promop inline replacement should be present.
@@ -58,5 +58,17 @@ function tp_custom_tweaks_cic_validation($form, &$form_state) {
     if (!$campaign_promo) {
       form_error($form['field_campaign_promo_opt_out'] ,t('You have tagged this content with a campaign but haven\'t added the campaign promo sidebar inline replacement. If this is intentional, please opt-out by using the checkbox.' ));
     }
+  }
+}
+
+/**
+ * remove bolded non-breaking space with a regular space.  This is an unknown happening
+ * May be a result from copy and paste.
+ * Implement hook_node_presave
+ */
+function tp_custom_tweaks_node_presave($node) {
+  if($node->body) {
+    $node->body[LANGUAGE_NONE][0]['summary'] = str_replace('<b>&nbsp;</b>', ' ',$node->body[LANGUAGE_NONE][0]['summary']);
+    $node->body[LANGUAGE_NONE][0]['value'] = str_replace('<b>&nbsp;</b>', ' ',$node->body[LANGUAGE_NONE][0]['value']);
   }
 }

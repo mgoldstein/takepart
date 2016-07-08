@@ -873,3 +873,12 @@ function inline_content_inline_entity_form_settings_alter(&$settings, &$field, &
     }
   }
 }
+
+
+/*
+ * Alter the node query to include the publication date
+ */
+function inline_content_query_CICPromoPub_alter(QueryAlterableInterface $query){
+  $query->leftJoin('publication_date', 'p', 'node.nid = p.nid');
+  $query->orderBy('published_at', 'DESC');
+}

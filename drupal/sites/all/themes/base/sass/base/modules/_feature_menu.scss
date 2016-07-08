@@ -1,4 +1,4 @@
-/* These styles are applied to the main menu on faeture article ONLY */
+/* These styles are applied to the main menu on faeture article and campaign with transparent nav */
 
 .node-type-feature-article,
 body.campaign-transparent-nav {
@@ -33,11 +33,11 @@ body.campaign-transparent-nav {
           cursor: pointer;
         }
         .logo-feature {
-          width: 102px;
-          height: 27px;
+          width: 104px;
+          height: 25px;
           display: inline-block;
-          background: url(/sites/all/themes/base/images/feature-drawer-logo.png) no-repeat;
-          vertical-align: bottom;
+          background: url("http://s3.amazonaws.com/tab_assets/shared_assets/images/tp_logo_black.svg") no-repeat;
+          background-size: contain;
         }
       }
     .mobile-menu {
@@ -129,4 +129,11 @@ body.campaign-transparent-nav {
       }
     }
 }
+}
+.node-type-feature-article {
+  nav#mobile-menu {
+    .logo-feature {
+      vertical-align: middle;
+    }
+  }
 }

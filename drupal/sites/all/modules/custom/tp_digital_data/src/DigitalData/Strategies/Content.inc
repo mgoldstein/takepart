@@ -188,11 +188,13 @@ class ddContent extends ddDefaultPage {
         $data['page']['pageNumber'] = "page 1";
     }
 
-    //Is there an influence Banner
+    //Inline Replacements
     $show_influence = false;
+    $element_impression = array();
     if($inline = field_get_items('node', $node, 'field_inline_replacements')) {
       foreach($inline as $i) {
         $load = entity_load('inline_content', array($i['target_id']));
+        //Is there an influence Banner
         if(is_object($load[$i['target_id']]) && isset($load[$i['target_id']]->field_ic_tap_widget_type)) {
           if($tap_widget = field_get_items('inline_content', $load[$i['target_id']], 'field_ic_tap_widget_type')) {
             if($tap_widget[0]['value'] == 'influence_widget') {
@@ -200,7 +202,20 @@ class ddContent extends ddDefaultPage {
             }
           }
         }
+        //Embedded content
+        if ($load[$i['target_id']]->type == 'nodes') {
+          $element_impression[] = "embedded related story";
+        }
+        //Campaign promo
+        if ($load[$i['target_id']]->type == 'campaign_promo') {
+          $element_impression[] = "campaign promo";
+        }
       }
+    }
+    //Element Impression
+    if (!empty($element_impression)) {
+      $element_impression = implode(',', $element_impression);
+      $data['page']['pageInfo']['elementImpressions'] = $element_impression;
     }
 
     if($show_influence) {
@@ -209,6 +224,7 @@ class ddContent extends ddDefaultPage {
       $data['page']['pageInfo']['influenceBanner'] =  "No Influence Banner";
     }
 
+    //Campaign reference
     if($campaignContent = field_get_items('node', $node, 'field_editor_campaign_reference')) {
       $campaign_id = $campaignContent[0]['target_id'];
       //Get the campaign title

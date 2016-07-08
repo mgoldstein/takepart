@@ -78,6 +78,15 @@
       });
      }
 
+    //Transitional scroll to the top
+    if ($('.has-back-to-top').length != 0) {
+      $('.field-name-field-campaign-back-to-top a').click(function() {
+        $('body,html').animate({
+          scrollTop: 0
+        }, 800);
+      });
+    }
+
    });
 
    //This is called through the ajax commands sent from the server.

@@ -14,14 +14,14 @@
       <h4>
         BIG ISSUE <span class="volume">vol. <?php print $campaign_info['vol']; ?></span>
       </h4>
-      <p class = "campaign-description">
+      <div class = "campaign-description">
         <?php print $campaign_info['description']; ?>
-      </p>
+      </div>
     </div>
     <div class = "stories-wrapper" style="border: 2px solid <?php print $campaign_info['bg_color']; ?>">
       <?php  //Loop through $cic_info array for image and promo title
         foreach($cic_info AS $k => $cic):
-          print '<div class="stories-item stories-item-'.$k.'">';
+          print '<div class="stories-item stories-item-'.$k.' '.($cic['status'] == 0?'node-unpublished':'').'">';
           $item = theme_image(array('path' => $cic['thumbnail'],'alt' => $cic['title']));
           $item .= '<p class="stories-title">'.$cic['title'].'</p>';
           print l($item, 'node/'.$cic['nid'], array('html'=>TRUE));
@@ -30,7 +30,7 @@
       ?>
     </div>
     <div class="stories-footer" style="background-color: <?php print $campaign_info['bg_color']; ?>">
-      <?php print l(t('See More Stories'), $campaign_info['url'], array('attributes' => array('class' => array('stories-footer-link')))); ?>
+      <?php print l($campaign_info['footer'], $campaign_info['url'], array('attributes' => array('class' => array('stories-footer-link')))); ?>
     </div>
   </div>
 </div>

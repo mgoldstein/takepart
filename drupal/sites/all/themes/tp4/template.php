@@ -69,6 +69,12 @@ function tp4_preprocess_html(&$variables, $hook) {
       $transnav = field_get_items('node', $node, 'field_transparent_nav');
       if(isset($transnav) && $transnav[0]['value'] == 1) {
         $variables['classes_array'][] = drupal_html_class('campaign-transparent-nav');
+        //Transparent nav styling options
+        $transnav_style = field_get_items('node', $node, 'field_transparent_nav_style');
+        if (isset($transnav_style) && $transnav_style[0]['value'] == 'dark') {
+          $variables['classes_array'][] = drupal_html_class('transparent-nav-dark');
+        }
+
       }
     }
   }
@@ -1289,53 +1295,59 @@ function tp4_preprocess_node__campaign_card_news(&$variables, $hook) {
       $news_ref = field_get_items('node', $variables['node'], 'field_campaign_single_news_ref');
       $node = node_load($news_ref[0]['target_id']);
 
-      //Determine if the referenced content is an action or not
-      //Actions have different promotable material
-      if($node->type == 'action'){
-        $file = field_get_items('node', $node, 'field_action_main_image');
-        $file = file_load($file[0]['fid']);
+      //There is no node do not try to pull values from it.
+      if(isset($node) && !empty($node)) {
 
-        $action_link = field_get_items('node', $node, 'field_action_url');
-        if(!empty($action_link)){
-          $link = field_view_value('node', $node, 'field_action_url', $action_link, 'default');
-          $link_url = $link['#element'][0]['url'];
-          $link_title = $link['#element'][0]['title'];
-          $link = l($link_title, $link_url);
+        //Determine if the referenced content is an action or not
+        //Actions have different promotable material
+        if($node->type == 'action'){
+          $file = field_get_items('node', $node, 'field_action_main_image');
+          $file = file_load($file[0]['fid']);
+
+          $action_link = field_get_items('node', $node, 'field_action_url');
+          if(!empty($action_link)){
+            $link = field_view_value('node', $node, 'field_action_url', $action_link, 'default');
+            $link_url = $link['#element'][0]['url'];
+            $link_title = $link['#element'][0]['title'];
+            $link = l($link_title, $link_url);
+          }
+          $short_headline = (!empty($action_link) ? $link : '');
+          $headline = $node->title;
         }
-        $short_headline = (!empty($action_link) ? $link : '');
-        $headline = $node->title;
+        //Referenced node is not an Action so we use different fields
+        else{
+          $file = field_get_items('node', $node, 'field_thumbnail');
+          $file = file_load($file[0]['fid']);
+
+          //ensures that this field is set
+          if (isset($node->field_article_subhead)) {
+            $short_headline = tp4_render_field_value('node', $node, 'field_article_subhead');
+          }
+          elseif (isset($node->field_subhead)) {
+            $short_headline = tp4_render_field_value('node', $node, 'field_subhead');
+          }
+
+          $headline = tp4_render_field_value('node', $node, 'field_promo_headline');
+        }
+
+        $mapping = picture_mapping_load('campaign_news_image');
+        $file->breakpoints = picture_get_mapping_breakpoints($mapping);
+        $file->attributes = array();
+        $file->alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
+        $image = theme('picture', (array) $file);
+
+        $center = '';  // single news reference will use one column now
+        $path = drupal_get_path_alias('node/'. $node->nid);
+        $center .='<div class ="single-news-wrapper">';
+        $center .= l($image, $path, array('html' => true));
+        $center .= '<h1 class="headline">'. l($headline, $path, array('html' => true)). '</h3>';  //headline
+        $center .= '<p class="short-headline">'. $short_headline. '</p>';  //short headline
+        $center .= _tp4_support_sponsor_flag($node);
+        $center .= '</div>';  //single-news-wrapper
+      } else {
+        $center ='<div class ="single-news-wrapper">';
+        $center .= '</div>';
       }
-      //Referenced node is not an Action so we use different fields
-      else{
-        $file = field_get_items('node', $node, 'field_thumbnail');
-        $file = file_load($file[0]['fid']);
-
-        //ensures that this field is set
-        if (isset($node->field_article_subhead)) {
-          $short_headline = tp4_render_field_value('node', $node, 'field_article_subhead');
-        }
-        elseif (isset($node->field_subhead)) {
-          $short_headline = tp4_render_field_value('node', $node, 'field_subhead');
-        }
-
-        $headline = tp4_render_field_value('node', $node, 'field_promo_headline');
-      }
-
-      $mapping = picture_mapping_load('campaign_news_image');
-      $file->breakpoints = picture_get_mapping_breakpoints($mapping);
-      $file->attributes = array();
-      $file->alt = (isset($file->alt) == true && $file->alt != NULL ? $file->alt : $node->title);
-      $image = theme('picture', (array) $file);
-
-      $center = '';  // single news reference will use one column now
-      $path = drupal_get_path_alias('node/'. $node->nid);
-      $center .='<div class ="single-news-wrapper">';
-      $center .= l($image, $path, array('html' => true));
-      $center .= '<h1 class="headline">'. l($headline, $path, array('html' => true)). '</h3>';  //headline
-      $center .= '<p class="short-headline">'. $short_headline. '</p>';  //short headline
-      $center .= _tp4_support_sponsor_flag($node);
-      $center .= '</div>';  //single-news-wrapper
-
     }
     else{ //multivalue
 

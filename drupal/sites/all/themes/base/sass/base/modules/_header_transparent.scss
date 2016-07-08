@@ -12,21 +12,23 @@
   display: none;
   height: 60px;
   position: relative;
-  padding: 15px;
-  padding-right: 35px;
+  padding: 15px 35px 15px 25px;
   @include breakpoint($breakpoint-tablet) {
     display: block;
   }
   .search-close {
-    background: transparent url(/sites/all/themes/base/images/navbar-transparent-x.png) no-repeat;
     width: 13px;
     height: 13px;
     display: none;
     position: absolute;
-    top: 17px;
+    top: 16px;
     right: 17px;
     z-index: 3;
     cursor: pointer;
+    &:after {
+      content: '\e617';
+      font-family: takepart;
+    }
   }
   &.search-open {
     #search-api-page-search-form-site-search,
@@ -47,45 +49,40 @@
     height: 30px;
   }
 
-  li.user-menu.fresh-theme:after {
-    content: '';
-    float: right;
-    width: 5px;
-    height: 30px;
-    display: block;
-    background: url(/sites/all/themes/base/images/navbar-transparent-line.png) no-repeat center center;
-  }
-
   .nav-right {
     float: right;
   }
 
   .toggle-menu {
     display: inline-block;
-    margin-top: -5px;
-    width: 40px;
-    height: 31px;
-    background: url(/sites/all/themes/base/images/navbar-transparent-menu.png) no-repeat center center;
     cursor: pointer;
+    padding: 0 10px 0 0;
+    font-size: 16px;
+    vertical-align: middle;
+    &:after {
+      content: '\e609';
+      font-family: takepart;
+    }
   }
 
   .logo-transparent {
     display: inline-block;
     vertical-align: bottom;
-    width: 100px;
-    height: 42px;
     margin-top: -5px;
-    img {
-      width: 100px;
-      height: 42px;
-    }
+    background-image: url("http://s3.amazonaws.com/tab_assets/shared_assets/images/tp_logo_white.svg");
+    width: 104px;
+    height: 25px;
+    background-repeat: no-repeat;
+    background-size: contain;
+
   }
 
   /****** User Login **********/
   .icon.i-user-avatar {
-    background: url(/sites/all/themes/base/images/navbar-transparent-user.png) no-repeat center center;
+    font-size: 17px;
+    color: #fff;
     &:after {
-      content: '';
+      content: '\e10C';
     }
   }
   .tp_login.open .user_image {
@@ -115,7 +112,7 @@
         right: 5px;
       }
       .dropdown-toggle {
-        padding: 13px 20px;
+        padding: 13px 15px;
       }
     }
 
@@ -136,31 +133,34 @@
   #search-api-page-search-form-site-search,
   #search-api-page-search-form-site-search--2 {
     display: none; // .navbar-transparent.visible changes this to display: block;
-    min-width: 240px;
-    padding-bottom: 8px;
+    min-width: 235px;
+    padding-bottom: 0px;
     border-bottom: 1px solid #fff;
     position: absolute;
     right: 15px;
     top: 15px;
     z-index: 2;
+    font-size: 16px;
+    color: #fff;
+    margin-top: 0px;
+    padding-left: 3px;
 
     input[type="text"] {
+      margin-top: 4px;
       float: right;
-      height: 18px;
-      width: 200px;
-      margin: 0;
+      height: 16px;
+      width: 201px;
+      margin: 4px 0 0 0;
       padding: 0 20px;
       vertical-align: middle;
       background: transparent;
       border: none;
+      border-left: 1px solid #fff;
       font-family: 'Roboto', sans-serif;
       font-size: 14px;
       font-weight: 300;
       line-height: 18px;
       color: #fff;
-      border-radius: 0px 3px 3px 0px;
-      -moz-border-radius: 0px 3px 3px 0px;
-      -webkit-border-radius: 0px 3px 3px 0px;
       -moz-box-shadow: none;
       -webkit-box-shadow: none;
       box-shadow: none;
@@ -195,29 +195,71 @@
 
     .form-submit {
       float: left;
-      width: 40px;
-      height: 18px;
-      background: url(/sites/all/themes/base/images/navbar-transparent-search.png) no-repeat center center;
+      display: none;
       text-indent: -999px;
       border: none;
       margin: 0;
-      border-radius: 3px 0px 0px 3px;
-      -moz-border-radius: 3px 0px 0px 3px;
-      -webkit-border-radius: 3px 0px 0px 3px;
-      border-right: 1px solid #fff;
-      &:after {
+      color: #fff;
+    }
+    &:after {
         content: '\e616';
         font-family: takepart;
-      }
     }
   }
 
   .toggle-search {
     cursor: pointer;
     width: 40px;
-    height: 31px;
-    background: url(/sites/all/themes/base/images/navbar-transparent-search.png) no-repeat center center;
+    height: 26px;
+    font-size: 16px;
+    margin-top: 1px;
+    border-left: 1px solid #fff;
+    padding-left: 13px;
+    &:after {
+      content: '\e616';
+      font-family: takepart;
+    }
   }
 
+}
 
+/* Dark Transparent Nav Overrides */
+body.transparent-nav-dark .navbar-transparent {
+  .toggle-menu,
+  .icon.i-user-avatar,
+  .toggle-search,
+  .search-close,
+  #search-api-page-search-form-site-search,
+  #search-api-page-search-form-site-search--2 {
+    color: #000;
+  }
+  #search-api-page-search-form-site-search,
+  #search-api-page-search-form-site-search--2 {
+    border-bottom: 1px solid #000;
+    input[type="text"] {
+      color: #000;
+      border-left: 1px solid #000;
+      &::-webkit-input-placeholder {
+        color: #000;
+      }
+      &::-moz-placeholder {
+        color: #000;
+      }
+      &::-ms-input-placeholder {
+        color: #000;
+      }
+      &::-moz-placeholder {
+        color: #000;
+      }
+    }
+  }
+  .toggle-search {
+    border-left: 1px solid #000;
+  }
+  .logo-transparent {
+    background-image: url("http://s3.amazonaws.com/tab_assets/shared_assets/images/tp_logo_black.svg");
+  }
+  .user-menu .avatarUsername {
+    color: #000;
+  }
 }

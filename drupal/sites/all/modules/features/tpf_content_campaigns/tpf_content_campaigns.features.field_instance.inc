@@ -25167,7 +25167,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 11,
+        'weight' => 13,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -25290,7 +25290,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 7,
+        'weight' => 9,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -25372,7 +25372,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 5,
+        'weight' => 7,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -25471,7 +25471,7 @@ Note: If you manually reference more items than selected here, the number refere
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 22,
+        'weight' => 3,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -25536,7 +25536,7 @@ Note: If you manually reference more items than selected here, the number refere
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 9,
+      'weight' => 10,
     ),
   );
 
@@ -25556,7 +25556,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 17,
+        'weight' => 19,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -25643,7 +25643,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 16,
+        'weight' => 18,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -25730,7 +25730,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 8,
+        'weight' => 10,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -25933,7 +25933,7 @@ Note: If you manually reference more items than selected here, the number refere
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -25948,7 +25948,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'hidden',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 18,
+        'weight' => 20,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -26050,7 +26050,7 @@ Note: If you manually reference more items than selected here, the number refere
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -26065,7 +26065,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 4,
+        'weight' => 6,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -26152,7 +26152,7 @@ Note: If you manually reference more items than selected here, the number refere
         'module' => 'list',
         'settings' => array(),
         'type' => 'list_default',
-        'weight' => 21,
+        'weight' => 2,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -26217,7 +26217,7 @@ Note: If you manually reference more items than selected here, the number refere
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 8,
+      'weight' => 9,
     ),
   );
 
@@ -26232,7 +26232,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 6,
+        'weight' => 8,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -26355,7 +26355,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 9,
+        'weight' => 11,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -26478,7 +26478,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 10,
+        'weight' => 12,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -26602,7 +26602,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 12,
+        'weight' => 14,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -26727,7 +26727,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 3,
+        'weight' => 5,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -26807,7 +26807,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 15,
+        'weight' => 17,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -26896,7 +26896,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 14,
+        'weight' => 16,
       ),
       'feature_main' => array(
         'label' => 'hidden',
@@ -27016,7 +27016,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 2,
+        'weight' => 4,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -27206,7 +27206,7 @@ Note: If you manually reference more items than selected here, the number refere
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -27225,7 +27225,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 19,
+        'weight' => 21,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -27294,6 +27294,90 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
+  // Exported field_instance: 'node-campaign_page-field_transparent_nav_style'.
+  $field_instances['node-campaign_page-field_transparent_nav_style'] = array(
+    'bundle' => 'campaign_page',
+    'default_value' => array(
+      0 => array(
+        'value' => 'light',
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 23,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_transparent_nav_style',
+    'label' => 'Transparent Nav Style',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'content_taxonomy_opt_groups' => FALSE,
+      ),
+      'type' => 'options_select',
+      'weight' => 7,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign_page-field_trays_initially_load'.
   $field_instances['node-campaign_page-field_trays_initially_load'] = array(
     'bundle' => 'campaign_page',
@@ -27309,7 +27393,7 @@ Note: If you manually reference more items than selected here, the number refere
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 20,
+        'weight' => 22,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -27374,7 +27458,7 @@ Note: If you manually reference more items than selected here, the number refere
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -28573,6 +28657,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Topic');
   t('Tracking Pixels');
   t('Transparent Nav');
+  t('Transparent Nav Style');
   t('Tray');
   t('Trays to initially load');
   t('Twitter List Name');
