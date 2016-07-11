@@ -23,16 +23,17 @@ $databases['default']['default'] = array(
   'prefix'   => $database_prefix,
 );
 // One or more slaves
-$databases['default']['slave'][] = array(
-  'database' => $database_name,
-  'username' => $database_username,
-  'password' => $database_password,
-  'host'     => $database_slave_host,
-  'port'     => $database_port,
-  'driver'   => $database_driver,
-  'prefix'   => $database_prefix,
-);
-
+if ($database_slave_host) {
+  $databases['default']['slave'][] = array(
+    'database' => $database_name,
+    'username' => $database_username,
+    'password' => $database_password,
+    'host'     => $database_slave_host,
+    'port'     => $database_port,
+    'driver'   => $database_driver,
+    'prefix'   => $database_prefix,
+  );
+}
 // Solr Server settings
 $conf['search_api_solr_overrides'] = array(
   'takepart_solr_production' => array(
@@ -75,24 +76,26 @@ $conf += array(
   'participant_api_default_account'    => $participant_api_default_account,
   'shared_assets_path'                 => $shared_assets_path,
   'campaign_css_s3_path'               => $campaign_css_s3_path,
-  'disqus_id'                          => $disqus_id,
 );
 
 // Elasticache
-$conf['cache_backends'][] = $cache_backends;
-$conf += array(
-  'cache_default_class'          => 'MemCacheDrupal',
-  'cache_class_cache_form'       => 'DrupalDatabaseCache',
-  'page_cache_without_database'  => TRUE,
-  'page_cache_invoke_hooks'      => FALSE,
-  'lock_inc'                     => 'sites/all/modules/contrib/memcache/memcache-lock.inc',
-  'memcache_stampede_protection' => TRUE,
-  'memcache_servers'             => array(
-    "$memcache_host:$memcache_port" => 'default',
-  ),
-  'memcache_key_prefix'          => $APP_ENV,
-);
+if ($memcache_host) {
+  $conf['cache_backends'][] = $cache_backends;
+  $conf += array(
+    'cache_default_class'          => 'MemCacheDrupal',
+    'cache_class_cache_form'       => 'DrupalDatabaseCache',
+    'page_cache_without_database'  => TRUE,
+    'page_cache_invoke_hooks'      => FALSE,
+    'lock_inc'                     => 'sites/all/modules/contrib/memcache/memcache-lock.inc',
+    'memcache_stampede_protection' => TRUE,
+    'memcache_servers'             => array(
+      "$memcache_host:$memcache_port" => 'default',
+    ),
+    'memcache_key_prefix'          => $APP_ENV,
+  );
+}
 
+// SSL handling
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
   $_SERVER['HTTPS'] = 'on';
 }
