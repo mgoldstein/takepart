@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Takepart Fresh Gallery feature.
+ */
+
+include_once 'tp_feature_fresh_gallery.features.inc';

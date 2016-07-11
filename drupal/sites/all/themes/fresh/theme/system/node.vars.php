@@ -12,7 +12,7 @@ function fresh_preprocess_node(&$variables, $hook) {
   $node = $variables['node'];
   $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
   if ($variables['view_mode'] == 'full') {
-    if ($node->type == 'openpublish_article' || $node->type == 'video' || $node->type == 'video_playlist' || $node->type == 'feature_article') {
+    if (in_array($node->type , array('openpublish_article', 'video', 'video_playlist', 'feature_article', 'fresh_gallery'))) {
       //Feature Artcile will use its own template
       if ($node->type == 'feature_article') {
         $variables['theme_hook_suggestion'] = 'node__feature__article__' . $variables['view_mode'];

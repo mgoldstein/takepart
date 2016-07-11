@@ -42,6 +42,7 @@
 @import "page/video-playlist";
 @import "page/feature-article";
 @import "page/video";
+@import "page/fresh-gallery";
 
 
 /*****************************
@@ -308,7 +309,8 @@ body {
 body.node-type-article,
 body.node-type-video,
 body.node-type-video-playlist,
-body.node-type-feature-article {
+body.node-type-feature-article,
+body.node-type-fresh-gallery {
   aside.social.social-vertical {
     display: none;
     background: rgba(255,255,255,.75);

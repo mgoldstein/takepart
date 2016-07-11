@@ -513,6 +513,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_author',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
@@ -523,12 +526,32 @@ function tpf_content_field_bases_field_default_field_bases() {
     'settings' => array(
       'referenceable_types' => array(
         'action' => 0,
-        'article' => 0,
+        'campaign' => 0,
+        'campaign_card_ad' => 0,
+        'campaign_card_branding' => 0,
+        'campaign_card_empty' => 0,
+        'campaign_card_iframe' => 0,
+        'campaign_card_media' => 0,
+        'campaign_card_multi_column' => 0,
+        'campaign_card_news' => 0,
+        'campaign_card_social' => 0,
+        'campaign_card_tap_widget' => 0,
+        'campaign_card_text' => 0,
+        'campaign_card_twitter' => 0,
+        'campaign_page' => 0,
+        'campaign_tray' => 0,
+        'feature_article' => 0,
+        'feed' => 0,
+        'feed_item' => 0,
+        'flashcard' => 0,
+        'fresh_gallery' => 0,
         'openpublish_article' => 0,
         'openpublish_photo_gallery' => 0,
         'profile' => 'profile',
         'section_front' => 0,
         'takepart_page' => 0,
+        'video' => 0,
+        'video_playlist' => 0,
       ),
       'view' => array(
         'args' => array(),
@@ -2566,6 +2589,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_free_tag',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -2601,6 +2627,53 @@ function tpf_content_field_bases_field_default_field_bases() {
     ),
     'translatable' => 1,
     'type' => 'context_field',
+  );
+
+  // Exported field_base: 'field_fresh_gallery_suffix'.
+  $field_bases['field_fresh_gallery_suffix'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_fresh_gallery_suffix',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'format' => array(
+        0 => 'format',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'text',
+    'settings' => array(),
+    'translatable' => 0,
+    'type' => 'text_long',
+  );
+
+  // Exported field_base: 'field_fresh_photos'.
+  $field_bases['field_fresh_photos'] = array(
+    'active' => 1,
+    'cardinality' => -1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_fresh_photos',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'fid' => array(
+        0 => 'fid',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'image',
+    'settings' => array(
+      'default_image' => 0,
+      'uri_scheme' => 'public',
+    ),
+    'translatable' => 0,
+    'type' => 'image',
   );
 
   // Exported field_base: 'field_gallery_images'.
@@ -3647,6 +3720,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_permanent_title',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -3968,6 +4044,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_promo_headline',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'format' => array(
         0 => 'format',
@@ -4224,6 +4303,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_series',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -4575,6 +4657,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_topic',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
@@ -4603,6 +4688,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_topic_box',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'tid' => array(
         0 => 'tid',
