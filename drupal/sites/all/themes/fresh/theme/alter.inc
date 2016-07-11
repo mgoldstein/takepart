@@ -11,9 +11,13 @@
 function fresh_page_alter(&$page){
   $node = menu_get_object();
   $type = $node -> type;
-  if ($type == 'openpublish_article' || $type == 'video' || $type == 'video_playlist' || $type == 'feature_article') {
+  if (in_array($type, array('openpublish_article', 'video', 'video_playlist', 'feature_article', 'fresh_gallery'))) {
       $path = drupal_get_path('theme', 'fresh');
       $page['content']['#attached']['css'][] = $path.'/css/fresh.css';
+  }
+  //This will only load if gallery is the first node
+  if ($type == 'fresh_gallery') {
+    $page['content']['#attached']['js'][] = $path.'/js/fresh-gallery.js';
   }
 
 
