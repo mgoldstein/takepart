@@ -244,7 +244,7 @@ function tp_videos_token_attached_video_file_url($node, $secure = FALSE) {
       $token = $params['key'];
       $scheme = $secure ? 'https' : 'http';
       $width = variable_get('tp_videos_jwplatform_width', 640);
-      $replacement = "{$scheme}://content.jwplatform.com/videos/{$token}-{$width}.mp4";
+      $replacement = "{$scheme}://content.jwplatform.com/videos/{$token}-{$width}.m3u8";
     }
   }
   return $replacement;
