@@ -2,98 +2,100 @@
 @import "../../../../themes/base/sass/base/helpers/variables";
 
 body {
-	background: #fff;
-	border-top: none !important;
-	border-bottom: none !important;
-	font-size: 14px;
+  background: #fff;
+  border-top: none !important;
+  border-bottom: none !important;
+  font-size: 14px;
 }
 
 #site-footer,
 #site-header {
-	display: none;
+  display: none;
 }
 
 header {
-	img {
-		width: 100%;
-		max-width: 400px;
-	}
+  img {
+    width: 100%;
+    max-width: 400px;
+  }
 }
 
 #page-wrapper.campaign {
-	max-width: 400px;
-	height: 100%;
+  max-width: 400px;
+  height: 100%;
 }
 
 #page {
-	color: #000;
-	&.main.interstitial {
-		padding: 45px 50px;
-		.content {
-			padding-top: 4px;
-		}
-	}
-	* {
-		-moz-box-sizing: border-box;
-		-webkit-box-sizing: border-box;
-		box-sizing: border-box;
-		font-family: $AdelleSans;
-	}
-	.interstitial {
-		float: left;
-		vertical-align: top;
-		width: 100%;
-		max-width: 400px;
-	}
-	h2 {
-		margin: 0;
-		font-size: 32px;
-		line-height: 1.1em;
-		font-family: $AdelleSans;
-		font-weight: 900;
-	}
-	.body{
-		p {
-			margin-bottom: 5px;
-		}
-		h4 {
-			font-size: 18px;
-			font-weight: 500;
-			margin: 10px 0 0 0;
-		}
-	}
-	p#dont {
-		font-family: $times-new-roman;
-		font-size: 12px;
-		clear:both;
-		margin: 18px 0 0;
-	}
-	form {
-		.form-item-email {
-			margin-top: 14px;
-			margin-bottom: 10px;
-		}
-		#edit-email {
-			height: 40px;
-			border: 1px solid #C7C7C7;
-			-webkit-border-radius: 3px;
-			-moz-border-radius: 3px;
-			-ms-border-radius: 3px;
-			border-radius: 3px;
-		}
-		#edit-submit {
-			font-size: 20px;
-			line-height: 26px;
-			-webkit-border-radius: 3px;
-			-moz-border-radius: 3px;
-			-ms-border-radius: 3px;
-			border-radius: 3px;
-		}
-	}
+  color: #000;
+  &.main.interstitial {
+    padding: 45px 50px;
+    .content {
+      padding-top: 4px;
+    }
+  }
+  * {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: $AdelleSans;
+  }
+  .interstitial {
+    float: left;
+    vertical-align: top;
+    width: 100%;
+    max-width: 400px;
+  }
+  h2 {
+    margin: 0;
+    font-size: 32px;
+    line-height: 1.1em;
+    font-family: $AdelleSans;
+    font-weight: 900;
+  }
+  .body{
+    font-size: 18px;
+    line-height: 1.2em;
+    p {
+      margin-bottom: 5px;
+    }
+    h4 {
+      font-size: 18px;
+      font-weight: 500;
+      margin: 10px 0 0 0;
+    }
+  }
+  p#dont {
+    font-family: $times-new-roman;
+    font-size: 12px;
+    clear:both;
+    margin: 18px 0 0;
+  }
+  form {
+    .form-item-email {
+      margin-top: 14px;
+      margin-bottom: 10px;
+    }
+    #edit-email {
+      height: 40px;
+      border: 1px solid #C7C7C7;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+      border-radius: 3px;
+    }
+    #edit-submit {
+      font-size: 20px;
+      line-height: 26px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      -ms-border-radius: 3px;
+      border-radius: 3px;
+    }
+  }
 }
 
 #page.main {
-	.content a {
-		color: $mint;
-	}
+  .content a {
+    color: $mint;
+  }
 }
