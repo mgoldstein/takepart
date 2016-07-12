@@ -987,6 +987,11 @@ function tpf_display_context_context_default_contexts() {
   $context->description = 'Expose DTM';
   $context->tag = 'DTM';
   $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '~interstitials/newsletter' => '~interstitials/newsletter',
+      ),
+    ),
     'sitewide' => array(
       'values' => array(
         1 => 1,
