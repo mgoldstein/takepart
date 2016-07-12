@@ -38,11 +38,17 @@ function tpf_content_campaigns_metatag_export_default() {
       'og:image:height' => array(
         'value' => '[tp_og_image:thumbnail_height:{tp4_support_tokens:campaign_thumbnail}]',
       ),
+      'twitter:card' => array(
+        'value' => 'summary_large_image',
+      ),
       'twitter:title' => array(
         'value' => '[tp4_support_tokens:campaign:field_promo_headline][f:bool:{node:field_sponsored}: (Promoted):] ',
       ),
       'twitter:description' => array(
         'value' => '[tp4_support_tokens:campaign:field_article_subhead]',
+      ),
+      'twitter:image' => array(
+        'value' => '[tp_og_image:thumbnail:{tp4_support_tokens:campaign_thumbnail}]',
       ),
       'tp:node_id' => array(
         'value' => '[node:nid]',
@@ -64,9 +70,6 @@ function tpf_content_campaigns_metatag_export_default() {
       ),
       'tp:topic' => array(
         'value' => '[node:campaign-topic]',
-      ),
-      'twitter:image' => array(
-        'value' => '[tp_og_image:thumbnail:{tp4_support_tokens:campaign_thumbnail}]',
       ),
     ),
   );
