@@ -211,9 +211,11 @@ function tp4_should_show_taboola_widget($variables) {
   // add Taboola JS if we're on an article, feature, photo gallery, or video page
   if (!empty($variables['node'])) {
     $node = $variables['node'];
-    if (in_array($node->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video', 'video_playlist'))) {
+    if (in_array($node->type, array('openpublish_photo_gallery'))) {
       // but only if we're on the production site
-      return ENVIRONMENT === 'production';
+      if (ENVIRONMENT === 'production' || ENVIRONMENT === 'prod') {
+        return TRUE;
+      }
     }
   }
   return FALSE;
