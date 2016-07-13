@@ -654,6 +654,12 @@ function tpf_config_metatag_metatag_export_default() {
       'twitter:card' => array(
         'value' => 'summary_large_image',
       ),
+      'twitter:description' => array(
+        'value' => '[node:field_promo_headline]',
+      ),
+      'twitter:image' => array(
+        'value' => '[tp_og_image:thumbnail:{node:nid}]',
+      ),
     ),
   );
 
