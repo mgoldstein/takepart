@@ -212,7 +212,7 @@
           var adSlot = current_ad.ad_slot;
 
           //overrides for desktop
-          if (window.innerWidth > 480) {
+          if (window.innerWidth > 768) {
             //break this if conditional if the conditional check comes back as 0
             if (id != 'article_leader_ads' && id != 'more_on_takepart' && !conditional_check.length) {
               return;
