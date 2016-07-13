@@ -53,6 +53,5 @@ function tpf_display_menus_menu_default_menu_custom() {
   t('Social links in the footer');
   t('TakePart Footer Links');
 
-
   return $menus;
 }
