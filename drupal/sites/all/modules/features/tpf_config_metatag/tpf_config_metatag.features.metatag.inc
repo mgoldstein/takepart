@@ -565,6 +565,9 @@ function tpf_config_metatag_metatag_export_default() {
       'og:image:height' => array(
         'value' => '[tp_og_image:thumbnail_height:{node:nid}]',
       ),
+      'twitter:card' => array(
+        'value' => 'summary_large_image',
+      ),
       'twitter:url' => array(
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
       ),
@@ -608,6 +611,9 @@ function tpf_config_metatag_metatag_export_default() {
       'og:image:height' => array(
         'value' => '[tp_og_image:thumbnail_height:{node:nid}]',
       ),
+      'twitter:card' => array(
+        'value' => 'summary_large_image',
+      ),
       'twitter:url' => array(
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
       ),
@@ -616,9 +622,6 @@ function tpf_config_metatag_metatag_export_default() {
       ),
       'twitter:description' => array(
         'value' => '[node:field_article_subhead]',
-      ),
-      'sailthru.author' => array(
-        'value' => '[sailthru_metatags:author]',
       ),
       'twitter:image' => array(
         'value' => '[tp_og_image:thumbnail:{node:nid}]',
@@ -647,6 +650,9 @@ function tpf_config_metatag_metatag_export_default() {
       ),
       'og:image:height' => array(
         'value' => '[tp_og_image:thumbnail_height:{node:nid}]',
+      ),
+      'twitter:card' => array(
+        'value' => 'summary_large_image',
       ),
     ),
   );
