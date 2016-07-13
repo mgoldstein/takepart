@@ -688,6 +688,9 @@ function tpf_config_metatag_metatag_export_default() {
       'og:image:height' => array(
         'value' => '[tp_og_image:thumbnail_height:{node:nid}]',
       ),
+      'og:video:url' => array(
+        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-url}:]',
+      ),
       'og:video:secure_url' => array(
         'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-secure-url}:]',
       ),
@@ -712,6 +715,9 @@ function tpf_config_metatag_metatag_export_default() {
       'twitter:description' => array(
         'value' => '[node:field_article_subhead]',
       ),
+      'twitter:image' => array(
+        'value' => '[tp_og_image:thumbnail:{node:nid}]',
+      ),
       'twitter:player' => array(
         'value' => '[f:bool:{node:field_sharing_inline}:{node:iframe-embed-src}:]',
       ),
@@ -725,13 +731,7 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-file-secure-url}:]',
       ),
       'twitter:player:stream:content_type' => array(
-        'value' => 'video/mp4',
-      ),
-      'og:video:url' => array(
-        'value' => '[f:bool:{node:field_sharing_inline}:{node:attached-video-url}:]',
-      ),
-      'twitter:image' => array(
-        'value' => '[tp_og_image:thumbnail:{node:nid}]',
+        'value' => 'application/x-mpegURL',
       ),
     ),
   );
