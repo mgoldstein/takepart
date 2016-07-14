@@ -2533,6 +2533,117 @@ function tpf_content_campaigns_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-campaign-field_content_banner_bg'.
+  $field_instances['node-campaign-field_content_banner_bg'] = array(
+    'bundle' => 'campaign',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'media_image_formatter',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
+        'weight' => 43,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_content_banner_bg',
+    'label' => 'Content Banner BG',
+    'required' => 0,
+    'settings' => array(
+      'alt_field' => 0,
+      'default_image' => 0,
+      'file_directory' => '',
+      'file_extensions' => 'png gif jpg jpeg svg',
+      'filefield_paths' => array(
+        'active_updating' => 0,
+        'file_name' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '[file:ffp-name-only-original].[file:ffp-extension-original]',
+        ),
+        'file_path' => array(
+          'options' => array(
+            'pathauto' => 0,
+            'transliterate' => 0,
+          ),
+          'value' => '',
+        ),
+        'retroactive_update' => 0,
+      ),
+      'filefield_paths_enabled' => 1,
+      'max_filesize' => '',
+      'max_resolution' => '',
+      'min_resolution' => '',
+      'title_field' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'image',
+      'settings' => array(
+        'preview_image_style' => 'thumbnail',
+        'progress_indicator' => 'throbber',
+      ),
+      'type' => 'image_image',
+      'weight' => 15,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign-field_content_issue_volume'.
   $field_instances['node-campaign-field_content_issue_volume'] = array(
     'bundle' => 'campaign',
@@ -2617,7 +2728,7 @@ function tpf_content_campaigns_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -2887,7 +2998,7 @@ function tpf_content_campaigns_field_default_field_instances() {
       'alt_field' => 0,
       'default_image' => 0,
       'file_directory' => '',
-      'file_extensions' => 'png gif jpg jpeg',
+      'file_extensions' => 'png gif jpg jpeg svg',
       'filefield_paths' => array(
         'active_updating' => 0,
         'file_name' => array(
@@ -3000,7 +3111,7 @@ function tpf_content_campaigns_field_default_field_instances() {
       'module' => 'color_field',
       'settings' => array(),
       'type' => 'color_field_spectrum_widget',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -28550,6 +28661,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Clicking on the photo will take the user to this url.');
   t('Column Count');
   t('Content');
+  t('Content Banner BG');
   t('Content Menu');
   t('Content Promo BG');
   t('Content Volume');

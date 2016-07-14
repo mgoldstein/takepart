@@ -483,3 +483,22 @@
     }
   }
 }
+
+/* Content Inside Campaign */
+
+#page-wrapper:not(.campaign-experience) .feature_article-wrapper.autoloaded .campaign-ref-wrapper {
+  height: 90px;
+  .campaign-logo {
+    margin: 25px 0 0px 0;
+    //max-height for autloaded logo ONLY
+    img {
+      max-height: 20px;
+    }
+  }
+  margin: 0;
+  padding-bottom: 25px;
+}
+
+.feature_article-wrapper .campaign-ref-wrapper{
+  margin-bottom: 0;
+}

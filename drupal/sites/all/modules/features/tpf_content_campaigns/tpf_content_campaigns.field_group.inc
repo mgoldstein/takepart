@@ -1093,6 +1093,7 @@ function tpf_content_campaigns_field_group_info() {
       2 => 'field_content_menu_logo',
       3 => 'field_content_issue_volume',
       4 => 'field_content_promo_bg',
+      5 => 'field_content_banner_bg',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

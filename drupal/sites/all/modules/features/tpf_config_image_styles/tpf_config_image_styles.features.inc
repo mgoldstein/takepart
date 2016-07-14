@@ -117,6 +117,21 @@ function tpf_config_image_styles_image_default_styles() {
     ),
   );
 
+  // Exported image style: cic_bottom_promo.
+  $styles['cic_bottom_promo'] = array(
+    'label' => 'CIC Bottom Promo',
+    'effects' => array(
+      67 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 270,
+          'height' => 174,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
   // Exported image style: embed_gallery_thumb.
   $styles['embed_gallery_thumb'] = array(
     'label' => 'embed_gallery_thumb',

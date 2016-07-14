@@ -13,6 +13,8 @@
   height: 60px;
   position: relative;
   padding: 15px 35px 15px 25px;
+  z-index: 2;
+  color: #fff;
   @include breakpoint($breakpoint-tablet) {
     display: block;
   }
@@ -221,6 +223,22 @@
     }
   }
 
+}
+
+/* Transparent nav overrides for campaign experience */
+.campaign-experience .navbar-transparent {
+  display: block;
+  @media (max-width: 767px) {
+    padding: 15px 5px 15px 5px;
+  }
+  .menu.nav-right {
+    display: none;
+  }
+  @include breakpoint($breakpoint-phablet){
+    &:not(.search-open) .menu.nav-right {
+      display: block;
+    }
+  }
 }
 
 /* Dark Transparent Nav Overrides */
