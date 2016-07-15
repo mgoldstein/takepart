@@ -1,0 +1,48 @@
+<?php
+
+ /**
+  * This will create the json object to pass along to the theme
+  */
+ function tp_fresh_gallery_json($node) {
+   $gallery_items = array();
+   if($gal_photos = field_get_items('node', $node, 'field_fresh_photos')) {
+     foreach($gal_photos AS $gal_photo) {
+       $gallery_items[] = tp_fresh_gallery_add($gal_photo);
+     }
+   }
+   return json_encode($gallery_items);
+ }
+
+
+/**
+ * This will parse the file and get it ready to be added to the gallery json
+ */
+function tp_fresh_gallery_add($gal_photo) {
+  $file = array();
+  //provide different sizes of image
+  if($tablet_file = image_style_path('large_responsive_tablet', $gal_photo['uri'])) {
+    $file['image']['tablet'] = file_create_url($tablet_file);
+  } else {
+    $file['image']['tablet'] = file_create_url($gal_photo['uri']);
+  }
+  if($mobile_file = image_style_path('large_responsive_mobile', $gal_photo['uri'])) {
+    $file['image']['mobile'] = file_create_url($mobile_file);
+  } else {
+    $file['image']['mobile'] = file_create_url($gal_photo['uri']);
+  }
+  $file['image']['desktop'] = file_create_url($gal_photo['uri']);
+  //Caption
+  if($caption = field_get_items('file', (object)$gal_photo, 'field_media_caption')){
+    $file['caption'] = $caption[0]['value'];
+  }
+  //Alt Tag
+  if($alt = field_get_items('file', (object)$gal_photo, 'field_media_alt')){
+    $file['alt'] = $alt[0]['value'];
+  }
+  //Credit
+  if($credit = field_get_items('file', (object)$gal_photo, 'field_media_credit')){
+    $file['credit'] = taxonomy_term_load($credit[0]['tid'])->name;
+  }
+
+  return $file;
+}

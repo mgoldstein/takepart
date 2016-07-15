@@ -16,8 +16,9 @@ function fresh_preprocess_node(&$variables, $hook) {
       //Feature Artcile will use its own template
       if ($node->type == 'feature_article') {
         $variables['theme_hook_suggestion'] = 'node__feature__article__' . $variables['view_mode'];
-      }
-      else {
+      } elseif ($node->type == 'fresh_gallery') {
+        $variables['theme_hook_suggestion'] = 'node__fresh__gallery__' . $variables['view_mode'];
+      } else {
         $variables['theme_hook_suggestion'] = 'node__autoload__' . $variables['view_mode'];
       }
       $function = __FUNCTION__ . '__autoload';
@@ -247,6 +248,11 @@ function fresh_preprocess_node__autoload(&$variables) {
   if ($tid) {
     $variables['sponsored'] = theme('fresh_sponsor', array('tid' => $tid));
     $variables['sponsor_disclosure'] = theme('fresh_sponsor_disclaimer', array('tid' => $tid));
+  }
+
+  /** Fresh Gallery Json **/
+  if($node_type == 'fresh_gallery') {
+    $variables['gallery_json'] = tp_fresh_gallery_json($variables['node']);
   }
 }
 
