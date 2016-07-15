@@ -14,7 +14,7 @@
     $autoloaded = ($variables['autoscroll_load']) ? TRUE : FALSE;
     //Display the campaing banner if the first article, otherwise display campaign color
     if (!$autoloaded) {
-      $banner_bg = '"background-image: url(' . $variables['campaign_info']['banner'] . '"';
+      $banner_bg = '"background-image: url(' . $variables['campaign_info']['banner'] . ')"';
     }
     else {
       $banner_bg = '"background-color:' . $variables['campaign_info']['color'] . '"';

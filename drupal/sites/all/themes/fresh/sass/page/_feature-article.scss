@@ -502,3 +502,23 @@
 .feature_article-wrapper .campaign-ref-wrapper{
   margin-bottom: 0;
 }
+
+/* Extend the feature article template to take full width on landscape */
+.feature_article-wrapper.cic {
+  @include breakpoint($breakpoint-phablet){
+    article {
+      margin-left: 0;
+      width: 100%;
+      padding: 0;
+    }
+  }
+  @media (max-width: 767px) {
+    //Adjusting elements inside */
+    .inline-content {
+      padding-left: 0;
+    }
+    .inline-feature-image img {
+      margin: 0 auto;
+    }
+  }
+}
