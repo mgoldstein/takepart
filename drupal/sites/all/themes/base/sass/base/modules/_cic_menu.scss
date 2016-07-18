@@ -28,8 +28,8 @@ nav#cic-menu {
     cursor: pointer;
     z-index: 2;
     @include breakpoint($breakpoint-tablet) {
-      top: 15px;
-      left: 25px;
+      top: 10px;
+      left: 37px;
     }
   }
   .cic-menu-inner {
@@ -75,6 +75,9 @@ nav#cic-menu {
       @include AdelleSans;
       font-size: 18px;
       color: $light-black;
+      &:hover {
+        text-decoration: underline;
+      }
     }
     .campaign-menu {
       li {
@@ -86,10 +89,16 @@ nav#cic-menu {
         }
         a {
           color: $light-black;
+          &:hover {
+            text-decoration: underline;
+          }
         }
       }
       .campaign-menu-inner {
         margin-top: 33px;
+      }
+      &.desktop ul.menu li.is-leaf.first {
+          display: none;
       }
     }
     .content-menu {
@@ -127,15 +136,18 @@ nav#cic-menu {
       }
       li.is-leaf {
         line-height: 20px;
-        padding: 10px 0 0 20px;
+        padding: 22px 0 0 30px;
         @include breakpoint($breakpoint-tablet) {
-          padding: 17px 0 0 0;
+          padding: 22px 0 0 0;
         }
         a {
           @include AdelleSans;
           color: $light-black;
           font-size: 14px;
           padding-top: 20px;
+          &:hover {
+            text-decoration: underline;
+          }
         }
         &.first {
           padding-top: 9px;
@@ -158,8 +170,10 @@ nav#cic-menu {
         color: $light-black;
         margin: 0;
         font-size: 15px;
+        line-height: 22px;
         @include breakpoint($breakpoint-tablet) {
           font-size: 20px;
+          line-height: 27px;
         }
       }
     }
@@ -204,6 +218,7 @@ nav#cic-menu {
           color: $light-black;
           display: inline-block;
           padding-bottom: 14px;
+          line-height: 22px;
         }
         a.hp-link {
           color: $green-link;

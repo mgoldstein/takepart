@@ -33,11 +33,13 @@
     <div class = "campaign-ref-wrapper" style="background-image: url('<?php print $variables['campaign_info']['banner']; ?>')">
       <?php if (!empty($variables['campaign_info']['logo'])): ?>
         <div class = "campaign-logo">
-          <img src="<?php print $variables['campaign_info']['logo']; ?>">
+          <a href="<?php print $variables['campaign_info']['url']; ?>">
+            <img src="<?php print $variables['campaign_info']['logo']; ?>">
+          </a>
         </div>
       <?php endif; ?>
       <?php if (!empty($variables['campaign_info']['vol'])): ?>
-        <h4 class = "campaign-vol">TAKEPART BIG ISSUE <span>vol. <?php print $variables['campaign_info']['vol']; ?></span></h4>
+        <h4 class = "campaign-vol">TAKEPART'S BIG ISSUE <span>vol. <?php print $variables['campaign_info']['vol']; ?></span></h4>
       <?php endif; ?>
     </div>
   <?php endif; ?>

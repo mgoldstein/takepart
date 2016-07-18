@@ -119,6 +119,7 @@ function fresh_preprocess_page(&$variables) {
     $variables['page']['header']['sticky_cic']['#markup'] = theme('base_sticky_cic_header' , array(
       'camp_bg_color' => isset($campaign_info['color']) ? $campaign_info['color'] : '',
       'camp_logo'     => isset($campaign_info['logo']) ? $campaign_info['logo'] : '',
+      'camp_url'      => $campaign_info['url'],
       'camp_vol'      => isset($campaign_info['vol']) ? $campaign_info['vol'] : '',
       'camp_banner'   => isset($campaign_info['banner']) ? $campaign_info['banner'] : ''
     ));

@@ -15,6 +15,7 @@
       <div class = "campaign-menu desktop">
         <h6 class="col-title desktop">inside the big issue</h6>
         <div class= "campaign-menu-inner desktop">
+          <?php print l('Home', $camp_url , array('attributes' => array('class' => array('camp-home-link')))); ?>
           <?php print $camp_menu; ?>
         </div>
       </div>

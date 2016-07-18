@@ -460,10 +460,16 @@ h4.campaign-vol {
         max-height: 20px;
         margin-bottom: 0px;
       }
+      h4.campaign-vol {
+        font-size: 12px;
+      }
       @include breakpoint($breakpoint-tablet) {
         padding-top: 20px;
         img {
           margin-bottom: 5px;
+        }
+        h4.campaign-vol {
+          font-size: 13px;
         }
       }
     }
@@ -496,12 +502,12 @@ h4.campaign-vol {
     display: inline-block;
     margin: 60px 0 0px 0;
     img {
-      max-height: 20px;
+      max-height: 40px;
     }
     @include breakpoint($breakpoint-tablet) {
-      margin: 125px 0 10px 0;
+      margin: 90px 0 10px 0;
       img {
-        max-height: inherit;
+        max-height: 100px;
       }
     }
   }

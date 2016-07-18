@@ -488,12 +488,18 @@ function expandCicMenu() {
   active_url = window.location.href;
   //Loop through the content menu link and match the url
   $('#cic-menu .content-menu li.is-leaf a').each(function() {
-    var href = $(this).attr('href');
+    $this = $(this);
+    var href = $this.attr('href');
+    //Convert relative links to absulute
+    if (href.substr(0,7) != 'http://' && href.substr(0,8) != 'https://' && href.substr(0,2) != '//') {
+      //Append the host file
+      href = 'http://' + window.location.host + href;
+    }
     if (active_url == href) {
       $(this).addClass('current-node');
       //Does the link have a parent?
-      if ($(this).parents('li.expanded').length != 0) {
-        parent_link = $(this).parents('li.expanded');
+      if ($this.parents('li.expanded').length != 0) {
+        parent_link = $this.parents('li.expanded');
         //Expand the parent menu item
         parent_link.addClass('show');
         parent_link.children('ul.menu').slideDown();
@@ -502,3 +508,4 @@ function expandCicMenu() {
     }
   });
 }
+

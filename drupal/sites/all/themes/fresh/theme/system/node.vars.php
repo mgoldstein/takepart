@@ -245,6 +245,7 @@ function fresh_preprocess_node__autoload(&$variables) {
   if($campaign_content = field_get_items('node', $variables['node'], 'field_editor_campaign_reference')){
     $camp = node_load($campaign_content[0]['target_id']);
     $variables['campaign_info']['nid'] = $campaign_content[0]['target_id'];
+    $variables['campaign_info']['url'] = url('node/'.$camp->nid , array('absolute' => TRUE));
     //Campaign Banner
     if ($camp_banner =  field_get_items('node', $camp, 'field_content_banner_bg')) {
       $camp_banner = $camp_banner[0]['uri'];
