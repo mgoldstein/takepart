@@ -63,6 +63,12 @@ function tp_cic_block_view($delta = '') {
       $g = hexdec(substr($campaign_info['bg_color'],3,2));
       $b = hexdec(substr($campaign_info['bg_color'],5,2));
 			$campaign_info['rbg_color'] = array($r,$g,$b);
+			if($campaign_logo = field_get_items('node', $campaign, 'field_content_menu_logo')) {
+				$campaign_info['menu_logo'] = file_create_url($campaign_logo[0]['uri']);
+			} else {
+				$campaign_info['menu_logo'] = '';
+			}
+
 
 			$query = new EntityFieldQuery();
 			$query->entityCondition('entity_type', 'node')

@@ -121,11 +121,12 @@ function tpf_config_image_styles_image_default_styles() {
   $styles['cic_bottom_promo'] = array(
     'label' => 'CIC Bottom Promo',
     'effects' => array(
-      67 => array(
-        'name' => 'image_scale_and_crop',
+      68 => array(
+        'name' => 'image_scale',
         'data' => array(
-          'width' => 270,
-          'height' => 174,
+          'width' => 768,
+          'height' => '',
+          'upscale' => 0,
         ),
         'weight' => 1,
       ),
