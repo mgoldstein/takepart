@@ -1,7 +1,7 @@
 name = TakePart Config Image Styles
 core = 7.x
 package = Config
-version = 7.x-1.7
+version = 7.x-1.8
 project = tpf_config_image_styles
 dependencies[] = context
 dependencies[] = ctools

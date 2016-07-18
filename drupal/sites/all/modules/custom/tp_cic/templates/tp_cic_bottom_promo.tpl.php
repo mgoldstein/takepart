@@ -5,7 +5,11 @@
 
 <div class="cic_bottom_promo_block_container tp-fresh-bottom-content" style="background-color:<?php print $campaign_info['bg_color'] ?>">
   <div<?php print $attributes; ?> class="<?php print $classes; ?> clearfix">
-    <h2><?php print $campaign_info['title'] ?></h2>
+    <?php if($campaign_info['menu_logo']): ?>
+      <h2><img src="<?php print $campaign_info['menu_logo']; ?>" ALT="<?php print $campaign_info['title']; ?>" /></h2>
+    <?php else: ?>
+      <h2><?php print $campaign_info['title'] ?></h2>
+    <?php endif; ?>
     <div class="cic_bottom_promo_numb_stories"><?php print $campaign_info['story_num'] ?> STORIES</div>
     <div class="cic_bottom_promo<?php print $rand ?>">
       <?php  foreach($cic_info AS $cic): ?>
@@ -21,8 +25,8 @@
       <?php endforeach; ?>
     </div>
     <div class="owl-nav-custom">
-      <div class="owl-prev-custom owl-prev-custom-<?php print $rand ?>" style="background-color:rgba(<?php print $campaign_info['rbg_color'][0].','.$campaign_info['rbg_color'][1].','.$campaign_info['rbg_color'][2] ?>,.8)"><</div>
-      <div class="owl-next-custom owl-next-custom-<?php print $rand ?>" style="background-color:rgba(<?php print $campaign_info['rbg_color'][0].','.$campaign_info['rbg_color'][1].','.$campaign_info['rbg_color'][2] ?>,.8)">></div>
+      <div class="owl-prev-custom owl-prev-custom-<?php print $rand ?>" style="background-color:rgba(<?php print $campaign_info['rbg_color'][0].','.$campaign_info['rbg_color'][1].','.$campaign_info['rbg_color'][2] ?>,.8)"></div>
+      <div class="owl-next-custom owl-next-custom-<?php print $rand ?>" style="background-color:rgba(<?php print $campaign_info['rbg_color'][0].','.$campaign_info['rbg_color'][1].','.$campaign_info['rbg_color'][2] ?>,.8)"></div>
     </div>
     <div class="cic_bottom_promo_see_more">
       <?php print l("Go to ".$campaign_info['title'], $campaign_info['url'], array('attributes' => array('class' => 'cic_bottom_promo_goto_campaign'))); ?>
@@ -36,22 +40,26 @@
           responsive:{
             0:{
                 items:1,
+                slideBy:1,
                 center:true,
                 stagePadding:20,
                 margin:5
             },
             374:{
                 items:1,
+                slideBy:1,
                 center:true,
                 stagePadding:50
             },
             768:{
                 items:2,
+                slideBy:2,
                 center:false,
                 stagePadding:0
             },
             980:{
                 items:3,
+                slideBy:3,
                 center:false,
                 stagePadding:0
             }
