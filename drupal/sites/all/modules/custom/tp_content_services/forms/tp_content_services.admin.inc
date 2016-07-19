@@ -13,6 +13,12 @@ function tp_content_services_admin_form() {
     '#description' => "This is just the pathname. The domain should be set in the settings file for the api.",
     '#default_value' => variable_get('content_services_endpoint','/api/v3/content_publish'),
   );
+  $form['content_services_tags_endpoint'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Endpoint'),
+    '#description' => "This endpoint is used to get keywords to be added to the free tag field.",
+    '#default_value' => variable_get('content_services_tags_endpoint','/api/v3/alchemy'),
+  );
   $form['content_services_access_token'] = array(
     '#type' => 'textfield',
     '#title' => t('Access Token'),
