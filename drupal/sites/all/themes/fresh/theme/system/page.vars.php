@@ -48,11 +48,17 @@ function fresh_preprocess_page(&$variables) {
       $camp_color = $camp_color[0]['rgb'];
       $campaign_info['color'] = $camp_color;
     }
-    //Campaign Logo
+    //Campaign Banner Logo
     if ($camp_logo =  field_get_items('node', $camp, 'field_content_menu_logo')) {
       $camp_logo = $camp_logo[0]['uri'];
       $camp_logo = file_create_url($camp_logo);
       $campaign_info['logo'] = $camp_logo;
+    }
+    //Campaign Menu Logo - Dark
+    if ($camp_dark_logo =  field_get_items('node', $camp, 'field_content_dark_menu_logo')) {
+      $camp_dark_logo = $camp_dark_logo[0]['uri'];
+      $camp_dark_logo = file_create_url($camp_dark_logo);
+      $campaign_info['dark_logo'] = $camp_dark_logo;
     }
     //Campaign Big Issue Volume
     if ($camp_vol =  field_get_items('node', $camp, 'field_content_issue_volume')) {
@@ -70,6 +76,7 @@ function fresh_preprocess_page(&$variables) {
       'camp_url'          => isset($campaign_info['url']) ? $campaign_info['url'] : '',
       'camp_description'  => isset($campaign_info['description']) ? $campaign_info['description'] : '',
       'camp_logo'         => isset($campaign_info['logo']) ? $campaign_info['logo'] : '',
+      'camp_dark_logo'    => isset($campaign_info['dark_logo']) ? $campaign_info['dark_logo'] : '',
       'camp_menu'         => isset($campaign_info['camp_menu']) ? $campaign_info['camp_menu'] : '',
       'camp_content_menu' => isset($campaign_info['camp_content_menu']) ? $campaign_info['camp_content_menu'] : '',
       'camp_color'        => isset($campaign_info['color']) ? $campaign_info['color'] : '',

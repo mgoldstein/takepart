@@ -27,7 +27,7 @@ nav#cic-menu {
     top: 10px;
     cursor: pointer;
     z-index: 2;
-    @include breakpoint($breakpoint-tablet) {
+    @include breakpoint($breakpoint-desktop) {
       top: 10px;
       left: 37px;
     }
@@ -61,14 +61,6 @@ nav#cic-menu {
         padding-bottom: 7px;
         margin: 0;
         font-size: 12px;
-      }
-    }
-    h3.campaign-title {
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin: 9px 0 16px 31px;
-      @include breakpoint($breakpoint-tablet) {
-        margin: 18px 0 16px 0;
       }
     }
     a.camp-home-link {
@@ -165,6 +157,15 @@ nav#cic-menu {
       display: inline-block;
       @include breakpoint($breakpoint-tablet) {
         margin-bottom: 24px;
+      }
+      .campaign-logo {
+        margin: 12px 0 16px 31px;
+        @include breakpoint($breakpoint-tablet) {
+          margin: 26px 0 21px 0;
+        }
+        img {
+          max-height: 23px;
+        }
       }
       p.campaign-description {
         color: $light-black;

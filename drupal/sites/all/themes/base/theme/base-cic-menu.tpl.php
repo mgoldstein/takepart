@@ -8,7 +8,9 @@
     <div class = "first-col col-sm-4">
       <h6 class="col-title desktop">about the issue</h6>
       <div class = "about-campaign">
-        <h3 class="campaign-title"><?php print $camp_name; ?></h3>
+        <div class="campaign-logo">
+          <img src="<?php print $camp_dark_logo; ?>">
+        </div>
         <p class="campaign-description"><?php print $camp_description; ?></p>
       </div>
       <?php print l('Home', $camp_url , array('attributes' => array('class' => array('camp-home-link mobile')))); ?>
