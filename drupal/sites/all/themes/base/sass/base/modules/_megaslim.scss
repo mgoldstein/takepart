@@ -20,7 +20,6 @@
     > a{
       display: block;
       font-family: $secondary-sans-font;
-      font-size: 22px;
       line-height: 45px;
       text-transform: uppercase;
       white-space: nowrap;
@@ -38,6 +37,35 @@
       }
       &:hover {
         text-decoration: none;
+      }
+    }
+    @media screen and (max-width: 775px) {
+      > a{
+        font-size: 18px;
+      }
+    }
+
+    @media screen and (min-width: 776px) and (max-width: 800px) {
+      > a{
+        font-size: 19px;
+      }
+    }
+
+    @media screen and (min-width: 801px) and (max-width: 850px) {
+      > a{
+        font-size: 20px;
+      }
+    }
+
+    @media screen and (min-width: 851px) and (max-width: 900px) {
+      > a{
+        font-size: 21px;
+      }
+    }
+
+    @media screen and (min-width: 901px) {
+      > a{
+        font-size: 22px;
       }
     }
     &:last-child a:after{
@@ -89,7 +117,7 @@
   .megaslim-content-teaser{
     border-left: 1px solid #CCC;
     height: 210px;
-    
+
     .promoted-wrapper {
       text-align: left;
     }
@@ -130,6 +158,3 @@
     }
   }
 }
-
-
-
