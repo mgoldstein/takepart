@@ -653,6 +653,7 @@
   /**
    * Set a Cookie/Message for the updated Terms of Use
    */
+  /*
   Drupal.behaviors.TouCookie = {
     attach: function () {
 	 if (document.cookie.search('ppu') == -1) {
@@ -680,7 +681,8 @@
 	 }
     }
   };
-  
+  */
+ 
   Drupal.behaviors.mobileMenuToggle = {
     attach: function (context, settings) {
 	 $('body').once('mobileMenuToggle', function () {
