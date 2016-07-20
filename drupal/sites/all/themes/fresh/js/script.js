@@ -354,6 +354,7 @@ var Environment = {
   /*
    * Set a Cookie/Message for the updated Terms of Use
    */
+  /*
   Drupal.behaviors.TouCookie = {
     attach: function () {
    if (document.cookie.search('ppu') == -1) {
@@ -375,7 +376,8 @@ var Environment = {
    }
     }
   };
-
+  */
+ 
   /*
    * Create ambient video on feature article
    */
