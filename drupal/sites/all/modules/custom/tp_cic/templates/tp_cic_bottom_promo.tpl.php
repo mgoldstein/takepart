@@ -51,7 +51,7 @@
                 center:true,
                 stagePadding:50
             },
-            768:{
+            600:{
                 items:2,
                 slideBy:2,
                 center:false,

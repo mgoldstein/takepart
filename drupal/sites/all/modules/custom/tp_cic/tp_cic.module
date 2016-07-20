@@ -157,7 +157,7 @@ function tp_cic_getStoryNodes(&$cic_info, $cid, $article_ctr) {
 }
 
 /*
- * Function returns the camopaign info.
+ * Function returns the campaign info.
  * @param $cid -> Campaign Nid
  * @return $cic_info -> An array that contains campaign info
  */

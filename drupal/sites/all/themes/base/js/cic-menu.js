@@ -53,7 +53,7 @@
 
 /* expand the CIC menu to display the current article */
 function expandCicMenu() {
-  //On campaign pages, just expand the first parent Nav
+  //On campaign pages, just expand the first parent link
   if ($('body.campaign-display').length != 0) {
      $('#cic-menu .content-menu li.expanded.first').addClass('show');
      $('#cic-menu .content-menu li.expanded.first').children('ul.menu').slideDown();
