@@ -1,7 +1,7 @@
 name = TakePart Content Article
 core = 7.x
 package = Content Types
-version = 7.x-1.6
+version = 7.x-1.7
 project = tpf_content_article
 dependencies[] = context
 dependencies[] = context_field
@@ -82,3 +82,4 @@ features_exclude[field_base][field_syndication] = field_syndication
 features_exclude[field_base][field_due_date] = field_due_date
 features_exclude[field_base][field_run_date] = field_run_date
 features_exclude[dependencies][user_reference] = user_reference
+features_exclude[variable][xmlsitemap_settings_node_openpublish_article] = xmlsitemap_settings_node_openpublish_article

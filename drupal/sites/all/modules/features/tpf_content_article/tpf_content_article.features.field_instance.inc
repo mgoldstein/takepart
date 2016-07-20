@@ -185,6 +185,10 @@ function tpf_content_article_field_default_field_instances() {
     'label' => 'Admin Tag',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -1143,10 +1147,14 @@ Change this only if you know what you are doing.',
     'label' => 'Free Tag',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 1,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 1,
+      'tagit_placeholder' => 'Add terms',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
+      'active' => 0,
       'module' => 'taxonomy',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
@@ -2180,6 +2188,10 @@ Change this only if you know what you are doing.',
     'label' => 'Series',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2579,6 +2591,10 @@ Change this only if you know what you are doing.',
     'label' => 'Topic',
     'required' => 1,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2660,6 +2676,10 @@ Change this only if you know what you are doing.',
     'label' => 'Topic Box',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
