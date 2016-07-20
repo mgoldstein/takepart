@@ -63,7 +63,6 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
     }
     $campaign_info['story_num'] = count($result['node']);
 
-
     //Admin check show unpublished
     if($article_ctr < 3) {
       if(user_access('view any unpublished content')) {

@@ -212,11 +212,6 @@ class ddContent extends ddDefaultPage {
         }
       }
     }
-    //Element Impression
-    if (!empty($element_impression)) {
-      $element_impression = implode(',', $element_impression);
-      $data['page']['pageInfo']['elementImpressions'] = $element_impression;
-    }
 
     if($show_influence) {
       $data['page']['pageInfo']['influenceBanner'] =  "Influence Banner";
@@ -231,6 +226,14 @@ class ddContent extends ddDefaultPage {
       $campaign = node_load($campaign_id);
       $campaign_title = $campaign -> title;
       $data['page']['pageInfo']['campaignContent'] = $campaign_title;
+      //Campaign related content carousel - automatically gets added to any node tagged with a campaign
+      $element_impression[] = 'campaign content carousel';
+    }
+
+     //Element Impression
+    if (!empty($element_impression)) {
+      $element_impression = implode(',', $element_impression);
+      $data['page']['pageInfo']['elementImpressions'] = $element_impression;
     }
 
     $data['page']['pageInfo']['pageId'] = $pageID;

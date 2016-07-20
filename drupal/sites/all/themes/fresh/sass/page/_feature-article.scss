@@ -483,3 +483,42 @@
     }
   }
 }
+
+/* Content Inside Campaign */
+
+#page-wrapper:not(.campaign-experience) .feature_article-wrapper.autoloaded .campaign-ref-wrapper {
+  height: 90px;
+  .campaign-logo {
+    margin: 25px 0 0px 0;
+    //max-height for autloaded logo ONLY
+    img {
+      max-height: 20px;
+    }
+  }
+  margin: 0;
+  padding-bottom: 25px;
+}
+
+.feature_article-wrapper .campaign-ref-wrapper{
+  margin-bottom: 0;
+}
+
+/* Extend the feature article template to take full width on landscape */
+.feature_article-wrapper.cic {
+  @include breakpoint($breakpoint-phablet){
+    article {
+      margin-left: 0;
+      width: 100%;
+      padding: 0;
+    }
+  }
+  @media (max-width: 767px) {
+    //Adjusting elements inside */
+    .inline-content {
+      padding-left: 0;
+    }
+    .inline-feature-image img {
+      margin: 0 auto;
+    }
+  }
+}

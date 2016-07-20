@@ -1,0 +1,251 @@
+/* These styles are for the menu of content inside campaign experience */
+
+@mixin AdelleSans {
+  font-family: $AdelleSans;
+  font-weight: bold;
+  @content;
+}
+.cic-menu-show {
+  overflow: hidden;
+}
+nav#cic-menu {
+  display: none;
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  border-top: 0;
+  position: fixed;
+  z-index: 28;
+  left: 0;
+  top: 0;
+  opacity: 0.95;
+  overflow-y: auto;
+  .i-close-x {
+    font-size: 33px;
+    position: absolute;
+    left: 15px;
+    top: 10px;
+    cursor: pointer;
+    z-index: 2;
+    @include breakpoint($breakpoint-desktop) {
+      top: 10px;
+      left: 37px;
+    }
+  }
+  .cic-menu-inner {
+    max-width: 970px;
+    margin: 0 auto;
+    .desktop {
+      display: none;
+    }
+    li {
+      list-style-type: none;
+    }
+    @include breakpoint($breakpoint-tablet) {
+      margin-top: 95px;
+      .mobile {
+        display: none;
+      }
+      .desktop {
+        display: block;
+      }
+    }
+    h6.col-title {
+      @include breakpoint($breakpoint-tablet) {
+        @include AdelleSans;
+        font-weight: 100;
+        color: $gray;
+        margin-top: 0;
+        text-transform: uppercase;
+        border-bottom: 1px solid $gray-line;
+        padding-bottom: 7px;
+        margin: 0;
+        font-size: 12px;
+      }
+    }
+    a.camp-home-link {
+      @include AdelleSans;
+      font-size: 18px;
+      color: $light-black;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .campaign-menu {
+      li {
+        @include AdelleSans;
+        font-size: 18px;
+        padding-bottom: 7px;
+        &.last {
+          padding-bottom: 0;
+        }
+        a {
+          color: $light-black;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+      .campaign-menu-inner {
+        margin-top: 33px;
+      }
+      &.desktop ul.menu li.is-leaf.first {
+          display: none;
+      }
+    }
+    .content-menu {
+      margin-top: 8px;
+      @include breakpoint($breakpoint-tablet) {
+        margin-top: 25px;
+      }
+      ul > li > ul {
+        display: none;
+      }
+      ul li:not(.leaf){
+        > a {
+          @include AdelleSans;
+          font-weight: 100;
+          font-size: 14px;
+          color: $light-black;
+          border-bottom: 1px solid $gray-line;
+          width: 100%;
+          display: inline-block;
+          padding: 5px 5px 5px 0;
+          &:after {
+            content: '\e608';
+            font-family: takepart;
+            float: right;
+            font-size: 19px;
+            color: $gray-line;
+          }
+        }
+        &.show > a {
+          border-bottom: none;
+          &:after {
+            content: '\e607';
+          }
+        }
+      }
+      li.is-leaf {
+        line-height: 20px;
+        padding: 22px 0 0 30px;
+        @include breakpoint($breakpoint-tablet) {
+          padding: 22px 0 0 0;
+        }
+        a {
+          @include AdelleSans;
+          color: $light-black;
+          font-size: 14px;
+          padding-top: 20px;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        &.first {
+          padding-top: 9px;
+        }
+        &.last {
+          padding-bottom: 15px;
+        }
+      }
+      li:not(.expanded) li.first {
+        padding-top: 3px;
+      }
+    }
+    .about-campaign {
+      margin: 6px 0 11px 0;
+      display: inline-block;
+      @include breakpoint($breakpoint-tablet) {
+        margin-bottom: 24px;
+      }
+      .campaign-logo {
+        margin: 12px 0 16px 31px;
+        @include breakpoint($breakpoint-tablet) {
+          margin: 26px 0 21px 0;
+        }
+        img {
+          max-height: 23px;
+        }
+      }
+      p.campaign-description {
+        color: $light-black;
+        margin: 0;
+        font-size: 15px;
+        line-height: 22px;
+        @include breakpoint($breakpoint-tablet) {
+          font-size: 20px;
+          line-height: 27px;
+        }
+      }
+    }
+    .second-col {
+      h6.col-title {
+        @media (max-width: 767px) {
+          @include AdelleSans;
+          font-size: 18px;
+          color: $light-black;
+          margin: 5px 0 0 0;
+        }
+      }
+      .campaign-menu.mobile {
+        border-bottom: 2px solid $gray-line;
+        padding-bottom: 17px;
+        ul.menu li.is-leaf.first {
+          display: none;
+        }
+      }
+    }
+    .third-col {
+      img.logo-transparent {
+        margin-top: 17px;
+        width: 105px;
+        @include breakpoint($breakpoint-tablet) {
+          width: 74px;
+          margin-top: 8px;
+        }
+      }
+      .about-tp {
+        margin-top: 8px;
+        line-height: 19px;
+        padding-top: 6px;
+        @include breakpoint($breakpoint-tablet) {
+          border-top: 1px solid $gray-line;
+          padding-top: 33px;
+        }
+        span.about {
+          @include AdelleSans;
+          font-weight: 100;
+          font-size: 14px;
+          color: $light-black;
+          display: inline-block;
+          padding-bottom: 14px;
+          line-height: 22px;
+        }
+        a.hp-link {
+          color: $green-link;
+          @include AdelleSans;
+          font-size: 16px;
+          &:after {
+            content: '\2192';
+            padding-left: 5px;
+          }
+        }
+        p.follow {
+          font-family: $Brown;
+          font-size: 12px;
+          margin: 19px 0 0 0;
+        }
+        .follow-us {
+          .social.menu {
+            margin-top: 7px;
+            a {
+              background: #000;
+              height: 29px;
+              width: 31px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

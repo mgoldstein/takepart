@@ -212,7 +212,7 @@
           var adSlot = current_ad.ad_slot;
 
           //overrides for desktop
-          if (window.innerWidth > 480) {
+          if (window.innerWidth > 768) {
             //break this if conditional if the conditional check comes back as 0
             if (id != 'article_leader_ads' && id != 'more_on_takepart' && !conditional_check.length) {
               return;
@@ -226,7 +226,20 @@
             else {
               //only override the first of it's type so that we can update it's selector
               if ($(article).is(':first-of-type')) {
-                selector_item = '.fresh-first-ad';
+                //check if the mobile ad has already loaded
+                if(!$(selector_item).hasClass('tp-ad-processed')){
+                  selector_item = '.fresh-first-ad';
+                }
+              }
+            }
+          } else {
+            if (id == 'article_leader_ads') {
+              //only override the first of it's type so that we can update it's selector
+              if ($(article).is(':first-of-type')) {
+                //Check if desktop has already loaded and make sure it stays the ad
+                if($('.fresh-first-ad').hasClass('tp-ad-processed')) {
+                  selector_item = '.fresh-first-ad';
+                }
               }
             }
           }

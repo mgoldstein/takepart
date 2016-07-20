@@ -8,13 +8,41 @@
  */
 ?>
 
-  <?php $node_type = $variables['type']; ?>
-  <div class = "<?php print $node_type ?>-wrapper fresh-content-wrapper clearfix">
+  <?php
+    $node_type = $variables['type'];
+    $cic = (!empty($variables['campaign_info']['nid'])) ? ' cic' : '';
+    $autoloaded = ($variables['autoscroll_load']) ? TRUE : FALSE;
+    //Display the campaing banner if the first article, otherwise display campaign color
+    if (!$autoloaded) {
+      $banner_bg = '"background-image: url(' . $variables['campaign_info']['banner'] . ')"';
+    }
+    else {
+      $banner_bg = '"background-color:' . $variables['campaign_info']['color'] . '"';
+    }
+  ?>
+
+<div class = "<?php print $node_type;?>-wrapper fresh-content-wrapper clearfix<?php print ($autoloaded) ? ' autoloaded' : ' first'; print $cic . ' ';?>">
   <?php if (!empty($variables['social'])): ?>
     <aside class="social social-vertical stick">
    <?php print $variables['social']; ?>
     </aside>
   <?php endif; ?>
+
+  <?php if (!empty($variables['campaign_info']['banner'])): ?>
+    <div class = "campaign-ref-wrapper" style=<?php print $banner_bg;?>>
+      <?php if (!empty($variables['campaign_info']['logo'])): ?>
+        <div class = "campaign-logo">
+          <a href="<?php print $variables['campaign_info']['url']; ?>">
+            <img src="<?php print $variables['campaign_info']['logo']; ?>">
+          </a>
+        </div>
+      <?php endif; ?>
+      <?php if (!empty($variables['campaign_info']['vol'])): ?>
+        <h4 class = "campaign-vol">TAKEPART'S BIG ISSUE <span>vol. <?php print $variables['campaign_info']['vol']; ?></span></h4>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
+
   <article class="col-xs-10 col-xs-offset-1 clearfix <?php print $classes; ?>"<?php print $attributes; ?>>
     <div class="section header full-width">
      <div class="row row-remove-xs">

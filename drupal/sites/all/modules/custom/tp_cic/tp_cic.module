@@ -1,0 +1,157 @@
+<?php
+
+/**
+ * Implements hook_block_info().
+ */
+function tp_cic_block_info() {
+	$blocks['cic_bottom_promo'] = array(
+		// The name that will appear in the block list.
+		'info' => t('CIC Bottom Promo'),
+		// Default setting.
+		'cache' => DRUPAL_CACHE_PER_ROLE,
+	);
+	return $blocks;
+}
+
+/**
+ * Implements hook_theme().
+ */
+function tp_cic_theme() {
+	return array(
+		'tp_cic_bottom_promo' => array(
+			'variables' => array(
+				'cic_info' => array(),
+				'campaign_info' => array()
+			),
+			'template' => 'templates/tp_cic_bottom_promo',
+		),
+	);
+}
+
+/**
+ * Implements hook_block_view().
+ *
+ * Prepares the contents of the block.
+ */
+function tp_cic_block_view($delta = '') {
+	switch ($delta) {
+		case 'tp_cic_bottom_promo':
+
+		if (user_access('access content')) {
+			$nid = arg(1);
+			$node = node_load($nid);
+			//adding bypass fix for autoload
+			if (empty($node) && arg(0) == 'autoscroll' && is_numeric(arg(2))) {
+				$nid = (int)arg(2);
+				$node = node_load((int)arg(2));
+			}
+	    if (!isset($node -> field_editor_campaign_reference['und'][0]['target_id'])) {
+	      return $block['content'];
+	    }
+	    $campaign_id = $node -> field_editor_campaign_reference['und'][0]['target_id'];
+
+	    //Campaign Associated Info
+	    $campaign_info = array();
+	    $campaign = node_load($campaign_id);
+	    $campaign_info['title'] = $campaign -> title;
+	    $campaign_info['description'] = $campaign ->field_content_menu_description[LANGUAGE_NONE][0]['value'];
+	    $campaign_info['url'] = url('node/'.$campaign_id, array('absolute' => TRUE));
+	    $campaign_info['vol'] = $campaign ->field_content_issue_volume[LANGUAGE_NONE][0]['value'];
+	    $campaign_info['bg_color'] = $campaign ->field_content_promo_bg[LANGUAGE_NONE][0]['rgb'];
+			//Get RGB color
+			$r = hexdec(substr($campaign_info['bg_color'],1,2));
+      $g = hexdec(substr($campaign_info['bg_color'],3,2));
+      $b = hexdec(substr($campaign_info['bg_color'],5,2));
+			$campaign_info['rbg_color'] = array($r,$g,$b);
+			if($campaign_logo = field_get_items('node', $campaign, 'field_content_menu_logo')) {
+				$campaign_info['menu_logo'] = file_create_url($campaign_logo[0]['uri']);
+			} else {
+				$campaign_info['menu_logo'] = '';
+			}
+
+
+			$query = new EntityFieldQuery();
+			$query->entityCondition('entity_type', 'node')
+			->propertyCondition('status', 1)
+			->addTag('CICPromoPub')
+			->fieldCondition('field_editor_campaign_reference','target_id',$campaign_id,'=');
+
+			$result = $query->execute();
+			$article_ctr = 0;
+			//$cic_info array will hold promo title and img
+			$cic_info = array();
+			foreach ($result['node'] as $key => $cid) {
+				//Don't display the current article
+				if ($nid != $cid->nid) {
+					tp_cic_getStoryNodes($cic_info, $cid, $article_ctr);
+					$article_ctr++;
+				}
+			}
+			$campaign_info['story_num'] = count($result['node']);
+
+			//Admin check show unpublished
+			if(user_access('view any unpublished content')) {
+				//Provide unpublished articles
+				$query = new EntityFieldQuery();
+				$query->entityCondition('entity_type', 'node')
+				->propertyCondition('status', 0)
+				->propertyOrderBy('created', 'DESC')
+				->fieldCondition('field_editor_campaign_reference','target_id',$campaign_id,'=');
+				$result = $query->execute();
+
+				foreach ($result['node'] as $key => $cid) {
+					//Don't display the current article
+					if ($nid != $cid->nid) {
+						tp_cic_getStoryNodes($cic_info, $cid, $article_ctr);
+						$article_ctr++;
+					}
+				}
+				$campaign_info['story_num'] = $campaign_info['story_num'] + count($result['node']);
+			}
+
+
+			// Pass data through theme function.
+			$block['content'] = theme('tp_cic_bottom_promo', array(
+				'cic_info' => $cic_info,
+				'campaign_info' => $campaign_info
+			));
+		}
+		break;
+	}
+	return $block;
+}
+
+function tp_cic_add_owlcarousel() {
+	$library = libraries_get_path('owl-carousel');
+
+	drupal_add_js($library . '/owl.carousel.min.js', array(
+		'scope' => 'footer',
+	));
+
+	drupal_add_css($library . '/assets/owl.carousel.css');
+}
+
+function tp_cic_preprocess_node(&$variables) {
+	$node = $variables['node'];
+	if ($node->type == 'openpublish_article' || $node->type == 'video' || $node->type == 'video_playlist' || $node->type == 'feature_article') {
+		tp_cic_add_owlcarousel();
+	}
+}
+
+/**
+ * Function to get the node information and add it to the info array
+ */
+function tp_cic_getStoryNodes(&$cic_info, $cid, $article_ctr) {
+		//Grab the promo title and thumbnail image
+		$cic  = node_load($cid->nid);
+		$cic_info[$article_ctr]['title'] = $cic->field_promo_headline['und'][0]['value'];
+		$cic_info[$article_ctr]['nid'] = $cid->nid;
+		$cic_info[$article_ctr]['status'] = $cic->status;
+		$fid = $cic->field_thumbnail['und'][0]['fid'];
+		if(!isset($fid) || empty($fid)) {
+			return;
+		}
+		$cic_thumb = file_load($fid);
+		//This image style could differ once we have final designs.
+		$cic_info[$article_ctr]['thumbnail'] = image_style_url('cic_bottom_promo', $cic_thumb->uri);
+}

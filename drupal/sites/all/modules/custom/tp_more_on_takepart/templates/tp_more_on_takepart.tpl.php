@@ -1,4 +1,4 @@
-<div<?php print $attributes; ?> class="<?php print $classes; ?> clearfix">
+<div<?php print $attributes; ?> class="<?php print $classes; ?> tp-fresh-bottom-content clearfix">
   <h2<?php print $title_attributes; ?>><?php print t('More on TakePart'); ?></h2>
   <?php print render($promos); ?>
   <?php print render($promoted_video); ?>
