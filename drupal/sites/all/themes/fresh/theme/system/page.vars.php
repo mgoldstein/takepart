@@ -19,58 +19,12 @@ function fresh_preprocess_page(&$variables) {
 
   //In Campaign Experience - variables and main nav
   if($campaign_content = field_get_items('node', $variables['node'], 'field_editor_campaign_reference')){
-    $camp = node_load($campaign_content[0]['target_id']);
-
     $variables['page']['campaign_ref'] = TRUE;
-    $campaign_info['title'] = $camp -> title;
-    $campaign_info['url'] = url('node/'.$camp->nid , array('absolute' => TRUE));
+    $cid = $campaign_content[0]['target_id'];
+    //Grab the campaign info
+    module_load_include('module' , 'tp_cic');
+    $campaign_info = tp_cic_getCampInfo($cid);
 
-    //Camapaign menu
-    if($camp_menu = field_get_items('node', $camp, 'field_campaign_menu')) {
-      $camp_menu = $camp_menu[0]['value'];
-      $camp_menu = 'menu-' . $camp_menu;
-      $camp_menu = drupal_render(menu_tree_output(menu_tree_all_data($camp_menu)));
-      $campaign_info['camp_menu'] = $camp_menu;
-    }
-    //Content Inside Campaign Menu
-    if($content_menu = field_get_items('node', $camp, 'field_content_menu')) {
-      $content_menu = $content_menu[0]['value'];
-      $content_menu = drupal_render(menu_tree_output(menu_tree_all_data($content_menu)));
-      $campaign_info['camp_content_menu'] = $content_menu;
-    }
-    //Campaign menu description
-    if ($camp_description =  field_get_items('node', $camp, 'field_content_menu_description')) {
-      $camp_description = $camp_description[0]['value'];
-      $campaign_info['description'] = $camp_description;
-    }
-    //Campaign BG color
-    if ($camp_color =  field_get_items('node', $camp, 'field_content_promo_bg')) {
-      $camp_color = $camp_color[0]['rgb'];
-      $campaign_info['color'] = $camp_color;
-    }
-    //Campaign Banner Logo
-    if ($camp_logo =  field_get_items('node', $camp, 'field_content_menu_logo')) {
-      $camp_logo = $camp_logo[0]['uri'];
-      $camp_logo = file_create_url($camp_logo);
-      $campaign_info['logo'] = $camp_logo;
-    }
-    //Campaign Menu Logo - Dark
-    if ($camp_dark_logo =  field_get_items('node', $camp, 'field_content_dark_menu_logo')) {
-      $camp_dark_logo = $camp_dark_logo[0]['uri'];
-      $camp_dark_logo = file_create_url($camp_dark_logo);
-      $campaign_info['dark_logo'] = $camp_dark_logo;
-    }
-    //Campaign Big Issue Volume
-    if ($camp_vol =  field_get_items('node', $camp, 'field_content_issue_volume')) {
-      $camp_vol = $camp_vol[0]['value'];
-      $campaign_info['vol'] = $camp_vol;
-    }
-    //Campaign Banner
-    if ($camp_banner =  field_get_items('node', $camp, 'field_content_banner_bg')) {
-      $camp_banner = $camp_banner[0]['uri'];
-      $camp_banner = file_create_url($camp_banner);
-      $campaign_info['banner'] = $camp_banner;
-    }
     $variables['page']['left_drawer']['#markup'] = theme('base_cic_menu' , array(
       'camp_name'         => isset($campaign_info['title']) ? $campaign_info['title'] : '',
       'camp_url'          => isset($campaign_info['url']) ? $campaign_info['url'] : '',
@@ -83,6 +37,8 @@ function fresh_preprocess_page(&$variables) {
       'about_tp'          => $about_tp,
       'social_menu'       => $mobile_menu
     ));
+    //Load the JS file for handling the CIC menu
+    drupal_add_js(drupal_get_path('theme', 'base'). '/js/cic-menu.js');
 
   }
   //Main menu when its NOT the in-campaign-experience

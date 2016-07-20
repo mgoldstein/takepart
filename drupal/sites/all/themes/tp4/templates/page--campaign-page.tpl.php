@@ -8,8 +8,8 @@
  */
 
 ?>
-
 <?php print $variables['drawers']; ?>
+
 
 <div id="campaign-drawers" class="snap-drawers scrollable">
   <div class="snap-drawer snap-drawer-right">
@@ -22,7 +22,7 @@
   </div>
 </div>
 
-<div id="page-wrap">
+<div id="page-wrap"<?php print ($variables['page']['cic_menu']) ? 'class="campaign-experience"' : ''; ?>>
   <div class="header-wrapper">
     <header id="header" class="<?php print $variables['transnav']; ?>">
       <?php print render($page['header']); ?>

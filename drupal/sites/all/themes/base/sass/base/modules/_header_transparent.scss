@@ -226,8 +226,11 @@
 }
 
 /* Transparent nav overrides for campaign experience */
-.campaign-experience .navbar-transparent {
+
+body:not(.campaign-display) .campaign-experience .navbar-transparent {
   display: block;
+}
+.campaign-experience .navbar-transparent {
   @media (max-width: 767px) {
     padding: 35px 5px 15px 5px;
     .logo-transparent {
