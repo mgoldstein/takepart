@@ -650,6 +650,7 @@
 	 });
     }
   };
+
   /**
    * Set a Cookie/Message for the updated Terms of Use
    */
@@ -682,12 +683,13 @@
     }
   };
   */
- 
+
   Drupal.behaviors.mobileMenuToggle = {
     attach: function (context, settings) {
 	 $('body').once('mobileMenuToggle', function () {
 	   var $body = $('body');
-	   $('body.campaign-transparent-nav .toggle-menu.toggle-left, .left-drawer-control .i-close-x').click(function () {
+	   $('body.campaign-transparent-nav #page-wrap:not(.campaign-experience) .toggle-menu.toggle-left, .left-drawer-control .i-close-x').click(function () {
+
 		if ($body.hasClass('mobile-menu-show')) {
 		  $body.removeClass("mobile-menu-show");
 		  //enable scroll on tablet

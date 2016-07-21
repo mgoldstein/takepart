@@ -33,21 +33,8 @@ var Environment = {
     attach: function (context, settings) {
 
   var $body = $('body');
-  $('.toggle-menu.toggle-left, .i-close-x').click(function () {
-    //In campaign experience menu
-    if ($('.campaign-experience').length != 0) {
-      if ($body.hasClass('cic-menu-show')) {
-        $body.removeClass('cic-menu-show');
-        $('#cic-menu').fadeOut();
-      }
-      else {
-        //Display the menu item that matches the current node
-        expandCicMenu();
-        $body.addClass('cic-menu-show');
-        $('#cic-menu').fadeIn();
-      }
-    }
-    else {
+  $('#page-wrapper:not(.campaign-experience) .toggle-menu.toggle-left, #mobile-menu .i-close-x').click(function () {
+
       if ($body.hasClass('mobile-menu-show')) {
         $body.removeClass("mobile-menu-show");
         //enable scroll on tablet
@@ -75,7 +62,7 @@ var Environment = {
       });
     }
      }
-   }
+
    });
     }
   };
@@ -97,16 +84,6 @@ var Environment = {
      }
    });
 
-   // Close search
-   /*$('#search-api-page-search-form-site-search--2 input#edit-keys-2--2').click(function(e){
-    var offset = $(this).offset();
-    var width = $(this).outerWidth();
-    var pos_x = e.pageX - offset.left;
-
-    if(width - pos_x < 15) {
-    $('.navbar-transparent').removeClass("search-open");
-    }
-    });*/
    //Close search
    $('.navbar-transparent .search-close').click(function () {
      if ($('.navbar-transparent').hasClass('search-open')) {
@@ -178,26 +155,6 @@ var Environment = {
           $(this).addClass("show");
         }
       });
-
-      /* Show/hide child menu and prevent parent link from clicking - CIC menu */
-      $('#cic-menu .content-menu ul > li.expanded > a').on('click', function (e) {
-        if (!$(this).parent().hasClass('show')) {
-          //Collapse any open/active items.
-          $('#cic-menu .content-menu li.expanded').each(function(){
-            $(this).removeClass('show');
-            $(this).children('ul.menu').slideUp();
-          });
-          $(this).parent().addClass('show');
-          $(this).next().slideDown();
-          e.preventDefault();
-        }
-        else {
-          $(this).parent().removeClass('show');
-          $(this).next().slideUp();
-          e.preventDefault();
-        }
-      });
-
     }
   }
 
@@ -477,37 +434,3 @@ function enableCicStickyNav(scrollUp) {
     }
   }
 }
-/* expand the CIC menu to display the current article */
-function expandCicMenu() {
-  //Collapse any open menu items
-  $('#cic-menu .content-menu li.expanded').each(function() {
-    $(this).removeClass('show');
-    $(this).children('ul.menu').slideUp();
-  });
-  //remove any previous link that has current-node class
-  $('#cic-menu .content-menu li.is-leaf a').removeClass('current-node');
-
-  active_url = window.location.href;
-  //Loop through the content menu link and match the url
-  $('#cic-menu .content-menu li.is-leaf a').each(function() {
-    $this = $(this);
-    var href = $this.attr('href');
-    //Convert relative links to absulute
-    if (href.substr(0,7) != 'http://' && href.substr(0,8) != 'https://' && href.substr(0,2) != '//') {
-      //Append the host file
-      href = 'http://' + window.location.host + href;
-    }
-    if (active_url == href) {
-      $(this).addClass('current-node');
-      //Does the link have a parent?
-      if ($this.parents('li.expanded').length != 0) {
-        parent_link = $this.parents('li.expanded');
-        //Expand the parent menu item
-        parent_link.addClass('show');
-        parent_link.children('ul.menu').slideDown();
-      }
-      return false;
-    }
-  });
-}
-
