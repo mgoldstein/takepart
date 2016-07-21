@@ -169,12 +169,24 @@ nav#cic-menu {
       @include breakpoint($breakpoint-tablet) {
         margin-bottom: 24px;
       }
+      h3.campaign-title {
+        letter-spacing: 1px;
+        @include AdelleSans;
+        font-size: 18px;
+        line-height: 28px;
+        text-transform: uppercase;
+        margin: 9px 0 16px 31px;
+        @include breakpoint($breakpoint-tablet) {
+          margin: 18px 0 13px 0;
+        }
+      }
       .campaign-logo {
         margin: 12px 0 16px 31px;
         @include breakpoint($breakpoint-tablet) {
           margin: 26px 0 21px 0;
         }
         img {
+          vertical-align: top;
           max-height: 23px;
         }
       }
