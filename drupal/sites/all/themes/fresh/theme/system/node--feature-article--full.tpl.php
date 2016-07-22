@@ -74,11 +74,10 @@
             </div>
           <?php endif; ?>
         </div>
-      <?php else:?>
-        <?php if (!empty($variables['topic_box'])): ?>
-          <?php print $variables['topic_box']; ?>
-        <?php endif; ?>
       <?php endif ?>
+      <?php if (!empty($variables['topic_box'])): ?>
+        <?php print $variables['topic_box']; ?>
+      <?php endif; ?>
       <?php if (!empty($variables['author_teaser'])): ?>
         <div class="row">
           <?php print $variables['author_teaser']; ?>
