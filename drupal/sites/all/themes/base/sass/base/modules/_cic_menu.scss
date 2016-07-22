@@ -34,7 +34,7 @@ nav#cic-menu {
     font-size: 33px;
     position: absolute;
     left: 15px;
-    top: 10px;
+    top: 12px;
     cursor: pointer;
     z-index: 2;
     @include breakpoint($breakpoint-desktop) {
@@ -141,7 +141,10 @@ nav#cic-menu {
       }
       li.is-leaf {
         line-height: 20px;
-        padding: 22px 0 0 0;
+        padding: 22px 0 0 17px;
+        @include breakpoint($breakpoint-tablet) {
+          padding-left: 0;
+        }
         a {
           @include AdelleSans;
           color: $light-black;
@@ -183,10 +186,18 @@ nav#cic-menu {
         margin: 12px 0 16px 0px;
         @include breakpoint($breakpoint-tablet) {
           margin: 26px 0 21px 0;
+          line-height: 20px;
         }
         img {
-          vertical-align: top;
-          max-height: 23px;
+          max-height: 25px;
+        }
+        @media (max-width: 767px) {
+          height: 25px;
+          img {
+            vertical-align: middle;
+            display: inline-block;
+          }
+
         }
       }
       p.campaign-description {
