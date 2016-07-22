@@ -266,6 +266,13 @@ function fresh_preprocess_node__autoload(&$variables) {
       $camp_color = $camp_color[0]['rgb'];
       $variables['campaign_info']['color'] = $camp_color;
     }
+    //Campaign Menu Logo - Dark
+    if ($camp_dark_logo =  field_get_items('node', $camp, 'field_content_dark_menu_logo')) {
+      $camp_dark_logo = $camp_dark_logo[0]['uri'];
+      $camp_dark_logo = file_create_url($camp_dark_logo);
+      $variables['campaign_info']['dark_logo'] = $camp_dark_logo;
+    }
+
     //Add the carousel slider of promos in replace of MOT
     $more_block = module_invoke('tp_cic', 'block_view', 'tp_cic_bottom_promo');
   } else {

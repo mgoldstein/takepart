@@ -136,6 +136,10 @@ h1.title{
   margin: 0 auto 5px auto;
   border-bottom: 1px solid #CCC;
   padding-bottom: 15px;
+  max-width: 320px;
+  @include breakpoint($breakpoint-tablet) {
+    max-width: 640px;
+  }
   .unpublished {
     background-color: #fff4f4;
   }
@@ -378,6 +382,24 @@ h4.campaign-vol {
   }
 }
 
+.big-issue {
+    margin: 0;
+    color: #fff;
+    font-size: 13px;
+    font-family: $AdelleSans;
+    font-weight: 900;
+    line-height: 20px;
+    a {
+      color: #fff;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    span {
+      font-weight: 100;
+    }
+}
+
 #page-wrapper.campaign-experience {
   #header {
     max-width: 100%;
@@ -509,7 +531,7 @@ h4.campaign-vol {
   display: none;
 }
 
-/* Content inside campaign in autoload experience */
+/* Content inside campaign in autoload experience - Not feature article */
 #page-wrapper:not(.campaign-experience) .fresh-content-wrapper.cic.autoloaded:not(.feature_article-wrapper) {
   .campaign-ref-wrapper {
     margin-bottom: 0;
@@ -540,6 +562,28 @@ h4.campaign-vol {
       }
     }
   }
+}
+
+/* Content inside campaign in autoload experience - feature article */
+#page-wrapper:not(.campaign-experience) .feature_article-wrapper.cic.autoloaded {
+  .feature-campaign-ref {
+    text-align: center;
+    padding-top: 5px;
+    .campaign-dark-logo {
+      margin-bottom: 8px;
+      img {
+        margin: 0 auto;
+        max-height: 50px;
+      }
+    }
+    .big-issue {
+      color: $black;
+      a {
+        color: $black;
+      }
+    }
+  }
+
 }
 
 .cic_bottom_promo_block_container {

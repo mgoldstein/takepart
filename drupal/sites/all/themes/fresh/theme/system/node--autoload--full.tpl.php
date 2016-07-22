@@ -39,7 +39,9 @@
         </div>
       <?php endif; ?>
       <?php if (!empty($variables['campaign_info']['vol'])): ?>
-        <h4 class = "campaign-vol">TAKEPART'S BIG ISSUE <span>vol. <?php print $variables['campaign_info']['vol']; ?></span></h4>
+        <div class = "big-issue">
+          <a href ="http://www.takepart.com/big-issues">TAKEPART'S BIG ISSUE </a><span class="campaign-vol">vol. <?php print $variables['campaign_info']['vol']; ?></span>
+        </div>
       <?php endif; ?>
     </div>
   <?php endif; ?>

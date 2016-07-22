@@ -12,13 +12,6 @@
     $node_type = $variables['type'];
     $cic = (!empty($variables['campaign_info']['nid'])) ? ' cic' : '';
     $autoloaded = ($variables['autoscroll_load']) ? TRUE : FALSE;
-    //Display the campaing banner if the first article, otherwise display campaign color
-    if (!$autoloaded) {
-      $banner_bg = '"background-image: url(' . $variables['campaign_info']['banner'] . ')"';
-    }
-    else {
-      $banner_bg = '"background-color:' . $variables['campaign_info']['color'] . '"';
-    }
   ?>
 
 <div class = "<?php print $node_type;?>-wrapper fresh-content-wrapper clearfix<?php print ($autoloaded) ? ' autoloaded' : ' first'; print $cic . ' ';?>">
@@ -28,8 +21,9 @@
     </aside>
   <?php endif; ?>
 
-  <?php if (!empty($variables['campaign_info']['banner'])): ?>
-    <div class = "campaign-ref-wrapper" style=<?php print $banner_bg;?>>
+  <?php //Campaign banner is displayed only if its not autoloaded.
+  if ($cic && !empty($variables['campaign_info']['banner']) && !$autoloaded): ?>
+    <div class = "campaign-ref-wrapper" style="background-image: url('<?php print $variables['campaign_info']['banner'];?>')">
       <?php if (!empty($variables['campaign_info']['logo'])): ?>
         <div class = "campaign-logo">
           <a href="<?php print $variables['campaign_info']['url']; ?>">
@@ -38,7 +32,9 @@
         </div>
       <?php endif; ?>
       <?php if (!empty($variables['campaign_info']['vol'])): ?>
-        <h4 class = "campaign-vol">TAKEPART'S BIG ISSUE <span>vol. <?php print $variables['campaign_info']['vol']; ?></span></h4>
+        <div class = "big-issue">
+          <a href ="http://www.takepart.com/big-issues">TAKEPART'S BIG ISSUE </a><span class="campaign-vol">vol. <?php print $variables['campaign_info']['vol']; ?></span>
+        </div>
       <?php endif; ?>
     </div>
   <?php endif; ?>
@@ -65,9 +61,24 @@
       </div>
     </div>
     <div class="section top">
-      <?php if (!empty($variables['topic_box'])): ?>
-        <?php print $variables['topic_box']; ?>
-      <?php endif; ?>
+      <?php if ($cic && $autoloaded): ?>
+        <div class = "feature-campaign-ref">
+          <?php if(!empty($variables['campaign_info']['dark_logo'])): ?>
+            <div class="campaign-dark-logo">
+              <img src="<?php print $variables['campaign_info']['dark_logo']; ?>">
+            </div>
+          <?php endif; ?>
+          <?php if (!empty($variables['campaign_info']['vol'])): ?>
+            <div class = "big-issue">
+              <a href ="http://www.takepart.com/big-issues">TAKEPART'S BIG ISSUE </a><span class="campaign-vol">vol. <?php print $variables['campaign_info']['vol']; ?></span>
+            </div>
+          <?php endif; ?>
+        </div>
+      <?php else:?>
+        <?php if (!empty($variables['topic_box'])): ?>
+          <?php print $variables['topic_box']; ?>
+        <?php endif; ?>
+      <?php endif ?>
       <?php if (!empty($variables['author_teaser'])): ?>
         <div class="row">
           <?php print $variables['author_teaser']; ?>

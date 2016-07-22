@@ -510,6 +510,9 @@
       margin-left: 0;
       width: 100%;
       padding: 0;
+      .section.main-content {
+        padding: 0 15px;
+      }
     }
   }
   @media (max-width: 767px) {
@@ -520,5 +523,10 @@
     .inline-feature-image img {
       margin: 0 auto;
     }
+  }
+  @include breakpoint($breakpoint-tablet){
+      article .section.main-content {
+        padding: 0;
+      }
   }
 }
