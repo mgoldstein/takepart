@@ -44,6 +44,7 @@ dependencies[] = taxonomy
 dependencies[] = taxonomy_term_reference_sortable_widget
 dependencies[] = text
 dependencies[] = tp_campaigns
+dependencies[] = tp_cic
 dependencies[] = tp_media_modal
 dependencies[] = tpf_content_field_bases
 dependencies[] = wysiwyg
