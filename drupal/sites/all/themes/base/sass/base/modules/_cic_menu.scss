@@ -150,6 +150,7 @@ nav#cic-menu {
           color: $light-black;
           font-size: 14px;
           padding-top: 20px;
+          -webkit-text-size-adjust: 100%;
           &:hover {
             text-decoration: underline;
           }
