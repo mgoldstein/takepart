@@ -54,13 +54,14 @@
 
 	 var curItem = false;
 
-	 $('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').on('click', function (e)
+	 $('#block-menu-menu-megamenu ul li a').not('li.is-leaf a , li.shows a').on('click', function (e)
 	 {
 	   var item = $(this);
 	   if (item[ 0 ] != curItem[ 0 ])
 	   {
-		//e.preventDefault();
+		e.preventDefault();
 		curItem = item;
+    return false;
 	   }
 	 });
 
