@@ -147,14 +147,20 @@
     }
     .inline-interactive-campaign-promo {
       @include breakpoint($breakpoint-tablet) {
-        max-width: 768px;
+        max-width: 80%;
         width: auto;
         float: none;
         margin: 0 auto;
         .inline-campaign-promo-wrapper {
           width: 244px;
-          margin: 10px 25px;
+          margin: 10px 25px 10px 0;
           float: left;
+        }
+      }
+      @include breakpoint($breakpoint-desktop) {
+        max-width: 768px;
+        .inline-campaign-promo-wrapper {
+          margin-left: 25px;
         }
       }
     }
