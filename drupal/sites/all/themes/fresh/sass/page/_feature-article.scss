@@ -91,6 +91,11 @@
         &.align-right, &.align-left, &.align-center {
           max-width: 100%;
           margin: 10px auto 20px auto;
+          @media (max-width: 767px) {
+            .widget-rendered {
+              margin: 0 auto;
+            }
+          }
         }
       }
 
