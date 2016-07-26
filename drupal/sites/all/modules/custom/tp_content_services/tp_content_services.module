@@ -249,7 +249,6 @@ function _tp_content_services_get_authors($node) {
 function tp_content_services_add_tags(&$node) {
   //add nodes url
   $url = urlencode(url('node/'.$node->nid, array('absolute' => true)));
-  $url = urlencode('http://qa.takepart.com/article/2016/07/09/filming-nypd');
   $access = variable_get('content_services_access_token', '');
   $api_url = variable_get('takepart_api_domain', '');
   $api_endpoint = variable_get('content_services_tags_endpoint','');
