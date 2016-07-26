@@ -73,7 +73,7 @@ function tp_cic_block_view($delta = '') {
 			$query = new EntityFieldQuery();
 			$query->entityCondition('entity_type', 'node')
 			->propertyCondition('status', 1)
-			->addTag('CICPromoPub')
+			->addTag('CICPromoPubAsc')
 			->fieldCondition('field_editor_campaign_reference','target_id',$campaign_id,'=');
 
 			$result = $query->execute();
@@ -214,4 +214,13 @@ function tp_cic_getCampInfo($cid) {
 		$campaign_info['banner'] = $camp_banner;
 	}
 	return $campaign_info;
+}
+
+
+/*
+ * Alter the node query to include the publication date
+ */
+function inline_content_query_CICPromoPubAsc_alter(QueryAlterableInterface $query){
+  $query->leftJoin('publication_date', 'p', 'node.nid = p.nid');
+  $query->orderBy('published_at', 'ASC');
 }
