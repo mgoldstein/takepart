@@ -5,13 +5,13 @@
 
 <div class="cic_bottom_promo_block_container tp-fresh-bottom-content" style="background-color:<?php print $campaign_info['bg_color'] ?>">
   <div<?php print $attributes; ?> class="<?php print $classes; ?> clearfix">
-    <a href="<?php print $campaign_info['url'] ?>" title="<?php print $campaign_info['title'] ?>">
+    <h2><a href="<?php print $campaign_info['url'] ?>" title="<?php print $campaign_info['title'] ?>">
     <?php if($campaign_info['menu_logo']): ?>
-      <h2><img src="<?php print $campaign_info['menu_logo']; ?>" ALT="<?php print $campaign_info['title']; ?>" /></h2>
+      <img src="<?php print $campaign_info['menu_logo']; ?>" ALT="<?php print $campaign_info['title']; ?>" />
     <?php else: ?>
-      <h2><?php print $campaign_info['title'] ?></h2>
+      <?php print $campaign_info['title'] ?>
     <?php endif; ?>
-    </a>
+    </a></h2>
     <div class="cic_bottom_promo_numb_stories"><?php print $campaign_info['story_num'] ?> STORIES</div>
     <div class="cic_bottom_promo<?php print $rand ?>">
       <?php  foreach($cic_info AS $cic): ?>
