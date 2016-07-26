@@ -109,7 +109,7 @@
 		'social': 'Social',
 	   };
 	   $iframe.bind('load', function () {
-		// prevent scrolling, you sick bastard
+		// prevent scrolling
 		$('body').css('overflow', 'hidden');
 		$('body').addClass('scrollable');
 
@@ -140,8 +140,10 @@
 		  id: interstitial_modal_id,
 		  values: {
 		    afterClose: function () {
-			 extend_pm_interstitial_cookie(365 * 5);
-			 //Possible tracking for Intersititial not showing up tpinterstitial_dontshow
+          $('body').css('overflow', 'scroll');
+          $('body').removeClass('scrollable');
+			    extend_pm_interstitial_cookie(365 * 5);
+			    //Possible tracking for Intersititial not showing up tpinterstitial_dontshow
 		    }
 		  }
 		});
