@@ -32,7 +32,7 @@ function tp_content_services_node_insert($node) {
 /**
  * hook_node_update
  */
-function tp_content_services_node_update($node) {
+function tp_content_services_node_update($node) {tp_content_services_notify_service($node, 'update');
   if((isset($node->workbench_moderation['updating_live_revision']) && $node->workbench_moderation['updating_live_revision'])
     && in_array($node->type, array('openpublish_article','feature_article','openpublish_photo_gallery','video'))) {
     if($node->workbench_moderation['current']->published == 1 ||
@@ -102,11 +102,8 @@ function tp_content_services_notify_service($node, $insup = '') {
     $i = 0;
     $j = 0;
     while($j < 3) {
-      error_log('in');
       if(isset($ptags[$i])) {
-        error_log($ptags[$i]->nodeValue);
-        if(!empty($ptags[$i]->nodeValue) && $ptags[$i]->nodeValue != "\xc2\xa0") {
-          error_log('p');
+        if(!empty($ptags[$i]->nodeValue) && $ptags[$i]->nodeValue != "\xc2\xa0" && $ptags[$i]->nodeValue && substr($ptags[$i]->nodeValue, 0, 8) !== "RELATED:") {
           $intro .= '<p>'.$ptags[$i]->nodeValue.'</p>';
           $j++;
         }

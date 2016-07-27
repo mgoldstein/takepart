@@ -12,7 +12,7 @@
         <?php print l($campaign_info['title'], $campaign_info['url'], array('attributes' => array('class' => array('stories-header-link')))); ?>
       </h3>
       <h4>
-        BIG ISSUE <span class="volume">vol. <?php print $campaign_info['vol']; ?></span>
+        <?php print l(t("BIG ISSUE"), "big-issues"); ?> <span class="volume">vol. <?php print $campaign_info['vol']; ?></span>
       </h4>
       <div class = "campaign-description">
         <?php print $campaign_info['description']; ?>

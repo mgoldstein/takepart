@@ -77,12 +77,13 @@ function tp_media_modal_field_formatter_view($entity_type, $entity, $field, $ins
       $elements = array();
 
       foreach ($items as $delta => $item) {
-
         //Video
         if(!empty($item['video'])) {
+          
           $video_node = node_load($item['video']);
           if($video_file = field_get_items('node', $video_node, 'field_video')) {
             $video_file = tp_videos_token_attached_video_file_url($video_node);
+            $video_file = str_ireplace(".m3u8", ".mp4", $video_file);
           }
 
         }

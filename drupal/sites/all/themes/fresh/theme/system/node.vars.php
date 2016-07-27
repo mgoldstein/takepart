@@ -12,7 +12,7 @@ function fresh_preprocess_node(&$variables, $hook) {
   $node = $variables['node'];
   $variables['show_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
   if ($variables['view_mode'] == 'full') {
-    if ($node->type == 'openpublish_article' || $node->type == 'video' || $node->type == 'video_playlist' || $node->type == 'feature_article') {
+    if (in_array($node->type , array('openpublish_article', 'video', 'video_playlist', 'feature_article', 'fresh_gallery'))) {
       //Feature Artcile will use its own template
       if ($node->type == 'feature_article') {
         $variables['theme_hook_suggestion'] = 'node__feature__article__' . $variables['view_mode'];
@@ -224,14 +224,6 @@ function fresh_preprocess_node__autoload(&$variables) {
 	 }
     }
 
-    //loading the module view from more on takepart
-    $more_block = module_invoke('tp_more_on_takepart', 'block_view', 'more_on_takepart');
-
-    //add if empty
-    if (!empty($more_block['content'])) {
-	 $variables['more_on_takepart'] = $more_block['content'];
-    }
-
     /* Sponsored */
     $field_sponsored = field_get_items('node', $variables['node'], 'field_sponsored');
     $tid = $field_sponsored[0]['tid'];
@@ -248,6 +240,50 @@ function fresh_preprocess_node__autoload(&$variables) {
     $variables['sponsored'] = theme('fresh_sponsor', array('tid' => $tid));
     $variables['sponsor_disclosure'] = theme('fresh_sponsor_disclaimer', array('tid' => $tid));
   }
+
+  /* Campaign References */
+  if($campaign_content = field_get_items('node', $variables['node'], 'field_editor_campaign_reference')){
+    $camp = node_load($campaign_content[0]['target_id']);
+    $variables['campaign_info']['nid'] = $campaign_content[0]['target_id'];
+    $variables['campaign_info']['url'] = url('node/'.$camp->nid , array('absolute' => TRUE));
+    //Campaign Banner
+    if ($camp_banner =  field_get_items('node', $camp, 'field_content_banner_bg')) {
+      $camp_banner = $camp_banner[0]['uri'];
+      $camp_banner = file_create_url($camp_banner);
+      $variables['campaign_info']['banner'] = $camp_banner;
+    }
+    //Campaign Logo
+    if ($camp_logo =  field_get_items('node', $camp, 'field_content_menu_logo')) {
+      $camp_logo = $camp_logo[0]['uri'];
+      $camp_logo = file_create_url($camp_logo);
+      $variables['campaign_info']['logo'] = $camp_logo;
+    }
+    if ($camp_vol =  field_get_items('node', $camp, 'field_content_issue_volume')) {
+      $camp_vol = $camp_vol[0]['value'];
+      $variables['campaign_info']['vol'] = $camp_vol;
+    }
+    if ($camp_color =  field_get_items('node', $camp, 'field_content_promo_bg')) {
+      $camp_color = $camp_color[0]['rgb'];
+      $variables['campaign_info']['color'] = $camp_color;
+    }
+    //Campaign Menu Logo - Dark
+    if ($camp_dark_logo =  field_get_items('node', $camp, 'field_content_dark_menu_logo')) {
+      $camp_dark_logo = $camp_dark_logo[0]['uri'];
+      $camp_dark_logo = file_create_url($camp_dark_logo);
+      $variables['campaign_info']['dark_logo'] = $camp_dark_logo;
+    }
+
+    //Add the carousel slider of promos in replace of MOT
+    $more_block = module_invoke('tp_cic', 'block_view', 'tp_cic_bottom_promo');
+  } else {
+    //loading the module view from more on takepart if not campaign ref
+    $more_block = module_invoke('tp_more_on_takepart', 'block_view', 'more_on_takepart');
+  }
+  //add if not empty
+  if (!empty($more_block['content'])) {
+    $variables['more_on_takepart'] = $more_block['content'];
+  }
+
 }
 
 /**

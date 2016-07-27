@@ -10,7 +10,7 @@
 function tpf_content_page_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-takepart_page-body'
+  // Exported field_instance: 'node-takepart_page-body'.
   $field_instances['node-takepart_page-body'] = array(
     'bundle' => 'takepart_page',
     'default_value' => NULL,
@@ -97,7 +97,7 @@ function tpf_content_page_field_default_field_instances() {
     'widget_type' => 'text_textarea_with_summary',
   );
 
-  // Exported field_instance: 'node-takepart_page-field_admin_tag'
+  // Exported field_instance: 'node-takepart_page-field_admin_tag'.
   $field_instances['node-takepart_page-field_admin_tag'] = array(
     'bundle' => 'takepart_page',
     'default_value' => NULL,
@@ -177,7 +177,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-takepart_page-field_author'
+  // Exported field_instance: 'node-takepart_page-field_author'.
   $field_instances['node-takepart_page-field_author'] = array(
     'bundle' => 'takepart_page',
     'default_value' => NULL,
@@ -259,7 +259,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-takepart_page-field_free_tag'
+  // Exported field_instance: 'node-takepart_page-field_free_tag'.
   $field_instances['node-takepart_page-field_free_tag'] = array(
     'bundle' => 'takepart_page',
     'default_value' => NULL,
@@ -341,7 +341,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-takepart_page-field_html_title'
+  // Exported field_instance: 'node-takepart_page-field_html_title'.
   $field_instances['node-takepart_page-field_html_title'] = array(
     'bundle' => 'takepart_page',
     'default_value' => NULL,
@@ -422,7 +422,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-takepart_page-field_main_img_to_thumb'
+  // Exported field_instance: 'node-takepart_page-field_main_img_to_thumb'.
   $field_instances['node-takepart_page-field_main_img_to_thumb'] = array(
     'bundle' => 'takepart_page',
     'default_value' => array(
@@ -500,7 +500,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-takepart_page-field_page_context'
+  // Exported field_instance: 'node-takepart_page-field_page_context'.
   $field_instances['node-takepart_page-field_page_context'] = array(
     'bundle' => 'takepart_page',
     'default_value' => array(
@@ -628,7 +628,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-takepart_page-field_page_main_image'
+  // Exported field_instance: 'node-takepart_page-field_page_main_image'.
   $field_instances['node-takepart_page-field_page_main_image'] = array(
     'bundle' => 'takepart_page',
     'default_value' => NULL,
@@ -723,7 +723,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-takepart_page-field_page_subhead'
+  // Exported field_instance: 'node-takepart_page-field_page_subhead'.
   $field_instances['node-takepart_page-field_page_subhead'] = array(
     'bundle' => 'takepart_page',
     'default_value' => NULL,
@@ -805,7 +805,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-takepart_page-field_promo_headline'
+  // Exported field_instance: 'node-takepart_page-field_promo_headline'.
   $field_instances['node-takepart_page-field_promo_headline'] = array(
     'bundle' => 'takepart_page',
     'default_value' => NULL,
@@ -814,9 +814,8 @@ function tpf_content_page_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 14,
       ),
       'feature_main' => array(
@@ -887,7 +886,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-takepart_page-field_promo_text'
+  // Exported field_instance: 'node-takepart_page-field_promo_text'.
   $field_instances['node-takepart_page-field_promo_text'] = array(
     'bundle' => 'takepart_page',
     'default_value' => NULL,
@@ -896,9 +895,8 @@ function tpf_content_page_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'hidden',
-        'module' => 'text',
         'settings' => array(),
-        'type' => 'text_default',
+        'type' => 'hidden',
         'weight' => 15,
       ),
       'feature_main' => array(
@@ -969,7 +967,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-takepart_page-field_series'
+  // Exported field_instance: 'node-takepart_page-field_series'.
   $field_instances['node-takepart_page-field_series'] = array(
     'bundle' => 'takepart_page',
     'default_value' => NULL,
@@ -1049,7 +1047,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-takepart_page-field_thumbnail'
+  // Exported field_instance: 'node-takepart_page-field_thumbnail'.
   $field_instances['node-takepart_page-field_thumbnail'] = array(
     'bundle' => 'takepart_page',
     'default_value' => NULL,
@@ -1144,7 +1142,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-takepart_page-field_topic'
+  // Exported field_instance: 'node-takepart_page-field_topic'.
   $field_instances['node-takepart_page-field_topic'] = array(
     'bundle' => 'takepart_page',
     'default_value' => NULL,
@@ -1224,7 +1222,7 @@ function tpf_content_page_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-takepart_page-field_tp_campaign_show_title'
+  // Exported field_instance: 'node-takepart_page-field_tp_campaign_show_title'.
   $field_instances['node-takepart_page-field_tp_campaign_show_title'] = array(
     'bundle' => 'takepart_page',
     'default_value' => array(

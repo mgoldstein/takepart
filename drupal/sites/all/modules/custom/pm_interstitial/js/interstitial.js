@@ -79,10 +79,10 @@
 
 	   }
 	   // second page view (or subsequent page view without closing the interstitial)
-	   else if (interstitial_cookie === '0' 
-			 && GetQueryStringParams('cmpid') !== 'eml' 
+	   else if (interstitial_cookie === '0'
+			 && GetQueryStringParams('cmpid') !== 'eml'
 			 && !excludeOn) { // check to see if interstitial_exclusions context is active
-		
+
 		var excluded_links = referer_cookie.split(',');
 		var $interstitial_links = $('#block-pm-interstitial-interstitials a.interstitial');
 		if ($interstitial_links.length <= 0) {
@@ -109,7 +109,7 @@
 		'social': 'Social',
 	   };
 	   $iframe.bind('load', function () {
-		// prevent scrolling, you sick bastard
+		// prevent scrolling
 		$('body').css('overflow', 'hidden');
 		$('body').addClass('scrollable');
 
@@ -125,7 +125,7 @@
 		$iframe.css({width: w, height: h});
 		$modal.css({overflow: 'hidden'});
 		$.tpmodal.showModal({id: interstitial_modal_id});
-		return takepart.analytics.track('tpinterstitial_show_modal', {interstitial_type: analytics_types[interstitial_type]});
+		return _satellite.track('tpinterstitial_show_modal');
 	   });
 
 	   var extend_pm_interstitial_cookie = function (days) {
@@ -140,8 +140,10 @@
 		  id: interstitial_modal_id,
 		  values: {
 		    afterClose: function () {
-			 extend_pm_interstitial_cookie(365 * 5);
-			 takepart.analytics.track('tpinterstitial_dontshow', {interstitial_type: analytics_types[interstitial_type]});
+          $('body').css('overflow', 'scroll');
+          $('body').removeClass('scrollable');
+			    extend_pm_interstitial_cookie(365 * 5);
+			    //Possible tracking for Intersititial not showing up tpinterstitial_dontshow
 		    }
 		  }
 		});
@@ -150,14 +152,14 @@
 
 	   window.interstitial_social_click = function (service) {
 		if (service === "twitter") {
-		  takepart.analytics.track('tpinterstitial_twitter');
+		  //Possible to track interstitial social menu share click
 		} else if (service === "facebook") {
-		  takepart.analytics.track('tpinterstitial_facebook');
+		  //Possible to track interstitial social menu share click
 		}
 	   }
 
 	   window.interstitial_newsletter_signup = function (title) {
-		takepart.analytics.track('tpinterstitial_newsletter_signup', {title: title});
+       _satellite.track('tpinterstitial_newsletter_signup');
 	   }
 	   $.tpmodal.load({
 		id: interstitial_modal_id,
@@ -167,7 +169,7 @@
 		  $('body').css('overflow', 'scroll');
 		  $('body').removeClass('scrollable');
 		  extend_pm_interstitial_cookie(7);
-		  takepart.analytics.track('tpinterstitial_dismiss', {interstitial_type: analytics_types[interstitial_type]});
+		  //Possible to track the closing or dismissing of the interstitial.
 		}
 	   });
 	 }

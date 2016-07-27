@@ -10,7 +10,7 @@
 function tpf_display_views_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_auto_play'
+  // Exported field_base: 'field_auto_play'.
   $field_bases['field_auto_play'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -35,7 +35,7 @@ function tpf_display_views_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_mute_playback'
+  // Exported field_base: 'field_mute_playback'.
   $field_bases['field_mute_playback'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -60,7 +60,7 @@ function tpf_display_views_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_player_embeddable'
+  // Exported field_base: 'field_player_embeddable'.
   $field_bases['field_player_embeddable'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -85,7 +85,7 @@ function tpf_display_views_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_player_skin'
+  // Exported field_base: 'field_player_skin'.
   $field_bases['field_player_skin'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -110,7 +110,7 @@ function tpf_display_views_field_default_field_bases() {
     'type' => 'list_text',
   );
 
-  // Exported field_base: 'field_share_url'
+  // Exported field_base: 'field_share_url'.
   $field_bases['field_share_url'] = array(
     'active' => 1,
     'cardinality' => 1,

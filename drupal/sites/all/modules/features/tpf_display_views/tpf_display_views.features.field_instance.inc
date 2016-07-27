@@ -10,7 +10,7 @@
 function tpf_display_views_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-video-field_auto_play'
+  // Exported field_instance: 'node-video-field_auto_play'.
   $field_instances['node-video-field_auto_play'] = array(
     'bundle' => 'video',
     'default_value' => array(
@@ -120,7 +120,7 @@ function tpf_display_views_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-video-field_mute_playback'
+  // Exported field_instance: 'node-video-field_mute_playback'.
   $field_instances['node-video-field_mute_playback'] = array(
     'bundle' => 'video',
     'default_value' => array(
@@ -230,7 +230,7 @@ function tpf_display_views_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-video-field_player_embeddable'
+  // Exported field_instance: 'node-video-field_player_embeddable'.
   $field_instances['node-video-field_player_embeddable'] = array(
     'bundle' => 'video',
     'default_value' => array(
@@ -340,7 +340,7 @@ function tpf_display_views_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-video-field_player_skin'
+  // Exported field_instance: 'node-video-field_player_skin'.
   $field_instances['node-video-field_player_skin'] = array(
     'bundle' => 'video',
     'default_value' => array(
@@ -450,7 +450,7 @@ function tpf_display_views_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-video-field_share_url'
+  // Exported field_instance: 'node-video-field_share_url'.
   $field_instances['node-video-field_share_url'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
