@@ -32,12 +32,23 @@ function tp_content_services_node_insert($node) {
 /**
  * hook_node_update
  */
-function tp_content_services_node_update($node) {tp_content_services_notify_service($node, 'update');
-  if((isset($node->workbench_moderation['updating_live_revision']) && $node->workbench_moderation['updating_live_revision'])
-    && in_array($node->type, array('openpublish_article','feature_article','openpublish_photo_gallery','video'))) {
-    if($node->workbench_moderation['current']->published == 1 ||
-      (isset($node->workbench_moderation['current']->unpublishing) && $node->workbench_moderation['current']->unpublishing == 1)){
-      tp_content_services_notify_service($node, 'update');
+function tp_content_services_node_update($node) {
+  if(in_array($node->type, array('openpublish_article','feature_article','openpublish_photo_gallery','video'))) {
+    //There are 2 different processes. One that has to do with the current revision and the other as normal.
+    if(isset($node->workbench_moderation['updating_live_revision']) && $node->workbench_moderation['updating_live_revision']){
+      //Called when unpublished or published
+      if($node->workbench_moderation['current']->published == 1 ||
+        (isset($node->workbench_moderation['current']->unpublishing) && $node->workbench_moderation['current']->unpublishing == 1)){
+        //Notify the services of a node change
+        tp_content_services_notify_service($node, 'update');
+      }
+    } else {
+      $onode = node_load($node->nid);
+      //Called when published only
+      if($node->status == 1 && $onode->status == 0) {
+        //Add new tags
+        tp_content_services_add_tags($node);
+      }
     }
   }
 }
@@ -230,4 +241,70 @@ function _tp_content_services_get_authors($node) {
     $author = implode(",", $authors);
   }
   return $author;
+}
+
+/**
+ * Content Services add tags to Free Tags
+ */
+function tp_content_services_add_tags(&$node) {
+  //add nodes url
+  $url = urlencode(url('node/'.$node->nid, array('absolute' => true)));
+  $access = variable_get('content_services_access_token', '');
+  $api_url = variable_get('takepart_api_domain', '');
+  $api_endpoint = variable_get('content_services_tags_endpoint','');
+  //get tags from CDS
+  $json = drupal_http_request("$api_url$api_endpoint?access_token=$access&url=$url");
+  $json_keywords = json_decode($json->data);
+  if(isset($json_keywords->keywords) && !empty($json_keywords->keywords)) {
+    foreach($json_keywords->keywords AS $keyword) {
+      //check if tag exists in system
+      $temp_term = taxonomy_get_term_by_name($keyword, 'free_tags');
+      if(empty($temp_term)) {
+        $new_term = new stdClass();
+        $new_term->name = $keyword;
+        $new_term->vid = 4;
+        taxonomy_term_save($new_term);
+        if(!isset($new_term->tid)) {
+          watchdog('Content Notify Service', 'Failed to create new term %termname',
+            array(
+              '%termname' => $keyword,
+            ),
+            WATCHDOG_ERROR);
+          continue;
+        } else {
+          $temp_term = $new_term;
+        }
+      } else {
+        $temp_term = $temp_term[key($temp_term)];
+      }
+
+      //Check if tag exists in node
+      $add = 1;
+      //check if free tags exists
+      if(isset($node->field_free_tag)) {
+        if(!isset($node->field_free_tag[LANGUAGE_NONE])) {
+          $node->field_free_tag[LANGUAGE_NONE] = array();
+        }
+        foreach($node->field_free_tag[LANGUAGE_NONE] AS $free_tag) {
+          if($temp_term->tid == $free_tag->tid){
+            $add = 0;
+            break;
+          }
+        }
+        if($add) {
+          $node->field_free_tag[LANGUAGE_NONE][] = (array) $temp_term;
+        }
+      }
+    }
+    field_attach_update('node', $node);
+  } else {
+    watchdog('Content Notify Service', 'Failed to add Free Tags to %nid:%title. Status: %status. Request: %request',
+      array(
+        '%nid' => $node->nid,
+        '%title' => $node->title,
+        '%status' => $json->status_message,
+        '%request' => $json->request,
+      ),
+      WATCHDOG_ERROR);
+  }
 }
