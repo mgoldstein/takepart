@@ -169,12 +169,17 @@ function fresh_preprocess_node__autoload(&$variables) {
     /* Author */
     $author_vars = array();
     if ($authors = field_get_items('node', $variables['node'], 'field_author')) {
-	 foreach ($authors as $author) {
-	   $author_vars['author'][] = node_load($author['nid']);
-	 }
+      foreach ($authors as $author) {
+        $author_vars['author'][] = node_load($author['nid']);
+	     }
     }
     $author_vars['published_at'] = $variables['node']->published_at;
-    $variables['author_teaser'] = theme('fresh_author_teaser', $author_vars);
+    if ($node_type == 'fresh_gallery') {
+      $variables['author_teaser'] = theme('fresh_gallery_author_teaser', $author_vars);
+    }
+    else {
+      $variables['author_teaser'] = theme('fresh_author_teaser', $author_vars);
+    }
 
     /* Body */
     $body_display = array(
@@ -250,10 +255,24 @@ function fresh_preprocess_node__autoload(&$variables) {
     $variables['sponsor_disclosure'] = theme('fresh_sponsor_disclaimer', array('tid' => $tid));
   }
 
-  /** Fresh Gallery Json **/
+  /** Fresh Gallery  Specific fields **/
   if($node_type == 'fresh_gallery') {
+    /* Json */
     $variables['gallery_json'] = tp_fresh_gallery_json($variables['node']);
+
+    /* Gallery Suffix */
+    if ($gallery_suffix = field_get_items('node' , $variables['node'] , 'field_fresh_gallery_suffix')) {
+      $variables['gallery_suffix'] = theme('html_tag', array(
+        'element' => array(
+        '#tag' => 'div',
+        '#attributes' => array(
+          'class' => 'gallery-suffix'
+        ),
+        '#value' => $gallery_suffix[0]['value']
+      )));
+    }
   }
+
 }
 
 /**

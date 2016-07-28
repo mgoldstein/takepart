@@ -29,6 +29,12 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
         'published_at' => ''
       )
     ),
+    'fresh_gallery_author_teaser' => array(
+      'variables' => array(
+        'authors' => '',
+        'published_at' => ''
+      )
+    ),
     'fresh_series_navigation' => array(
       'variables' => array(
         'entity' => '',
