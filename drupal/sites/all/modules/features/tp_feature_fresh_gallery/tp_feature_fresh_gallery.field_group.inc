@@ -50,9 +50,9 @@ function tp_feature_fresh_gallery_field_group_info() {
     'label' => 'Editorial Info',
     'weight' => '20',
     'children' => array(
-      0 => 'field_due_date',
-      1 => 'field_run_date',
-      2 => 'field_assigned_editor',
+      0 => 'field_assigned_editor',
+      1 => 'field_due_date',
+      2 => 'field_run_date',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -109,13 +109,13 @@ function tp_feature_fresh_gallery_field_group_info() {
     'label' => 'Tagging',
     'weight' => '14',
     'children' => array(
-      0 => 'field_topic_box',
-      1 => 'field_topic',
+      0 => 'field_admin_tag',
+      1 => 'field_editor_campaign_reference',
       2 => 'field_free_tag',
-      3 => 'field_sponsored',
-      4 => 'field_admin_tag',
-      5 => 'field_series',
-      6 => 'field_editor_campaign_reference',
+      3 => 'field_series',
+      4 => 'field_sponsored',
+      5 => 'field_topic',
+      6 => 'field_topic_box',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -176,6 +176,124 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-fresh_gallery-field_article_subhead'.
+  $field_instances['node-fresh_gallery-field_article_subhead'] = array(
+    'bundle' => 'fresh_gallery',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'This is displayed beneath the Gallery\'s title on the node page',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 25,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_article_subhead',
+    'label' => 'Subhead',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'campaign_full_html' => 'campaign_full_html',
+          'full_html' => 'full_html',
+          'limited_html' => 'limited_html',
+          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'campaign_full_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'limited_html' => array(
+              'weight' => 0,
+            ),
+            'no_wysiwg_full_html' => array(
+              'weight' => 0,
+            ),
+            'php_code' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 3,
+    ),
+  );
+
   // Exported field_instance: 'node-fresh_gallery-field_assigned_editor'.
   $field_instances['node-fresh_gallery-field_assigned_editor'] = array(
     'bundle' => 'fresh_gallery',
@@ -878,7 +996,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
           'full_html' => 'full_html',
           'limited_html' => 'limited_html',
           'no_wysiwg_full_html' => 'no_wysiwg_full_html',
-          'php_code' => 'php_code',
+          'php_code' => 0,
           'plain_text' => 'plain_text',
         ),
         'allowed_formats_toggle' => 0,
@@ -1129,124 +1247,6 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
       'settings' => array(),
       'type' => 'options_buttons',
       'weight' => 19,
-    ),
-  );
-
-  // Exported field_instance: 'node-fresh_gallery-field_page_subhead'.
-  $field_instances['node-fresh_gallery-field_page_subhead'] = array(
-    'bundle' => 'fresh_gallery',
-    'default_value' => NULL,
-    'deleted' => 0,
-    'description' => '',
-    'display' => array(
-      'default' => array(
-        'label' => 'above',
-        'module' => 'text',
-        'settings' => array(),
-        'type' => 'text_default',
-        'weight' => 16,
-      ),
-      'feature_main' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_main_tpl' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'feature_video' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-      'video_playlist_teaser' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
-      ),
-    ),
-    'entity_type' => 'node',
-    'field_name' => 'field_page_subhead',
-    'label' => 'Subhead',
-    'required' => 0,
-    'settings' => array(
-      'better_formats' => array(
-        'allowed_formats' => array(
-          'campaign_full_html' => 'campaign_full_html',
-          'full_html' => 'full_html',
-          'limited_html' => 'limited_html',
-          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
-          'php_code' => 'php_code',
-          'plain_text' => 'plain_text',
-        ),
-        'allowed_formats_toggle' => 0,
-        'default_order_toggle' => 0,
-        'default_order_wrapper' => array(
-          'formats' => array(
-            'campaign_full_html' => array(
-              'weight' => 0,
-            ),
-            'full_html' => array(
-              'weight' => 0,
-            ),
-            'limited_html' => array(
-              'weight' => 0,
-            ),
-            'no_wysiwg_full_html' => array(
-              'weight' => 0,
-            ),
-            'php_code' => array(
-              'weight' => -10,
-            ),
-            'plain_text' => array(
-              'weight' => 10,
-            ),
-          ),
-        ),
-      ),
-      'text_processing' => 0,
-      'user_register_form' => FALSE,
-    ),
-    'widget' => array(
-      'active' => 1,
-      'module' => 'text',
-      'settings' => array(
-        'maxlength_js' => 0,
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
-        'size' => 60,
-      ),
-      'type' => 'text_textfield',
-      'weight' => 3,
     ),
   );
 
@@ -2413,6 +2413,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
   t('Subhead');
   t('Syndication');
   t('TAB Action Overrides');
+  t('This is displayed beneath the Gallery\'s title on the node page');
   t('Topic');
   t('Topic Box');
 
