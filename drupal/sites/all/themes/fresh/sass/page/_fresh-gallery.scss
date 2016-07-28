@@ -1,4 +1,79 @@
 /*******************************
- * Photo Gallery Content Type on Fresh
+ * Fresh Gallery Content Type
  ******************************/
 
+.fresh_gallery-wrapper {
+  @include breakpoint($breakpoint-tablet){
+    article {
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+  }
+  .pre-gallery, .post-gallery {
+    max-width: 970px;
+    margin: 0 auto;
+    .pre-gallery-inner, .post-gallery-inner {
+       float: none;
+       @include breakpoint($breakpoint-tablet) {
+        padding: 0 31px;
+       }
+       @media (max-width: 767px) {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+       }
+      .main-content {
+        margin-top: 6px;
+        @include breakpoint($breakpoint-tablet) {
+          margin-top: 17px;
+        }
+      }
+    }
+  }
+  .pre-gallery .pre-gallery-inner {
+    margin-bottom: 5px;
+    @include breakpoint($breakpoint-tablet) {
+      margin-bottom: 40px;
+    }
+  }
+  .post-gallery .post-gallery-inner {
+    margin-top: 30px;
+      @include breakpoint($breakpoint-tablet) {
+        margin-top: 40px;
+      }
+  }
+  .author-teaser {
+    margin-top: 2px;
+    text-align: center;
+    @include breakpoint($breakpoint-tablet) {
+      margin-top: 10px;
+    }
+    .author-border {
+      width: 97px;
+      height: 1px;
+      border-bottom: 1px solid $gray;
+      margin: 0 auto;
+      padding-bottom: 17px;
+      @include breakpoint($breakpoint-tablet) {
+        display: none;
+      }
+    }
+    .author-name, .published-at {
+      font-family: $AdelleSans;
+      font-size: 14px;
+      color: $light-black;
+    }
+    .published-at {
+      margin-left: 0;
+      padding: 0;
+    }
+  }
+  .line-style-2 {
+    max-width: 615px;
+    margin: 10px auto;
+  }
+  .tp_sponsor {
+    margin-bottom: 15px;
+  }
+}

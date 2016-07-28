@@ -14,13 +14,8 @@ function fresh_page_alter(&$page){
   if (in_array($type, array('openpublish_article', 'video', 'video_playlist', 'feature_article', 'fresh_gallery'))) {
       $path = drupal_get_path('theme', 'fresh');
       $page['content']['#attached']['css'][] = $path.'/css/fresh.css';
+      $page['content']['#attached']['js'][] = $path.'/js/fresh-gallery.js';
   }
-  //This will only load if gallery is the first node
-  if ($type == 'fresh_gallery') {
-    $page['content']['#attached']['js'][] = $path.'/js/fresh-gallery.js';
-  }
-
-
 }
 
 /**
