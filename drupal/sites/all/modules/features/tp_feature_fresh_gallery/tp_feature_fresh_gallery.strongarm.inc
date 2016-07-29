@@ -120,22 +120,22 @@ function tp_feature_fresh_gallery_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'locations' => array(
-          'weight' => '11',
+          'weight' => '15',
         ),
         'metatags' => array(
-          'weight' => '13',
+          'weight' => '17',
         ),
         'title' => array(
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '10',
+          'weight' => '14',
         ),
         'redirect' => array(
-          'weight' => '9',
+          'weight' => '13',
         ),
         'xmlsitemap' => array(
-          'weight' => '12',
+          'weight' => '16',
         ),
       ),
       'display' => array(),
