@@ -135,6 +135,7 @@ features[field_base][] = field_follow_google
 features[field_base][] = field_follow_twitter
 features[field_base][] = field_free_tag
 features[field_base][] = field_free_tag_context
+features[field_base][] = field_fresh_gallery_main_image
 features[field_base][] = field_fresh_gallery_suffix
 features[field_base][] = field_fresh_photos
 features[field_base][] = field_gallery_images

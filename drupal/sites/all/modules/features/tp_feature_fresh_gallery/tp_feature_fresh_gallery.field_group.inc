@@ -21,7 +21,7 @@ function tp_feature_fresh_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Autoload Settings',
-    'weight' => '17',
+    'weight' => '20',
     'children' => array(
       0 => 'field_autoload',
     ),
@@ -48,7 +48,7 @@ function tp_feature_fresh_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Editorial Info',
-    'weight' => '20',
+    'weight' => '23',
     'children' => array(
       0 => 'field_assigned_editor',
       1 => 'field_due_date',
@@ -107,7 +107,7 @@ function tp_feature_fresh_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '14',
+    'weight' => '18',
     'children' => array(
       0 => 'field_admin_tag',
       1 => 'field_editor_campaign_reference',

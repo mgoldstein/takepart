@@ -580,6 +580,46 @@ function tpf_config_metatag_metatag_export_default() {
     ),
   );
 
+  // Exported Metatag config instance: node:fresh_gallery.
+  $config['node:fresh_gallery'] = array(
+    'instance' => 'node:fresh_gallery',
+    'config' => array(
+      'description' => array(
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:body}]',
+      ),
+      'abstract' => array(
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:body}]',
+      ),
+      'fb:admins' => array(
+        'value' => 1327833247,
+      ),
+      'og:url' => array(
+        'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
+      ),
+      'og:description' => array(
+        'value' => '[node:field_article_subhead]',
+      ),
+      'og:image:width' => array(
+        'value' => '[tp_og_image:thumbnail_width:{node:nid}]',
+      ),
+      'og:image:height' => array(
+        'value' => '[tp_og_image:thumbnail_height:{node:nid}]',
+      ),
+      'twitter:card' => array(
+        'value' => 'summary_large_image',
+      ),
+      'twitter:url' => array(
+        'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
+      ),
+      'twitter:description' => array(
+        'value' => '[node:field_article_subhead]',
+      ),
+      'twitter:image' => array(
+        'value' => '[tp_og_image:thumbnail:{node:nid}]',
+      ),
+    ),
+  );
+
   // Exported Metatag config instance: node:openpublish_article.
   $config['node:openpublish_article'] = array(
     'instance' => 'node:openpublish_article',
