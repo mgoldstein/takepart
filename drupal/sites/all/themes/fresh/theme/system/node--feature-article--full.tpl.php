@@ -112,11 +112,10 @@
         </div>
    <?php endif; ?>
     <?php endif; ?>
-
-    <?php if (!empty($variables['more_on_takepart'])): ?>
-   <?php print $variables['more_on_takepart']; ?>
-    <?php endif; ?>
   </article>
+  <?php if (!empty($variables['more_on_takepart'])): ?>
+    <?php print $variables['more_on_takepart']; ?>
+  <?php endif; ?>
 </div>
 
 <?php if (!empty($variables['auto-scroll'])): ?>
