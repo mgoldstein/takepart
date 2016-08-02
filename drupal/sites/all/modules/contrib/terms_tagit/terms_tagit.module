@@ -128,10 +128,6 @@ function terms_tagit_field_widget_form_alter(&$element, &$form_state, $context) 
     if (!empty($widget_settings['tagit_enable'])) {
       require_once 'terms_tagit.inc';
 
-      libraries_load('jQuery-Tags-Input');
-      drupal_add_library('system', 'ui.autocomplete');
-      drupal_add_js(drupal_get_path('module', 'terms_tagit') . '/js/terms_tagit.js');
-
       $element['#attributes']['class'][] = 'terms-tagit';
 
       if (!empty($widget_settings['tagit_placeholder'])) {
@@ -149,6 +145,9 @@ function terms_tagit_field_widget_form_alter(&$element, &$form_state, $context) 
           $element['#attributes']['data-autocomplete'][] = $vocabulary;
         }
       }
+
+      //Load the libraries needed in after build so error validations work
+      $element['#after_build'][] = 'terms_tagit_after_build';
     }
   }
 }
@@ -173,4 +172,15 @@ function terms_tagit_libraries_info() {
   );
 
   return $libraries;
+}
+
+/**
+ * Callback for after build of the terms field.
+ * This will get called outside of cache so it will work on validation errors
+ */
+function terms_tagit_after_build($element, &$form_state) {
+  libraries_load('jQuery-Tags-Input');
+  drupal_add_library('system', 'ui.autocomplete');
+  drupal_add_js(drupal_get_path('module', 'terms_tagit') . '/js/terms_tagit.js');
+  return $element;
 }
