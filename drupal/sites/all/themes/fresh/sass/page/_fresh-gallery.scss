@@ -3,32 +3,15 @@
  ******************************/
 
 .fresh_gallery-wrapper {
-  @include breakpoint($breakpoint-tablet){
-    article {
-      width: 100%;
-      padding: 0;
-      margin: 0;
+  .pre-gallery {
+    @include breakpoint($breakpoint-tablet) {
+      margin-bottom: 60px;
     }
   }
-  .pre-gallery, .post-gallery {
-    max-width: 970px;
-    margin: 0 auto;
-    .pre-gallery-inner, .post-gallery-inner {
-       float: none;
-       @include breakpoint($breakpoint-tablet) {
-        padding: 0 31px;
-       }
-       @media (max-width: 767px) {
-        width: 100%;
-        margin: 0;
-        padding: 0;
-       }
-      .main-content {
-        margin-top: 6px;
-        @include breakpoint($breakpoint-tablet) {
-          margin-top: 17px;
-        }
-      }
+  .post-gallery {
+    margin-top: 32px;
+    @include breakpoint($breakpoint-tablet) {
+      margin-top: 45px;
     }
   }
   .pre-gallery .pre-gallery-inner {
@@ -44,10 +27,10 @@
       }
   }
   .author-teaser {
-    margin-top: 2px;
+    margin: 2px 0 0 0;
     text-align: center;
     @include breakpoint($breakpoint-tablet) {
-      margin-top: 10px;
+      margin: 10px 0;
     }
     .author-border {
       width: 97px;
@@ -75,5 +58,16 @@
   }
   .tp_sponsor {
     margin-bottom: 15px;
+  }
+  .tap-action-wrapper.align-center {
+    margin-top: 25px;
+    @include breakpoint($breakpoint-tablet) {
+      margin-top: 45px;
+    }
+  }
+  .takepart-take-action-widget.align-center {
+    @include breakpoint($breakpoint-tablet) {
+      margin-top: 30px;
+    }
   }
 }

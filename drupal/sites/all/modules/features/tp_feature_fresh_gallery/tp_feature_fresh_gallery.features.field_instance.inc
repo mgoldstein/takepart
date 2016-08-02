@@ -15,7 +15,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     'bundle' => 'fresh_gallery',
     'default_value' => NULL,
     'deleted' => 0,
-    'description' => '',
+    'description' => 'This content will be displayed after the gallery images.',
     'display' => array(
       'default' => array(
         'label' => 'hidden',
@@ -79,20 +79,61 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'body',
     'label' => 'Body',
-    'required' => FALSE,
+    'required' => 0,
     'settings' => array(
-      'display_summary' => TRUE,
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'campaign_full_html' => 'campaign_full_html',
+          'full_html' => 'full_html',
+          'limited_html' => 'limited_html',
+          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'campaign_full_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'limited_html' => array(
+              'weight' => 0,
+            ),
+            'no_wysiwg_full_html' => array(
+              'weight' => 0,
+            ),
+            'php_code' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'display_summary' => 1,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
     'widget' => array(
+      'active' => 1,
       'module' => 'text',
       'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_label_summary' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_summary' => '',
+        'maxlength_js_truncate_html' => 0,
         'rows' => 20,
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 8,
+      'weight' => 10,
     ),
   );
 
@@ -658,7 +699,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 19,
+      'weight' => 20,
     ),
   );
 
@@ -1035,8 +1076,8 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-fresh_gallery-field_fresh_gallery_suffix'.
-  $field_instances['node-fresh_gallery-field_fresh_gallery_suffix'] = array(
+  // Exported field_instance: 'node-fresh_gallery-field_fresh_gallery_prefix'.
+  $field_instances['node-fresh_gallery-field_fresh_gallery_prefix'] = array(
     'bundle' => 'fresh_gallery',
     'default_value' => NULL,
     'deleted' => 0,
@@ -1044,9 +1085,10 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     'display' => array(
       'default' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 13,
+        'type' => 'text_default',
+        'weight' => 30,
       ),
       'feature_main' => array(
         'label' => 'above',
@@ -1098,8 +1140,8 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_fresh_gallery_suffix',
-    'label' => 'Gallery Suffix',
+    'field_name' => 'field_fresh_gallery_prefix',
+    'label' => 'Gallery Prefix',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -1136,6 +1178,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
           ),
         ),
       ),
+      'display_summary' => 0,
       'text_processing' => 1,
       'user_register_form' => FALSE,
     ),
@@ -1146,11 +1189,14 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'maxlength_js' => '',
         'maxlength_js_enforce' => 0,
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_label_summary' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_summary' => '',
         'maxlength_js_truncate_html' => 0,
-        'rows' => 5,
+        'rows' => 20,
+        'summary_rows' => 5,
       ),
-      'type' => 'text_textarea',
-      'weight' => 10,
+      'type' => 'text_textarea_with_summary',
+      'weight' => 8,
     ),
   );
 
@@ -1279,6 +1325,95 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
       ),
       'type' => 'media_2x_widget_plupload',
       'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-fresh_gallery-field_inline_replacements'.
+  $field_instances['node-fresh_gallery-field_inline_replacements'] = array(
+    'bundle' => 'fresh_gallery',
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 29,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_inline_replacements',
+    'label' => 'Inline Replacements',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'inline_entity_form',
+      'settings' => array(
+        'fields' => array(),
+        'type_settings' => array(
+          'allow_new' => 1,
+          'delete_references' => 1,
+          'label_plural' => 'entities',
+          'label_singular' => 'entity',
+          'override_labels' => 0,
+        ),
+      ),
+      'type' => 'inline_entity_form',
+      'weight' => 11,
     ),
   );
 
@@ -1443,7 +1578,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
@@ -1996,7 +2131,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 11,
+      'weight' => 13,
     ),
   );
 
@@ -2331,7 +2466,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 21,
+      'weight' => 22,
     ),
   );
 
@@ -2698,7 +2833,8 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
   t('DFP Creative ID');
   t('Due Date');
   t('Free Tag');
-  t('Gallery Suffix');
+  t('Gallery Prefix');
+  t('Inline Replacements');
   t('Main Image');
   t('Make this my thumbnail image.');
   t('Newsletters');
@@ -2715,6 +2851,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
   t('Subhead');
   t('Syndication');
   t('TAB Action Overrides');
+  t('This content will be displayed after the gallery images.');
   t('This field will be used as the cover image for this gallery.');
   t('This is displayed beneath the Gallery\'s title on the node page');
   t('Topic');

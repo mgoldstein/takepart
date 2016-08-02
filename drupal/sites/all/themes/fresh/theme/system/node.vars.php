@@ -260,15 +260,15 @@ function fresh_preprocess_node__autoload(&$variables) {
     /* Json */
     $variables['gallery_json'] = tp_fresh_gallery_json($variables['node']);
 
-    /* Gallery Suffix */
-    if ($gallery_suffix = field_get_items('node' , $variables['node'] , 'field_fresh_gallery_suffix')) {
-      $variables['gallery_suffix'] = theme('html_tag', array(
+    /* Gallery Prefix */
+    if ($gallery_prefix = field_get_items('node' , $variables['node'] , 'field_fresh_gallery_prefix')) {
+      $variables['gallery_prefix'] = theme('html_tag', array(
         'element' => array(
         '#tag' => 'div',
         '#attributes' => array(
-          'class' => 'gallery-suffix'
+          'class' => 'gallery-prefix'
         ),
-        '#value' => $gallery_suffix[0]['value']
+        '#value' => $gallery_prefix[0]['value']
       )));
     }
   }

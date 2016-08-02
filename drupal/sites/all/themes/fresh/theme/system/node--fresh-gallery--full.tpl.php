@@ -20,11 +20,10 @@
       <?php print $variables['advertisement']; ?>
     </div>
   <?php endif; ?>
-
+  <div class="fresh-inner-content-wrapper">
     <article class="col-xs-10 col-xs-offset-1 clearfix <?php print $classes; ?>"<?php print $attributes; ?>>
       <div class="pre-gallery">
-        <div class= "pre-gallery-inner col-xs-10 col-xs-offset-1 clearfix">
-          <div class="section">
+        <div class="section">
           <?php if (!empty($variables['topic_box'])): ?>
             <?php print $variables['topic_box']; ?>
             <div class="line line-style-2"></div>
@@ -35,10 +34,10 @@
           <?php if (!empty($variables['headline'])): ?>
             <?php print $variables['headline']; ?>
           <?php endif; ?>
-          </div>
-          <div class="section sticky-use">
-            <div class = "align-sticky"></div>
-          </div>
+        </div>
+        <div class="section sticky-use">
+          <div class = "align-sticky"></div>
+        </div>
           <div class="section">
           <?php if (!empty($variables['sponsored'])): ?>
             <?php print $variables['sponsored']; ?>
@@ -48,13 +47,10 @@
               <?php print $variables['author_teaser']; ?>
             </div>
           <?php endif; ?>
-          <?php if (!empty($variables['body'])): ?>
-            <div class="main-content">
-              <?php print $variables['body']; ?>
-            </div>
+          <?php if (!empty($variables['gallery_prefix'])): ?>
+            <?php print $variables['gallery_prefix']; ?>
           <?php endif; ?>
           </div>
-        </div>
       </div>
       <div class ="gallery-wrapper">
         <script>
@@ -62,11 +58,12 @@
         </script>
       </div>
       <div class= "post-gallery">
-      <div class= "post-gallery-inner col-xs-10 col-xs-offset-1 clearfix">
         <div class = "section bottom">
-        <?php if (!empty($variables['gallery_suffix'])): ?>
-          <?php print $variables['gallery_suffix']; ?>
-        <?php endif; ?>
+          <?php if (!empty($variables['body'])): ?>
+            <div class="main-content">
+              <?php print $variables['body']; ?>
+            </div>
+          <?php endif; ?>
         <?php if (!empty($variables['sponsor_disclosure'])): ?>
           <div class="sponsor-disclosure">
             <?php print $variables['sponsor_disclosure']; ?>
@@ -87,11 +84,11 @@
         <?php endif; ?>
         </div>
       </div>
-      </div>
       <?php if (!empty($variables['more_on_takepart'])): ?>
         <?php print $variables['more_on_takepart']; ?>
       <?php endif; ?>
     </article>
+  </div>
 </div>
 
 <?php if (!empty($variables['auto-scroll'])): ?>

@@ -2660,13 +2660,13 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'image',
   );
 
-  // Exported field_base: 'field_fresh_gallery_suffix'.
-  $field_bases['field_fresh_gallery_suffix'] = array(
+  // Exported field_base: 'field_fresh_gallery_prefix'.
+  $field_bases['field_fresh_gallery_prefix'] = array(
     'active' => 1,
     'cardinality' => 1,
     'deleted' => 0,
     'entity_types' => array(),
-    'field_name' => 'field_fresh_gallery_suffix',
+    'field_name' => 'field_fresh_gallery_prefix',
     'field_permissions' => array(
       'type' => 0,
     ),
@@ -2679,7 +2679,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'module' => 'text',
     'settings' => array(),
     'translatable' => 0,
-    'type' => 'text_long',
+    'type' => 'text_with_summary',
   );
 
   // Exported field_base: 'field_fresh_photos'.
