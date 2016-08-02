@@ -38,7 +38,7 @@
       <?php endif; ?>
     </div>
   <?php endif; ?>
-
+<div class="fresh-inner-content-wrapper clearfix">
   <article class="col-xs-10 col-xs-offset-1 clearfix <?php print $classes; ?>"<?php print $attributes; ?>>
     <div class="section header full-width">
      <div class="row row-remove-xs">
@@ -113,6 +113,10 @@
    <?php endif; ?>
     <?php endif; ?>
   </article>
+  <?php if (!empty($variables['more_on_takepart'])): ?>
+    <?php print $variables['more_on_takepart']; ?>
+  <?php endif; ?>
+</div>
   <?php if (!empty($variables['more_on_takepart'])): ?>
     <?php print $variables['more_on_takepart']; ?>
   <?php endif; ?>

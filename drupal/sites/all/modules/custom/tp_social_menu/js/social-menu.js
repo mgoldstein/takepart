@@ -211,7 +211,7 @@
 
         //First check for the main media image being collided with.
         $('article.node').each(function(index){
-          if($(this).parent().hasClass('feature_article-wrapper')) {
+          if($(this).parent().parent().hasClass('feature_article-wrapper')) {
             $(this).find('.full-width').each(function(){
               var mITop = $(this).offset().top;
               var mIBot = $(this).height() + mITop;
