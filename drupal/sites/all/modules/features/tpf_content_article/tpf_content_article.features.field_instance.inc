@@ -599,6 +599,91 @@ function tpf_content_article_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-openpublish_article-field_auto_free_tagged'.
+  $field_instances['node-openpublish_article-field_auto_free_tagged'] = array(
+    'bundle' => 'openpublish_article',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 29,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_auto_free_tagged',
+    'label' => 'Auto Free Tagged',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 23,
+    ),
+  );
+
   // Exported field_instance: 'node-openpublish_article-field_autoload'.
   $field_instances['node-openpublish_article-field_autoload'] = array(
     'bundle' => 'openpublish_article',
@@ -2707,6 +2792,7 @@ Change this only if you know what you are doing.',
   t('Analytics Title');
   t('Assigned Editor');
   t('Author(s)');
+  t('Auto Free Tagged');
   t('Autoload Content');
   t('Body');
   t('Campaign Content Link');

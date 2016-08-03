@@ -47,6 +47,7 @@ features[field_instance][] = node-feature_article-field_article_main_image
 features[field_instance][] = node-feature_article-field_article_subhead
 features[field_instance][] = node-feature_article-field_assigned_editor
 features[field_instance][] = node-feature_article-field_author
+features[field_instance][] = node-feature_article-field_auto_free_tagged
 features[field_instance][] = node-feature_article-field_autoload
 features[field_instance][] = node-feature_article-field_campaign_promo_opt_out
 features[field_instance][] = node-feature_article-field_dfp_creative_id

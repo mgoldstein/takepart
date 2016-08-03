@@ -42,12 +42,14 @@ function tp_content_services_node_update($node) {
         //Notify the services of a node change
         tp_content_services_notify_service($node, 'update');
       }
-    } else {
-      $onode = node_load($node->nid);
-      //Called when published only
-      if($node->status == 1 && $onode->status == 0) {
-        //Add new tags
-        tp_content_services_add_tags($node);
+
+      if($node->workbench_moderation['current']->published == 1) {
+        if($auto_free_tag = field_get_items('node', $node, 'field_auto_free_tagged')) {
+          if($auto_free_tag[0]['value'] == 0) {
+            tp_content_services_add_tags($node);
+            tp_content_services_set_autotag($node);
+          }
+        }
       }
     }
   }
@@ -307,4 +309,9 @@ function tp_content_services_add_tags(&$node) {
       ),
       WATCHDOG_ERROR);
   }
+}
+
+function tp_content_services_set_autotag(&$node) {
+  $node->field_auto_free_tagged[LANGUAGE_NONE][0]['value'] = 1;
+  field_attach_update('node', $node);
 }
