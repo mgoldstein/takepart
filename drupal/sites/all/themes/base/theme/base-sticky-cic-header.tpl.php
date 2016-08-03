@@ -5,7 +5,9 @@
         <a href="<?php print $camp_url; ?>">
           <img src="<?php print $camp_logo; ?>">
         </a>
-        <h4 class="campaign-vol">TAKEPART'S BIG ISSUE <span>vol. <?php print $camp_vol; ?></span></h4>
+        <div class = "big-issue">
+          <?php print l(t("TAKEPART'S BIG ISSUE"), "big-issues"); ?> <span class="volume">vol. <?php print $camp_vol; ?></span>
+        </div>
       </div>
     </div>
 </div>

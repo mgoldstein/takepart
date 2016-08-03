@@ -478,7 +478,7 @@ h4.campaign-vol {
         max-height: 20px;
         margin-bottom: 0px;
       }
-      h4.campaign-vol {
+      .big-issue a {
         font-size: 12px;
       }
       @include breakpoint($breakpoint-tablet) {
@@ -486,7 +486,7 @@ h4.campaign-vol {
         img {
           margin-bottom: 5px;
         }
-        h4.campaign-vol {
+        .big-issue a {
           font-size: 13px;
         }
       }
