@@ -136,6 +136,31 @@ function tpf_display_menus_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'menu-megamenu_environment:taxonomy/term/8',
   );
+  // Exported menu link: menu-megamenu_big-issues:<front>.
+  $menu_links['menu-megamenu_big-issues:<front>'] = array(
+    'menu_name' => 'menu-megamenu',
+    'link_path' => '<front>',
+    'router_path' => '',
+    'link_title' => 'Big Issues',
+    'options' => array(
+      'identifier' => 'menu-megamenu_big-issues:<front>',
+      'attributes' => array(
+        'name' => 'See all News',
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 1,
+    'has_children' => 1,
+    'expanded' => 1,
+    'weight' => -50,
+    'customized' => 1,
+  );
   // Exported menu link: menu-megamenu_business:taxonomy/term/117590.
   $menu_links['menu-megamenu_business:taxonomy/term/117590'] = array(
     'menu_name' => 'menu-megamenu',
@@ -232,7 +257,7 @@ function tpf_display_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -45,
     'customized' => 1,
-    'parent_identifier' => 'menu-megamenu_big-issues:node/64607',
+    'parent_identifier' => 'menu-megamenu_big-issues:<front>',
   );
   // Exported menu link: menu-megamenu_education:taxonomy/term/7.
   $menu_links['menu-megamenu_education:taxonomy/term/7'] = array(
@@ -245,13 +270,13 @@ function tpf_display_menus_menu_default_menu_links() {
       'identifier' => 'menu-megamenu_education:taxonomy/term/7',
     ),
     'module' => 'menu',
-    'hidden' => 1,
+    'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -46,
     'customized' => 1,
-    'parent_identifier' => 'menu-megamenu_big-issues:node/64607',
+    'parent_identifier' => 'menu-megamenu_big-issues:<front>',
   );
   // Exported menu link: menu-megamenu_entertainment:taxonomy/term/5838.
   $menu_links['menu-megamenu_entertainment:taxonomy/term/5838'] = array(
@@ -324,11 +349,6 @@ function tpf_display_menus_menu_default_menu_links() {
     'options' => array(
       'identifier' => 'menu-megamenu_environment:taxonomy/term/8',
       'attributes' => array(),
-      'item_attributes' => array(
-        'id' => '',
-        'class' => '',
-        'style' => '',
-      ),
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -392,13 +412,13 @@ function tpf_display_menus_menu_default_menu_links() {
       'identifier' => 'menu-megamenu_features:taxonomy/term/114900',
     ),
     'module' => 'menu',
-    'hidden' => 1,
+    'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
     'customized' => 1,
-    'parent_identifier' => 'menu-megamenu_big-issues:node/64607',
+    'parent_identifier' => 'menu-megamenu_big-issues:<front>',
   );
   // Exported menu link: menu-megamenu_film--tv-actions:http://takeaction.takepart.com/?browse=pivot&filtered=true&tags=&sort=recent.
   $menu_links['menu-megamenu_film--tv-actions:http://takeaction.takepart.com/?browse=pivot&filtered=true&tags=&sort=recent'] = array(
@@ -535,7 +555,7 @@ function tpf_display_menus_menu_default_menu_links() {
     'expanded' => 0,
     'weight' => -49,
     'customized' => 1,
-    'parent_identifier' => 'menu-megamenu_big-issues:node/64607',
+    'parent_identifier' => 'menu-megamenu_big-issues:<front>',
   );
   // Exported menu link: menu-megamenu_innovation--tech:taxonomy/term/6.
   $menu_links['menu-megamenu_innovation--tech:taxonomy/term/6'] = array(
@@ -629,13 +649,13 @@ function tpf_display_menus_menu_default_menu_links() {
       'identifier' => 'menu-megamenu_lgbt-rights:taxonomy/term/12',
     ),
     'module' => 'menu',
-    'hidden' => 1,
+    'hidden' => 0,
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
     'weight' => -47,
     'customized' => 1,
-    'parent_identifier' => 'menu-megamenu_big-issues:node/64607',
+    'parent_identifier' => 'menu-megamenu_big-issues:<front>',
   );
   // Exported menu link: menu-megamenu_lifestyle:taxonomy/term/18.
   $menu_links['menu-megamenu_lifestyle:taxonomy/term/18'] = array(
@@ -1365,6 +1385,7 @@ function tpf_display_menus_menu_default_menu_links() {
   t('Aid & Development');
   t('Animals');
   t('As Green as I Get');
+  t('Big Issues');
   t('Business');
   t('Climate Change');
   t('Contact Us');
