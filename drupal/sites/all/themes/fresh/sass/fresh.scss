@@ -474,6 +474,10 @@ h4.campaign-vol {
     .campaign-info {
       display: inline-block;
       padding: 15px 20px 0 0;
+      max-width: 240px;
+      @include breakpoint($breakpoint-phablet) {
+        max-width: inherit;
+      }
       img {
         max-height: 20px;
         margin-bottom: 0px;
