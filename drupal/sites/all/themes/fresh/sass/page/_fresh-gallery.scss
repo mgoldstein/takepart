@@ -52,6 +52,8 @@
       padding: 0;
     }
   }
+
+
   .line-style-2 {
     max-width: 615px;
     margin: 10px auto;
@@ -68,6 +70,59 @@
   .takepart-take-action-widget.align-center {
     @include breakpoint($breakpoint-tablet) {
       margin-top: 30px;
+    }
+  }
+}
+
+.hide-child .child {
+  opacity: 0;
+  transition: opacity .15s ease-in;
+}
+
+.hide-child:hover  .child,
+.hide-child:focus  .child,
+.hide-child:active .child {
+   opacity: 1;
+   transition: opacity .15s ease-in;
+}
+
+
+.gallery-unit {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.takepart-gallery {
+  max-width: 970px;
+  margin: 0 auto;
+}
+
+.shareable-image {
+  margin-bottom: 1em;
+
+  img {
+    width: 100%;
+  }
+
+  .image-caption {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+
+  .image-credit {
+    font-style: italic;
+    font-size: 16px;
+  }
+
+  .image-share-bar {
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    margin: 10px;
+    padding: 3px;
+
+    .image-share-button {
+      cursor: pointer;
+      margin-bottom: 8px;
     }
   }
 }

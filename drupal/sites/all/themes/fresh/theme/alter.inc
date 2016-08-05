@@ -15,6 +15,9 @@ function fresh_page_alter(&$page){
       $path = drupal_get_path('theme', 'fresh');
       $page['content']['#attached']['css'][] = $path.'/css/fresh.css';
       $page['content']['#attached']['js'][] = $path.'/js/fresh-gallery.js';
+      $page['content']['#attached']['js'][] = 'sites/all/libraries/react/react.min.js';
+      $page['content']['#attached']['js'][] = 'sites/all/libraries/react/react-dom.min.js';
+      $page['content']['#attached']['js'][] = 'sites/all/libraries/fresh-gallery/gallery.js';
   }
 }
 
