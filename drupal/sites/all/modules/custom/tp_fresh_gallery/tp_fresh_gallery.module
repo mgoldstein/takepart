@@ -21,16 +21,26 @@ function tp_fresh_gallery_add($gal_photo) {
   $file = array();
   //provide different sizes of image
   if($tablet_file = image_style_path('large_responsive_tablet', $gal_photo['uri'])) {
-    $file['image']['tablet'] = file_create_url($tablet_file);
+    $tablet_url = file_create_url($tablet_file);
+    $file['image']['tablet']['url'] = $tablet_url;
+    $tablet_img_info = getimagesize($tablet_url);
+    $file['image']['tablet']['width'] = $tablet_img_info[0];
+    $file['image']['tablet']['height'] = $tablet_img_info[1];
   } else {
     $file['image']['tablet'] = file_create_url($gal_photo['uri']);
   }
   if($mobile_file = image_style_path('large_responsive_mobile', $gal_photo['uri'])) {
-    $file['image']['mobile'] = file_create_url($mobile_file);
+    $mobile_url = file_create_url($mobile_file);
+    $file['image']['mobile']['url'] = $mobile_url;
+    $mobile_img_info = getimagesize($mobile_url);
+    $file['image']['mobile']['width'] = $mobile_img_info[0];
+    $file['image']['mobile']['height'] = $mobile_img_info[1];
   } else {
     $file['image']['mobile'] = file_create_url($gal_photo['uri']);
   }
-  $file['image']['desktop'] = file_create_url($gal_photo['uri']);
+  $file['image']['desktop']['url'] = file_create_url($gal_photo['uri']);
+  $file['image']['desktop']['width'] = $gal_photo['width'];
+  $file['image']['desktop']['height'] = $gal_photo['height'];
   //Caption
   if($caption = field_get_items('file', (object)$gal_photo, 'field_media_caption')){
     $file['caption'] = $caption[0]['value'];
@@ -43,6 +53,5 @@ function tp_fresh_gallery_add($gal_photo) {
   if($credit = field_get_items('file', (object)$gal_photo, 'field_media_credit')){
     $file['credit'] = taxonomy_term_load($credit[0]['tid'])->name;
   }
-
   return $file;
 }
