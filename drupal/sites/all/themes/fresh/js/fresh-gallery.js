@@ -7,10 +7,11 @@
 (function ($, Drupal, window, document, undefined) {
   $(document).ready(function(){
 
+    // Build the object we need.
     var galleryData = {
       "title": $('.node-fresh-gallery').attr('data-tp-og-title'),
-      "adTag": "TP_ROS_728x90_1_Responsive",
-      "adFrequency": 2
+      "adTag": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_tag,
+      "adFrequency": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_freq
     };
 
     var jsonId = $('.node-fresh-gallery').attr('data-ddl-page-id');
