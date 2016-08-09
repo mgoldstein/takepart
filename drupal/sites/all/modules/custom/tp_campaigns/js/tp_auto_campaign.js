@@ -51,6 +51,7 @@
    $(document).ready(function() {
      campaignPreload();
      window.muted = false;
+     var $btt = $('.field-name-field-campaign-back-to-top');
      //pause the video when less than 70% is in viewport
      $(window).bind('scroll', function() {
       //Play video when in viewport
@@ -59,15 +60,21 @@
      $('.node-campaign-card-multi-column').not('.animated').each(function() {
        multiColumnAnimation($(this));
      });
-    //Display back-to-top after 350px scroll
-    if ($('.has-back-to-top').length != 0 && $('.has-back-to-top.visible').length == 0) {
+    //Display back-to-top after 950px scroll. Remove it once it goes above that height.
+    if ($('.has-back-to-top').length != 0) {
       var y = $(window).scrollTop();
-      if (y > 350) {
-        $('.field-name-field-campaign-back-to-top').fadeIn();
-        $('.has-back-to-top').addClass('visible');
+      if (y > 950) {
+        if ($btt.hasClass('scrolling')) { return false; }
+        if (!$btt.hasClass('visible')) {
+          $btt.fadeIn();
+          $btt.addClass('visible');
+        }
+      }
+      else {
+        $btt.fadeOut();
+        $btt.removeClass('visible');
       }
     }
-
 
     });
 
@@ -81,9 +88,10 @@
     //Transitional scroll to the top
     if ($('.has-back-to-top').length != 0) {
       $('.field-name-field-campaign-back-to-top a').click(function() {
+        $btt.addClass('scrolling');
         $('body,html').animate({
           scrollTop: 0
-        }, 800);
+        }, 800, function(){ $btt.removeClass('scrolling'); });
       });
     }
 

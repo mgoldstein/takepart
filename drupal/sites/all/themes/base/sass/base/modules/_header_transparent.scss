@@ -229,13 +229,13 @@
 
 body:not(.campaign-display) .campaign-experience .navbar-transparent {
   display: block;
+  .logo-transparent {
+    display: none;
+  }
 }
 .campaign-experience .navbar-transparent {
   @media (max-width: 767px) {
     padding: 35px 5px 15px 5px;
-    .logo-transparent {
-      display: none;
-    }
     #search-api-page-search-form-site-search,
     #search-api-page-search-form-site-search--2 {
       top: 35px;

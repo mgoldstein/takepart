@@ -24,6 +24,7 @@ function tpf_content_video_field_group_info() {
     'weight' => '20',
     'children' => array(
       0 => 'field_autoload',
+      1 => 'field_auto_free_tagged',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -51,6 +52,7 @@ function tpf_content_video_field_group_info() {
     'weight' => '21',
     'children' => array(
       0 => 'field_autoload',
+      1 => 'field_auto_free_tagged',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -263,8 +265,8 @@ function tpf_content_video_field_group_info() {
       3 => 'field_topic',
       4 => 'field_sponsored',
       5 => 'field_topic_box',
-      6 => 'field_editor_campaign_reference',
-      7 => 'field_campaign_promo_opt_out',
+      6 => 'field_campaign_promo_opt_out',
+      7 => 'field_editor_campaign_reference',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
@@ -297,8 +299,8 @@ function tpf_content_video_field_group_info() {
       3 => 'field_topic',
       4 => 'field_sponsored',
       5 => 'field_topic_box',
-      6 => 'field_editor_campaign_reference',
-      7 => 'field_campaign_promo_opt_out',
+      6 => 'field_campaign_promo_opt_out',
+      7 => 'field_editor_campaign_reference',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
