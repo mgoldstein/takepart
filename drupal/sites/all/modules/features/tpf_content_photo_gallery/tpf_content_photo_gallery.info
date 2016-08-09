@@ -41,6 +41,7 @@ features[field_instance][] = node-openpublish_photo_gallery-body
 features[field_instance][] = node-openpublish_photo_gallery-field_admin_tag
 features[field_instance][] = node-openpublish_photo_gallery-field_assigned_editor
 features[field_instance][] = node-openpublish_photo_gallery-field_author
+features[field_instance][] = node-openpublish_photo_gallery-field_auto_free_tagged
 features[field_instance][] = node-openpublish_photo_gallery-field_dfp_creative_id
 features[field_instance][] = node-openpublish_photo_gallery-field_display_cover
 features[field_instance][] = node-openpublish_photo_gallery-field_display_tab_banner
