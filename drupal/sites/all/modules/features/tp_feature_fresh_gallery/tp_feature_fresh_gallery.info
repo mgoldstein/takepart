@@ -42,6 +42,7 @@ features[field_instance][] = node-fresh_gallery-field_admin_tag
 features[field_instance][] = node-fresh_gallery-field_article_subhead
 features[field_instance][] = node-fresh_gallery-field_assigned_editor
 features[field_instance][] = node-fresh_gallery-field_author
+features[field_instance][] = node-fresh_gallery-field_auto_free_tagged
 features[field_instance][] = node-fresh_gallery-field_autoload
 features[field_instance][] = node-fresh_gallery-field_dfp_creative_id
 features[field_instance][] = node-fresh_gallery-field_due_date
