@@ -1038,10 +1038,10 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     'label' => 'Free Tag',
     'required' => 0,
     'settings' => array(
-      'tagit_autocomplete' => 0,
+      'tagit_autocomplete' => 1,
       'tagit_autocomplete_url' => '',
-      'tagit_enable' => 0,
-      'tagit_placeholder' => '',
+      'tagit_enable' => 1,
+      'tagit_placeholder' => 'Add terms',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
