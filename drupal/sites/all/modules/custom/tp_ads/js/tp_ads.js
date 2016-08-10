@@ -4,7 +4,7 @@
   $(document).ready(function() {
     //This gives A/B Optimizely a chance to modify the classes on MOT ads
     window.set_MOT_ad = 0;
-    setTimeout(function(){window.set_MOT_ad = 1}, 1500);
+    setTimeout(function(){window.set_MOT_ad = 1;$(window).scroll();}, 1500);
 
     window.tpScrollTop = 0;
     //on init
@@ -183,7 +183,6 @@
   window.tp_insert_ads = function(article, selector, ads_object, id, show_ads) {
     //does for each ad within the object
     $(ads_object.ads).each(function(ad_key, ad_value) {
-
       //default variables
       var ad_placement = this.placement;
       var javascript = this.javascript;
