@@ -51,6 +51,25 @@ function _base_theme(&$existing, $type, $theme, $path) {
         'bg_color' => 'transparent'
       )
     ),
+    'base_sticky_cic_header' => array(
+      'variables' => array(
+        'campaign_name' => '',
+        'bg_color' => '',
+        'volume' => ''
+      )
+    ),
+    'base_cic_menu' => array(
+      'variables' => array(
+        'camp_name' => '',
+        'camp_description' => '',
+        'camp_logo' => '',
+        'camp_color' => '',
+        'camp_menu' => '',
+        'content_menu' => '',
+        'about_tp' => '',
+        'social_menu' => ''
+      )
+    ),
   );
 
   // Process custom. This should be used again for any sub-themes.

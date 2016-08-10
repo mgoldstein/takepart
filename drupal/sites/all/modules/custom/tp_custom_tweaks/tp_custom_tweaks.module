@@ -68,7 +68,11 @@ function tp_custom_tweaks_cic_validation($form, &$form_state) {
  */
 function tp_custom_tweaks_node_presave($node) {
   if($node->body) {
+    //First remove the bold space.
     $node->body[LANGUAGE_NONE][0]['summary'] = str_replace('<b>&nbsp;</b>', ' ',$node->body[LANGUAGE_NONE][0]['summary']);
     $node->body[LANGUAGE_NONE][0]['value'] = str_replace('<b>&nbsp;</b>', ' ',$node->body[LANGUAGE_NONE][0]['value']);
+    //Then replace any other existing non breaking space with a standard space.
+    $node->body[LANGUAGE_NONE][0]['summary'] = str_replace('&nbsp;', ' ',$node->body[LANGUAGE_NONE][0]['summary']);
+    $node->body[LANGUAGE_NONE][0]['value'] = str_replace('&nbsp;', ' ',$node->body[LANGUAGE_NONE][0]['value']);
   }
 }

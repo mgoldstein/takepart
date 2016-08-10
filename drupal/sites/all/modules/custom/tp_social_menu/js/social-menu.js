@@ -176,6 +176,11 @@
    * Sticky Share Top Offset
    */
   window.tp_shareTopOffset = function() {
+    var cic_space = 0;
+    //Add an extra 60px if its in-campaign experience
+    if ($('.campaign-experience').length != 0) {
+      cic_space = 60;
+    }
     $('article.node').each(function(index){
       if(index == 0) {
         if($(this).hasClass('node-feature-article')) {
@@ -183,7 +188,7 @@
           var stickyOffset = $(this).find('.author-teaser').offset().top + 10 - $(".main-content").offset().top;
         } else {
           window.featureFirst = false;
-          var stickyOffset = $(".align-sticky").offset().top - $(".main-content").offset().top;
+          var stickyOffset = $(".align-sticky").offset().top - $(".main-content").offset().top + cic_space;
         }
         $('.sticky-wrapper').css('margin-top', stickyOffset - 7);
       }
@@ -197,7 +202,8 @@
     if($('.fresh-content-wrapper').length && $('.sticky-wrapper .social').length) {
       //Only do this on Desktop so we check for mobile
       if(window.innerWidth >= 768) {
-        var elem = $('.fresh-content-wrapper').nextAll(':not(#block-workbench-block)'), count = elem.length, showSticky = true;
+        var elem = $('.fresh-content-wrapper').nextAll(':not(#block-workbench-block,.tp-fresh-bottom-content)'), count = elem.length, showSticky = true;
+
         //Get the sticky measurements
         window.stickHeight = $('.sticky-wrapper .social').height();
         window.stickTop = $('.sticky-wrapper .social').offset().top;
@@ -205,7 +211,7 @@
 
         //First check for the main media image being collided with.
         $('article.node').each(function(index){
-          if($(this).parent().hasClass('feature_article-wrapper')) {
+          if($(this).parent().parent().hasClass('feature_article-wrapper')) {
             $(this).find('.full-width').each(function(){
               var mITop = $(this).offset().top;
               var mIBot = $(this).height() + mITop;
@@ -219,7 +225,8 @@
             });
           }
           //Hide the share between moreon section and the top of the next article
-          var moreontop = $(this).find('.tp-more-on-takepart').offset().top;
+
+          var moreontop = $(this).parents('.fresh-content-wrapper').find('.tp-fresh-bottom-content').offset().top;
           var arttop = $(this).parents('.fresh-content-wrapper').offset().top;
           var artbot = arttop + $(this).parents('.fresh-content-wrapper').height() + 15;
           //Showing after it passes the first section

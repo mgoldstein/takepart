@@ -219,9 +219,6 @@ function tp_megaslim_generate_teasers($teaser_items){
  * This is not a block.  We do not need the weight of the Drupal block system and context
  */
 function tp_megaslim_menu_load_menu(){
-  /* Add the js */
-  $path = drupal_get_path('module', 'tp_megaslim_menu');
-  drupal_add_js($path. '/js/megaslim.js');
 
   /* Return the parent items of the MegaSlim Menu */
   $menu_items = menu_tree_all_data('menu-megamenu', null, 1);

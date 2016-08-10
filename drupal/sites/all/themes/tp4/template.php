@@ -211,9 +211,11 @@ function tp4_should_show_taboola_widget($variables) {
   // add Taboola JS if we're on an article, feature, photo gallery, or video page
   if (!empty($variables['node'])) {
     $node = $variables['node'];
-    if (in_array($node->type, array('openpublish_article', 'feature_article', 'openpublish_photo_gallery', 'video', 'video_playlist'))) {
+    if (in_array($node->type, array('openpublish_photo_gallery'))) {
       // but only if we're on the production site
-      return ENVIRONMENT === 'production';
+      if (ENVIRONMENT === 'production' || ENVIRONMENT === 'prod') {
+        return TRUE;
+      }
     }
   }
   return FALSE;
@@ -315,6 +317,8 @@ function tp4_preprocess_page(&$variables) {
   if($variables['node']->type == 'campaign_page'){
 
     $campaign_ref = $variables['node']->field_campaign_reference['und'][0]['target_id'];
+    //campoign Nid
+    $cid = $campaign_ref;
     $campaign_ref = node_load($campaign_ref);
     $campaign_menu = 'menu-'. $campaign_ref->field_campaign_menu['und'][0]['value'];
     $menu_tree = menu_tree_all_data($campaign_menu);
@@ -339,6 +343,14 @@ function tp4_preprocess_page(&$variables) {
     }
     $variables['anchor_tags'] = $anchor_tags;
 
+    //Is the campaign associated with content menu? (cic)
+    $cic_menu  = FALSE;
+    if($cic_menu = field_get_items('node', $campaign_ref, 'field_content_menu')) {
+      module_load_include('module' , 'tp_cic');
+      $campaign_info = tp_cic_getCampInfo($cid);
+      $variables['page']['cic_menu'] = TRUE;
+    }
+
     //Transparent nav adding essentials
     $transnav = field_get_items('node', $variables['node'], 'field_transparent_nav');
     $variables['transnav'] = '';
@@ -346,31 +358,54 @@ function tp4_preprocess_page(&$variables) {
     if(isset($transnav) && $transnav[0]['value'] == 1) {
       //Class so we know it is transparent
       $variables['transnav'] = 'transparent';
-      //Logo
-      $variables['page']['trans_left_drawer']['top-section']['#markup'] = '<div class = "left-drawer-control"><span class="icon i-close-x"></span><a href="/" class="logo-feature"></a></div>';
 
       //Social Icons for mobile
       $mobile_menu = theme('base_social_follow');
-      $variables['page']['trans_left_drawer']['social']['#markup'] = '<div class="mobile-menu-header">'. $mobile_menu. '</div>';
-      $menu = drupal_render(menu_tree_output(menu_tree_all_data('menu-megamenu')));
-      $variables['page']['trans_left_drawer']['menu']['#markup'] = '<div class="mobile-menu">'. $menu. '</div>';
+      $about_tp = '<span class = "about">TakePart is the digital news and lifestyle magazine from <a href="http://www.participantmedia.com" target="_blank">Participant Media</a>, the company behind such acclaimed documentaries as CITIZENFOUR, An Inconvenient Truth and Food, Inc. and feature films including Lincoln and Spotlight.</span>';
 
-      //Descriptive Text
-      $variables['page']['trans_left_drawer']['text']['#markup'] = '<span class = "about">TakePart is the digital news and lifestyle magazine from <a href="http://www.participantmedia.com" target="_blank">Participant Media</a>, the company behind such acclaimed documentaries as CITIZENFOUR, An Inconvenient Truth and Food, Inc. and feature films including Lincoln and Spotlight.</span>';
+      //CIC menu
+      if ($cic_menu) {
+        $variables['page']['trans_left_drawer']['#markup'] = theme('base_cic_menu' , array(
+          'camp_name'         => isset($campaign_info['title']) ? $campaign_info['title'] : '',
+          'camp_url'          => isset($campaign_info['url']) ? $campaign_info['url'] : '',
+          'camp_description'  => isset($campaign_info['description']) ? $campaign_info['description'] : '',
+          'camp_logo'         => isset($campaign_info['logo']) ? $campaign_info['logo'] : '',
+          'camp_dark_logo'    => isset($campaign_info['dark_logo']) ? $campaign_info['dark_logo'] : '',
+          'camp_menu'         => isset($campaign_info['camp_menu']) ? $campaign_info['camp_menu'] : '',
+          'camp_content_menu' => isset($campaign_info['camp_content_menu']) ? $campaign_info['camp_content_menu'] : '',
+          'camp_color'        => isset($campaign_info['color']) ? $campaign_info['color'] : '',
+          'about_tp'          => $about_tp,
+          'social_menu'       => $mobile_menu
+        ));
+        //Load the JS file for handling the CIC menu
+        drupal_add_js(drupal_get_path('theme', 'base'). '/js/cic-menu.js');
+      }
+      else {
+        //Logo
+        $variables['page']['trans_left_drawer']['top-section']['#markup'] = '<div class = "left-drawer-control"><span class="icon i-close-x"></span><a href="/" class="logo-feature"></a></div>';
+        $variables['page']['trans_left_drawer']['social']['#markup'] = '<div class="mobile-menu-header">'. $mobile_menu. '</div>';
+        $menu = drupal_render(menu_tree_output(menu_tree_all_data('menu-megamenu')));
+        $variables['page']['trans_left_drawer']['menu']['#markup'] = '<div class="mobile-menu">'. $menu. '</div>';
 
-      //Social Icons for Destkop - feature article
-      $mobile_menu = theme('base_social_follow');
-      $variables['page']['trans_left_drawer']['social-desktop']['#markup'] = '<div class="mobile-menu-header feature-destkop"><p class = "follow">FOLLOW US</p>'. $mobile_menu. '</div>';
+        //Descriptive Text
+        $variables['page']['trans_left_drawer']['text']['#markup'] = $about_tp;
+
+        //Social Icons for Destkop - feature article
+        $mobile_menu = theme('base_social_follow');
+        $variables['page']['trans_left_drawer']['social-desktop']['#markup'] = '<div class="mobile-menu-header feature-destkop"><p class = "follow">FOLLOW US</p>'. $mobile_menu. '</div>';
+      }
       //Bringing in navfat for mobile
       $header = theme('base_mobile_header');
       $variables['page']['header']['mobile_menu']['#markup'] = $header;
       //Adding the mobile draw for transparent nav
       $variables['page']['trans_left_drawer']['tp4_support_tp4_mobile_menu_header'];
       $variables['drawers'] = theme('tp4_support_transparent_nav_drawer', array('vars' => $variables));
-    } else {
+    }
+    else {
       //Add the left draw for slim nav
       $variables['drawers'] = theme('tp4_support_slim_nav_drawer', array('vars' => $variables));
     }
+
     /* Check to see if Campaign Menu is toggled off */
     $disable = field_get_items('node', $campaign_ref, 'field_campaign_disable_menu');
     if(empty($disable) || $disable[0]['value'] != 1){
@@ -507,7 +542,6 @@ function tp4_preprocess_node__campaign(&$variables, $hook) {
 function tp4_preprocess_node__campaign_page(&$variables, $hook) {
 
    $campaign_node = node_load($variables['field_campaign_reference']['und'][0]['target_id']);
-
   // Check if alt text is empty then add title as alt text for campaign logo
   if($campaign_node->field_campaign_logo['und'][0]['alt'] == ''){
     $campaign_node->field_campaign_logo['und'][0]['alt'] = $campaign_node->title;

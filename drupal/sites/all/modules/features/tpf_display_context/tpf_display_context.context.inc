@@ -362,6 +362,7 @@ function tpf_display_context_context_default_contexts() {
   $context->conditions = array(
     'node' => array(
       'values' => array(
+        'action' => 'action',
         'feed' => 'feed',
         'feed_item' => 'feed_item',
         'takepart_page' => 'takepart_page',
@@ -380,17 +381,6 @@ function tpf_display_context_context_default_contexts() {
         'now/*' => 'now/*',
         'place-at-the-table' => 'place-at-the-table',
         'place-at-the-table/*' => 'place-at-the-table/*',
-      ),
-    ),
-    'sitewide' => array(
-      'values' => array(
-        1 => 1,
-      ),
-    ),
-    'theme' => array(
-      'values' => array(
-        'fresh' => 'fresh',
-        'tp4' => 'tp4',
       ),
     ),
   );
@@ -454,10 +444,12 @@ function tpf_display_context_context_default_contexts() {
     ),
     'node' => array(
       'values' => array(
-        'action' => 'action',
+        'feature_article' => 'feature_article',
         'openpublish_article' => 'openpublish_article',
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
         'section_front' => 'section_front',
+        'video' => 'video',
+        'video_playlist' => 'video_playlist',
       ),
       'options' => array(
         'node_form' => '1',
@@ -470,17 +462,10 @@ function tpf_display_context_context_default_contexts() {
         'pm_interstitial-interstitials' => array(
           'module' => 'pm_interstitial',
           'delta' => 'interstitials',
-          'region' => 'content_bottom',
-          'weight' => 0,
+          'region' => 'footer',
+          'weight' => '-10',
         ),
       ),
-    ),
-    'theme' => array(
-      'title' => '',
-      'subtitle' => '',
-    ),
-    'theme_html' => array(
-      'class' => '',
     ),
   );
   $context->condition_mode = 1;
@@ -987,6 +972,11 @@ function tpf_display_context_context_default_contexts() {
   $context->description = 'Expose DTM';
   $context->tag = 'DTM';
   $context->conditions = array(
+    'path' => array(
+      'values' => array(
+        '~interstitials/newsletter' => '~interstitials/newsletter',
+      ),
+    ),
     'sitewide' => array(
       'values' => array(
         1 => 1,

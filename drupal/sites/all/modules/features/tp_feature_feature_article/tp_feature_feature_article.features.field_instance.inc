@@ -185,6 +185,10 @@ function tp_feature_feature_article_field_default_field_instances() {
     'label' => 'Admin Tag',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -802,6 +806,91 @@ function tp_feature_feature_article_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance: 'node-feature_article-field_auto_free_tagged'.
+  $field_instances['node-feature_article-field_auto_free_tagged'] = array(
+    'bundle' => 'feature_article',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 33,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_auto_free_tagged',
+    'label' => 'Auto Free Tagged',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 24,
+    ),
+  );
+
   // Exported field_instance: 'node-feature_article-field_autoload'.
   $field_instances['node-feature_article-field_autoload'] = array(
     'bundle' => 'feature_article',
@@ -1354,10 +1443,14 @@ Change this only if you know what you are doing.',
     'label' => 'Free Tag',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 1,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 1,
+      'tagit_placeholder' => 'Add terms',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
-      'active' => 1,
+      'active' => 0,
       'module' => 'taxonomy',
       'settings' => array(
         'autocomplete_path' => 'taxonomy/autocomplete',
@@ -2294,6 +2387,10 @@ Change this only if you know what you are doing.',
     'label' => 'Series',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2778,6 +2875,10 @@ Change this only if you know what you are doing.',
     'label' => 'Topic',
     'required' => 1,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2859,6 +2960,10 @@ Change this only if you know what you are doing.',
     'label' => 'Topic Box',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2886,6 +2991,7 @@ Change this only if you know what you are doing.',
   t('Analytics Title');
   t('Assigned Editor');
   t('Author(s)');
+  t('Auto Free Tagged');
   t('Autoload Content');
   t('Background Video');
   t('Body');
