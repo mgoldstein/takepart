@@ -203,6 +203,10 @@ function tpf_content_photo_gallery_field_default_field_instances() {
     'label' => 'Admin Tag',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -212,7 +216,7 @@ function tpf_content_photo_gallery_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 63,
+      'weight' => 64,
     ),
   );
 
@@ -949,6 +953,10 @@ Change this only if you know what you are doing.',
     'label' => 'Free Tags',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 1,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 1,
+      'tagit_placeholder' => 'Add terms',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -960,7 +968,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 60,
+      'weight' => 61,
     ),
   );
 
@@ -2240,6 +2248,10 @@ Change this only if you know what you are doing.',
     'label' => 'Series',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2673,6 +2685,10 @@ Change this only if you know what you are doing.',
     'label' => 'Topic',
     'required' => 1,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2766,6 +2782,10 @@ Change this only if you know what you are doing.',
     'label' => 'Topic Box',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2783,7 +2803,7 @@ Change this only if you know what you are doing.',
         'track_list' => 0,
       ),
       'type' => 'term_reference_tree',
-      'weight' => 64,
+      'weight' => 65,
     ),
   );
 

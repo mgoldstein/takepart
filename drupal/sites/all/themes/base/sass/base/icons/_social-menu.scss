@@ -760,10 +760,15 @@ body.node-type-openpublish-photo-gallery{
 }
 
 /****** Override for sticky **********/
-.social.sticky{
+.social.sticky,
+.campaign-experience .social.cic-sticky {
   z-index: 1;
   position: fixed;
   top: 7px;
+}
+
+.campaign-experience .social.cic-sticky {
+  top: 132px;
 }
 
 /****** TEMP FOR STICKY HEADER **********/

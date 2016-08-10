@@ -10,7 +10,7 @@
 function tpf_display_context_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_feed_item_description'
+  // Exported field_base: 'field_feed_item_description'.
   $field_bases['field_feed_item_description'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -29,7 +29,7 @@ function tpf_display_context_field_default_field_bases() {
     'type' => 'text_with_summary',
   );
 
-  // Exported field_base: 'field_tab_action'
+  // Exported field_base: 'field_tab_action'.
   $field_bases['field_tab_action'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -54,7 +54,7 @@ function tpf_display_context_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_tab_link_only'
+  // Exported field_base: 'field_tab_link_only'.
   $field_bases['field_tab_link_only'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -79,7 +79,7 @@ function tpf_display_context_field_default_field_bases() {
     'type' => 'list_boolean',
   );
 
-  // Exported field_base: 'field_trailer_video'
+  // Exported field_base: 'field_trailer_video'.
   $field_bases['field_trailer_video'] = array(
     'active' => 1,
     'cardinality' => 1,

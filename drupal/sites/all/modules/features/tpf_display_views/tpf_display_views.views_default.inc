@@ -1002,16 +1002,6 @@ print $file;
   $handler->display->display_options['sorts']['published_at']['table'] = 'publication_date';
   $handler->display->display_options['sorts']['published_at']['field'] = 'published_at';
   $handler->display->display_options['sorts']['published_at']['order'] = 'DESC';
-  /* Contextual filter: Content: Type */
-  $handler->display->display_options['arguments']['type']['id'] = 'type';
-  $handler->display->display_options['arguments']['type']['table'] = 'node';
-  $handler->display->display_options['arguments']['type']['field'] = 'type';
-  $handler->display->display_options['arguments']['type']['default_action'] = 'default';
-  $handler->display->display_options['arguments']['type']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['type']['default_argument_options']['argument'] = 'all';
-  $handler->display->display_options['arguments']['type']['summary']['number_of_records'] = '0';
-  $handler->display->display_options['arguments']['type']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['type']['summary_options']['items_per_page'] = '25';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -1752,6 +1742,129 @@ print $file;
   $handler->display->display_options['filters']['published_at']['value']['value'] = '-7 days';
   $handler->display->display_options['filters']['published_at']['value']['type'] = 'offset';
   $handler->display->display_options['path'] = 'content/%/synd_feed_short.xml';
+
+  /* Display: Recent Content (90 days) */
+  $handler = $view->new_display('page', 'Recent Content (90 days)', 'page_2');
+  $handler->display->display_options['display_description'] = 'Headlines and links for content from the previous 90 days';
+  $handler->display->display_options['defaults']['use_ajax'] = FALSE;
+  $handler->display->display_options['defaults']['group_by'] = FALSE;
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['defaults']['query'] = FALSE;
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'views_takepart_rss_style';
+  $handler->display->display_options['style_options']['schema'] = 'rssimages';
+  $handler->display->display_options['style_options']['title'] = 'TAKEPART';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['relationships'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Main Image */
+  $handler->display->display_options['fields']['field_article_main_image']['id'] = 'field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['table'] = 'field_data_field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['field'] = 'field_article_main_image';
+  $handler->display->display_options['fields']['field_article_main_image']['label'] = '';
+  $handler->display->display_options['fields']['field_article_main_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_article_main_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_article_main_image']['type'] = 'image';
+  $handler->display->display_options['fields']['field_article_main_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Content: Subhead */
+  $handler->display->display_options['fields']['field_article_subhead']['id'] = 'field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['table'] = 'field_data_field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['field'] = 'field_article_subhead';
+  $handler->display->display_options['fields']['field_article_subhead']['label'] = '';
+  $handler->display->display_options['fields']['field_article_subhead']['element_label_colon'] = FALSE;
+  /* Field: Node: Published at */
+  $handler->display->display_options['fields']['published_at']['id'] = 'published_at';
+  $handler->display->display_options['fields']['published_at']['table'] = 'publication_date';
+  $handler->display->display_options['fields']['published_at']['field'] = 'published_at';
+  $handler->display->display_options['fields']['published_at']['label'] = '';
+  $handler->display->display_options['fields']['published_at']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['published_at']['date_format'] = 'custom';
+  $handler->display->display_options['fields']['published_at']['custom_date_format'] = 'D, d M Y H:i:s T';
+  $handler->display->display_options['fields']['published_at']['second_date_format'] = 'long';
+  /* Field: Content: Author(s) */
+  $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
+  $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['label'] = '';
+  $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
+  $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
+  /* Field: Field: Topic */
+  $handler->display->display_options['fields']['field_topic']['id'] = 'field_topic';
+  $handler->display->display_options['fields']['field_topic']['table'] = 'field_data_field_topic';
+  $handler->display->display_options['fields']['field_topic']['field'] = 'field_topic';
+  $handler->display->display_options['fields']['field_topic']['label'] = '';
+  $handler->display->display_options['fields']['field_topic']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_topic']['type'] = 'taxonomy_term_reference_plain';
+  $handler->display->display_options['fields']['field_topic']['delta_offset'] = '0';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'openpublish_article' => 'openpublish_article',
+    'feature_article' => 'feature_article',
+    'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+    'video' => 'video',
+    'video_playlist' => 'video_playlist',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Node: Published at */
+  $handler->display->display_options['filters']['published_at']['id'] = 'published_at';
+  $handler->display->display_options['filters']['published_at']['table'] = 'publication_date';
+  $handler->display->display_options['filters']['published_at']['field'] = 'published_at';
+  $handler->display->display_options['filters']['published_at']['operator'] = '>=';
+  $handler->display->display_options['filters']['published_at']['value']['value'] = '-90 days';
+  $handler->display->display_options['filters']['published_at']['value']['type'] = 'offset';
+  /* Filter criterion: Content: Admin Tag (field_admin_tag) */
+  $handler->display->display_options['filters']['field_admin_tag_tid']['id'] = 'field_admin_tag_tid';
+  $handler->display->display_options['filters']['field_admin_tag_tid']['table'] = 'field_data_field_admin_tag';
+  $handler->display->display_options['filters']['field_admin_tag_tid']['field'] = 'field_admin_tag_tid';
+  $handler->display->display_options['filters']['field_admin_tag_tid']['value'] = array(
+    116389 => '116389',
+    115599 => '115599',
+  );
+  $handler->display->display_options['filters']['field_admin_tag_tid']['type'] = 'select';
+  $handler->display->display_options['filters']['field_admin_tag_tid']['vocabulary'] = 'admin_tag';
+  /* Filter criterion: Content: Syndication (field_syndication) */
+  $handler->display->display_options['filters']['field_syndication_value']['id'] = 'field_syndication_value';
+  $handler->display->display_options['filters']['field_syndication_value']['table'] = 'field_data_field_syndication';
+  $handler->display->display_options['filters']['field_syndication_value']['field'] = 'field_syndication_value';
+  $handler->display->display_options['filters']['field_syndication_value']['operator'] = 'empty';
+  $handler->display->display_options['path'] = 'content/recent_headlines.xml';
   $export['content_types_posts_feed'] = $view;
 
   $view = new view();

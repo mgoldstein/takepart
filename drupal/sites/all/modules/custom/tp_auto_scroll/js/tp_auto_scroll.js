@@ -364,42 +364,41 @@ function pauseAmbientVid() {
  * Checks to see whether a certain portion of the element is in viewport
  * x-> width, y-> height, 0.5 -> 50% of the height or width is visible
  */
-jQuery.fn.isInViewport = function (x, y) {
-  if (x == null || typeof x == 'undefined')
-    x = 1;
-  if (y == null || typeof y == 'undefined')
-    y = 1;
-  var win = jQuery(window);
-  var viewport = {
-    top: win.scrollTop(),
-    left: win.scrollLeft()
-  };
-  viewport.right = viewport.left + win.width();
-  viewport.bottom = viewport.top + win.height();
 
-  //Need to pass true/false(if you want margin) for outerHeight/outerWidth to get a value back
-  //This is due to the current version of jquery on fresh and jquery UI when logged in
-  var height = this.outerHeight(true);
-  var width = this.outerWidth(true);
-  window.height = height;
-  window.width = width;
-  if (!width || !height) {
-    return false;
-  }
-  var bounds = this.offset();
-  bounds.right = bounds.left + width;
-  bounds.bottom = bounds.top + height;
-  window.bounds = bounds;
-  var visible = (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
-  if (!visible) {
-    return false;
-  }
-  var deltas = {
-    top: Math.min(1, (bounds.bottom - viewport.top) / height),
-    bottom: Math.min(1, (viewport.bottom - bounds.top) / height),
-    left: Math.min(1, (bounds.right - viewport.left) / width),
-    right: Math.min(1, (viewport.right - bounds.left) / width)
-  };
-  window.temp = deltas;
-  return (deltas.left * deltas.right) >= x && (deltas.top * deltas.bottom) >= y;
+jQuery.fn.isInViewport = function(x, y) {
+  if(x == null || typeof x == 'undefined') x = 1;
+    if(y == null || typeof y == 'undefined') y = 1;
+    var win = jQuery(window);
+    var viewport = {
+        top : win.scrollTop(),
+        left : win.scrollLeft()
+    };
+    viewport.right = viewport.left + win.width();
+    viewport.bottom = viewport.top + win.height();
+
+    //Need to pass true/false(if you want margin) for outerHeight/outerWidth to get a value back
+    //This is due to the current version of jquery on fresh and jquery UI when logged in
+    var height = this.outerHeight(false);
+    var width = this.outerWidth(false);
+    window.height = height;
+    window.width = width;
+    if(!width || !height){
+        return false;
+    }
+    var bounds = this.offset();
+    bounds.right = bounds.left + width;
+    bounds.bottom = bounds.top + height;
+    window.bounds = bounds;
+    var visible = (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+    if(!visible){
+        return false;
+    }
+    var deltas = {
+        top : Math.min( 1, ( bounds.bottom - viewport.top ) / height),
+        bottom : Math.min(1, ( viewport.bottom - bounds.top ) / height),
+        left : Math.min(1, ( bounds.right - viewport.left ) / width),
+        right : Math.min(1, ( viewport.right - bounds.left ) / width)
+    };
+    window.temp = deltas;
+    return (deltas.left * deltas.right) >= x && (deltas.top * deltas.bottom) >= y;
 }

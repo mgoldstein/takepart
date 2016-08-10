@@ -13,6 +13,8 @@
   height: 60px;
   position: relative;
   padding: 15px 35px 15px 25px;
+  z-index: 2;
+  color: #fff;
   @include breakpoint($breakpoint-tablet) {
     display: block;
   }
@@ -223,6 +225,47 @@
 
 }
 
+/* Transparent nav overrides for campaign experience */
+
+body:not(.campaign-display) .campaign-experience .navbar-transparent {
+  display: block;
+  .logo-transparent {
+    display: none;
+  }
+}
+.campaign-experience .navbar-transparent {
+  @media (max-width: 767px) {
+    padding: 35px 5px 15px 5px;
+    #search-api-page-search-form-site-search,
+    #search-api-page-search-form-site-search--2 {
+      top: 35px;
+    }
+    .search-close {
+      top: 36px;
+    }
+  }
+  .menu.nav-right {
+    display: none;
+  }
+  @include breakpoint($breakpoint-phablet){
+    &:not(.search-open) .menu.nav-right {
+      display: block;
+    }
+  }
+}
+
+.node-type-feature-article .campaign-experience .navbar-transparent {
+  @media (max-width: 767px) {
+    padding-top: 15px;
+    #search-api-page-search-form-site-search,
+    #search-api-page-search-form-site-search--2 {
+      top: 15px;
+    }
+    .search-close {
+      top: 16px;
+    }
+  }
+}
 /* Dark Transparent Nav Overrides */
 body.transparent-nav-dark .navbar-transparent {
   .toggle-menu,

@@ -1,0 +1,7 @@
+name = TakePart CIC(Content In Campaigns)
+description = Content in Campaigns is the process of adding campaign styling to articles.
+core = 7.x
+package = Fresh
+version = 7.x-0
+
+dependencies[] = libraries

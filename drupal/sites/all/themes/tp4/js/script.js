@@ -54,13 +54,14 @@
 
 	 var curItem = false;
 
-	 $('#block-menu-menu-megamenu ul li a').not('li.is-leaf a').on('click', function (e)
+	 $('#block-menu-menu-megamenu ul li a').not('li.is-leaf a , li.shows a').on('click', function (e)
 	 {
 	   var item = $(this);
 	   if (item[ 0 ] != curItem[ 0 ])
 	   {
-		//e.preventDefault();
+		e.preventDefault();
 		curItem = item;
+    return false;
 	   }
 	 });
 
@@ -650,9 +651,11 @@
 	 });
     }
   };
+
   /**
    * Set a Cookie/Message for the updated Terms of Use
    */
+  /*
   Drupal.behaviors.TouCookie = {
     attach: function () {
 	 if (document.cookie.search('ppu') == -1) {
@@ -680,12 +683,14 @@
 	 }
     }
   };
-  
+  */
+
   Drupal.behaviors.mobileMenuToggle = {
     attach: function (context, settings) {
 	 $('body').once('mobileMenuToggle', function () {
 	   var $body = $('body');
-	   $('body.campaign-transparent-nav .toggle-menu.toggle-left, .left-drawer-control .i-close-x').click(function () {
+	   $('body.campaign-transparent-nav #page-wrap:not(.campaign-experience) .toggle-menu.toggle-left, .left-drawer-control .i-close-x').click(function () {
+
 		if ($body.hasClass('mobile-menu-show')) {
 		  $body.removeClass("mobile-menu-show");
 		  //enable scroll on tablet
