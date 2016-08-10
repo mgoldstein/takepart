@@ -10,7 +10,7 @@
 function tpf_content_inline_content_field_default_field_bases() {
   $field_bases = array();
 
-  // Exported field_base: 'field_ic_tap_widget_sponsor_name'
+  // Exported field_base: 'field_ic_tap_widget_sponsor_name'.
   $field_bases['field_ic_tap_widget_sponsor_name'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -31,7 +31,7 @@ function tpf_content_inline_content_field_default_field_bases() {
     'type' => 'text',
   );
 
-  // Exported field_base: 'field_ic_tap_widget_sponsor_url'
+  // Exported field_base: 'field_ic_tap_widget_sponsor_url'.
   $field_bases['field_ic_tap_widget_sponsor_url'] = array(
     'active' => 1,
     'cardinality' => 1,
@@ -60,7 +60,7 @@ function tpf_content_inline_content_field_default_field_bases() {
     'type' => 'link_field',
   );
 
-  // Exported field_base: 'field_ic_video'
+  // Exported field_base: 'field_ic_video'.
   $field_bases['field_ic_video'] = array(
     'active' => 1,
     'cardinality' => 1,
