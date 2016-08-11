@@ -204,6 +204,10 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     'label' => 'Admin Tag',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -497,6 +501,91 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
       ),
       'type' => 'node_reference_autocomplete',
       'weight' => 4,
+    ),
+  );
+
+  // Exported field_instance: 'node-fresh_gallery-field_auto_free_tagged'.
+  $field_instances['node-fresh_gallery-field_auto_free_tagged'] = array(
+    'bundle' => 'fresh_gallery',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 31,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_auto_free_tagged',
+    'label' => 'Auto Free Tagged',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 21,
     ),
   );
 
@@ -949,6 +1038,10 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     'label' => 'Free Tag',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 1,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 1,
+      'tagit_placeholder' => 'Add terms',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2298,6 +2391,10 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     'label' => 'Series',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2378,6 +2475,10 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     'label' => 'Sponsored',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2722,6 +2823,10 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     'label' => 'Topic',
     'required' => 1,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2800,6 +2905,10 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     'label' => 'Topic Box',
     'required' => 0,
     'settings' => array(
+      'tagit_autocomplete' => 0,
+      'tagit_autocomplete_url' => '',
+      'tagit_enable' => 0,
+      'tagit_placeholder' => '',
       'user_register_form' => FALSE,
     ),
     'widget' => array(
@@ -2827,6 +2936,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
   t('Analytics Title');
   t('Assigned Editor');
   t('Author(s)');
+  t('Auto Free Tagged');
   t('Autoload Content');
   t('Body');
   t('Campaign Content Link');

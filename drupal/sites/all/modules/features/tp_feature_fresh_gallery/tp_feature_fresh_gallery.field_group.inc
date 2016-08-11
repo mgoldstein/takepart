@@ -24,6 +24,7 @@ function tp_feature_fresh_gallery_field_group_info() {
     'weight' => '21',
     'children' => array(
       0 => 'field_autoload',
+      1 => 'field_auto_free_tagged',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -50,9 +51,9 @@ function tp_feature_fresh_gallery_field_group_info() {
     'label' => 'Editorial Info',
     'weight' => '24',
     'children' => array(
-      0 => 'field_assigned_editor',
-      1 => 'field_due_date',
-      2 => 'field_run_date',
+      0 => 'field_due_date',
+      1 => 'field_run_date',
+      2 => 'field_assigned_editor',
     ),
     'format_type' => 'tab',
     'format_settings' => array(
@@ -109,13 +110,13 @@ function tp_feature_fresh_gallery_field_group_info() {
     'label' => 'Tagging',
     'weight' => '19',
     'children' => array(
-      0 => 'field_admin_tag',
-      1 => 'field_editor_campaign_reference',
+      0 => 'field_topic_box',
+      1 => 'field_topic',
       2 => 'field_free_tag',
-      3 => 'field_series',
-      4 => 'field_sponsored',
-      5 => 'field_topic',
-      6 => 'field_topic_box',
+      3 => 'field_sponsored',
+      4 => 'field_admin_tag',
+      5 => 'field_series',
+      6 => 'field_editor_campaign_reference',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
