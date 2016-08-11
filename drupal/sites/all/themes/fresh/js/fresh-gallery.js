@@ -5,7 +5,7 @@
  */
 
 (function ($, Drupal, window, document, undefined) {
-  $(document).ready(function(){
+  $(document).ready(function () {
 
     // Build the object we need.
     var galleryData = {
@@ -14,12 +14,14 @@
       "adFrequency": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_freq
     };
 
-    var jsonId = $('.node-fresh-gallery').attr('data-ddl-page-id');
-    galleryData.photos = eval('gallery_' + jsonId + '_json');
+    if ($('.node-fresh-gallery').length > 0) {
+      var jsonId = $('.node-fresh-gallery').attr('data-ddl-page-id');
+      galleryData.photos = eval('gallery_' + jsonId + '_json');
 
-    var galleryElement = $(".gallery-wrapper").get(0);
+      var galleryElement = $(".gallery-wrapper").get(0);
 
-    showImageGallery(galleryData, galleryElement);
+      showImageGallery(galleryData, galleryElement);
+    }
   });
 
 })(jQuery, Drupal, this, this.document);
