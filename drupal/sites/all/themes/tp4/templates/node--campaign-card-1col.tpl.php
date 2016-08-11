@@ -45,7 +45,8 @@
   </style>
 <?php } ?>
  -->
-<div class="card campaign-1col <?php print implode(' ', $variables['classes_array']) ?>" style="<?php print implode(' ', $variables['styles']); ?> <?php  print $variables['attributes']; ?>">
+
+<div class="card campaign-1col <?php print implode(' ', $variables['classes_array']) ?>" style="<?php print implode(' ', $variables['styles']); ?>" <?php print $variables['attributes']; ?>>
   <?php print render($title_prefix); ?>
   <article class="card-inner<?php if(isset($variables['slim_text'])){ print " ".$variables['slim_text']; }?>">
   <?php print render($title_suffix);  // contextual links ?>
