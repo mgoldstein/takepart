@@ -2,8 +2,9 @@
 
 /**
  * Helper function for building the DDL for a node
+ * @param bool $is_fbia if the call is coming from fbia module. Filter some analytics for fbia
  */
-function tp_digital_data_build_ddl_content($node){
+function tp_digital_data_build_ddl_content($node , $is_fbia){
   $data = array();
   $pageID = $node->nid;
 
@@ -122,11 +123,12 @@ function tp_digital_data_build_ddl_content($node){
         }
       }
     }
-
-    if($show_influence) {
-      $data['page']['pageInfo']['influenceBanner'] =  "Influence Banner";
-    } else {
-      $data['page']['pageInfo']['influenceBanner'] =  "No Influence Banner";
+    if (!$is_fbia) {
+      if($show_influence) {
+        $data['page']['pageInfo']['influenceBanner'] =  "Influence Banner";
+      } else {
+        $data['page']['pageInfo']['influenceBanner'] =  "No Influence Banner";
+      }
     }
 
   //Campaign reference
@@ -141,7 +143,7 @@ function tp_digital_data_build_ddl_content($node){
   }
 
   //Element Impression
-  if (!empty($element_impression)) {
+  if (!empty($element_impression) && !$is_fbia) {
     $element_impression = implode(',', $element_impression);
     $data['page']['pageInfo']['elementImpressions'] = $element_impression;
   }
