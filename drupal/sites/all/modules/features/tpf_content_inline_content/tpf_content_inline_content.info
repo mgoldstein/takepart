@@ -28,6 +28,7 @@ features[field_base][] = field_ic_tap_widget_sponsor_url
 features[field_base][] = field_ic_video
 features[field_instance][] = inline_content-ambient_video-field_article_background_video
 features[field_instance][] = inline_content-ambient_video-field_article_bg_video_poster
+features[field_instance][] = inline_content-ambient_video-field_media_caption
 features[field_instance][] = inline_content-image-field_ic_alignment
 features[field_instance][] = inline_content-image-field_ic_image
 features[field_instance][] = inline_content-image-field_ic_image_format
