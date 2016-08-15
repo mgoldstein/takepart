@@ -16,7 +16,7 @@
 
     if ($('.node-fresh-gallery').length > 0) {
       var jsonId = $('.node-fresh-gallery').attr('data-ddl-page-id');
-      galleryData.photos = eval('gallery_' + jsonId + '_json');
+      galleryData.images = eval('gallery_' + jsonId + '_json.images');
 
       var galleryElement = $(".gallery-wrapper").get(0);
 
