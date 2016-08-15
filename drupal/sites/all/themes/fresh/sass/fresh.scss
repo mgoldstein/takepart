@@ -320,7 +320,7 @@ body {
     margin-left: 15px;
   }
 }
-body.node-type-article,
+body.node-type-openpublish-article,
 body.node-type-video,
 body.node-type-video-playlist,
 body.node-type-feature-article,
@@ -328,7 +328,6 @@ body.node-type-fresh-gallery {
   aside.social.social-vertical {
     display: none;
     background: rgba(255,255,255,.75);
-    padding-top: 15px;
     padding-bottom: 13px;
 
     @include breakpoint($breakpoint-phablet){

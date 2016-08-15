@@ -35,9 +35,6 @@
             <?php print $variables['headline']; ?>
           <?php endif; ?>
         </div>
-        <div class="section sticky-use">
-          <div class = "align-sticky"></div>
-        </div>
           <div class="section">
           <?php if (!empty($variables['sponsored'])): ?>
             <?php print $variables['sponsored']; ?>
@@ -52,6 +49,7 @@
           <?php endif; ?>
           </div>
       </div>
+      <div class = "align-sticky"></div>
       <div class ="gallery-wrapper">
         <script>
           var gallery_<?php print $variables['node']->nid; ?>_json = <?php print $variables['gallery_json']; ?>
