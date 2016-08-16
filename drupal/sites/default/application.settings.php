@@ -63,7 +63,6 @@ $conf += array(
   'tp_video_player_account_token'      => $tp_video_player_account_token,
   'tp_video_player_key'                => $tp_video_player_key,
   'centralized_login_widget_js'        => "https://$services_domain/assets/login_widget.js",
-  'digital_data_wrapper_js'            => "https://$services_domain/assets/dtm_data.js",
   'takeaction_widget_host'             => "https://$takeaction_domain",
   'takeaction_influence_overlay_js'    => "//$takeaction_domain/assets/influence.js",
   'signature_action_import_tap_domain' => "$takeaction_domain",
