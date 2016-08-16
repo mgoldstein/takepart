@@ -7,16 +7,16 @@
     <div class="text">Follow Us</div>
     <ul class="menu horizontal-menu">
       <li>
-        <a class="icon i-facebook" href="https://www.facebook.com/takepart" target="_blank" name="social"></a>
+        <a id="tp-social-header-facebook" class="icon i-facebook" href="https://www.facebook.com/takepart" target="_blank" name="social"></a>
       </li>
       <li>
-        <a class="icon i-google_plusone_share" href="https://plus.google.com/+TakePart" target="_blank" name="social"></a>
+        <a id="tp-social-header-googleplus" class="icon i-google_plusone_share" href="https://plus.google.com/+TakePart" target="_blank" name="social"></a>
       </li>
       <li>
-        <a class="icon i-twitter" href="https://twitter.com/takepart" target="_blank" name="social"></a>
+        <a id="tp-social-header-twitter" class="icon i-twitter" href="https://twitter.com/takepart" target="_blank" name="social"></a>
       </li>
       <li>
-        <a class="icon i-email" href="/follow-us-email" target="_blank" name="social"></a>
+        <a id="tp-social-header-email" class="icon i-email" href="/follow-us-email" target="_blank" name="social"></a>
       </li>
     </ul>
   </div>
