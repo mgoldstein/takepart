@@ -117,6 +117,31 @@ function tpf_display_menus_menu_default_menu_links() {
     'customized' => 1,
     'parent_identifier' => 'menu-megamenu_food:taxonomy/term/11',
   );
+  // Exported menu link: menu-megamenu_big-issues:node/64607.
+  $menu_links['menu-megamenu_big-issues:node/64607'] = array(
+    'menu_name' => 'menu-megamenu',
+    'link_path' => 'node/64607',
+    'router_path' => 'node/%',
+    'link_title' => 'Big Issues',
+    'options' => array(
+      'identifier' => 'menu-megamenu_big-issues:node/64607',
+      'attributes' => array(
+        'name' => 'See all News',
+      ),
+      'item_attributes' => array(
+        'id' => '',
+        'class' => '',
+        'style' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => 0,
+    'external' => 0,
+    'has_children' => 0,
+    'expanded' => 1,
+    'weight' => -50,
+    'customized' => 1,
+  );
   // Exported menu link: menu-megamenu_business:taxonomy/term/117590.
   $menu_links['menu-megamenu_business:taxonomy/term/117590'] = array(
     'menu_name' => 'menu-megamenu',
@@ -1150,6 +1175,7 @@ function tpf_display_menus_menu_default_menu_links() {
   t('About Us');
   t('Aid & Development');
   t('Animals');
+  t('Big Issues');
   t('Business');
   t('Climate Change');
   t('Contact Us');
