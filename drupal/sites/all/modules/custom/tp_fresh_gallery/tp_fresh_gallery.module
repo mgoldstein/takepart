@@ -94,10 +94,6 @@ function tp_fresh_gallery_next_gallery_item($next_gallery) {
   //Published
   $json['date'] = date('Y-m-d H:i:s',$node->published_at);
 
-  if($gal_photo = field_get_items('node', $node, 'field_thumbnail')) {
-    $gal_photo = file_load($gal_photo[0]);
-  }
-
   if($gal_photo = field_get_items('node', $node, 'field_fresh_gallery_main_image')) {
     $gal_photo = file_load($gal_photo[0]);
   } else {

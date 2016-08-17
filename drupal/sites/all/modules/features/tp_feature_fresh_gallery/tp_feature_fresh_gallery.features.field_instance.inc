@@ -78,7 +78,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     ),
     'entity_type' => 'node',
     'field_name' => 'body',
-    'label' => 'Body',
+    'label' => 'Gallery Epilogue',
     'required' => 0,
     'settings' => array(
       'better_formats' => array(
@@ -287,7 +287,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_article_subhead',
     'label' => 'Subhead',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -487,7 +487,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_author',
     'label' => 'Author(s)',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'user_register_form' => FALSE,
     ),
@@ -1126,7 +1126,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     'entity_type' => 'node',
     'field_name' => 'field_fresh_gallery_main_image',
     'label' => 'Main Image',
-    'required' => 0,
+    'required' => 1,
     'settings' => array(
       'alt_field' => 0,
       'default_image' => 0,
@@ -2938,11 +2938,11 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
   t('Author(s)');
   t('Auto Free Tagged');
   t('Autoload Content');
-  t('Body');
   t('Campaign Content Link');
   t('DFP Creative ID');
   t('Due Date');
   t('Free Tag');
+  t('Gallery Epilogue');
   t('Gallery Prefix');
   t('Inline Replacements');
   t('Main Image');
