@@ -452,10 +452,13 @@
           }
         }
         .caption {
+          margin-top: 12px;
           @include breakpoint($breakpoint-tablet) {
-            margin-bottom: 0;
+            margin-top: 20px;
+            margin-bottom: 20px;
           }
           p {
+            margin: 0 auto;
             @include breakpoint($breakpoint-tablet) {
               max-width: 80%;
             }
@@ -508,7 +511,7 @@
     }
     .feature-ambient-image .caption {
       padding: 0;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
     }
   }
 }
