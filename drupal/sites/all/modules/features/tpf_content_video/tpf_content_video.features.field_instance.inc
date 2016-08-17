@@ -3151,7 +3151,7 @@ Change this only if you know what you are doing.',
     'entity_type' => 'node',
     'field_name' => 'field_video_type',
     'label' => 'Video Type',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'tagit_autocomplete' => 0,
       'tagit_autocomplete_url' => '',

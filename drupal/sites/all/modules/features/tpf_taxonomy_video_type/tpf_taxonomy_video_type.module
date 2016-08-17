@@ -1,7 +1,0 @@
-<?php
-/**
- * @file
- * Code for the TakePart Taxonomy Video Type feature.
- */
-
-include_once 'tpf_taxonomy_video_type.features.inc';
