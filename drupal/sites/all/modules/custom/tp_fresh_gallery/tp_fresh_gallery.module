@@ -13,8 +13,9 @@
 
    //Get the next gallery information
    $next_gallery = article_support_next_story($node, $node->type);
-
-   $gallery_items['next_gallery'] = tp_fresh_gallery_next_gallery_item($next_gallery);
+   if (isset($next_gallery) && !empty($next_gallery)) {
+      $gallery_items['next_gallery'] = tp_fresh_gallery_next_gallery_item($next_gallery);
+   }
 
    return json_encode($gallery_items);
  }
@@ -72,7 +73,7 @@ function tp_fresh_gallery_next_gallery_item($next_gallery) {
   $json['title'] = $next_gallery->title;
   //Subhead
   $json['subhead'] = "";
-  if($subhead = field_get_items('node', $node, 'field_page_subhead')) {
+  if($subhead = field_get_items('node', $node, 'field_article_subhead')) {
     $json['subhead'] = $subhead[0]['value'];
   }
   //Author
