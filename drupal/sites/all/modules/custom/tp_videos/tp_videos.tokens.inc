@@ -264,6 +264,7 @@ function tp_videos_token_attached_video_url($node, $secure = FALSE) {
       $token = $params['key'];
       $scheme = $secure ? 'https' : 'http';
       $video_url = tp_videos_token_attached_video_file_url($node, $secure);
+      $video_url = str_ireplace(".m3u8", ".mp4", $video_url);
       $player_path = drupal_get_path('module', 'tp_videos') . '/assets/player.swf';
       $replacement = url($player_path, array(
         'absolute' => TRUE,
