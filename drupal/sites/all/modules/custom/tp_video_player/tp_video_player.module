@@ -19,14 +19,11 @@ require_once __DIR__ . '/tp_video_player.player_settings.inc';
  */
 function tp_video_player_init() {
   // Add the CDN hosted JW Player to all pages.
-  if ($token = variable_get('tp_video_player_account_token', NULL)) {
-    drupal_add_js('//jwpsrv.com/library/' . $token . '.js', array(
+  drupal_add_js('//video.takepart.com/libraries/kqXsAI7f.js', array(
       'type' => 'external',
       'scope' => 'header',
       'weight' => 5,
     ));
-  }
-
   $bx_path = drupal_get_path('module', 'tp_video_player') . '/js/jquery.bxslider/jquery.bxslider.min.js';
   drupal_add_js($bx_path, array(
     'type' => 'file',
