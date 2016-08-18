@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * TakePart video node tokens.
@@ -79,8 +80,7 @@ function tp_videos_token_info() {
 /**
  * Implements hook_tokens().
  */
-function tp_videos_tokens($type, $tokens, array $data = array(),
-  array $options = array()) {
+function tp_videos_tokens($type, $tokens, array $data = array(), array $options = array()) {
   $replacements = array();
   if ($type == 'node' && !empty($data['node'])) {
     $node = $data['node'];
@@ -144,7 +144,7 @@ function tp_videos_token_iframe_embed_markup($node) {
   $iframe_attributes = array(
     'id' => 'entity_iframe_node_' . $node->nid,
     'src' => tp_videos_token_iframe_embed_src($node, FALSE),
-    'class' => 'entity_iframe entity_iframe_node '. $node->type,
+    'class' => 'entity_iframe entity_iframe_node ' . $node->type,
     // Style the iframe to fill a responsive container div.
     'style' => 'position:absolute;top:0;left:0;',
     'width' => '100%',
@@ -155,14 +155,13 @@ function tp_videos_token_iframe_embed_markup($node) {
 
 
   /* Set aspect ratio and fixed size.  This differs from videos to playlists */
-  if($node->type == 'video_playlist'){
+  if ($node->type == 'video_playlist') {
 
     // Assume 16:9 aspect ratio.
     $aspect_ratio = 56.25;
     // With no additional chrome on the player.
     $fixed_size = 270;
-  }
-  elseif($node->type === 'video' && $file = tp_videos_token_attached_file($node, 'field_video')) {
+  } elseif ($node->type === 'video' && $file = tp_videos_token_attached_file($node, 'field_video')) {
 
     // Assume 16:9 aspect ratio.
     $aspect_ratio = 56.25;
@@ -171,10 +170,9 @@ function tp_videos_token_iframe_embed_markup($node) {
 
     // Set the aspect ratio based on the video dimensions.
     if (isset($file->tp_videos_metadata)) {
-      $aspect_ratio = ($file->tp_videos_metadata->height
-        / $file->tp_videos_metadata->width) * 100.0;
+      $aspect_ratio = ($file->tp_videos_metadata->height / $file->tp_videos_metadata->width) * 100.0;
     }
-  }else{
+  } else {
     // Assume 16:9 aspect ratio.
     $aspect_ratio = 56.25;
     // With no additional chrome on the player.
@@ -222,8 +220,7 @@ function tp_videos_token_iframe_embed_height($node) {
   if ($file = tp_videos_token_attached_file($node, 'field_video')) {
     if (isset($file->tp_videos_metadata)) {
       $width = variable_get('tp_videos_iframe_embed_width', 480);
-      $height = ($file->tp_videos_metadata->height * $width)
-        / $file->tp_videos_metadata->width;
+      $height = ($file->tp_videos_metadata->height * $width) / $file->tp_videos_metadata->width;
       $replacement = intval($height);
     }
   }
@@ -238,8 +235,7 @@ function tp_videos_token_attached_video_file_url($node, $secure = FALSE) {
       $token = $params['v'];
       $scheme = $secure ? 'https' : 'http';
       $replacement = "{$scheme}://www.youtube.com/embed/{$token}";
-    }
-    elseif ($file->filemime === 'video/jwplatform') {
+    } elseif ($file->filemime === 'video/jwplatform') {
       $params = tp_videos_parse_wrapper_uri($file->uri);
       $token = $params['key'];
       $scheme = $secure ? 'https' : 'http';
@@ -258,8 +254,7 @@ function tp_videos_token_attached_video_url($node, $secure = FALSE) {
       $token = $params['v'];
       $scheme = $secure ? 'https' : 'http';
       $replacement = "{$scheme}://www.youtube.com/v/{$token}?autohide=1&version=3";
-    }
-    elseif ($file->filemime === 'video/jwplatform') {
+    } elseif ($file->filemime === 'video/jwplatform') {
       $params = tp_videos_parse_wrapper_uri($file->uri);
       $token = $params['key'];
       $scheme = $secure ? 'https' : 'http';
@@ -295,8 +290,7 @@ function tp_videos_token_attached_video_height($node) {
   if ($file = tp_videos_token_attached_file($node, 'field_video')) {
     if (isset($file->tp_videos_metadata)) {
       $width = variable_get('tp_videos_jwplatform_width', 640);
-      $height = ($file->tp_videos_metadata->height * $width)
-        / $file->tp_videos_metadata->width;
+      $height = ($file->tp_videos_metadata->height * $width) / $file->tp_videos_metadata->width;
       $replacement = intval($height);
     }
   }
