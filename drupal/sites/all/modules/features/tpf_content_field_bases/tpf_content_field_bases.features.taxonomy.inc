@@ -9,10 +9,10 @@
  */
 function tpf_content_field_bases_taxonomy_default_vocabularies() {
   return array(
-    'campaign_type' => array(
-      'name' => 'Campaign Type',
-      'machine_name' => 'campaign_type',
-      'description' => 'Type of campaign for analytics and feeds',
+    'video_type' => array(
+      'name' => 'Video Type',
+      'machine_name' => 'video_type',
+      'description' => '',
       'hierarchy' => 0,
       'module' => 'taxonomy',
       'weight' => 0,

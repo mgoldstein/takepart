@@ -14,7 +14,7 @@ function tp_fbia_page_analytics($node) {
     node_view($node, 'full');
     /* Get the DDL */
     module_load_include('inc', 'tp_digital_data', 'includes/common');
-    $ddl = tp_digital_data_build_ddl_content($node);
+    $ddl = tp_digital_data_build_ddl_content($node, TRUE);
     //Add FBIA value
     $ddl['page']['pageInfo']['fbia'] = 'Facebook Instant Article';
     $ddl = drupal_json_encode($ddl);

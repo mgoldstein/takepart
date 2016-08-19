@@ -299,8 +299,9 @@ function tpf_content_video_field_group_info() {
       3 => 'field_topic',
       4 => 'field_sponsored',
       5 => 'field_topic_box',
-      6 => 'field_campaign_promo_opt_out',
-      7 => 'field_editor_campaign_reference',
+      6 => 'field_editor_campaign_reference',
+      7 => 'field_campaign_promo_opt_out',
+      8 => 'field_video_type',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(
