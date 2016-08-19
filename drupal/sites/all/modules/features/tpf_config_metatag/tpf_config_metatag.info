@@ -15,6 +15,7 @@ features[metatag][] = global:404
 features[metatag][] = global:frontpage
 features[metatag][] = node
 features[metatag][] = node:feature_article
+features[metatag][] = node:fresh_gallery
 features[metatag][] = node:openpublish_article
 features[metatag][] = node:openpublish_photo_gallery
 features[metatag][] = node:video

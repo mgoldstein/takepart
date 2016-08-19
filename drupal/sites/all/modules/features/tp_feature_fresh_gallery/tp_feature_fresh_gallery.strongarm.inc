@@ -120,22 +120,22 @@ function tp_feature_fresh_gallery_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'locations' => array(
-          'weight' => '8',
+          'weight' => '16',
         ),
         'metatags' => array(
-          'weight' => '10',
+          'weight' => '18',
         ),
         'title' => array(
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '7',
+          'weight' => '15',
         ),
         'redirect' => array(
-          'weight' => '6',
+          'weight' => '14',
         ),
         'xmlsitemap' => array(
-          'weight' => '9',
+          'weight' => '17',
         ),
       ),
       'display' => array(),
@@ -164,7 +164,8 @@ function tp_feature_fresh_gallery_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_fresh_gallery';
   $strongarm->value = array(
-    0 => 'status',
+    0 => 'moderation',
+    1 => 'revision',
   );
   $export['node_options_fresh_gallery'] = $strongarm;
 

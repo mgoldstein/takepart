@@ -1,0 +1,134 @@
+<?php
+
+ /**
+  * This will create the json object to pass along to the theme
+  */
+ function tp_fresh_gallery_json($node) {
+   $gallery_items = array();
+   if($gal_photos = field_get_items('node', $node, 'field_fresh_photos')) {
+     foreach($gal_photos AS $gal_photo) {
+       $gallery_items['images'][] = tp_fresh_gallery_add($gal_photo);
+     }
+   }
+
+   //Get the next gallery information
+   $next_gallery = article_support_next_story($node, $node->type);
+   if (isset($next_gallery) && !empty($next_gallery)) {
+      $gallery_items['next_gallery'] = tp_fresh_gallery_next_gallery_item($next_gallery);
+   }
+
+   return json_encode($gallery_items);
+ }
+
+
+/**
+ * This will parse the file and get it ready to be added to the gallery json
+ */
+function tp_fresh_gallery_add($gal_photo) {
+  $file = array();
+  //provide different sizes of image
+  if($tablet_file = image_style_path('large_responsive_tablet', $gal_photo['uri'])) {
+    $tablet_url = file_create_url($tablet_file);
+    $file['image']['tablet']['url'] = $tablet_url;
+    $tablet_img_info = getimagesize($tablet_url);
+    $file['image']['tablet']['width'] = $tablet_img_info[0];
+    $file['image']['tablet']['height'] = $tablet_img_info[1];
+  } else {
+    $file['image']['tablet'] = file_create_url($gal_photo['uri']);
+  }
+  if($mobile_file = image_style_path('large_responsive_mobile', $gal_photo['uri'])) {
+    $mobile_url = file_create_url($mobile_file);
+    $file['image']['mobile']['url'] = $mobile_url;
+    $mobile_img_info = getimagesize($mobile_url);
+    $file['image']['mobile']['width'] = $mobile_img_info[0];
+    $file['image']['mobile']['height'] = $mobile_img_info[1];
+  } else {
+    $file['image']['mobile'] = file_create_url($gal_photo['uri']);
+  }
+  $file['image']['desktop']['url'] = file_create_url($gal_photo['uri']);
+  $file['image']['desktop']['width'] = $gal_photo['width'];
+  $file['image']['desktop']['height'] = $gal_photo['height'];
+  //Caption
+  if($caption = field_get_items('file', (object)$gal_photo, 'field_media_caption')){
+    $file['caption'] = $caption[0]['value'];
+  }
+  //Alt Tag
+  if($alt = field_get_items('file', (object)$gal_photo, 'field_media_alt')){
+    $file['alt'] = $alt[0]['value'];
+  }
+  //Credit
+  if($credit = field_get_items('file', (object)$gal_photo, 'field_media_credit')){
+    $file['credit'] = taxonomy_term_load($credit[0]['tid'])->name;
+  }
+  return $file;
+}
+
+/**
+ * Next Gallery item setup
+ */
+function tp_fresh_gallery_next_gallery_item($next_gallery) {
+  $node = $next_gallery->node;
+  $json = array();
+  //Title
+  $json['title'] = $next_gallery->title;
+  //Subhead
+  $json['subhead'] = "";
+  if($subhead = field_get_items('node', $node, 'field_article_subhead')) {
+    $json['subhead'] = $subhead[0]['value'];
+  }
+  //Author
+  $json['author'] = "";
+  if($field_authors = field_get_items('node', $node, 'field_author')) {
+    $author_ids = array();
+    foreach ($field_authors as $field_author) {
+      $author_ids[] = $field_author['nid'];
+    }
+    $author_nodes = entity_load('node', $author_ids);
+    $authors = array();
+    foreach($author_nodes as $author_node){
+      $authors[] = $author_node->title;
+    }
+    $json['author'] = implode(', ', $authors);
+  }
+
+  //Published
+  $json['date'] = date('Y-m-d H:i:s',$node->published_at);
+
+  if($gal_photo = field_get_items('node', $node, 'field_fresh_gallery_main_image')) {
+    $gal_photo = file_load($gal_photo[0]);
+  } else {
+    if($gal_photo = field_get_items('node', $node, 'field_thumbnail')) {
+      $gal_photo = file_load($gal_photo[0]);
+    }
+  }
+
+  if($gal_photo) {
+    //provide different sizes of image
+    if($tablet_file = image_style_path('large_responsive_tablet', $gal_photo->uri)) {
+      $tablet_url = file_create_url($tablet_file);
+      $json['image']['tablet']['url'] = $tablet_url;
+      $tablet_img_info = getimagesize($tablet_url);
+      $json['image']['tablet']['width'] = $tablet_img_info[0];
+      $json['image']['tablet']['height'] = $tablet_img_info[1];
+    } else {
+      $json['image']['tablet'] = file_create_url($gal_photo->uri);
+    }
+    if($mobile_file = image_style_path('large_responsive_mobile', $gal_photo->uri)) {
+      $mobile_url = file_create_url($mobile_file);
+      $json['image']['mobile']['url'] = $mobile_url;
+      $mobile_img_info = getimagesize($mobile_url);
+      $json['image']['mobile']['width'] = $mobile_img_info[0];
+      $json['image']['mobile']['height'] = $mobile_img_info[1];
+    } else {
+      $json['image']['mobile'] = file_create_url($gal_photo->uri);
+    }
+    $json['image']['desktop']['url'] = file_create_url($gal_photo->uri);
+    $json['image']['desktop']['width'] = $gal_photo->width;
+    $json['image']['desktop']['height'] = $gal_photo->height;
+  } else {
+    $json['image'] = array();
+  }
+
+  $json['url'] = url('node/'.$node->nid, array('query' => array('gid'=>1, 'pid'=>1)));
+  return $json;
+}

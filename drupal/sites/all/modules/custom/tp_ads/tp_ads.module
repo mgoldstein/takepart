@@ -201,6 +201,8 @@ function tp_ads_preprocess_page(&$vars) {
     _tp_ads_insert_leader_ad($vars);
     _tp_ads_insert_header($header_script);
     _tp_ads_insert_more_on_takepart();
+    //Add fresh theme gallery ads
+    _tp_ads_fresh_gallery();
 
     //adds the js
     drupal_add_js(array('tp_ad_settings' => $ads_wrapper), 'setting');
@@ -346,4 +348,15 @@ function _tp_ads_insert_header($header_script) {
               node.parentNode.insertBefore(gads, node);
               })(); \n // -->", array('type' => 'inline', 'scope' => 'header'));
   }
+}
+
+/**
+ * This will add the fresh gallery ad information to js
+ */
+function _tp_ads_fresh_gallery() {
+  $dpf_code = variable_get('takepart_ads_dfp_property_code_gpt', '4355895');
+
+  $fresh_gall = variable_get('tp_ad_fresh_gallery', '');
+
+  drupal_add_js(array('tp_ads_fresh_gallery' => $fresh_gall), 'setting');
 }
