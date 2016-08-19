@@ -1,0 +1,128 @@
+/*******************************
+ * Fresh Gallery Content Type
+ ******************************/
+
+.fresh_gallery-wrapper {
+  .pre-gallery {
+    @include breakpoint($breakpoint-tablet) {
+      margin-bottom: 60px;
+    }
+  }
+  .post-gallery {
+    margin-top: 32px;
+    @include breakpoint($breakpoint-tablet) {
+      margin-top: 45px;
+    }
+  }
+  .pre-gallery .pre-gallery-inner {
+    margin-bottom: 5px;
+    @include breakpoint($breakpoint-tablet) {
+      margin-bottom: 40px;
+    }
+  }
+  .post-gallery .post-gallery-inner {
+    margin-top: 30px;
+      @include breakpoint($breakpoint-tablet) {
+        margin-top: 40px;
+      }
+  }
+  .author-teaser {
+    margin: 2px 0 0 0;
+    text-align: center;
+    @include breakpoint($breakpoint-tablet) {
+      margin: 10px 0;
+    }
+    .author-border {
+      width: 97px;
+      height: 1px;
+      border-bottom: 1px solid $gray;
+      margin: 0 auto;
+      padding-bottom: 17px;
+      @include breakpoint($breakpoint-tablet) {
+        display: none;
+      }
+    }
+    .author-name, .published-at {
+      font-family: $AdelleSans;
+      font-size: 14px;
+      color: $light-black;
+    }
+    .published-at {
+      margin-left: 0;
+      padding: 0;
+    }
+  }
+
+
+  .line-style-2 {
+    max-width: 615px;
+    margin: 10px auto;
+  }
+  .tp_sponsor {
+    margin-bottom: 15px;
+  }
+  .tap-action-wrapper.align-center {
+    margin-top: 25px;
+    @include breakpoint($breakpoint-tablet) {
+      margin-top: 45px;
+    }
+  }
+  .takepart-take-action-widget.align-center {
+    @include breakpoint($breakpoint-tablet) {
+      margin-top: 30px;
+    }
+  }
+}
+
+.hide-child .child {
+  opacity: 0;
+  transition: opacity .15s ease-in;
+}
+
+.hide-child:hover  .child,
+.hide-child:focus  .child,
+.hide-child:active .child {
+   opacity: 1;
+   transition: opacity .15s ease-in;
+}
+
+
+.gallery-unit {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.takepart-gallery {
+  max-width: 970px;
+  margin: 0 auto;
+}
+
+.shareable-image {
+  margin-bottom: 1em;
+
+  img {
+    width: 100%;
+  }
+
+  .image-caption {
+    font-size: 20px;
+    margin-bottom: 0;
+  }
+
+  .image-credit {
+    font-style: italic;
+    font-size: 16px;
+  }
+
+  .image-share-bar {
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    margin: 10px;
+    padding: 3px;
+
+    .image-share-button {
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+  }
+}

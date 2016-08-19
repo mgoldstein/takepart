@@ -16,8 +16,9 @@ function fresh_preprocess_node(&$variables, $hook) {
       //Feature Artcile will use its own template
       if ($node->type == 'feature_article') {
         $variables['theme_hook_suggestion'] = 'node__feature__article__' . $variables['view_mode'];
-      }
-      else {
+      } elseif ($node->type == 'fresh_gallery') {
+        $variables['theme_hook_suggestion'] = 'node__fresh__gallery__' . $variables['view_mode'];
+      } else {
         $variables['theme_hook_suggestion'] = 'node__autoload__' . $variables['view_mode'];
       }
       $function = __FUNCTION__ . '__autoload';
@@ -168,12 +169,17 @@ function fresh_preprocess_node__autoload(&$variables) {
     /* Author */
     $author_vars = array();
     if ($authors = field_get_items('node', $variables['node'], 'field_author')) {
-	 foreach ($authors as $author) {
-	   $author_vars['author'][] = node_load($author['nid']);
-	 }
+      foreach ($authors as $author) {
+        $author_vars['author'][] = node_load($author['nid']);
+	     }
     }
     $author_vars['published_at'] = $variables['node']->published_at;
-    $variables['author_teaser'] = theme('fresh_author_teaser', $author_vars);
+    if ($node_type == 'fresh_gallery') {
+      $variables['author_teaser'] = theme('fresh_gallery_author_teaser', $author_vars);
+    }
+    else {
+      $variables['author_teaser'] = theme('fresh_author_teaser', $author_vars);
+    }
 
     /* Body */
     $body_display = array(
@@ -282,6 +288,24 @@ function fresh_preprocess_node__autoload(&$variables) {
   //add if not empty
   if (!empty($more_block['content'])) {
     $variables['more_on_takepart'] = $more_block['content'];
+  }
+
+  /** Fresh Gallery  Specific fields **/
+  if($node_type == 'fresh_gallery') {
+    /* Json */
+    $variables['gallery_json'] = tp_fresh_gallery_json($variables['node']);
+
+    /* Gallery Prefix */
+    if ($gallery_prefix = field_get_items('node' , $variables['node'] , 'field_fresh_gallery_prefix')) {
+      $variables['gallery_prefix'] = theme('html_tag', array(
+        'element' => array(
+        '#tag' => 'div',
+        '#attributes' => array(
+          'class' => 'gallery-prefix'
+        ),
+        '#value' => $gallery_prefix[0]['value']
+      )));
+    }
   }
 
 }

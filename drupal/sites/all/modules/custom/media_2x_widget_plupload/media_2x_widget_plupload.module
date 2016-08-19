@@ -102,7 +102,7 @@ function media_2x_widget_plupload_field_widget_form(&$form, &$form_state, $field
     unset($element[$element['#max_delta']]);
     $element['#max_delta'] -= 1;
   } while ($real_cardinality != -1 && $element['#max_delta'] >= $real_cardinality);
-  
+
   // Add our JS
   $element['#attached'] = array(
     'js' => array(
@@ -117,7 +117,7 @@ function media_2x_widget_plupload_field_widget_form(&$form, &$form_state, $field
   media_attach_browser_js($element);
 
   $element['#after_build'][] = 'media_2x_widget_plupload_add_js_settings';
-  
+
   // Change the AJAX info for the add-more button.
   $element['add_more']['#ajax']['event'] = 'media_select';
   $element['add_more']['#ajax']['callback'] = 'media_2x_widget_plupload_ajax_callback';
@@ -138,7 +138,9 @@ function media_2x_widget_plupload_field_widget_form(&$form, &$form_state, $field
   $element['#process'] = array(
     'media_2x_widget_plupload_process_widget_form',
   );
-  
+
+  $form['#submit'][] = 'media_2x_widget_plupload_file_metadata_submit';
+
   return $element;
 }
 
@@ -154,6 +156,9 @@ function media_2x_widget_plupload_process_widget_form($element) {
     $element[$i] += element_info('media');
     $element[$i]['#wrapper_id'] = $wrapper_id;
     $element[$i]['#process'][] = 'media_2x_widget_plupload_improve_remove_button';
+    $element[$i]['#process'][] = 'media_2x_widget_plupload_caption';
+    $element[$i]['#process'][] = 'media_2x_widget_plupload_credit';
+    $element[$i]['#process'][] = 'media_2x_widget_plupload_alt_tag';
     $element[$i]['#media_2x_widget_plupload_field_wrapper'] = $element['#array_parents'];
   }
 
@@ -183,12 +188,49 @@ function media_2x_widget_plupload_improve_remove_button($element) {
   return $element;
 }
 
+function media_2x_widget_plupload_alt_tag($element) {
+  $media = field_get_items('file', $element['#file'], 'field_media_alt');
+  $element['media_alt_tag'] = array(
+    '#type' => 'textfield',
+    '#default_value' => (isset($media[0]['value'])?$media[0]['value']:''),
+    '#title' => t('Alt Tag'),
+  );
+
+  return $element;
+}
+
+function media_2x_widget_plupload_caption($element) {
+  $media = field_get_items('file', $element['#file'], 'field_media_caption');
+  $element['media_caption'] = array(
+    '#type'=>'text_format',
+    '#title' => t('Caption'),
+    '#default_value' => (isset($media[0]['value'])?$media[0]['value']:''),
+    '#format'=>'full_html',
+    '#rows' => 2
+  );
+
+  return $element;
+}
+
+function media_2x_widget_plupload_credit($element) {
+  $media = field_get_items('file', $element['#file'], 'field_media_credit');
+  $media = taxonomy_term_load($media[0]['tid']);
+
+  $element['media_credit'] = array(
+    '#type' => 'textfield',
+    '#default_value' => (isset($media->name)?$media->name:''),
+    '#title' => t('Photo Credit'),
+  );
+
+  return $element;
+}
+
 /**
  * Element-process callback.
  */
 function media_2x_widget_plupload_add_js_settings($element) {
   static $processed = array();
-  
+
   // Add the media-options so the add-more button has the correct options for
   // opening the dialog.
   // We use a static variable to prevent we add the settings more than once
@@ -205,7 +247,7 @@ function media_2x_widget_plupload_add_js_settings($element) {
     ), 'setting');
     $processed[$id] = TRUE;
   }
-  
+
   return $element;
 }
 
@@ -214,7 +256,7 @@ function media_2x_widget_plupload_add_js_settings($element) {
  */
 function theme_media_2x_widget_plupload_empty_field($vars) {
   $element = $vars['element'];
-  
+
   $attributes['class'] = array('form-item');
   if (!empty($element['#type'])) {
     $attributes['class'][] = 'form-type-' . strtr($element['#type'], '_', '-');
@@ -231,12 +273,12 @@ function theme_media_2x_widget_plupload_empty_field($vars) {
   $output .= '<div class="description">' . $element['#description'] . "</div>\n";
   $output .= '<div class="clearfix">' . drupal_render($element['add_more']) . '</div>';
   $output .= "</div>\n";
-  
+
   return $output;
 }
 
 /**
- * AJAX callback. 
+ * AJAX callback.
  */
 function media_2x_widget_plupload_ajax_callback($form, $form_state) {
   $button = $form_state['triggering_element'];
@@ -274,13 +316,13 @@ function media_2x_widget_plupload_ajax_submit($form, &$form_state) {
   // Go one level up in the form, to the widgets container.
   $element = drupal_array_get_nested_value($form, $button['#media_2x_widget_plupload_field_wrapper']);
   $value = drupal_array_get_nested_value($form_state['values'], $button['#media_2x_widget_plupload_field_wrapper']);
-  
+
   // Some convinient short-hand variables
   $field_name = $element['#field_name'];
   $langcode = $element['#language'];
   $parents = $element['#field_parents'];
   $field_state = field_form_get_state($parents, $field_name, $langcode, $form_state);
-  
+
   // Remove the 'add more' value, because its not a file.
   unset($value['add_more']);
 
@@ -298,7 +340,7 @@ function media_2x_widget_plupload_ajax_submit($form, &$form_state) {
   // Update the Field State to the new amount of items
   $field_state['items_count'] = count($value);
   field_form_set_state($parents, $field_name, $langcode, $form_state, $field_state);
-  
+
   // Update the Form State to make it seem like it received the new files as an input.
   drupal_array_set_nested_value($form_state['input'], $button['#media_2x_widget_plupload_field_wrapper'], $value);
 
@@ -313,7 +355,7 @@ function media_2x_widget_plupload_add_more_value_handler($form, $form_state, $va
   } else {
     $max_weight = -1;
   }
-  
+
   if (!empty($form_state['input']['media_2x_widget_plupload_fids'])) {
     // Add the selected fids to the list of values
     foreach ($form_state['input']['media_2x_widget_plupload_fids'] AS $fid) {
@@ -329,10 +371,10 @@ function media_2x_widget_plupload_add_more_value_handler($form, $form_state, $va
 function media_2x_widget_plupload_remove_button_value_handler($form, $form_state, $value) {
   $button = $form_state['triggering_element'];
   $delta = $button['#array_parents'][count($button['#array_parents'])-2];
-  
+
   // Remove the unwanted delta..
   unset($value[$delta]);
-  
+
   return $value;
 }
 
@@ -348,4 +390,80 @@ function _media_2x_widget_plupload_filter_empty_value($value) {
  */
 function media_2x_widget_plupload_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &$errors) {
   media_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, $errors);
+}
+
+function media_2x_widget_plupload_file_metadata_submit($form, &$form_state, $node) {
+  $fields = media_2x_widget_plupload_all_fields();
+  //loop through values to find plupload fields
+  foreach($fields AS $field) {
+    if(isset($form_state['values'][$field]) && !empty($form_state['values'][$field])) {
+      foreach($form_state['values'][$field][LANGUAGE_NONE] AS $key => $photo) {
+        if(is_array($photo)) {
+          //Save the file with the new meta information
+          $file = file_load($photo['fid']);
+          unset($file->field_media_caption[LANGUAGE_NONE]);
+          $file->field_media_caption[LANGUAGE_NONE][0] = $photo['media_caption'];
+          unset($file->field_media_alt[LANGUAGE_NONE]);
+          $file->field_media_alt[LANGUAGE_NONE][0]['value'] = $photo['media_alt_tag'];
+          //Check if credit term exists
+          if(isset($photo['media_credit']) && !empty($photo['media_credit'])) {
+            $credit = taxonomy_get_term_by_name($photo['media_credit'], 'photo_credit');
+            unset($file->field_media_credit[LANGUAGE_NONE]);
+            if(!empty($credit)){
+              $file->field_media_credit[LANGUAGE_NONE][0]['tid'] = key($credit);
+            } else {
+              $term = new stdClass();
+              $term->name = $photo['media_credit'];
+              $term->vid = 8;
+              taxonomy_term_save($term);
+              $file->field_media_credit[LANGUAGE_NONE][0]['tid'] = $term->tid;
+            }
+          }
+          file_save($file);
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Helper function to get a list of all fields that use widget plupload
+ */
+function media_2x_widget_plupload_all_fields($reset = false){
+  $data = &drupal_static(__FUNCTION__, NULL, $reset);
+
+  if (!isset($data) || $reset) {
+    if (!$reset && ($cache = cache_get("media_2x_widget_plupload_all_fields")) && !empty($cache->data)) {
+      $data = $cache->data;
+    }
+    else {
+      $inst = field_info_instances();
+      foreach($inst['node'] AS $bundle) {
+        foreach($bundle AS $name => $info) {
+          if($info['widget']['type'] == 'media_2x_widget_plupload') {
+            $data[] = $name;
+          }
+        }
+      }
+      cache_set("media_2x_widget_plupload_all_fields", $data);
+    }
+  }
+
+  return $data;
+}
+
+/**
+ * Implementation of CKEditor default height (http://groups.drupal.org/node/170324)
+ */
+function media_2x_widget_plupload_wysiwyg_editor_settings_alter(&$settings, $context) {
+  if($context['profile']->editor == 'ckeditor') {
+    if(arg(0) == 'node' && arg(2) == 'edit') {
+      $node = node_load(arg(1));
+      if($node->type == 'gallery') {
+        $settings['height'] = 200;
+      }
+    } else if(arg(0) == 'node' && arg(1) == 'add' && (arg(2) == 'openpublish-photo-gallery'|| arg(2) == 'gallery')) {
+      $settings['height'] = 200;
+    }
+  }
 }

@@ -212,6 +212,36 @@ function tp_ads_admin_form() {
     } while (!$break);
   }
 
+  $fresh_gall = variable_get('tp_ad_fresh_gallery', '');
+  $form['tp_ad_gallery']['tp_ad_fresh_gallery'] = array(
+    '#tree' => TRUE,
+    '#type' => 'fieldset',
+    '#title' => t('TP Fresh Gallery Ads'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE
+  );
+  $form['tp_ad_gallery']['tp_ad_fresh_gallery']['tp_ad_single_tag'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Single Page Ad Tag'),
+    '#default_value' => (isset($fresh_gall['tp_ad_single_tag'])?$fresh_gall['tp_ad_single_tag']:''),
+  );
+  $form['tp_ad_gallery']['tp_ad_fresh_gallery']['tp_ad_single_freq'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Single Page Ad Tag Frequency'),
+    '#default_value' => (isset($fresh_gall['tp_ad_single_freq'])?$fresh_gall['tp_ad_single_freq']:''),
+  );
+  $form['tp_ad_gallery']['tp_ad_fresh_gallery']['tp_ad_full_tag'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Full Page Ad Tag'),
+    '#default_value' => (isset($fresh_gall['tp_ad_full_tag'])?$fresh_gall['tp_ad_full_tag']:''),
+  );
+  $form['tp_ad_gallery']['tp_ad_fresh_gallery']['tp_ad_single_refresh'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Full Page Ad Tag Refresh Rate(ms)'),
+    '#default_value' => (isset($fresh_gall['tp_ad_single_refresh'])?$fresh_gall['tp_ad_single_refresh']:''),
+  );
+
+
   //adds custom submit handler to unset values that are empty
   $form['#submit'][] = 'tp_ads_admin_form_submit';
   //$form['#validate'][] = 'tp_ads_admin_form_validate';
@@ -257,6 +287,9 @@ function tp_ads_admin_form_validate(&$form, &$form_state) {
   //Lets check the leader ads first
   foreach($form_state['values'] AS $name => $values) {
     if(is_array($values)){
+      if(strpos($name, 'gallery') !== FALSE) {
+        continue;
+      }
       //The leader ads are a single array the articles are a double array
       if(strpos($name,'leader') !== FALSE) {
         $checkid = $values['ad_gpd_id'];
@@ -319,6 +352,9 @@ function tp_ads_admin_form_validate(&$form, &$form_state) {
             $dtcheckid = $arti['desktop']['ad_gpd_id'];
 
             foreach($form_state['values'] AS $name2 => $values2) {
+              if(strpos($name2, 'gallery') !== FALSE) {
+                continue;
+              }
               //Do not want to check the id on itself
               if($name2 != $artn) {
                 //The leader ads are a single array the articles are a double array
