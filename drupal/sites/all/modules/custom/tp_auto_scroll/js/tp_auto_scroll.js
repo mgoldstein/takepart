@@ -68,6 +68,35 @@
 			 });
 		    });
 
+      if($(".node-fresh-gallery").length != 0 && !$(".node-fresh-gallery").hasClass("gallery-processed")) {
+
+        $('.node-fresh-gallery').each(function (index) {
+          // Build the object we need.
+          if (!$(this).hasClass('gallery-processed')) {
+            var galleryData = {
+              "title": $(this).attr('data-tp-og-title'),
+              "adTag": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_tag,
+              "adFrequency": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_freq
+            };
+          }
+
+          var jsonId = $(this).attr('data-ddl-page-id');
+          galleryData.images = eval('gallery_' + jsonId + '_json.images');
+          var galleryElement = $(this).find('.gallery-wrapper')[0];
+          console.log(galleryElement);
+
+          if (typeof React === 'undefined') {
+            $.getScript( "/sites/all/libraries/fresh-gallery/gallery.js" )
+            .done(function( script, textStatus ) {
+              showImageGallery(galleryData, galleryElement);
+              $(this).addClass("gallery-proccesssed");
+            })
+            .fail(function( jqxhr, settings, exception ) {
+              console.error('failed to grab the gallery script');
+            });
+          }
+        });
+      }
 		    /* There are new Tap Widgets available on the page.  Delay these calls until page is active */
 		    window.newTapWidgets = true;
 
@@ -121,7 +150,7 @@
 
 		//For each article
 		$('article').each(function (index, value) {
-
+      //console.log("article loop");
 		  /** Update active Article **/
 		  var articleTop = $(this).offset().top;
 		  var articleBottom = articleTop + $(this).height();
