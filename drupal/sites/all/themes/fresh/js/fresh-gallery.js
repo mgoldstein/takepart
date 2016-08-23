@@ -22,6 +22,14 @@
 
       showImageGallery(galleryData, galleryElement);
     }
+
+    if (!digitalData.page.pageInfo.gallery) {
+      digitalData.page.pageInfo.gallery = {};
+    }
+    
+    digitalData.page.pageInfo.gallery.slideCount = galleryData.images.length;
+    digitalData.page.pageInfo.gallery.viewType = 'Single Page';
+    digitalData.page.pageInfo.gallery.shareType = 'Gallery';
   });
 
 })(jQuery, Drupal, this, this.document);
