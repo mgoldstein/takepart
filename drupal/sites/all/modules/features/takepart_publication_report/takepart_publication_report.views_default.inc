@@ -289,6 +289,35 @@ select#edit-field-series-tid {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Node: Published at */
+  $handler->display->display_options['fields']['published_at']['id'] = 'published_at';
+  $handler->display->display_options['fields']['published_at']['table'] = 'publication_date';
+  $handler->display->display_options['fields']['published_at']['field'] = 'published_at';
+  $handler->display->display_options['fields']['published_at']['label'] = '';
+  $handler->display->display_options['fields']['published_at']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['published_at']['date_format'] = 'short';
+  /* Field: Content: Type */
+  $handler->display->display_options['fields']['type']['id'] = 'type';
+  $handler->display->display_options['fields']['type']['table'] = 'node';
+  $handler->display->display_options['fields']['type']['field'] = 'type';
+  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Author(s) */
+  $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
+  $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
+  $handler->display->display_options['fields']['field_author']['label'] = '';
+  $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
+  $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
   $handler->display->display_options['path'] = 'admin/reports/publication-report';
   $handler->display->display_options['menu']['type'] = 'normal';
   $handler->display->display_options['menu']['title'] = 'Publication Report';
@@ -317,20 +346,21 @@ select#edit-field-series-tid {
   $handler->display->display_options['fields']['published_at']['id'] = 'published_at';
   $handler->display->display_options['fields']['published_at']['table'] = 'publication_date';
   $handler->display->display_options['fields']['published_at']['field'] = 'published_at';
-  $handler->display->display_options['fields']['published_at']['label'] = '';
+  $handler->display->display_options['fields']['published_at']['label'] = 'Date Published';
   $handler->display->display_options['fields']['published_at']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['published_at']['date_format'] = 'short';
+  $handler->display->display_options['fields']['published_at']['second_date_format'] = 'search_api_facetapi_YEAR';
   /* Field: Content: Type */
   $handler->display->display_options['fields']['type']['id'] = 'type';
   $handler->display->display_options['fields']['type']['table'] = 'node';
   $handler->display->display_options['fields']['type']['field'] = 'type';
-  $handler->display->display_options['fields']['type']['label'] = '';
+  $handler->display->display_options['fields']['type']['label'] = 'Content Type';
   $handler->display->display_options['fields']['type']['element_label_colon'] = FALSE;
   /* Field: Field: Topic */
   $handler->display->display_options['fields']['field_topic']['id'] = 'field_topic';
   $handler->display->display_options['fields']['field_topic']['table'] = 'field_data_field_topic';
   $handler->display->display_options['fields']['field_topic']['field'] = 'field_topic';
-  $handler->display->display_options['fields']['field_topic']['label'] = '';
+  $handler->display->display_options['fields']['field_topic']['label'] = 'Primary Topic';
   $handler->display->display_options['fields']['field_topic']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_topic']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_topic']['delta_limit'] = '1';
@@ -339,17 +369,24 @@ select#edit-field-series-tid {
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
   $handler->display->display_options['fields']['title']['field'] = 'title';
-  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['label'] = 'Headline';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
   /* Field: Content: Author(s) */
   $handler->display->display_options['fields']['field_author']['id'] = 'field_author';
   $handler->display->display_options['fields']['field_author']['table'] = 'field_data_field_author';
   $handler->display->display_options['fields']['field_author']['field'] = 'field_author';
-  $handler->display->display_options['fields']['field_author']['label'] = '';
   $handler->display->display_options['fields']['field_author']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_author']['type'] = 'node_reference_plain';
   $handler->display->display_options['fields']['field_author']['delta_offset'] = '0';
+  /* Field: Content: Path */
+  $handler->display->display_options['fields']['path']['id'] = 'path';
+  $handler->display->display_options['fields']['path']['table'] = 'node';
+  $handler->display->display_options['fields']['path']['field'] = 'path';
+  $handler->display->display_options['fields']['path']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['path']['alter']['text'] = 'http://www.takepart.com[path]';
+  $handler->display->display_options['fields']['path']['element_label_colon'] = FALSE;
   $handler->display->display_options['path'] = 'admin/reports/publication-report/export';
   $handler->display->display_options['displays'] = array(
     'page' => 'page',
