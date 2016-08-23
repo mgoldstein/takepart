@@ -19,9 +19,9 @@
         var new_ie = user_agent.indexOf('Trident/'); //ie11
 
         //force to use flash. this will address issue with ie and youtube
-        if ((old_ie > -1) || (new_ie > -1) || (MAC && FF)) {
-          settings['primary'] = 'flash';
-        }
+        // if ((old_ie > -1) || (new_ie > -1) || (MAC && FF)) {
+        //   settings['primary'] = 'flash';
+        // }
 
         //we will force it to use html5 as primary
         if (settings['chromeless']) {
