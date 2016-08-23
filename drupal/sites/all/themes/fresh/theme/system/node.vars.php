@@ -123,8 +123,6 @@ function fresh_preprocess_node__autoload(&$variables) {
           } else {
             $derivative_uri = image_style_path('large', $file->uri);
 
-            $success        = file_exists($derivative_uri) || image_style_create_derivative(image_style_load('large'), $file->uri, $derivative_uri);
-
             $img_vars['path']  = file_create_url($derivative_uri);
 
             $variables['media'] .= theme('lazyloader_image', $img_vars);

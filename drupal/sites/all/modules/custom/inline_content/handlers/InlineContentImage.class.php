@@ -57,7 +57,6 @@ class InlineContentImage extends InlineContentReplacementController {
           }
           else {
             $derivative_uri = image_style_path('large', $file->uri);
-            $success        = file_exists($derivative_uri) || image_style_create_derivative(image_style_load('large'), $file->uri, $derivative_uri);
             $img_vars['path']  = file_create_url($derivative_uri);
             $image = theme('lazyloader_image', $img_vars);
           }
@@ -65,7 +64,6 @@ class InlineContentImage extends InlineContentReplacementController {
       }else{
         /* If no format exists, use the default 'large' image style */
         $derivative_uri = image_style_path('large', $file->uri);
-        $success        = file_exists($derivative_uri) || image_style_create_derivative(image_style_load('large'), $file->uri, $derivative_uri);
         $img_vars['path']  = file_create_url($derivative_uri);
         $image = theme('lazyloader_image', $img_vars);
       }
