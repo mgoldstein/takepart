@@ -175,10 +175,7 @@ function tpf_content_photo_gallery_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'node_options_openpublish_photo_gallery';
-  $strongarm->value = array(
-    0 => 'moderation',
-    1 => 'revision',
-  );
+  $strongarm->value = array();
   $export['node_options_openpublish_photo_gallery'] = $strongarm;
 
   $strongarm = new stdClass();
