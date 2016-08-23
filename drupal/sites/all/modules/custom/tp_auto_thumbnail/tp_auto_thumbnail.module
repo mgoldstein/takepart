@@ -31,5 +31,12 @@ function tp_auto_thumbnail_node_presave($node) {
         $node->field_thumbnail = $node->field_flashcard_main_image;
       }
     }
+    //Fresh Gallery
+    if ($node->type == 'fresh_gallery') {
+      //check if main image exists
+      if(isset($node->field_fresh_gallery_main_image[LANGUAGE_NONE]) && !empty($node->field_fresh_gallery_main_image[LANGUAGE_NONE])) {
+        $node->field_thumbnail = $node->field_fresh_gallery_main_image;
+      }
+    }
   }
 }

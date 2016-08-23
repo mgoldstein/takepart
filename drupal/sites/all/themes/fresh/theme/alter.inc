@@ -11,12 +11,16 @@
 function fresh_page_alter(&$page){
   $node = menu_get_object();
   $type = $node -> type;
+  $path = drupal_get_path('theme', 'fresh');
   if (in_array($type, array('openpublish_article', 'video', 'video_playlist', 'feature_article', 'fresh_gallery'))) {
-      $path = drupal_get_path('theme', 'fresh');
       $page['content']['#attached']['css'][] = $path.'/css/fresh.css';
   }
-
-
+  if (in_array($type, array('fresh_gallery'))) {
+    $page['content']['#attached']['js'][] = $path.'/js/fresh-gallery.js';
+    $page['content']['#attached']['js'][] = 'sites/all/libraries/react/react.min.js';
+    $page['content']['#attached']['js'][] = 'sites/all/libraries/react/react-dom.min.js';
+    $page['content']['#attached']['js'][] = 'sites/all/libraries/fresh-gallery/gallery.js';
+  }
 }
 
 /**

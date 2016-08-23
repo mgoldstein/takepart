@@ -33,7 +33,7 @@ function article_support_next_story($node, $type) {
     $previous = $query->execute()->fetchAssoc();
   }
 
-  if ( !$previous && $type == 'openpublish_photo_gallery' ) {
+  if ( !$previous && ($type == 'openpublish_photo_gallery' || $type == 'fresh_gallery') ) {
     $topic = field_get_items('node', $node, 'field_topic');
 
     if ($topic !== FALSE) {
@@ -57,7 +57,7 @@ function article_support_next_story($node, $type) {
     }
   }
 
-  if ( !$previous && $type == 'openpublish_photo_gallery' ) {
+  if ( !$previous && ($type == 'openpublish_photo_gallery' || $type == 'fresh_gallery') ) {
     // Fall back on chronological ordering
     $query = db_select('node', 'n')
       ->fields('n', array('nid', 'title'))
@@ -92,7 +92,7 @@ function article_support_node_view($node, $view_mode, $langcode) {
     $node->content['#additional_variables'] = array(
       'next_article' => article_support_next_story($node, $node->type),
     );
-  } elseif ($node->type === 'openpublish_photo_gallery' && $view_mode === 'full') {
+  } elseif (($node->type === 'openpublish_photo_gallery' || $node->type === 'fresh_gallery') && $view_mode === 'full') {
     // Pass the additional variables through to the preprocessor.
     $node->content['#additional_variables'] = array(
       'next_gallery' => article_support_next_story($node, $node->type),

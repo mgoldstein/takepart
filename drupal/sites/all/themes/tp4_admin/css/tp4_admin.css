@@ -29,3 +29,26 @@ select.form-select {
 input[type="text"]:disabled {
     background: #dddddd;
 }
+
+.field-widget-media-2x-widget-plupload .preview.launcher {
+  float: left;
+}
+
+.field-widget-media-2x-widget-plupload table .text-format-wrapper,
+.field-widget-media-2x-widget-plupload table .form-type-textfield {
+  margin-left: 250px;
+}
+
+.field-widget-media-2x-widget-plupload table .ctools-modal-media-file-edit,
+.field-widget-media-2x-widget-plupload table .button.launcher{
+  display: none;
+}
+
+.field-widget-media-2x-widget-plupload .media-widget.form-item.form-wrapper {
+  position: relative;
+}
+
+.field-widget-media-2x-widget-plupload table input.button-remove {
+  position: absolute;
+  top: 250px;
+}
