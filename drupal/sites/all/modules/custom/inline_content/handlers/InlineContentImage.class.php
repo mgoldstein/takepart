@@ -48,22 +48,27 @@ class InlineContentImage extends InlineContentReplacementController {
           if ($replacement->field_ic_alignment['und'][0]['value'] == 'full_width') {
             if (isset($node_type) && $node_type == 'feature_article') {
               $mapping = picture_mapping_load('feature_main_image');
+              $file->breakpoints = picture_get_mapping_breakpoints($mapping);
+              $file->attributes = array(
+                'class' => array('inline-image')
+              );
+              $image = theme('picture', (array) $file);
             }
           }
           else {
-            $mapping = picture_mapping_load('large');
+            $derivative_uri = image_style_path('large', $file->uri);
+            $success        = file_exists($derivative_uri) || image_style_create_derivative(image_style_load('large'), $file->uri, $derivative_uri);
+            $img_vars['path']  = file_create_url($derivative_uri);
+            $image = theme('lazyloader_image', $img_vars);
           }
         }
       }else{
         /* If no format exists, use the default 'large' image style */
-        $mapping = picture_mapping_load('large');
+        $derivative_uri = image_style_path('large', $file->uri);
+        $success        = file_exists($derivative_uri) || image_style_create_derivative(image_style_load('large'), $file->uri, $derivative_uri);
+        $img_vars['path']  = file_create_url($derivative_uri);
+        $image = theme('lazyloader_image', $img_vars);
       }
-
-      $file->breakpoints = picture_get_mapping_breakpoints($mapping);
-      $file->attributes = array(
-        'class' => array('inline-image')
-      );
-      $image= theme('picture', (array) $file);
 
       /* Render caption if it exists */
       if($caption = field_get_items('file', $file, 'field_media_caption')){
