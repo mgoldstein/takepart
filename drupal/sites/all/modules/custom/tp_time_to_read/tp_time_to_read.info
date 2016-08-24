@@ -1,0 +1,4 @@
+name = Time To Read
+description = This will calculate time to read an piece of content.
+core = 7.x
+version = 7.x-1.0
