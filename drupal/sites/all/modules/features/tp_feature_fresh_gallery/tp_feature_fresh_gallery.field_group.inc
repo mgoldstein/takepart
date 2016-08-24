@@ -21,7 +21,7 @@ function tp_feature_fresh_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Autoload Settings',
-    'weight' => '21',
+    'weight' => '24',
     'children' => array(
       0 => 'field_autoload',
       1 => 'field_auto_free_tagged',
@@ -49,7 +49,7 @@ function tp_feature_fresh_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Editorial Info',
-    'weight' => '24',
+    'weight' => '27',
     'children' => array(
       0 => 'field_due_date',
       1 => 'field_run_date',
@@ -108,7 +108,7 @@ function tp_feature_fresh_gallery_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '19',
+    'weight' => '20',
     'children' => array(
       0 => 'field_topic_box',
       1 => 'field_topic',

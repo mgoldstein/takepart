@@ -53,7 +53,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Autoload Settings',
-    'weight' => '23',
+    'weight' => '24',
     'children' => array(
       0 => 'field_autoload',
       1 => 'field_auto_free_tagged',
@@ -81,7 +81,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Editorial Info',
-    'weight' => '22',
+    'weight' => '23',
     'children' => array(
       0 => 'field_assigned_editor',
       1 => 'field_due_date',
@@ -111,7 +111,7 @@ function tp_feature_feature_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Inline Replacements',
-    'weight' => '8',
+    'weight' => '9',
     'children' => array(
       0 => 'field_inline_replacements',
     ),
