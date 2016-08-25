@@ -13,7 +13,7 @@ define("TAKEPART_GALLERY_SUPPORT_TEMPLATE_PATH", drupal_get_path('module', 'take
 function takepart_gallery_support_help($path, $arg) {
   switch ($path) {
     case 'admin/help#takepart_gallery_support':
-      return '<p>' . t('Support module for TP galleries.') . '</p>';    
+      return '<p>' . t('Support module for TP galleries.') . '</p>';
   }
 }
 
@@ -66,7 +66,7 @@ function takepart_gallery_support_theme() {
       'node' => NULL,
     ),
     'template' => 'gallery-cover-slide',
-    'path' => TAKEPART_GALLERY_SUPPORT_TEMPLATE_PATH, 
+    'path' => TAKEPART_GALLERY_SUPPORT_TEMPLATE_PATH,
   );
 
   $theme_hooks['gallery_content'] = array(
@@ -74,7 +74,7 @@ function takepart_gallery_support_theme() {
       'node' => NULL,
     ),
     'template' => 'gallery-content',
-    'path' => TAKEPART_GALLERY_SUPPORT_TEMPLATE_PATH, 
+    'path' => TAKEPART_GALLERY_SUPPORT_TEMPLATE_PATH,
   );
 
 
@@ -98,7 +98,7 @@ function template_preprocess_gallery_cover_slide(&$variables) {
     $cover_slide = field_get_items('node', $node, 'field_thumbnail');
   }
   $alt_text = $node->title;
-  
+
   //checks to see if there's a cover slide if not then dont add
   if (!empty($cover_slide)) {
     if ($alt_items = field_get_items('file', $cover_slide[0]['file'], 'field_media_alt')) {
@@ -159,7 +159,7 @@ function template_preprocess_gallery_content(&$variables) {
       $authors .= l($author_node->title, 'node/' . $author_node->nid, array(
         'attributes' => array(
             'rel' => 'author'
-            ) 
+            )
         ) );
       $authors .= '</span>';
       // add commas for lists of 3 or greater ($delta is zero-indexed)
@@ -233,22 +233,27 @@ function template_preprocess_gallery_content(&$variables) {
 
     if ($next_gallery_node->field_gallery_main_image) {
       $cover_slide = field_get_items('node', $next_gallery_node, 'field_gallery_main_image');
-    } else {
+    } elseif ($next_gallery_node->field_thumbnail) {
       $cover_slide = field_get_items('node', $next_gallery_node, 'field_thumbnail');
+    } else {
+      //Pull the first image in gallery
+      $cover_slide = field_get_items('node', $next_gallery_node, 'field_gallery_images');
     }
-
-    $cover_slide = file_load($cover_slide[0]['fid']);
 
     $alt_text = $node->title;
-    if ($alt_items = field_get_items('file', $cover_slide, 'field_media_alt')) {
-      $alt_text = drupal_render(field_view_value('file', $cover_slide, 'field_media_alt', $alt_items[0]));
+    if(!empty($cover_slide)) {
+      $cover_slide = file_load($cover_slide[0]['fid']);
+      if ($alt_items = field_get_items('file', $cover_slide, 'field_media_alt')) {
+        $alt_text = drupal_render(field_view_value('file', $cover_slide, 'field_media_alt', $alt_items[0]));
+      }
+      $slide['image'] = theme('image_style', array(
+        'path' => $cover_slide->uri,
+        'style_name' => 'tp_gallery_slide',
+        'alt' => $alt_text,
+      ));
+    } else {
+      $slide['image'] = '';
     }
-
-    $slide['image'] = theme('image_style', array(
-      'path' => $cover_slide->uri,
-      'style_name' => 'tp_gallery_slide',
-      'alt' => $alt_text,
-    ));
 
     $items = field_get_items('node', $next_gallery_node, 'body');
     $caption = field_view_value('node', $next_gallery_node, 'body', $items[0]);
