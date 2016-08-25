@@ -152,7 +152,7 @@ select#edit-field-series-tid {
     'openpublish_article' => 'openpublish_article',
     'campaign' => 'campaign',
     'feature_article' => 'feature_article',
-    'flashcard' => 'flashcard',
+    'fresh_gallery' => 'fresh_gallery',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
