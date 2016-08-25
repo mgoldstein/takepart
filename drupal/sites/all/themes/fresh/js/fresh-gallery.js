@@ -5,7 +5,8 @@
  */
 (function ($, Drupal, window, document, undefined) {
   $(document).ready(function () {
-    var adMeta = Drupal.settings.tpAutoScroll[0]['auto_updates'][window.location.href]['targets'];
+    var adMeta = Drupal.settings.tpAutoScroll[0]['auto_updates'][window.location.origin + window.location.pathname]['targets'];
+
     // Build the object we need.
     var galleryData = {
       "title": $('.node-fresh-gallery').attr('data-tp-og-title'),
