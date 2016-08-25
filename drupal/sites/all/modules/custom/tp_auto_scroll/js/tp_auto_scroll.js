@@ -69,14 +69,17 @@
 		    });
 
       if($(".node-fresh-gallery").length != 0 && !$(".node-fresh-gallery").hasClass("gallery-processed")) {
-
+        var page_url = $('.node-fresh-gallery').data('tpOgUrl');
+        var adMeta = Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'];
         $('.node-fresh-gallery').each(function (index) {
+
           // Build the object we need.
           if (!$(this).hasClass('gallery-processed')) {
             var galleryData = {
               "title": $(this).attr('data-tp-og-title'),
               "adTag": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_tag,
-              "adFrequency": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_freq
+              "adFrequency": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_freq,
+              "adMeta": adMeta
             };
           }
 
