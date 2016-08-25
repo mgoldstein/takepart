@@ -83,7 +83,7 @@
           if (!digitalData.page.infoInfo.gallery) {
             digitalData.page.pageInfo.gallery = {};
           }
-          
+
           digitalData.page.pageInfo.gallery.slideCount = galleryData.images.length;
           digitalData.page.pageInfo.gallery.viewType = 'Single Page';
           digitalData.page.pageInfo.gallery.shareType = 'Gallery';
@@ -292,6 +292,9 @@
     }
     if (typeof description !== 'undefined') {
 	 $("meta[property='og:description']").attr("content", description);
+   $("meta[name='description']").attr("content", description);
+   $("meta[name='abstract']").attr("content", description);
+   $("meta[name='twitter:description").attr("content", description);
     }
 
     //updates the social config
