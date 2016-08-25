@@ -89,7 +89,11 @@
 
 .gallery-unit {
   text-align: center;
-  margin-bottom: 1em;
+  margin: 4em 0;
+
+  h5 {
+    @extend .ad-label;
+  }
 }
 
 .takepart-gallery {
