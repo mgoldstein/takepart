@@ -80,6 +80,10 @@
             };
           }
 
+          var jsonId = $(this).attr('data-ddl-page-id');
+          galleryData.images = eval('gallery_' + jsonId + '_json.images');
+          var galleryElement = $(this).find('.gallery-wrapper')[0];
+
           if (!digitalData.page.pageInfo.gallery) {
             digitalData.page.pageInfo.gallery = {};
           }
@@ -87,11 +91,6 @@
           digitalData.page.pageInfo.gallery.slideCount = galleryData.images.length;
           digitalData.page.pageInfo.gallery.viewType = 'Single Page';
           digitalData.page.pageInfo.gallery.shareType = 'Gallery';
-
-          var jsonId = $(this).attr('data-ddl-page-id');
-          galleryData.images = eval('gallery_' + jsonId + '_json.images');
-          var galleryElement = $(this).find('.gallery-wrapper')[0];
-          console.log(galleryElement);
 
           if (typeof React === 'undefined') {
             $.getScript( "/sites/all/libraries/fresh-gallery/gallery.js" )
