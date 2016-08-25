@@ -21,6 +21,7 @@
       var galleryElement = $(".gallery-wrapper").get(0);
 
       showImageGallery(galleryData, galleryElement);
+      $('.node-fresh-gallery').addClass("gallery-processed");
     }
 
     if (!digitalData.page.pageInfo.gallery) {
