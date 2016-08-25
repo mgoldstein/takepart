@@ -20,7 +20,7 @@
       <?php print $variables['advertisement']; ?>
     </div>
   <?php endif; ?>
-  <div class="fresh-inner-content-wrapper">
+  <div class="fresh-inner-content-wrapper clearfix">
     <article class="col-xs-10 col-xs-offset-1 clearfix <?php print $classes; ?>"<?php print $attributes; ?>>
       <div class="pre-gallery">
         <div class="section">
@@ -82,11 +82,11 @@
         <?php endif; ?>
         </div>
       </div>
-      <?php if (!empty($variables['more_on_takepart'])): ?>
-        <?php print $variables['more_on_takepart']; ?>
-      <?php endif; ?>
     </article>
   </div>
+  <?php if (!empty($variables['more_on_takepart'])): ?>
+    <?php print $variables['more_on_takepart']; ?>
+  <?php endif; ?>
 </div>
 
 <?php if (!empty($variables['auto-scroll'])): ?>

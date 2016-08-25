@@ -133,7 +133,7 @@ function tp_cic_add_owlcarousel() {
 
 function tp_cic_preprocess_node(&$variables) {
 	$node = $variables['node'];
-	if ($node->type == 'openpublish_article' || $node->type == 'video' || $node->type == 'video_playlist' || $node->type == 'feature_article') {
+	if (in_array($node->type , array('openpublish_article', 'video', 'video_playlist', 'feature_article', 'fresh_gallery'))) {
 		tp_cic_add_owlcarousel();
 	}
 }
