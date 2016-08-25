@@ -97,7 +97,7 @@
             $.getScript( "/sites/all/libraries/fresh-gallery/gallery.js" )
             .done(function( script, textStatus ) {
               showImageGallery(galleryData, galleryElement);
-              $(this).addClass("gallery-proccesssed");
+              $(this).addClass("gallery-processed");
             })
             .fail(function( jqxhr, settings, exception ) {
               console.error('failed to grab the gallery script');
