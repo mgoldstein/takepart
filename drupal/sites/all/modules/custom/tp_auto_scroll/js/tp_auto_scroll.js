@@ -68,43 +68,52 @@
 			 });
 		    });
 
-      if($(".node-fresh-gallery").length != 0 && !$(".node-fresh-gallery").hasClass("gallery-processed")) {
-
+      //Fresh gallery autoloaded
+      if($(".node-fresh-gallery").length != 0 ) {
         $('.node-fresh-gallery').each(function (index) {
-          // Build the object we need.
-          if (!$(this).hasClass('gallery-processed')) {
+          if (!$(this).hasClass("gallery-processed")) {
+            var page_url = $(this).data('tpOgUrl');
+            var adMeta = Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'];
+            // Build the object we need.
             var galleryData = {
               "title": $(this).attr('data-tp-og-title'),
               "adTag": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_tag,
-              "adFrequency": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_freq
+              "adFrequency": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_freq,
+              "adMeta": adMeta
             };
-          }
 
-          if (!digitalData.page.infoInfo.gallery) {
-            digitalData.page.pageInfo.gallery = {};
-          }
+            var jsonId = $(this).attr('data-ddl-page-id');
+            galleryData.images = eval('gallery_' + jsonId + '_json.images');
+            var galleryElement = $(this).find('.gallery-wrapper')[0];
 
-          digitalData.page.pageInfo.gallery.slideCount = galleryData.images.length;
-          digitalData.page.pageInfo.gallery.viewType = 'Single Page';
-          digitalData.page.pageInfo.gallery.shareType = 'Gallery';
+            if (!digitalData.page.pageInfo.gallery) {
+              digitalData.page.pageInfo.gallery = {};
+            }
 
-          var jsonId = $(this).attr('data-ddl-page-id');
-          galleryData.images = eval('gallery_' + jsonId + '_json.images');
-          var galleryElement = $(this).find('.gallery-wrapper')[0];
-          console.log(galleryElement);
+            digitalData.page.pageInfo.gallery.slideCount = galleryData.images.length;
+            digitalData.page.pageInfo.gallery.viewType = 'Single Page';
+            digitalData.page.pageInfo.gallery.shareType = 'Gallery';
 
-          if (typeof React === 'undefined') {
-            $.getScript( "/sites/all/libraries/fresh-gallery/gallery.js" )
-            .done(function( script, textStatus ) {
+            //First Fresh gallery on the page - ajax load all the required js
+            if (typeof showImageGallery === 'undefined') {
+              $.getScript( "/sites/all/libraries/fresh-gallery/gallery.js" )
+              .done(function( script, textStatus ) {
+                showImageGallery(galleryData, galleryElement);
+                $(this).addClass("gallery-processed");
+              })
+              .fail(function( jqxhr, settings, exception ) {
+                console.error('failed to grab the gallery script');
+              });
+            }
+            else {
+              //Node 1 is a fresh gallery
               showImageGallery(galleryData, galleryElement);
-              $(this).addClass("gallery-proccesssed");
-            })
-            .fail(function( jqxhr, settings, exception ) {
-              console.error('failed to grab the gallery script');
-            });
+              $(this).addClass("gallery-processed");
+            }
           }
         });
       }
+
 		    /* There are new Tap Widgets available on the page.  Delay these calls until page is active */
 		    window.newTapWidgets = true;
 
@@ -279,16 +288,16 @@
   window.update_tp_social_media = function (title, url, image, description) {
     //changes to update the social links
     if (typeof title !== 'undefined') {
-      $("meta[property='og:title']").attr("content", title);
-      $("meta[name='twitter:title']").attr("content", title);
+	 $("meta[property='og:title']").attr("content", title);
+	 $("meta[name='twitter:title']").attr("content", title);
     }
     if (typeof url !== 'undefined') {
-      $("meta[property='og:url']").attr("content", url);
-      $("meta[name='twitter:url']").attr("content", url);
-      $("link[rel='canonical']").attr("href", url);
+	 $("meta[property='og:url']").attr("content", url);
+	 $("meta[name='twitter:url']").attr("content", url);
+	 $("link[rel='canonical']").attr("href", url);
     }
     if (typeof image !== 'undefined') {
-      $("meta[property='og:image']").attr("content", image);
+	 $("meta[property='og:image']").attr("content", image);
     }
     if (typeof description !== 'undefined') {
       $("meta[property='og:description']").attr("content", description);
