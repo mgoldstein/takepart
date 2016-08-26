@@ -89,7 +89,11 @@
 
 .gallery-unit {
   text-align: center;
-  margin-bottom: 1em;
+  margin: 4em 0;
+
+  h5 {
+    @extend .ad-label;
+  }
 }
 
 .takepart-gallery {
@@ -105,13 +109,21 @@
   }
 
   .image-caption {
-    font-size: 20px;
-    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 23px;
+
+
+    p {
+      margin-bottom: 0;
+      margin-top: 10px;
+    }
   }
 
   .image-credit {
     font-style: italic;
-    font-size: 16px;
+    font-size: 14px;
+    margin-bottom: 26px;
+    margin-top: 0;
   }
 
   .image-share-bar {

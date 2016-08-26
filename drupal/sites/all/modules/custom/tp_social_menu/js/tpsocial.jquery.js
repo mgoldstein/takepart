@@ -206,6 +206,10 @@
             //Delay for tracking
             setTimeout(function(e) {
               $window.trigger(cpre + 'click', data);
+              //Facebook tracking for keywee use
+              if(typeof fbq !== 'undefined') {
+                fbq('track', 'Lead');
+              }
               upsShare(data.name);
             }, 200);
 
