@@ -68,45 +68,52 @@
 			 });
 		    });
 
-      if($(".node-fresh-gallery").length != 0 && !$(".node-fresh-gallery").hasClass("gallery-processed")) {
+      //Fresh gallery autoloaded
+      if($(".node-fresh-gallery").length != 0 ) {
         var page_url = $('.node-fresh-gallery').data('tpOgUrl');
         var adMeta = Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'];
         $('.node-fresh-gallery').each(function (index) {
-
-          // Build the object we need.
-          if (!$(this).hasClass('gallery-processed')) {
+          if (!$(this).hasClass("gallery-processed")) {
+            // Build the object we need.
             var galleryData = {
               "title": $(this).attr('data-tp-og-title'),
               "adTag": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_tag,
               "adFrequency": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_freq,
               "adMeta": adMeta
             };
-          }
 
-          var jsonId = $(this).attr('data-ddl-page-id');
-          galleryData.images = eval('gallery_' + jsonId + '_json.images');
-          var galleryElement = $(this).find('.gallery-wrapper')[0];
+            var jsonId = $(this).attr('data-ddl-page-id');
+            galleryData.images = eval('gallery_' + jsonId + '_json.images');
+            var galleryElement = $(this).find('.gallery-wrapper')[0];
 
-          if (!digitalData.page.pageInfo.gallery) {
-            digitalData.page.pageInfo.gallery = {};
-          }
+            if (!digitalData.page.pageInfo.gallery) {
+              digitalData.page.pageInfo.gallery = {};
+            }
 
-          digitalData.page.pageInfo.gallery.slideCount = galleryData.images.length;
-          digitalData.page.pageInfo.gallery.viewType = 'Single Page';
-          digitalData.page.pageInfo.gallery.shareType = 'Gallery';
+            digitalData.page.pageInfo.gallery.slideCount = galleryData.images.length;
+            digitalData.page.pageInfo.gallery.viewType = 'Single Page';
+            digitalData.page.pageInfo.gallery.shareType = 'Gallery';
 
-          if (typeof React === 'undefined') {
-            $.getScript( "/sites/all/libraries/fresh-gallery/gallery.js" )
-            .done(function( script, textStatus ) {
+            //First Fresh gallery on the page - ajax load all the required js
+            if (typeof showImageGallery === 'undefined') {
+              $.getScript( "/sites/all/libraries/fresh-gallery/gallery.js" )
+              .done(function( script, textStatus ) {
+                showImageGallery(galleryData, galleryElement);
+                $(this).addClass("gallery-processed");
+              })
+              .fail(function( jqxhr, settings, exception ) {
+                console.error('failed to grab the gallery script');
+              });
+            }
+            else {
+              //Node 1 is a fresh gallery
               showImageGallery(galleryData, galleryElement);
               $(this).addClass("gallery-processed");
-            })
-            .fail(function( jqxhr, settings, exception ) {
-              console.error('failed to grab the gallery script');
-            });
+            }
           }
         });
       }
+
 		    /* There are new Tap Widgets available on the page.  Delay these calls until page is active */
 		    window.newTapWidgets = true;
 
