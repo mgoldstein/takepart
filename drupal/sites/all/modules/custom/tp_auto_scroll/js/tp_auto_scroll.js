@@ -72,8 +72,14 @@
       if($(".node-fresh-gallery").length != 0 ) {
         $('.node-fresh-gallery').each(function (index) {
           if (!$(this).hasClass("gallery-processed")) {
-            var page_url = $(this).data('tpOgUrl');
-            var adMeta = Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'];
+            var page_url = $('.node-fresh-gallery').data('tpOgUrl');
+            if (typeof Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url] == 'undefined') {
+              var adMeta = null;
+            }
+            else {
+              var adMeta = Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'];
+            }
+
             // Build the object we need.
             var galleryData = {
               "title": $(this).attr('data-tp-og-title'),

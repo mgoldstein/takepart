@@ -8,7 +8,13 @@
     if ($('.node-fresh-gallery').length > 0) {
       // Build the object we need.
       var page_url = $('.node-fresh-gallery').data('tpOgUrl');
-      var adMeta = Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'];
+
+      if (typeof Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url] == 'undefined') {
+        var adMeta = null;
+      }
+      else {
+        var adMeta = Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'];
+      }
 
       var galleryData = {
         "title": $('.node-fresh-gallery').attr('data-tp-og-title'),
