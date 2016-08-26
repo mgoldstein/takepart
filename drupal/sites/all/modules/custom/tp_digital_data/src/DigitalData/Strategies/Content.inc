@@ -230,6 +230,11 @@ class ddContent extends ddDefaultPage {
       $element_impression[] = 'campaign content carousel';
     }
 
+    //Time to read
+    if($timeRead = field_get_items('node', $node, 'field_time_to_read')) {
+      $data['page']['pageInfo']['timeToRead'] = $timeRead[0]['value'];
+    }
+
      //Element Impression
     if (!empty($element_impression)) {
       $element_impression = implode(',', $element_impression);

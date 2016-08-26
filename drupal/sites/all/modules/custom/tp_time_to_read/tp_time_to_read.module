@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * hook node presave
+ * When saving the node re calculate the time to read
+ */
+function tp_time_to_read_node_presave($node) {
+  if (in_array($node->type , array('openpublish_article', 'video', 'video_playlist', 'feature_article', 'fresh_gallery'))) {
+    if($read_or = field_get_items('node', $node, 'field_time_to_read_override')) {
+      if(!$read_or[0]['value']) {
+        $time = _tp_time_to_read_calc($node->body[LANGUAGE_NONE][0]['value'], $node);
+        $node->field_time_to_read[LANGUAGE_NONE][0] = array('value' => $time);
+        field_attach_update('node', $node);
+      }
+    }
+  }
+}
+
+/**
+ * hook preprocess node
+ * If the time does not exist calculate and save it.
+ */
+function tp_time_to_read_preprocess_node(&$vars) {
+  $node = $vars['node'];
+  if (in_array($node->type , array('openpublish_article', 'video', 'video_playlist', 'feature_article', 'fresh_gallery'))) {
+    $read_or = field_get_items('node', $node, 'field_time_to_read_override');
+    if(empty($read_or) || !$read_or[0]['value']) {
+      if(!($time_to_read = field_get_items('node', $node, 'field_time_to_read'))) {
+        $time = _tp_time_to_read_calc($node->body[LANGUAGE_NONE][0]['value'], $node);
+        $node->field_time_to_read[LANGUAGE_NONE][0] = array('value' => $time);
+        node_save($node);
+      }
+    }
+  }
+}
+
+/**
+ * This function will return the word count
+ */
+function _tp_time_to_read_calc($value, $node) {
+  $wpm = 275;
+  $ictime = 8;
+  $inline_time = $time = $inline_count = 0;
+  //Using php function to calculate word count
+  $count = str_word_count(strip_tags($value));
+  //Get the time in seconds
+  $time = ceil(($count/$wpm)*60);
+  //Grab the inline content to count image and media
+  if($inline = field_get_items('node', $node, 'field_inline_replacements')) {
+    foreach($inline as $i) {
+      $load = entity_load('inline_content', array($i['target_id']));
+      if($load[$i['target_id']]->type == 'image' || $load[$i['target_id']]->type == 'media') {
+        $inline_count++;
+      }
+    }
+  }
+  //Finish up the calculations
+  $inline_time = $inline_count * $ictime;
+  $fulltime = gmdate("H:i:s",($time+$inline_time));
+  return $fulltime;
+}
