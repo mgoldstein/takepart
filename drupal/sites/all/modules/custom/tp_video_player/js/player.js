@@ -19,9 +19,10 @@
         var new_ie = user_agent.indexOf('Trident/'); //ie11
 
         //force to use flash. this will address issue with ie and youtube
-        // if ((old_ie > -1) || (new_ie > -1) || (MAC && FF)) {
-        //   settings['primary'] = 'flash';
-        // }
+        if ((old_ie > -1) || (new_ie > -1) || (MAC && FF)) {
+          //settings['primary'] = 'flash';
+          window.forceMp4 = true;
+        }
 
         //we will force it to use html5 as primary
         if (settings['chromeless']) {
@@ -57,7 +58,6 @@
         }
         else {
           jwplayer.key = Drupal.settings.tp_video_player.key;
-
           //init the playlist after processing
           tp_video_playlist_init(element, settings, index);
         }
@@ -187,7 +187,6 @@
           }
         });
       }
-
       //removes the playlist slider as there are no elements
       if (settings.playlist == '') {
         //removes class
@@ -197,9 +196,35 @@
         return;
       }
 
-      //if it has passed all conditions then render a jwplayer
-      jwplayer(element).setup(settings);
-      tp_init_jwplayer_callbacks(element, index, settings);
+      //Update the playlist to include mp4 extension for FF-Mac & IE.
+      //This addresses the issue with FF falling back to Flash on HLS.
+      var mp4_playlist = settings.playlist;
+      if (window.forceMp4 && typeof mp4_playlist == 'string' && mp4_playlist.includes('xml')) {
+        //Load the xml file
+        $.ajax({
+          url: mp4_playlist,
+          success: function(data) {
+            var item = $(data).find('item');
+            //Find the source attr with mp4 extension
+            item.children().each(function(index, el) {
+              var fileAttr = $(el).attr('file')
+              if (fileAttr && fileAttr.indexOf('mp4') > -1) {
+                delete settings.playlist;
+                settings.file = fileAttr;
+              }
+            });
+            jwplayer(element).setup(settings);
+            tp_init_jwplayer_callbacks(element, index, settings);
+          }
+        });
+      }
+      else {
+        //if it has passed all conditions then render a jwplayer
+        jwplayer(element).setup(settings);
+        tp_init_jwplayer_callbacks(element, index, settings);
+      }
+
+
     });
   }
 
