@@ -83,6 +83,7 @@
             // Build the object we need.
             var galleryData = {
               "title": $(this).attr('data-tp-og-title'),
+              "subhead": $(this).attr('data-tp-og-description'),
               "adTag": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_tag,
               "adFrequency": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_freq,
               "adMeta": adMeta
