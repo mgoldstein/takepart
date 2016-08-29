@@ -19,7 +19,7 @@
         var new_ie = user_agent.indexOf('Trident/'); //ie11
 
         //force to use flash. this will address issue with ie and youtube
-        if ((old_ie > -1) || (new_ie > -1) || (MAC && FF)) {
+        if ((old_ie > -1) || (new_ie > -1) || FF) {
           //settings['primary'] = 'flash';
           window.forceMp4 = true;
         }
@@ -196,7 +196,7 @@
         return;
       }
 
-      //Update the playlist to include mp4 extension for FF-Mac & IE.
+      //Update the playlist to include mp4 extension for FF & IE.
       //This addresses the issue with FF falling back to Flash on HLS.
       var mp4_playlist = settings.playlist;
       if (window.forceMp4 && typeof mp4_playlist == 'string' && mp4_playlist.includes('xml')) {
