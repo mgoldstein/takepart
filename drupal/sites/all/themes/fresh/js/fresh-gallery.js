@@ -18,6 +18,7 @@
 
       var galleryData = {
         "title": $('.node-fresh-gallery').attr('data-tp-og-title'),
+        "subhead": $('.node-fresh-gallery').attr('data-tp-og-description'),
         "adTag": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_tag,
         "adFrequency": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_freq,
         "adMeta": adMeta,
