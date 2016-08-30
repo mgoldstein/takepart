@@ -10,7 +10,6 @@
 //        if (!window.s || !window.s.Media) {
 //          delete settings['sitecatalyst'];
 //        }
-        // Use the flash player in Firefox on Macs.
         var FF = !(window.mozInnerScreenX == null);
         var MAC = (navigator.platform.indexOf('Mac')>=0);
         var win = (navigator.platform.indexOf('Win') >= 0);
@@ -18,10 +17,13 @@
         var old_ie = user_agent.indexOf('MSIE '); //ie10 and lower
         var new_ie = user_agent.indexOf('Trident/'); //ie11
 
-        //force to use flash. this will address issue with ie and youtube
-        if ((old_ie > -1) || (new_ie > -1) || FF) {
-          //settings['primary'] = 'flash';
+        //Force mp4 on FF (Mac && PC)
+        if (FF) {
           window.forceMp4 = true;
+        }
+        //force to use flash on IE 11 and older versions
+        if ((old_ie > -1) || (new_ie > -1)) {
+          settings['primary'] = 'flash';
         }
 
         //we will force it to use html5 as primary
