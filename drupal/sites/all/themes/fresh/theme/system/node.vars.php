@@ -105,13 +105,9 @@ function fresh_preprocess_node__autoload(&$variables) {
             $variables['media'] .= '<div class = "feature-image">';
           }
         }
-        if(module_exists('picture')) {
+        if(module_exists('picture') && $node_type == 'feature_article') {
           //Featured articles require original file path
-          if($node_type == 'feature_article') {
-            $mapping = picture_mapping_load('feature_main_image');
-          }else {
-            $mapping = picture_mapping_load('large');
-          }
+          $mapping = picture_mapping_load('feature_main_image');
           $file->breakpoints = picture_get_mapping_breakpoints($mapping);
           $file->attributes = array('class' => 'main-image');
           $file->alt = '';
@@ -119,16 +115,17 @@ function fresh_preprocess_node__autoload(&$variables) {
         } else {
           if($node_type == 'feature_article') {
             $image_url = file_create_url($file->uri);
-          }else {
-            $image_url = image_style_url('large', $file->uri);
+            $variables['media'] .= theme('image', array(
+              'path' => $image_url, 'attributes' => array(
+                'class' => 'main-image'
+              )
+            ));
+          } else {
+            $derivative_uri = image_style_path('large', $file->uri);
+            $img_vars['path']  = file_create_url($derivative_uri);
+            $variables['media'] .= theme('lazyloader_image', $img_vars);
           }
-          $variables['media'] .= theme('image', array(
-            'path' => $image_url, 'attributes' => array(
-              'class' => 'main-image'
-            )
-          ));
         }
-
         if($node_type == 'feature_article') {
           $variables['media'] .= '</div>';
         }

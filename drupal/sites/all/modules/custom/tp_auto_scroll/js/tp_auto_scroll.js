@@ -58,6 +58,8 @@
 			 Drupal.behaviors.tp_video_player.attach();
 		    }
 
+        Drupal.behaviors.lazyloader.attach(document, Drupal.settings);
+
               // Load comments box on button click for mobile display
 		    $('a.comments-count').once('FBComments', function () {
 			 $('a.comments-count').on('click', function (e) {
@@ -400,21 +402,21 @@
  * Pause the ambient video if less than 70% of it is in viewport.
  */
 function pauseAmbientVid() {
-  $('.has-videoBG.video-created video').each(function (index) {
-    var vid = $('.has-videoBG.video-created video').get(index);
+  jQuery('.has-videoBG.video-created video').each(function (index) {
+    var vid = jQuery('.has-videoBG.video-created video').get(index);
     if (typeof vid !== 'undefined') {
-	 var vid_parent = $(this).parent().parent();
+	 var vid_parent = jQuery(this).parent().parent();
 	 var is_paused = vid.paused;
 	 if (vid_parent.isInViewport(null, 0.7)) {
-	   if (is_paused || $(this).hasClass('paused')) {
+	   if (is_paused || jQuery(this).hasClass('paused')) {
 		vid.play();
-		$(this).removeClass('paused');
+		jQuery(this).removeClass('paused');
 	   }
 	 }
 	 else {
-	   if (!is_paused && !$(this).hasClass('paused')) {
+	   if (!is_paused && !jQuery(this).hasClass('paused')) {
 		vid.pause();
-		$(this).addClass('paused');
+		jQuery(this).addClass('paused');
 	   }
 	 }
     }
