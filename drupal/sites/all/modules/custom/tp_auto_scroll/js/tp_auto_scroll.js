@@ -58,7 +58,9 @@
 			 Drupal.behaviors.tp_video_player.attach();
 		    }
 
-        Drupal.behaviors.lazyloader.attach(document, Drupal.settings);
+        if(typeof Drupal.behaviors.lazyloader.attach === 'function') {
+          Drupal.behaviors.lazyloader.attach(document, Drupal.settings);
+        }
 
               // Load comments box on button click for mobile display
 		    $('a.comments-count').once('FBComments', function () {
