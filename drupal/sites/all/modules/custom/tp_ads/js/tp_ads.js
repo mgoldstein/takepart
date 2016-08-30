@@ -234,7 +234,7 @@
               //Set Overrides for Optimizely larger promo units
               adSlot = "Large_Native_Promo_Unit_280x186";
               ad_value.ad_slot = adSlot;
-              ad_value.height = "186";
+              ad_value.height = "235";
               ad_value.width = "280";
               ad_value.javascript = ad_value.javascript.split("Native_Promo_Unit_1").join(adSlot);
               javascript = ad_value.javascript;
