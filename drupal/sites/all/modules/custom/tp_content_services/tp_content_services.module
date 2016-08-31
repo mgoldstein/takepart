@@ -142,7 +142,7 @@ function tp_content_services_notify_service($node, $insup = '') {
       }
     }
   }
-  $url = url('node/'.$node->nid, array('absolute' => TRUE));
+  
   $json = array(
       "content_id" => $node->nid,
       "url" => url('node/'.$node->nid, array('absolute' => TRUE)),
