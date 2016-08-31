@@ -200,6 +200,7 @@
       var player_sharing = settings.sharing;
       var share_link = settings.sharing.link;
       var vid_title = settings.title;
+      vid_title = $('<div/>').html(vid_title).text();
       var email_icon = '//' + document.location.host + '/sites/all/themes/base/images/jwp_share_email.png'
 
       player_sharing.sites = [ 'facebook', 'twitter', {
