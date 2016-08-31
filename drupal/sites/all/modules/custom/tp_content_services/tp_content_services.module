@@ -128,6 +128,7 @@ function tp_content_services_notify_service($node, $insup = '') {
   }
 
   $json = array(
+      "content_id" => $node->nid,
       "url" => url('node/'.$node->nid, array('absolute' => TRUE)),
       "title" => (string)$node->title,
       "publish_date" => (string)$pub_date,
