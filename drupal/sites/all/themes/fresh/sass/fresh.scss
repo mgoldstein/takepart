@@ -181,10 +181,7 @@ blockquote.pullquote {
 }
 
 .inline-interactive-campaign-promo {
-  display: none;
-  @include breakpoint($breakpoint-tablet) {
-    display: block;
-  }
+  display: block;
   margin: 0 30px 20px 0;
   .stories-item-1,
   .stories-item-2 {

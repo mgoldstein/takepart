@@ -24,7 +24,7 @@
           print '<div class="stories-item stories-item-'.$k.' '.($cic['status'] == 0?'node-unpublished':'').'">';
           $item = theme_image(array('path' => $cic['thumbnail'],'alt' => $cic['title']));
           $item .= '<p class="stories-title">'.$cic['title'].'</p>';
-          print l($item, 'node/'.$cic['nid'], array('html'=>TRUE));
+          print l($item, 'node/'.$cic['nid'], array('html'=>TRUE, 'attributes' => array('class'=>'stories-item-link')));
           print '</div>';
         endforeach;
       ?>
