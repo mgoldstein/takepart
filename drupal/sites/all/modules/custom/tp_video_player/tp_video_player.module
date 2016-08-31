@@ -19,7 +19,7 @@ require_once __DIR__ . '/tp_video_player.player_settings.inc';
  */
 function tp_video_player_init() {
   // Add the CDN hosted JW Player to all pages.
-  drupal_add_js('//video.takepart.com/libraries/OZqsK4RS.js', array(
+  drupal_add_js('//content.jwplatform.com/libraries/OZqsK4RS.js', array(
       'type' => 'external',
       'scope' => 'header',
       'weight' => 5,
