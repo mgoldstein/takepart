@@ -175,7 +175,7 @@
 
         // Bind an event to the link
         $link
-        .on('touchstart click', (function (srvc, $parent, $lnk) {
+        .on('click', (function (srvc, $parent, $lnk) {
 
           return function (e) {
             //Disabled links are added during scroll

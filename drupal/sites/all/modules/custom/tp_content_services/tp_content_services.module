@@ -143,9 +143,9 @@ function tp_content_services_notify_service($node, $insup = '') {
     }
   }
   $url = url('node/'.$node->nid, array('absolute' => TRUE));
-  $url = str_replace('takepart.local', 'qa.takepart.com', $url);
   $json = array(
-      "url" => $url,
+      "content_id" => $node->nid,
+      "url" => url('node/'.$node->nid, array('absolute' => TRUE)),
       "title" => (string)$node->title,
       "publish_date" => (string)$pub_date,
       "published" => (string)$node->status,
@@ -268,7 +268,6 @@ function _tp_content_services_get_authors($node) {
 function tp_content_services_add_tags(&$node) {
   //add nodes url
   $url = urlencode(url('node/'.$node->nid, array('absolute' => true)));
-  $url = str_replace('takepart.local', 'qa.takepart.com', $url);
   $access = variable_get('content_services_access_token', '');
   $api_url = variable_get('takepart_api_domain', '');
   $api_endpoint = variable_get('content_services_tags_endpoint','');
