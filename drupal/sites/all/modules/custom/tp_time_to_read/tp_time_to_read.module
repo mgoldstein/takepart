@@ -10,7 +10,6 @@ function tp_time_to_read_node_presave($node) {
       if(!$read_or[0]['value']) {
         $time = _tp_time_to_read_calc($node->body[LANGUAGE_NONE][0]['value'], $node);
         $node->field_time_to_read[LANGUAGE_NONE][0] = array('value' => $time);
-        field_attach_update('node', $node);
       }
     }
   }
