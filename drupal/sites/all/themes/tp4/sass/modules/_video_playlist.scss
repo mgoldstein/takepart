@@ -1,15 +1,15 @@
 .chromeless-video {
   width: 70%;
   margin: 0 auto;
-  
+
   .jwplayer {
     border-bottom: 1px solid #000;
   }
-  
+
   .chromeless-controls {
     height: auto;
     overflow: auto;
-    
+
     a {
       &.pause {
         background-image: url(/sites/all/themes/base/images/pause_play_stop_black.png);
@@ -21,14 +21,15 @@
         float: left;
         background-position: 86px 0px;
         margin-right: 15px;
+        margin-top: 10px;
       }
-      
+
       &.stop-autoplay {
         font-size: 12px;
       }
     }
   }
-  
+
   &.playing {
     .chromeless-controls {
       a.pause {
@@ -70,7 +71,7 @@
   background: #555;
   padding: 15px 7px;
   margin-bottom: 30px;
-  
+
   @include breakpoint($breakpoint-tablet) {
     padding: 10px;
     padding-bottom: 15px; /* per Sasoon's comments */
@@ -82,11 +83,11 @@
   -webkit-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.75);
-  
+
   @include breakpoint($breakpoint-desktop) {
     padding: 5px;
   }
-  
+
   .bxslider {
     display: none;
   }
@@ -130,16 +131,16 @@ h3.video-title{
   padding-bottom: 5px; /* per Sasoon's comment */
   .bx-viewport {
     background: transparent;
-    
+
     .bx-wrapper {
       padding: 0 !important;
-      
+
       .bx-controls {
         display: none;
       }
     }
   }
-  
+
   .bx-controls {
     .bx-controls-direction {
       a {
@@ -152,7 +153,7 @@ h3.video-title{
       }
     }
   }
-  
+
   .bx-next {
     right: 0;
     &:hover{
@@ -179,7 +180,7 @@ h3.video-title{
       }
     }
   }
-  
+
   &.large {
     .bx-wrapper {
       a {
@@ -284,7 +285,7 @@ h3.video-title{
       font-size: 14px;
       line-height: 18px;
     }
-    
+
     .promo-headline:after {
       content: '\00a0 \00a0';
       display: inline;
@@ -306,7 +307,7 @@ h3.video-title{
 /* Playlist responsive variations based on 'breakpoints' */
 .playlist.small{
   padding: 5px 6px 10px 6px;
-  
+
   .video-playlist{
     padding: 0;
     overflow-y: auto;
@@ -351,7 +352,7 @@ body {
     .inline-content-playlist {
       max-width: 500px;
       width: 100%;
-      
+
       &.align-full {
         max-width: none;
         @include breakpoint($breakpoint-desktop) {
