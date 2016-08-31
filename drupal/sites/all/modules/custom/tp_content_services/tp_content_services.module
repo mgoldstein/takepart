@@ -33,7 +33,7 @@ function tp_content_services_node_insert($node) {
  * hook_node_update
  */
 function tp_content_services_node_update($node) {
-  if(in_array($node->type, array('openpublish_article','feature_article','openpublish_photo_gallery','video','fresh_gallery'))) {
+  if(in_array($node->type, array('openpublish_article','feature_article','video','fresh_gallery'))) {
     //There are 2 different processes. One that has to do with the current revision and the other as normal.
     if(isset($node->workbench_moderation['updating_live_revision']) && $node->workbench_moderation['updating_live_revision']){
       //Called when unpublished or published
@@ -51,6 +51,14 @@ function tp_content_services_node_update($node) {
           }
         }
       }
+    }
+  }
+  //Gallerys does not deal with moderation
+  if($node->type == 'openpublish_photo_gallery') {
+    $ognode = node_load($node->nid, NULL, FALSE);
+    if($ognode->status != 0 || $node->status != 0) {
+      //Notify the services of a node change
+      tp_content_services_notify_service($node, 'update');
     }
   }
 }
