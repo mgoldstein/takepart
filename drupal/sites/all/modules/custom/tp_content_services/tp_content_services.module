@@ -33,16 +33,9 @@ function tp_content_services_node_insert($node) {
  * hook_node_update
  */
 function tp_content_services_node_update($node) {
-  if(in_array($node->type, array('openpublish_article','feature_article','openpublish_photo_gallery','video','fresh_gallery'))) {
+  if(in_array($node->type, array('openpublish_article','feature_article','video','fresh_gallery'))) {
     //There are 2 different processes. One that has to do with the current revision and the other as normal.
     if(isset($node->workbench_moderation['updating_live_revision']) && $node->workbench_moderation['updating_live_revision']){
-      //Called when unpublished or published
-      if($node->workbench_moderation['current']->published == 1 ||
-        (isset($node->workbench_moderation['current']->unpublishing) && $node->workbench_moderation['current']->unpublishing == 1)){
-        //Notify the services of a node change
-        tp_content_services_notify_service($node, 'update');
-      }
-
       if($node->workbench_moderation['current']->published == 1) {
         if($auto_free_tag = field_get_items('node', $node, 'field_auto_free_tagged')) {
           if($auto_free_tag[0]['value'] == 0) {
@@ -51,6 +44,29 @@ function tp_content_services_node_update($node) {
           }
         }
       }
+      //Called when unpublished or published
+      if($node->workbench_moderation['current']->published == 1 ||
+        (isset($node->workbench_moderation['current']->unpublishing) && $node->workbench_moderation['current']->unpublishing == 1)){
+        //Notify the services of a node change
+        tp_content_services_notify_service($node, 'update');
+      }
+    }
+  }
+  //Gallerys does not deal with moderation
+  if($node->type == 'openpublish_photo_gallery') {
+    //Add tags only on publish
+    if($node->status == 1) {
+      if($auto_free_tag = field_get_items('node', $node, 'field_auto_free_tagged')) {
+        if($auto_free_tag[0]['value'] == 0) {
+          tp_content_services_add_tags($node);
+          tp_content_services_set_autotag($node);
+        }
+      }
+    }
+    $ognode = node_load($node->nid, NULL, FALSE);
+    if($ognode->status != 0 || $node->status != 0) {
+      //Notify the services of a node change
+      tp_content_services_notify_service($node, 'update');
     }
   }
 }
@@ -126,7 +142,7 @@ function tp_content_services_notify_service($node, $insup = '') {
       }
     }
   }
-
+  
   $json = array(
       "content_id" => $node->nid,
       "url" => url('node/'.$node->nid, array('absolute' => TRUE)),
@@ -300,6 +316,11 @@ function tp_content_services_add_tags(&$node) {
       }
     }
     field_attach_update('node', $node);
+    watchdog('Content Notify Service', 'Attempted to Add terms: %keywords',
+       array(
+         '%keywords' => $json->data,
+       ),
+       WATCHDOG_NOTICE);
   } else {
     watchdog('Content Notify Service', 'Failed to add Free Tags to %nid:%title. Status: %status. Request: %request',
       array(
