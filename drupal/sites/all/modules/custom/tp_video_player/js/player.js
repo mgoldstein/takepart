@@ -10,7 +10,6 @@
 //        if (!window.s || !window.s.Media) {
 //          delete settings['sitecatalyst'];
 //        }
-        // Use the flash player in Firefox on Macs.
         var FF = !(window.mozInnerScreenX == null);
         var MAC = (navigator.platform.indexOf('Mac')>=0);
         var win = (navigator.platform.indexOf('Win') >= 0);
@@ -18,8 +17,12 @@
         var old_ie = user_agent.indexOf('MSIE '); //ie10 and lower
         var new_ie = user_agent.indexOf('Trident/'); //ie11
 
-        //force to use flash. this will address issue with ie and youtube
-        if ((old_ie > -1) || (new_ie > -1) || (MAC && FF)) {
+        //Force mp4 on FF (Mac && PC)
+        if (FF) {
+          window.forceMp4 = true;
+        }
+        //force to use flash on IE 11 and older versions
+        if ((old_ie > -1) || (new_ie > -1)) {
           settings['primary'] = 'flash';
         }
 
@@ -57,7 +60,6 @@
         }
         else {
           jwplayer.key = Drupal.settings.tp_video_player.key;
-
           //init the playlist after processing
           tp_video_playlist_init(element, settings, index);
         }
@@ -187,7 +189,6 @@
           }
         });
       }
-
       //removes the playlist slider as there are no elements
       if (settings.playlist == '') {
         //removes class
@@ -197,9 +198,50 @@
         return;
       }
 
-      //if it has passed all conditions then render a jwplayer
-      jwplayer(element).setup(settings);
-      tp_init_jwplayer_callbacks(element, index, settings);
+      //Add a new custom share functionality to replace email
+      var player_sharing = settings.sharing;
+      var share_link = settings.sharing.link;
+      var vid_title = settings.title;
+      vid_title = $('<div/>').html(vid_title).text();
+      var email_icon = '//' + document.location.host + '/sites/all/themes/base/images/jwp_share_email.png'
+
+      player_sharing.sites = [ 'facebook', 'twitter', {
+          icon: email_icon,
+          src: function() {
+            window.location.href = 'mailto:?subject=' + vid_title + '&body=' + share_link;
+          },
+          label: 'email'
+      }];
+
+      //Update the playlist to include mp4 extension for FF & IE.
+      //This addresses the issue with FF falling back to Flash on HLS.
+      var mp4_playlist = settings.playlist;
+      if (window.forceMp4 && typeof mp4_playlist == 'string' && mp4_playlist.includes('xml')) {
+        //Load the xml file
+        $.ajax({
+          url: mp4_playlist,
+          success: function(data) {
+            var item = $(data).find('item');
+            //Find the source attr with mp4 extension
+            item.children().each(function(index, el) {
+              var fileAttr = $(el).attr('file')
+              if (fileAttr && fileAttr.indexOf('mp4') > -1) {
+                delete settings.playlist;
+                settings.file = fileAttr;
+              }
+            });
+            jwplayer(element).setup(settings);
+            tp_init_jwplayer_callbacks(element, index, settings);
+          }
+        });
+      }
+      else {
+        //if it has passed all conditions then render a jwplayer
+        jwplayer(element).setup(settings);
+        tp_init_jwplayer_callbacks(element, index, settings);
+      }
+
+
     });
   }
 
