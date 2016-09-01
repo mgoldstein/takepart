@@ -183,7 +183,7 @@ class ddContent extends ddDefaultPage {
     //Field pageNumber for autoloaded content only
     $is_autoloaded = field_get_items('node' , $node , 'field_autoload');
     $is_autoloaded = $is_autoloaded[0]['value'];
-    $autoloaded_content = array('openpublish_article' ,'video', 'video_playlist' , 'feature_article');
+    $autoloaded_content = array('openpublish_article' ,'video', 'video_playlist' , 'feature_article' , 'fresh_gallery');
     if (in_array($node->type , $autoloaded_content) && $is_autoloaded) {
         $data['page']['pageNumber'] = "page 1";
     }
