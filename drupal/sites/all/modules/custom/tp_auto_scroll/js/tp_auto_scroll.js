@@ -14,6 +14,7 @@
 	 var alreadyloading = false;
 	 var page = -1;
 	 var page_limit = settings.limit - 1;
+   window.forceAutoload = false;
 
 	 /* Make a copy of the page data in the DDL for use when the user scrolls to the top */
 	 digitalData.pageInititial = digitalData.page;
@@ -24,8 +25,23 @@
 	   var window_bottom = $window.scrollTop() + $window.height();
 	   var last_article = $('article').last().parent().height() / 2;
 
+    //Promote the next article after 1 minute unless the user scrolls to the next article faster
+    //Adding this snippet inside the scroll to prevent race condition with Optimizely
+    //recirculation-test class is set via Optimizely
+    if ($('body').hasClass('recirculation-test')) {
+      //Run the timer only once
+      if (!$('body').hasClass('recirculation-timer')) {
+        setTimeout(function() {
+          if (!$('body').hasClass('next-node-promoted')) {
+            window.forceAutoload = true;
+          }
+        },60000);
+      }
+      $('body').addClass('recirculation-timer');
+    }
+
 	   /* when the page scrolls to within 480px of #next-article */
-	   if (window_bottom + last_article + $('#footer').height() > elTop && page < page_limit) {
+	   if ((window_bottom + last_article + $('#footer').height() > elTop && page < page_limit) || window.forceAutoload) {
 
 		if (alreadyloading == false) {
 		  alreadyloading = true;
@@ -36,7 +52,7 @@
 		    /* Not returning a json object (Drupal is slow at that) so let's convert it here */
 		    data = jQuery.parseJSON(data);
 
-		    //Set the article autoload page number
+        //Set the article autoload page number
 		    var pageNumber = page + 3;
 		    data.ddl.eventInfo['autoloadCount'] = 'page ' + pageNumber;
 
@@ -130,6 +146,12 @@
 
 		    alreadyloading = false;
 		    page++;
+
+        //Promote next article
+        //recirculation-test set via optimizely
+        if ($('body').hasClass('recirculation-test') && !$('body').hasClass('next-node-promoted')) {
+          promptNextNode();
+        }
 		  });
 		}
 	   }
@@ -178,7 +200,6 @@
 
 		//For each article
 		$('article').each(function (index, value) {
-      //console.log("article loop");
 		  /** Update active Article **/
 		  var articleTop = $(this).offset().top;
 		  var articleBottom = articleTop + $(this).height();
@@ -212,6 +233,18 @@
 		    if ($('.feature-image.has-videoBG.video-created').length != 0) {
 			 pauseAmbientVid();
 		    }
+
+        //Remove next node promo if still visible when we get to second node.
+        if (index == 1 && $('#prompt-next-article.show').length != 0) {
+          if (window.isMobile) {
+            jQuery('#prompt-next-article').removeClass('show').slideUp();
+          }
+          else {
+            jQuery('#prompt-next-article').removeClass('show').animate({
+              'right' : '-320'
+            });
+          }
+        }
 
 		    /** Update the URL **/
 		    /* if article is active and data-tp-url != url, update it */
@@ -464,6 +497,81 @@ jQuery.fn.isInViewport = function(x, y) {
         left : Math.min(1, ( bounds.right - viewport.left ) / width),
         right : Math.min(1, ( viewport.right - bounds.left ) / width)
     };
-    window.temp = deltas;
+
     return (deltas.left * deltas.right) >= x && (deltas.top * deltas.bottom) >= y;
+}
+
+/*
+ * Displays a prompt that link to the next autoloaded node for an A/B test
+ */
+function promptNextNode() {
+  jQuery('article').each(function (index) {
+    if (index == 1) {
+      $this = jQuery(this);
+      //Next node's info
+      var promo_title = $this.data('tp-og-title');
+      var promo_img = $this.data('tp-og-image');
+      var promo_nid = $this.data('ddl-page-id');
+
+      //Create markup
+      //TODO: if this A/B test is succuessful, we should move this to a template
+      var markup = '';
+      markup += '<div id= "prompt-next-article">';
+      markup +=   '<div class = "prompt-next-article-inner">';
+      markup +=     '<div class="i-close-x"></div>';
+      markup +=     '<img src="' + promo_img + '">';
+      markup +=     '<div class="prompt-content">';
+      markup +=       '<p>Next story</p>';
+      markup +=       '<h1 class= "title">' + promo_title + '</h1>';
+      markup +=       '<a href="javascript:gotoNextdNode(' + promo_nid + ')" class="jump desktop">Jump to next story</a>';
+      markup +=       '<a href="javascript:gotoNextdNode(' + promo_nid + ')" class="jump mobile">JUMP</a>';
+
+      markup +=     '</div>'
+      markup +=    '</div>';
+      markup += '</div>';
+
+      //Add the markup to the page
+      jQuery('.main-content .container').before(markup);
+      jQuery('#prompt-next-article').addClass('show').animate({
+        'right' : '0'
+      }, 400);
+      jQuery('body').addClass('next-node-promoted');
+      return;
+    }
+  });
+
+  //close next article promo
+  jQuery('#prompt-next-article .i-close-x').click(function() {
+    if (window.isMobile) {
+      jQuery('#prompt-next-article').removeClass('show').slideUp();
+    }
+    else {
+      jQuery('#prompt-next-article').removeClass('show').animate({
+        'right' : '-320'
+      });
+    }
+  });
+  //Optimizley tracking - next article promo is displayed
+  window['optimizely'] = window['optimizely'] || [];
+  window.optimizely.push(["trackEvent", "next_article_promo"]);
+
+  window.forceAutoload = false;
+}
+
+/*
+ * Slide to the next node in autoload. Remove the promo banner
+ */
+function gotoNextdNode(nid) {
+  if (window.isMobile) {
+    jQuery('#prompt-next-article').removeClass('show').slideUp();
+  }
+  else {
+    jQuery('#prompt-next-article').removeClass('show').animate({
+      'right' : '-320'
+    });
+  }
+
+  jQuery('html, body').animate({
+    scrollTop: jQuery('article[data-ddl-page-id="' + nid + '"]').offset().top
+  }, 1000);
 }
