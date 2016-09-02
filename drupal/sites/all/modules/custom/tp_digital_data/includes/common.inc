@@ -153,6 +153,17 @@ function tp_digital_data_build_ddl_content($node , $is_fbia){
     $data['page']['pageInfo']['elementImpressions'] = $element_impression;
   }
 
+  //Gallery Analytics
+  if ($node->type == 'fresh_gallery') {
+    //Number of images
+    if ($gallery_photos = field_get_items('node' , $node , 'field_fresh_photos')) {
+      $slide_count = sizeof($gallery_photos);
+      $data['page']['pageInfo']['gallery']['slideCount'] = $slide_count;
+    }
+    $data['page']['pageInfo']['gallery']['viewType'] = 'single page';
+    $data['page']['pageInfo']['gallery']['shareType'] = 'slide';
+  }
+
   $data['page']['pageInfo']['pageId'] = $pageID;
   $data['page']['pageInfo']['pageTitle'] = $node->title;
   $data['page']['pageInfo']['pageUrl'] = $full_path;
