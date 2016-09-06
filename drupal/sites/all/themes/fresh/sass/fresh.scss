@@ -753,3 +753,50 @@ h4.campaign-vol {
 
 
 /** End of Content Inside Campaign */
+
+
+
+
+#highlight_menu {
+  font-family: 'Open Sans', Sans;
+  font-weight: 100;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 5px;
+  background: rgba(0,0,0,.8);
+  position: absolute;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  z-index: 999;
+  .caret {
+    border-style: solid;
+    border-width: 10px 10px 0px 10px;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-top-color: rgba(0,0,0,.8);
+    border-right-color: transparent;
+    width: 0px;
+    height: 0px;
+    display: block;
+    position: absolute;
+    top: 51px;
+    left: 40%;
+  }
+  .highlight_menu_animate {
+    transition: top 75ms ease-out,left 75ms ease-out;
+  }
+  .side-by-side {
+    width: 100%;
+    padding:0;
+    margin:10px;
+    margin-top:14px;
+  }
+  .side-by-side li {
+    display: inline;
+    padding: 10px;
+    img {
+      display: inline;
+    }
+  }
+}
