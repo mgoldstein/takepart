@@ -224,7 +224,10 @@
             var item = $(data).find('item');
             //Find the source attr with mp4 extension
             item.children().each(function(index, el) {
-              var fileAttr = $(el).attr('file')
+              var fileAttr = $(el).attr('file');
+              if (el.nodeName === 'jwplayer:image') {
+                settings.image = $(el).text();
+              }
               if (fileAttr && fileAttr.indexOf('mp4') > -1) {
                 delete settings.playlist;
                 settings.file = fileAttr;
