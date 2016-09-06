@@ -56,6 +56,24 @@ body {
         margin: 0 5%;
         left: 0;
       }
-    }    
+    }
+  }
+}
+
+/* Fix for video modals on campaigns on IE & Edge */
+
+//Edge
+@supports (-ms-accelerator:true) {
+  body.campaign-display .modal-content video {
+    left: 0 !important;
+    top: 0 !important;
+  }
+}
+
+//IE 10+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  body.campaign-display .modal-content video {
+    left: 0 !important;
+    top: 0 !important;
   }
 }
