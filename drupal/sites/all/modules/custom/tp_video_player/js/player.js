@@ -262,15 +262,45 @@
     window['currentVideo_' + index] = 0;
     updateVideo(window['currentVideo_' + index], playlist);
 
-    //only override controls if chromeless is set
     var onPlay = function(event) {
-      jwplayer(element_id).setControls(false);
-      $('#' + element_id).parent().addClass('playing');
-      $('#' + element_id).css('background-color', 'white');
+      if (chromeless) {
+        //override controls
+        jwplayer(element_id).setControls(false);
+        $('#' + element_id).parent().addClass('playing');
+        $('#' + element_id).css('background-color', 'white');
+      }
+      else {
+        //Update the custom email share info for video playlist
+        var playlist_item = settings.playlist;
+        //Is it a playlist?
+        if (playlist_item.length > 1 && typeof playlist != 'string') {
+          //Is there a mediaid passed for the share link
+          if (settings.sharing.link.includes('MEDIAID')) {
+            var share_link = settings.sharing.link;
+            //Which vid is currently playing?
+            if ($('.video-item.active').length !=0) {
+              vid_index = $('.video-item.active').attr('data-video-number');
+              var mediaId = playlist_item[vid_index].mediaid;
+              //Replace the MEDIAID token with the appropriate value
+              share_link = share_link.replace('MEDIAID' , mediaId);
+              share_title = playlist_item[vid_index].title;
+              share_title = $('<div/>').html(share_title).text();
+              //Update the custom email share function with the current vid info
+              if (settings.sharing.sites[2] && settings.sharing.sites[2].label == 'email') {
+                settings.sharing.sites[2].src = function() {
+                  window.location.href = 'mailto:?subject=' + share_title + '&body=' + share_link;
+                }
+              }
+            }
+          }
+        }
+      }
     },
 
     onPause = function(event) {
-      $('#' + element_id).parent().removeClass('playing');
+      if (chromeless) {
+        $('#' + element_id).parent().removeClass('playing');
+      }
     },
 
     onReady = function() {
@@ -300,12 +330,10 @@
       }
     };
 
-    if (chromeless) {
-      jwplayer(element_id).onPlay(onPlay);
-      jwplayer(element_id).onPause(onPause);
-    }
-    jwplayer(element_id).onReady(    onReady    );
-    jwplayer(element_id).onComplete( onComplete );
+    jwplayer(element_id).onPlay( onPlay);
+    jwplayer(element_id).onPause(onPause);
+    jwplayer(element_id).onReady(onReady);
+    jwplayer(element_id).onComplete(onComplete );
 
   }
   /**
