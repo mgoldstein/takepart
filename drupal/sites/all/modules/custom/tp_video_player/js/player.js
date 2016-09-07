@@ -199,19 +199,21 @@
       }
 
       //Add a new custom share functionality to replace email
-      var player_sharing = settings.sharing;
-      var share_link = settings.sharing.link;
-      var vid_title = settings.title;
-      vid_title = $('<div/>').html(vid_title).text();
-      var email_icon = '//' + document.location.host + '/sites/all/themes/base/images/jwp_share_email.png'
+      if (!settings['chromeless']) {
+        var player_sharing = settings.sharing;
+        var share_link = settings.sharing.link;
+        var vid_title = settings.title;
+        vid_title = $('<div/>').html(vid_title).text();
+        var email_icon = '//' + document.location.host + '/sites/all/themes/base/images/jwp_share_email.png'
 
-      player_sharing.sites = [ 'facebook', 'twitter', {
-          icon: email_icon,
-          src: function() {
-            window.location.href = 'mailto:?subject=' + vid_title + '&body=' + share_link;
-          },
-          label: 'email'
-      }];
+        player_sharing.sites = [ 'facebook', 'twitter', {
+            icon: email_icon,
+            src: function() {
+              window.location.href = 'mailto:?subject=' + vid_title + '&body=' + share_link;
+            },
+            label: 'email'
+        }];
+      }
 
       //Update the playlist to include mp4 extension for FF & IE.
       //This addresses the issue with FF falling back to Flash on HLS.
