@@ -62,8 +62,8 @@ body {
 
 /* Fix for video modals on campaigns on IE & Edge */
 
-//Edge
-@supports (-ms-accelerator:true) {
+//Edge 13+
+@supports (-ms-ime-align:auto) and (color:unset) {
   body.campaign-display .modal-content video {
     left: 0 !important;
     top: 0 !important;
