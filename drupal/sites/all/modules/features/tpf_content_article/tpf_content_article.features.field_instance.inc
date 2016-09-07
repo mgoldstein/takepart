@@ -968,7 +968,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -1604,7 +1604,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 17,
+      'weight' => 18,
     ),
   );
 
@@ -2372,7 +2372,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 16,
+      'weight' => 17,
     ),
   );
 
@@ -2595,6 +2595,210 @@ Change this only if you know what you are doing.',
     ),
   );
 
+  // Exported field_instance: 'node-openpublish_article-field_time_to_read'.
+  $field_instances['node-openpublish_article-field_time_to_read'] = array(
+    'bundle' => 'openpublish_article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'This will be auto populated when the content is saved. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'text',
+        'settings' => array(),
+        'type' => 'text_default',
+        'weight' => 30,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_time_to_read',
+    'label' => 'Time to Read',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'campaign_full_html' => 'campaign_full_html',
+          'full_html' => 'full_html',
+          'limited_html' => 'limited_html',
+          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'php_code' => 'php_code',
+          'plain_text' => 'plain_text',
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'campaign_full_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'limited_html' => array(
+              'weight' => 0,
+            ),
+            'no_wysiwg_full_html' => array(
+              'weight' => 0,
+            ),
+            'php_code' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'text_processing' => 0,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'size' => 60,
+      ),
+      'type' => 'text_textfield',
+      'weight' => 14,
+    ),
+  );
+
+  // Exported field_instance:
+  // 'node-openpublish_article-field_time_to_read_override'.
+  $field_instances['node-openpublish_article-field_time_to_read_override'] = array(
+    'bundle' => 'openpublish_article',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'Check this box if you want to use your own time to read instead of the calculated version.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 31,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_time_to_read_override',
+    'label' => 'Time to Read Override',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 15,
+    ),
+  );
+
   // Exported field_instance: 'node-openpublish_article-field_topic'.
   $field_instances['node-openpublish_article-field_topic'] = array(
     'bundle' => 'openpublish_article',
@@ -2796,6 +3000,7 @@ Change this only if you know what you are doing.',
   t('Autoload Content');
   t('Body');
   t('Campaign Content Link');
+  t('Check this box if you want to use your own time to read instead of the calculated version.');
   t('DFP Creative ID');
   t('DFP Creative ID will automatically generate if this node references a Sponsored term with a DFP ID.
 Change this only if you know what you are doing.');
@@ -2825,6 +3030,9 @@ Change this only if you know what you are doing.');
   t('These tags are intended for internal use to organize content for distribution to RSS feeds and the like; they are not visible to external users.');
   t('This is displayed beneath the Article\'s title on the node page');
   t('This title is used for analytic purposes It will auto-populate after publish.');
+  t('This will be auto populated when the content is saved. ');
+  t('Time to Read');
+  t('Time to Read Override');
   t('Topic');
   t('Topic Box');
   t('Unless overridden, the Thumbnail Image will display the Main Image.');

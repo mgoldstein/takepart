@@ -175,22 +175,22 @@ function tpf_content_video_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '15',
+          'weight' => '17',
         ),
         'title' => array(
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '12',
-        ),
-        'redirect' => array(
-          'weight' => '13',
-        ),
-        'xmlsitemap' => array(
           'weight' => '14',
         ),
-        'locations' => array(
+        'redirect' => array(
+          'weight' => '15',
+        ),
+        'xmlsitemap' => array(
           'weight' => '16',
+        ),
+        'locations' => array(
+          'weight' => '18',
         ),
       ),
       'display' => array(),
@@ -265,22 +265,22 @@ function tpf_content_video_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'locations' => array(
-          'weight' => '19',
+          'weight' => '20',
         ),
         'metatags' => array(
-          'weight' => '18',
+          'weight' => '19',
         ),
         'title' => array(
           'weight' => '1',
         ),
         'path' => array(
-          'weight' => '14',
-        ),
-        'redirect' => array(
           'weight' => '16',
         ),
-        'xmlsitemap' => array(
+        'redirect' => array(
           'weight' => '17',
+        ),
+        'xmlsitemap' => array(
+          'weight' => '18',
         ),
       ),
       'display' => array(),
