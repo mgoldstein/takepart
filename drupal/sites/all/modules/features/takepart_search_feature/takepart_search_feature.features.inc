@@ -237,7 +237,7 @@ function takepart_search_feature_default_search_api_page() {
 function takepart_search_feature_default_search_api_server() {
   $items = array();
   $items['takepart_solr_production'] = entity_import('search_api_server', '{
-    "name" : "TakePart SOLR stage settings",
+    "name" : "TakePart SOLR (Production settings)",
     "machine_name" : "takepart_solr_production",
     "description" : "Used for SOLR on TakePart.com",
     "class" : "search_api_solr_service",
@@ -247,7 +247,7 @@ function takepart_search_feature_default_search_api_server() {
       "site_hash_form" : [],
       "site_hash" : false,
       "scheme" : "http",
-      "host" : "10.1.15.30",
+      "host" : "10.2.5.50",
       "port" : 8080,
       "path" : "\\/solr\\/takepart_core",
       "http_user" : "",
