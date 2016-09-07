@@ -28,7 +28,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 31,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -154,7 +154,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 23,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -237,9 +237,10 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
       ),
       'feature_main' => array(
         'label' => 'above',
+        'module' => 'text',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'text_default',
+        'weight' => 2,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -357,7 +358,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 22,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -437,9 +438,10 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
       ),
       'feature_main' => array(
         'label' => 'above',
+        'module' => 'node_reference',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'node_reference_plain',
+        'weight' => 1,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -473,8 +475,9 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
+        'module' => 'node_reference',
         'settings' => array(),
-        'type' => 'hidden',
+        'type' => 'node_reference_plain',
         'weight' => 0,
       ),
       'video_playlist_teaser' => array(
@@ -526,7 +529,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 21,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -611,7 +614,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 19,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -692,7 +695,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 20,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -815,7 +818,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 24,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -906,7 +909,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 25,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -988,7 +991,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 30,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1078,7 +1081,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 15,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1093,9 +1096,13 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'weight' => 0,
       ),
       'feature_topic' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'image_link_formatter',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => 'topic_feature',
+        ),
+        'type' => 'image_link_formatter',
         'weight' => 0,
       ),
       'feature_video' => array(
@@ -1112,8 +1119,12 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
       ),
       'teaser' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'image_link_formatter',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => '',
+        ),
+        'type' => 'image_link_formatter',
         'weight' => 0,
       ),
       'video_playlist_teaser' => array(
@@ -1187,7 +1198,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 14,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1312,7 +1323,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 29,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1440,7 +1451,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 28,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1532,7 +1543,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 26,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1614,7 +1625,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 27,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1692,7 +1703,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 18,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1809,7 +1820,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 17,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -1926,7 +1937,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 8,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -2043,7 +2054,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 9,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -2163,7 +2174,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 7,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -2251,7 +2262,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -2341,7 +2352,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 4,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -2425,7 +2436,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 5,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -2510,7 +2521,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 10,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -2587,9 +2598,10 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
       ),
       'feature_main' => array(
         'label' => 'above',
+        'module' => 'node_reference',
         'settings' => array(),
-        'type' => 'hidden',
-        'weight' => 0,
+        'type' => 'node_reference_default',
+        'weight' => 3,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -2671,8 +2683,12 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
       ),
       'feature_main' => array(
         'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'module' => 'media_image_formatter',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => '',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
       'feature_main_tpl' => array(
@@ -2682,9 +2698,13 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'weight' => 0,
       ),
       'feature_secondary' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'media_image_formatter',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => 'homepage_featured_image',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
       'feature_topic' => array(
@@ -2700,9 +2720,13 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'weight' => 0,
       ),
       'inline_content' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'media_image_formatter',
+        'settings' => array(
+          'image_link' => 'content',
+          'image_style' => 'inline_thumbnail',
+        ),
+        'type' => 'image',
         'weight' => 0,
       ),
       'teaser' => array(
@@ -2774,7 +2798,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 12,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -2896,7 +2920,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 13,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -2976,7 +3000,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 11,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
@@ -3058,7 +3082,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 16,
       ),
       'feature_main_tpl' => array(
         'label' => 'above',
