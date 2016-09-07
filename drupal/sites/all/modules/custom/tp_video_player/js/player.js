@@ -262,45 +262,46 @@
 
     //only override controls if chromeless is set
     var onPlay = function(event) {
-          jwplayer(element_id).setControls(false);
-          $('#' + element_id).parent().addClass('playing');
-          $('#' + element_id).css('background-color', 'white');
-        },
+      jwplayer(element_id).setControls(false);
+      $('#' + element_id).parent().addClass('playing');
+      $('#' + element_id).css('background-color', 'white');
+    },
 
-        onPause = function(event) {
-          $('#' + element_id).parent().removeClass('playing');
-        },
+    onPause = function(event) {
+      $('#' + element_id).parent().removeClass('playing');
+    },
 
-        onReady = function() {
-          DTM && DTM.JWP && DTM.JWP.bindVideoInstance( jwplayer( element_id ) );
-        },
+    onReady = function() {
+      DTM && DTM.JWP && DTM.JWP.bindVideoInstance( jwplayer( element_id ) );
+    },
 
-        onComplete = function(event) {
-          window['currentVideo_' + index] = window['currentVideo_' + index] + 1;
+    onComplete = function(event) {
+      window['currentVideo_' + index] = window['currentVideo_' + index] + 1;
 
-          $(playlist).find('.video-description .description-item').removeClass('active');
-          playlist.find('ul.video-playlist .video-item').removeClass('active');
-          updateVideo(window['currentVideo_' + index], playlist);
+      $(playlist).find('.video-description .description-item').removeClass('active');
+      playlist.find('ul.video-playlist .video-item').removeClass('active');
+      updateVideo(window['currentVideo_' + index], playlist);
 
-          /* Move Slider to slide containing the current video */
-          var slides;
-          if(window['bxslider_' + index + '_view_mode'] == 'large'){
-            slides = 4;
-          }else if(window['bxslider_' + index + '_view_mode'] == 'small'){
-            slides = 2;
-          }else{
-            slides = 3;
-          }
-          var newValCurrentSlide = Math.floor(window['currentVideo_' + index]/slides);
-          var current_slide = window['bxslider_' + index].getCurrentSlide();
-          if( newValCurrentSlide != current_slide){
-            window['bxslider_' + index].goToSlide(newValCurrentSlide);
-          }
-        };
+      /* Move Slider to slide containing the current video */
+      var slides;
+      if(window['bxslider_' + index + '_view_mode'] == 'large'){
+        slides = 4;
+      }else if(window['bxslider_' + index + '_view_mode'] == 'small'){
+        slides = 2;
+      }else{
+        slides = 3;
+      }
+      var newValCurrentSlide = Math.floor(window['currentVideo_' + index]/slides);
+      var current_slide = window['bxslider_' + index].getCurrentSlide();
+      if( newValCurrentSlide != current_slide){
+        window['bxslider_' + index].goToSlide(newValCurrentSlide);
+      }
+    };
 
-    if (chromeless)
-      jwplayer(element_id).onPlay(   onPlay     );
-    jwplayer(element_id).onPause(    onPause    ),
+    if (chromeless) {
+      jwplayer(element_id).onPlay(onPlay);
+      jwplayer(element_id).onPause(onPause);
+    }
     jwplayer(element_id).onReady(    onReady    );
     jwplayer(element_id).onComplete( onComplete );
 
