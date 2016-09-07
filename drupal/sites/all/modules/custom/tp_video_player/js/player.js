@@ -199,19 +199,21 @@
       }
 
       //Add a new custom share functionality to replace email
-      var player_sharing = settings.sharing;
-      var share_link = settings.sharing.link;
-      var vid_title = settings.title;
-      vid_title = $('<div/>').html(vid_title).text();
-      var email_icon = '//' + document.location.host + '/sites/all/themes/base/images/jwp_share_email.png'
+      if (!settings['chromeless']) {
+        var player_sharing = settings.sharing;
+        var share_link = settings.sharing.link;
+        var vid_title = settings.title;
+        vid_title = $('<div/>').html(vid_title).text();
+        var email_icon = '//' + document.location.host + '/sites/all/themes/base/images/jwp_share_email.png'
 
-      player_sharing.sites = [ 'facebook', 'twitter', {
-          icon: email_icon,
-          src: function() {
-            window.location.href = 'mailto:?subject=' + vid_title + '&body=' + share_link;
-          },
-          label: 'email'
-      }];
+        player_sharing.sites = [ 'facebook', 'twitter', {
+            icon: email_icon,
+            src: function() {
+              window.location.href = 'mailto:?subject=' + vid_title + '&body=' + share_link;
+            },
+            label: 'email'
+        }];
+      }
 
       //Update the playlist to include mp4 extension for FF & IE.
       //This addresses the issue with FF falling back to Flash on HLS.
@@ -260,49 +262,78 @@
     window['currentVideo_' + index] = 0;
     updateVideo(window['currentVideo_' + index], playlist);
 
-    //only override controls if chromeless is set
     var onPlay = function(event) {
-          jwplayer(element_id).setControls(false);
-          $('#' + element_id).parent().addClass('playing');
-          $('#' + element_id).css('background-color', 'white');
-        },
-
-        onPause = function(event) {
-          $('#' + element_id).parent().removeClass('playing');
-        },
-
-        onReady = function() {
-          DTM && DTM.JWP && DTM.JWP.bindVideoInstance( jwplayer( element_id ) );
-        },
-
-        onComplete = function(event) {
-          window['currentVideo_' + index] = window['currentVideo_' + index] + 1;
-
-          $(playlist).find('.video-description .description-item').removeClass('active');
-          playlist.find('ul.video-playlist .video-item').removeClass('active');
-          updateVideo(window['currentVideo_' + index], playlist);
-
-          /* Move Slider to slide containing the current video */
-          var slides;
-          if(window['bxslider_' + index + '_view_mode'] == 'large'){
-            slides = 4;
-          }else if(window['bxslider_' + index + '_view_mode'] == 'small'){
-            slides = 2;
-          }else{
-            slides = 3;
+      if (chromeless) {
+        //override controls
+        jwplayer(element_id).setControls(false);
+        $('#' + element_id).parent().addClass('playing');
+        $('#' + element_id).css('background-color', 'white');
+      }
+      else {
+        //Update the custom email share info for video playlist
+        var playlist_item = settings.playlist;
+        //Is it a playlist?
+        if (playlist_item.length > 1 && typeof playlist != 'string') {
+          //Is there a mediaid passed for the share link
+          if (settings.sharing.link.includes('MEDIAID')) {
+            var share_link = settings.sharing.link;
+            //Which vid is currently playing?
+            if ($('.video-item.active').length !=0) {
+              vid_index = $('.video-item.active').attr('data-video-number');
+              var mediaId = playlist_item[vid_index].mediaid;
+              //Replace the MEDIAID token with the appropriate value
+              share_link = share_link.replace('MEDIAID' , mediaId);
+              share_title = playlist_item[vid_index].title;
+              share_title = $('<div/>').html(share_title).text();
+              //Update the custom email share function with the current vid info
+              if (settings.sharing.sites[2] && settings.sharing.sites[2].label == 'email') {
+                settings.sharing.sites[2].src = function() {
+                  window.location.href = 'mailto:?subject=' + share_title + '&body=' + share_link;
+                }
+              }
+            }
           }
-          var newValCurrentSlide = Math.floor(window['currentVideo_' + index]/slides);
-          var current_slide = window['bxslider_' + index].getCurrentSlide();
-          if( newValCurrentSlide != current_slide){
-            window['bxslider_' + index].goToSlide(newValCurrentSlide);
-          }
-        };
+        }
+      }
+    },
 
-    if (chromeless)
-      jwplayer(element_id).onPlay(   onPlay     );
-    jwplayer(element_id).onPause(    onPause    ),
-    jwplayer(element_id).onReady(    onReady    );
-    jwplayer(element_id).onComplete( onComplete );
+    onPause = function(event) {
+      if (chromeless) {
+        $('#' + element_id).parent().removeClass('playing');
+      }
+    },
+
+    onReady = function() {
+      DTM && DTM.JWP && DTM.JWP.bindVideoInstance( jwplayer( element_id ) );
+    },
+
+    onComplete = function(event) {
+      window['currentVideo_' + index] = window['currentVideo_' + index] + 1;
+
+      $(playlist).find('.video-description .description-item').removeClass('active');
+      playlist.find('ul.video-playlist .video-item').removeClass('active');
+      updateVideo(window['currentVideo_' + index], playlist);
+
+      /* Move Slider to slide containing the current video */
+      var slides;
+      if(window['bxslider_' + index + '_view_mode'] == 'large'){
+        slides = 4;
+      }else if(window['bxslider_' + index + '_view_mode'] == 'small'){
+        slides = 2;
+      }else{
+        slides = 3;
+      }
+      var newValCurrentSlide = Math.floor(window['currentVideo_' + index]/slides);
+      var current_slide = window['bxslider_' + index].getCurrentSlide();
+      if( newValCurrentSlide != current_slide){
+        window['bxslider_' + index].goToSlide(newValCurrentSlide);
+      }
+    };
+
+    jwplayer(element_id).onPlay( onPlay);
+    jwplayer(element_id).onPause(onPause);
+    jwplayer(element_id).onReady(onReady);
+    jwplayer(element_id).onComplete(onComplete );
 
   }
   /**
