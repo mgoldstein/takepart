@@ -65,6 +65,7 @@ function tp_latest_headlines_feature_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
+    'fresh_gallery' => 'fresh_gallery',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
     'video_playlist' => 'video_playlist',

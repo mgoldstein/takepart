@@ -68,6 +68,7 @@ function takepart_search_feature_default_search_api_index() {
       "data_alter_callbacks" : {
         "search_api_alter_node_access" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_node_status" : { "status" : 0, "weight" : "0", "settings" : [] },
+        "panelizer" : { "status" : 0, "weight" : "0", "settings" : [] },
         "search_api_alter_add_hierarchy" : { "status" : 0, "weight" : "0", "settings" : { "fields" : [] } },
         "search_api_alter_add_viewed_entity" : { "status" : 0, "weight" : "0", "settings" : { "mode" : "full" } },
         "search_api_alter_add_url" : { "status" : 0, "weight" : "0", "settings" : [] },
@@ -102,6 +103,7 @@ function takepart_search_feature_default_search_api_index() {
               "campaign" : "campaign",
               "feature_article" : "feature_article",
               "flashcard" : "flashcard",
+              "fresh_gallery" : "fresh_gallery",
               "takepart_page" : "takepart_page",
               "openpublish_photo_gallery" : "openpublish_photo_gallery",
               "video" : "video",
@@ -235,7 +237,7 @@ function takepart_search_feature_default_search_api_page() {
 function takepart_search_feature_default_search_api_server() {
   $items = array();
   $items['takepart_solr_production'] = entity_import('search_api_server', '{
-    "name" : "TakePart SOLR (Production settings)",
+    "name" : "TakePart SOLR stage settings",
     "machine_name" : "takepart_solr_production",
     "description" : "Used for SOLR on TakePart.com",
     "class" : "search_api_solr_service",
@@ -245,7 +247,7 @@ function takepart_search_feature_default_search_api_server() {
       "site_hash_form" : [],
       "site_hash" : false,
       "scheme" : "http",
-      "host" : "10.2.5.50",
+      "host" : "10.1.15.30",
       "port" : 8080,
       "path" : "\\/solr\\/takepart_core",
       "http_user" : "",

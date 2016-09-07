@@ -512,6 +512,7 @@ function tpf_display_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
+    'fresh_gallery' => 'fresh_gallery',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
     'video_playlist' => 'video_playlist',
@@ -1017,6 +1018,7 @@ print $file;
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
+    'fresh_gallery' => 'fresh_gallery',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
     'video_playlist' => 'video_playlist',
@@ -1093,27 +1095,6 @@ print $file;
   $handler->display->display_options['fields']['field_topic']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_topic']['type'] = 'taxonomy_term_reference_plain';
   $handler->display->display_options['fields']['field_topic']['delta_offset'] = '0';
-  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
-  $handler->display->display_options['defaults']['filters'] = FALSE;
-  /* Filter criterion: Content: Published */
-  $handler->display->display_options['filters']['status']['id'] = 'status';
-  $handler->display->display_options['filters']['status']['table'] = 'node';
-  $handler->display->display_options['filters']['status']['field'] = 'status';
-  $handler->display->display_options['filters']['status']['value'] = 1;
-  $handler->display->display_options['filters']['status']['group'] = 0;
-  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Type */
-  $handler->display->display_options['filters']['type']['id'] = 'type';
-  $handler->display->display_options['filters']['type']['table'] = 'node';
-  $handler->display->display_options['filters']['type']['field'] = 'type';
-  $handler->display->display_options['filters']['type']['value'] = array(
-    'openpublish_article' => 'openpublish_article',
-    'feature_article' => 'feature_article',
-    'flashcard' => 'flashcard',
-    'openpublish_photo_gallery' => 'openpublish_photo_gallery',
-    'video' => 'video',
-    'video_playlist' => 'video_playlist',
-  );
   $handler->display->display_options['path'] = 'content/%/feed.xml ';
 
   /* Display: Full Feed */
@@ -1477,6 +1458,7 @@ print $file;
     'campaign' => 'campaign',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
+    'fresh_gallery' => 'fresh_gallery',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
     'video_playlist' => 'video_playlist',
@@ -1837,6 +1819,7 @@ print $file;
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
+    'fresh_gallery' => 'fresh_gallery',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
     'video_playlist' => 'video_playlist',
@@ -2257,6 +2240,7 @@ print $value;
   $handler->display->display_options['filters']['type']['table'] = 'node';
   $handler->display->display_options['filters']['type']['field'] = 'type';
   $handler->display->display_options['filters']['type']['value'] = array(
+    'fresh_gallery' => 'fresh_gallery',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
   );
   /* Filter criterion: Content: Published */
@@ -2639,7 +2623,7 @@ print $value;
   $handler->display->display_options['fields']['field_image_title']['element_type'] = 'h4';
   $handler->display->display_options['fields']['field_image_title']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_image_title']['hide_alter_empty'] = FALSE;
-  /* Field: File: Caption */
+  /* Field: Field: Caption */
   $handler->display->display_options['fields']['field_media_caption']['id'] = 'field_media_caption';
   $handler->display->display_options['fields']['field_media_caption']['table'] = 'field_data_field_media_caption';
   $handler->display->display_options['fields']['field_media_caption']['field'] = 'field_media_caption';
@@ -3006,6 +2990,7 @@ print $value;
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
+    'fresh_gallery' => 'fresh_gallery',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
@@ -3189,6 +3174,7 @@ print $value;
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
+    'fresh_gallery' => 'fresh_gallery',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
@@ -3312,6 +3298,7 @@ print $value;
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
+    'fresh_gallery' => 'fresh_gallery',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
@@ -3391,6 +3378,7 @@ print $value;
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
+    'fresh_gallery' => 'fresh_gallery',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
@@ -3488,6 +3476,7 @@ print $value;
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
+    'fresh_gallery' => 'fresh_gallery',
     'takepart_page' => 'takepart_page',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
@@ -3848,6 +3837,7 @@ print $value;
   $handler->display->display_options['filters']['type']['value'] = array(
     'openpublish_article' => 'openpublish_article',
     'feature_article' => 'feature_article',
+    'fresh_gallery' => 'fresh_gallery',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
     'video_playlist' => 'video_playlist',
@@ -3928,6 +3918,27 @@ print $value;
   $handler->display->display_options['arguments']['field_free_tag_tid']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['field_free_tag_tid']['summary']['format'] = 'default_summary';
   $handler->display->display_options['arguments']['field_free_tag_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 0;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'openpublish_article' => 'openpublish_article',
+    'feature_article' => 'feature_article',
+    'fresh_gallery' => 'fresh_gallery',
+    'openpublish_photo_gallery' => 'openpublish_photo_gallery',
+    'video' => 'video',
+    'video_playlist' => 'video_playlist',
+  );
   $handler->display->display_options['path'] = 'tag/%/feed.xml';
   $export['terms_posts_feed_rss'] = $view;
 
@@ -4090,6 +4101,7 @@ print $value;
     'campaign' => 'campaign',
     'feature_article' => 'feature_article',
     'flashcard' => 'flashcard',
+    'fresh_gallery' => 'fresh_gallery',
     'openpublish_photo_gallery' => 'openpublish_photo_gallery',
     'video' => 'video',
     'video_playlist' => 'video_playlist',
