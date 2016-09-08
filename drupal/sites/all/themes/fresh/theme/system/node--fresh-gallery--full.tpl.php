@@ -8,8 +8,14 @@
  */
 ?>
 
-  <?php $node_type = $variables['type']; ?>
-  <div class = "<?php print $node_type ?>-wrapper fresh-content-wrapper clearfix">
+  <?php
+    $node_type = $variables['type'];
+    $autoloaded = ($variables['autoscroll_load']) ? TRUE : FALSE;
+    //cic determins whether the current article(1 or autoloaded) is tagged with a campaign
+    $cic = (!empty($variables['campaign_info']['nid'])) ? ' cic' : '';
+  ?>
+
+  <div class = "<?php print $node_type ?>-wrapper fresh-content-wrapper clearfix<?php print ($autoloaded) ? ' autoloaded' : ' first'; print $cic . ' ';?>">
   <?php if (!empty($variables['social'])): ?>
     <aside class="social social-vertical stick">
    <?php print $variables['social']; ?>
@@ -20,6 +26,26 @@
       <?php print $variables['advertisement']; ?>
     </div>
   <?php endif; ?>
+  <?php
+  //Campaign banner is ONLY displayed for the first node tagged with a campaign for the in-campaign experience.
+  //On regular auto-load experience, banner will be added to ALL autoloaded nodes tagged with a campaign.
+    if (!empty($variables['campaign_info']['banner'])): ?>
+    <div class = "campaign-ref-wrapper" style="background-image: url('<?php print $variables['campaign_info']['banner']; ?>')">
+      <?php if (!empty($variables['campaign_info']['logo'])): ?>
+        <div class = "campaign-logo">
+          <a href="<?php print $variables['campaign_info']['url']; ?>">
+            <img src="<?php print $variables['campaign_info']['logo']; ?>">
+          </a>
+        </div>
+      <?php endif; ?>
+      <?php if (!empty($variables['campaign_info']['vol'])): ?>
+        <div class = "big-issue">
+          <a href ="http://www.takepart.com/big-issues">TAKEPART'S BIG ISSUE </a><span class="campaign-vol">vol. <?php print $variables['campaign_info']['vol']; ?></span>
+        </div>
+      <?php endif; ?>
+    </div>
+  <?php endif; ?>
+
   <div class="fresh-inner-content-wrapper clearfix">
     <article class="col-xs-10 col-xs-offset-1 clearfix <?php print $classes; ?>"<?php print $attributes; ?>>
       <div class="pre-gallery">
