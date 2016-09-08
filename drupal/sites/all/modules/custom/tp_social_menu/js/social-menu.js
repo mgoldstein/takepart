@@ -122,6 +122,42 @@
     }
   };
 
+  Drupal.behaviors.InlineSocialShare = {
+    attach: function (context, settings) {
+      //trigger tp_initSocialMenu
+      $(document).ready(function () {
+        $('.inlineSharingButtons').each(function(){
+          $(this).once('inlineSharing',function(){
+            var append_author = "-"+$(this).parent().attr('data-author-name');
+
+            var services = {
+              url_append: '?cmpid=organic-share-{{name}}',
+              services: {
+                twitter: {
+                  name: 'twitter',
+                  text: $(this).siblings('.inlineSharingQuote').text(),
+                  via: 'TakePart',
+                  anchor: $(this).parent().attr('data-anchor'),
+                  author_name: append_author,
+                  quote: true,
+                  class_target: 'inlineSharingUnique-'+$(this).parent().attr('data-unique-id')
+                },
+                facebook: {
+                  name: 'facebookfeed',
+                  description: "\""+$(this).siblings('.inlineSharingQuote').text()+"\" "+append_author,
+                  anchor: $(this).parent().attr('data-anchor'),
+                  author_name: $(this).parent().attr('data-author-name'),
+                  share_title: $(this).parent().attr('data-title')
+                }
+              }
+            };
+            $(this).tpsocial(services);
+          });
+        });
+      });
+    }
+  };
+
   var lastScrollTop = 0;
   function hasScrolled(delta) {
     var st = $(this).scrollTop();

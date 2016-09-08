@@ -753,3 +753,43 @@ h4.campaign-vol {
 
 
 /** End of Content Inside Campaign */
+
+
+.inlineSharingContainer {
+  .inlineSharingQuote {
+    color: $light-black;
+    font-size: 36px;
+    line-height: 44px;
+    display: inline;
+  }
+  .inlineSharingButtons {
+    display: inline;
+    padding-left: 10px;
+    .tp-social-link {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      overflow: hidden;
+      font-size: 1.3rem;
+      text-indent: 0;
+      color: transparent;
+      padding-top: 6px;
+      &:before {
+        position: relative;
+        color: #C7C7C7;
+      }
+    }
+    .tp-social-facebookfeed {
+      //background-color: #3c5a98;
+      &:before {
+        content: '\e301';
+      }
+    }
+    .tp-social-twitter {
+      //background-color: #2ba9e1;
+      &:before {
+        content: '\e302';
+      }
+    }
+  }
+}

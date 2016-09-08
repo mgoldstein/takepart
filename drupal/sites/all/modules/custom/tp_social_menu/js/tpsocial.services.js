@@ -140,6 +140,82 @@
   });
 
   $.tpsocial.add_service({
+    name: 'facebookfeed',
+    display: 'Facebook',
+    share: function (args) {
+    	 get_share_url(args.url, args.title, function (url) {
+    	   var parser = document.createElement("a");
+    	   parser.href = args.url;
+
+           FB.ui({
+             method: 'feed',
+             display: 'popup',
+             link: url,
+             description: args.description,
+             name: args.share_title,
+             //picture: 'http://res.cloudinary.com/demo/image/upload/w_400/g_north,x_0,y_10,w_200,c_fit,l_text:Neucha_12_center:'+encodeURI(args.description)+'/sea_shell.jpg'
+           },
+             function (response) {
+               if (response && response.post_id) {
+                 // Post was published
+                 $window.trigger('tp-social-share', args);
+               }
+               else {
+                 //Post was not published
+               }
+             });
+
+    	   function openFBLoginDialogManually() {
+           if ($('body').hasClass('tploggedin')) {
+             var logged_class = '-influence';
+           }
+           else {
+             var logged_class = '';
+           }
+
+           // Open your auth window containing FB auth page
+           // with forward URL to your Opened Window handler page (below)
+           var redirect_uri = "&redirect_uri=" + url + "fbjscomplete";
+           var scope = "&scope=public_profile,email,user_friends";
+           var url = "https://www.facebook.com/dialog/oauth?client_id=" + "247137505296280" + redirect_uri + scope + '&cmpid=organic-share-facebook' + logged_class;
+           // notice the lack of other param in window.open
+           // for some reason the opener is set to null
+           // and the opened window can NOT reference it
+           // if params are passed. #Chrome iOS Bug
+           window.open(url);
+    	   }
+
+    	   function fbCompleteLogin() {
+           FB.getLoginStatus(function (response) {
+             // Calling this with the extra setting "true" forces
+             // a non-cached request and updates the FB cache.
+             // Since the auth login elsewhere validated the user
+             // this update will now asyncronously mark the user as authed
+           }, true);
+    	   }
+
+    	   function requireLogin(callback) {
+      		FB.getLoginStatus(function (response) {
+      		  if (response.status !== "connected") {
+      		    showLogin();
+      		  } else {
+      		    checkAuth(response.authResponse.accessToken, response.authResponse.userID, function (success) {
+      		    // Check FB tokens against your API to make sure user is valid
+      		    });
+      		  }
+      		});
+    	   }
+
+    	   //only do for crios
+    	   if (navigator.userAgent.match('CriOS')) {
+    	     fbCompleteLogin();
+    	   }
+    	 });
+       return false;
+      }
+  });
+
+  $.tpsocial.add_service({
     name: 'twitter',
     display: 'Twitter',
     width: 550,
@@ -156,7 +232,8 @@
         via: args.via,
         in_reply_to: args.in_reply_to,
         hashtags: args.hashtags,
-        related: args.related
+        related: args.related,
+        anchor: args.anchor
       };
 
       for (var i in matches) {
@@ -175,6 +252,17 @@
       }
 
       get_share_url(args.url, args.title, function (new_url) {
+        //For the quote we need to truncate
+        if(typeof args.quote !== 'undefined' && args.quote) {
+          //140 is the limit but need to remove the taken space the 13 for via
+          //Minus 4 the quotes and spaces that get added
+          var count = 140 - 4 - (args.author_name.length) - new_url.length - 13;
+          if(url_obj.text.length > count) {
+            url_obj.text = "\""+url_obj.text.substr(0, (count-4))+"...\" "+args.author_name;
+          } else {
+            url_obj.text = "\""+url_obj.text+"\" "+args.author_name;
+          }
+        }
         var url_parts = [];
         url_obj.url = new_url;
         for (var i in url_obj) {
@@ -190,7 +278,13 @@
         var tops = Number((screen.height / 2) - (args.height / 2));
 
         //Set the url to the link
-        $('.tp-social .tp-social-twitter').attr('href',url);
+        if(typeof args.class_target !== 'undefined') {
+          $('.'+args.class_target+' .tp-social-twitter').attr('href',url);
+        } else {
+          //Assume it is the main social share.
+          $('.tp-social .tp-social-twitter').attr('href',url);
+        }
+
         //Desktop view will do a window.open, but Mobile view will do a new tab
         if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
           window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height, "left=" + left, "top=" + tops].join(", "));

@@ -58,6 +58,11 @@
 			 Drupal.behaviors.tp_video_player.attach();
 		    }
 
+        //process inline social share
+        if ('function' === typeof Drupal.behaviors.InlineSocialShare.attach) {
+          Drupal.behaviors.InlineSocialShare.attach();
+        }
+
               // Load comments box on button click for mobile display
 		    $('a.comments-count').once('FBComments', function () {
 			 $('a.comments-count').on('click', function (e) {
