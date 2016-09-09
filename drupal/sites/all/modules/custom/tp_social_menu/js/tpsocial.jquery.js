@@ -175,7 +175,7 @@
 
         // Bind an event to the link
         $link
-        .on('touchstart click', (function (srvc, $parent, $lnk) {
+        .on('click', (function (srvc, $parent, $lnk) {
 
           return function (e) {
             //Disabled links are added during scroll
@@ -203,13 +203,14 @@
             //Call the share, Generate the link and open the share
             var ret = srvc.share(data);
 
+            //Facebook tracking for keywee use
+            if(typeof fbq !== 'undefined') {
+              fbq('track', 'Lead');
+            }
+
             //Delay for tracking
             setTimeout(function(e) {
               $window.trigger(cpre + 'click', data);
-              //Facebook tracking for keywee use
-              if(typeof fbq !== 'undefined') {
-                fbq('track', 'Lead');
-              }
               upsShare(data.name);
             }, 200);
 

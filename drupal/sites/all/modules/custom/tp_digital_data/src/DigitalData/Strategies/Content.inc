@@ -183,7 +183,7 @@ class ddContent extends ddDefaultPage {
     //Field pageNumber for autoloaded content only
     $is_autoloaded = field_get_items('node' , $node , 'field_autoload');
     $is_autoloaded = $is_autoloaded[0]['value'];
-    $autoloaded_content = array('openpublish_article' ,'video', 'video_playlist' , 'feature_article');
+    $autoloaded_content = array('openpublish_article' ,'video', 'video_playlist' , 'feature_article' , 'fresh_gallery');
     if (in_array($node->type , $autoloaded_content) && $is_autoloaded) {
         $data['page']['pageNumber'] = "page 1";
     }
@@ -230,10 +230,26 @@ class ddContent extends ddDefaultPage {
       $element_impression[] = 'campaign content carousel';
     }
 
+    //Time to read
+    if($timeRead = field_get_items('node', $node, 'field_time_to_read')) {
+      $data['page']['pageInfo']['timeToRead'] = $timeRead[0]['value'];
+    }
+
      //Element Impression
     if (!empty($element_impression)) {
       $element_impression = implode(',', $element_impression);
       $data['page']['pageInfo']['elementImpressions'] = $element_impression;
+    }
+
+    //Gallery Analytics
+    if ($node->type == 'fresh_gallery') {
+      //Number of images
+      if ($gallery_photos = field_get_items('node' , $node , 'field_fresh_photos')) {
+        $slide_count = sizeof($gallery_photos);
+        $data['page']['pageInfo']['gallery']['slideCount'] = $slide_count;
+      }
+      $data['page']['pageInfo']['gallery']['viewType'] = 'single page';
+      $data['page']['pageInfo']['gallery']['shareType'] = 'slide';
     }
 
     $data['page']['pageInfo']['pageId'] = $pageID;
