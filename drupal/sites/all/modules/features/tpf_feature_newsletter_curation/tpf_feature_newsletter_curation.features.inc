@@ -85,7 +85,8 @@ function tpf_feature_newsletter_curation_fe_nodequeue_export_fields() {
     'i18n' => 0,
     'subqueues' => 1,
     'types' => array(
-      0 => 'openpublish_photo_gallery',
+      0 => 'fresh_gallery',
+      1 => 'openpublish_photo_gallery',
     ),
     'roles' => array(),
     'count' => 0,
