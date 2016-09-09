@@ -18,6 +18,7 @@ function fresh_page_alter(&$page){
   }
 
   if (in_array($type, array('fresh_gallery'))) {
+    $page['content']['#attached']['css'][] = 'sites/all/libraries/photoswipe/photoswipe.css';
     $page['content']['#attached']['js'][] = 'sites/all/libraries/fresh-gallery/gallery.js';
     $page['content']['#attached']['js'][] = $path.'/js/fresh-gallery.js';
   }
