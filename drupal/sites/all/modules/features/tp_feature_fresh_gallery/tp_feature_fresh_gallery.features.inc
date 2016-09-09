@@ -22,7 +22,7 @@ function tp_feature_fresh_gallery_ctools_plugin_api($module = NULL, $api = NULL)
 function tp_feature_fresh_gallery_node_info() {
   $items = array(
     'fresh_gallery' => array(
-      'name' => t('Fresh Gallery'),
+      'name' => t('Gallery'),
       'base' => 'node_content',
       'description' => '',
       'has_title' => '1',
