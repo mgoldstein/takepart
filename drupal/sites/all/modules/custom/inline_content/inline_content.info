@@ -23,6 +23,7 @@ files[] = handlers/InlineContentVideo.class.php
 files[] = handlers/InlineContentVideoPlaylist.class.php
 files[] = handlers/InlineContentAmbientVideo.class.php
 files[] = handlers/InlineContentCampaignPromo.class.php
+files[] = handlers/InlineContentInlineSharing.class.php
 
 
 

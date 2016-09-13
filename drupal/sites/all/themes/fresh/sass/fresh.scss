@@ -750,3 +750,50 @@ h4.campaign-vol {
 }
 
 /** End of Content Inside Campaign */
+
+
+.inlineSharingContainer {
+  .inlineSharingQuote {
+    color: $light-black;
+    font-size: 36px;
+    line-height: 44px;
+    display: inline;
+  }
+  .inlineSharingButtons {
+    display: inline;
+    padding-left: 10px;
+    .tp-social-link {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      overflow: hidden;
+      font-size: 1.3rem;
+      text-indent: 0;
+      color: transparent;
+      padding-top: 6px;
+      &:before {
+        position: relative;
+        color: #C7C7C7;
+      }
+    }
+    .tp-social-facebookfeed {
+      background-color: #C7C7C7;
+      width: 25px;
+      height: 25px;
+      position: relative;
+      @include border-radius(2px);
+      &:before {
+        content: '\e301';
+        color: #FFFFFF;
+        position: absolute;
+        right: -1px;
+        bottom: -4px;
+      }
+    }
+    .tp-social-twitter {
+      &:before {
+        content: '\e302';
+      }
+    }
+  }
+}
