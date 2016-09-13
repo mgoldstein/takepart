@@ -777,13 +777,20 @@ h4.campaign-vol {
       }
     }
     .tp-social-facebookfeed {
-      //background-color: #3c5a98;
+      background-color: #C7C7C7;
+      width: 25px;
+      height: 25px;
+      position: relative;
+      @include border-radius(2px);
       &:before {
         content: '\e301';
+        color: #FFFFFF;
+        position: absolute;
+        right: -1px;
+        bottom: -4px;
       }
     }
     .tp-social-twitter {
-      //background-color: #2ba9e1;
       &:before {
         content: '\e302';
       }

@@ -128,7 +128,12 @@
       $(document).ready(function () {
         $('.inlineSharingButtons').each(function(){
           $(this).once('inlineSharing',function(){
-            var append_author = "-"+$(this).parent().attr('data-author-name');
+            var author_name = $(this).parent().attr('data-author-name') || $("meta[name='sailthru.author']").attr('content');
+            var append_author = "—"+author_name;
+            var caption = '';
+            if($("meta[property='og:description']").length) {
+              caption =$("meta[property='og:description']").attr("content");
+            }
 
             var services = {
               url_append: '?cmpid=organic-share-{{name}}',
@@ -144,10 +149,11 @@
                 },
                 facebook: {
                   name: 'facebookfeed',
-                  description: "\""+$(this).siblings('.inlineSharingQuote').text()+"\" "+append_author,
+                  description: "\""+$(this).siblings('.inlineSharingQuote').text()+"\""+append_author,
                   anchor: $(this).parent().attr('data-anchor'),
-                  author_name: $(this).parent().attr('data-author-name'),
-                  share_title: $(this).parent().attr('data-title')
+                  author_name: author_name,
+                  share_title: $(this).parent().attr('data-title'),
+                  caption: caption
                 }
               }
             };

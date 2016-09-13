@@ -153,6 +153,7 @@
              link: url,
              description: args.description,
              name: args.share_title,
+             caption: args.caption
              //picture: 'http://res.cloudinary.com/demo/image/upload/w_400/g_north,x_0,y_10,w_200,c_fit,l_text:Neucha_12_center:'+encodeURI(args.description)+'/sea_shell.jpg'
            },
              function (response) {
@@ -255,12 +256,12 @@
         //For the quote we need to truncate
         if(typeof args.quote !== 'undefined' && args.quote) {
           //140 is the limit but need to remove the taken space the 13 for via
-          //Minus 4 the quotes and spaces that get added
-          var count = 140 - 4 - (args.author_name.length) - new_url.length - 13;
+          //Minus 3 the quotes and spaces that get added
+          var count = 140 - 3 - (args.author_name.length) - new_url.length - 13;
           if(url_obj.text.length > count) {
-            url_obj.text = "\""+url_obj.text.substr(0, (count-4))+"...\" "+args.author_name;
+            url_obj.text = "\""+url_obj.text.substr(0, (count-4))+"...\""+args.author_name;
           } else {
-            url_obj.text = "\""+url_obj.text+"\" "+args.author_name;
+            url_obj.text = "\""+url_obj.text+"\""+args.author_name;
           }
         }
         var url_parts = [];

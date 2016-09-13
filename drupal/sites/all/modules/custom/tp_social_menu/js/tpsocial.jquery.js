@@ -199,7 +199,7 @@
               }
               data.url += data.url_append;
             }
-            if(typeof data.anchor !== 'undefined') {
+            if(typeof data.anchor !== 'undefined' && data.anchor != '') {
               data.url = data.url+'#'+data.anchor;
             }
             //Call the share, Generate the link and open the share

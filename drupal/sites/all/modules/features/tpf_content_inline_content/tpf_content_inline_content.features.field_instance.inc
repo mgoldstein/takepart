@@ -397,7 +397,7 @@ function tpf_content_inline_content_field_default_field_instances() {
     'entity_type' => 'inline_content',
     'field_name' => 'field_ic_anchor',
     'label' => 'Anchor',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
@@ -468,7 +468,7 @@ function tpf_content_inline_content_field_default_field_instances() {
     'entity_type' => 'inline_content',
     'field_name' => 'field_ic_author_name',
     'label' => 'Author Name',
-    'required' => 1,
+    'required' => 0,
     'settings' => array(
       'better_formats' => array(
         'allowed_formats' => array(
