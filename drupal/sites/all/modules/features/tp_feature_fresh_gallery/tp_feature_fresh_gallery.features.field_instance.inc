@@ -236,7 +236,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'weight' => 25,
       ),
       'feature_main' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'text',
         'settings' => array(),
         'type' => 'text_default',
@@ -437,7 +437,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'weight' => 14,
       ),
       'feature_main' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'node_reference',
         'settings' => array(),
         'type' => 'node_reference_plain',
@@ -474,7 +474,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'node_reference',
         'settings' => array(),
         'type' => 'node_reference_plain',
@@ -1118,7 +1118,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'weight' => 0,
       ),
       'teaser' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'image_link_formatter',
         'settings' => array(
           'image_link' => 'content',
@@ -2597,7 +2597,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'weight' => 24,
       ),
       'feature_main' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'node_reference',
         'settings' => array(),
         'type' => 'node_reference_default',
@@ -2682,7 +2682,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
         'weight' => 27,
       ),
       'feature_main' => array(
-        'label' => 'above',
+        'label' => 'hidden',
         'module' => 'media_image_formatter',
         'settings' => array(
           'image_link' => '',
