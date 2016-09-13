@@ -73,6 +73,17 @@ function fresh_preprocess_node__autoload(&$variables) {
       if ($featured_link = field_get_items('node' , $variables['node'] , 'field_article_featured_link')) {
         $variables['field_article_featured_link'] = theme('fresh_featured_link' , $featured_link);
       }
+      /* Feature Alternative Hero */
+      if ($feature_alt_hero = field_get_items('node', $variables['node'], 'field_feature_hero')) {
+        $variables['feature_alt_hero'] = theme('html_tag', array(
+          'element' => array(
+          '#tag' => 'div',
+          '#attributes' => array(
+            'class' => 'feature_alt_hero'
+          ),
+          '#value' => $feature_alt_hero[0]['value']
+        )));
+      }
     }
 
     /* Subheadline */
@@ -146,22 +157,22 @@ function fresh_preprocess_node__autoload(&$variables) {
       }
     }
 
-  else if ($node_type == 'video') {
-    $video = drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page'));
-    if (!empty($video)) {
-      $variables['media'] = '<div class="main-media">';
-      $variables['media'] .= $video;
-      $variables['media'] .= '</div>';
+    else if ($node_type == 'video') {
+      $video = drupal_render(field_view_field('node', $variables['node'], 'field_video', 'playlist_full_page'));
+      if (!empty($video)) {
+        $variables['media'] = '<div class="main-media">';
+        $variables['media'] .= $video;
+        $variables['media'] .= '</div>';
+      }
     }
-  }
-  else if ($node_type == 'video_playlist') {
-    $video_playlist = drupal_render(field_view_field('node', $variables['node'], 'field_video_list' , 'video_playlist'));
-    if (!empty($video_playlist)) {
-      $variables['media'] = '<div class="main-media">';
-      $variables['media'] .= $video_playlist;
-      $variables['media'] .= '</div>';
+    else if ($node_type == 'video_playlist') {
+      $video_playlist = drupal_render(field_view_field('node', $variables['node'], 'field_video_list' , 'video_playlist'));
+      if (!empty($video_playlist)) {
+        $variables['media'] = '<div class="main-media">';
+        $variables['media'] .= $video_playlist;
+        $variables['media'] .= '</div>';
+      }
     }
-  }
 
     /* Author */
     $author_vars = array();
