@@ -1,5 +1,7 @@
 <?php
 /**
  * @file
- * Drupal needs this blank file.
+ * Code for the TakePart Taxonomy Topic feature.
  */
+
+include_once 'tpf_taxonomy_topic.features.inc';
