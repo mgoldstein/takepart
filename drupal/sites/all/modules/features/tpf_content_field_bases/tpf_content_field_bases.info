@@ -120,6 +120,7 @@ features[field_base][] = field_display_cover
 features[field_base][] = field_display_tab_banner
 features[field_base][] = field_due_date
 features[field_base][] = field_editor_campaign_reference
+features[field_base][] = field_feature_hero
 features[field_base][] = field_featured_campaign_link
 features[field_base][] = field_featured_campaign_page
 features[field_base][] = field_featured_campaigns

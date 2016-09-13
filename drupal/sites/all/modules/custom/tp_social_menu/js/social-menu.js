@@ -228,6 +228,10 @@
         if($(this).hasClass('node-feature-article')) {
           window.featureFirst = true;
           var stickyOffset = $(this).find('.author-teaser').offset().top + 10 - $(".main-content").offset().top;
+          //Adjust the sticky for feature with alternative hero
+          if ($(this).has('.feature_alt_hero').length != 0) {
+             stickyOffset = $(this).find('.field-name-body').offset().top;
+          }
         } else {
           window.featureFirst = false;
           var stickyOffset = $(".align-sticky").offset().top - $(".main-content").offset().top + cic_space;
