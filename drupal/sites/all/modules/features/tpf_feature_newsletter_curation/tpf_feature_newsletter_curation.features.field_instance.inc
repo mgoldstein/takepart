@@ -10,7 +10,8 @@
 function tpf_feature_newsletter_curation_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'node-openpublish_photo_gallery-field_newsletter_feed_exclude'
+  // Exported field_instance:
+  // 'node-openpublish_photo_gallery-field_newsletter_feed_exclude'.
   $field_instances['node-openpublish_photo_gallery-field_newsletter_feed_exclude'] = array(
     'bundle' => 'openpublish_photo_gallery',
     'default_value' => NULL,
@@ -108,7 +109,7 @@ function tpf_feature_newsletter_curation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-video-field_newsletter_feed_exclude'
+  // Exported field_instance: 'node-video-field_newsletter_feed_exclude'.
   $field_instances['node-video-field_newsletter_feed_exclude'] = array(
     'bundle' => 'video',
     'default_value' => NULL,
@@ -212,7 +213,8 @@ function tpf_feature_newsletter_curation_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-video_playlist-field_newsletter_feed_exclude'
+  // Exported field_instance:
+  // 'node-video_playlist-field_newsletter_feed_exclude'.
   $field_instances['node-video_playlist-field_newsletter_feed_exclude'] = array(
     'bundle' => 'video_playlist',
     'default_value' => NULL,
