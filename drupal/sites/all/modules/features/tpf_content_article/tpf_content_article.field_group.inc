@@ -58,7 +58,7 @@ function tpf_content_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Autoload Settings',
-    'weight' => '23',
+    'weight' => '24',
     'children' => array(
       0 => 'field_autoload',
       1 => 'field_auto_free_tagged',
@@ -117,7 +117,7 @@ function tpf_content_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Editorial Info',
-    'weight' => '24',
+    'weight' => '25',
     'children' => array(
       0 => 'field_assigned_editor',
       1 => 'field_due_date',
@@ -176,7 +176,7 @@ function tpf_content_article_field_group_info() {
   $field_group->parent_name = '';
   $field_group->data = array(
     'label' => 'Tagging',
-    'weight' => '14',
+    'weight' => '13',
     'children' => array(
       0 => 'field_free_tag',
       1 => 'field_series',

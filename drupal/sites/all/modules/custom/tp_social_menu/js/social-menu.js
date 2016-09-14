@@ -122,6 +122,48 @@
     }
   };
 
+  Drupal.behaviors.InlineSocialShare = {
+    attach: function (context, settings) {
+      //trigger tp_initSocialMenu
+      $(document).ready(function () {
+        $('.inlineSharingButtons').each(function(){
+          $(this).once('inlineSharing',function(){
+            var author_name = $(this).parent().attr('data-author-name') || $("meta[name='sailthru.author']").attr('content');
+            var append_author = "—"+author_name;
+            var caption = '';
+            if($("meta[property='og:description']").length) {
+              caption =$("meta[property='og:description']").attr("content");
+            }
+
+            var services = {
+              url_append: '?cmpid=organic-share-{{name}}',
+              services: {
+                twitter: {
+                  name: 'twitter',
+                  text: $(this).siblings('.inlineSharingQuote').text(),
+                  via: 'TakePart',
+                  anchor: $(this).parent().attr('data-anchor'),
+                  author_name: append_author,
+                  quote: true,
+                  class_target: 'inlineSharingUnique-'+$(this).parent().attr('data-unique-id')
+                },
+                facebook: {
+                  name: 'facebookfeed',
+                  description: "\""+$(this).siblings('.inlineSharingQuote').text()+"\""+append_author,
+                  anchor: $(this).parent().attr('data-anchor'),
+                  author_name: author_name,
+                  share_title: $(this).parent().attr('data-title'),
+                  caption: caption
+                }
+              }
+            };
+            $(this).tpsocial(services);
+          });
+        });
+      });
+    }
+  };
+
   var lastScrollTop = 0;
   function hasScrolled(delta) {
     var st = $(this).scrollTop();

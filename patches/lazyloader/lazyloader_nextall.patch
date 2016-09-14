@@ -1,0 +1,20 @@
+diff --git a/drupal/sites/all/modules/contrib/lazyloader/lazyloader.js b/drupal/sites/all/modules/contrib/lazyloader/lazyloader.js
+index 506d8e1..8efe05f 100644
+--- a/drupal/sites/all/modules/contrib/lazyloader/lazyloader.js
++++ b/drupal/sites/all/modules/contrib/lazyloader/lazyloader.js
+@@ -37,7 +37,7 @@
+         debounce: settings.lazyloader.debounce,
+         callback: function (element, op) {
+           // Remove the loader icon when the image is loaded.
+-          $(element).next('.lazyloader-icon').remove();
++          $(element).nextAll('.lazyloader-icon').remove();
+         }
+       });
+ 
+@@ -74,4 +74,4 @@ function lazyloaderDebounceOrThrottle(debounce, throttle) {
+     echo.render();
+     Drupal.behaviors.lazyloader.poll = null;
+   }, throttle);
+-}
+\ No newline at end of file
++}

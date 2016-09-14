@@ -14,6 +14,7 @@
 	 var alreadyloading = false;
 	 var page = -1;
 	 var page_limit = settings.limit - 1;
+   window.forceAutoload = false;
 
 	 /* Make a copy of the page data in the DDL for use when the user scrolls to the top */
 	 digitalData.pageInititial = digitalData.page;
@@ -24,8 +25,23 @@
 	   var window_bottom = $window.scrollTop() + $window.height();
 	   var last_article = $('article').last().parent().height() / 2;
 
+    //Promote the next article after 1 minute unless the user scrolls to the next article faster
+    //Adding this snippet inside the scroll to prevent race condition with Optimizely
+    //recirculation-test class is set via Optimizely
+    if ($('body').hasClass('recirculation-test')) {
+      //Run the timer only once
+      if (!$('body').hasClass('recirculation-timer')) {
+        setTimeout(function() {
+          if (!$('body').hasClass('next-node-promoted')) {
+            window.forceAutoload = true;
+          }
+        },60000);
+      }
+      $('body').addClass('recirculation-timer');
+    }
+
 	   /* when the page scrolls to within 480px of #next-article */
-	   if (window_bottom + last_article + $('#footer').height() > elTop && page < page_limit) {
+	   if ((window_bottom + last_article + $('#footer').height() > elTop && page < page_limit) || window.forceAutoload) {
 
 		if (alreadyloading == false) {
 		  alreadyloading = true;
@@ -36,7 +52,7 @@
 		    /* Not returning a json object (Drupal is slow at that) so let's convert it here */
 		    data = jQuery.parseJSON(data);
 
-		    //Set the article autoload page number
+        //Set the article autoload page number
 		    var pageNumber = page + 3;
 		    data.ddl.eventInfo['autoloadCount'] = 'page ' + pageNumber;
 
@@ -58,6 +74,15 @@
 			 Drupal.behaviors.tp_video_player.attach();
 		    }
 
+        //process inline social share
+        if ('function' === typeof Drupal.behaviors.InlineSocialShare.attach) {
+          Drupal.behaviors.InlineSocialShare.attach();
+        }
+
+        if(typeof Drupal.behaviors.lazyloader.attach === 'function') {
+          Drupal.behaviors.lazyloader.attach(document, Drupal.settings);
+        }
+
               // Load comments box on button click for mobile display
 		    $('a.comments-count').once('FBComments', function () {
 			 $('a.comments-count').on('click', function (e) {
@@ -68,57 +93,17 @@
 			 });
 		    });
 
-      //Fresh gallery autoloaded
-      if($(".node-fresh-gallery").length != 0 ) {
-        $('.node-fresh-gallery').each(function (index) {
-          if (!$(this).hasClass("gallery-processed")) {
-            var page_url = $(this).data('tpOgUrl');
-            var adMeta = Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'];
-            // Build the object we need.
-            var galleryData = {
-              "title": $(this).attr('data-tp-og-title'),
-              "adTag": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_tag,
-              "adFrequency": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_freq,
-              "adMeta": adMeta
-            };
-
-            var jsonId = $(this).attr('data-ddl-page-id');
-            galleryData.images = eval('gallery_' + jsonId + '_json.images');
-            var galleryElement = $(this).find('.gallery-wrapper')[0];
-
-            if (!digitalData.page.pageInfo.gallery) {
-              digitalData.page.pageInfo.gallery = {};
-            }
-
-            digitalData.page.pageInfo.gallery.slideCount = galleryData.images.length;
-            digitalData.page.pageInfo.gallery.viewType = 'Single Page';
-            digitalData.page.pageInfo.gallery.shareType = 'Gallery';
-
-            //First Fresh gallery on the page - ajax load all the required js
-            if (typeof showImageGallery === 'undefined') {
-              $.getScript( "/sites/all/libraries/fresh-gallery/gallery.js" )
-              .done(function( script, textStatus ) {
-                showImageGallery(galleryData, galleryElement);
-                $(this).addClass("gallery-processed");
-              })
-              .fail(function( jqxhr, settings, exception ) {
-                console.error('failed to grab the gallery script');
-              });
-            }
-            else {
-              //Node 1 is a fresh gallery
-              showImageGallery(galleryData, galleryElement);
-              $(this).addClass("gallery-processed");
-            }
-          }
-        });
-      }
-
 		    /* There are new Tap Widgets available on the page.  Delay these calls until page is active */
 		    window.newTapWidgets = true;
 
 		    alreadyloading = false;
 		    page++;
+
+        //Promote next article
+        //recirculation-test set via optimizely
+        if ($('body').hasClass('recirculation-test') && !$('body').hasClass('next-node-promoted')) {
+          promptNextNode();
+        }
 		  });
 		}
 	   }
@@ -167,7 +152,47 @@
 
 		//For each article
 		$('article').each(function (index, value) {
-      //console.log("article loop");
+      //Fresh gallery autoloaded
+      if($(this).hasClass('node-fresh-gallery') && !$(this).hasClass("gallery-processed")) {
+        var page_url = $(this).data('tpOgUrl');
+        if (typeof Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url] == 'undefined') {
+          var adMeta = null;
+        }
+        else {
+          var adMeta = Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'];
+        }
+
+        // Build the object we need.
+        var galleryData = {
+          "title": $(this).attr('data-tp-og-title'),
+          "subhead": $(this).attr('data-tp-og-description'),
+          "adTag": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_tag,
+          "adFrequency": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_freq,
+          "adMeta": adMeta
+        };
+
+        var jsonId = $(this).attr('data-ddl-page-id');
+        galleryData.images = eval('gallery_' + jsonId + '_json.images');
+        var galleryElement = $(this).find('.gallery-wrapper')[0];
+
+        //First Fresh gallery on the page - ajax load all the required js
+        if (typeof showImageGallery === 'undefined') {
+          $.getScript( "/sites/all/libraries/fresh-gallery/gallery.js" )
+          .done(function( script, textStatus ) {
+            showImageGallery(galleryData, galleryElement);
+            $(this).addClass("gallery-processed");
+          })
+          .fail(function( jqxhr, settings, exception ) {
+            console.error('failed to grab the gallery script');
+          });
+        }
+        else {
+          //Node 1 is a fresh gallery
+          showImageGallery(galleryData, galleryElement);
+          $(this).addClass("gallery-processed");
+        }
+      }
+
 		  /** Update active Article **/
 		  var articleTop = $(this).offset().top;
 		  var articleBottom = articleTop + $(this).height();
@@ -201,6 +226,18 @@
 		    if ($('.feature-image.has-videoBG.video-created').length != 0) {
 			 pauseAmbientVid();
 		    }
+
+        //Remove next node promo if still visible when we get to second node.
+        if (index == 1 && $('#prompt-next-article.show').length != 0) {
+          if (window.isMobile) {
+            jQuery('#prompt-next-article').removeClass('show').slideUp();
+          }
+          else {
+            jQuery('#prompt-next-article').removeClass('show').animate({
+              'right' : '-320'
+            });
+          }
+        }
 
 		    /** Update the URL **/
 		    /* if article is active and data-tp-url != url, update it */
@@ -300,7 +337,15 @@
 	 $("meta[property='og:image']").attr("content", image);
     }
     if (typeof description !== 'undefined') {
-	 $("meta[property='og:description']").attr("content", description);
+      $("meta[property='og:description']").attr("content", description);
+      $("meta[name='description']").attr("content", description);
+      $("meta[name='abstract']").attr("content", description);
+      $("meta[name='twitter:description").attr("content", description);
+    } else {
+      $("meta[property='og:description']").attr("content", title);
+      $("meta[name='description']").attr("content", title);
+      $("meta[name='abstract']").attr("content", title);
+      $("meta[name='twitter:description").attr("content", title);
     }
 
     //updates the social config
@@ -385,21 +430,21 @@
  * Pause the ambient video if less than 70% of it is in viewport.
  */
 function pauseAmbientVid() {
-  $('.has-videoBG.video-created video').each(function (index) {
-    var vid = $('.has-videoBG.video-created video').get(index);
+  jQuery('.has-videoBG.video-created video').each(function (index) {
+    var vid = jQuery('.has-videoBG.video-created video').get(index);
     if (typeof vid !== 'undefined') {
-	 var vid_parent = $(this).parent().parent();
+	 var vid_parent = jQuery(this).parent().parent();
 	 var is_paused = vid.paused;
 	 if (vid_parent.isInViewport(null, 0.7)) {
-	   if (is_paused || $(this).hasClass('paused')) {
+	   if (is_paused || jQuery(this).hasClass('paused')) {
 		vid.play();
-		$(this).removeClass('paused');
+		jQuery(this).removeClass('paused');
 	   }
 	 }
 	 else {
-	   if (!is_paused && !$(this).hasClass('paused')) {
+	   if (!is_paused && !jQuery(this).hasClass('paused')) {
 		vid.pause();
-		$(this).addClass('paused');
+		jQuery(this).addClass('paused');
 	   }
 	 }
     }
@@ -445,6 +490,81 @@ jQuery.fn.isInViewport = function(x, y) {
         left : Math.min(1, ( bounds.right - viewport.left ) / width),
         right : Math.min(1, ( viewport.right - bounds.left ) / width)
     };
-    window.temp = deltas;
+
     return (deltas.left * deltas.right) >= x && (deltas.top * deltas.bottom) >= y;
+}
+
+/*
+ * Displays a prompt that link to the next autoloaded node for an A/B test
+ */
+function promptNextNode() {
+  jQuery('article').each(function (index) {
+    if (index == 1) {
+      $this = jQuery(this);
+      //Next node's info
+      var promo_title = $this.data('tp-og-title');
+      var promo_img = $this.data('tp-og-image');
+      var promo_nid = $this.data('ddl-page-id');
+
+      //Create markup
+      //TODO: if this A/B test is succuessful, we should move this to a template
+      var markup = '';
+      markup += '<div id= "prompt-next-article">';
+      markup +=   '<div class = "prompt-next-article-inner">';
+      markup +=     '<div class="i-close-x"></div>';
+      markup +=     '<img src="' + promo_img + '">';
+      markup +=     '<div class="prompt-content">';
+      markup +=       '<p>Next story</p>';
+      markup +=       '<h1 class= "title">' + promo_title + '</h1>';
+      markup +=       '<a href="javascript:gotoNextdNode(' + promo_nid + ')" class="jump desktop">Jump to next story</a>';
+      markup +=       '<a href="javascript:gotoNextdNode(' + promo_nid + ')" class="jump mobile">JUMP</a>';
+
+      markup +=     '</div>'
+      markup +=    '</div>';
+      markup += '</div>';
+
+      //Add the markup to the page
+      jQuery('.main-content .container').before(markup);
+      jQuery('#prompt-next-article').addClass('show').animate({
+        'right' : '0'
+      }, 400);
+      jQuery('body').addClass('next-node-promoted');
+      return;
+    }
+  });
+
+  //close next article promo
+  jQuery('#prompt-next-article .i-close-x').click(function() {
+    if (window.isMobile) {
+      jQuery('#prompt-next-article').removeClass('show').slideUp();
+    }
+    else {
+      jQuery('#prompt-next-article').removeClass('show').animate({
+        'right' : '-320'
+      });
+    }
+  });
+  //Optimizley tracking - next article promo is displayed
+  window['optimizely'] = window['optimizely'] || [];
+  window.optimizely.push(["trackEvent", "next_article_promo"]);
+
+  window.forceAutoload = false;
+}
+
+/*
+ * Slide to the next node in autoload. Remove the promo banner
+ */
+function gotoNextdNode(nid) {
+  if (window.isMobile) {
+    jQuery('#prompt-next-article').removeClass('show').slideUp();
+  }
+  else {
+    jQuery('#prompt-next-article').removeClass('show').animate({
+      'right' : '-320'
+    });
+  }
+
+  jQuery('html, body').animate({
+    scrollTop: jQuery('article[data-ddl-page-id="' + nid + '"]').offset().top
+  }, 1000);
 }

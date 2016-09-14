@@ -35,6 +35,7 @@
 @import "modules/tp_more_on_takepart";
 @import "modules/tp_ads";
 @import "modules/series-nav";
+@import "modules/next_article_promo";
 @import "base/modules/infographics";
 @import "base/modules/modals";
 @import "base/modules/interstitials";
@@ -181,10 +182,7 @@ blockquote.pullquote {
 }
 
 .inline-interactive-campaign-promo {
-  display: none;
-  @include breakpoint($breakpoint-tablet) {
-    display: block;
-  }
+  display: block;
   margin: 0 30px 20px 0;
   .stories-item-1,
   .stories-item-2 {
@@ -751,11 +749,7 @@ h4.campaign-vol {
   }
 }
 
-
 /** End of Content Inside Campaign */
-
-
-
 
 #highlight_menu {
   font-family: 'Open Sans', Sans;
@@ -780,23 +774,93 @@ h4.campaign-vol {
     height: 0px;
     display: block;
     position: absolute;
-    top: 51px;
+    top: 37px;
     left: 40%;
   }
   .highlight_menu_animate {
     transition: top 75ms ease-out,left 75ms ease-out;
   }
-  .side-by-side {
-    width: 100%;
-    padding:0;
-    margin:10px;
-    margin-top:14px;
+  #highlight_share_container {
+    padding: 0 10px;
+    .tp-social-link {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      overflow: hidden;
+      font-size: 1.3rem;
+      text-indent: 0;
+      color: transparent;
+      padding-top: 6px;
+      &:before {
+        position: relative;
+        color: #FFFFFF;
+      }
+    }
+    .tp-social-facebookfeed {
+      background-color: #3b5998;
+      width: 25px;
+      height: 25px;
+      position: relative;
+      @include border-radius(2px);
+      &:before {
+        content: '\e301';
+        color: #FFFFFF;
+        position: absolute;
+        right: -1px;
+        bottom: -4px;
+      }
+    }
+    .tp-social-twitter {
+      &:before {
+        color: #55acee;
+        content: '\e302';
+      }
+    }
   }
-  .side-by-side li {
+}
+
+.inlineSharingContainer {
+  .inlineSharingQuote {
+    color: $light-black;
+    font-size: 36px;
+    line-height: 44px;
     display: inline;
-    padding: 10px;
-    img {
-      display: inline;
+  }
+  .inlineSharingButtons {
+    display: inline;
+    padding-left: 10px;
+    .tp-social-link {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      overflow: hidden;
+      font-size: 1.3rem;
+      text-indent: 0;
+      color: transparent;
+      padding-top: 6px;
+      &:before {
+        position: relative;
+        color: #C7C7C7;
+      }
+    }
+    .tp-social-facebookfeed {
+      background-color: #C7C7C7;
+      width: 25px;
+      height: 25px;
+      position: relative;
+      @include border-radius(2px);
+      &:before {
+        content: '\e301';
+        color: #FFFFFF;
+        position: absolute;
+        right: -1px;
+        bottom: -4px;
+      }
+    }
+    .tp-social-twitter {
+      &:before {
+        content: '\e302';
+      }
     }
   }
 }

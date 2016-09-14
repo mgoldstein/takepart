@@ -432,36 +432,36 @@ var Environment = {
  * Enables the sticky Nav & sticky share for content inside campaign
  */
 function enableCicStickyNav(scrollUp) {
-  var $camp_banner = $('.campaign-ref-wrapper');
+  var $camp_banner = jQuery('.campaign-ref-wrapper');
   //DESKTOP - Display the sticky Nav once the banner is not in viewport
   if(!window.isMobile) {
     if(!$camp_banner.isInViewport(null,0.0)) {
-      $('body').addClass('sticky-cic-nav');
-      $('.sticky-cic-header').slideDown('fast');
+      jQuery('body').addClass('sticky-cic-nav');
+      jQuery('.sticky-cic-header').slideDown('fast');
       //Social share becomes sticky once cic header is sticky (non-feature)
-      if ($('.node-type-feature-article').length == 0) {
-        $('.sticky-wrapper .social').addClass('cic-sticky');
+      if (jQuery('.node-type-feature-article').length == 0) {
+        jQuery('.sticky-wrapper .social').addClass('cic-sticky');
       }
-      else if (!($('.feature_article-wrapper:not(.autoloaded) .feature-image').isInViewport(null,0.1))) {
+      else if (!(jQuery('.feature_article-wrapper:not(.autoloaded) .feature-image').isInViewport(null,0.1))) {
         //Social share becomes sticky when cic header is sticky and the main image is not visible (feature article)
-          $('.sticky-wrapper .social').addClass('cic-sticky');
+          jQuery('.sticky-wrapper .social').addClass('cic-sticky');
       }
     }
-    else if ($('.sticky-cic-nav').length != 0) {
-      $('body').removeClass('sticky-cic-nav');
-      $('.sticky-cic-header').hide();
-      $('.sticky-wrapper .social').removeClass('cic-sticky');
+    else if (jQuery('.sticky-cic-nav').length != 0) {
+      jQuery('body').removeClass('sticky-cic-nav');
+      jQuery('.sticky-cic-header').hide();
+      jQuery('.sticky-wrapper .social').removeClass('cic-sticky');
     }
   }
   else {
     //MOBILE - Display the sticky Nav once the banner is not in viewport and ONLY when the user is scrolling up
     if(!$camp_banner.isInViewport(null,0.0) && scrollUp) {
-        $('body').addClass('sticky-cic-nav');
-        $('.sticky-cic-header').slideDown('fast');
+        jQuery('body').addClass('sticky-cic-nav');
+        jQuery('.sticky-cic-header').slideDown('fast');
     }
     else {
-      $('body').removeClass('sticky-cic-nav');
-      $('.sticky-cic-header').hide();
+      jQuery('body').removeClass('sticky-cic-nav');
+      jQuery('.sticky-cic-header').hide();
     }
   }
 }
