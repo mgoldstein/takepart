@@ -59,6 +59,16 @@
     }
   }
 
+  var getSelectionText = function() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    }
+    return text;
+  }
+
   // Add services
 
   $.tpsocial.add_service({
@@ -146,7 +156,14 @@
     	 get_share_url(args.url, args.title, function (url) {
     	   var parser = document.createElement("a");
     	   parser.href = args.url;
+         if(args.description == "{{highlight}}") {
+           args.description = "\""+getSelectionText()+"\"";
+         }
          var text_width = args.description.length + 450;
+         var picture = ''
+         if(args.picture) {
+           picture = 'http://res.cloudinary.com/'+Drupal.settings.cloudinary_bucket+'/image/upload/g_north,x_0,y_120,w_'+text_width+',c_fit,l_text:arial_36_left_line_spacing_8:'+encodeURI(args.description.replace(/"/g, "")).replace(/,/g, "%E2%80%9A").replace(/\?/g,"%253F")+'/l_text:arial_20:%20,g_south,x_0,y_-20/ar_1.91,c_fill/quote_text.jpg'
+         }
            FB.ui({
              method: 'feed',
              display: 'popup',
@@ -154,7 +171,7 @@
              description: args.description,
              name: args.share_title,
              caption: args.caption,
-             picture: 'http://res.cloudinary.com/'+Drupal.settings.cloudinary_bucket+'/image/upload/g_north,x_0,y_120,w_'+text_width+',c_fit,l_text:arial_36_left_line_spacing_8:'+encodeURI(args.description.replace(/"/g, "")).replace(/,/g, "%E2%80%9A").replace(/\?/g,"%253F")+'/l_text:arial_20:%20,g_south,x_0,y_-20/ar_1.91,c_fill/quote_text.jpg'
+             picture: picture
            },
              function (response) {
                if (response && response.post_id) {
@@ -225,7 +242,9 @@
       // Replace variables in twitter template
       var twitter_tpl_reg = /{{([a-zA-Z\-_]+)}}/g;
       var template_tplvar_clean_reg = /({{)|(}})/g;
-
+      if(args.text == "{{highlight}}") {
+        args.text = getSelectionText();
+      }
       var text = args.text || '{{title}}';
       var matches = text.match(twitter_tpl_reg);
       var url_obj = {

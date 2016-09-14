@@ -11,6 +11,9 @@ function tp_social_menu_theme(){
         'options' => array()
       )
     ),
+    'tp_highlight_share' => array(
+      'variables' => array()
+    ),
   );
 }
 
@@ -146,4 +149,15 @@ function theme_tp_social_menu($variables) {
   $parent_ul = str_replace('item-list', 'item-list social-wrapper', $parent_ul);
 
   return $parent_ul;
+}
+
+function theme_tp_highlight_share($variables) {
+  return '<div id="highlight_menu" style="display:none;">
+
+    <div id="highlight_share_container">
+    </div>
+
+    <div class="caret"></div>
+
+  </div>';
 }
