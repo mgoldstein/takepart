@@ -750,3 +750,117 @@ h4.campaign-vol {
 }
 
 /** End of Content Inside Campaign */
+
+#highlight_menu {
+  font-family: 'Open Sans', Sans;
+  font-weight: 100;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 5px;
+  background: rgba(0,0,0,.8);
+  position: absolute;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  z-index: 999;
+  .caret {
+    border-style: solid;
+    border-width: 10px 10px 0px 10px;
+    border-bottom-color: transparent;
+    border-left-color: transparent;
+    border-top-color: rgba(0,0,0,.8);
+    border-right-color: transparent;
+    width: 0px;
+    height: 0px;
+    display: block;
+    position: absolute;
+    top: 37px;
+    left: 40%;
+  }
+  .highlight_menu_animate {
+    transition: top 75ms ease-out,left 75ms ease-out;
+  }
+  #highlight_share_container {
+    padding: 0 10px;
+    .tp-social-link {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      overflow: hidden;
+      font-size: 1.3rem;
+      text-indent: 0;
+      color: transparent;
+      padding-top: 6px;
+      &:before {
+        position: relative;
+        color: #FFFFFF;
+      }
+    }
+    .tp-social-facebookfeed {
+      background-color: #3b5998;
+      width: 25px;
+      height: 25px;
+      position: relative;
+      @include border-radius(2px);
+      &:before {
+        content: '\e301';
+        color: #FFFFFF;
+        position: absolute;
+        right: -1px;
+        bottom: -4px;
+      }
+    }
+    .tp-social-twitter {
+      &:before {
+        color: #55acee;
+        content: '\e302';
+      }
+    }
+  }
+}
+
+.inlineSharingContainer {
+  .inlineSharingQuote {
+    color: $light-black;
+    font-size: 36px;
+    line-height: 44px;
+    display: inline;
+  }
+  .inlineSharingButtons {
+    display: inline;
+    padding-left: 10px;
+    .tp-social-link {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+      overflow: hidden;
+      font-size: 1.3rem;
+      text-indent: 0;
+      color: transparent;
+      padding-top: 6px;
+      &:before {
+        position: relative;
+        color: #C7C7C7;
+      }
+    }
+    .tp-social-facebookfeed {
+      background-color: #C7C7C7;
+      width: 25px;
+      height: 25px;
+      position: relative;
+      @include border-radius(2px);
+      &:before {
+        content: '\e301';
+        color: #FFFFFF;
+        position: absolute;
+        right: -1px;
+        bottom: -4px;
+      }
+    }
+    .tp-social-twitter {
+      &:before {
+        content: '\e302';
+      }
+    }
+  }
+}

@@ -7,7 +7,7 @@ if (file_exists($common_settings)) {
 }
 
 // Database configuration
-// Ensure the database configuration happens before any of the $conf array elements are defined. 
+// Ensure the database configuration happens before any of the $conf array elements are defined.
 // Else, you run into the possibility of the variables for the databases not being populated yet.
 // I can't explain it, but the behavior is solid when database definitions precede the $conf
 // definitions.
@@ -48,33 +48,34 @@ $conf['search_api_solr_overrides'] = array(
 
 // Ingest application settings into the application here
 $conf += array(
-  'omniture_account_name'              => $omniture_account_name,
+  'campaign_css_s3_path'               => $campaign_css_s3_path,
+  'centralized_login_widget_js'        => "https://$services_domain/assets/login_widget.js",
+  'cloudinary_bucket'                  => $cloudinary_bucket,
   'dtm_script_src'                     => $dtm_script_src,
-  'takeaction_domain'                  => $takeaction_domain,
-  'takepart_api_domain'                => "http://$services_domain",
-  'tapembed_domain'                    => $tapembed_domain,
   'facebook_app_id'                    => $facebook_app_id,
+  'https'                              => TRUE,
+  'omniture_account_name'              => $omniture_account_name,
+  'participant_api_default_account'    => $participant_api_default_account,
   'pm_signup_log'                      => $pm_signup_log,
   'pm_jwplatform_auto_create_tag'      => $pm_jwplatform_auto_create_tag,
   'pm_jwplatform_api_key'              => $pm_jwplatform_api_key,
   'pm_jwplatform_api_secret'           => $pm_jwplatform_api_secret,
   'pm_jwplatform_content_domain'       => $pm_jwplatform_content_domain,
   'pm_jwplatform_content_dns_mask'     => $pm_jwplatform_content_dns_mask,
-  'tp_video_player_account_token'      => $tp_video_player_account_token,
-  'tp_video_player_key'                => $tp_video_player_key,
-  'centralized_login_widget_js'        => "https://$services_domain/assets/login_widget.js",
-  'takeaction_widget_host'             => "https://$takeaction_domain",
-  'takeaction_influence_overlay_js'    => "//$takeaction_domain/assets/influence.js",
+  'shared_assets_path'                 => $shared_assets_path,
   'signature_action_import_tap_domain' => "$takeaction_domain",
   'signature_import_feed'              => "https://$takeaction_domain/api/actions",
-  'takeaction_publisher_id'            => $takeaction_publisher_id,
-  'takeaction_widget_script'           => '/assets/publisher.js?v=3.7',
   'takeaction_awareness_script'        => "//$takeaction_domain/assets/awareness.js",
+  'takeaction_domain'                  => $takeaction_domain,
+  'takeaction_influence_overlay_js'    => "//$takeaction_domain/assets/influence.js",
+  'takeaction_publisher_id'            => $takeaction_publisher_id,
+  'takeaction_widget_host'             => "https://$takeaction_domain",
+  'takeaction_widget_script'           => '/assets/publisher.js?v=3.7',
+  'takepart_api_domain'                => "http://$services_domain",
   'tap_embed_script'                   => "https://$tapembed_domain/embed.js?publisher=$takeaction_publisher_id",
-  'https'                              => TRUE,
-  'participant_api_default_account'    => $participant_api_default_account,
-  'shared_assets_path'                 => $shared_assets_path,
-  'campaign_css_s3_path'               => $campaign_css_s3_path,
+  'tapembed_domain'                    => $tapembed_domain,
+  'tp_video_player_account_token'      => $tp_video_player_account_token,
+  'tp_video_player_key'                => $tp_video_player_key,
 );
 
 // Elasticache

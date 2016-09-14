@@ -403,6 +403,12 @@ function inline_content_replacement_types() {
     'controller' => 'InlineContentHorizontalRule',
   );
 
+  $types['inline_sharing'] = array(
+    'label' => t('Inline Sharing Block'),
+    'description' => t('Add a block of text that can be shared.'),
+    'controller' => 'InlineContentInlineSharing',
+  );
+
   $types['interactive_iframe'] = array(
     'label' => t('Interactive Iframe'),
     'description' => t('Paste Iframe embed code in the Embed field.'),

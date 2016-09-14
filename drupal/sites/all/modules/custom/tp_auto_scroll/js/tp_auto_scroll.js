@@ -74,6 +74,11 @@
 			 Drupal.behaviors.tp_video_player.attach();
 		    }
 
+        //process inline social share
+        if ('function' === typeof Drupal.behaviors.InlineSocialShare.attach) {
+          Drupal.behaviors.InlineSocialShare.attach();
+        }
+
         if(typeof Drupal.behaviors.lazyloader.attach === 'function') {
           Drupal.behaviors.lazyloader.attach(document, Drupal.settings);
         }

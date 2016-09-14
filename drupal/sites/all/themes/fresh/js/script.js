@@ -191,7 +191,6 @@ var Environment = {
     //Add the class to position absolute the header if a node is tagged with a campaign on mobile
     //TODO: Uncomment once we review how it behaves with Ad
     //$('#page-wrapper.campaign-experience #header').addClass('mobile-ad-loaded');
-
   });
 
   /**

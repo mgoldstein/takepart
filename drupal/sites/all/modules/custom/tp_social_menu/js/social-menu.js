@@ -122,6 +122,109 @@
     }
   };
 
+  Drupal.behaviors.InlineSocialShare = {
+    attach: function (context, settings) {
+      //trigger tp_initSocialMenu
+      $(document).ready(function () {
+        $('.inlineSharingButtons').each(function(){
+          $(this).once('inlineSharing',function(){
+            var author_name = $(this).parent().attr('data-author-name') || $("meta[name='sailthru.author']").attr('content');
+            var append_author = "—"+author_name;
+            var caption = '';
+            if($("meta[property='og:description']").length) {
+              caption =$("meta[property='og:description']").attr("content");
+            }
+
+            var services = {
+              url_append: '?cmpid=organic-share-{{name}}',
+              services: {
+                twitter: {
+                  name: 'twitter',
+                  text: $(this).siblings('.inlineSharingQuote').text(),
+                  via: 'TakePart',
+                  anchor: $(this).parent().attr('data-anchor'),
+                  author_name: append_author,
+                  quote: true,
+                  class_target: 'inlineSharingUnique-'+$(this).parent().attr('data-unique-id')
+                },
+                facebook: {
+                  name: 'facebookfeed',
+                  description: "\""+$(this).siblings('.inlineSharingQuote').text()+"\""+append_author,
+                  anchor: $(this).parent().attr('data-anchor'),
+                  author_name: author_name,
+                  share_title: $(this).parent().attr('data-title'),
+                  caption: caption,
+                  picture: true
+                }
+              }
+            };
+            $(this).tpsocial(services);
+          });
+        });
+      });
+    }
+  };
+
+  Drupal.behaviors.HighlightShare = {
+    attach: function (context, settings) {
+      $(document.body).on('mouseup', function (evt) {
+        var menu = $('#highlight_menu');
+        var s = window.getSelection(),
+          r = s.getRangeAt(0);
+
+        if (r && s.toString()) {
+          var p = r.getBoundingClientRect();
+
+          if (p.left || p.top) {
+            menu.css({
+              left: (p.left + (p.width / 2)) - (menu.width() / 2),
+              top: ((p.top - menu.height() - 10)+$(window).scrollTop()),
+              display: 'block',
+              opacity: 0
+          })
+          .animate({
+            opacity:1
+          }, 300);
+
+          setTimeout(function() {
+            menu.addClass('highlight_menu_animate');
+          }, 10);
+          return;
+        }
+        }
+        menu.animate({ opacity:0 }, function () {
+          menu.hide().removeClass('highlight_menu_animate');
+        });
+      });
+
+
+      $('#highlight_share_container').each(function(){
+        $(this).once('highlightSharing',function(){
+
+          var services = {
+            url_append: '?cmpid=organic-share-{{name}}',
+            services: {
+              twitter: {
+                name: 'twitter',
+                text: '{{highlight}}',
+                via: 'TakePart',
+                quote: true,
+                author_name: '',
+                class_target: 'highlightShareUnique'
+              },
+              facebook: {
+                name: 'facebookfeed',
+                description: '{{highlight}}',
+                picture: false
+              }
+            }
+          };
+          $(this).tpsocial(services);
+        });
+      });
+    }
+  };
+
   var lastScrollTop = 0;
   function hasScrolled(delta) {
     var st = $(this).scrollTop();

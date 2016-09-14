@@ -213,10 +213,10 @@ function fresh_preprocess_node__autoload(&$variables) {
 
     $options = array('comments' => TRUE, 'overlay' => TRUE, 'class' => '');
     if (module_exists('tp_social_menu')) {
-	 //if disable is TRUE then exclude this
-	 if (!$variables['disable_social']) {
-	   $variables['social'] = theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
-	 }
+      //if disable is TRUE then exclude this
+      if (!$variables['disable_social']) {
+        $variables['social'] = theme('tp_social_menu', array('elements' => $social_elements, 'options' => $options));
+      }
     }
 
     /* Enable AutoScroll */
