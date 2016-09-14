@@ -86,7 +86,6 @@
    transition: opacity .15s ease-in;
 }
 
-
 .gallery-unit {
   text-align: center;
   margin: 3em 0 4em 0;
@@ -99,6 +98,20 @@
 .takepart-gallery {
   max-width: 970px;
   margin: 0 auto;
+}
+
+.launch-gallery {
+  background-color: rgba(0,0,0, 0.6);
+  border: none;
+  color: white;
+  margin-right: 15px;
+  padding: 0.5em;
+  position: absolute;
+  right: 0;
+
+  @include breakpoint($breakpoint-tablet) {
+    margin-right: 31px;
+  }
 }
 
 .shareable-image {

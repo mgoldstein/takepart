@@ -43,6 +43,11 @@ class InlineContentImage extends InlineContentReplacementController {
         $format = $format[0]['value'];
         if($format != 'none'){
           $mapping = picture_mapping_load('feature_article_' . $format);
+          $file->breakpoints = picture_get_mapping_breakpoints($mapping);
+          $file->attributes = array(
+            'class' => array('inline-image')
+          );
+          $image = theme('picture', (array) $file);
         }else {
           //Don't use large image style on full width images on feature article
           if ($replacement->field_ic_alignment['und'][0]['value'] == 'full_width') {
