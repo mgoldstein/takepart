@@ -2,7 +2,7 @@
 
 $APP_ENV               = $_SERVER['APP_ENV'];
 
-// Adobe Analytics 
+// Adobe Analytics
 $omniture_account_name = 'takeparttakepartdev2';
 $dtm_script_src        = '//assets.adobedtm.com/1bfdeeddf2a7ac04657b15540f0e8de06d3ee618/satelliteLib-e72f040081d6d4caa0027d0ba1c74cd46d514484-staging.js';
 
@@ -34,6 +34,9 @@ $database_username     = 'root';
 $database_password     = 'master_user_password';
 $database_host         = 'devphp01.ctvzddorowz4.us-east-1.rds.amazonaws.com';
 $database_slave_host   = 'devphp01-read.ctvzddorowz4.us-east-1.rds.amazonaws.com';
+
+// Cloudinary Bucket Name
+$cloudinary_bucket = 'takepartqa';
 
 // Scream at the dev, maybe they'll fix something
 ini_set('error_reporting', E_ALL & ~E_NOTICE);
