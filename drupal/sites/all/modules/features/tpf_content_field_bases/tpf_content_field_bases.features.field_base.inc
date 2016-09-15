@@ -4195,6 +4195,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_promo_content',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'target_id' => array(
         0 => 'target_id',
@@ -4218,6 +4221,7 @@ function tpf_content_field_bases_field_default_field_bases() {
           'campaign' => 'campaign',
           'campaign_page' => 'campaign_page',
           'feature_article' => 'feature_article',
+          'fresh_gallery' => 'fresh_gallery',
           'openpublish_article' => 'openpublish_article',
           'openpublish_photo_gallery' => 'openpublish_photo_gallery',
           'section_front' => 'section_front',

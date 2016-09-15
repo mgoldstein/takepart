@@ -52,7 +52,7 @@ function takepart_search_feature_default_search_api_index() {
         "field_series" : { "type" : "integer", "entity_type" : "taxonomy_term" },
         "field_series:name" : { "type" : "text" },
         "field_series:url" : { "type" : "uri" },
-        "field_thumbnail:file:url" : { "type" : "text" },
+        "field_thumbnail:file:url" : { "type" : "uri" },
         "field_topic" : { "type" : "list\\u003Cinteger\\u003E", "entity_type" : "taxonomy_term" },
         "field_topic:name" : { "type" : "list\\u003Ctext\\u003E" },
         "field_topic:url" : { "type" : "list\\u003Curi\\u003E" },
