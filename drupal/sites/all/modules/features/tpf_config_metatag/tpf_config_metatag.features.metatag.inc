@@ -542,10 +542,10 @@ function tpf_config_metatag_metatag_export_default() {
     'instance' => 'node:feature_article',
     'config' => array(
       'description' => array(
-        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:body}]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'abstract' => array(
-        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:body}]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'canonical' => array(
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
@@ -557,7 +557,7 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
       ),
       'og:description' => array(
-        'value' => '[node:field_article_subhead]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'og:image:width' => array(
         'value' => '[tp_og_image:thumbnail_width:{node:nid}]',
@@ -575,7 +575,7 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):]',
       ),
       'twitter:description' => array(
-        'value' => '[node:field_article_subhead]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'twitter:image' => array(
         'value' => '[tp_og_image:thumbnail:{node:nid}]',
@@ -588,10 +588,10 @@ function tpf_config_metatag_metatag_export_default() {
     'instance' => 'node:fresh_gallery',
     'config' => array(
       'description' => array(
-        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:body}]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'abstract' => array(
-        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:body}]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'fb:admins' => array(
         'value' => 1327833247,
@@ -600,7 +600,7 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
       ),
       'og:description' => array(
-        'value' => '[node:field_article_subhead]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'og:image:width' => array(
         'value' => '[tp_og_image:thumbnail_width:{node:nid}]',
@@ -615,7 +615,7 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
       ),
       'twitter:description' => array(
-        'value' => '[node:field_article_subhead]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'twitter:image' => array(
         'value' => '[tp_og_image:thumbnail:{node:nid}]',
@@ -628,10 +628,10 @@ function tpf_config_metatag_metatag_export_default() {
     'instance' => 'node:openpublish_article',
     'config' => array(
       'description' => array(
-        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:body}]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'abstract' => array(
-        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:body}]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'canonical' => array(
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
@@ -643,7 +643,7 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
       ),
       'og:description' => array(
-        'value' => '[node:field_article_subhead]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'og:image:width' => array(
         'value' => '[tp_og_image:thumbnail_width:{node:nid}]',
@@ -661,7 +661,7 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):]',
       ),
       'twitter:description' => array(
-        'value' => '[node:field_article_subhead]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'twitter:image' => array(
         'value' => '[tp_og_image:thumbnail:{node:nid}]',
@@ -708,10 +708,10 @@ function tpf_config_metatag_metatag_export_default() {
     'instance' => 'node:video',
     'config' => array(
       'description' => array(
-        'value' => '[node:field_article_subhead]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'abstract' => array(
-        'value' => '[node:field_article_subhead]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'canonical' => array(
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
@@ -726,7 +726,7 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
       ),
       'og:description' => array(
-        'value' => '[node:field_article_subhead]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'og:image:width' => array(
         'value' => '[tp_og_image:thumbnail_width:{node:nid}]',
@@ -759,7 +759,7 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '[node:title][f:bool:{node:field_sponsored}: (Promoted):] ',
       ),
       'twitter:description' => array(
-        'value' => '[node:field_article_subhead]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'twitter:image' => array(
         'value' => '[tp_og_image:thumbnail:{node:nid}]',
@@ -786,6 +786,12 @@ function tpf_config_metatag_metatag_export_default() {
   $config['node:video_playlist'] = array(
     'instance' => 'node:video_playlist',
     'config' => array(
+      'description' => array(
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
+      ),
+      'abstract' => array(
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
+      ),
       'canonical' => array(
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
       ),
@@ -794,6 +800,9 @@ function tpf_config_metatag_metatag_export_default() {
       ),
       'og:url' => array(
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
+      ),
+      'og:description' => array(
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'og:image:width' => array(
         'value' => '[tp_og_image:thumbnail_width:{node:nid}]',
@@ -808,7 +817,7 @@ function tpf_config_metatag_metatag_export_default() {
         'value' => '[tp_auto_scroll:clean_url:{node:nid}]',
       ),
       'twitter:description' => array(
-        'value' => '[node:field_article_subhead]',
+        'value' => '[f:bool:{node:field_article_subhead}:{node:field_article_subhead}:{node:summary}]',
       ),
       'twitter:image' => array(
         'value' => '[tp_og_image:thumbnail:{node:nid}]',
@@ -827,9 +836,6 @@ function tpf_config_metatag_metatag_export_default() {
       ),
       'twitter:player:stream:content_type' => array(
         'value' => 'video/mp4',
-      ),
-      'sailthru.author' => array(
-        'value' => '[sailthru_metatags:author]',
       ),
     ),
   );
