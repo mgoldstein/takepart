@@ -778,17 +778,18 @@ h4.campaign-vol {
     }
     .tp-social-facebookfeed {
       background-color: #C7C7C7;
-      width: 25px;
-      height: 25px;
+      width: 22px;
+      height: 22px;
       position: relative;
-      margin-left: 10px;
+      margin-left: 5px;
       @include border-radius(2px);
       &:before {
         content: '\e301';
         color: #FFFFFF;
         position: absolute;
-        right: -1px;
-        bottom: -4px;
+        right: 0px;
+        bottom: -6px;
+        font-size: 17px;
       }
       &:hover {
         background-color: #3B5998;
@@ -798,7 +799,7 @@ h4.campaign-vol {
     .tp-social-twitter {
       &:before {
         content: '\e302';
-        font-size: 26px;
+        font-size: 22px;
       }
       &:hover::before {
         color: #55ACEE;
