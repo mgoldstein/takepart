@@ -154,7 +154,7 @@
              description: args.description,
              name: args.share_title,
              caption: args.caption,
-             picture: 'http://res.cloudinary.com/'+Drupal.settings.cloudinary_bucket+'/image/upload/g_north,x_0,y_120,w_'+text_width+',c_fit,l_text:arial_36_left_line_spacing_8:'+encodeURI(args.description).replace(/,/g, "%E2%80%9A").replace(/\?/g,"%253F")+'/l_text:arial_20:%20,g_south,x_0,y_-20/ar_1.91,c_fill/quote_text.jpg'
+             picture: 'http://res.cloudinary.com/'+Drupal.settings.cloudinary_bucket+'/image/upload/g_north,x_0,y_120,w_'+text_width+',c_fit,l_text:Libre%20Baskerville_36_left_line_spacing_8:'+encodeURI(args.description).replace(/,/g, "%E2%80%9A").replace(/\?/g,"%253F")+'/l_text:arial_20:%20,g_south,x_0,y_-20/ar_1.91,c_fill/quote_text.jpg'
            },
              function (response) {
                if (response && response.post_id) {
