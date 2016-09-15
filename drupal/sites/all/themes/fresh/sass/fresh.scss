@@ -781,6 +781,7 @@ h4.campaign-vol {
       width: 25px;
       height: 25px;
       position: relative;
+      margin-left: 10px;
       @include border-radius(2px);
       &:before {
         content: '\e301';
@@ -789,10 +790,18 @@ h4.campaign-vol {
         right: -1px;
         bottom: -4px;
       }
+      &:hover {
+        background-color: #3B5998;
+      }
+
     }
     .tp-social-twitter {
       &:before {
         content: '\e302';
+        font-size: 26px;
+      }
+      &:hover::before {
+        color: #55ACEE;
       }
     }
   }
