@@ -257,35 +257,18 @@ function fresh_preprocess_node__autoload(&$variables) {
 
   /* Campaign References */
   if($campaign_content = field_get_items('node', $variables['node'], 'field_editor_campaign_reference')){
-    $camp = node_load($campaign_content[0]['target_id']);
-    $variables['campaign_info']['nid'] = $campaign_content[0]['target_id'];
-    $variables['campaign_info']['url'] = url('node/'.$camp->nid , array('absolute' => TRUE));
-    //Campaign Banner
-    if ($camp_banner =  field_get_items('node', $camp, 'field_content_banner_bg')) {
-      $camp_banner = $camp_banner[0]['uri'];
-      $camp_banner = file_create_url($camp_banner);
-      $variables['campaign_info']['banner'] = $camp_banner;
-    }
-    //Campaign Logo
-    if ($camp_logo =  field_get_items('node', $camp, 'field_content_menu_logo')) {
-      $camp_logo = $camp_logo[0]['uri'];
-      $camp_logo = file_create_url($camp_logo);
-      $variables['campaign_info']['logo'] = $camp_logo;
-    }
-    if ($camp_vol =  field_get_items('node', $camp, 'field_content_issue_volume')) {
-      $camp_vol = $camp_vol[0]['value'];
-      $variables['campaign_info']['vol'] = $camp_vol;
-    }
-    if ($camp_color =  field_get_items('node', $camp, 'field_content_promo_bg')) {
-      $camp_color = $camp_color[0]['rgb'];
-      $variables['campaign_info']['color'] = $camp_color;
-    }
-    //Campaign Menu Logo - Dark
-    if ($camp_dark_logo =  field_get_items('node', $camp, 'field_content_dark_menu_logo')) {
-      $camp_dark_logo = $camp_dark_logo[0]['uri'];
-      $camp_dark_logo = file_create_url($camp_dark_logo);
-      $variables['campaign_info']['dark_logo'] = $camp_dark_logo;
-    }
+    $cid = $campaign_content[0]['target_id'];
+    //Grab the campaign info
+    module_load_include('module' , 'tp_cic');
+    $campaign_info = tp_cic_getCampInfo($cid);
+
+    $variables['campaign_info']['nid'] = $cid;
+    $variables['campaign_info']['url'] = isset($campaign_info['url']) ? $campaign_info['url'] : '';
+    $variables['campaign_info']['banner'] = isset($campaign_info['banner']) ? $campaign_info['banner'] : '';
+    $variables['campaign_info']['logo'] = isset($campaign_info['logo']) ? $campaign_info['logo'] : '';
+    $variables['campaign_info']['vol'] = isset($campaign_info['vol']) ? $campaign_info['vol'] : '';
+    $variables['campaign_info']['color'] = isset($campaign_info['color']) ? $campaign_info['color'] : '';
+    $variables['campaign_info']['dark_logo'] = isset($campaign_info['dark_logo']) ? $campaign_info['dark_logo'] : '';
 
     //Add the carousel slider of promos in replace of MOT
     $more_block = module_invoke('tp_cic', 'block_view', 'tp_cic_bottom_promo');
