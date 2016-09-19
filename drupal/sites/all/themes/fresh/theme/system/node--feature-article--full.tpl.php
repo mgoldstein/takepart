@@ -12,9 +12,10 @@
     $node_type = $variables['type'];
     $cic = (!empty($variables['campaign_info']['nid'])) ? ' cic' : '';
     $autoloaded = ($variables['autoscroll_load']) ? TRUE : FALSE;
+    $feature_hero = (!empty($variables['feature_alt_hero'])) ? ' feature-hero' : '';
   ?>
 
-<div class = "<?php print $node_type;?>-wrapper fresh-content-wrapper clearfix<?php print ($autoloaded) ? ' autoloaded' : ' first'; print $cic . ' ';?>">
+<div class = "<?php print $node_type;?>-wrapper fresh-content-wrapper clearfix<?php print ($autoloaded) ? ' autoloaded' : ' first'; print $cic . $feature_hero .' ';?>">
   <?php if (!empty($variables['social'])): ?>
     <aside class="social social-vertical stick">
    <?php print $variables['social']; ?>
@@ -43,20 +44,25 @@
       <div class="section header full-width">
        <div class="row row-remove-xs">
           <header class="article-header">
-            <?php if (!empty($variables['media'])): ?>
-            <?php print $variables['media']; ?>
-            <div class = "title-block">
-              <?php if (!empty($variables['field_article_featured_link'])): ?>
-                <?php print $variables['field_article_featured_link']; ?>
-              <?php endif; ?>
-              <?php print render($title_prefix); ?>
-              <h1 class="title"><?php print $title; ?></h1>
-              <?php print render($title_suffix); ?>
-              <?php if (!empty($variables['headline'])): ?>
-                <?php print $variables['headline']; ?>
-              <?php endif; ?>
-            </div>
-        <?php endif; ?>
+            <?php if (empty($variables['feature_alt_hero'])):?>
+              <?php if (!empty($variables['media'])): ?>
+                <?php print $variables['media']; ?>
+                <div class = "title-block">
+                  <?php if (!empty($variables['field_article_featured_link'])): ?>
+                    <?php print $variables['field_article_featured_link']; ?>
+                  <?php endif; ?>
+                  <?php print render($title_prefix); ?>
+                  <h1 class="title"><?php print $title; ?></h1>
+                  <?php print render($title_suffix); ?>
+                  <?php if (!empty($variables['headline'])): ?>
+                    <?php print $variables['headline']; ?>
+                  <?php endif; ?>
+                </div>
+                <?php endif; ?>
+            <?php endif; ?>
+            <?php if (!empty($variables['feature_alt_hero'])):?>
+              <?php print $variables['feature_alt_hero']; ?>
+            <?php endif; ?>
           </header>
         </div>
       </div>

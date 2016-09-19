@@ -107,7 +107,7 @@ function tp_feature_feature_article_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 8,
+      'weight' => 9,
     ),
     'widget_type' => 'text_textarea_with_summary',
   );
@@ -1176,7 +1176,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 15,
+      'weight' => 16,
     ),
   );
 
@@ -1360,6 +1360,125 @@ Change this only if you know what you are doing.',
       ),
       'type' => 'entityreference_autocomplete',
       'weight' => 13,
+    ),
+  );
+
+  // Exported field_instance: 'node-feature_article-field_feature_hero'.
+  $field_instances['node-feature_article-field_feature_hero'] = array(
+    'bundle' => 'feature_article',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'This field replaces the main image on feature article. ',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 36,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_feature_hero',
+    'label' => 'Hero Alternative',
+    'required' => 0,
+    'settings' => array(
+      'better_formats' => array(
+        'allowed_formats' => array(
+          'campaign_full_html' => 0,
+          'full_html' => 0,
+          'limited_html' => 0,
+          'no_wysiwg_full_html' => 'no_wysiwg_full_html',
+          'php_code' => 0,
+          'plain_text' => 0,
+        ),
+        'allowed_formats_toggle' => 0,
+        'default_order_toggle' => 0,
+        'default_order_wrapper' => array(
+          'formats' => array(
+            'campaign_full_html' => array(
+              'weight' => 0,
+            ),
+            'full_html' => array(
+              'weight' => 0,
+            ),
+            'limited_html' => array(
+              'weight' => 0,
+            ),
+            'no_wysiwg_full_html' => array(
+              'weight' => 0,
+            ),
+            'php_code' => array(
+              'weight' => -10,
+            ),
+            'plain_text' => array(
+              'weight' => 10,
+            ),
+          ),
+        ),
+      ),
+      'text_processing' => 1,
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'text',
+      'settings' => array(
+        'maxlength_js' => '',
+        'maxlength_js_enforce' => 0,
+        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
+        'maxlength_js_truncate_html' => 0,
+        'rows' => 20,
+      ),
+      'type' => 'text_textarea',
+      'weight' => 6,
     ),
   );
 
@@ -1720,7 +1839,7 @@ Change this only if you know what you are doing.',
       'module' => 'options',
       'settings' => array(),
       'type' => 'options_buttons',
-      'weight' => 22,
+      'weight' => 23,
     ),
   );
 
@@ -2207,7 +2326,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 10,
+      'weight' => 11,
     ),
   );
 
@@ -2486,7 +2605,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -2581,7 +2700,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -2818,7 +2937,7 @@ Change this only if you know what you are doing.',
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 14,
     ),
   );
 
@@ -2904,7 +3023,7 @@ Change this only if you know what you are doing.',
         'display_label' => 1,
       ),
       'type' => 'options_onoff',
-      'weight' => 14,
+      'weight' => 15,
     ),
   );
 
@@ -2994,7 +3113,7 @@ Change this only if you know what you are doing.',
         'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
       ),
       'type' => 'options_buttons',
-      'weight' => 7,
+      'weight' => 8,
     ),
   );
 
@@ -3207,6 +3326,7 @@ Change this only if you know what you are doing.');
   t('Due Date');
   t('Featured Link');
   t('Free Tag');
+  t('Hero Alternative');
   t('I don\'t wish to add the campaign promo sidebar inline replacement to this piece of content.');
   t('If an ambient video is uploaded, an image with the same aspect ratios should be uploaded using the Main Image field.');
   t('If you tag this content with an editorial campaign, it is encouraged to add the campaign promo sidebar inline replacement.');
@@ -3227,6 +3347,7 @@ Change this only if you know what you are doing.');
   t('TAB Action Overrides');
   t('The first topic in the the list (the primary topic) will be recognized in analytics reports. The order of topics here determines the order in the \'Get More\' list.');
   t('These tags are intended for internal use to organize content for distribution to RSS feeds and the like; they are not visible to external users.');
+  t('This field replaces the main image on feature article. ');
   t('This is displayed beneath the Article\'s title on the node page');
   t('This title is used for analytic purposes It will auto-populate after publish.');
   t('This will be auto populated when the content is saved. ');

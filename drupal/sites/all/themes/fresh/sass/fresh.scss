@@ -376,7 +376,6 @@ article {
 }
 
 /* Social Inline Share Inline Replacement */
-
 #highlight_menu {
   font-family: 'Open Sans', Sans;
   font-weight: 100;
@@ -471,21 +470,31 @@ article {
     }
     .tp-social-facebookfeed {
       background-color: #C7C7C7;
-      width: 25px;
-      height: 25px;
+      width: 22px;
+      height: 22px;
       position: relative;
+      margin-left: 5px;
       @include border-radius(2px);
       &:before {
         content: '\e301';
         color: #FFFFFF;
         position: absolute;
-        right: -1px;
-        bottom: -4px;
+        right: 0px;
+        bottom: -6px;
+        font-size: 17px;
       }
+      &:hover {
+        background-color: #3B5998;
+      }
+
     }
     .tp-social-twitter {
       &:before {
         content: '\e302';
+        font-size: 22px;
+      }
+      &:hover::before {
+        color: #55ACEE;
       }
     }
   }
