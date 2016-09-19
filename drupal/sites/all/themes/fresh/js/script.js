@@ -407,13 +407,18 @@ function enableCicStickyNav(scrollUp) {
     if(!$camp_banner.isInViewport(null,0.0)) {
       jQuery('body').addClass('sticky-cic-nav');
       jQuery('.sticky-cic-header').slideDown('fast');
+      var $feature_hero = jQuery('.feature_article-wrapper:not(.autoloaded) .feature_alt_hero');
       //Social share becomes sticky once cic header is sticky (non-feature)
       if (jQuery('.node-type-feature-article').length == 0) {
         jQuery('.sticky-wrapper .social').addClass('cic-sticky');
       }
-      else if (!(jQuery('.feature_article-wrapper:not(.autoloaded) .feature-image').isInViewport(null,0.1))) {
-        //Social share becomes sticky when cic header is sticky and the main image is not visible (feature article)
+      else if (!(jQuery('.feature_article-wrapper:not(.autoloaded) .feature-image').isInViewport(null,0.1)) && $feature_hero.length == 0) {
+        //Social share becomes sticky when cic header is sticky, there is no feature hero alternative and main image is not visible (feature article)
           jQuery('.sticky-wrapper .social').addClass('cic-sticky');
+      }
+      else if (!(jQuery('.feature_article-wrapper:not(.autoloaded) .feature_alt_hero').isInViewport(null,0.1)) && $feature_hero.length !=0) {
+        //Social share becomes sticky when cic header is sticky, there is a feature hero alternative and the feature hero is not visible (feature article)
+        jQuery('.sticky-wrapper .social').addClass('cic-sticky');
       }
     }
     else if (jQuery('.sticky-cic-nav').length != 0) {

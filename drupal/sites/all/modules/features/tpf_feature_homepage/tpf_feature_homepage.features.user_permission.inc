@@ -60,40 +60,28 @@ function tpf_feature_homepage_user_default_permissions() {
   // Exported permission: 'administer panelizer node campaign_card_iframe defaults'.
   $permissions['administer panelizer node campaign_card_iframe defaults'] = array(
     'name' => 'administer panelizer node campaign_card_iframe defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'layout editor' => 'layout editor',
-    ),
+    'roles' => array(),
     'module' => 'panelizer',
   );
 
   // Exported permission: 'administer panelizer node campaign_card_media defaults'.
   $permissions['administer panelizer node campaign_card_media defaults'] = array(
     'name' => 'administer panelizer node campaign_card_media defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'layout editor' => 'layout editor',
-    ),
+    'roles' => array(),
     'module' => 'panelizer',
   );
 
   // Exported permission: 'administer panelizer node campaign_card_news defaults'.
   $permissions['administer panelizer node campaign_card_news defaults'] = array(
     'name' => 'administer panelizer node campaign_card_news defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'layout editor' => 'layout editor',
-    ),
+    'roles' => array(),
     'module' => 'panelizer',
   );
 
   // Exported permission: 'administer panelizer node campaign_card_social defaults'.
   $permissions['administer panelizer node campaign_card_social defaults'] = array(
     'name' => 'administer panelizer node campaign_card_social defaults',
-    'roles' => array(
-      'administrator' => 'administrator',
-      'layout editor' => 'layout editor',
-    ),
+    'roles' => array(),
     'module' => 'panelizer',
   );
 
@@ -158,7 +146,10 @@ function tpf_feature_homepage_user_default_permissions() {
   // Exported permission: 'administer panelizer node video_playlist defaults'.
   $permissions['administer panelizer node video_playlist defaults'] = array(
     'name' => 'administer panelizer node video_playlist defaults',
-    'roles' => array(),
+    'roles' => array(
+      'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
+    ),
     'module' => 'panelizer',
   );
 
