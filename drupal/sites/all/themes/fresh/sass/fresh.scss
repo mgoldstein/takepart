@@ -758,7 +758,16 @@ h4.campaign-vol {
 }
 
 /** End of Content Inside Campaign */
-
+.feature_article-wrapper .inlineSharingContainer {
+  @include breakpoint($breakpoint-tablet) {
+    max-width: 70%;
+    margin: 0 auto;
+  }
+  @include breakpoint($breakpoint-desktop) {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+}
 
 .inlineSharingContainer {
   .inlineSharingQuote {
