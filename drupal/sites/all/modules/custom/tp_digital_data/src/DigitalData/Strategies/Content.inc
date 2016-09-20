@@ -64,7 +64,7 @@ class ddContent extends ddDefaultPage {
     $data = array();
     $node = $this->getNodefromPath();
     $pageID = $node->nid;
-
+    $element_impression = array();
 
     //authors
     $ids = array();
@@ -115,16 +115,12 @@ class ddContent extends ddDefaultPage {
     }
 
     //Field Series
-    $series_instance = field_info_instance('node', 'field_series', $node->type);
-    if ($series_instance != NULL) {
-	 $series_terms = field_get_items('node', $node, 'field_series');
-	 $series_names = array();
-	 foreach ($series_terms as $series) {
-	   $series = taxonomy_term_load($series['tid']);
-	   $series_names[] = $series->name;
-	 }
-	 $series_names = implode(',', $series_names);
-	 $data['category']['series'] = $series_names;
+    if ($field_series = field_get_items('node', $node, 'field_series')) {
+      $series_tid = $field_series[0]['tid'];
+      $series = taxonomy_term_load($series_tid);
+      $series_name = $series ->name;
+      $element_impression[] = "series nav";
+      $data['category']['series'] = $series_name;
     }
 
     //Field Free Tags
@@ -190,7 +186,6 @@ class ddContent extends ddDefaultPage {
 
     //Inline Replacements
     $show_influence = false;
-    $element_impression = array();
     if($inline = field_get_items('node', $node, 'field_inline_replacements')) {
       foreach($inline as $i) {
         $load = entity_load('inline_content', array($i['target_id']));

@@ -7,7 +7,7 @@
 function tp_digital_data_build_ddl_content($node , $is_fbia){
   $data = array();
   $pageID = $node->nid;
-
+  $element_impression = array();
   //authors
   $ids = array();
   if($authors = field_get_items('node', $node, 'field_author')){
@@ -51,16 +51,12 @@ function tp_digital_data_build_ddl_content($node , $is_fbia){
   }
 
   //Field Series
-  $series_instance = field_info_instance('node', 'field_series', $node->type);
-  if($series_instance != NULL){
-    $series_terms = field_get_items('node', $node, 'field_series');
-    $series_names = array();
-    foreach($series_terms as $series){
-      $series = taxonomy_term_load($series['tid']);
-      $series_names[] = $series->name;
-    }
-    $series_names = implode(',', $series_names);
-    $data['category']['series'] = $series_names;
+  if ($field_series = field_get_items('node', $node, 'field_series')) {
+    $series_tid = $field_series[0]['tid'];
+    $series = taxonomy_term_load($series_tid);
+    $series_name = $series ->name;
+    $element_impression[] = "series nav";
+    $data['category']['series'] = $series_name;
   }
 
   //Field Free Tags
@@ -99,9 +95,9 @@ function tp_digital_data_build_ddl_content($node , $is_fbia){
     $data['page']['pageInfo']['sponsored'] = ($sponsor_term->tid ? "" : "Not ") . "Sponsored";
   }
 
+
     //Inline Replacements
     $show_influence = false;
-    $element_impression = array();
     if($inline = field_get_items('node', $node, 'field_inline_replacements')) {
       foreach($inline as $i) {
         $load = entity_load('inline_content', array($i['target_id']));
@@ -146,6 +142,7 @@ function tp_digital_data_build_ddl_content($node , $is_fbia){
   if($timeRead = field_get_items('node', $node, 'field_time_to_read')) {
     $data['page']['pageInfo']['timeToRead'] = $timeRead[0]['value'];
   }
+
 
   //Element Impression
   if (!empty($element_impression) && !$is_fbia) {
