@@ -176,6 +176,11 @@ class ddContent extends ddDefaultPage {
 	 $data['page']['pageInfo']['sponsored'] = ($sponsor_term->tid ? "" : "Not ") . "Sponsored";
     }
 
+    //Field Topic Box
+    if ($field_series = field_get_items('node', $node, 'field_topic_box')) {
+      $element_impression[] = "topic box";
+    }
+
     //Field pageNumber for autoloaded content only
     $is_autoloaded = field_get_items('node' , $node , 'field_autoload');
     $is_autoloaded = $is_autoloaded[0]['value'];
