@@ -83,6 +83,7 @@ function tp_digital_data_build_ddl_content($node , $is_fbia){
   $full_path = $base_url. '/'. $path;
   $site_section = explode('/', $path);
   $site_section = $site_section[0];
+  global $theme;
 
   //Permanent Title
   if($permanent_title = field_get_items('node', $node, 'field_permanent_title')){
@@ -145,6 +146,16 @@ function tp_digital_data_build_ddl_content($node , $is_fbia){
     $data['page']['pageInfo']['campaignContent'] = $campaign_title;
     //Campaign related content carousel - automatically gets added to any node tagged with a campaign
     $element_impression[] = 'campaign content carousel';
+  }
+  elseif($theme == 'fresh') {
+    //MOT is displayed if the node is not tagged with a campaign
+    //MOT video is displayed automatically
+    $element_impression[] = 'more on takepart - video';
+    if ($field_related_stories = field_get_items('node', $node, 'field_related_stories')) {
+      $element_impression[] = 'more on takepart - related';
+      $element_impression[] = 'more on takepart - promoted';
+      $element_impression[] = 'more on takepart - ad';
+    }
   }
 
   //Time to read

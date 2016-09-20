@@ -65,6 +65,7 @@ class ddContent extends ddDefaultPage {
     $node = $this->getNodefromPath();
     $pageID = $node->nid;
     $element_impression = array();
+    global $theme;
 
     //authors
     $ids = array();
@@ -181,11 +182,11 @@ class ddContent extends ddDefaultPage {
       $element_impression[] = "topic box";
     }
 
-    //Field pageNumber for autoloaded content only
+    //Field pageNumber for autoloaded content only on Fresh theme
     $is_autoloaded = field_get_items('node' , $node , 'field_autoload');
     $is_autoloaded = $is_autoloaded[0]['value'];
-    $autoloaded_content = array('openpublish_article' ,'video', 'video_playlist' , 'feature_article' , 'fresh_gallery');
-    if (in_array($node->type , $autoloaded_content) && $is_autoloaded) {
+
+    if ($theme == 'fresh' && $is_autoloaded) {
         $data['page']['pageNumber'] = "page 1";
     }
 
@@ -228,6 +229,15 @@ class ddContent extends ddDefaultPage {
       $data['page']['pageInfo']['campaignContent'] = $campaign_title;
       //Campaign related content carousel - automatically gets added to any node tagged with a campaign
       $element_impression[] = 'campaign content carousel';
+    } elseif ($theme == 'fresh') {
+      //MOT is displayed if the node is not tagged with a campaign
+      //MOT video is displayed automatically
+      $element_impression[] = 'more on takepart - video';
+      if ($field_related_stories = field_get_items('node', $node, 'field_related_stories')) {
+        $element_impression[] = 'more on takepart - related';
+        $element_impression[] = 'more on takepart - promoted';
+        $element_impression[] = 'more on takepart - ad';
+      }
     }
 
     //Time to read
