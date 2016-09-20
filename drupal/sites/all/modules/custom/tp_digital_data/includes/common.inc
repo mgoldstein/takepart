@@ -8,6 +8,8 @@ function tp_digital_data_build_ddl_content($node , $is_fbia){
   $data = array();
   $pageID = $node->nid;
   $element_impression = array();
+  global $theme;
+
   //authors
   $ids = array();
   if($authors = field_get_items('node', $node, 'field_author')){
@@ -83,7 +85,6 @@ function tp_digital_data_build_ddl_content($node , $is_fbia){
   $full_path = $base_url. '/'. $path;
   $site_section = explode('/', $path);
   $site_section = $site_section[0];
-  global $theme;
 
   //Permanent Title
   if($permanent_title = field_get_items('node', $node, 'field_permanent_title')){
