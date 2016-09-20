@@ -26,13 +26,17 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
     'fresh_author_teaser' => array(
       'variables' => array(
         'authors' => '',
-        'published_at' => ''
+        'published_at' => '',
+        'timetoread' => '',
+        'nid' => ''
       )
     ),
     'fresh_gallery_author_teaser' => array(
       'variables' => array(
         'authors' => '',
-        'published_at' => ''
+        'published_at' => '',
+        'timetoread' => '',
+        'nid' => ''
       )
     ),
     'fresh_series_navigation' => array(

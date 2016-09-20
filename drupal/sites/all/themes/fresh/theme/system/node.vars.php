@@ -182,6 +182,8 @@ function fresh_preprocess_node__autoload(&$variables) {
 	     }
     }
     $author_vars['published_at'] = $variables['node']->published_at;
+    $author_vars['timetoread'] = field_get_items('node', $variables['node'], 'field_time_to_read');
+    $author_vars['nid'] = $variables['node']->nid;
     if ($node_type == 'fresh_gallery') {
       $variables['author_teaser'] = theme('fresh_gallery_author_teaser', $author_vars);
     }
