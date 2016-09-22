@@ -2,10 +2,6 @@
 (function ($) {
   //does on document ready since variables from drupal setting not available til then
   $(document).ready(function() {
-    //This gives A/B Optimizely a chance to modify the classes on MOT ads
-    window.set_MOT_ad = 0;
-    setTimeout(function(){window.set_MOT_ad = 1;$(window).scroll();}, 1500);
-
     window.tpScrollTop = 0;
     //on init
     init_tp_ads('down');
@@ -218,26 +214,10 @@
           //A/B test for optimizely. Added Aug 2016. Checks if Optimizely set a
           //class for a large MOT ad.  Also checking timeout variable for MOT
           //first ad unit. This gives optimizely a chance to set its class.
-          if(!set_MOT_ad
-            && id == 'more_on_takepart') {
+          if(id == 'more_on_takepart') {
             //Make sure we give the timeout time to complete before rendering
             //MOT adds
             return;
-          }
-
-          if(set_MOT_ad
-            && id == 'more_on_takepart'
-            && $(article).is(':first-of-type')
-            && adSlot == "Native_Promo_Unit_1"
-            && $('.more-on-takepart').hasClass('show_large_promo')) {
-
-              //Set Overrides for Optimizely larger promo units
-              adSlot = "Large_Native_Promo_Unit_280x186";
-              ad_value.ad_slot = adSlot;
-              ad_value.height = "235";
-              ad_value.width = "280";
-              ad_value.javascript = ad_value.javascript.split("Native_Promo_Unit_1").join(adSlot);
-              javascript = ad_value.javascript;
           }
 
           //overrides for desktop
