@@ -211,14 +211,6 @@
 
           var adSlot = current_ad.ad_slot;
 
-          //A/B test for optimizely. Added Aug 2016. Checks if Optimizely set a
-          //class for a large MOT ad.  Also checking timeout variable for MOT
-          //first ad unit. This gives optimizely a chance to set its class.
-          if(id == 'more_on_takepart') {
-            //Make sure we give the timeout time to complete before rendering
-            //MOT adds
-            return;
-          }
 
           //overrides for desktop
           if (window.innerWidth > 768) {
