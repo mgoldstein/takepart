@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * Implements hook_menu
+ */
+function tp_competition_form_menu(){
+  $items['ajax/competition/submit'] = array(
+    'page callback' => 'tp_competition_form_submit_callback',
+    'access arguments' => array('access content')
+  );
+  return $items;
+}
+
+/**
+ * Competition Form Submit NOT A DRUPAL FORM
+ */
+function tp_competition_form_submit_callback() {
+  $vars = $_POST;
+
+  foreach($vars AS $title => $field) {
+    if((!$tmpval = filter_xss(check_plain($field)))){
+      $message = "All Fields are Required";
+      print drupal_json_encode(array('message' => $message));
+      exit;
+    }
+    $val[] = strtoupper($title).': '.$tmpval;
+  }
+  $params['values'] = $val;
+  $sent = drupal_mail('tp_competition_form', 'submit', 'Lenovo@takepart.com', LANGUAGE_NONE, $params);
+  watchdog('tp_competition_form', 'Lenovo competition Form Values:: %values.', array('%values' => implode(',',$val)), WATCHDOG_NOTICE);
+  if(!$sent['result']) {
+    $message = "Form failed to send. Please try again.";
+  } else {
+    $message = "Thank you for submitting!";
+  }
+  print drupal_json_encode(array('message' => $message));
+  exit;
+}
+
+/**
+ * Drupal hook mail implement
+ */
+function tp_competition_form_mail($key, &$message, $params) {
+ switch($key) {
+   case 'submit':
+     $variables = implode(',',$params['values']);
+     $message['subject'] = 'Lenovo Submission';
+     $message['body'][] = "Hi, A submisson from the Lenovo campaign. Here are the fields ".$variables;
+    break;
+ }
+}
