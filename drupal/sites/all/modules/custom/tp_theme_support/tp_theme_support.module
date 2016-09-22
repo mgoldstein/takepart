@@ -66,7 +66,6 @@ function tp_theme_support_preprocess_page(&$vars, $hook) {
   if (isset($node->type) && !path_is_admin(current_path())) {
     //node data
     $node_data = _tp_theme_support_reach_node_processor($node);
-		$node_data['title'] = str_replace("\\", "\\\\", $node_data['title']);
 
     //adds a dynamic inline function call to tp_reach_call
     drupal_add_js(
@@ -76,9 +75,9 @@ function tp_theme_support_preprocess_page(&$vars, $hook) {
           title: \"" . $node_data['title'] . "\",
           url: '" . $node_data['url'] . "',
           date: '" . $node_data['date'] . "',
-          tags: " . str_replace('\'', '"', '["' . implode('", "', $node_data['tags']) . '"]') . ",
-          authors: " . str_replace('\'', '"', '["' . implode('", "', $node_data['authors']) . '"]') . ",
-          channels: " . str_replace('\'', '"', '["' . implode('", "', $node_data['channels']) . '"]') . "
+          tags: " . '["' . implode('", "', $node_data['tags']) . '"]' . ",
+          authors: " . '["' . implode('", "', $node_data['authors']) . '"]' . ",
+          channels: " . '["' . implode('", "', $node_data['channels']) . '"]' . "
         };
 
         tp_reach_call(__reach_config);
@@ -170,12 +169,12 @@ function _tp_theme_support_reach_node_processor($node) {
     );
 
 		//standardize the data and escape
-		foreach ($node_data as $key => $value) {
-			if (is_string($value)) {
-				$value = iconv('UTF-8', 'ASCII//TRANSLIT', $value);
-				$node_data[$key] = str_replace("'", "\\'", $value);
-			}
-		}
+		// foreach ($node_data as $key => $value) {
+		// 	if (is_string($value)) {
+		// 		$value = iconv('UTF-8', 'ASCII//TRANSLIT', $value);
+		// 		$node_data[$key] = str_replace("'", "\\'", $value);
+		// 	}
+		// }
 
     //return data
     return $node_data;
