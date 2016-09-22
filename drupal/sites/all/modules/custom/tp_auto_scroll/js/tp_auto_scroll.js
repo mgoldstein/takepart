@@ -162,7 +162,10 @@
         else {
           var adMeta = Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'];
         }
-
+        //Don't pass an array if there is one free tag
+        if (Array.isArray(adMeta.FreeTag)) {
+          adMeta.FreeTag = adMeta.FreeTag[0];
+        }
         // Build the object we need.
         var galleryData = {
           "title": $(this).attr('data-tp-og-title'),
