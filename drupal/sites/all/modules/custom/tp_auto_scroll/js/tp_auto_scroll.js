@@ -161,6 +161,31 @@
         }
         else {
           var adMeta = Drupal.settings.tpAutoScroll[0]['auto_updates'][page_url]['targets'];
+          //Don't pass an array if there is only one element in the ad targeting
+          if (Array.isArray(adMeta.FreeTag)) {
+            adMeta.FreeTag = adMeta.FreeTag[0];
+          }
+          else {
+            adMeta.FreeTag = JSON.parse(adMeta.FreeTag);
+          }
+          if (Array.isArray(adMeta.Topic)) {
+            adMeta.Topic = adMeta.Topic[0];
+          }
+          else {
+            adMeta.Topic = JSON.parse(adMeta.Topic);
+          }
+          if (Array.isArray(adMeta.Series)) {
+            adMeta.Series = adMeta.Series[0];
+          }
+          else {
+            adMeta.Series = JSON.parse(adMeta.Series);
+          }
+          if (Array.isArray(adMeta.Sponsor)) {
+            adMeta.Sponsor = adMeta.Sponsor[0];
+          }
+          else {
+            adMeta.Sponsor = JSON.parse(adMeta.Sponsor);
+          }
         }
 
         // Build the object we need.
@@ -175,13 +200,13 @@
         var jsonId = $(this).attr('data-ddl-page-id');
         galleryData.images = eval('gallery_' + jsonId + '_json.images');
         var galleryElement = $(this).find('.gallery-wrapper')[0];
-
+        var current_gallery = $(this);
         //First Fresh gallery on the page - ajax load all the required js
         if (typeof showImageGallery === 'undefined') {
           $.getScript( "/sites/all/libraries/fresh-gallery/gallery.js" )
           .done(function( script, textStatus ) {
+            current_gallery.addClass("gallery-processed");
             showImageGallery(galleryData, galleryElement);
-            $(this).addClass("gallery-processed");
           })
           .fail(function( jqxhr, settings, exception ) {
             console.error('failed to grab the gallery script');
@@ -190,7 +215,7 @@
         else {
           //Node 1 is a fresh gallery
           showImageGallery(galleryData, galleryElement);
-          $(this).addClass("gallery-processed");
+          current_gallery.addClass("gallery-processed");
         }
       }
 
