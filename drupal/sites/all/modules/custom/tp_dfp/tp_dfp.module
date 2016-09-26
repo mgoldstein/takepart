@@ -84,11 +84,16 @@ function tp_dfp_node_presave($node) {
           $creativeName = $node->title;
           $advertiserId = $ad_id[0]['value'];
           $creativeTemplateId = variable_get('dfp_template_id', '10051775');
+          try {
+            $creative_id = _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
+            $node->field_dfp_creative_id['und'][0] = array('value' => $creative_id);
+            return $node;
+          }
+          catch (Exception $e) {
+            watchdog('tp_dfp', $e);
+          }
 
-          $creative_id = _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
 
-          $node->field_dfp_creative_id['und'][0] = array('value' => $creative_id);
-          return $node;
         }
       }
     }
