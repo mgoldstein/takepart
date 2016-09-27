@@ -10,7 +10,7 @@ function tp_dfp_admin_config($form, &$form_state, $form_id){
   //Template Id
   $form['tp_dfp']['template_id'] = array(
     '#type' => 'textfield',
-    '#title' => t('Network Code'),
+    '#title' => t('Creative Template ID'),
     '#default_value' => isset($tp_dfp['template_id']) ? $tp_dfp['template_id'] : '10051775',
     '#size' => 60,
     '#maxlength' => 128,

@@ -72,18 +72,28 @@ function tp_dfp_node_presave($node) {
           $creative_id = $creative_id[0]['value'];
 
           // Update existing creative
-          _dfp_update_creative($creative_id, $variables);
+          try {
+            _dfp_update_creative($creative_id, $variables);
+          }
+          catch (Exception $e) {
+            watchdog('tp_dfp', $e);
+          }
 
         }else{
           // Create the creative
           $creativeName = $node->title;
           $advertiserId = $ad_id[0]['value'];
           $creativeTemplateId = variable_get('dfp_template_id', '10051775');
+          try {
+            $creative_id = _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
+            $node->field_dfp_creative_id['und'][0] = array('value' => $creative_id);
+            return $node;
+          }
+          catch (Exception $e) {
+            watchdog('tp_dfp', $e);
+          }
 
-          $creative_id = _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId, $variables);
 
-          $node->field_dfp_creative_id['und'][0] = array('value' => $creative_id);
-          return $node;
         }
       }
     }
@@ -168,7 +178,7 @@ function _dfp_create_creative($creativeName, $advertiserId, $creativeTemplateId,
 /**
  * Helper function to update creative
  */
-function _dfp_update_creative($creativeId, $variables){
+function _dfp_update_creative($creativeId, $variables) {
 
   // Find Google's DFP lib.  Otherwise, use libraries API.
   $googleads_lib_path = function_exists('libraries_get_path') ? libraries_get_path('googleads-php-lib') : 'sites/all/libraries/googleads-php-lib';
@@ -195,8 +205,7 @@ function _dfp_update_creative($creativeId, $variables){
       ->WithBindVariableValue('id', $creativeId);
 
     // Get the creative.
-    $page = $creativeService->getCreativesByStatement(
-      $statementBuilder->ToStatement());
+    $page = $creativeService->getCreativesByStatement($statementBuilder->ToStatement());
     $creative = $page->results[0];
 
     if ($creative instanceof HasDestinationUrlCreative) {
