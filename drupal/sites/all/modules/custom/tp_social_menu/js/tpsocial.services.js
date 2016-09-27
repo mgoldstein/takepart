@@ -156,24 +156,34 @@
     	 get_share_url(args.url, args.title, function (url) {
     	   var parser = document.createElement("a");
     	   parser.href = args.url;
-         var text_width = args.description.length + 650;
-           FB.ui({
-             method: 'feed',
-             display: 'popup',
-             link: url,
-             description: args.caption,
-             name: args.share_title,
-             picture: 'http://res.cloudinary.com/'+Drupal.settings.cloudinary_bucket+'/image/upload/g_north,x_0,y_120,w_'+text_width+',c_fit,l_text:Libre%20Baskerville_36_left_line_spacing_8:'+encodeURI(args.description).replace(/,/g, "%E2%80%9A").replace(/\?/g,"%253F")+'/l_text:arial_20:%20,g_south,x_0,y_-120/ar_1.91,c_fill/g_north,y_35,l_logo200/blank_quote_canvas.jpg'
-           },
-             function (response) {
-               if (response && response.post_id) {
-                 // Post was published
-                 $window.trigger('tp-social-share', args);
-               }
-               else {
-                 //Post was not published
-               }
-             });
+
+         if(args.description == "{{highlight}}") {
+           args.description = args.caption = "\""+getSelectionText()+"\"";
+         }
+
+         var picture = '';
+         if(args.picture) {
+           var text_width = args.description.length + 650;
+           picture = 'http://res.cloudinary.com/'+Drupal.settings.cloudinary_bucket+'/image/upload/g_north,x_0,y_120,w_'+text_width+',c_fit,l_text:Libre%20Baskerville_36_left_line_spacing_8:'+encodeURI(args.description).replace(/,/g, "%E2%80%9A").replace(/\?/g,"%253F")+'/l_text:arial_20:%20,g_south,x_0,y_-120/ar_1.91,c_fill/g_north,y_35,l_logo200/blank_quote_canvas.jpg';
+         }
+
+         FB.ui({
+           method: 'feed',
+           display: 'popup',
+           link: url,
+           description: args.caption,
+           name: args.share_title,
+           picture: picture
+         },
+           function (response) {
+             if (response && response.post_id) {
+               // Post was published
+               $window.trigger('tp-social-share', args);
+             }
+             else {
+               //Post was not published
+             }
+           });
 
     	   function openFBLoginDialogManually() {
            if ($('body').hasClass('tploggedin')) {
