@@ -1,0 +1,4 @@
+name = Campaign Competition Form for Lenovo
+description = This is a one off competition ajax submit callback for the lenovo submission form.
+core = 7.x
+version = 7.x

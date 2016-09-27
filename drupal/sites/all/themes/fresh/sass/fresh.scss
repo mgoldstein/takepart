@@ -475,6 +475,9 @@ article {
       text-indent: 0;
       color: transparent;
       padding-top: 6px;
+      @include breakpoint($breakpoint-phablet){
+        float: none;
+      }
       &:before {
         position: relative;
         color: #C7C7C7;
