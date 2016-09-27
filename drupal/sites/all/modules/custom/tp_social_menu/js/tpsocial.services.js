@@ -158,8 +158,7 @@
     	   parser.href = args.url;
 
          if(args.description == "{{highlight}}") {
-           args.description = "\""+getSelectionText()+"\"";
-           args.caption = "\""+getSelectionText()+"\"";
+           args.description = args.caption = "\""+getSelectionText()+"\"";
          }
          var text_width = args.description.length + 650;
          var picture = '';
