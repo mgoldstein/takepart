@@ -159,6 +159,7 @@
 
          if(args.description == "{{highlight}}") {
            args.description = "\""+getSelectionText()+"\"";
+           args.caption = "\""+getSelectionText()+"\"";
          }
          var text_width = args.description.length + 650;
          var picture = '';
