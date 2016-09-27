@@ -105,8 +105,21 @@
     .addClass(cpre + args.name)
     .addClass(cpre + 'link')
     .attr('target', '_blank')
+    .attr('data-share-type', args.shareType)
     .html(args.display);
     return $link;
+  };
+
+  //Share Type
+  var share_type = function($this) {
+    //Set the type of share that is being processed
+    if($this.hasClass('inlineSharingButtons')) {
+      return {'shareType': 'inlineShare'};
+    }
+    if($this.hasClass('highlight_share')) {
+      return {'shareType': 'highlightShare'};
+    }
+    return {'shareType': 'tpSocial'};
   };
 
   // Make an object based on data- attributes from the given jQuery object
@@ -131,6 +144,7 @@
 
     return this.each(function () {
       var $this = $(this);
+      var shareType = share_type($this);
 
       // Loop through the requested services
       for (var s in services) {
@@ -141,10 +155,11 @@
         if (!(name in valid_services)) {
           continue;
         }
-        var srvc = $.extend({}, valid_services[name], service);
+        var srvc = $.extend({}, valid_services[name], service, shareType);
 
         // Find the link for the requested service in the node
         var $link = $this.find('a.' + cpre + name + ', .' + cpre + name + ' a');
+
         // If none exists, create and append it
         if (!$link.length) {
           $link = makeLink(srvc);

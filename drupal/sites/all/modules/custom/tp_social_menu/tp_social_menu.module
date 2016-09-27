@@ -154,7 +154,7 @@ function theme_tp_social_menu($variables) {
 function theme_tp_highlight_share($variables) {
   return '<div id="highlight_menu" style="display:none;">
 
-    <div id="highlight_share_container">
+    <div id="highlight_share_container" class="highlight_share">
     </div>
 
     <div class="caret"></div>
