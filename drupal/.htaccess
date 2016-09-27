@@ -2,6 +2,15 @@
 # Apache/PHP/Drupal settings:
 #
 
+<Files "composer">
+  Order allow,deny
+  Deny from all
+</Files>
+<Files "drush">
+  Order allow,deny
+  Deny from all
+</Files>
+
 <IfModule mod_headers.c>
 
   # Send a "X-Robots-Tag" header when site is NOT accessed via Akamai, to
@@ -205,5 +214,6 @@ DirectoryIndex index.php index.html index.htm
       # Force proxies to cache gzipped & non-gzipped css/js files separately.
       Header append Vary Accept-Encoding
     </FilesMatch>
+
   </IfModule>
 </IfModule>
