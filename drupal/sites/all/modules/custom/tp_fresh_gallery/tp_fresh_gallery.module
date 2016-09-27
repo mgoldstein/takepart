@@ -46,8 +46,8 @@ function tp_fresh_gallery_add($gal_photo) {
     $file['image']['mobile'] = file_create_url($gal_photo['uri']);
   }
   $file['image']['desktop']['url'] = file_create_url($gal_photo['uri']);
-  $file['image']['desktop']['width'] = $gal_photo['width'];
-  $file['image']['desktop']['height'] = $gal_photo['height'];
+  $file['image']['desktop']['width'] = (int)$gal_photo['width'];
+  $file['image']['desktop']['height'] = (int)$gal_photo['height'];
   //Caption
   if($caption = field_get_items('file', (object)$gal_photo, 'field_media_caption')){
     $file['caption'] = $caption[0]['value'];
