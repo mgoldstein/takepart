@@ -169,8 +169,12 @@
     attach: function (context, settings) {
       $(document.body).on('mouseup', function (evt) {
         var menu = $('#highlight_menu');
-        var s = window.getSelection(),
-          r = s.getRangeAt(0);
+        var s = window.getSelection();
+        if(s.rangeCount <= 0) {
+          return;
+        }
+
+        var r = s.getRangeAt(0);
 
         if (r && s.toString()) {
           var p = r.getBoundingClientRect();
