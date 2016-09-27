@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git@github.com:takepart/takepart-com.git"
   },
+  "scripts": {
+    "start": "grunt build_dev"
+  },
   "engines": {
     "node": ">= 1.4.23"
   },

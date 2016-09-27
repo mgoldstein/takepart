@@ -1,0 +1,376 @@
+/** Content Inside Campaign */
+h4.campaign-vol {
+  margin: 0;
+  color: #fff;
+  font-size: 13px;
+  span {
+    font-weight: 100;
+  }
+}
+
+.big-issue {
+    margin: 0;
+    color: #fff;
+    font-size: 13px;
+    font-family: $AdelleSans;
+    font-weight: 900;
+    line-height: 20px;
+    a {
+      color: #fff;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    span {
+      font-weight: 100;
+    }
+}
+
+#page-wrapper.campaign-experience {
+  #header {
+    max-width: 100%;
+    z-index: 2;
+    color: white;
+    position: absolute;
+    top: 80px;
+    @include breakpoint($breakpoint-tablet) {
+      position: inherit;
+      top: 0;
+    }
+  }
+  @include breakpoint($breakpoint-tablet) {
+    .fresh-content-wrapper.cic:not(.autoloaded) {
+      margin-top: -60px;
+    }
+  }
+  @media (max-width: 767px) {
+    .fresh-content-wrapper.cic.first {
+      .tp-ad-wrapper {
+        margin-bottom: 20px;
+        margin-top: 5px;
+      }
+    }
+
+  }
+  .sticky-cic-header {
+    width: 100%;
+    background-position-y: bottom;
+    background-position-x: center;
+    background-size: cover;
+    display: none;
+    top: 0px;
+    left: 0px;
+    z-index: 998;
+    height: 65px;
+    @include breakpoint($breakpoint-tablet) {
+      background-size: inherit;
+      height: 80px;
+    }
+    .campaign-info-wrapper {
+      height: 65px;
+      display: inline-block;
+      min-width: 330px;
+      opacity: 0.97;
+      z-index: 999;
+      @include breakpoint($breakpoint-tablet) {
+        height: 80px;
+      }
+      @media (max-width: 320px) {
+        min-width: 290px;
+      }
+    }
+    .toggle-menu {
+      display: inline-block;
+      cursor: pointer;
+      margin: 20px 20px 0 20px;
+      font-size: 16px;
+      vertical-align: top;
+      &:after {
+        content: '\e609';
+        font-family: takepart;
+      }
+      @include breakpoint($breakpoint-tablet) {
+        margin-top: 25px;
+      }
+    }
+    .campaign-info {
+      display: inline-block;
+      padding: 15px 20px 0 0;
+      max-width: 240px;
+      @include breakpoint($breakpoint-phablet) {
+        max-width: inherit;
+      }
+      img {
+        max-height: 20px;
+        margin-bottom: 0px;
+      }
+      .big-issue a {
+        font-size: 12px;
+      }
+      @include breakpoint($breakpoint-tablet) {
+        padding-top: 20px;
+        img {
+          margin-bottom: 5px;
+        }
+        .big-issue a {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+.node-type-feature-article #page-wrapper.campaign-experience #header {
+  @media (max-width: 767px) {
+    top: 0;
+  }
+}
+
+.sticky-cic-nav #page-wrapper.campaign-experience {
+  .sticky-cic-header {
+    position: fixed;
+  }
+}
+
+.campaign-ref-wrapper {
+  text-align: center;
+  background-size: cover;
+  background-position-x: center;
+  height: 170px;
+  @include breakpoint($breakpoint-tablet) {
+    height: 315px;
+    margin-bottom: 22px;
+    background-size: inherit;
+  }
+  .campaign-logo {
+    display: inline-block;
+    margin: 60px 0 0px 0;
+    img {
+      max-height: 40px;
+    }
+    @include breakpoint($breakpoint-tablet) {
+      margin: 90px 0 10px 0;
+      img {
+        max-height: 100px;
+      }
+    }
+  }
+}
+
+.campaign-experience .fresh-content-wrapper.autoloaded .campaign-ref-wrapper {
+  display: none;
+}
+
+/* Content inside campaign in autoload experience - Not feature article */
+#page-wrapper:not(.campaign-experience) .fresh-content-wrapper.cic.autoloaded:not(.feature_article-wrapper) {
+  .campaign-ref-wrapper {
+    margin-bottom: 0;
+    @media (max-width: 767px) {
+      height: 180px;
+      .campaign-logo {
+        margin: 40px 0 0px 0;
+      }
+    }
+  }
+  article {
+    background: #fff;
+    margin-top: -70px;
+    h1.title {
+      margin-top: 63px;
+    }
+    @media (max-width: 767px) {
+      margin-left: 5%;
+      width: 90%;
+      padding: 0;
+      h1.title {
+        padding: 25px 15px 0 15px;
+        margin-top: 0;
+      }
+      .main-media {
+        margin-left: -1px;
+        margin-right: -1px;
+      }
+    }
+  }
+}
+
+.feature-campaign-ref {
+  display: none;
+}
+/* Content inside campaign in autoload experience - feature article */
+#page-wrapper:not(.campaign-experience) .feature_article-wrapper.cic.autoloaded {
+  .feature-campaign-ref {
+    display: block;
+    text-align: center;
+    padding-top: 5px;
+    .campaign-dark-logo {
+      margin-bottom: 8px;
+      img {
+        margin: 0 auto;
+        max-height: 50px;
+      }
+    }
+    .big-issue {
+      color: $black;
+      a {
+        color: $black;
+      }
+    }
+  }
+  .topic-box-wrapper {
+    display: none;
+  }
+}
+
+.cic_bottom_promo_block_container {
+  background: -moz-linear-gradient(top, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 14%, rgba(0,0,0,0) 100%);
+  background: -webkit-linear-gradient(top, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0) 14%,rgba(0,0,0,0) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%,rgba(0,0,0,0) 14%,rgba(0,0,0,0) 100%);
+  position:relative;
+  overflow: hidden;
+  .tp-cic-bottom-promo {
+    width: 100%;
+    @include breakpoint($breakpoint-tablet) {
+      width: 606px;
+      margin: 0 auto;
+    }
+    @include breakpoint($breakpoint-desktop) {
+      width: 940px;
+      margin: 0 auto;
+    }
+    h2 {
+      color: #FFFFFF;
+      font-size: 29px;
+      margin: 20px 0 6px 0;
+      text-align: center;
+      text-transform: uppercase;
+      img {
+        display: inline;
+        height: 23px;
+      }
+    }
+    .cic_bottom_promo_numb_stories {
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 14px;
+      font-family: $primary-sans-font;
+    }
+    h3 {
+      background-color: #FFFFFF;
+      color: #3A3A3A;
+      margin: 0;
+      padding: 7px 16px;
+      text-align: center;
+      height: 115px;
+      &.node-unpublished {
+        background-color: #fff4f4;
+      }
+    }
+    .owl-carousel {
+      margin-top: 11px;
+      .item {
+        padding: 3px;
+        .cic_bottom_promo_item {
+          -moz-box-shadow: 0 0 3px #3A3A3A;
+          -webkit-box-shadow: 0 0 3px #3A3A3A;
+          box-shadow: 0 0 3px #3A3A3A;
+          max-width: 270px;
+          margin: 0 auto;
+        }
+      }
+    }
+    .owl-nav-custom {
+      .owl-next-custom,
+      .owl-prev-custom {
+        width: 22px;
+        height: 100%;
+        top: 104px;
+        font-size: 22px;
+        padding-top: 137px;
+        font-weight: bold;
+        @include breakpoint($breakpoint-tablet) {
+          width: 53px;
+          height: 60px;
+          background: rgba(0,0,0,.1) !important;
+          top: 50%;
+          font-size: 31px;
+          padding-top: 16px;
+        }
+        cursor: pointer;
+        color: #FFFFFF;
+        display: inline;
+        position: absolute;
+        margin-top: -2px;
+        margin-left: 0;
+        display: inline;
+        z-index: 1;
+      }
+      .owl-next-custom{
+        right: 0;
+        text-align: right;
+        &:after{
+          font-family: takepart;
+          content: '\e606';
+          display: inline;
+          font-size: 20px;
+          padding-right: 2px;
+          font-weight: normal;
+          text-align: right;
+          @include breakpoint($breakpoint-tablet) {
+            padding-right: 15px;
+            font-size: 22px;
+          }
+        }
+      }
+      .owl-prev-custom {
+        left: 0;
+        &:after{
+          font-family: takepart;
+          content: '\e605';
+          display: inline;
+          font-size: 20px;
+          padding-left: 2px;
+          @include breakpoint($breakpoint-tablet) {
+            padding-left: 15px;
+            font-size: 22px;
+          }
+          font-weight: normal;
+        }
+      }
+    }
+    .cic_bottom_promo_see_more {
+      margin: 35px 0 44px;
+      text-align: center;
+      a {
+        border: 1px solid #FFFFFF;
+        border-radius: 2px;
+        color: #FFFFFF;
+        font-family: $primary-sans-font;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 10px 21px;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  &:before {
+      content: '';
+      width: 14px;
+      height: 14px;
+      display: block;
+      border-top: none;
+      border-left: none;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      -o-transform: rotate(45deg);
+      transform: rotate(45deg);
+      margin: 0 auto;
+      position: relative;
+      top: -7px;
+      background: white;
+  }
+}
+
+/** End of Content Inside Campaign */

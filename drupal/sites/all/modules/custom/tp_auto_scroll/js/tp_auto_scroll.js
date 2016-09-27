@@ -15,6 +15,7 @@
 	 var page = -1;
 	 var page_limit = settings.limit - 1;
    window.forceAutoload = false;
+   window.reached_second_article = false;
 
 	 /* Make a copy of the page data in the DDL for use when the user scrolls to the top */
 	 digitalData.pageInititial = digitalData.page;
@@ -227,15 +228,25 @@
 			 pauseAmbientVid();
 		    }
 
-        //Remove next node promo if still visible when we get to second node.
-        if (index == 1 && $('#prompt-next-article.show').length != 0) {
-          if (window.isMobile) {
-            jQuery('#prompt-next-article').removeClass('show').slideUp();
+        //Reached Article 2
+        if (index == 1) {
+          //Optimizley tracking - if reached article 2 - can be removed once A/B test is stopped.
+          if (!window.reached_second_article) {
+            window['optimizely'] = window['optimizely'] || [];
+            window.optimizely.push(["trackEvent", "reached_second_article"]);
+            window.reached_second_article = true;
           }
-          else {
-            jQuery('#prompt-next-article').removeClass('show').animate({
-              'right' : '-320'
-            });
+
+          //Remove next node promo if still visible when we get to second node.
+          if ($('#prompt-next-article.show').length != 0) {
+            if (window.isMobile) {
+              jQuery('#prompt-next-article').removeClass('show').slideUp();
+            }
+            else {
+              jQuery('#prompt-next-article').removeClass('show').animate({
+                'right' : '-320'
+              });
+            }
           }
         }
 

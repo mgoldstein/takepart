@@ -101,16 +101,25 @@
 }
 
 .launch-gallery {
-  background-color: rgba(0,0,0, 0.6);
+  background-color: rgba(0,0,0, 0.2);
   border: none;
   color: white;
+  font-family: $AdelleSans;
+  font-size: 14px;
+  font-weight: bold;
   margin-right: 15px;
-  padding: 0.5em;
+  padding: 5px 5px 7px 8px;
   position: absolute;
   right: 0;
 
   @include breakpoint($breakpoint-tablet) {
     margin-right: 31px;
+  }
+
+  .icon {
+    margin-left: 2px;
+    margin-right: 5px;
+    font-size: 12px;
   }
 }
 

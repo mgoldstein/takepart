@@ -597,7 +597,7 @@ function tp_feature_fresh_gallery_field_default_field_instances() {
     'bundle' => 'fresh_gallery',
     'default_value' => array(
       0 => array(
-        'value' => 0,
+        'value' => 1,
       ),
     ),
     'deleted' => 0,

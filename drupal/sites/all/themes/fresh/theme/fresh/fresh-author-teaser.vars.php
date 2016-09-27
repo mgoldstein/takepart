@@ -6,7 +6,7 @@
 function fresh_preprocess_fresh_author_teaser(&$variables){
 
 	foreach($variables['author'] as $account) {
-		
+
 		$author = array();
 
     /* Format the image */
@@ -53,5 +53,16 @@ function fresh_preprocess_fresh_author_teaser(&$variables){
     /* Format the date */
     $variables['date'] = date('M j, Y', $date);
   }
+
+	if($variables['timetoread']) {
+
+		$str_time = preg_replace("/^([\d]{1,2})\:([\d]{2})$/", "00:$1:$2", $variables['timetoread'][0]['value']);
+
+		sscanf($str_time, "%d:%d:%d", $hours, $minutes, $seconds);
+
+		$variables['timetoreadminutes'] = $hours * 60 + $minutes;
+	}
+
+	$variables['url'] = url('node/'.$variables['nid']);
 
 }
