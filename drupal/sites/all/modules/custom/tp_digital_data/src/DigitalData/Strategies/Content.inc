@@ -236,7 +236,6 @@ class ddContent extends ddDefaultPage {
       if ($field_related_stories = field_get_items('node', $node, 'field_related_stories')) {
         $element_impression[] = 'more on takepart - related';
         $element_impression[] = 'more on takepart - promoted';
-        $element_impression[] = 'more on takepart - ad';
       }
     }
 
