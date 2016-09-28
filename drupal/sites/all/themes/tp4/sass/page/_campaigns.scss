@@ -1268,15 +1268,49 @@ body.campaign-display{
     .node-campaign-card-social {
         &.card.campaign-1col
         .center-column  .block-newsletter-campaign {
-            margin-top: 40px;
+            margin-top: 30px;
+        }
+        .block-newsletter-campaign {
+            .message {
+                font: 100 16px/24px $Ashbury;
+                margin: 0 0 14px 0;
+            }
+            .form-item-email input {
+                border-radius: 2px;
+                border: 1px solid #c7c7c7;
+                margin-right: 0px;
+                text-indent: 14px;
+                font-size: 13px;
+                height: 38px;
+            }
+            input[type="submit"] {
+                margin: 0 0 0 10px;
+                height: auto;
+                border-radius: 2px;
+                padding: 9px 13px;
+                font-size: 14px;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                width: auto;
+                float: none;
+            }
+            .terms-of-service {
+                font-size: 14px;
+                font-style: italic;
+                line-height: 20px;
+                color: #3a3a3a;
+                margin-top: 20px;
+                margin-bottom: 0;
+                padding: 0;
+            }
         }
         h2.section-header {
-            font-family: "Brown", Verdana, Tahoma, sans-serif;
             line-height: 27px;
             font-size: 20px;
+            margin-bottom: 17px;
         }
         .social-follow{
-            margin-left: -5px;
+            margin-left: 0;
             a.social-icon {
                 font-size: 35px;
             }
@@ -1380,11 +1414,6 @@ body.campaign-display{
                         background-color: #5092c6;
                     }
                 }
-            }
-        }
-        @media (min-width: 480px) {
-            .takepart-newsletter-form {
-                margin: 0 20%;
             }
         }
         input[name=newsletter_campaign_signup] {
