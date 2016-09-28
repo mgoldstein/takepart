@@ -124,6 +124,17 @@
   }
 }
 
+.pswp__caption {
+  height: 150px;
+  overflow-y: scroll;
+  margin-bottom: 100px;
+  @include breakpoint($breakpoint-phablet) {
+    margin-bottom: 0;
+    overflow-y: visible;
+    height: auto;
+  }
+}
+
 .shareable-image {
   margin-bottom: 1em;
 
