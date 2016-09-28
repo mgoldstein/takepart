@@ -28,7 +28,8 @@ function _fresh_theme(&$existing, $type, $theme, $path) {
         'authors' => '',
         'published_at' => '',
         'timetoread' => '',
-        'nid' => ''
+        'nid' => '',
+        'type' => ''
       )
     ),
     'fresh_gallery_author_teaser' => array(
