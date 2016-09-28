@@ -27047,7 +27047,7 @@ Note: If you manually reference more items than selected here, the number refere
     'bundle' => 'campaign_page',
     'default_value' => array(
       0 => array(
-        'value' => 1,
+        'value' => 0,
       ),
     ),
     'deleted' => 0,
