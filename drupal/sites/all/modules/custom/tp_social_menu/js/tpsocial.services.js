@@ -33,6 +33,12 @@
     return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent('takepart').replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || '';
   };
 
+  //checks if user is in the FB app
+  var isFacebookApp = function () {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+  };
+
   var get_share_url = function (url, title, callback, _shorten) {
     var shorten = (typeof _shorten != 'undefined') ? _shorten : false;
     if (window.TP.tabHost) {
@@ -87,6 +93,10 @@
                  //Post was not published
                }
              });
+          } else {
+            if(isFacebookApp()) {
+              setTimeout(function(){window.location = url;},500);
+            }
           }
 
     	   function openFBLoginDialogManually() {
@@ -135,6 +145,9 @@
     	     fbCompleteLogin();
     	   }
     	 });
+       if(isFacebookApp()) {
+         return false;
+       }
        return true;
       }
   });
@@ -288,10 +301,17 @@
         //Desktop view will do a window.open, but Mobile view will do a new tab
         if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
           window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height, "left=" + left, "top=" + tops].join(", "));
+        } else {
+          if(isFacebookApp()) {
+            setTimeout(function(){window.location = url;},500);
+          }
         }
 
       }, true);
 
+      if(isFacebookApp()) {
+        return false;
+      }
       return true;
     }
   });
@@ -411,6 +431,13 @@
       //Desktop view will do a window.open, but Mobile view will do a new tab
       if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      } else {
+        if(isFacebookApp()) {
+          setTimeout(function(){window.location = url;},500);
+        }
+      }
+      if(isFacebookApp()) {
+        return false;
       }
       return true;
     }
@@ -444,8 +471,15 @@
         //Desktop view will do a window.open, but Mobile view will do a new tab
         if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
           window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+        } else {
+          if(isFacebookApp()) {
+            setTimeout(function(){window.location = url;},500);
+          }
         }
       });
+      if(isFacebookApp()) {
+        return false;
+      }
       return true;
     }
   });
@@ -618,7 +652,8 @@
              encodeURIComponent( shortenedUrl ) +
             '&subject=TakePart:%20' +
             encodeURIComponent(args.title);
-         location.href = url;
+          //Give analytics a chance
+         setTimeout(function(){location.href = url}, 500);
        }, true);
     }
   });
