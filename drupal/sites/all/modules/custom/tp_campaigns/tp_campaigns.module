@@ -325,7 +325,14 @@ function tp_campaigns_hero(){
   // code for the tp campaigns block
   $node = 'node';
   $node = node_load(arg(1));
-  if($campaign_node = field_get_items('node', $node, 'field_campaign_reference')){
+
+  if($show_menu = field_get_items('node', $node, 'field_show_campaign_menu')) {
+    $show_menu = $show_menu[0]['value'];
+  } else {
+    $show_menu = 0;
+  }
+
+  if(($campaign_node = field_get_items('node', $node, 'field_campaign_reference')) && $show_menu){
     $page_node = $node;
     $campaign_node = node_load($campaign_node[0]['target_id']);
 
