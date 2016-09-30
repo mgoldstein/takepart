@@ -86,7 +86,6 @@
    transition: opacity .15s ease-in;
 }
 
-
 .gallery-unit {
   text-align: center;
   margin: 3em 0 4em 0;
@@ -99,6 +98,41 @@
 .takepart-gallery {
   max-width: 970px;
   margin: 0 auto;
+}
+
+.launch-gallery {
+  background-color: rgba(0,0,0, 0.2);
+  border: none;
+  color: white;
+  font-family: $AdelleSans;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 15px;
+  padding: 12px 15px;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+
+  @include breakpoint($breakpoint-tablet) {
+    margin-right: 31px;
+  }
+
+  .icon {
+    margin-left: 2px;
+    margin-right: 5px;
+    font-size: 12px;
+  }
+}
+
+.pswp__caption {
+  height: 200px;
+  overflow-y: scroll;
+  margin-bottom: 15px;
+  @include breakpoint($breakpoint-phablet) {
+    margin-bottom: 0;
+    overflow-y: visible;
+    height: auto;
+  }
 }
 
 .shareable-image {

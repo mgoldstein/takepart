@@ -17,6 +17,13 @@ function fresh_preprocess_page(&$variables) {
   $mobile_menu = theme('base_social_follow');
   $about_tp = '<span class = "about">TakePart is the digital news and lifestyle magazine from <a href="http://www.participantmedia.com" target="_blank">Participant Media</a>, the company behind such acclaimed documentaries as CITIZENFOUR, An Inconvenient Truth and Food, Inc. and feature films including Lincoln and Spotlight.</span>';
 
+  if (module_exists('tp_social_menu')) {
+    //if disable is TRUE then exclude this
+    if (!$variables['disable_social']) {
+      $variables['page']['page_bottom']['highlight_share']['#markup'] = theme('tp_highlight_share', array());
+    }
+  }
+
   //In Campaign Experience - variables and main nav
   if($campaign_content = field_get_items('node', $variables['node'], 'field_editor_campaign_reference')){
     $variables['page']['campaign_ref'] = TRUE;

@@ -82,17 +82,7 @@ function tp4_preprocess_html(&$variables, $hook) {
     if ($variables['page']['content']['system_main']['#entity_view_mode']['bundle'] == 'topic') {
         $variables['classes_array'][] = 'vocabulary-topic';
     }
-    drupal_add_js('
-      window.optimizely = window.optimizely || [];
-      window.optimizely.push("activateSiteCatalyst");
-',
-	 array(
-        'type' => 'inline',
-        'scope' => 'header',
-        'group' => JS_DEFAULT,
-        'every_page' => TRUE,
-        'weight' => -2,
-    ));
+
     drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
         'type' => 'external',
         'scope' => 'header',
@@ -2141,7 +2131,7 @@ function tp4_field__field_author__video_playlist($variables) {
 function tp4_field__field_author__fresh_gallery($variables) {
   return tp4_field__field_author__openpublish_article($variables);
 }
- 
+
 function tp4_field__field_flashcard_page_headline__flashcard($variables) {
     $output = '<h1 class="node-title ' . $variables['classes'] . '"' . $variables['attributes'] . '>';
 

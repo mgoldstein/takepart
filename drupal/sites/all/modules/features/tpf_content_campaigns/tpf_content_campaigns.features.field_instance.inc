@@ -26171,7 +26171,7 @@ Note: If you manually reference more items than selected here, the number refere
         ),
       ),
       'type' => 'inline_entity_form',
-      'weight' => 12,
+      'weight' => 13,
     ),
   );
 
@@ -26288,7 +26288,7 @@ Note: If you manually reference more items than selected here, the number refere
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 18,
+      'weight' => 19,
     ),
   );
 
@@ -27042,6 +27042,91 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
+  // Exported field_instance: 'node-campaign_page-field_show_campaign_menu'.
+  $field_instances['node-campaign_page-field_show_campaign_menu'] = array(
+    'bundle' => 'campaign_page',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 24,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_show_campaign_menu',
+    'label' => 'Show Campaign Menu',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 11,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign_page-field_tab_action_override'.
   $field_instances['node-campaign_page-field_tab_action_override'] = array(
     'bundle' => 'campaign_page',
@@ -27456,7 +27541,7 @@ Note: If you manually reference more items than selected here, the number refere
         'rows' => 5,
       ),
       'type' => 'text_textarea',
-      'weight' => 20,
+      'weight' => 21,
     ),
   );
 
@@ -27708,7 +27793,7 @@ Note: If you manually reference more items than selected here, the number refere
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 11,
+      'weight' => 12,
     ),
   );
 
@@ -28882,6 +28967,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('SEO Title');
   t('SMS');
   t('Series');
+  t('Show Campaign Menu');
   t('Single News Reference');
   t('Slim Card Text');
   t('Social Follow');

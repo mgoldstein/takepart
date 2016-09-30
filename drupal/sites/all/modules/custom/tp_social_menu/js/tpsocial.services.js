@@ -33,6 +33,12 @@
     return decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*" + encodeURIComponent('takepart').replace(/[\-\.\+\*]/g, "\\$&") + "\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1")) || '';
   };
 
+  //checks if user is in the FB app
+  var isFacebookApp = function () {
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+  };
+
   var get_share_url = function (url, title, callback, _shorten) {
     var shorten = (typeof _shorten != 'undefined') ? _shorten : false;
     if (window.TP.tabHost) {
@@ -57,6 +63,16 @@
     } else {
       callback(url);
     }
+  }
+
+  var getSelectionText = function() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    }
+    return text;
   }
 
   // Add services
@@ -87,6 +103,10 @@
                  //Post was not published
                }
              });
+          } else {
+            if(isFacebookApp()) {
+              setTimeout(function(){window.location = url;},500);
+            }
           }
 
     	   function openFBLoginDialogManually() {
@@ -135,6 +155,9 @@
     	     fbCompleteLogin();
     	   }
     	 });
+       if(isFacebookApp()) {
+         return false;
+       }
        return true;
       }
   });
@@ -146,24 +169,34 @@
     	 get_share_url(args.url, args.title, function (url) {
     	   var parser = document.createElement("a");
     	   parser.href = args.url;
-         var text_width = args.description.length + 650;
-           FB.ui({
-             method: 'feed',
-             display: 'popup',
-             link: url,
-             description: args.caption,
-             name: args.share_title,
-             picture: 'http://res.cloudinary.com/'+Drupal.settings.cloudinary_bucket+'/image/upload/g_north,x_0,y_120,w_'+text_width+',c_fit,l_text:Libre%20Baskerville_36_left_line_spacing_8:'+encodeURI(args.description).replace(/,/g, "%E2%80%9A").replace(/\?/g,"%253F")+'/l_text:arial_20:%20,g_south,x_0,y_-120/ar_1.91,c_fill/g_north,y_35,l_logo200/blank_quote_canvas.jpg'
-           },
-             function (response) {
-               if (response && response.post_id) {
-                 // Post was published
-                 $window.trigger('tp-social-share', args);
-               }
-               else {
-                 //Post was not published
-               }
-             });
+
+         if(args.description == "{{highlight}}") {
+           args.description = args.caption = "\""+getSelectionText()+"\"";
+         }
+
+         var picture = '';
+         if(args.picture) {
+           var text_width = args.description.length + 650;
+           picture = 'http://res.cloudinary.com/'+Drupal.settings.cloudinary_bucket+'/image/upload/g_north,x_0,y_120,w_'+text_width+',c_fit,l_text:Libre%20Baskerville_36_left_line_spacing_8:'+encodeURI(args.description).replace(/,/g, "%E2%80%9A").replace(/\?/g,"%253F")+'/l_text:arial_20:%20,g_south,x_0,y_-120/ar_1.91,c_fill/g_north,y_35,l_logo200/blank_quote_canvas.jpg';
+         }
+
+         FB.ui({
+           method: 'feed',
+           display: 'popup',
+           link: url,
+           description: args.caption,
+           name: args.share_title,
+           picture: picture
+         },
+           function (response) {
+             if (response && response.post_id) {
+               // Post was published
+               $window.trigger('tp-social-share', args);
+             }
+             else {
+               //Post was not published
+             }
+           });
 
     	   function openFBLoginDialogManually() {
            if ($('body').hasClass('tploggedin')) {
@@ -224,7 +257,9 @@
       // Replace variables in twitter template
       var twitter_tpl_reg = /{{([a-zA-Z\-_]+)}}/g;
       var template_tplvar_clean_reg = /({{)|(}})/g;
-
+      if(args.text == "{{highlight}}") {
+        args.text = getSelectionText();
+      }
       var text = args.text || '{{title}}';
       var matches = text.match(twitter_tpl_reg);
       var url_obj = {
@@ -288,10 +323,17 @@
         //Desktop view will do a window.open, but Mobile view will do a new tab
         if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
           window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height, "left=" + left, "top=" + tops].join(", "));
+        } else {
+          if(isFacebookApp()) {
+            setTimeout(function(){window.location = url;},500);
+          }
         }
 
       }, true);
 
+      if(isFacebookApp()) {
+        return false;
+      }
       return true;
     }
   });
@@ -411,6 +453,13 @@
       //Desktop view will do a window.open, but Mobile view will do a new tab
       if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
         window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+      } else {
+        if(isFacebookApp()) {
+          setTimeout(function(){window.location = url;},500);
+        }
+      }
+      if(isFacebookApp()) {
+        return false;
       }
       return true;
     }
@@ -444,8 +493,15 @@
         //Desktop view will do a window.open, but Mobile view will do a new tab
         if($('.social-wrapper').hasClass('desktop') || $('body').hasClass('node-type-campaign-page')) {
           window.open(url, undefined, [windowOptions, "width=" + args.width, "height=" + args.height].join(", "));
+        } else {
+          if(isFacebookApp()) {
+            setTimeout(function(){window.location = url;},500);
+          }
         }
       });
+      if(isFacebookApp()) {
+        return false;
+      }
       return true;
     }
   });
@@ -618,7 +674,8 @@
              encodeURIComponent( shortenedUrl ) +
             '&subject=TakePart:%20' +
             encodeURIComponent(args.title);
-         location.href = url;
+          //Give analytics a chance
+         setTimeout(function(){location.href = url}, 500);
        }, true);
     }
   });

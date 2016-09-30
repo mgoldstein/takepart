@@ -513,6 +513,16 @@
       padding: 0;
       margin-bottom: 20px;
     }
+    .inlineSharingContainer {
+      @include breakpoint($breakpoint-tablet) {
+        max-width: 70%;
+        margin: 0 auto;
+      }
+      @include breakpoint($breakpoint-desktop) {
+        max-width: 620px;
+        margin: 0 auto;
+      }
+    }
   }
 }
 

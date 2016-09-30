@@ -61,7 +61,7 @@ function article_support_next_story($node, $type) {
     // Fall back on chronological ordering
     $query = db_select('node', 'n')
       ->fields('n', array('nid', 'title'))
-      ->condition('created', $node->created, '<')
+      // ->condition('created', $node->created, '<')
       ->condition('type', $type)
       ->condition('status', 0, '!=')
       ->orderBy('created', 'DESC')

@@ -72,6 +72,8 @@ function tp_fbia_page_feed() {
 function tp_fbia_query_node_is_not_sponsored_alter(QueryAlterableInterface $query) {
   $query->leftJoin('field_data_field_sponsored', 'o', 'node.nid = o.entity_id AND o.entity_type = :entity_type');
   $query->isNull('o.field_sponsored_tid');
+  $query->leftJoin('field_data_field_topic', 'ft', 'node.nid = ft.entity_id AND ft.entity_type = :entity_type');
+  $query->isNotNull('ft.field_topic_tid');
 }
 
 

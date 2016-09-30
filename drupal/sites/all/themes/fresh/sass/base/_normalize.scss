@@ -382,6 +382,9 @@ aside.inline-content + p{
       padding: 0;
     }
   }
+  .authordotsep {
+    padding: 0 5px;
+  }
   .image{
     padding-right: 0;
     @include breakpoint($breakpoint-phablet){

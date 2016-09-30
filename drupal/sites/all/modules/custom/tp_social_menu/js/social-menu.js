@@ -153,12 +153,77 @@
                   anchor: $(this).parent().attr('data-anchor'),
                   author_name: author_name,
                   share_title: $(this).parent().attr('data-title'),
-                  caption: caption
+                  caption: caption,
+                  picture: true
                 }
               }
             };
             $(this).tpsocial(services);
           });
+        });
+      });
+    }
+  };
+
+  Drupal.behaviors.HighlightShare = {
+    attach: function (context, settings) {
+      $(document.body).on('mouseup', function (evt) {
+        var menu = $('#highlight_menu');
+        var s = window.getSelection();
+        if(s.rangeCount <= 0) {
+          return;
+        }
+
+        var r = s.getRangeAt(0);
+
+        if (r && s.toString()) {
+          var p = r.getBoundingClientRect();
+
+          if (p.left || p.top) {
+            menu.css({
+              left: (p.left + (p.width / 2)) - (menu.width() / 2),
+              top: ((p.top - menu.height() - 10)+$(window).scrollTop()),
+              display: 'block',
+              opacity: 0
+          })
+          .animate({
+            opacity:1
+          }, 300);
+
+          setTimeout(function() {
+            menu.addClass('highlight_menu_animate');
+          }, 10);
+          return;
+        }
+        }
+        menu.animate({ opacity:0 }, function () {
+          menu.hide().removeClass('highlight_menu_animate');
+        });
+      });
+
+
+      $('#highlight_share_container').each(function(){
+        $(this).once('highlightSharing',function(){
+
+          var services = {
+            url_append: '?cmpid=organic-share-{{name}}',
+            services: {
+              twitter: {
+                name: 'twitter',
+                text: '{{highlight}}',
+                via: 'TakePart',
+                quote: true,
+                author_name: '',
+                class_target: 'highlightShareUnique'
+              },
+              facebook: {
+                name: 'facebookfeed',
+                description: '{{highlight}}',
+                picture: false
+              }
+            }
+          };
+          $(this).tpsocial(services);
         });
       });
     }

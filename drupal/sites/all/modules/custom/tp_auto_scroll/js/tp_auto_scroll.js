@@ -80,7 +80,7 @@
           Drupal.behaviors.InlineSocialShare.attach();
         }
 
-        if(typeof Drupal.behaviors.lazyloader.attach === 'function') {
+        if(typeof Drupal.behaviors.lazyloader !== 'undefined' && typeof Drupal.behaviors.lazyloader.attach !== 'undefined') {
           Drupal.behaviors.lazyloader.attach(document, Drupal.settings);
         }
 
