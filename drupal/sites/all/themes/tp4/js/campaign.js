@@ -156,12 +156,14 @@
   Drupal.behaviors.campaignHeaderMenu = {
     attach: function () {
       if ($('body').is('.node-type-campaign-page')) {
-        if ($('#block-tp-campaigns-tp-campaigns-hero').html().trim()) {
+        var heroblock = ($('#block-tp-campaigns-tp-campaigns-hero').html()) ? $('#block-tp-campaigns-tp-campaigns-hero').html().trim()
+          : false;
+        if (heroblock) {
           var error;
           try {
             $('ul.sf-menu').superfish();
           }
-          catch(error) {
+          catch (error) {
             console.log(error.message);
           }
 
@@ -175,6 +177,7 @@
         }
       }
     }
+
   };
 
   Drupal.behaviors.campaignResponsiveMenu = {
