@@ -157,7 +157,7 @@
     attach: function () {
       if ($('body').is('.node-type-campaign-page')) {
         var heroblock = ($('#block-tp-campaigns-tp-campaigns-hero').html()) ? $('#block-tp-campaigns-tp-campaigns-hero').html().trim()
-          : $('#block-tp-campaigns-tp-campaigns-hero').html();
+          : false;
         if (heroblock) {
           var error;
           try {
