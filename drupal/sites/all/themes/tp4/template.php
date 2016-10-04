@@ -48,7 +48,6 @@ define('CARDTYPES', serialize($card_types));
  * Implements hook_preprocess_html();
  */
 function tp4_preprocess_html(&$variables, $hook) {
-
   /* Add shared assets to all tp4 pages */
   drupal_add_css(variable_get('shared_assets_path').'font.css',           array('type' => 'external'));
   drupal_add_css(variable_get('shared_assets_path').'takepart_icons.css', array('type' => 'external'));
@@ -94,8 +93,7 @@ function tp4_preprocess_html(&$variables, $hook) {
     drupal_add_library('system', 'jquery.cookie', true);
 
     $uri = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL);
-    if (preg_match('/^\/entity_iframe/', $uri)
-            ||  preg_match('/^\/iframes/', $uri)) {
+    if (preg_match('/^\/entity_iframe/', $uri) ||  preg_match('/^\/iframes/', $uri)) {
         unset($variables['page']['page_bottom']['omniture']);
         unset($variables['page']['page_bottom']['quantcast']);
     }
@@ -2404,7 +2402,6 @@ function tp4_preprocess_entity_iframe(&$variables){
     $node = reset($nodes);
     $type = $node->type;
     if($type == 'video' || $type == 'video_playlist'){
-      /* This is so dirty I need a bath */
       drupal_add_css('html{overflow: hidden;}', array('type' => 'inline'));
     }
   }
@@ -2506,25 +2503,23 @@ function tp4_search_api_page_results(array &$variables) {
 	return $output;
 }
 
-
 function tp4_page_alter(&$page) {
   // unset the search-results $pager. It's being created in the TP4 template.
   if($page['content']['system_main']['pager']) {
 	unset($page['content']['system_main']['pager']);
   }
+  
+  $uri = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL);
+  if (preg_match('/^\/entity_iframe/', $uri) ||  preg_match('/^\/iframes/', $uri)) {
+    header_remove('X-Frame-Options');
+  }
 }
 
-
 function _tp4_sponsor(&$variables){
-
 	$s = field_get_items('node',$variables['node'],'field_sponsored');
-
 	$tid = $s[0]['tid'];
-
 	if($tid) {
-
 		$sponsor = taxonomy_term_load($tid);
-
 		$sponsored_by = $sponsor->field_sponsor_label['und'][0]['value'];
 
 		// Add the sponsor logo, or the name, if there isn't one
@@ -2551,7 +2546,5 @@ function _tp4_sponsor(&$variables){
 		}
 
 		$variables['content']['sponsor_disclaimer'] = theme('base_sponsor_disclaimer', array('disclaimer' => trim($disclaimer)));
-
 	}
-
 }
