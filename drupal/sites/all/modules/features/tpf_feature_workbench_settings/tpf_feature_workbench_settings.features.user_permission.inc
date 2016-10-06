@@ -16,6 +16,7 @@ function tpf_feature_workbench_settings_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'editor' => 'editor',
+      'layout editor' => 'layout editor',
     ),
     'module' => 'workbench',
   );
@@ -44,6 +45,7 @@ function tpf_feature_workbench_settings_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'editor' => 'editor',
+      'layout editor' => 'layout editor',
     ),
     'module' => 'workbench_moderation',
   );
@@ -54,6 +56,7 @@ function tpf_feature_workbench_settings_user_default_permissions() {
     'roles' => array(
       'administrator' => 'administrator',
       'editor' => 'editor',
+      'layout editor' => 'layout editor',
     ),
     'module' => 'workbench_media',
   );
@@ -75,6 +78,7 @@ function tpf_feature_workbench_settings_user_default_permissions() {
     'name' => 'use workbench_moderation needs review tab',
     'roles' => array(
       'administrator' => 'administrator',
+      'layout editor' => 'layout editor',
     ),
     'module' => 'workbench_moderation',
   );
