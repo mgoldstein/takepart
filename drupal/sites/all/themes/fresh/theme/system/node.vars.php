@@ -186,6 +186,18 @@ function fresh_preprocess_node__autoload(&$variables) {
     $author_vars['nid'] = $variables['node']->nid;
     $author_vars['type'] = $node_type;
 
+    /*  FB Comment Count for the specifc node */
+    $fb_comment_count = '';
+    $url = url('node/' . $variables['node']->nid, array('absolute' => true));
+    $fb_access_token = variable_get('facebook_access_token', '');
+    $fb_graph_url = 'https://graph.facebook.com/v2.8/' . urlencode($url) . '?access_token=' . $fb_access_token;
+    $json = json_decode(file_get_contents($fb_graph_url));
+    if (isset($json) && !empty($json)) {
+      $fb_comment_count = $json->share->comment_count;
+    }
+    $author_vars['fb_comment_count'] = $fb_comment_count;
+
+
     if ($node_type == 'fresh_gallery') {
       $variables['author_teaser'] = theme('fresh_gallery_author_teaser', $author_vars);
     }
@@ -212,7 +224,6 @@ function fresh_preprocess_node__autoload(&$variables) {
     }
 
     /* Comments */
-    $url = url('node/' . $variables['node']->nid, array('absolute' => true));
     $variables['comments'] = theme('fresh_fb_comments', array('url' => $url, 'nid' => $variables['node']->nid));
 
     $variables['fresh_fb_comments'] = ($variables['status']) ? TRUE : FALSE;
