@@ -7,6 +7,8 @@
 function tp_digital_data_build_ddl_content($node , $is_fbia){
   $data = array();
   $pageID = $node->nid;
+  $element_impression = array();
+  global $theme;
 
   //authors
   $ids = array();
@@ -39,28 +41,29 @@ function tp_digital_data_build_ddl_content($node , $is_fbia){
 
   //Field Topic
   $topic_instance = field_info_instance('node', 'field_topic', $node->type);
-  if($topic_instance != NULL && $topics = field_get_items('node', $node, 'field_topic')){
-    $primary_topic = $topics[0]['taxonomy_term']->name;
+  if ($topic_instance != NULL && $topics = field_get_items('node', $node, 'field_topic')) {
     $topic_names = array();
-    foreach($topics as $topic){
-      $topic_names[] = $topic['taxonomy_term']->name;
+    foreach ($topics as $topic) {
+      if (isset($topic['tid']) && is_numeric($topic['tid'])) {
+        $tax_obj = taxonomy_term_load($topic['tid']);
+        $topic_names[] = $tax = $tax_obj->name;
+      } else {
+        $topic_names[] = $topic['taxonomy_term']->name;
+      }
     }
+    $primary_topic = $topic_names[0];
     $topic_names = implode(',', $topic_names);
     $data['category']['primaryTopic'] = $primary_topic;
     $data['category']['topics'] = $topic_names;
   }
 
   //Field Series
-  $series_instance = field_info_instance('node', 'field_series', $node->type);
-  if($series_instance != NULL){
-    $series_terms = field_get_items('node', $node, 'field_series');
-    $series_names = array();
-    foreach($series_terms as $series){
-      $series = taxonomy_term_load($series['tid']);
-      $series_names[] = $series->name;
-    }
-    $series_names = implode(',', $series_names);
-    $data['category']['series'] = $series_names;
+  if ($field_series = field_get_items('node', $node, 'field_series')) {
+    $series_tid = $field_series[0]['tid'];
+    $series = taxonomy_term_load($series_tid);
+    $series_name = $series ->name;
+    $element_impression[] = "series nav";
+    $data['category']['series'] = $series_name;
   }
 
   //Field Free Tags
@@ -99,37 +102,41 @@ function tp_digital_data_build_ddl_content($node , $is_fbia){
     $data['page']['pageInfo']['sponsored'] = ($sponsor_term->tid ? "" : "Not ") . "Sponsored";
   }
 
-    //Inline Replacements
-    $show_influence = false;
-    $element_impression = array();
-    if($inline = field_get_items('node', $node, 'field_inline_replacements')) {
-      foreach($inline as $i) {
-        $load = entity_load('inline_content', array($i['target_id']));
-        //Is there an influence Banner
-        if(is_object($load[$i['target_id']]) && isset($load[$i['target_id']]->field_ic_tap_widget_type)) {
-          if($tap_widget = field_get_items('inline_content', $load[$i['target_id']], 'field_ic_tap_widget_type')) {
-            if($tap_widget[0]['value'] == 'influence_widget') {
-              $show_influence = true;
-            }
+  //Field Topic Box
+  if ($field_series = field_get_items('node', $node, 'field_topic_box')) {
+    $element_impression[] = "topic box";
+  }
+
+  //Inline Replacements
+  $show_influence = false;
+  if($inline = field_get_items('node', $node, 'field_inline_replacements')) {
+    foreach($inline as $i) {
+      $load = entity_load('inline_content', array($i['target_id']));
+      //Is there an influence Banner
+      if(is_object($load[$i['target_id']]) && isset($load[$i['target_id']]->field_ic_tap_widget_type)) {
+        if($tap_widget = field_get_items('inline_content', $load[$i['target_id']], 'field_ic_tap_widget_type')) {
+          if($tap_widget[0]['value'] == 'influence_widget') {
+            $show_influence = true;
           }
         }
-        //Embedded content
-        if ($load[$i['target_id']]->type == 'nodes') {
-          $element_impression[] = "embedded related story";
-        }
-        //Campaign promo
-        if ($load[$i['target_id']]->type == 'campaign_promo') {
-          $element_impression[] = "campaign promo";
-        }
+      }
+      //Embedded content
+      if ($load[$i['target_id']]->type == 'nodes') {
+        $element_impression[] = "embedded related story";
+      }
+      //Campaign promo
+      if ($load[$i['target_id']]->type == 'campaign_promo') {
+        $element_impression[] = "campaign promo";
       }
     }
-    if (!$is_fbia) {
-      if($show_influence) {
-        $data['page']['pageInfo']['influenceBanner'] =  "Influence Banner";
-      } else {
-        $data['page']['pageInfo']['influenceBanner'] =  "No Influence Banner";
-      }
+  }
+  if (!$is_fbia) {
+    if($show_influence) {
+      $data['page']['pageInfo']['influenceBanner'] =  "Influence Banner";
+    } else {
+      $data['page']['pageInfo']['influenceBanner'] =  "No Influence Banner";
     }
+  }
 
   //Campaign reference
   if($campaignContent = field_get_items('node', $node, 'field_editor_campaign_reference')) {
@@ -141,11 +148,21 @@ function tp_digital_data_build_ddl_content($node , $is_fbia){
     //Campaign related content carousel - automatically gets added to any node tagged with a campaign
     $element_impression[] = 'campaign content carousel';
   }
+  elseif($theme == 'fresh') {
+    //MOT is displayed if the node is not tagged with a campaign
+    //MOT video is displayed automatically
+    $element_impression[] = 'more on takepart - video';
+    if ($field_related_stories = field_get_items('node', $node, 'field_related_stories')) {
+      $element_impression[] = 'more on takepart - related';
+      $element_impression[] = 'more on takepart - promoted';
+    }
+  }
 
   //Time to read
   if($timeRead = field_get_items('node', $node, 'field_time_to_read')) {
     $data['page']['pageInfo']['timeToRead'] = $timeRead[0]['value'];
   }
+
 
   //Element Impression
   if (!empty($element_impression) && !$is_fbia) {

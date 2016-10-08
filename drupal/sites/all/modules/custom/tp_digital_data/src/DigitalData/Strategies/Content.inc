@@ -64,7 +64,8 @@ class ddContent extends ddDefaultPage {
     $data = array();
     $node = $this->getNodefromPath();
     $pageID = $node->nid;
-
+    $element_impression = array();
+    global $theme;
 
     //authors
     $ids = array();
@@ -115,16 +116,12 @@ class ddContent extends ddDefaultPage {
     }
 
     //Field Series
-    $series_instance = field_info_instance('node', 'field_series', $node->type);
-    if ($series_instance != NULL) {
-	 $series_terms = field_get_items('node', $node, 'field_series');
-	 $series_names = array();
-	 foreach ($series_terms as $series) {
-	   $series = taxonomy_term_load($series['tid']);
-	   $series_names[] = $series->name;
-	 }
-	 $series_names = implode(',', $series_names);
-	 $data['category']['series'] = $series_names;
+    if ($field_series = field_get_items('node', $node, 'field_series')) {
+      $series_tid = $field_series[0]['tid'];
+      $series = taxonomy_term_load($series_tid);
+      $series_name = $series ->name;
+      $element_impression[] = "series nav";
+      $data['category']['series'] = $series_name;
     }
 
     //Field Free Tags
@@ -180,17 +177,21 @@ class ddContent extends ddDefaultPage {
 	 $data['page']['pageInfo']['sponsored'] = ($sponsor_term->tid ? "" : "Not ") . "Sponsored";
     }
 
-    //Field pageNumber for autoloaded content only
+    //Field Topic Box
+    if ($field_series = field_get_items('node', $node, 'field_topic_box')) {
+      $element_impression[] = "topic box";
+    }
+
+    //Field pageNumber for autoloaded content only on Fresh theme
     $is_autoloaded = field_get_items('node' , $node , 'field_autoload');
     $is_autoloaded = $is_autoloaded[0]['value'];
-    $autoloaded_content = array('openpublish_article' ,'video', 'video_playlist' , 'feature_article' , 'fresh_gallery');
-    if (in_array($node->type , $autoloaded_content) && $is_autoloaded) {
+
+    if ($theme == 'fresh' && $is_autoloaded) {
         $data['page']['pageNumber'] = "page 1";
     }
 
     //Inline Replacements
     $show_influence = false;
-    $element_impression = array();
     if($inline = field_get_items('node', $node, 'field_inline_replacements')) {
       foreach($inline as $i) {
         $load = entity_load('inline_content', array($i['target_id']));
@@ -228,6 +229,14 @@ class ddContent extends ddDefaultPage {
       $data['page']['pageInfo']['campaignContent'] = $campaign_title;
       //Campaign related content carousel - automatically gets added to any node tagged with a campaign
       $element_impression[] = 'campaign content carousel';
+    } elseif ($theme == 'fresh') {
+      //MOT is displayed if the node is not tagged with a campaign
+      //MOT video is displayed automatically
+      $element_impression[] = 'more on takepart - video';
+      if ($field_related_stories = field_get_items('node', $node, 'field_related_stories')) {
+        $element_impression[] = 'more on takepart - related';
+        $element_impression[] = 'more on takepart - promoted';
+      }
     }
 
     //Time to read
