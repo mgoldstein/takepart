@@ -767,11 +767,13 @@
 	   /* Prevent parent item from clicking through on initial click */
 	   var curItem = false;
 	   $('.mobile-menu > ul > li > a').on('click', function (e) {
-		var item = $(this);
-		if (item[ 0 ] != curItem[ 0 ]) {
-		  e.preventDefault();
-		  curItem = item;
-		}
+      var item = $(this);
+      if(item.next('ul.menu').length) {
+        if (item[ 0 ] != curItem[ 0 ]) {
+          e.preventDefault();
+          curItem = item;
+        }
+      }
 	   });
 
 	   /* Show child menu. See _mobile-menu.scss */
@@ -792,22 +794,24 @@
 	   /* Prevent parent item from clicking through on initial click */
 	   var curItem = false;
 	   $('#tp-drawers #block-menu-menu-megamenu > ul.menu > li > a').on('click', function (e) {
-		var item = $(this);
-		if (item[ 0 ] != curItem[ 0 ]) {
-		  e.preventDefault();
-		  curItem = item;
-		}
-		if (!$(this).siblings('ul').is(":visible")) {
-		  $(this).siblings('ul').show();
-		  //Hack for ios scroll not working it needs a kick start.
-		  //There is an issue where you have to expand 2 menus for the scroll
-		  //to work.
-		  if ($('#tp-drawers .snap-drawer').scrollTop() <= 1) {
-		    //Should be fast enough not to notice
-		    $('#tp-drawers .snap-drawer').scrollTop(1);
-		    $('#tp-drawers .snap-drawer').scrollTop(0);
-		  }
-		}
+  		var item = $(this);
+      if(item.next('ul.menu').length) {
+    		if (item[ 0 ] != curItem[ 0 ]) {
+    		  e.preventDefault();
+    		  curItem = item;
+    		}
+  		if (!$(this).siblings('ul').is(":visible")) {
+  		  $(this).siblings('ul').show();
+  		  //Hack for ios scroll not working it needs a kick start.
+  		  //There is an issue where you have to expand 2 menus for the scroll
+  		  //to work.
+  		  if ($('#tp-drawers .snap-drawer').scrollTop() <= 1) {
+  		    //Should be fast enough not to notice
+  		    $('#tp-drawers .snap-drawer').scrollTop(1);
+  		    $('#tp-drawers .snap-drawer').scrollTop(0);
+  		  }
+  		}
+    }
 	   });
 	 });
     }
