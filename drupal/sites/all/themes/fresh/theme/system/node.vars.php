@@ -194,7 +194,11 @@ function fresh_preprocess_node__autoload(&$variables) {
     $json = json_decode(file_get_contents($fb_graph_url));
     if (isset($json) && !empty($json)) {
       $fb_comment_count = $json->share->comment_count;
+      if ($fb_comment_count == 0) {
+        $fb_comment_count = '';
+      }
     }
+
     $author_vars['fb_comment_count'] = $fb_comment_count;
 
 
