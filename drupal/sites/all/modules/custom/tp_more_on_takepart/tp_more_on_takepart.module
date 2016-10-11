@@ -359,14 +359,6 @@ function tp_more_on_takepart_block_view($delta = '') {
         );
       }
 
-      //Height and width values from DFP module (tp_dfp)
-      $promoted_nodes_css =
-        '#more-on-takepart .tp-more__article {
-          width:'. variable_get('dfp_creative_width', '145'). 'px;
-          height:'. variable_get('dfp_creative_height', '200'). 'px;
-          }';
-      drupal_add_css($promoted_nodes_css, 'inline');
-
       foreach(array_merge($related, $promoted) as $markup) {
         $promoted_nodes[] = array(
           '#markup' => $markup,

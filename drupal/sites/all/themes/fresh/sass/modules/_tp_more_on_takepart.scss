@@ -4,13 +4,13 @@
   clear: both;
 
   .mot-left, .mot-right{
-    width: 300px;
+    width: 100%;
     clear: left;
     @include breakpoint($breakpoint-phablet) {
       margin: 0 auto;
     }
     @include breakpoint($breakpoint-desktop) {
-      width: 50%;
+      width: 100%;
       float: left;
       clear: both;
       text-align: left;
@@ -31,9 +31,11 @@
 
   .tp-more__article {
     margin-bottom: 10px;
-    padding: 0 5px;
+    padding: 10px;
     display: block;
     float: left;
+    width: 300px;
+    margin-bottom: 10px;
     @include breakpoint($breakpoint-desktop) {
       display: block;
       float: left;
@@ -71,6 +73,7 @@
   }
   .tp-more__article-title {
     margin: 10px 0 0;
+    font-size: 16px;
   }
 
   .promoted {
@@ -116,7 +119,10 @@
         text-decoration: underline;
       }
     }
-
+    width: 100%;
+    .tp-more__video-title {
+      font-size: 16px;
+    }
     @include breakpoint($breakpoint-phablet) {
       padding-left: 0;
       padding-right: 0;
@@ -124,13 +130,15 @@
     @include breakpoint($breakpoint-desktop) {
       float: left;
       padding-left: 15px;
-      width: 50%;
       clear: none;
       .tp-more__video-title {
         font-size: 20px;
         line-height: 1.2;
       }
     }
+  }
+  h5.ad-label {
+    display : none;
   }
 } // #more-on-takepart
 
