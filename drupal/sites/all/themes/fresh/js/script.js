@@ -142,10 +142,13 @@ var Environment = {
       /* Prevent parent item from clicking through on initial click - mobile menu */
       var curItem = false;
       $('.mobile-menu > ul > li > a').on('click', function (e) {
+
         var item = $(this);
-        if (item[ 0 ] != curItem[ 0 ]) {
-          e.preventDefault();
-          curItem = item;
+        if(item.next('ul.menu').length) {
+          if (item[ 0 ] != curItem[ 0 ]) {
+            e.preventDefault();
+            curItem = item;
+          }
         }
       });
 
