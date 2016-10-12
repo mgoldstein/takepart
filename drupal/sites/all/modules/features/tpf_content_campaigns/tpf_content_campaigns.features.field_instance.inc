@@ -2644,7 +2644,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 16,
+      'weight' => 51,
     ),
   );
 
@@ -2755,7 +2755,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 15,
+      'weight' => 50,
     ),
   );
 
@@ -2843,7 +2843,7 @@ function tpf_content_campaigns_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 17,
+      'weight' => 52,
     ),
   );
 
@@ -2923,7 +2923,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 12,
+      'weight' => 47,
     ),
   );
 
@@ -3040,7 +3040,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 48,
     ),
   );
 
@@ -3147,7 +3147,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 14,
+      'weight' => 49,
     ),
   );
 
@@ -3226,7 +3226,7 @@ function tpf_content_campaigns_field_default_field_instances() {
       'module' => 'color_field',
       'settings' => array(),
       'type' => 'color_field_spectrum_widget',
-      'weight' => 18,
+      'weight' => 53,
     ),
   );
 
@@ -4366,6 +4366,91 @@ function tpf_content_campaigns_field_default_field_instances() {
       ),
       'type' => 'options_select',
       'weight' => 9,
+    ),
+  );
+
+  // Exported field_instance: 'node-campaign-field_suppress_cic'.
+  $field_instances['node-campaign-field_suppress_cic'] = array(
+    'bundle' => 'campaign',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'If checked, none of the campaign visuals except campaign inline replacement will be displayed on any content tagged with this campaign.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_default',
+        'weight' => 45,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_suppress_cic',
+    'label' => 'Suppress Campaign Visuals',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 54,
     ),
   );
 
@@ -28906,6 +28991,7 @@ Note: If you manually reference more items than selected here, the number refere
 Note: If you manually reference more items than selected here, the number referenced will override your selection here.');
   t('How many trays do you want to load? All the rest of the trays will load after the initial load to the page. This is done to get content to the user faster. The higher this number the slower the initial load of the page will be.  If you are using links to content on the page make sure that the tray with that content is loaded initially.');
   t('If Checked, the minimum card height will be overridden on the campaign page.');
+  t('If checked, none of the campaign visuals except campaign inline replacement will be displayed on any content tagged with this campaign.');
   t('If you want the background to be fixed.  A use case would be if you want backgrounds to seemingly expand across two trays/cards.');
   t('Iframe');
   t('Image Link');
@@ -28973,6 +29059,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Social Link');
   t('Social Network');
   t('Subhead');
+  t('Suppress Campaign Visuals');
   t('TAB Action Overrides');
   t('TAB Widget Expand');
   t('TAP Widget Type');
