@@ -53,6 +53,15 @@ function tp_cic_block_view($delta = '') {
 			//Campaign Associated Info
 			$campaign_info = array();
 			$campaign = node_load($campaign_id);
+
+			//Don't display the campaign carousel if suppress campaign visual is enabled on the campaign.
+			if($suppress_cic = field_get_items('node', $campaign, 'field_suppress_cic')) {
+				$suppress_cic = $suppress_cic[0]['value'];
+				if ($suppress_cic) {
+					return false;
+				}
+			}
+
 			$campaign_info['title'] = $campaign -> title;
 			$campaign_info['description'] = $campaign ->field_content_menu_description[LANGUAGE_NONE][0]['value'];
 			$campaign_info['url'] = url('node/'.$campaign_id, array('absolute' => TRUE));
@@ -167,6 +176,13 @@ function tp_cic_getCampInfo($cid) {
 	$campaign_info['title'] = $camp -> title;
 	$campaign_info['url'] = url('node/'.$camp->nid , array('absolute' => TRUE));
 
+	//Suppress campaign visuals - don't return any campaign visuals.
+	if($suppress_cic = field_get_items('node', $camp, 'field_suppress_cic')) {
+		$suppress_cic = $suppress_cic[0]['value'];
+		if ($suppress_cic) {
+			return false;
+		}
+	}
 	//Camapaign menu
 	if($camp_menu = field_get_items('node', $camp, 'field_campaign_menu')) {
 		$camp_menu = $camp_menu[0]['value'];

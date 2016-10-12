@@ -26,27 +26,28 @@ function fresh_preprocess_page(&$variables) {
 
   //In Campaign Experience - variables and main nav
   if($campaign_content = field_get_items('node', $variables['node'], 'field_editor_campaign_reference')){
-    $variables['page']['campaign_ref'] = TRUE;
     $cid = $campaign_content[0]['target_id'];
     //Grab the campaign info
     module_load_include('module' , 'tp_cic');
     $campaign_info = tp_cic_getCampInfo($cid);
-
-    $variables['page']['left_drawer']['#markup'] = theme('base_cic_menu' , array(
-      'camp_name'         => isset($campaign_info['title']) ? $campaign_info['title'] : '',
-      'camp_url'          => isset($campaign_info['url']) ? $campaign_info['url'] : '',
-      'camp_description'  => isset($campaign_info['description']) ? $campaign_info['description'] : '',
-      'camp_logo'         => isset($campaign_info['logo']) ? $campaign_info['logo'] : '',
-      'camp_dark_logo'    => isset($campaign_info['dark_logo']) ? $campaign_info['dark_logo'] : '',
-      'camp_menu'         => isset($campaign_info['camp_menu']) ? $campaign_info['camp_menu'] : '',
-      'camp_content_menu' => isset($campaign_info['camp_content_menu']) ? $campaign_info['camp_content_menu'] : '',
-      'camp_color'        => isset($campaign_info['color']) ? $campaign_info['color'] : '',
-      'about_tp'          => $about_tp,
-      'social_menu'       => $mobile_menu
-    ));
-    //Load the JS file for handling the CIC menu
-    drupal_add_js(drupal_get_path('theme', 'base'). '/js/cic-menu.js');
-
+    //Add cic menu if NOT suppressing campaign visuals
+    if (!empty($campaign_info)) {
+      $variables['page']['campaign_ref'] = TRUE;
+      $variables['page']['left_drawer']['#markup'] = theme('base_cic_menu' , array(
+        'camp_name'         => isset($campaign_info['title']) ? $campaign_info['title'] : '',
+        'camp_url'          => isset($campaign_info['url']) ? $campaign_info['url'] : '',
+        'camp_description'  => isset($campaign_info['description']) ? $campaign_info['description'] : '',
+        'camp_logo'         => isset($campaign_info['logo']) ? $campaign_info['logo'] : '',
+        'camp_dark_logo'    => isset($campaign_info['dark_logo']) ? $campaign_info['dark_logo'] : '',
+        'camp_menu'         => isset($campaign_info['camp_menu']) ? $campaign_info['camp_menu'] : '',
+        'camp_content_menu' => isset($campaign_info['camp_content_menu']) ? $campaign_info['camp_content_menu'] : '',
+        'camp_color'        => isset($campaign_info['color']) ? $campaign_info['color'] : '',
+        'about_tp'          => $about_tp,
+        'social_menu'       => $mobile_menu
+      ));
+      //Load the JS file for handling the CIC menu
+      drupal_add_js(drupal_get_path('theme', 'base'). '/js/cic-menu.js');
+    }
   }
   //Main menu when its NOT the in-campaign-experience
   /* Add special mobile menu when nav is transparent */
@@ -83,8 +84,11 @@ function fresh_preprocess_page(&$variables) {
   }
 
   /* Add Transparent Nav to Featured Articles/CIC header and MegaSlim to all others */
-  if($variables['node'] && isset($variables['page']['campaign_ref'])) {
-    //Content Inside Campaign header
+
+  //Content Inside Campaign header
+  //If content is tagged with a campaign and supress campaign visual is not checked on the campaign
+  if($variables['node'] && isset($variables['page']['campaign_ref']) && !empty($campaign_info)) {
+
     $variables['page']['header']['nav']['#markup'] = theme('base_header_transparent', array());
     $variables['page']['header']['sticky_cic']['#markup'] = theme('base_sticky_cic_header' , array(
       'camp_bg_color' => isset($campaign_info['color']) ? $campaign_info['color'] : '',

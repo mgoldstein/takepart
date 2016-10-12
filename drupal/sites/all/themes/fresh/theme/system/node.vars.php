@@ -280,17 +280,23 @@ function fresh_preprocess_node__autoload(&$variables) {
     //Grab the campaign info
     module_load_include('module' , 'tp_cic');
     $campaign_info = tp_cic_getCampInfo($cid);
+    if (!empty($campaign_info)) {
+      $variables['campaign_info']['nid'] = $cid;
+      $variables['campaign_info']['url'] = isset($campaign_info['url']) ? $campaign_info['url'] : '';
+      $variables['campaign_info']['banner'] = isset($campaign_info['banner']) ? $campaign_info['banner'] : '';
+      $variables['campaign_info']['logo'] = isset($campaign_info['logo']) ? $campaign_info['logo'] : '';
+      $variables['campaign_info']['vol'] = isset($campaign_info['vol']) ? $campaign_info['vol'] : '';
+      $variables['campaign_info']['color'] = isset($campaign_info['color']) ? $campaign_info['color'] : '';
+      $variables['campaign_info']['dark_logo'] = isset($campaign_info['dark_logo']) ? $campaign_info['dark_logo'] : '';
 
-    $variables['campaign_info']['nid'] = $cid;
-    $variables['campaign_info']['url'] = isset($campaign_info['url']) ? $campaign_info['url'] : '';
-    $variables['campaign_info']['banner'] = isset($campaign_info['banner']) ? $campaign_info['banner'] : '';
-    $variables['campaign_info']['logo'] = isset($campaign_info['logo']) ? $campaign_info['logo'] : '';
-    $variables['campaign_info']['vol'] = isset($campaign_info['vol']) ? $campaign_info['vol'] : '';
-    $variables['campaign_info']['color'] = isset($campaign_info['color']) ? $campaign_info['color'] : '';
-    $variables['campaign_info']['dark_logo'] = isset($campaign_info['dark_logo']) ? $campaign_info['dark_logo'] : '';
+      //Add the carousel slider of promos in replace of MOT
+      $more_block = module_invoke('tp_cic', 'block_view', 'tp_cic_bottom_promo');
+    }
+    else {
+      //loading MOT if a sales camapign(suppress campaign visual is enabled on the campaign)
+      $more_block = module_invoke('tp_more_on_takepart', 'block_view', 'more_on_takepart');
+    }
 
-    //Add the carousel slider of promos in replace of MOT
-    $more_block = module_invoke('tp_cic', 'block_view', 'tp_cic_bottom_promo');
   } else {
     //loading the module view from more on takepart if not campaign ref
     $more_block = module_invoke('tp_more_on_takepart', 'block_view', 'more_on_takepart');
