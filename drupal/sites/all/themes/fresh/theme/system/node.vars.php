@@ -198,9 +198,7 @@ function fresh_preprocess_node__autoload(&$variables) {
         $fb_comment_count = '';
       }
     }
-
     $author_vars['fb_comment_count'] = $fb_comment_count;
-
 
     if ($node_type == 'fresh_gallery') {
       $variables['author_teaser'] = theme('fresh_gallery_author_teaser', $author_vars);
