@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+
+  takepart:
+    image: 326060302925.dkr.ecr.us-east-1.amazonaws.com/dphp:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./drupal:/var/www/html
+    environment:
+      APP_ENV: local
+      FACTER_app_type: dphp
+      app_name: www.takepart.dev
+      newrelic_license: 1d7e4128623a97ffdfa1344f2c90c7633c93047e
+    command: supervisord
+
