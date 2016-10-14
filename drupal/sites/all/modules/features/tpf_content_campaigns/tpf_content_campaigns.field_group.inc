@@ -1095,6 +1095,7 @@ function tpf_content_campaigns_field_group_info() {
       4 => 'field_content_promo_bg',
       5 => 'field_content_banner_bg',
       6 => 'field_content_dark_menu_logo',
+      7 => 'field_suppress_cic',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -53,6 +53,7 @@ $conf += array(
   'cloudinary_bucket'                  => $cloudinary_bucket,
   'dtm_script_src'                     => $dtm_script_src,
   'facebook_app_id'                    => $facebook_app_id,
+  'facebook_access_token'              => $facebook_access_token,
   'https'                              => TRUE,
   'omniture_account_name'              => $omniture_account_name,
   'participant_api_default_account'    => $participant_api_default_account,

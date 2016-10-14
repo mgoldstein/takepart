@@ -128,8 +128,10 @@
       $(document).ready(function () {
         $('.inlineSharingButtons').each(function(){
           $(this).once('inlineSharing',function(){
-            var author_name = $(this).parent().attr('data-author-name') || $("meta[name='sailthru.author']").attr('content');
-            var append_author = "—"+author_name;
+            var append_author = "";
+            if($(this).parent().attr('data-author-name')) {
+              append_author = "—"+$(this).parent().attr('data-author-name');
+            }
             var caption = '';
             if($("meta[property='og:description']").length) {
               caption =$("meta[property='og:description']").attr("content");
@@ -151,7 +153,7 @@
                   name: 'facebookfeed',
                   description: "\""+$(this).siblings('.inlineSharingQuote').text()+"\""+append_author,
                   anchor: $(this).parent().attr('data-anchor'),
-                  author_name: author_name,
+                  author_name: $(this).parent().attr('data-author-name'),
                   share_title: $(this).parent().attr('data-title'),
                   caption: caption,
                   picture: true
@@ -167,7 +169,7 @@
 
   Drupal.behaviors.HighlightShare = {
     attach: function (context, settings) {
-      $(document.body).on('mouseup', function (evt) {
+      $(document.body).on('mouseup', '.fresh-inner-content-wrapper article .main-content, .fresh-inner-content-wrapper article h1.title, .fresh-inner-content-wrapper article .headline, .fresh-inner-content-wrapper article .pre-gallery', function (evt) {
         var menu = $('#highlight_menu');
         var s = window.getSelection();
         if(s.rangeCount <= 0) {

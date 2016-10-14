@@ -10,6 +10,7 @@ if (file_exists($env_settings)) {
 
 // Common values between all environments
 $facebook_app_id                 = '247137505296280';
+$facebook_access_token           = '247137505296280%7CONdms_LoF5eJXZEUomO8gYNuW5A';
 $cache_backends                  = 'sites/all/modules/contrib/memcache/memcache.inc';
 $pm_jwplatform_auto_create_tag   = "Admin: TP Auto $APP_ENV";
 $solr_name                       = "TakePart SOLR $APP_ENV settings";
