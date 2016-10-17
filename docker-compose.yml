@@ -2,12 +2,14 @@ version: '2'
 
 services:
 
-  takepart:
+  drupal:
     image: 326060302925.dkr.ecr.us-east-1.amazonaws.com/dphp:latest
-    ports:
-      - "80:80"
     volumes:
       - ./drupal:/var/www/html
+    ports:
+      - "80:80"
+    links:
+      - db
     environment:
       APP_ENV: local
       FACTER_app_type: dphp
@@ -15,3 +17,15 @@ services:
       newrelic_license: 1d7e4128623a97ffdfa1344f2c90c7633c93047e
     command: supervisord
 
+  db:
+    image: mysql:5.6.21
+    volumes:
+      - mysql:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+
+volumes:
+  mysql:
