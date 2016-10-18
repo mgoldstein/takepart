@@ -167,7 +167,7 @@
 
   Drupal.behaviors.HighlightShare = {
     attach: function (context, settings) {
-      $(document.body).on('mouseup', '.fresh-inner-content-wrapper article .main-content, .fresh-inner-content-wrapper article h1.title, .fresh-inner-content-wrapper article .headline, .fresh-inner-content-wrapper article .pre-gallery', function (evt) {
+      $(document.body).on('mouseup', '.fresh-inner-content-wrapper article .field-name-body .field-item > div > p, .fresh-inner-content-wrapper article .field-name-body .field-item > p', function (evt) {
         var menu = $('#highlight_menu');
         var s = window.getSelection();
         if(s.rangeCount <= 0) {
