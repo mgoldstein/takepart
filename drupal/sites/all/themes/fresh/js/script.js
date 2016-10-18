@@ -413,7 +413,7 @@ function enableCicStickyNav(scrollUp) {
       }
       else if (!(jQuery('.feature_article-wrapper:not(.autoloaded) .feature-image').isInViewport(null,0.1)) && $feature_hero.length == 0) {
         //Social share becomes sticky when cic header is sticky, there is no feature hero alternative and main image is not visible (feature article)
-          jQuery('.sticky-wrapper .social').addClass('cic-sticky');
+        jQuery('.sticky-wrapper .social').addClass('cic-sticky');
       }
       else if (!(jQuery('.feature_article-wrapper:not(.autoloaded) .feature_alt_hero').isInViewport(null,0.1)) && $feature_hero.length !=0) {
         //Social share becomes sticky when cic header is sticky, there is a feature hero alternative and the feature hero is not visible (feature article)

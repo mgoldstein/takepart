@@ -89,6 +89,7 @@
             <?php print $variables['author_teaser']; ?>
           </div>
         <?php endif; ?>
+        <div class = "align-sticky"></div>
         <?php if (!empty($variables['sponsored'])): ?>
           <?php print $variables['sponsored']; ?>
         <?php endif; ?>
