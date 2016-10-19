@@ -237,6 +237,15 @@
        }
         margin: 0 auto;
       }
+      .field-item{
+        > pre,> address,> h2,> h3,> h4,> h5,> h6 {
+          max-width: 70%;
+          @include breakpoint($breakpoint-desktop) {
+            max-width: 620px;
+          }
+          margin: 20px auto;
+        }
+      }
       p,ul,ol,em {
         max-width: 70%;
         @include breakpoint($breakpoint-desktop) {
