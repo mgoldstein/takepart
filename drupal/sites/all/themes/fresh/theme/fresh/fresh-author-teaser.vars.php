@@ -63,6 +63,10 @@ function fresh_preprocess_fresh_author_teaser(&$variables){
 		$variables['timetoreadminutes'] = $hours * 60 + $minutes;
 	}
 
+  //FB Comment Count
+  $fb_com_count = $variables['fb_comment_count'];
+  $variables['fb_comment_count'] = ($fb_com_count == 1) ? $fb_com_count . ' COMMENT' : $fb_com_count . ' COMMENTS';
+
 	$variables['url'] = url('node/'.$variables['nid']);
 
 }

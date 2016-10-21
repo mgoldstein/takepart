@@ -2644,7 +2644,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 16,
+      'weight' => 51,
     ),
   );
 
@@ -2755,7 +2755,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 15,
+      'weight' => 50,
     ),
   );
 
@@ -2843,7 +2843,7 @@ function tpf_content_campaigns_field_default_field_instances() {
       'module' => 'number',
       'settings' => array(),
       'type' => 'number',
-      'weight' => 17,
+      'weight' => 52,
     ),
   );
 
@@ -2923,7 +2923,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'content_taxonomy_opt_groups' => FALSE,
       ),
       'type' => 'options_select',
-      'weight' => 12,
+      'weight' => 47,
     ),
   );
 
@@ -3040,7 +3040,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'text_textfield',
-      'weight' => 13,
+      'weight' => 48,
     ),
   );
 
@@ -3147,7 +3147,7 @@ function tpf_content_campaigns_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 14,
+      'weight' => 49,
     ),
   );
 
@@ -3226,7 +3226,7 @@ function tpf_content_campaigns_field_default_field_instances() {
       'module' => 'color_field',
       'settings' => array(),
       'type' => 'color_field_spectrum_widget',
-      'weight' => 18,
+      'weight' => 53,
     ),
   );
 

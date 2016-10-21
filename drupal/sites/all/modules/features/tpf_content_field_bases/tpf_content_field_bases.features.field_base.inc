@@ -4787,6 +4787,34 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text',
   );
 
+  // Exported field_base: 'field_suppress_cic'.
+  $field_bases['field_suppress_cic'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_suppress_cic',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
   // Exported field_base: 'field_syndication'.
   $field_bases['field_syndication'] = array(
     'active' => 1,

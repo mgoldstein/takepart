@@ -11,9 +11,11 @@
       <h3 class="campaign-title">
         <?php print l($campaign_info['title'], $campaign_info['url'], array('attributes' => array('class' => array('stories-header-link')))); ?>
       </h3>
-      <h4>
-        <?php print l(t("BIG ISSUE"), "big-issues", array('attributes' => array('class' => array('stories-header-link')))); ?> <span class="volume">vol. <?php print $campaign_info['vol']; ?></span>
-      </h4>
+      <?php if(!empty($campaign_info['vol'])): ?>
+        <h4>
+          <?php print l(t("BIG ISSUE"), "big-issues", array('attributes' => array('class' => array('stories-header-link')))); ?> <span class="volume">vol. <?php print $campaign_info['vol']; ?></span>
+        </h4>
+      <?php endif; ?>
       <div class = "campaign-description">
         <?php print $campaign_info['description']; ?>
       </div>

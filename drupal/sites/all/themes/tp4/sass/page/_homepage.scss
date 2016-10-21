@@ -139,7 +139,8 @@ body.front{
       margin-top: .5em;
       font-weight: normal;
     }
-    &.node-openpublish-photo-gallery{
+    &.node-openpublish-photo-gallery,
+    &.node-fresh-gallery{
       h2.node-title{
         &:after{
           font-family: "takepart";
@@ -302,10 +303,12 @@ body.toolbar {
     font-size: 14px;
     padding-top: 3px;
     @include blue-square-bullets;
-    .openpublish_photo_gallery a{
+    .openpublish_photo_gallery a,
+    .fresh_gallery a{
       padding-right: 25px;
     }
-    .openpublish_photo_gallery:after{
+    .openpublish_photo_gallery:after,
+    .fresh_gallery:after{
       font-family: "takepart";
       font-size: 1.1em;
       line-height: 1.1em;

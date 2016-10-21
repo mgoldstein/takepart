@@ -60,5 +60,10 @@ $database_slave_host   = 'qaphp01-read.ctvzddorowz4.us-east-1.rds.amazonaws.com'
 // Cloudinary Bucket Name
 $cloudinary_bucket     = 'takepartqa';
 
+//Setting Base URL
+$base_protocol = empty($_SERVER['HTTPS']) || strtolower($_SERVER['HTTPS']) != 'on' ? 'http' : 'https';
+
+$base_url = $base_protocol . '://qa.takepart.com';
+
 // Scream at the dev, maybe they'll fix something
 ini_set('error_reporting', E_ALL & ~E_NOTICE);

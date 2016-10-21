@@ -1,0 +1,9 @@
+version: "2"
+services:
+  drupal:
+    volumes:
+      - drupal-sync:/var/www/html
+
+volumes:
+  drupal-sync:
+    external: true

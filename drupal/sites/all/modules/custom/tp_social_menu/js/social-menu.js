@@ -169,7 +169,7 @@
 
   Drupal.behaviors.HighlightShare = {
     attach: function (context, settings) {
-      $(document.body).on('mouseup', '.fresh-inner-content-wrapper article .main-content, .fresh-inner-content-wrapper article h1.title, .fresh-inner-content-wrapper article .headline, .fresh-inner-content-wrapper article .pre-gallery', function (evt) {
+      $(document.body).on('mouseup', '.fresh-inner-content-wrapper article .field-name-body .field-item > div > p, .fresh-inner-content-wrapper article .field-name-body .field-item > p', function (evt) {
         var menu = $('#highlight_menu');
         var s = window.getSelection();
         if(s.rangeCount <= 0) {
@@ -294,7 +294,7 @@
       if(index == 0) {
         if($(this).hasClass('node-feature-article')) {
           window.featureFirst = true;
-          var stickyOffset = $(this).find('.author-teaser').offset().top + 10 - $(".main-content").offset().top;
+          var stickyOffset = $(".align-sticky").offset().top - $(".main-content").offset().top + cic_space;
           //Adjust the sticky for feature with alternative hero
           if ($(this).has('.feature_alt_hero').length != 0) {
              stickyOffset = $(this).find('.field-name-body').offset().top;

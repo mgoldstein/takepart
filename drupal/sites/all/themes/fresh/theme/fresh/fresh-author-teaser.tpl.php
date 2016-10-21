@@ -7,7 +7,7 @@
         <?php if($variables['type'] == 'article' || $variables['type'] == 'feature_article'): ?>
           <?php print $variables['timetoreadminutes']; ?> MIN READ<span class="authordotsep">&#183;</span>
         <?php endif; ?>
-        <a href="#comments-<?php print $variables['nid']; ?>"><?php print_r($variables['fb_comment_count']);?> COMMENTS</a></div>
+        <a href="#comments-<?php print $variables['nid']; ?>"><?php print($variables['fb_comment_count']);?></a></div>
     <?php endif; ?>
 
     <div class="image col-xxs-2"><img class="img-circle" src="<?php print $author['image']; ?>" /></div>
