@@ -21,31 +21,24 @@
       var tray_id_arr = [];
       $anim_tray.each(function(index){
         //Add active class to the first tray
-        if (index ==0) {
-          $(this).addClass('active first');
-        }
+        if (index ==0) $(this).addClass('active first');
         //Add last class
-        if (index == (tray_length -1)) {
-          $(this).addClass('last');
-        }
+        if (index == (tray_length -1)) $(this).addClass('last');
+
         $(this).attr('data-anim-slide' , index);
         //Array of the tray IDs
         tray_id_arr.push('#' + $(this).attr('id'));
       });
 
-      //Add last class to the last tray
-      var tray_length =  $anim_tray.length;
-      $anim_tray.eq(tray_length-1).addClass('last');
-
       //Create a Pager
       tpc_create_pager(tray_id_arr);
 
       var body = document.body;
-        //Determines the scroll direction on desktop
+      //Determines the scroll direction on desktop
       var MouseWheelHandler = function(e) {
         //Quit if animating/Scrolling to another tray is in progress
         if ($('body').hasClass('animating')) return false;
-        // these codes make it so `delta` return 1 for up and -1 for down in any browser exclude Safari.
+        //delta return 1 for up and -1 for down.
         var e = window.event || e;
         var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
 
@@ -117,8 +110,8 @@
 
   /*
    * Next Tray function
-   * @param {selector} $current_slide - the current active tray
-   * @param {selector} $next_tray_id
+   * @param {selector} $current_slide - the selector for the active tray
+   * @param {selector} $next_tray_id - the selector for the next tray
    */
 
   tpc_next_tray = function($current_slide, $next_tray_id) {
@@ -170,7 +163,7 @@
       var target_top = $next_tray.offset().top;
       $body = $('body');
       var index = $next_tray.attr('data-anim-slide');
-      //Prevent scrolling to other trays while animating in process
+      //Animating class prevents scrolling to other trays while animating in process
       $body.addClass('animating');
       $body.animate({
         scrollTop: target_top
@@ -193,7 +186,6 @@
       markup += '<div class = "campaign-animation-pager">';
       markup +=   '<ul>';
       for (i in tray_ids) {
-        // var id = '#' + tray_ids[i];
         active_link = (i == 0) ?  " class=active-tray" : "";
         markup += '<li><a href="' + tray_ids[i] + '"' + active_link + '></a></li>';
       }
