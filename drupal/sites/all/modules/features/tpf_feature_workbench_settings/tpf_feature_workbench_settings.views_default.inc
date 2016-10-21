@@ -147,6 +147,10 @@ function tpf_feature_workbench_settings_views_default_views() {
   $handler->display->display_options['sorts']['field_due_date_value']['id'] = 'field_due_date_value';
   $handler->display->display_options['sorts']['field_due_date_value']['table'] = 'field_data_field_due_date';
   $handler->display->display_options['sorts']['field_due_date_value']['field'] = 'field_due_date_value';
+  /* Sort criterion: Content: Run Date (field_run_date) */
+  $handler->display->display_options['sorts']['field_run_date_value']['id'] = 'field_run_date_value';
+  $handler->display->display_options['sorts']['field_run_date_value']['table'] = 'field_data_field_run_date';
+  $handler->display->display_options['sorts']['field_run_date_value']['field'] = 'field_run_date_value';
   /* Filter criterion: Content: Type */
   $handler->display->display_options['filters']['type']['id'] = 'type';
   $handler->display->display_options['filters']['type']['table'] = 'node';
@@ -176,8 +180,9 @@ function tpf_feature_workbench_settings_views_default_views() {
   );
   $handler->display->display_options['filters']['state']['group'] = 1;
 
-  /* Display: Month */
-  $handler = $view->new_display('page', 'Month', 'page_1');
+  /* Display: Month (Due Date) */
+  $handler = $view->new_display('page', 'Month (Due Date)', 'page_1');
+  $handler->display->display_options['display_description'] = 'Monthly view by Due Date';
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'date_views_pager';
   $handler->display->display_options['pager']['options']['date_id'] = 'month';
@@ -236,11 +241,87 @@ function tpf_feature_workbench_settings_views_default_views() {
   $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
     'field_data_field_due_date.field_due_date_value' => 'field_data_field_due_date.field_due_date_value',
   );
-  $handler->display->display_options['path'] = 'admin/reports/editorial-pipeline/month';
-  $handler->display->display_options['menu']['type'] = 'default tab';
-  $handler->display->display_options['menu']['title'] = 'Month';
+  $handler->display->display_options['path'] = 'admin/reports/editorial-pipeline/month-due-date';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Month (Due Date)';
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
+  $handler->display->display_options['tab_options']['type'] = 'normal';
+  $handler->display->display_options['tab_options']['title'] = 'Calendar';
+  $handler->display->display_options['tab_options']['weight'] = '0';
+
+  /* Display: Month (Run Date) */
+  $handler = $view->new_display('page', 'Month (Run Date)', 'page_4');
+  $handler->display->display_options['display_description'] = 'Monthly view by Run Date';
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'date_views_pager';
+  $handler->display->display_options['pager']['options']['date_id'] = 'month';
+  $handler->display->display_options['pager']['options']['link_format'] = 'clean';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'calendar_style';
+  $handler->display->display_options['style_options']['name_size'] = '3';
+  $handler->display->display_options['style_options']['mini'] = '0';
+  $handler->display->display_options['style_options']['with_weekno'] = '0';
+  $handler->display->display_options['style_options']['multiday_theme'] = '1';
+  $handler->display->display_options['style_options']['theme_style'] = '1';
+  $handler->display->display_options['style_options']['max_items'] = '3';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'calendar_entity';
+  $handler->display->display_options['row_options']['separator'] = '<hr />';
+  $handler->display->display_options['row_options']['colors']['legend'] = 'type';
+  $handler->display->display_options['row_options']['colors']['calendar_colors_type'] = array(
+    'action' => '#ffffff',
+    'openpublish_article' => '#ffffff',
+    'campaign' => '#ffffff',
+    'campaign_card_ad' => '#ffffff',
+    'campaign_card_branding' => '#ffffff',
+    'campaign_card_empty' => '#ffffff',
+    'campaign_card_iframe' => '#ffffff',
+    'campaign_card_media' => '#ffffff',
+    'campaign_card_multi_column' => '#ffffff',
+    'campaign_card_news' => '#ffffff',
+    'campaign_card_social' => '#ffffff',
+    'campaign_card_tap_widget' => '#ffffff',
+    'campaign_card_text' => '#ffffff',
+    'campaign_card_twitter' => '#ffffff',
+    'campaign_page' => '#ffffff',
+    'campaign_tray' => '#ffffff',
+    'feature_article' => '#ffffff',
+    'feed' => '#ffffff',
+    'feed_item' => '#ffffff',
+    'flashcard' => '#ffffff',
+    'takepart_page' => '#ffffff',
+    'openpublish_photo_gallery' => '#ffffff',
+    'profile' => '#ffffff',
+    'section_front' => '#ffffff',
+    'video' => '#ffffff',
+    'video_playlist' => '#ffffff',
+  );
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['sorts'] = FALSE;
+  /* Sort criterion: Content: Run Date (field_run_date) */
+  $handler->display->display_options['sorts']['field_run_date_value']['id'] = 'field_run_date_value';
+  $handler->display->display_options['sorts']['field_run_date_value']['table'] = 'field_data_field_run_date';
+  $handler->display->display_options['sorts']['field_run_date_value']['field'] = 'field_run_date_value';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Date: Date (node) */
+  $handler->display->display_options['arguments']['date_argument']['id'] = 'date_argument';
+  $handler->display->display_options['arguments']['date_argument']['table'] = 'node';
+  $handler->display->display_options['arguments']['date_argument']['field'] = 'date_argument';
+  $handler->display->display_options['arguments']['date_argument']['default_action'] = 'default';
+  $handler->display->display_options['arguments']['date_argument']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['date_argument']['add_delta'] = 'yes';
+  $handler->display->display_options['arguments']['date_argument']['date_fields'] = array(
+    'field_data_field_run_date.field_run_date_value' => 'field_data_field_run_date.field_run_date_value',
+  );
+  $handler->display->display_options['path'] = 'admin/reports/editorial-pipeline/month-run-date';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'Month (Run Date)';
+  $handler->display->display_options['menu']['weight'] = '1';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $handler->display->display_options['tab_options']['type'] = 'normal';
   $handler->display->display_options['tab_options']['title'] = 'Calendar';
   $handler->display->display_options['tab_options']['weight'] = '0';
@@ -410,6 +491,11 @@ function tpf_feature_workbench_settings_views_default_views() {
   $handler->display->display_options['filters']['field_due_date_value']['granularity'] = 'minute';
   $handler->display->display_options['filters']['field_due_date_value']['year_range'] = '-0:+1';
   $handler->display->display_options['path'] = 'admin/reports/editorial-pipeline/no_due_date';
+  $handler->display->display_options['menu']['type'] = 'tab';
+  $handler->display->display_options['menu']['title'] = 'No Due Date';
+  $handler->display->display_options['menu']['weight'] = '3';
+  $handler->display->display_options['menu']['context'] = 0;
+  $handler->display->display_options['menu']['context_only_inline'] = 0;
   $export['editorial_pipeline'] = $view;
 
   return $export;

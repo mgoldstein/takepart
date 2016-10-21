@@ -60,6 +60,11 @@
         var isSticky = $stickyEl.hasClass(options.stickyClass),
             stickyElLowestPoint = bottom_el;
 
+        //Check if the CIC banner is present then add an offset to where the scroll should start
+        if($('body').hasClass('sticky-cic-nav')) {
+          options.offset = 100;
+        }
+
         // add/remove the sticky class
         // Check if close to the top
         // Check if in mobile state to prevent jumping mobile menu
