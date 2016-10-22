@@ -2032,22 +2032,22 @@ function tpf_content_campaigns_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '17',
+          'weight' => '18',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '16',
+          'weight' => '17',
         ),
         'redirect' => array(
-          'weight' => '15',
+          'weight' => '16',
         ),
         'xmlsitemap' => array(
           'weight' => '4',
         ),
         'locations' => array(
-          'weight' => '18',
+          'weight' => '19',
         ),
       ),
       'display' => array(),
@@ -2115,26 +2115,29 @@ function tpf_content_campaigns_strongarm() {
       'iframe' => array(
         'custom_settings' => FALSE,
       ),
+      'video_playlist_teaser' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
         'metatags' => array(
-          'weight' => '10',
+          'weight' => '11',
         ),
         'title' => array(
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '9',
+          'weight' => '10',
         ),
         'redirect' => array(
-          'weight' => '8',
+          'weight' => '9',
         ),
         'xmlsitemap' => array(
           'weight' => '7',
         ),
         'locations' => array(
-          'weight' => '11',
+          'weight' => '12',
         ),
       ),
       'display' => array(),
