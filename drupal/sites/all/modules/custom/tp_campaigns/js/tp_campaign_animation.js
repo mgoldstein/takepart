@@ -144,6 +144,7 @@
    tpc_prev_tray = function($current_slide) {
       //Quit if its the first slide
       if ($current_slide.hasClass('first')) return false;
+
       next_index = parseInt($current_slide.attr('data-anim-slide')) - 1;
       next_tray_id = $('.animate[data-anim-slide="' + next_index + '"]').attr('id');
       $current_slide.removeClass('active');
@@ -169,9 +170,11 @@
         scrollTop: target_top
       }, 800 , function(){
         $next_tray.addClass('active');
-        $body.removeClass('animating');
         //Add active class to the pager
         $('.campaign-animation-pager a').eq(index).addClass('active-tray');
+        //Adding this timeout to resolve scrolling on track pads.
+        setTimeout(function(){
+          $body.removeClass('animating')} , 500);
       });
     }
 
