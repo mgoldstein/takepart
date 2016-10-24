@@ -211,6 +211,13 @@
           .fail(function( jqxhr, settings, exception ) {
             console.error('failed to grab the gallery script');
           });
+
+          //Load photoswipe css
+          $('<link/>', {
+            rel: 'stylesheet',
+            type: 'text/css',
+            href: '/sites/all/libraries/photoswipe/photoswipe.css'
+          }).appendTo('head');
         }
         else {
           //Node 1 is a fresh gallery
