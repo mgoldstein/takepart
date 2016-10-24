@@ -82,13 +82,14 @@ function tp4_preprocess_html(&$variables, $hook) {
         $variables['classes_array'][] = 'vocabulary-topic';
     }
 
-    drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
+    /*drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
         'type' => 'external',
         'scope' => 'header',
         'group' => JS_DEFAULT,
         'every_page' => TRUE,
         'weight' => -1,
-    ));
+    ));*/
+
     // add jquery cookie library to tp4 pages
     drupal_add_library('system', 'jquery.cookie', true);
 
