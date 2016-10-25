@@ -470,6 +470,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_associated_content',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
@@ -3052,6 +3055,48 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_ic_campaign_promos'.
+  $field_bases['field_ic_campaign_promos'] = array(
+    'active' => 1,
+    'cardinality' => 3,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ic_campaign_promos',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'feature_article' => 'feature_article',
+          'fresh_gallery' => 'fresh_gallery',
+          'openpublish_article' => 'openpublish_article',
+          'video' => 'video',
+          'video_playlist' => 'video_playlist',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_ic_citation'.
   $field_bases['field_ic_citation'] = array(
     'active' => 1,
@@ -3083,6 +3128,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ic_content',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',

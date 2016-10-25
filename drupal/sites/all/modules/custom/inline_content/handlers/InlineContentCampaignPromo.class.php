@@ -45,10 +45,24 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
     ->fieldCondition('field_editor_campaign_reference','target_id',$campaign_id,'=');
 
     $result = $query->execute();
+
+    $campaign_info['story_num'] = count($result['node']);
+
     $article_ctr = 0;
 
     //$cic_info array will hold promo title and img
     $cic_info = array();
+
+    //Check if auto grab promos or custom override promos
+    if($override_promos = field_get_items('inline_content', $replacement, 'field_ic_campaign_promos')) {
+      //Custom Promo Display
+      //set to 3 to enter display
+      foreach($override_promos AS $override_promo) {
+        $this->getStoryNodes($cic_info, $override_promo['entity'], $article_ctr);
+        $article_ctr++;
+      }
+    }
+
     foreach ($result['node'] as $key => $cid) {
       //Don't display the current article
       if ($current_article_nid != $cid->nid) {
@@ -61,7 +75,6 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
         }
       }
     }
-    $campaign_info['story_num'] = count($result['node']);
 
     //Admin check show unpublished
     if($article_ctr < 3) {
