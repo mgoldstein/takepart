@@ -54,53 +54,51 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
     $cic_info = array();
 
     //Check if auto grab promos or custom override promos
-    if(!($override_promos = field_get_items('inline_content', $replacement, 'field_ic_campaign_promos'))) {
-
-      foreach ($result['node'] as $key => $cid) {
-        //Don't display the current article
-        if ($current_article_nid != $cid->nid) {
-          $this->getStoryNodes($cic_info, $cid, $article_ctr);
-
-          $article_ctr++;
-          //Only 3 stories diplayed on the sidebar
-          if ($article_ctr == 3) {
-            break;
-          }
-        }
-      }
-
-      //Admin check show unpublished
-      if($article_ctr < 3) {
-        if(user_access('view any unpublished content')) {
-          //Provide unpublished articles
-          $query = new EntityFieldQuery();
-          $query->entityCondition('entity_type', 'node')
-          ->propertyCondition('status', 0)
-          ->propertyOrderBy('created', 'DESC')
-          ->fieldCondition('field_editor_campaign_reference','target_id',$campaign_id,'=');
-          $result = $query->execute();
-
-          foreach ($result['node'] as $key => $cid) {
-            //Don't display the current article
-            if ($current_article_nid != $cid->nid) {
-              $this->getStoryNodes($cic_info, $cid, $article_ctr);
-              $article_ctr++;
-              //Only 3 stories diplayed on the sidebar
-              if ($article_ctr == 3) {
-                break;
-              }
-            }
-          }
-          $campaign_info['story_num'] = $campaign_info['story_num'] + count($result['node']);
-        }
-      }
-
-    } else {
+    if($override_promos = field_get_items('inline_content', $replacement, 'field_ic_campaign_promos')) {
       //Custom Promo Display
       //set to 3 to enter display
       foreach($override_promos AS $override_promo) {
         $this->getStoryNodes($cic_info, $override_promo['entity'], $article_ctr);
         $article_ctr++;
+      }
+    }
+
+    foreach ($result['node'] as $key => $cid) {
+      //Don't display the current article
+      if ($current_article_nid != $cid->nid) {
+        $this->getStoryNodes($cic_info, $cid, $article_ctr);
+
+        $article_ctr++;
+        //Only 3 stories diplayed on the sidebar
+        if ($article_ctr == 3) {
+          break;
+        }
+      }
+    }
+
+    //Admin check show unpublished
+    if($article_ctr < 3) {
+      if(user_access('view any unpublished content')) {
+        //Provide unpublished articles
+        $query = new EntityFieldQuery();
+        $query->entityCondition('entity_type', 'node')
+        ->propertyCondition('status', 0)
+        ->propertyOrderBy('created', 'DESC')
+        ->fieldCondition('field_editor_campaign_reference','target_id',$campaign_id,'=');
+        $result = $query->execute();
+
+        foreach ($result['node'] as $key => $cid) {
+          //Don't display the current article
+          if ($current_article_nid != $cid->nid) {
+            $this->getStoryNodes($cic_info, $cid, $article_ctr);
+            $article_ctr++;
+            //Only 3 stories diplayed on the sidebar
+            if ($article_ctr == 3) {
+              break;
+            }
+          }
+        }
+        $campaign_info['story_num'] = $campaign_info['story_num'] + count($result['node']);
       }
     }
 
