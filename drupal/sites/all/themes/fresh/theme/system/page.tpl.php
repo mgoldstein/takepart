@@ -17,7 +17,15 @@
   </div>
 </nav>
 <div id="page-wrapper" <?php print $campaign_experience; ?>>
+  <header class="header <?php print $classes; ?>" id="header" role="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-xxs-12">
   <?php print render($page['header']); ?>
+</div>
+</div>
+</div>
+</header>
   <div class="main-content" id="content" role="main">
     <div class="container">
       <div class="row">
