@@ -70,7 +70,6 @@ class InlineContentNodes extends InlineContentReplacementController {
       foreach ($items as $data) {
         $nids[] = (int) $data['nid'];
       }
-
       foreach (node_load_multiple($nids) as $nid => $node) {
 
 	      // Replace the campaign_page with its parent promo_headline, thumbnail if none exists
@@ -92,9 +91,7 @@ class InlineContentNodes extends InlineContentReplacementController {
 					}
 
 	      }
-
         $content['#replacements'][] = node_view($node, 'inline_content');
-
       }
     }
     //Wrap the nodes with header and footer for display
