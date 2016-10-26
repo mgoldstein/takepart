@@ -63,15 +63,17 @@ class InlineContentCampaignPromo extends InlineContentReplacementController {
       }
     }
 
-    foreach ($result['node'] as $key => $cid) {
-      //Don't display the current article
-      if ($current_article_nid != $cid->nid) {
-        $this->getStoryNodes($cic_info, $cid, $article_ctr);
+    if($article_ctr < 3) {
+      foreach ($result['node'] as $key => $cid) {
+        //Don't display the current article
+        if ($current_article_nid != $cid->nid) {
+          $this->getStoryNodes($cic_info, $cid, $article_ctr);
 
-        $article_ctr++;
-        //Only 3 stories diplayed on the sidebar
-        if ($article_ctr == 3) {
-          break;
+          $article_ctr++;
+          //Only 3 stories diplayed on the sidebar
+          if ($article_ctr == 3) {
+            break;
+          }
         }
       }
     }
