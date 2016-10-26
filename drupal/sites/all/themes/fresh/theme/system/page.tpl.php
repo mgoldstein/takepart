@@ -21,11 +21,11 @@
     <div class="container">
       <div class="row">
         <div class="col-xxs-12">
-  <?php print render($page['header']); ?>
-</div>
-</div>
-</div>
-</header>
+          <?php print render($page['header']); ?>
+        </div>
+      </div>
+    </div>
+  </header>
   <div class="main-content" id="content" role="main">
     <div class="container">
       <div class="row">
