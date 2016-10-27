@@ -76,3 +76,18 @@ function tp_custom_tweaks_node_presave($node) {
     $node->body[LANGUAGE_NONE][0]['value'] = str_replace('&nbsp;', ' ',$node->body[LANGUAGE_NONE][0]['value']);
   }
 }
+
+/**
+ *	Implements hook_preprocess_html().
+ *  Adding cache headers to the 404 page.  This will set the TTL to the max age
+ *  that is within Drupal Performance. 404 caching.
+ */
+function tp_custom_tweaks_preprocess_html(&$vars) {
+  $status = drupal_get_http_header("status");
+  if($status == '404 Not Found'){
+    $ttl = variable_get('page_cache_maximum_age', 0);
+    if($ttl > 0) {
+      cache_control_send_cache_headers($ttl);
+    }
+  }
+}
