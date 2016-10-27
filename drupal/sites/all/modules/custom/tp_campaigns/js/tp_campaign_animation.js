@@ -166,7 +166,7 @@
       var index = $next_tray.attr('data-anim-slide');
       //Animating class prevents scrolling to other trays while animating in process
       $body.addClass('animating');
-      $body.animate({
+      $('body,html').animate({
         scrollTop: target_top
       }, 800 , function(){
         $next_tray.addClass('active');
