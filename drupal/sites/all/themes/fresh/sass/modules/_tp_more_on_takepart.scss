@@ -36,6 +36,9 @@
     float: left;
     width: 300px;
     margin-bottom: 10px;
+    @include breakpoint($breakpoint-tablet) {
+      height: 260px;
+    }
     @include breakpoint($breakpoint-desktop) {
       display: block;
       float: left;
