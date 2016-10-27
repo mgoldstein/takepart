@@ -88,7 +88,8 @@ function tp_custom_tweaks_preprocess_html(&$vars) {
     $ttl = variable_get('page_cache_maximum_age', 0);
     if($ttl > 0) {
       cache_control_send_cache_headers($ttl);
-      drupal_add_http_header('Pragma','cache');
+      //Remove the Pragma header if set.
+      header_remove('Pragma');
     }
   }
 }
