@@ -231,8 +231,8 @@ function _tp_ads_insert_more_on_takepart() {
     $value['ad_gpd_id'] = $override['ad_gpd_id'];
 
     //Height and width values from DFP module (tp_dfp)
-    $value['width'] = variable_get('dfp_creative_width', '145');
-    $value['height'] = variable_get('dfp_creative_height', '200');
+    $value['width'] = variable_get('dfp_creative_width', '280');
+    $value['height'] = variable_get('dfp_creative_height', '260');
 
     //calls theme to create markup
     $script = theme('tp_ads_script', array(

@@ -50,3 +50,7 @@ drupal/*.sublime-workspace
 drupal/*.sublime-projectcompletions
 /drupal/sites/all/modules/contrib/examples/
 /drupal/sites/default/local.settings.php
+
+#Secret Repo files
+/drupal/sites/default/stage.settings.php
+/drupal/sites/default/prod.settings.php

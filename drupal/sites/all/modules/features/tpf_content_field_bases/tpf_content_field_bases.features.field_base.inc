@@ -470,6 +470,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_associated_content',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
@@ -480,24 +483,32 @@ function tpf_content_field_bases_field_default_field_bases() {
     'settings' => array(
       'referenceable_types' => array(
         'action' => 'action',
-        'article' => 0,
         'campaign' => 'campaign',
+        'campaign_card_ad' => 0,
         'campaign_card_branding' => 0,
         'campaign_card_empty' => 0,
         'campaign_card_iframe' => 0,
         'campaign_card_media' => 0,
+        'campaign_card_multi_column' => 0,
         'campaign_card_news' => 0,
         'campaign_card_social' => 0,
+        'campaign_card_tap_widget' => 0,
         'campaign_card_text' => 0,
+        'campaign_card_twitter' => 0,
         'campaign_page' => 'campaign_page',
         'campaign_tray' => 0,
         'feature_article' => 'feature_article',
+        'feed' => 0,
+        'feed_item' => 0,
+        'flashcard' => 0,
+        'fresh_gallery' => 'fresh_gallery',
         'openpublish_article' => 'openpublish_article',
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
         'profile' => 0,
         'section_front' => 0,
         'takepart_page' => 0,
         'video' => 'video',
+        'video_playlist' => 0,
       ),
       'view' => array(
         'args' => array(),
@@ -1626,6 +1637,34 @@ function tpf_content_field_bases_field_default_field_bases() {
     ),
     'translatable' => 0,
     'type' => 'entityreference',
+  );
+
+  // Exported field_base: 'field_campaign_page_scrolling'.
+  $field_bases['field_campaign_page_scrolling'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_campaign_page_scrolling',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
   );
 
   // Exported field_base: 'field_campaign_promo_opt_out'.
@@ -3024,6 +3063,48 @@ function tpf_content_field_bases_field_default_field_bases() {
     'type' => 'text_long',
   );
 
+  // Exported field_base: 'field_ic_campaign_promos'.
+  $field_bases['field_ic_campaign_promos'] = array(
+    'active' => 1,
+    'cardinality' => 3,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_ic_campaign_promos',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'target_id' => array(
+        0 => 'target_id',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'entityreference',
+    'settings' => array(
+      'handler' => 'base',
+      'handler_settings' => array(
+        'behaviors' => array(
+          'views-select-list' => array(
+            'status' => 0,
+          ),
+        ),
+        'sort' => array(
+          'type' => 'none',
+        ),
+        'target_bundles' => array(
+          'feature_article' => 'feature_article',
+          'fresh_gallery' => 'fresh_gallery',
+          'openpublish_article' => 'openpublish_article',
+          'video' => 'video',
+          'video_playlist' => 'video_playlist',
+        ),
+      ),
+      'target_type' => 'node',
+    ),
+    'translatable' => 0,
+    'type' => 'entityreference',
+  );
+
   // Exported field_base: 'field_ic_citation'.
   $field_bases['field_ic_citation'] = array(
     'active' => 1,
@@ -3055,6 +3136,9 @@ function tpf_content_field_bases_field_default_field_bases() {
     'deleted' => 0,
     'entity_types' => array(),
     'field_name' => 'field_ic_content',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
     'indexes' => array(
       'nid' => array(
         0 => 'nid',
@@ -3080,13 +3164,17 @@ function tpf_content_field_bases_field_default_field_bases() {
         'campaign_page' => 'campaign_page',
         'campaign_tray' => 0,
         'feature_article' => 'feature_article',
+        'feed' => 0,
+        'feed_item' => 0,
+        'flashcard' => 0,
+        'fresh_gallery' => 'fresh_gallery',
         'openpublish_article' => 'openpublish_article',
         'openpublish_photo_gallery' => 'openpublish_photo_gallery',
         'profile' => 0,
         'section_front' => 0,
         'takepart_page' => 0,
         'video' => 'video',
-        'video_playlist' => 'video_playlist',
+        'video_playlist' => 0,
       ),
       'view' => array(
         'args' => array(),
@@ -5121,6 +5209,34 @@ function tpf_content_field_bases_field_default_field_bases() {
       'allowed_values' => array(
         0 => 0,
         1 => 1,
+      ),
+      'allowed_values_function' => '',
+    ),
+    'translatable' => 0,
+    'type' => 'list_boolean',
+  );
+
+  // Exported field_base: 'field_tray_animation'.
+  $field_bases['field_tray_animation'] = array(
+    'active' => 1,
+    'cardinality' => 1,
+    'deleted' => 0,
+    'entity_types' => array(),
+    'field_name' => 'field_tray_animation',
+    'field_permissions' => array(
+      'type' => 0,
+    ),
+    'indexes' => array(
+      'value' => array(
+        0 => 'value',
+      ),
+    ),
+    'locked' => 0,
+    'module' => 'list',
+    'settings' => array(
+      'allowed_values' => array(
+        0 => '',
+        1 => '',
       ),
       'allowed_values_function' => '',
     ),

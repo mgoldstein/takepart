@@ -2016,6 +2016,50 @@ body.campaign-display {
             border: 0;
         }
     }
+    /* Styles for Campaign Full Page Scrolling */
+    &.campaign-full-page-scrollng {
+        overflow-y : hidden;
+    }
+    .campaign-page-animation {
+        .campaign-animation-pager {
+            position: fixed;
+            top: 100px;
+            left: 10px;
+            z-index: 10;
+            width: 35px;
+            text-align: center;
+            background-color: rgba(204, 204, 204, 0.58);
+            li {
+                margin-top: 10px;
+                a {
+                    width: 20px;
+                    height: 20px;
+                    background: rgba(0, 0, 0, 0.52);
+                    display: inline-block;
+                    cursor: pointer;
+                    border-radius: 10px;
+                    &.active-tray {
+                        background: rgba(0, 0, 0, 1);
+                    }
+                }
+            }
+        }
+        .tray.animate {
+            height: 100%;
+            width: 100%;
+            .card {
+                height: 100vh;
+                width: 100vw;
+                background-size: cover !important;
+            }
+        }
+        .tray.animate.active {
+            position: fixed;
+            z-index: 9;
+            top: 0;
+            left: 0;
+        }
+    }
 }
 
 /**

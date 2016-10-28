@@ -39,6 +39,12 @@
 		  $slider_styles[] = 'background-position: '. $background_position. ';';
 	  }
 
+    //Add the animate class to the array if enabled
+    if ($animate_tray = field_get_items('node' , $node , 'field_tray_animation')) {
+      if ($animate_tray[0]['value']) {
+        $slider_class[] = 'animate';
+      }
+    }
 	  if($background_image || $bg_color){
 			$slider_class[] = 'has-tray-background';
 	  }

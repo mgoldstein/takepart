@@ -1043,32 +1043,6 @@ function tpf_display_menus_menu_default_menu_links() {
     'weight' => -48,
     'customized' => 1,
   );
-  // Exported menu link: menu-takepart-links_interest-based-ads:node/36861.
-  $menu_links['menu-takepart-links_interest-based-ads:node/36861'] = array(
-    'menu_name' => 'menu-takepart-links',
-    'link_path' => 'node/36861',
-    'router_path' => 'node/%',
-    'link_title' => 'Interest-Based Ads',
-    'options' => array(
-      'fragment' => 'ads',
-      'attributes' => array(
-        'target' => '_top',
-      ),
-      'item_attributes' => array(
-        'id' => '',
-        'class' => '',
-        'style' => '',
-      ),
-      'identifier' => 'menu-takepart-links_interest-based-ads:node/36861',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 0,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -44,
-    'customized' => 1,
-  );
   // Exported menu link: menu-takepart-links_privacy-policy:node/36861.
   $menu_links['menu-takepart-links_privacy-policy:node/36861'] = array(
     'menu_name' => 'menu-takepart-links',
@@ -1198,7 +1172,6 @@ function tpf_display_menus_menu_default_menu_links() {
   t('Innovation');
   t('Innovation & Tech');
   t('Insights');
-  t('Interest-Based Ads');
   t('Jane Says');
   t('Lifestyle');
   t('Oceans');

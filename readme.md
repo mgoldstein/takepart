@@ -45,21 +45,21 @@ Make sure you have the following installed
 
         $ docker-sync-stack start
 
-9. Admin
+9. MySQL
+
+        $ docker exec -i takepartcom_db_1 mysql -uroot -proot takepart < ~/dumps/TP-prod-2016-10-10-00-15-00.sql
+
+10. Admin
 
         Navigate to www.takepart.dev/user to login
         Goto admin/config/development/performance
         Uncheck ALL checkboxes
 
-9. MySQL
-
-        $ docker exec -i takepartcom_db_1 mysql -uroot -proot takepart < ~/dumps/TP-prod-2016-10-10-00-15-00.sql
-
-10. Drush
+11. Drush
 
         $ docker exec -it takepartcom_drupal_1 bash -c "cd /var/www/html && APP_ENV=local ./drush dis securepages -y && ./drush en stage_file_proxy -y && ./drush vset stage_file_proxy_origin 'http://www.takepart.com' && drush cc all"
 
-11. Compile assets
+12. Compile assets
 
         $ grunt build_prod
 

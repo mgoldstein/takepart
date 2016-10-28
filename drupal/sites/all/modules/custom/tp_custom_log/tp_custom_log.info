@@ -1,0 +1,4 @@
+name = TP Custom Log
+description = Takepart Custom Logs
+package = Custom
+core = 7.x

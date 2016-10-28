@@ -492,12 +492,6 @@ function tpf_display_context_context_default_contexts() {
   $context->reactions = array(
     'block' => array(
       'blocks' => array(
-        'boxes-optimizely_fresh' => array(
-          'module' => 'boxes',
-          'delta' => 'optimizely_fresh',
-          'region' => 'header',
-          'weight' => '-10',
-        ),
         'boxes-ga_ros_interstitial' => array(
           'module' => 'boxes',
           'delta' => 'ga_ros_interstitial',

@@ -221,6 +221,44 @@ function tpf_content_inline_content_field_default_field_instances() {
     ),
   );
 
+  // Exported field_instance:
+  // 'inline_content-campaign_promo-field_ic_campaign_promos'.
+  $field_instances['inline_content-campaign_promo-field_ic_campaign_promos'] = array(
+    'bundle' => 'campaign_promo',
+    'default_value' => NULL,
+    'deleted' => 0,
+    'description' => 'This is not required. This is to override what is in the list with a custom list.  You can choose a max of 3 articles. If there are less than 3 then only the ones you have choose will be displayed.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'module' => 'entityreference',
+        'settings' => array(
+          'link' => FALSE,
+        ),
+        'type' => 'entityreference_label',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'inline_content',
+    'field_name' => 'field_ic_campaign_promos',
+    'label' => 'Campaign Promos',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'entityreference',
+      'settings' => array(
+        'match_operator' => 'CONTAINS',
+        'path' => '',
+        'size' => 60,
+      ),
+      'type' => 'entityreference_autocomplete',
+      'weight' => 31,
+    ),
+  );
+
   // Exported field_instance: 'inline_content-image-field_ic_alignment'.
   $field_instances['inline_content-image-field_ic_alignment'] = array(
     'bundle' => 'image',
@@ -1050,7 +1088,6 @@ function tpf_content_inline_content_field_default_field_instances() {
       'settings' => array(
         'autocomplete_match' => 'contains',
         'autocomplete_path' => 'node_reference/autocomplete',
-        'maxlength_js_label' => 'Content limited to @limit characters, remaining: <strong>@remaining</strong>',
         'size' => 60,
       ),
       'type' => 'node_reference_autocomplete',
@@ -2272,6 +2309,7 @@ function tpf_content_inline_content_field_default_field_instances() {
   t('Author Name');
   t('Background Video');
   t('Background Video Poster');
+  t('Campaign Promos');
   t('Caption');
   t('Citation');
   t('Content');
@@ -2297,6 +2335,7 @@ function tpf_content_inline_content_field_default_field_instances() {
   t('Show Title');
   t('Sponsor Name');
   t('Sponsor URL');
+  t('This is not required. This is to override what is in the list with a custom list.  You can choose a max of 3 articles. If there are less than 3 then only the ones you have choose will be displayed.');
   t('Title');
   t('Title Override');
   t('Video');

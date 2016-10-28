@@ -82,13 +82,14 @@ function tp4_preprocess_html(&$variables, $hook) {
         $variables['classes_array'][] = 'vocabulary-topic';
     }
 
-    drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
+    /*drupal_add_js('//cdn.optimizely.com/js/77413453.js', array(
         'type' => 'external',
         'scope' => 'header',
         'group' => JS_DEFAULT,
         'every_page' => TRUE,
         'weight' => -1,
-    ));
+    ));*/
+
     // add jquery cookie library to tp4 pages
     drupal_add_library('system', 'jquery.cookie', true);
 
@@ -606,6 +607,13 @@ function tp4_preprocess_node__campaign_page(&$variables, $hook) {
     $variables['classes_array'][] = 'has-back-to-top';
   }
 
+  //Check if Full Page Scrolling is enabled
+  if ($camp_page_scroll = field_get_items('node', $variables['node'], 'field_campaign_page_scrolling')) {
+    if ($camp_page_scroll[0]['value']) {
+      $variables['classes_array'][] = 'campaign-page-animation';
+      drupal_add_js(drupal_get_path('module', 'tp_campaigns').'/js/tp_campaign_animation.js', array('type' => 'file', 'scope' => 'footer'));
+    }
+  }
   // Check whether facebook comments should be enabled
   foreach (field_get_items('node', $variables['node'], 'field_campaign_facebook_comments') as $item) {
     $variables['show_facebook_comments'] = $item['value'];
@@ -2508,7 +2516,7 @@ function tp4_page_alter(&$page) {
   if($page['content']['system_main']['pager']) {
 	unset($page['content']['system_main']['pager']);
   }
-  
+
   $uri = filter_input(INPUT_SERVER, 'REQUEST_URI', FILTER_SANITIZE_URL);
   if (preg_match('/^\/entity_iframe/', $uri) ||  preg_match('/^\/iframes/', $uri)) {
     header_remove('X-Frame-Options');
