@@ -45,9 +45,13 @@
       var galleryData = {
         "title": $('.node-fresh-gallery').attr('data-tp-og-title'),
         "subhead": $('.node-fresh-gallery').attr('data-tp-og-description'),
-        "adTag": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_tag,
-        "adFrequency": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_freq,
-        "adMeta": adMeta,
+        "adSettings": {
+          "singleTag": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_tag,
+          "fullTag": Drupal.settings.tp_ads_fresh_gallery.tp_ad_full_tag,
+          "frequency": Drupal.settings.tp_ads_fresh_gallery.tp_ad_single_freq,
+          "refreshRate": Drupal.settings.tp_ads_fresh_gallery.tp_ad_full_refresh_rate,
+          "adMeta": adMeta,
+        }
       };
 
         var jsonId = $('.node-fresh-gallery').attr('data-ddl-page-id');
@@ -66,4 +70,3 @@
   });
 
 })(jQuery, Drupal, this, this.document);
-
