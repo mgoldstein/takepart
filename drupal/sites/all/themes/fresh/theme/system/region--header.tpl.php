@@ -28,5 +28,12 @@
  * @ingroup themeable
  */
 ?>
-
-<?php print $content; ?>
+<header class="header <?php print $classes; ?>" id="header" role="banner">
+   <div class="container">
+    <div class="row">
+      <div class="col-xxs-12">
+        <?php print $content; ?>
+      </div>
+    </div>
+  </div>
+</header>
