@@ -235,10 +235,10 @@ function tp_ads_admin_form() {
     '#title' => t('Full Page Ad Tag'),
     '#default_value' => (isset($fresh_gall['tp_ad_full_tag'])?$fresh_gall['tp_ad_full_tag']:''),
   );
-  $form['tp_ad_gallery']['tp_ad_fresh_gallery']['tp_ad_full_refresh_rate'] = array(
+  $form['tp_ad_gallery']['tp_ad_fresh_gallery']['tp_ad_single_refresh'] = array(
     '#type' => 'textfield',
     '#title' => t('Full Page Ad Tag Refresh Rate(ms)'),
-    '#default_value' => (isset($fresh_gall['tp_ad_full_refresh_rate'])?$fresh_gall['tp_ad_full_refresh_rate']:''),
+    '#default_value' => (isset($fresh_gall['tp_ad_single_refresh'])?$fresh_gall['tp_ad_single_refresh']:''),
   );
 
 
