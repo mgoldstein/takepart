@@ -9,6 +9,7 @@
   $campaign_experience = ($cic_experience) ? ' class="campaign-experience"' : '';
   $menu = ($cic_experience) ? 'cic-menu' : 'mobile-menu';
   $menu_inner = ($cic_experience) ? 'cic-menu-inner' : 'mobile-menu-inner';
+  $transparent = ($variables['page']['header']['nav']['transparent']) ? 'transparent' : '';
 ?>
 
 <nav id="<?php print $menu; ?>" class="menu">
@@ -17,7 +18,15 @@
   </div>
 </nav>
 <div id="page-wrapper" <?php print $campaign_experience; ?>>
-  <?php print render($page['header']); ?>
+  <header class="header <?php print $transparent; ?>" id="header" role="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-xxs-12">
+          <?php print render($page['header']); ?>
+        </div>
+      </div>
+    </div>
+  </header>
   <div class="main-content" id="content" role="main">
     <div class="container">
       <div class="row">
