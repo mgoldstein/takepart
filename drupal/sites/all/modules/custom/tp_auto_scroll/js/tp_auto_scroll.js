@@ -84,6 +84,10 @@
           Drupal.behaviors.lazyloader.attach(document, Drupal.settings);
         }
 
+        if(typeof Drupal.behaviors.extlink !== 'undefined' && typeof Drupal.behaviors.extlink.attach !== 'undefined') {
+          Drupal.behaviors.extlink.attach(document, Drupal.settings);
+        }
+
               // Load comments box on button click for mobile display
 		    $('a.comments-count').once('FBComments', function () {
 			 $('a.comments-count').on('click', function (e) {
