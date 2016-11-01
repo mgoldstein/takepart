@@ -176,6 +176,9 @@
         date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
         $.cookie('pm_igloo', null);
         $.cookie('pm_igloo', 1, {expires: date, path: '/'});
+        $('body').css('overflow', 'scroll');
+        $('body').removeClass('scrollable');
+        $.tpmodal.hide({id: 'interstitial_modal_'});
       }
     }
   };
