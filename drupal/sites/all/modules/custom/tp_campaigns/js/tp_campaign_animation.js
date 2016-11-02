@@ -69,8 +69,10 @@
         var te = e.originalEvent.changedTouches[0].clientY;
         $slide = $('.tray.animate.active');
         if (ts > te) {
+          e.preventDefault();
           tpc_next_tray($slide , false);
         } else {
+          e.preventDefault();
           tpc_prev_tray($slide);
         }
       });
