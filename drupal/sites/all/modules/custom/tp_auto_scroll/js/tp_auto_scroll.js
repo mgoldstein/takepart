@@ -323,12 +323,6 @@
 			   window.newTapWidgets = false;
 			 }
 
-			 /** Sailthru Horizon Track **/
-			 if (typeof Sailthru !== 'undefined' && typeof Sailthru.track !== 'undefined') {
-			   //Track sailthru horizon as if the page was just loaded
-			   Sailthru.track({domain: 'horizon.takepart.com'});
-			 }
-
 			 //Keywee pixel tracking
 			 if (typeof fbq !== 'undefined') {
 			   fbq("track", "PageView");
