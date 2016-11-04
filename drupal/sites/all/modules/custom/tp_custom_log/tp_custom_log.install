@@ -12,4 +12,5 @@ function tp_custom_log_install() {
       mkdir($realpath.'/log');
     }
   }
+  variable_set('custom_log_clean_date',0);
 }

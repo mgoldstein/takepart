@@ -142,8 +142,8 @@ function tp_content_services_notify_service($node, $insup = '') {
       }
     }
   }
-  
-  $json = array(
+
+  $jsona = array(
       "content_id" => $node->nid,
       "url" => url('node/'.$node->nid, array('absolute' => TRUE)),
       "title" => (string)$node->title,
@@ -161,7 +161,7 @@ function tp_content_services_notify_service($node, $insup = '') {
       "access_token" => variable_get('content_services_access_token','')
   );
 
-  $json = json_encode($json);
+  $json = json_encode($jsona);
 
   $endpoint = variable_get('takepart_api_domain', '').variable_get('content_services_endpoint','');
 
@@ -176,6 +176,8 @@ function tp_content_services_notify_service($node, $insup = '') {
 
   //Check if return is valid log message
   $data = json_decode($ret->data);
+  //Unset to prevent access token from being logged
+  unset($jsona['access_token']);
   if($ret->code == 202 && isset($data->enqueued) && $data->enqueued) {
     watchdog('Content Notify Service',
       '%insup Node%nid %title of %type. Content Service was notified correctly. %data %json',
@@ -185,7 +187,7 @@ function tp_content_services_notify_service($node, $insup = '') {
         '%title' => $node->title,
         '%type' => $node->type,
         '%data' => $ret->data,
-        '%json' => $json
+        '%json' => json_encode($jsona)
       ));
   } else {
     watchdog('Content Notify Service', '%insup Node%nid %title of %type. Content Service Failed to notify correctly. %data  %json',
@@ -195,7 +197,7 @@ function tp_content_services_notify_service($node, $insup = '') {
         '%title' => $node->title,
         '%type' => $node->type,
         '%data' => $ret->data,
-        '%json' => $json
+        '%json' => json_encode($jsona)
       ),
       WATCHDOG_ERROR);
   }
