@@ -100,6 +100,7 @@ function fresh_preprocess_page(&$variables) {
   }
   elseif ($variables['node'] && $variables['node']->type == 'feature_article') {
       $variables['page']['header']['nav']['#markup'] = theme('base_header_transparent', array());
+      $variables['page']['header']['nav']['transparent'] = TRUE;
   }
   else{
     //MegaSlim

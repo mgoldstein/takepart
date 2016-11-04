@@ -18,7 +18,6 @@ features[menu_custom][] = menu-social-footer-follow
 features[menu_custom][] = menu-social-header-follow
 features[menu_custom][] = menu-takepart-links
 features[menu_links][] = menu-corporate-footer_participant-media:http://www.participantmedia.com
-features[menu_links][] = menu-corporate-footer_pivot:http://www.pivot.tv
 features[menu_links][] = menu-corporate-footer_takepart:http://www.takepart.com
 features[menu_links][] = menu-megamenu_aid--development:taxonomy/term/115553
 features[menu_links][] = menu-megamenu_animals:taxonomy/term/496

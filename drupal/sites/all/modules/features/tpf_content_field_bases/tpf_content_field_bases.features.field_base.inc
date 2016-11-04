@@ -2287,7 +2287,7 @@ function tpf_content_field_bases_field_default_field_bases() {
     'entity_types' => array(),
     'field_name' => 'field_feature_hero',
     'field_permissions' => array(
-      'type' => 0,
+      'type' => 2,
     ),
     'indexes' => array(
       'format' => array(

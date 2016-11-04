@@ -84,6 +84,10 @@
           Drupal.behaviors.lazyloader.attach(document, Drupal.settings);
         }
 
+        if(typeof Drupal.behaviors.extlink !== 'undefined' && typeof Drupal.behaviors.extlink.attach !== 'undefined') {
+          Drupal.behaviors.extlink.attach(document, Drupal.settings);
+        }
+
               // Load comments box on button click for mobile display
 		    $('a.comments-count').once('FBComments', function () {
 			 $('a.comments-count').on('click', function (e) {
@@ -321,12 +325,6 @@
 			   TP.Bootstrapper && new TP.Bootstrapper().start();
 			   TAP.Widget && TAP.Widget.addWidgets();
 			   window.newTapWidgets = false;
-			 }
-
-			 /** Sailthru Horizon Track **/
-			 if (typeof Sailthru !== 'undefined' && typeof Sailthru.track !== 'undefined') {
-			   //Track sailthru horizon as if the page was just loaded
-			   Sailthru.track({domain: 'horizon.takepart.com'});
 			 }
 
 			 //Keywee pixel tracking
