@@ -174,6 +174,9 @@
         $next_tray.addClass('active');
         //Add active class to the pager
         $('.campaign-animation-pager a').eq(index).addClass('active-tray');
+        //This is a helper callback function that could be used inside each campaign's custom js
+        if (typeof tpc_animation_callback !== 'undefined') tpc_animation_callback(index);
+
         //Adding this timeout to resolve scrolling on track pads.
         setTimeout(function(){
           $body.removeClass('animating')} , 500);
