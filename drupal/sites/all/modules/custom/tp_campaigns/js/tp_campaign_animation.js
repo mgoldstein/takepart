@@ -97,12 +97,12 @@
         e.preventDefault(); // prevent the default action
       });
 
-      $('.campaign-animation-pager ul li a').click(function(e) {
+      $('.campaign-animation-pager ul li').click(function(e) {
         //Quit if clicking the active class
         if ($(this).hasClass('active-tray')) return false;
         $slide = $('.tray.animate.active');
         e.preventDefault();
-        var dest = $(this).attr('href');
+        var dest = $(this).children('a').attr('href');
         tpc_next_tray($slide,$(dest));
 
       });
@@ -132,7 +132,7 @@
 
     //Remove active class from current_slide & pager
     $current_slide.removeClass('active');
-    $('.campaign-animation-pager a.active-tray').removeClass('active-tray');
+    $('.campaign-animation-pager li.active-tray').removeClass('active-tray');
 
     //Scroll to the appropriate item
     tpc_scroll_to($next_tray);
@@ -151,7 +151,7 @@
       next_tray_id = $('.animate[data-anim-slide="' + next_index + '"]').attr('id');
       $current_slide.removeClass('active');
       //Remove active class from current_slide & pager
-      $('.campaign-animation-pager a.active-tray').removeClass('active-tray');
+      $('.campaign-animation-pager li.active-tray').removeClass('active-tray');
       $next_tray = $('#' + next_tray_id);
       //Scroll to the appropriate item
       tpc_scroll_to($next_tray);
@@ -173,7 +173,7 @@
       }, 800 , function(){
         $next_tray.addClass('active');
         //Add active class to the pager
-        $('.campaign-animation-pager a').eq(index).addClass('active-tray');
+        $('.campaign-animation-pager li').eq(index).addClass('active-tray');
         //This is a helper callback function that could be used inside each campaign's custom js
         if (typeof tpc_animation_callback !== 'undefined') tpc_animation_callback(index);
 
@@ -195,7 +195,7 @@
       markup +=   '<ul>';
       for (i in tray_ids) {
         active_link = (i == 0) ?  " class=active-tray" : "";
-        markup += '<li><a href="' + tray_ids[i] + '"' + active_link + '></a></li>';
+        markup += '<li' + active_link +'><a href="' + tray_ids[i] + '"></a></li>';
       }
       markup +=   '</ul>';
       markup += '</div>';
