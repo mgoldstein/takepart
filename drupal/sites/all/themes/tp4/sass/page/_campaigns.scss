@@ -2038,9 +2038,9 @@ body.campaign-display {
                     display: inline-block;
                     cursor: pointer;
                     border-radius: 10px;
-                    &.active-tray {
-                        background: rgba(0, 0, 0, 1);
-                    }
+                }
+                &.active-tray a {
+                    background: rgba(0, 0, 0, 1);
                 }
             }
         }
