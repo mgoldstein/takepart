@@ -33,29 +33,6 @@ function tpf_display_menus_menu_default_menu_links() {
     'weight' => -49,
     'customized' => 1,
   );
-  // Exported menu link: menu-corporate-footer_pivot:http://www.pivot.tv.
-  $menu_links['menu-corporate-footer_pivot:http://www.pivot.tv'] = array(
-    'menu_name' => 'menu-corporate-footer',
-    'link_path' => 'http://www.pivot.tv',
-    'router_path' => '',
-    'link_title' => 'Pivot',
-    'options' => array(
-      'attributes' => array(
-        'class' => array(
-          0 => 'logos-pivot',
-        ),
-        'target' => '_blank',
-      ),
-      'identifier' => 'menu-corporate-footer_pivot:http://www.pivot.tv',
-    ),
-    'module' => 'menu',
-    'hidden' => 0,
-    'external' => 1,
-    'has_children' => 0,
-    'expanded' => 0,
-    'weight' => -50,
-    'customized' => 1,
-  );
   // Exported menu link: menu-corporate-footer_takepart:http://www.takepart.com.
   $menu_links['menu-corporate-footer_takepart:http://www.takepart.com'] = array(
     'menu_name' => 'menu-corporate-footer',
@@ -1178,7 +1155,6 @@ function tpf_display_menus_menu_default_menu_links() {
   t('Participant Media');
   t('Petitions');
   t('Pinterest');
-  t('Pivot');
   t('Pledges');
   t('Privacy Policy');
   t('RSS');

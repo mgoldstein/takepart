@@ -28,13 +28,4 @@ function base_preprocess_page(&$variables) {
   if (!empty($variables['node'])) {
     $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']->type;
   }
-
-  drupal_add_js('//ak.sail-horizon.com/horizon/v1.js', array('type' => 'external', 'scope' => 'header', 'weight' => 0));
-  drupal_add_js("
-    jQuery(function() { 
-    if (window.Sailthru) { 
-      Sailthru.setup({ domain: 'horizon.takepart.com' });
-    }
-    });
-", array('type' => 'inline', 'scope' => 'header', 'weight' => 0));
 }
