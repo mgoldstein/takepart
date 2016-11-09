@@ -92,4 +92,8 @@ function tp_custom_tweaks_preprocess_html(&$vars) {
       header_remove('Pragma');
     }
   }
+  if($status == '403 Forbidden'){
+    //No cache for 403 pages
+    cache_control_send_no_cache_headers('Permission Denied Page');
+  }
 }
