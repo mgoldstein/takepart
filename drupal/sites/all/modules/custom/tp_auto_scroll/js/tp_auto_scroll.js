@@ -498,6 +498,8 @@
     var bottom = win.scrollTop() + win.height();
     var marks = window.digitalData.page.pageInfo['percentageMarks'];
     var delMarks = new Array();
+    //new custom event for percentageComplete tracking
+    window.percentageCompleteEvent = new CustomEvent('percentageComplete', { detail: '' });
     $.each(marks, function(i,v){
       if(typeof v !== 'undefined') {
         if(v[0] < bottom) {
@@ -519,9 +521,6 @@
       }
     });
   };
-
-  //new custom event for percentageComplete tracking
-  window.percentageCompleteEvent = new CustomEvent('percentageComplete', { detail: '' });
 
 
 })(jQuery, Drupal, this, this.document);
