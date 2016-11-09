@@ -381,12 +381,12 @@
       $("meta[property='og:description']").attr("content", description);
       $("meta[name='description']").attr("content", description);
       $("meta[name='abstract']").attr("content", description);
-      $("meta[name='twitter:description").attr("content", description);
+      $("meta[name='twitter:description']").attr("content", description);
     } else {
       $("meta[property='og:description']").attr("content", title);
       $("meta[name='description']").attr("content", title);
       $("meta[name='abstract']").attr("content", title);
-      $("meta[name='twitter:description").attr("content", title);
+      $("meta[name='twitter:description']").attr("content", title);
     }
 
     //updates the social config
