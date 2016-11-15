@@ -19,7 +19,6 @@
 
    //Set the first loaded article percentage complete
    digitalData.page.pageInfo['percentageMarks'] = window.setContentPercentageMarks(digitalData.page.pageInfo.pageId);
-   window.trackContentPercentageComplete();
 
 	 /* Make a copy of the page data in the DDL for use when the user scrolls to the top */
 	 digitalData.pageInititial = digitalData.page;
@@ -499,10 +498,10 @@
     var marks = window.digitalData.page.pageInfo['percentageMarks'];
     var delMarks = new Array();
     //new custom event for percentageComplete tracking
-    window.percentageCompleteEvent = new CustomEvent('percentageComplete', { detail: '' });
     $.each(marks, function(i,v){
       if(typeof v !== 'undefined') {
-        if(v[0] < bottom) {
+        if(v[0] <= bottom) {
+          window.percentageCompleteEvent = new CustomEvent('percentageComplete', { detail: '' });
           //track the percentage complete if it is not 0 just make it 25
           window.digitalData.page.pageInfo['percentageComplete'] = (v[1] == 0?0:25);
           document.body.dispatchEvent( percentageCompleteEvent );
