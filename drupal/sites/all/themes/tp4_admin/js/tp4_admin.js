@@ -27,5 +27,9 @@ jQuery(function ($) {
       });
     }
 
+    $('.node-form').on('click', '#edit-submit, #edit-addanother',function(){
+      return confirm("Are you sure you want to save?");
+    });
+
   });
 });
