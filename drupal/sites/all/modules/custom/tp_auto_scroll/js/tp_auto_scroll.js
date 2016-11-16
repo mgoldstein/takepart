@@ -484,9 +484,9 @@
       var disttop = $('article[data-ddl-page-id="'+pageId+'"]').offset().top;
       var div = (hght/4).toFixed(0);
       percentageMarks[0] = [(disttop+(div*1)).toFixed(0),25];
-      percentageMarks[0] = [(disttop+(div*2)).toFixed(0),50];
-      percentageMarks[0] = [(disttop+(div*3)).toFixed(0),75];
-      percentageMarks[0] = [(disttop+(div*4)).toFixed(0),100];
+      percentageMarks[1] = [(disttop+(div*2)).toFixed(0),50];
+      percentageMarks[2] = [(disttop+(div*3)).toFixed(0),75];
+      percentageMarks[3] = [(disttop+(div*4)).toFixed(0),100];
     }
     return percentageMarks;
   };
