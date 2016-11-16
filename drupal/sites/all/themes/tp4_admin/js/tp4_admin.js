@@ -28,7 +28,11 @@ jQuery(function ($) {
     }
 
     $('.node-form').on('click', '#edit-submit, #edit-addanother',function(){
-      return confirm("Are you sure you want to save?");
+      if($('#edit-workbench-moderation-state-new').length) {
+        if($('#edit-workbench-moderation-state-new').val() == 'published') {
+          return confirm("You are about to publish. Are you sure you want to publish?");
+        }
+      }
     });
 
   });
