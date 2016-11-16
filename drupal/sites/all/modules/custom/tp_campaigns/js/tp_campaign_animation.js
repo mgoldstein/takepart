@@ -11,104 +11,101 @@
     $('body').addClass('campaign-full-page-scrollng');
 
   }
-  Drupal.behaviors.campaignTrayAnimation = {
-    attach: function () {
-      var $anim_tray = $('.tray.animate');
-      //Quit if no tray qualifies for animation
-      if ($anim_tray.length == 0) return false;
 
-      var tray_length =  $anim_tray.length;
-      var tray_id_arr = [];
-      $anim_tray.each(function(index){
-        //Add active class to the first tray
-        if (index ==0) $(this).addClass('active first');
-        //Add last class
-        if (index == (tray_length -1)) $(this).addClass('last');
+  $(document).ready(function () {
+    var $anim_tray = $('.tray.animate');
+    //Quit if no tray qualifies for animation
+    if ($anim_tray.length == 0) return false;
 
-        $(this).attr('data-anim-slide' , index);
-        //Array of the tray IDs
-        tray_id_arr.push('#' + $(this).attr('id'));
-      });
+    var tray_length =  $anim_tray.length;
+    var tray_id_arr = [];
+    $anim_tray.each(function(index){
+      //Add active class to the first tray
+      if (index ==0) $(this).addClass('active first');
+      //Add last class
+      if (index == (tray_length -1)) $(this).addClass('last');
 
-      //Create a Pager
-      tpc_create_pager(tray_id_arr);
+      $(this).attr('data-anim-slide' , index);
+      //Array of the tray IDs
+      tray_id_arr.push('#' + $(this).attr('id'));
+    });
 
-      var body = document.body;
-      //Determines the scroll direction on desktop
-      var MouseWheelHandler = function(e) {
-        //Quit if animating/Scrolling to another tray is in progress
-        if ($('body').hasClass('animating')) return false;
-        //delta return 1 for up and -1 for down.
-        var e = window.event || e;
-        var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+    //Create a Pager
+    tpc_create_pager(tray_id_arr);
 
-        //e.preventDefault();
-        $slide = $('.tray.animate.active');
-        if(delta === -1) {
-         tpc_next_tray($slide , false);
-        }
-        if(delta === 1) {
-          tpc_prev_tray($slide);
-        }
+    var body = document.body;
+    //Determines the scroll direction on desktop
+    var MouseWheelHandler = function(e) {
+      //Quit if animating/Scrolling to another tray is in progress
+      if ($('body').hasClass('animating')) return false;
+      //delta return 1 for up and -1 for down.
+      var e = window.event || e;
+      var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+
+      //e.preventDefault();
+      $slide = $('.tray.animate.active');
+      if(delta === -1) {
+       tpc_next_tray($slide , false);
       }
-
-      if (body.addEventListener) {
-        // IE9, Chrome, Safari, Opera
-        body.addEventListener("mousewheel", MouseWheelHandler, false);
-        // Firefox
-        body.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
+      if(delta === 1) {
+        tpc_prev_tray($slide);
       }
-
-      $(document).bind('touchstart', function(e) {
-        ts = e.originalEvent.touches[0].clientY;
-      });
-
-      //Determine the touch direction on touch devices.
-      $(document).bind('touchmove', function(e) {
-        if ($('body').hasClass('animating')) return false;
-        var te = e.originalEvent.changedTouches[0].clientY;
-        $slide = $('.tray.animate.active');
-        if (ts > te) {
-          e.preventDefault();
-          tpc_next_tray($slide , false);
-        } else {
-          e.preventDefault();
-          tpc_prev_tray($slide);
-        }
-      });
-
-      //Capture up/down keys
-      $(document).keydown(function(e) {
-        switch(e.which) {
-          case 38: // up
-            if ($('body').hasClass('animating')) return false;
-            $slide = $('.tray.animate.active');
-            tpc_prev_tray($slide);
-          break;
-
-          case 40: // down
-            if ($('body').hasClass('animating')) return false;
-            $slide = $('.tray.animate.active');
-            tpc_next_tray($slide, false);
-          break;
-
-          default: return;
-        }
-        e.preventDefault(); // prevent the default action
-      });
-
-      $('.campaign-animation-pager ul li').click(function(e) {
-        //Quit if clicking the active class
-        if ($(this).hasClass('active-tray')) return false;
-        $slide = $('.tray.animate.active');
-        e.preventDefault();
-        var dest = $(this).children('a').attr('href');
-        tpc_next_tray($slide,$(dest));
-
-      });
-
     }
-  };
+
+    if (body.addEventListener) {
+      // IE9, Chrome, Safari, Opera
+      body.addEventListener("mousewheel", MouseWheelHandler, false);
+      // Firefox
+      body.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
+    }
+
+    $(document).bind('touchstart', function(e) {
+      ts = e.originalEvent.touches[0].clientY;
+    });
+
+    //Determine the touch direction on touch devices.
+    $(document).bind('touchmove', function(e) {
+      if ($('body').hasClass('animating')) return false;
+      var te = e.originalEvent.changedTouches[0].clientY;
+      $slide = $('.tray.animate.active');
+      if (ts > te) {
+        e.preventDefault();
+        tpc_next_tray($slide , false);
+      } else {
+        e.preventDefault();
+        tpc_prev_tray($slide);
+      }
+    });
+
+    //Capture up/down keys
+    $(document).keydown(function(e) {
+      switch(e.which) {
+        case 38: // up
+          if ($('body').hasClass('animating')) return false;
+          $slide = $('.tray.animate.active');
+          tpc_prev_tray($slide);
+        break;
+
+        case 40: // down
+          if ($('body').hasClass('animating')) return false;
+          $slide = $('.tray.animate.active');
+          tpc_next_tray($slide, false);
+        break;
+
+        default: return;
+      }
+      e.preventDefault(); // prevent the default action
+    });
+
+    $('.campaign-animation-pager ul li').click(function(e) {
+      //Quit if clicking the active class
+      if ($(this).hasClass('active-tray')) return false;
+      $slide = $('.tray.animate.active');
+      e.preventDefault();
+      var dest = $(this).children('a').attr('href');
+      tpc_next_tray($slide,$(dest));
+    });
+  });
 
   /*
    * Next Tray function
