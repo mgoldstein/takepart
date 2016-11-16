@@ -441,26 +441,18 @@
 
     /* get the event with the page id */
     for (var i = 0; i < digitalData.event.length; i++) {
-	 if (typeof (digitalData.event[i].eventInstanceID) != 'undefined' && digitalData.event[i].eventInstanceID == id) {
-	   digitalData.page.pageInfo = digitalData.event[i].eventInfo.page.pageInfo;
-	   digitalData.page.pageNumber = digitalData.event[i].eventInfo.autoloadCount;
-	   digitalData.category = digitalData.event[i].eventInfo.category;
-	   _satellite.track('clear_vars');
-	   setTimeout(function () {
-		_satellite.track('autoload');
-	   }, 1000);
-	   return;
-	 }
+      if (typeof (digitalData.event[i].eventInstanceID) != 'undefined' && digitalData.event[i].eventInstanceID == id) {
+        digitalData.page.pageInfo = digitalData.event[i].eventInfo.page.pageInfo;
+        digitalData.page.pageNumber = digitalData.event[i].eventInfo.autoloadCount;
+        digitalData.category = digitalData.event[i].eventInfo.category;
+        return;
+      }
     }
 
     /* If no event exists then it is the initial page load */
     if (digitalData.pageInitial)
-	 digitalData.page.pageInfo = digitalData.pageInitial.pageInfo;
+      digitalData.page.pageInfo = digitalData.pageInitial.pageInfo;
     digitalData.page.pageNumber = 'page 1';
-    _satellite.track('clear_vars');
-    setTimeout(function () {
-	 _satellite.track('autoload');
-    }, 1000);
 
   };
 
