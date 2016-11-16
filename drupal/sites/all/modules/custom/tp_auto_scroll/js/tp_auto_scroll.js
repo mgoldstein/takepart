@@ -475,11 +475,10 @@
       var hght = $('article[data-ddl-page-id="'+pageId+'"]').height();
       var disttop = $('article[data-ddl-page-id="'+pageId+'"]').offset().top;
       var div = (hght/4).toFixed(0);
-      percentageMarks[0] = [(disttop+(div*0)).toFixed(0),0];
-      percentageMarks[1] = [(disttop+(div*1)).toFixed(0),25];
-      percentageMarks[2] = [(disttop+(div*2)).toFixed(0),50];
-      percentageMarks[3] = [(disttop+(div*3)).toFixed(0),75];
-      percentageMarks[4] = [(disttop+(div*4)).toFixed(0),100];
+      percentageMarks[0] = [(disttop+(div*1)).toFixed(0),25];
+      percentageMarks[1] = [(disttop+(div*2)).toFixed(0),50];
+      percentageMarks[2] = [(disttop+(div*3)).toFixed(0),75];
+      percentageMarks[3] = [(disttop+(div*4)).toFixed(0),100];
     }
     return percentageMarks;
   };
@@ -495,7 +494,7 @@
         if(v[0] <= bottom) {
           window.percentageCompleteEvent = new CustomEvent('percentageComplete', { detail: '' });
           //track the percentage complete if it is not 0 just make it 25
-          window.digitalData.page.pageInfo['percentageComplete'] = (v[1] == 0?0:25);
+          window.digitalData.page.pageInfo['percentageComplete'] = 25;
           document.body.dispatchEvent( percentageCompleteEvent );
           //delete the mark from the event info and page
           delMarks.push(i);
