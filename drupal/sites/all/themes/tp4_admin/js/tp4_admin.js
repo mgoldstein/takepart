@@ -27,10 +27,11 @@ jQuery(function ($) {
       });
     }
 
+    //Special warning for publishing content so that this is not done prematurely.
     $('.node-form').on('click', '#edit-submit, #edit-addanother',function(){
       if($('#edit-workbench-moderation-state-new').length) {
         if($('#edit-workbench-moderation-state-new').val() == 'published') {
-          return confirm("You are about to publish. Are you sure you want to publish?");
+          return confirm("**WARNING** Clicking OK will PUBLISH this content.");
         }
       }
     });
