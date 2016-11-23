@@ -27,5 +27,14 @@ jQuery(function ($) {
       });
     }
 
+    //Special warning for publishing content so that this is not done prematurely.
+    $('.node-form').on('click', '#edit-submit, #edit-submit-1, #edit-addanother, #edit-addanother-1',function(){
+      if($('#edit-workbench-moderation-state-new').length) {
+        if($('#edit-workbench-moderation-state-new').val() == 'published') {
+          return confirm("**WARNING** Clicking OK will PUBLISH this content.");
+        }
+      }
+    });
+
   });
 });

@@ -45,6 +45,14 @@
         $slider_class[] = 'animate';
       }
     }
+
+    //Add the fade in class if enabled
+    if ($fade_elements = field_get_items('node' , $node , 'field_campaign_fade_in')) {
+      if ($fade_elements[0]['value']) {
+        $slider_class[] = 'fade-in';
+      }
+    }
+
 	  if($background_image || $bg_color){
 			$slider_class[] = 'has-tray-background';
 	  }

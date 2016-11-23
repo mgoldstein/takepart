@@ -28,6 +28,18 @@ function tp_custom_log_watchdog(array $log_entry) {
       if ($wrapper = file_stream_wrapper_get_instance_by_uri('public://')) {
         $realpath = $wrapper->realpath();
         file_put_contents($realpath.'/log/log_'.date("j.n.Y").'.txt', $message.PHP_EOL, FILE_APPEND);
+        //Delete old logs Only do it once a day at max
+        $custom_log_clean_date = variable_get('custom_log_clean_date',0);
+        $now = time();
+        if($custom_log_clean_date < ($now - 60*60*24)) {
+          variable_set('custom_log_clean_date',$now);
+          $files = glob($realpath.'/log/'."*");
+          //Only delete files in the log that are 30 days old
+          foreach ($files as $file)
+            if (is_file($file))
+              if ($now - filemtime($file) >= 60 * 60 * 24 * 30) // 30 days
+                unlink($file);
+        }
       }
     }
   }

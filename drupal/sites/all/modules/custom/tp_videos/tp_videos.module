@@ -40,6 +40,14 @@ function tp_videos_menu() {
     'access arguments' => array('access administration pages')
   );
 
+  $items['api/service/related_videos/%'] = array(
+    'title' => 'Featured Video Autocomplete',
+    'page callback' => 'tp_videos_service_related_videos',
+    'page arguments' => array(3),
+    'access arguments' => array('access content'),
+    'type' => MENU_CALLBACK,
+  );
+
   return $items;
 }
 
@@ -598,4 +606,74 @@ function _tp_videos_playlist_filter_list_parser(&$items, $entity) {
       $items = $video_list->get_results();
     }
   }
+}
+
+/**
+ * This is the array of videos that will be sent to requester
+ */
+function tp_videos_service_related_videos($vid) {
+  // STATIC ARRAY OF RELATAED VIDEOS TO BE SERVED
+  $related_videos = array(
+    '65842' => array(65784,65745,64031),
+  );
+
+  $return_elements = array();
+
+  if(isset($related_videos[$vid])) {
+    //TODO make this dynamic based on videos topic
+    //TODO this is code ripped from tp_video_player.module line 240
+    //function tp_video_player_field_formatter_view Should be split to its own functions
+    //So it will be reusable
+    foreach($related_videos[$vid] AS $relid) {
+      $entity = entity_load('node', array($relid));
+      $entity = $entity[$relid];
+      $items = field_get_items('node', $entity, 'field_video');
+
+      $conf = tp_video_player_load_entity_configuration('node',
+        $relid, 'video_full_page');
+
+      $conf = tp_video_player_resolve_entity_configuration(
+          'node', $entity, LANGUAGE_NONE, $conf);
+
+      // The path to the video node is stored in the MEDIAID to allow
+      // the social share to change with each video.
+      $uri = entity_uri('node', $entity);
+      $media_id = url($uri['path'], $uri['options']);
+
+      // The allowed regions list attached to the same entity.
+      $allowed_regions = tp_video_player_video_allowed_regions(
+        'node', $entity);
+      foreach ($items as $delta => $item) {
+        $items[$delta]['allowed_regions'] = $allowed_regions;
+        $items[$delta]['media_id'] = $media_id;
+        $items[$delta]['node_title'] = $entity->title;
+        $items[$delta]['pre_roll_ad_tag'] = $conf->ad_tag;
+      }
+      $conf = tp_video_player_resolve_entity_configuration(
+        'node', $entity, LANGUAGE_NONE, $conf);
+
+      //TODO make own function ripped from tp_video_player.module line 326
+      //function tp_video_player_player_view is the function where this code comes from
+      $settings = tp_video_player_build_settings($conf, $items, 'video_full_page');
+
+      if (isset($conf->config) && $conf->config['chromeless'] == 1) {
+        $chromeless = TRUE;
+        $settings['chromeless'] = TRUE;
+        $settings['autostart'] = FALSE;
+        $settings['primary'] = 'html5';
+        unset($settings['sharing']);
+        unset($settings['advertising']);
+      }
+      else {
+        $chromeless = FALSE;
+        $settings['chromeless'] = FALSE;
+      }
+
+      $return_elements[] = $settings;
+    }
+  }
+
+  print json_encode($return_elements);
+  exit;
+
 }

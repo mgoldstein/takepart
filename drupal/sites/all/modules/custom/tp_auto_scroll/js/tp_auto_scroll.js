@@ -17,6 +17,9 @@
    window.forceAutoload = false;
    window.reached_second_article = false;
 
+   //Set the first loaded article percentage complete
+   digitalData.page.pageInfo['percentageMarks'] = window.setContentPercentageMarks(digitalData.page.pageInfo.pageId);
+
 	 /* Make a copy of the page data in the DDL for use when the user scrolls to the top */
 	 digitalData.pageInititial = digitalData.page;
 
@@ -53,9 +56,15 @@
 		    /* Not returning a json object (Drupal is slow at that) so let's convert it here */
 		    data = jQuery.parseJSON(data);
 
+        /* Return Article */
+		    $('#next-article').before(data.output);
+
         //Set the article autoload page number
 		    var pageNumber = page + 3;
 		    data.ddl.eventInfo['autoloadCount'] = 'page ' + pageNumber;
+
+        //Set the % pixel placements
+        data.ddl.eventInfo.page.pageInfo['percentageMarks'] = window.setContentPercentageMarks(data.ddl.eventInfo.page.pageInfo.pageId);
 
 		    /* Append ajax settings */
 		    jQuery.extend(Drupal.settings, data.settings);
@@ -63,8 +72,6 @@
 		    /* Create a new event in the DDL to be used when the user scolls to the article */
 		    digitalData.event.push(data.ddl);
 
-		    /* Return Article */
-		    $('#next-article').before(data.output);
 		    /* Append Ajax behaviors */
 		    if ('function' === typeof Drupal.behaviors.AJAX.attach) {
 			 Drupal.behaviors.AJAX.attach(document, Drupal.settings);
@@ -340,6 +347,10 @@
 		    $(this).removeClass('active');
 		  }
 		});
+
+    //Add check if past percentage complete mark
+    window.trackContentPercentageComplete();
+
 		//updates the last scroll var
 		lastScrollTop = viewport.top;
 
@@ -381,12 +392,12 @@
       $("meta[property='og:description']").attr("content", description);
       $("meta[name='description']").attr("content", description);
       $("meta[name='abstract']").attr("content", description);
-      $("meta[name='twitter:description").attr("content", description);
+      $("meta[name='twitter:description']").attr("content", description);
     } else {
       $("meta[property='og:description']").attr("content", title);
       $("meta[name='description']").attr("content", title);
       $("meta[name='abstract']").attr("content", title);
-      $("meta[name='twitter:description").attr("content", title);
+      $("meta[name='twitter:description']").attr("content", title);
     }
 
     //updates the social config
@@ -441,27 +452,64 @@
 
     /* get the event with the page id */
     for (var i = 0; i < digitalData.event.length; i++) {
-	 if (typeof (digitalData.event[i].eventInstanceID) != 'undefined' && digitalData.event[i].eventInstanceID == id) {
-	   digitalData.page.pageInfo = digitalData.event[i].eventInfo.page.pageInfo;
-	   digitalData.page.pageNumber = digitalData.event[i].eventInfo.autoloadCount;
-	   digitalData.category = digitalData.event[i].eventInfo.category;
-	   _satellite.track('clear_vars');
-	   setTimeout(function () {
-		_satellite.track('autoload');
-	   }, 1000);
-	   return;
-	 }
+      if (typeof (digitalData.event[i].eventInstanceID) != 'undefined' && digitalData.event[i].eventInstanceID == id) {
+        digitalData.page.pageInfo = digitalData.event[i].eventInfo.page.pageInfo;
+        digitalData.page.pageNumber = digitalData.event[i].eventInfo.autoloadCount;
+        digitalData.category = digitalData.event[i].eventInfo.category;
+        return;
+      }
     }
 
     /* If no event exists then it is the initial page load */
     if (digitalData.pageInitial)
-	 digitalData.page.pageInfo = digitalData.pageInitial.pageInfo;
+      digitalData.page.pageInfo = digitalData.pageInitial.pageInfo;
     digitalData.page.pageNumber = 'page 1';
-    _satellite.track('clear_vars');
-    setTimeout(function () {
-	 _satellite.track('autoload');
-    }, 1000);
 
+  };
+
+  //For analytics to set the percentage that the user got down the content
+  window.setContentPercentageMarks = function(pageId) {
+    //adding the percentage down the page variable to the DDL should start at 0
+    var percentageMarks = new Array();
+    if($('article[data-ddl-page-id="'+pageId+'"]').length) {
+      var hght = $('article[data-ddl-page-id="'+pageId+'"]').height();
+      var disttop = $('article[data-ddl-page-id="'+pageId+'"]').offset().top;
+      var div = (hght/4).toFixed(0);
+      percentageMarks[0] = [(disttop+(div*1)).toFixed(0),25];
+      percentageMarks[1] = [(disttop+(div*2)).toFixed(0),50];
+      percentageMarks[2] = [(disttop+(div*3)).toFixed(0),75];
+      percentageMarks[3] = [(disttop+(div*4)).toFixed(0),100];
+    }
+    return percentageMarks;
+  };
+
+  window.trackContentPercentageComplete = function() {
+    var win = $(window);
+    var bottom = win.scrollTop() + win.height();
+    var marks = window.digitalData.page.pageInfo['percentageMarks'];
+    var delMarks = new Array();
+    //new custom event for percentageComplete tracking
+    $.each(marks, function(i,v){
+      if(typeof v !== 'undefined') {
+        if(v[0] <= bottom) {
+          window.percentageCompleteEvent = new CustomEvent('percentageComplete', { detail: '' });
+          //track the percentage complete if it is not 0 just make it 25
+          window.digitalData.page.pageInfo['percentageComplete'] = 25;
+          document.body.dispatchEvent( percentageCompleteEvent );
+          //delete the mark from the event info and page
+          delMarks.push(i);
+        }
+      }
+      //Remove the marks that got tracked
+      if(i == (marks.length - 1) && delMarks.length > 0) {
+        //I reverse so the that it deletes from top to bottom if you start with 0
+        //They the array will reset and you will delete the wrong one
+        $.each(delMarks.reverse(), function(ind, val){
+          //This should propagate to the event info and pageInitial
+          window.digitalData.page.pageInfo['percentageMarks'].splice(val, 1);
+        });
+      }
+    });
   };
 
 

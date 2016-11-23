@@ -28710,6 +28710,90 @@ Note: If you manually reference more items than selected here, the number refere
     ),
   );
 
+  // Exported field_instance: 'node-campaign_tray-field_campaign_fade_in'.
+  $field_instances['node-campaign_tray-field_campaign_fade_in'] = array(
+    'bundle' => 'campaign_tray',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => 'This is just an indicator. The fade in functionality will be customized for each campaign for now.',
+    'display' => array(
+      'default' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 12,
+      ),
+      'feature_main' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_main_tpl' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_secondary' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_topic' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'feature_video' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'inline_content' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+      'video_playlist_teaser' => array(
+        'label' => 'above',
+        'settings' => array(),
+        'type' => 'hidden',
+        'weight' => 0,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_campaign_fade_in',
+    'label' => 'Fade In Elements',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
+      'weight' => 9,
+    ),
+  );
+
   // Exported field_instance: 'node-campaign_tray-field_campaign_style_setting'.
   $field_instances['node-campaign_tray-field_campaign_style_setting'] = array(
     'bundle' => 'campaign_tray',
@@ -29151,6 +29235,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('Embed');
   t('Enable Facebook Comments for this Campaign Page');
   t('Enable Mute Button');
+  t('Fade In Elements');
   t('Filter');
   t('Fonts for CSS');
   t('Free Tag');
@@ -29247,6 +29332,7 @@ Note: If you manually reference more items than selected here, the number refere
   t('This field will be used for creating the url for Campaign Pages that reference this Campaign.  DO NOT include backslashes.  (example: takepart-live)');
   t('This is also used to populate social share copy.');
   t('This is automatically generated.');
+  t('This is just an indicator. The fade in functionality will be customized for each campaign for now.');
   t('This is the Big Issue Volume Number for the campaign.');
   t('This logo will be displayed on a white background for the content inside campaign menu.');
   t('This logo will be displayed on the campaign banner for any content tagged with this campaign.');
